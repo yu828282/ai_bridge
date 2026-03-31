@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Study for International Students</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/python.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <div class="brand-row">
+            <div class="brand-left">
+                <button class="hamburger" id="hamburger-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="brand-block">
+                    <span class="brand-title" id="brand-title">Python Learning Center</span>
+                    <span class="brand-subtitle" id="brand-subtitle">International Students Coding Practice</span>
+                </div>
+            </div>
+            <div class="top-controls">
+                <div class="lang-container" id="desktop-langs">
+                    <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
+                    <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
+                    <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+                </div>
+                <span id="py-status" class="status-badge" style="color: #fbbf24;">
+                    <span class="status-dot" style="background: #fbbf24;"></span><span id="status-text">엔진 로딩 중</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="nav-shell desktop-nav" aria-label="Lesson menu">
+            <nav class="nav-container" id="nav-bar"></nav>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header" id="mobile-menu-title">Lesson Menu</div>
+        <div class="mobile-lang-container" id="mobile-langs">
+            <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
+            <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
+            <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="모바일 레슨 메뉴"></nav>
+    </div>
+    <div class="mobile-backdrop" id="mobile-backdrop"></div>
+</header>
+
+<main>
+    <section id="theory-panel">
+        <div class="theory-content" id="theory-view"></div>
+    </section>
+
+    <section id="editor-panel">
+        <textarea id="python-code"></textarea>
+        <div class="console" id="console-output"></div>
+        <div class="action-btns">
+            <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
+            <button class="ans-btn btn" id="answer-btn" type="button">정답 확인</button>
+        </div>
+        <div id="ans-display">
+            <strong id="answerTitle" style="color:#1e40af;">[모범 답안]</strong>
+            <pre id="ans-text" style="margin-top:10px; color:#1e3a8a;"></pre>
+        </div>
+    </section>
+</main>
+<script src="./js/common/menu.js"></script>
+<script src="./js/data_python/lessons.js"></script>
+<script src="./js/data_python/translations.js"></script>
+<script src="./js/data_python/python.js"></script>
+</body>
+</html>
