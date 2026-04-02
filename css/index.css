@@ -12,6 +12,7 @@
     --card-bg: #ffffff;
     --python-color: #dc2626;
     --ai-color: #0f766e;
+    --web-color: #1e293b;
     --contact-color: #2563eb;
     --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     --radius: 16px;
@@ -384,6 +385,12 @@ nav {
     border-color: transparent;
 }
 
+.project-link.web {
+    color: #fff;
+    background: var(--web-color);
+    border-color: transparent;
+}
+
 .contact-box {
     background: linear-gradient(135deg, #eff6ff, #f8fafc);
     border: 1px solid var(--border-color);
@@ -417,18 +424,6 @@ nav {
     background: var(--contact-color);
     color: #fff;
     box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
-}
-
-footer {
-    background: var(--primary-color);
-    color: rgba(248, 250, 252, 0.9);
-    text-align: center;
-    padding: 36px 20px;
-}
-
-footer p {
-    margin: 6px 0;
-    font-size: 0.95rem;
 }
 
 @media (max-width: 960px) {
