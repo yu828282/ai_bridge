@@ -496,6 +496,437 @@ const lessons = [
             ru: 'money = int(input("Деньги: "))\nif money < 3000:\n    print("No coffee")\nelse:\n    print("Coffee")'
         }
     },
+    ,
+{
+    menu: { ko: '6: elif', en: '6: elif', ru: '6: elif' },
+    title: {
+        ko: '6. elif로 여러 조건 나누기',
+        en: '6. Using elif for Multiple Conditions',
+        ru: '6. Использование elif для нескольких условий'
+    },
+    theory: {
+        ko: `
+            <p><b>elif</b>는 "그렇지 않고, 만약에"라는 뜻입니다.</p>
+            <p>조건이 여러 개 있을 때 <b>if → elif → else</b> 형태로 사용합니다.</p>
+            <p>중요한 점은 <b>위에서부터 차례대로 검사</b>한다는 것입니다.</p>
+            <p>그래서 점수 판정은 <b>큰 값부터</b> 써야 합니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수를 입력받아 90 이상이면 A, 80 이상이면 B, 70 이상이면 C, 60 이상이면 D, 나머지는 F를 출력하세요.
+            </div>
+        `,
+        en: `
+            <p><b>elif</b> means "if not, then if".</p>
+            <p>Use <b>if → elif → else</b> when there are many conditions.</p>
+            <p>The program checks conditions <b>from top to bottom</b>.</p>
+            <p>So, for score grading, write the <b>highest score first</b>.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input a score. Print A for 90 or more, B for 80 or more, C for 70 or more, D for 60 or more, and F for the rest.
+            </div>
+        `,
+        ru: `
+            <p><b>elif</b> означает "иначе, если".</p>
+            <p>Используйте <b>if → elif → else</b>, когда условий несколько.</p>
+            <p>Программа проверяет условия <b>сверху вниз</b>.</p>
+            <p>Поэтому в оценках нужно писать <b>сначала большие значения</b>.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите балл. Выведите A для 90 и выше, B для 80 и выше, C для 70 и выше, D для 60 и выше, иначе F.
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = int(input("점수를 입력하세요: "))\nif score >= 90:\n    print("A")\nelif score >= 80:\n    print("B")\nelif score >= 70:\n    print("C")\nelif score >= 60:\n    print("D")\nelse:\n    print("F")',
+        en: 'score = int(input("Enter your score: "))\nif score >= 90:\n    print("A")\nelif score >= 80:\n    print("B")\nelif score >= 70:\n    print("C")\nelif score >= 60:\n    print("D")\nelse:\n    print("F")',
+        ru: 'score = int(input("Введите балл: "))\nif score >= 90:\n    print("A")\nelif score >= 80:\n    print("B")\nelif score >= 70:\n    print("C")\nelif score >= 60:\n    print("D")\nelse:\n    print("F")'
+    }
+},
+{
+    menu: { ko: '6: and / or', en: '6: and / or', ru: '6: and / or' },
+    title: {
+        ko: '6. and와 or 조건식',
+        en: '6. and and or Conditions',
+        ru: '6. Условия and и or'
+    },
+    theory: {
+        ko: `
+            <p><b>and</b>는 두 조건이 <b>모두 참</b>일 때 참입니다.</p>
+            <p><b>or</b>는 두 조건 중 <b>하나라도 참</b>이면 참입니다.</p>
+            <p>예를 들어 점수와 출석률을 함께 검사할 수 있습니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수와 출석률을 입력받아, 점수가 70 이상이고 출석률이 80 이상이면 "합격", 아니면 "불합격"을 출력하세요.
+            </div>
+        `,
+        en: `
+            <p><b>and</b> is true when <b>both conditions</b> are true.</p>
+            <p><b>or</b> is true when <b>at least one condition</b> is true.</p>
+            <p>For example, you can check score and attendance together.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input score and attendance. If score is 70 or more and attendance is 80 or more, print "Pass", otherwise print "Fail".
+            </div>
+        `,
+        ru: `
+            <p><b>and</b> истинно, когда <b>оба условия</b> истинны.</p>
+            <p><b>or</b> истинно, когда <b>хотя бы одно условие</b> истинно.</p>
+            <p>Например, можно проверять балл и посещаемость вместе.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите балл и посещаемость. Если балл 70 и выше и посещаемость 80 и выше, выведите "Pass", иначе "Fail".
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = int(input("점수를 입력하세요: "))\nattendance = int(input("출석률을 입력하세요: "))\nif score >= 70 and attendance >= 80:\n    print("합격")\nelse:\n    print("불합격")',
+        en: 'score = int(input("Enter your score: "))\nattendance = int(input("Enter attendance: "))\nif score >= 70 and attendance >= 80:\n    print("Pass")\nelse:\n    print("Fail")',
+        ru: 'score = int(input("Введите балл: "))\nattendance = int(input("Введите посещаемость: "))\nif score >= 70 and attendance >= 80:\n    print("Pass")\nelse:\n    print("Fail")'
+    }
+},
+{
+    menu: { ko: '6: 장학금 조건', en: '6: Scholarship Condition', ru: '6: Условие стипендии' },
+    title: {
+        ko: '6. or로 장학금 조건 만들기',
+        en: '6. Using or for Scholarship Conditions',
+        ru: '6. Использование or для условий стипендии'
+    },
+    theory: {
+        ko: `
+            <p><b>or</b>는 여러 조건 중 하나만 만족해도 됩니다.</p>
+            <p>예를 들어 점수가 매우 높거나, 출석률이 매우 높으면 장학금을 줄 수 있습니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수와 출석률을 입력받아, 점수가 90 이상이거나 출석률이 95 이상이면 "장학금", 아니면 "해당 없음"을 출력하세요.
+            </div>
+        `,
+        en: `
+            <p><b>or</b> means only one condition needs to be true.</p>
+            <p>For example, a student can get a scholarship with a very high score or very high attendance.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input score and attendance. If score is 90 or more or attendance is 95 or more, print "Scholarship", otherwise print "None".
+            </div>
+        `,
+        ru: `
+            <p><b>or</b> означает, что достаточно одного истинного условия.</p>
+            <p>Например, студент может получить стипендию за очень высокий балл или очень высокую посещаемость.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите балл и посещаемость. Если балл 90 и выше или посещаемость 95 и выше, выведите "Scholarship", иначе "None".
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = int(input("점수를 입력하세요: "))\nattendance = int(input("출석률을 입력하세요: "))\nif score >= 90 or attendance >= 95:\n    print("장학금")\nelse:\n    print("해당 없음")',
+        en: 'score = int(input("Enter your score: "))\nattendance = int(input("Enter attendance: "))\nif score >= 90 or attendance >= 95:\n    print("Scholarship")\nelse:\n    print("None")',
+        ru: 'score = int(input("Введите балл: "))\nattendance = int(input("Введите посещаемость: "))\nif score >= 90 or attendance >= 95:\n    print("Scholarship")\nelse:\n    print("None")'
+    }
+},
+{
+    menu: { ko: '6: 중첩 if', en: '6: Nested if', ru: '6: Вложенный if' },
+    title: {
+        ko: '6. 중첩 if',
+        en: '6. Nested if',
+        ru: '6. Вложенный if'
+    },
+    theory: {
+        ko: `
+            <p><b>중첩 if</b>는 <b>if 안에 if</b>가 들어가는 구조입니다.</p>
+            <p>먼저 큰 조건을 확인하고, 그 안에서 다시 자세한 조건을 검사할 수 있습니다.</p>
+            <p>이때 가장 중요한 것은 <b>들여쓰기</b>입니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수를 입력받아 60 이상이면 "합격입니다."를 출력하고, 그 안에서 다시 점수에 따라 A, B, C, D 등급을 출력하세요. 60 미만이면 "불합격입니다."를 출력하세요.
+            </div>
+        `,
+        en: `
+            <p><b>Nested if</b> means an <b>if inside another if</b>.</p>
+            <p>You can check a big condition first, and then check detailed conditions inside it.</p>
+            <p>The most important part is <b>indentation</b>.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input a score. If it is 60 or more, print "Pass" and then print A, B, C, or D grade inside the block. If it is below 60, print "Fail".
+            </div>
+        `,
+        ru: `
+            <p><b>Вложенный if</b> — это <b>if внутри другого if</b>.</p>
+            <p>Сначала можно проверить большое условие, а затем внутри него — более подробные условия.</p>
+            <p>Самое важное здесь — <b>отступы</b>.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите балл. Если он 60 и выше, выведите "Pass", а затем внутри блока выведите оценку A, B, C или D. Если меньше 60, выведите "Fail".
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = int(input("점수를 입력하세요: "))\nif score >= 60:\n    print("합격입니다.")\n    if score >= 90:\n        print("등급은 A입니다.")\n    elif score >= 80:\n        print("등급은 B입니다.")\n    elif score >= 70:\n        print("등급은 C입니다.")\n    else:\n        print("등급은 D입니다.")\nelse:\n    print("불합격입니다.")',
+        en: 'score = int(input("Enter your score: "))\nif score >= 60:\n    print("Pass")\n    if score >= 90:\n        print("Grade A")\n    elif score >= 80:\n        print("Grade B")\n    elif score >= 70:\n        print("Grade C")\n    else:\n        print("Grade D")\nelse:\n    print("Fail")',
+        ru: 'score = int(input("Введите балл: "))\nif score >= 60:\n    print("Pass")\n    if score >= 90:\n        print("Grade A")\n    elif score >= 80:\n        print("Grade B")\n    elif score >= 70:\n        print("Grade C")\n    else:\n        print("Grade D")\nelse:\n    print("Fail")'
+    }
+},
+{
+    menu: { ko: '6: 학점 계산기', en: '6: Grade Calculator', ru: '6: Калькулятор оценок' },
+    title: {
+        ko: '6. 미니 프로젝트: 학점 계산 프로그램',
+        en: '6. Mini Project: Grade Calculator',
+        ru: '6. Мини-проект: калькулятор оценок'
+    },
+    theory: {
+        ko: `
+            <p>이제 <b>elif</b>, <b>or</b>, <b>중첩 if</b>를 이용해 학점 계산 프로그램을 만들 수 있습니다.</p>
+            <p>점수가 0보다 작거나 100보다 크면 <b>잘못된 점수</b>로 처리합니다.</p>
+            <p>그 외에는 점수 구간에 따라 A, B, C, D, F를 출력합니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수를 입력받아 0~100 범위를 벗어나면 "잘못된 점수입니다."를 출력하고, 올바른 점수라면 학점을 출력하세요.
+            </div>
+        `,
+        en: `
+            <p>Now you can make a grade calculator with <b>elif</b>, <b>or</b>, and <b>nested if</b>.</p>
+            <p>If the score is less than 0 or greater than 100, treat it as an <b>invalid score</b>.</p>
+            <p>Otherwise, print A, B, C, D, or F by score range.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input a score. If it is outside 0 to 100, print "Invalid score." If it is valid, print the grade.
+            </div>
+        `,
+        ru: `
+            <p>Теперь вы можете сделать калькулятор оценок с помощью <b>elif</b>, <b>or</b> и <b>вложенного if</b>.</p>
+            <p>Если балл меньше 0 или больше 100, это <b>неверный балл</b>.</p>
+            <p>Иначе выведите A, B, C, D или F по диапазону баллов.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите балл. Если он вне диапазона 0–100, выведите "Invalid score." Если он верный, выведите оценку.
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = int(input("점수를 입력하세요(0~100): "))\nif score < 0 or score > 100:\n    print("잘못된 점수입니다.")\nelse:\n    if score >= 90:\n        print("학점은 A입니다.")\n    elif score >= 80:\n        print("학점은 B입니다.")\n    elif score >= 70:\n        print("학점은 C입니다.")\n    elif score >= 60:\n        print("학점은 D입니다.")\n    else:\n        print("학점은 F입니다.")',
+        en: 'score = int(input("Enter your score (0~100): "))\nif score < 0 or score > 100:\n    print("Invalid score.")\nelse:\n    if score >= 90:\n        print("Your grade is A.")\n    elif score >= 80:\n        print("Your grade is B.")\n    elif score >= 70:\n        print("Your grade is C.")\n    elif score >= 60:\n        print("Your grade is D.")\n    else:\n        print("Your grade is F.")',
+        ru: 'score = int(input("Введите балл (0~100): "))\nif score < 0 or score > 100:\n    print("Invalid score.")\nelse:\n    if score >= 90:\n        print("Your grade is A.")\n    elif score >= 80:\n        print("Your grade is B.")\n    elif score >= 70:\n        print("Your grade is C.")\n    elif score >= 60:\n        print("Your grade is D.")\n    else:\n        print("Your grade is F.")'
+    }
+},
+{
+    menu: { ko: '6: f-string 출력', en: '6: f-string Output', ru: '6: f-string вывод' },
+    title: {
+        ko: '6. 친절한 결과 출력하기',
+        en: '6. Friendly Result Output',
+        ru: '6. Удобный вывод результата'
+    },
+    theory: {
+        ko: `
+            <p><b>f-string</b>을 사용하면 변수 값을 문장 안에 쉽게 넣을 수 있습니다.</p>
+            <p>예: <code>print(f"점수는 {score}점입니다.")</code></p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                점수와 학점을 함께 출력하세요. 예: "당신의 점수는 85점이고, 학점은 B입니다."
+            </div>
+        `,
+        en: `
+            <p>With an <b>f-string</b>, you can easily put variables into a sentence.</p>
+            <p>Example: <code>print(f"Your score is {score}.")</code></p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Print the score and grade together. Example: "Your score is 85 and your grade is B."
+            </div>
+        `,
+        ru: `
+            <p>С помощью <b>f-string</b> можно легко вставлять переменные в предложение.</p>
+            <p>Пример: <code>print(f"Ваш балл: {score}.")</code></p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Выведите вместе балл и оценку. Пример: "Ваш балл 85, а оценка B."
+            </div>
+        `
+    },
+    answer: {
+        ko: 'score = 85\ngrade = "B"\nprint(f"당신의 점수는 {score}점이고, 학점은 {grade}입니다.")',
+        en: 'score = 85\ngrade = "B"\nprint(f"Your score is {score}, and your grade is {grade}.")',
+        ru: 'score = 85\ngrade = "B"\nprint(f"Ваш балл {score}, а оценка {grade}.")'
+    }
+    },
+    ,
+{
+    menu: { ko: '7: 복습 종합', en: '7: Review', ru: '7: Повторение' },
+    title: {
+        ko: '7. 1~6주차 핵심 복습',
+        en: '7. Review of Weeks 1~6',
+        ru: '7. Повторение 1~6 недель'
+    },
+    theory: {
+        ko: `
+            <p>지금까지 배운 내용을 빠르게 정리해봅니다.</p>
+            <ul>
+                <li>print(), input()</li>
+                <li>변수</li>
+                <li>문자열 연결</li>
+                <li>int(), float()</li>
+                <li>비교 연산자</li>
+                <li>if / elif / else</li>
+            </ul>
+            <p><b>중요:</b> input()은 항상 문자열입니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                두 숫자를 입력받아 더하기 결과를 출력하세요.
+            </div>
+        `,
+        en: `
+            <p>Let's review what we learned.</p>
+            <ul>
+                <li>print(), input()</li>
+                <li>variables</li>
+                <li>string connection</li>
+                <li>int(), float()</li>
+                <li>comparison operators</li>
+                <li>if / elif / else</li>
+            </ul>
+            <p><b>Important:</b> input() is always a string.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input two numbers and print the sum.
+            </div>
+        `,
+        ru: `
+            <p>Повторим изученный материал.</p>
+            <ul>
+                <li>print(), input()</li>
+                <li>переменные</li>
+                <li>строки</li>
+                <li>int(), float()</li>
+                <li>операторы сравнения</li>
+                <li>if / elif / else</li>
+            </ul>
+            <p><b>Важно:</b> input() всегда строка.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите два числа и выведите сумму.
+            </div>
+        `
+    },
+    answer: {
+        ko: 'a = int(input("첫 번째 숫자: "))\nb = int(input("두 번째 숫자: "))\nprint(a + b)',
+        en: 'a = int(input("First number: "))\nb = int(input("Second number: "))\nprint(a + b)',
+        ru: 'a = int(input("Первое число: "))\nb = int(input("Второе число: "))\nprint(a + b)'
+    }
+},
+{
+    menu: { ko: '7: try-except', en: '7: try-except', ru: '7: try-except' },
+    title: {
+        ko: '7. 오류를 막는 try-except',
+        en: '7. try-except for Errors',
+        ru: '7. try-except для ошибок'
+    },
+    theory: {
+        ko: `
+            <p><b>try-except</b>는 오류가 나도 프로그램이 멈추지 않게 합니다.</p>
+            <p>숫자 대신 문자를 입력하면 오류가 발생합니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                숫자를 입력받고 출력하는 프로그램을 try-except로 작성하세요.
+            </div>
+        `,
+        en: `
+            <p><b>try-except</b> prevents the program from stopping.</p>
+            <p>If a user enters text instead of a number, an error happens.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Create a program that safely inputs a number using try-except.
+            </div>
+        `,
+        ru: `
+            <p><b>try-except</b> предотвращает остановку программы.</p>
+            <p>Ошибка возникает, если вместо числа вводится текст.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Напишите программу с try-except для ввода числа.
+            </div>
+        `
+    },
+    answer: {
+        ko: 'try:\n    num = int(input("숫자 입력: "))\n    print(num)\nexcept:\n    print("오류! 숫자를 입력하세요.")',
+        en: 'try:\n    num = int(input("Enter a number: "))\n    print(num)\nexcept:\n    print("Error! Enter a number.")',
+        ru: 'try:\n    num = int(input("Введите число: "))\n    print(num)\nexcept:\n    print("Ошибка! Введите число.")'
+    }
+},
+{
+    menu: { ko: '7: 주석', en: '7: Comments', ru: '7: Комментарии' },
+    title: {
+        ko: '7. 주석으로 코드 설명하기',
+        en: '7. Writing Comments',
+        ru: '7. Комментарии'
+    },
+    theory: {
+        ko: `
+            <p><b>#</b>을 사용하면 주석을 쓸 수 있습니다.</p>
+            <p>주석은 실행되지 않고 설명만 합니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                숫자를 입력받아 출력하는 코드에 주석을 추가하세요.
+            </div>
+        `,
+        en: `
+            <p>Use <b>#</b> to write comments.</p>
+            <p>Comments are not executed.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Add comments to a number input program.
+            </div>
+        `,
+        ru: `
+            <p>Используйте <b>#</b> для комментариев.</p>
+            <p>Комментарии не выполняются.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Добавьте комментарии к программе.
+            </div>
+        `
+    },
+    answer: {
+        ko: '# 숫자 입력\nnum = int(input("숫자: "))\n# 출력\nprint(num)',
+        en: '# input number\nnum = int(input("Number: "))\n# print\nprint(num)',
+        ru: '# ввод числа\nnum = int(input("Число: "))\n# вывод\nprint(num)'
+    }
+},
+{
+    menu: { ko: '7: 카페 프로젝트', en: '7: Cafe Project', ru: '7: Кафе проект' },
+    title: {
+        ko: '7. 미니 프로젝트: 카페 메뉴',
+        en: '7. Mini Project: Cafe Menu',
+        ru: '7. Мини-проект: Кафе'
+    },
+    theory: {
+        ko: `
+            <p>돈에 따라 살 수 있는 음료를 출력합니다.</p>
+            <p>조건문을 활용하는 실전 문제입니다.</p>
+            <div class="problem-area">
+                <span class="problem-title">[문제]</span>
+                돈을 입력받아 살 수 있는 음료를 출력하세요.
+            </div>
+        `,
+        en: `
+            <p>Print what drinks you can buy with your money.</p>
+            <p>This is a real condition practice.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Task]</span>
+                Input money and print available drinks.
+            </div>
+        `,
+        ru: `
+            <p>Выведите, что можно купить за деньги.</p>
+            <p>Это практическая задача с условиями.</p>
+            <div class="problem-area">
+                <span class="problem-title">[Задача]</span>
+                Введите деньги и выведите напитки.
+            </div>
+        `
+    },
+    answer: {
+        ko: 'tea = 3500\namericano = 4500\nlatte = 5500\n\ntry:\n    money = int(input("돈: "))\n    if money < tea:\n        print("아무것도 못 삼")\n    elif money < americano:\n        print("차 가능")\n    elif money < latte:\n        print("차 + 아메리카노 가능")\n    else:\n        print("모든 음료 가능")\nexcept:\n    print("숫자를 입력하세요")',
+        en: 'tea = 3500\namericano = 4500\nlatte = 5500\n\ntry:\n    money = int(input("Money: "))\n    if money < tea:\n        print("Nothing")\n    elif money < americano:\n        print("Tea")\n    elif money < latte:\n        print("Tea + Americano")\n    else:\n        print("All drinks")\nexcept:\n    print("Enter a number")',
+        ru: 'tea = 3500\namericano = 4500\nlatte = 5500\n\ntry:\n    money = int(input("Деньги: "))\n    if money < tea:\n        print("Ничего")\n    elif money < americano:\n        print("Чай")\n    elif money < latte:\n        print("Чай и американо")\n    else:\n        print("Все напитки")\nexcept:\n    print("Введите число")'
+    }
+},
 ];
 window.pythonLessons = lessons.map((lesson, index) => ({
     id: lesson.id || `lesson-${index + 1}`,
