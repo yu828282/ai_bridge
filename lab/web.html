@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML/CSS/JavaScript Learning Center - Lesson 1</title>
+  <link rel="stylesheet" href="./css/web.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand-left">
+        <button class="hamburger" id="hamburger-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="brand-block">
+          <span class="brand-title">HTML / CSS / JavaScript </span>
+          <span class="brand-subtitle">Learning Center</span>
+        </div>
+      </div>
+      <div class="top-controls">
+        <div class="lang-container" id="desktop-langs">
+            <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
+            <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
+            <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+        </div>
+        <span class="status-badge status-ready">
+          <span class="status-dot"></span>
+          <span>준비 완료</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="nav-shell desktop-nav" aria-label="Lesson menu">
+      <nav class="nav-container" id="nav-bar"></nav>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-header">Select Language</div>
+      <div class="mobile-lang-container" id="mobile-langs">
+          <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
+          <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
+          <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+      </div>
+      
+      <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
+      
+      <div class="mobile-menu-header">Lesson Menu</div>
+      <nav class="mobile-nav" id="mobile-nav"></nav>
+  </div>
+  <div class="mobile-backdrop" id="mobile-backdrop"></div>
+</header>
+
+<main>
+  <section id="theory-panel">
+    <div class="lesson-chip">Lesson 1</div>
+    <div class="theory-content" id="theory-view">
+      <section class="content-section" id="theory">
+        <h2>핵심 이론</h2>
+        <p><strong>HTML</strong>은 웹페이지의 구조를 만드는 언어입니다.</p>
+        <p><strong>CSS</strong>는 웹페이지를 꾸미는 언어입니다.</p>
+        <p><strong>JavaScript</strong>는 웹페이지에 동작을 넣는 언어입니다.</p>
+
+        <div class="problem-area">
+          <span class="problem-title">쉽게 이해하기</span>
+          <p>웹페이지를 사람에 비유하면:</p>
+          <ul>
+            <li>HTML = 뼈대</li>
+            <li>CSS = 옷, 색상, 꾸미기</li>
+            <li>JavaScript = 움직임, 기능</li>
+          </ul>
+        </div>
+        <p>우리가 오늘 직접 다룰 것은 <strong>HTML</strong>입니다.</p>
+        <h2>실습 1. 첫 HTML 파일 만들기</h2>
+        <p>오른쪽 코드 창에 기본 HTML 코드가 들어 있습니다.</p>
+        <ol>
+          <li><code>&lt;h1&gt;</code> 안의 제목을 바꿔보세요.</li>
+          <li><code>&lt;p&gt;</code> 안의 문장을 자기소개 문장으로 바꿔보세요.</li>
+          <li><strong>실행</strong> 버튼을 눌러 결과를 확인하세요.</li>
+        </ol>
+        <span class="theory-callout">브라우저 화면이 바뀌면 성공입니다.</span>
+        <h2>실습 2. 자기소개 문장 추가하기</h2>
+        <p><code>&lt;p&gt;</code> 태그를 추가해서 자기소개를 3줄 이상 작성해보세요.</p>
+        <ul>
+          <li>이름</li>
+          <li>나이</li>
+          <li>관심 분야</li>
+          <li>목표</li>
+        </ul>
+
+        <div class="problem-area">
+          <span class="problem-title">실습 미션</span>
+          <p>문장 3개 이상을 직접 추가한 뒤 실행해보세요.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="editor-panel">
+    <div class="editor-topbar">
+      <span class="editor-title">Practice</span>
+    </div>
+
+    <textarea id="html-code" spellcheck="false"></textarea>
+
+    <div class="action-btns">
+      <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
+      <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
+      <button class="ans-btn btn" id="answer-btn" type="button">정답 확인</button>
+    </div>
+
+    <div class="preview-wrap">
+      <div class="preview-header">
+        <span>실행 결과 미리보기</span>
+      </div>
+      <iframe id="preview-frame" title="HTML preview"></iframe>
+    </div>
+
+    <div id="ans-display">
+      <strong id="answerTitle">[모범 답안]</strong>
+      <pre id="ans-text"></pre>
+    </div>
+  </section>
+</main>
+    <footer class="footer">
+        <div class="container">
+            <p>Yuri Choi Portfolio</p>
+            <p>© 2026 AI Education Designer & System Builder</p>
+        </div>
+    </footer>     
+<script type="module" src="./js/data_web/web.js"></script>
+</body>
+</html>
