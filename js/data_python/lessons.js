@@ -1355,67 +1355,70 @@ const lessons = [
         },
         theory: {
             ko: `
-                <p><b>라이브러리(Library)</b>는 전 세계 개발자들이 미리 만들어 놓은 '코드 꾸러미'입니다. 우리가 모든 기능을 처음부터 만들 필요 없이 필요한 도구를 가져다 쓰면 됩니다.</p>
+                <p><b>라이브러리(Library)</b>는 전 세계 개발자들이 미리 만들어 놓은 '코드 꾸러미'입니다. 모든 기능을 처음부터 만들 필요 없이 필요한 도구를 가져다 쓰면 됩니다.</p>
                 <ul>
                     <li><b>import:</b> 라이브러리를 불러올 때 사용하는 명령어입니다. (예: <code>import random</code>)</li>
                     <li><b>random 모듈:</b> 무작위 숫자를 생성하거나 리스트에서 무작위 요소를 뽑을 때 사용합니다.</li>
-                    <li><b>randint(a, b):</b> a와 b 사이의 정수를 하나 랜덤하게 뽑아줍니다.</li>
+                    <li><b>randint(1, 3):</b> 1, 2, 3 중 하나의 숫자를 랜덤하게 뽑아줍니다.</li>
                 </ul>
+                <p><i>비유: 라이브러리는 가구 조립 키트와 같습니다. 나무를 깎을 필요 없이 이미 만들어진 부품을 조립만 하면 됩니다.</i></p>
+                
                 <div class="problem-area">
-                    <span class="problem-title">[실습 미션: 숫자 맞추기 게임]</span>
-                    <p>컴퓨터가 생각한 1~10 사이의 숫자를 맞추는 프로그램을 만드세요.</p>
+                    <span class="problem-title">[실습 미션: 1~3 숫자 맞추기]</span>
+                    <p>컴퓨터가 숨겨놓은 1에서 3 사이의 숫자를 단번에 맞춰보세요!</p>
                     <ol>
                         <li><code>import random</code>을 코드 맨 윗줄에 적습니다.</li>
-                        <li><b>answer</b> 변수에 1~10 사이의 랜덤 숫자를 저장합니다.</li>
+                        <li><b>answer</b> 변수에 1~3 사이의 랜덤 숫자를 저장합니다.</li>
                         <li><code>while True</code>를 사용해 정답을 맞힐 때까지 계속 입력받습니다.</li>
-                        <li>사용자의 입력이 정답보다 작으면 "Up", 크면 "Down"을 알려주세요.</li>
+                        <li>정답을 맞히면 "정답입니다!"를 출력하고 <b>break</b>로 탈출하세요.</li>
                     </ol>
                 </div>
             `,
             en: `
-                <p>A <b>Library</b> is a collection of pre-written code created by developers worldwide. You don't have to build everything from scratch; just bring the tools you need.</p>
+                <p>A <b>Library</b> is a collection of pre-written code. You don't have to build everything from scratch; just bring the tools you need.</p>
                 <ul>
                     <li><b>import:</b> The command used to load a library. (e.g., <code>import random</code>)</li>
-                    <li><b>random module:</b> Used to generate random numbers or pick random items.</li>
-                    <li><b>randint(a, b):</b> Picks a random integer between a and b.</li>
+                    <li><b>random module:</b> Used to generate random numbers.</li>
+                    <li><b>randint(1, 3):</b> Picks a random integer between 1 and 3.</li>
                 </ul>
+                <p><i>Analogy: A library is like a furniture assembly kit. You don't need to cut wood; you just assemble pre-made parts.</i></p>
                 <div class="problem-area">
-                    <span class="problem-title">[Practice: Number Guessing Game]</span>
-                    <p>Create a program to guess a number between 1 and 10 that the computer is thinking of.</p>
+                    <span class="problem-title">[Task: Guess 1-3]</span>
+                    <p>Try to guess the number between 1 and 3 that the computer has hidden!</p>
                     <ol>
-                        <li>Write <code>import random</code> at the top of your code.</li>
-                        <li>Save a random number between 1 and 10 in the <b>answer</b> variable.</li>
+                        <li>Write <code>import random</code> at the top.</li>
+                        <li>Save a random number between 1 and 3 in the <b>answer</b> variable.</li>
                         <li>Use <code>while True</code> to keep taking input until the correct answer is guessed.</li>
-                        <li>Tell the user "Up" if their guess is lower, or "Down" if it's higher.</li>
+                        <li>If correct, print "Correct!" and use <b>break</b> to exit.</li>
                     </ol>
                 </div>
             `,
             ru: `
-                <p><b>Библиотека (Library)</b> — это набор готового кода, созданный разработчиками со всего мира. Вам не нужно писать всё с нуля; просто используйте нужные инструменты.</p>
+                <p><b>Библиотека (Library)</b> — это набор готового кода. Вам не нужно писать всё с нуля; просто используйте нужные инструменты.</p>
                 <ul>
                     <li><b>import:</b> Команда для загрузки библиотеки. (например, <code>import random</code>)</li>
                     <li><b>модуль random:</b> Используется для генерации случайных чисел.</li>
-                    <li><b>randint(a, b):</b> Выбирает случайное целое число в диапазоне от a до b.</li>
+                    <li><b>randint(1, 3):</b> Выбирает случайное целое число от 1 до 3.</li>
                 </ul>
+                <p><i>Аналогия: Библиотека похожа на набор для сборки мебели. Вам не нужно вырезать дерево, вы просто собираете готовые детали.</i></p>
                 <div class="problem-area">
-                    <span class="problem-title">[Задание: Игра "Угадай число"]</span>
-                    <p>Создайте программу для угадывания числа от 1 до 10, которое загадал компьютер.</p>
+                    <span class="problem-title">[Задание: Угадай 1-3]</span>
+                    <p>Попробуйте угадать число от 1 до 3, которое загадал компьютер!</p>
                     <ol>
-                        <li>Напишите <code>import random</code> в первой строке кода.</li>
-                        <li>Сохраните случайное число от 1 до 10 в переменной <b>answer</b>.</li>
+                        <li>Напишите <code>import random</code> в первой строке.</li>
+                        <li>Сохраните случайное число от 1 до 3 в переменной <b>answer</b>.</li>
                         <li>Используйте <code>while True</code>, чтобы запрашивать ввод, пока число не будет угадано.</li>
-                        <li>Подсказывайте "Больше", если ввод меньше ответа, или "Меньше", если больше.</li>
+                        <li>Если верно, выведите "Верно!" и используйте <b>break</b>.</li>
                     </ol>
                 </div>
             `
         },
         answer: {
-            ko: 'import random\nanswer = random.randint(1, 10)\nwhile True:\n    guess = int(input("1~10 사이 숫자: "))\n    if guess == answer:\n        print("정답입니다!")\n        break\n    elif guess < answer:\n        print("더 큰 숫자입니다.")\n    else:\n        print("더 작은 숫자입니다.")',
-            en: 'import random\nanswer = random.randint(1, 10)\nwhile True:\n    guess = int(input("Guess 1-10: "))\n    if guess == answer:\n        print("Correct!")\n        break\n    elif guess < answer:\n        print("Higher")\n    else:\n        print("Lower")',
-            ru: 'import random\nanswer = random.randint(1, 10)\nwhile True:\n    guess = int(input("Число 1-10: "))\n    if guess == answer:\n        print("Верно!")\n        break\n    elif guess < answer:\n        print("Больше")\n    else:\n        print("Меньше")'
+            ko: 'import random\nanswer = random.randint(1, 3)\nwhile True:\n    guess = int(input("1~3 사이 숫자 입력: "))\n    if guess == answer:\n        print("정답입니다!")\n        break\n    else:\n        print("틀렸습니다. 다시 시도하세요.")',
+            en: 'import random\nanswer = random.randint(1, 3)\nwhile True:\n    guess = int(input("Guess a number between 1-3: "))\n    if guess == answer:\n        print("Correct!")\n        break\n    else:\n        print("Wrong. Try again.")',
+            ru: 'import random\nanswer = random.randint(1, 3)\nwhile True:\n    guess = int(input("Число от 1 до 3: "))\n    if guess == answer:\n        print("Верно!")\n        break\n    else:\n        print("Неверно. Попробуйте еще раз.")'
         }
     },
-
     // 15강: 최종 미니 프로젝트
     {
         menu: { ko: '15: 최종 프로젝트', en: '15: Final Project', ru: '15: Финальный проект' },
