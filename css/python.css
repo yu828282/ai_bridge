@@ -382,6 +382,27 @@ textarea {
     color: #94a3b8;
     margin-top: 140px;
 }
+.status-badge.ready {
+    color: #4ade80 !important;
+    border-color: rgba(74, 222, 128, 0.4);
+}
+
+.status-badge.ready .status-dot {
+    background: #4ade80 !important;
+}
+
+.status-badge.loading {
+    color: #fbbf24;
+}
+
+.stop-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.stop-btn:hover {
+    background: #dc2626;
+}
 
 @media (max-width: 1024px) {
     main {
