@@ -90,6 +90,18 @@
         const matches = code.match(/\binput\s*\(/g);
         return matches ? matches.length : 0;
     }
+    function extractInputPrompts(code) {
+        const regex = /input\s*\(\s*["']([^"']*)["']\s*\)/g;
+
+        const prompts = [];
+        let match;
+
+        while ((match = regex.exec(code)) !== null) {
+            prompts.push(match[1]);
+        }
+
+        return prompts;
+    }
 
     function runPython() {
         if (!pyWorker) return;
@@ -97,11 +109,11 @@
         const code = elements.codeInput.value;
         const textSet = getTextSet();
 
-        const inputCount = countInputs(code);
+        const prompts = extractInputPrompts(code);
         const inputs = [];
 
-        for (let i = 0; i < inputCount; i++) {
-            const value = prompt(`Input ${i + 1}`);
+        for (let i = 0; i < prompts.length; i++) {
+            const value = prompt(prompts[i]);
             if (value === null) return;
             inputs.push(value);
         }
