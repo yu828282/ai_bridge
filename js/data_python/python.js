@@ -64,6 +64,7 @@
             } else if (type === 'SUCCESS') {
                 elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
                 elements.runButton.disabled = false;
+                showToast("✅");
             } else if (type === 'ERROR') {
                 elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error;
                 elements.runButton.disabled = false;
@@ -76,19 +77,40 @@
             elements.runButton.disabled = false;
         };
     }
+    function updateProgress() {
+        const progressBar = document.getElementById('progress-bar');
 
+        const percent =
+            ((currentLessonIndex + 1) / lessons.length) * 100;
+
+        progressBar.style.width = percent + '%';
+    }
     // [개선] 파이썬 실행: 워커에 코드 전달
+    function countInputs(code) {
+        const matches = code.match(/\binput\s*\(/g);
+        return matches ? matches.length : 0;
+    }
+
     function runPython() {
         if (!pyWorker) return;
-        
+
         const code = elements.codeInput.value;
         const textSet = getTextSet();
-        
+
+        const inputCount = countInputs(code);
+        const inputs = [];
+
+        for (let i = 0; i < inputCount; i++) {
+            const value = prompt(`Input ${i + 1}`);
+            if (value === null) return;
+            inputs.push(value);
+        }
+
         elements.consoleOutput.dataset.hasRun = 'true';
         elements.consoleOutput.textContent = textSet.running;
-        elements.runButton.disabled = true; // 실행 중 중복 클릭 방지
+        elements.runButton.disabled = true;
 
-        pyWorker.postMessage({ code });
+        pyWorker.postMessage({ code, inputs });
     }
 
     // [개선] 중지 기능: 실행 중인 워커를 강제 종료 후 재발행
@@ -117,6 +139,16 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === currentLang);
         });
+    }
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+
+        toast.textContent = message;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2000);
     }
 
     function updateStaticTexts() {
@@ -172,11 +204,12 @@
 
     function selectLesson(index) {
         currentLessonIndex = index;
+        localStorage.setItem('python-progress', index);
         const lesson = lessons[index];
         const textSet = getTextSet();
 
         renderNavigation();
-
+        localStorage.setItem('python-progress', index);
         const title = lesson.title[currentLang] || lesson.title.ko;
         const theory = lesson.theory[currentLang] || lesson.theory.ko;
         const initialCode = lesson.initialCode ? (lesson.initialCode[currentLang] || lesson.initialCode.ko) : "";
@@ -188,6 +221,8 @@
 
         elements.answerDisplay.style.display = 'none';
         elements.answerText.textContent = lesson.answer[currentLang] || lesson.answer.ko;
+        
+        updateProgress();
     }
 
     function renderEmptyState() {
@@ -225,7 +260,14 @@
     updateLanguageButtons();
     updateStaticTexts();
     renderNavigation();
-    renderEmptyState();
+
+    const savedIndex = localStorage.getItem('python-progress');
+
+    if (savedIndex !== null) {
+        selectLesson(Number(savedIndex));
+    } else {
+        renderEmptyState();
+    }
     
     // 페이지 로드 시 워커 시스템 시작
     initWorker();
