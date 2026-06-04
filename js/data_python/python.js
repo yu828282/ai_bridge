@@ -14,7 +14,7 @@
         codeInput: document.getElementById('python-code'),
         consoleOutput: document.getElementById('console-output'),
         runButton: document.getElementById('run-btn'),
-        stopButton: document.getElementById('stop-btn'), // 중지 버튼
+        // stopButton: document.getElementById('stop-btn'), // 중지 버튼
         answerButton: document.getElementById('answer-btn'),
         answerDisplay: document.getElementById('ans-display'),
         answerTitle: document.getElementById('answerTitle'),
@@ -163,10 +163,10 @@
     }
 
     // [개선] 중지 기능: 실행 중인 워커를 강제 종료 후 재발행
-    function stopPython() {
-            const textSet = getTextSet(); // ◀ 현재 설정된 언어셋 가져오기
-            elements.consoleOutput.textContent = textSet.stoppedMessage; // ◀ 번역된 텍스트 적용
-        }
+    // function stopPython() {
+    //         const textSet = getTextSet(); // ◀ 현재 설정된 언어셋 가져오기
+    //         elements.consoleOutput.textContent = textSet.stoppedMessage; // ◀ 번역된 텍스트 적용
+    //     }
 
 
     function setLanguage(lang) {
@@ -203,7 +203,7 @@
         elements.brandSubtitle.textContent = textSet.brandSubtitle;
         elements.mobileMenuTitle.textContent = textSet.menuTitle;
         elements.runButton.textContent = textSet.runButton;
-        elements.stopButton.textContent = textSet.stopButton;
+        // elements.stopButton.textContent = textSet.stopButton;
         elements.answerButton.textContent = textSet.answerButton;
         elements.answerButton.textContent = textSet.answerButton;
         elements.answerTitle.textContent = textSet.answerTitle;
@@ -298,7 +298,7 @@
         });
 
         elements.runButton.addEventListener('click', runPython);
-        elements.stopButton.addEventListener('click', stopPython);
+        // elements.stopButton.addEventListener('click', stopPython);
         elements.answerButton.addEventListener('click', toggleAnswer);
     }
 
