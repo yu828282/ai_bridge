@@ -13,30 +13,28 @@ loadPyodideAndPackages();
 
 // 메인 스레드로부터 메시지를 받았을 때
 self.onmessage = async (event) => {
-    const { code, inputs = [] } = event.data;
+    const { code } = event.data;
 
     try {
-        pyodide.globals.set("js_inputs", inputs);
-
         await pyodide.runPythonAsync(`
             import sys, io, builtins
+            from js import prompt
 
             sys.stdout = io.StringIO()
-            _input_values = list(js_inputs)
 
             def browser_input(prompt_text=""):
-                if _input_values:
-                    value = str(_input_values.pop(0))
-                    print(f"{prompt_text}{value}")
-                    return value
-                return ""
+                value = prompt(prompt_text)
+                if value is None:
+                    raise KeyboardInterrupt("Input cancelled")
+                print(str(prompt_text) + str(value))
+                return str(value)
 
             builtins.input = browser_input
         `);
 
         await pyodide.runPythonAsync(code);
-        const output = pyodide.runPython("sys.stdout.getvalue()");
 
+        const output = pyodide.runPython("sys.stdout.getvalue()");
         self.postMessage({ type: 'SUCCESS', output });
     } catch (error) {
         self.postMessage({ type: 'ERROR', error: error.message });

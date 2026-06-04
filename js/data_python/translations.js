@@ -16,7 +16,7 @@ const translations = {
         emptyStateSub: '상단 메뉴에서 레슨을 선택하면 내용이 표시됩니다.',
         running: '실행 중...',
         finishedNoOutput: '실행 완료 (출력 없음)',
-        stoppedMessage: '실행이 사용자에 의해 중단되었습니다.',
+        stoppedMessage: '현재 버전에서는 실행 중 강제 정지를 지원하지 않습니다.',
         errorLabel: '오류',
         selectLessonAlert: '주제를 먼저 선택하세요!'
     },
@@ -37,7 +37,7 @@ const translations = {
         emptyStateSub: 'Select a lesson from the top menu to view the content.',
         running: 'Running...',
         finishedNoOutput: 'Finished (No output)',
-        stoppedMessage: 'Execution was stopped by the user.',
+        stoppedMessage: 'The current version does not support forcing a stop during execution.',
         errorLabel: 'Error',
         selectLessonAlert: 'Please select a lesson first!'
     },
@@ -58,7 +58,7 @@ const translations = {
         emptyStateSub: 'Выберите урок в верхнем меню, чтобы увидеть содержание.',
         running: 'Выполнение...',
         finishedNoOutput: 'Выполнено (без вывода)',
-        stoppedMessage: 'Выполнение было остановлено пользователем.',
+        stoppedMessage: 'Текущая версия не поддерживает принудительную остановку во время выполнения.',
         errorLabel: 'Ошибка',
         selectLessonAlert: 'Сначала выберите урок!'
     }

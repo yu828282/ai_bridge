@@ -24,6 +24,7 @@
     let currentLang = 'ko';
     let currentLessonIndex = null;
     let pyWorker = null;
+    let pyodideInstance = null;
 
     const mobileMenuController = window.initMobileMenu({
         button: document.getElementById('hamburger-btn'),
@@ -37,46 +38,61 @@
     }
 
     // [개선] 워커 시스템 초기화
-    function initWorker() {
+    async function initPyodide() {
         const textSet = getTextSet();
-        
-        // 기존 워커가 있다면 완전히 제거
-        if (pyWorker) pyWorker.terminate();
 
-        // 상태 표시 업데이트
         elements.statusText.textContent = textSet.loading;
         elements.statusBadge.classList.remove('ready');
         elements.statusBadge.classList.add('loading');
-        elements.runButton.disabled = true; // 로딩 중 클릭 방지
+        elements.runButton.disabled = true;
 
-        // worker.js를 호출 (경로 확인 필수)
-        pyWorker = new Worker('./js/data_python/worker.js');
+        pyodideInstance = await loadPyodide();
 
-        pyWorker.onmessage = function(event) {
-            const { type, output, error } = event.data;
-            const textSet = getTextSet();
-
-            if (type === 'READY') {
-                elements.statusText.textContent = textSet.ready;
-                elements.statusBadge.classList.remove('loading');
-                elements.statusBadge.classList.add('ready');
-                elements.runButton.disabled = false;
-            } else if (type === 'SUCCESS') {
-                elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
-                elements.runButton.disabled = false;
-                showToast("✅");
-            } else if (type === 'ERROR') {
-                elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error;
-                elements.runButton.disabled = false;
-            }
-        };
-
-        pyWorker.onerror = function(e) {
-            console.error("Worker Error:", e);
-            elements.statusText.textContent = "Error";
-            elements.runButton.disabled = false;
-        };
+        elements.statusText.textContent = textSet.ready;
+        elements.statusBadge.classList.remove('loading');
+        elements.statusBadge.classList.add('ready');
+        elements.runButton.disabled = false;
     }
+    // function initWorker() {
+    //     const textSet = getTextSet();
+        
+    //     // 기존 워커가 있다면 완전히 제거
+    //     if (pyWorker) pyWorker.terminate();
+
+    //     // 상태 표시 업데이트
+    //     elements.statusText.textContent = textSet.loading;
+    //     elements.statusBadge.classList.remove('ready');
+    //     elements.statusBadge.classList.add('loading');
+    //     elements.runButton.disabled = true; // 로딩 중 클릭 방지
+
+    //     // worker.js를 호출 (경로 확인 필수)
+    //     // pyWorker = new Worker('./js/data_python/worker.js');
+
+    //     pyWorker.onmessage = function(event) {
+    //         const { type, output, error } = event.data;
+    //         const textSet = getTextSet();
+
+    //         if (type === 'READY') {
+    //             elements.statusText.textContent = textSet.ready;
+    //             elements.statusBadge.classList.remove('loading');
+    //             elements.statusBadge.classList.add('ready');
+    //             elements.runButton.disabled = false;
+    //         } else if (type === 'SUCCESS') {
+    //             elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
+    //             elements.runButton.disabled = false;
+    //             showToast("✅");
+    //         } else if (type === 'ERROR') {
+    //             elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error;
+    //             elements.runButton.disabled = false;
+    //         }
+    //     };
+
+    //     pyWorker.onerror = function(e) {
+    //         console.error("Worker Error:", e);
+    //         elements.statusText.textContent = "Error";
+    //         elements.runButton.disabled = false;
+    //     };
+    // }
     function updateProgress() {
         const progressBar = document.getElementById('progress-bar');
 
@@ -103,37 +119,55 @@
         return prompts;
     }
 
-    function runPython() {
-        if (!pyWorker) return;
+    async function runPython() {
+        if (!pyodideInstance) return;
 
         const code = elements.codeInput.value;
         const textSet = getTextSet();
-
-        const prompts = extractInputPrompts(code);
-        const inputs = [];
-
-        for (let i = 0; i < prompts.length; i++) {
-            const value = prompt(prompts[i]);
-            if (value === null) return;
-            inputs.push(value);
-        }
 
         elements.consoleOutput.dataset.hasRun = 'true';
         elements.consoleOutput.textContent = textSet.running;
         elements.runButton.disabled = true;
 
-        pyWorker.postMessage({ code, inputs });
+        try {
+            window.browserPrompt = function (message) {
+                return window.prompt(message);
+            };
+
+            await pyodideInstance.runPythonAsync(`
+    import sys, io, builtins
+    from js import browserPrompt
+
+    sys.stdout = io.StringIO()
+
+    def browser_input(prompt_text=""):
+        value = browserPrompt(str(prompt_text))
+        if value is None:
+            raise KeyboardInterrupt("Input cancelled")
+        print(str(prompt_text) + str(value))
+        return str(value)
+
+    builtins.input = browser_input
+            `);
+
+            await pyodideInstance.runPythonAsync(code);
+
+            const output = pyodideInstance.runPython("sys.stdout.getvalue()");
+            elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
+            showToast("✅");
+        } catch (error) {
+            elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error.message;
+        }
+
+        elements.runButton.disabled = false;
     }
 
     // [개선] 중지 기능: 실행 중인 워커를 강제 종료 후 재발행
     function stopPython() {
-        if (pyWorker) {
-            pyWorker.terminate();
-            initWorker(); // 엔진을 다시 사용할 수 있도록 재준비
-            elements.consoleOutput.textContent = getTextSet().stoppedMessage;
-            elements.runButton.disabled = false;
+            const textSet = getTextSet(); // ◀ 현재 설정된 언어셋 가져오기
+            elements.consoleOutput.textContent = textSet.stoppedMessage; // ◀ 번역된 텍스트 적용
         }
-    }
+
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -282,5 +316,5 @@
     }
     
     // 페이지 로드 시 워커 시스템 시작
-    initWorker();
+    initPyodide();
 })();
