@@ -203,7 +203,6 @@
         elements.brandSubtitle.textContent = textSet.brandSubtitle;
         elements.mobileMenuTitle.textContent = textSet.menuTitle;
         elements.runButton.textContent = textSet.runButton;
-        // elements.stopButton.textContent = textSet.stopButton;
         elements.answerButton.textContent = textSet.answerButton;
         elements.answerButton.textContent = textSet.answerButton;
         elements.answerTitle.textContent = textSet.answerTitle;
@@ -298,7 +297,6 @@
         });
 
         elements.runButton.addEventListener('click', runPython);
-        // elements.stopButton.addEventListener('click', stopPython);
         elements.answerButton.addEventListener('click', toggleAnswer);
     }
 
