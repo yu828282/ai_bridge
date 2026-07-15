@@ -309,7 +309,7 @@ nav {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
@@ -424,6 +424,90 @@ nav {
     background: var(--contact-color);
     color: #fff;
     box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
+}
+.project-card-featured {
+    grid-column: 1 / -1;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #eff6ff 0%,
+        #ffffff 55%,
+        #f8fafc 100%
+    );
+    border-color: #bfdbfe;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.project-card-featured::after {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.08);
+    pointer-events: none;
+}
+.project-link {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+}
+
+.project-card-featured h3,
+.project-card-featured p,
+.project-card-featured .project-meta,
+.project-card-featured .project-links,
+.project-card-featured .project-label {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card-featured h3 {
+    font-size: 1.35rem;
+}
+
+.project-card-featured p {
+    max-width: 900px;
+}
+
+.project-label {
+    align-self: flex-start;
+    display: inline-flex;
+    width: fit-content;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.project-link.global-support {
+    color: #ffffff;
+    background: var(--accent-color);
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.project-link.global-support:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.28);
 }
 
 @media (max-width: 960px) {
