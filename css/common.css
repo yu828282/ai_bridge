@@ -116,3 +116,17 @@ a.portfolio-return { color: #cbd5e1; text-decoration: none; font-size: .88rem; f
 a.portfolio-return:hover, a.portfolio-return:focus-visible { color: white; background: rgba(255,255,255,.16); }
 a.mobile-portfolio-link { display: none; margin: 20px 14px 12px; color: #bfdbfe; text-decoration: none; font-weight: 700; padding: 12px 14px; border: 1px solid rgba(255,255,255,.15); border-radius: 10px; }
 @media(max-width: 768px) { a.portfolio-return { display: none; } a.mobile-portfolio-link { display: block; } }
+
+
+/* Stage 4 — safe responsive fundamentals shared by course pages. */
+html { scroll-padding-top: 110px; }
+body { min-width: 0; }
+img, video, svg, canvas { max-width: 100%; }
+.brand-row > *, .brand-left, .brand-block, .top-controls { min-width: 0; }
+@media (max-width: 768px) {
+  .header-inner { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
+  .brand-block { overflow-wrap: anywhere; }
+  .mobile-menu { max-height: 100dvh; overscroll-behavior: contain; }
+  .mobile-nav { min-height: 0; overscroll-behavior: contain; }
+  .mobile-menu a, .mobile-menu button { flex-shrink: 0; }
+}

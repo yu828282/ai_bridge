@@ -14,7 +14,12 @@
         codeInput: document.getElementById('python-code'),
         consoleOutput: document.getElementById('console-output'),
         runButton: document.getElementById('run-btn'),
-        // stopButton: document.getElementById('stop-btn'), // 중지 버튼
+        stopButton: document.getElementById('stop-btn'),
+        retryButton: document.getElementById('retry-btn'),
+        stdinPanel: document.getElementById('python-input-panel'),
+        stdinLabel: document.getElementById('stdin-label'),
+        stdinHelp: document.getElementById('stdin-help'),
+        stdinInput: document.getElementById('python-stdin'),
         answerButton: document.getElementById('answer-btn'),
         answerDisplay: document.getElementById('ans-display'),
         answerTitle: document.getElementById('answerTitle'),
@@ -23,7 +28,33 @@
 
     let currentLang = 'ko';
     let currentLessonIndex = null;
-    let pyodideInstance = null;
+    let pythonWorker = null;
+    let workerGeneration = 0;
+    let nextRunId = 0;
+    let pendingRun = null;
+    let ready = false;
+    let bootTimer = null;
+    const EXECUTION_LIMIT_MS = 10000;
+    const LOAD_LIMIT_MS = 90000;
+
+    // 학습 코드 보관: 레슨별로 하나의 작업본을 유지하므로 언어 변경과
+    // 다른 레슨 방문, 새로고침에도 사용자가 작성한 코드가 사라지지 않습니다.
+    const draftPrefix = 'ai-bridge-python-draft-v1-';
+
+    function draftKey(index) {
+        return draftPrefix + index;
+    }
+
+    function readDraft(index) {
+        try { return localStorage.getItem(draftKey(index)); }
+        catch (_) { return null; }
+    }
+
+    function saveDraft() {
+        if (currentLessonIndex === null) return;
+        try { localStorage.setItem(draftKey(currentLessonIndex), elements.codeInput.value); }
+        catch (_) { /* 저장 공간이 차단되어도 수업은 계속 진행 */ }
+    }
 
     const mobileMenuController = window.initMobileMenu({
         button: document.getElementById('hamburger-btn'),
@@ -36,33 +67,88 @@
         return translations[currentLang] || translations.ko;
     }
 
-    // [개선] 워커 시스템 초기화
-    async function initPyodide() {
-        const textSet = getTextSet();
-
-        elements.statusText.textContent = textSet.loading;
-        elements.statusBadge.classList.remove('ready');
-        elements.statusBadge.classList.add('loading');
-        elements.runButton.disabled = true;
-
-        try {
-            if (typeof loadPyodide !== 'function') {
-                throw new Error('Pyodide library was not loaded');
-            }
-            pyodideInstance = await loadPyodide();
-            elements.statusText.textContent = textSet.ready;
-            elements.statusBadge.classList.remove('loading');
-            elements.statusBadge.classList.add('ready');
-            elements.runButton.disabled = false;
-        } catch (error) {
-            console.error('Python runtime loading failed:', error);
-            elements.statusText.textContent = textSet.loadFailed;
-            elements.statusBadge.classList.remove('loading', 'ready');
-            elements.statusBadge.classList.add('error');
-            elements.consoleOutput.textContent = textSet.loadHint;
-            elements.runButton.disabled = true;
-        }
+    function setRuntimeState(state) {
+        ready = state === 'ready';
+        elements.statusBadge.classList.remove('ready', 'loading', 'error');
+        elements.statusBadge.classList.add(state);
+        elements.statusText.textContent = state === 'ready' ? getTextSet().ready :
+            state === 'error' ? getTextSet().loadFailed : getTextSet().loading;
+        elements.runButton.disabled = state !== 'ready' || pendingRun !== null;
+        elements.stopButton.disabled = pendingRun === null;
+        elements.retryButton.hidden = state !== 'error';
     }
+
+    function terminateWorker() {
+        clearTimeout(bootTimer);
+        bootTimer = null;
+        if (pythonWorker) pythonWorker.terminate();
+        pythonWorker = null;
+        workerGeneration += 1;
+        ready = false;
+    }
+
+    function createWorker() {
+        terminateWorker();
+        const generation = workerGeneration;
+        setRuntimeState('loading');
+        elements.retryButton.hidden = true;
+        try {
+            pythonWorker = new Worker('./js/data_python/worker.js');
+        } catch (error) {
+            onWorkerFailure(error.message, generation);
+            return;
+        }
+        bootTimer = setTimeout(() => onWorkerFailure('Engine load timeout', generation), LOAD_LIMIT_MS);
+        pythonWorker.onmessage = (event) => {
+            if (generation !== workerGeneration) return; // Discard stale replies.
+            const message = event.data || {};
+            if (message.type === 'READY') {
+                clearTimeout(bootTimer);
+                setRuntimeState('ready');
+            } else if (message.type === 'LOAD_ERROR') {
+                onWorkerFailure(message.error, generation);
+            } else if (message.type === 'RESULT') {
+                onWorkerResult(message);
+            }
+        };
+        pythonWorker.onerror = (event) => {
+            if (event.preventDefault) event.preventDefault();
+            onWorkerFailure(event.message || 'Worker failed', generation);
+        };
+    }
+
+    function onWorkerFailure(reason, generation) {
+        if (generation !== workerGeneration) return;
+        console.error('Python worker failure:', reason);
+        if (pendingRun) {
+            clearTimeout(pendingRun.timeout);
+            pendingRun = null;
+        }
+        terminateWorker();
+        setRuntimeState('error');
+        elements.consoleOutput.dataset.hasRun = 'true';
+        elements.consoleOutput.textContent = getTextSet().loadHint;
+    }
+
+    function onWorkerResult(message) {
+        if (!pendingRun || pendingRun.id !== message.id) return;
+        clearTimeout(pendingRun.timeout);
+        pendingRun = null;
+        const textSet = getTextSet();
+        const error = message.error || '';
+        if (error.includes('INPUT_VALUES_EXHAUSTED')) {
+            elements.consoleOutput.textContent = (message.output ? message.output + '\n' : '') + textSet.stdinMissing;
+        } else if (error.includes('OUTPUT_LIMIT_EXCEEDED')) {
+            elements.consoleOutput.textContent = textSet.outputLimit;
+        } else if (error) {
+            elements.consoleOutput.textContent = (message.output ? message.output + '\n' : '') + textSet.errorLabel + ': ' + error;
+        } else {
+            elements.consoleOutput.textContent = message.output || textSet.finishedNoOutput;
+            showToast('✓');
+        }
+        setRuntimeState('ready');
+    }
+
     function updateProgress() {
         const progressBar = document.getElementById('progress-bar');
 
@@ -71,76 +157,47 @@
 
         progressBar.style.width = percent + '%';
     }
-    // [개선] 파이썬 실행: 워커에 코드 전달
-    function countInputs(code) {
-        const matches = code.match(/\binput\s*\(/g);
-        return matches ? matches.length : 0;
-    }
-    function extractInputPrompts(code) {
-        const regex = /input\s*\(\s*["']([^"']*)["']\s*\)/g;
-
-        const prompts = [];
-        let match;
-
-        while ((match = regex.exec(code)) !== null) {
-            prompts.push(match[1]);
-        }
-
-        return prompts;
+    function refreshInputPanel() {
+        // The input text is intentionally kept while switching lessons/languages.
+        // It is never sent to a server or stored in localStorage.
+        elements.stdinPanel.hidden = !/\binput\s*\(/.test(elements.codeInput.value);
     }
 
-    async function runPython() {
-        if (!pyodideInstance) return;
-
-        const code = elements.codeInput.value;
+    function runPython() {
+        if (!ready || pendingRun || !pythonWorker) return;
         const textSet = getTextSet();
-
+        const code = elements.codeInput.value;
+        const inputs = elements.stdinInput.value === '' ? [] : elements.stdinInput.value.replace(/\r\n/g, '\n').split('\n');
+        const id = ++nextRunId;
         elements.consoleOutput.dataset.hasRun = 'true';
         elements.consoleOutput.textContent = textSet.running;
-        elements.runButton.disabled = true;
-
-        try {
-            window.browserPrompt = function (message) {
-                return window.prompt(message);
-            };
-
-            await pyodideInstance.runPythonAsync(`
-    import sys, io, builtins
-    from js import browserPrompt
-
-    sys.stdout = io.StringIO()
-
-    def browser_input(prompt_text=""):
-        value = browserPrompt(str(prompt_text))
-        if value is None:
-            raise KeyboardInterrupt("Input cancelled")
-        print(str(prompt_text) + str(value))
-        return str(value)
-
-    builtins.input = browser_input
-            `);
-
-            await pyodideInstance.runPythonAsync(code);
-
-            const output = pyodideInstance.runPython("sys.stdout.getvalue()");
-            elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
-            showToast("✅");
-        } catch (error) {
-            elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error.message;
-        }
-
-        elements.runButton.disabled = false;
+        pendingRun = { id, timeout: null };
+        setRuntimeState('ready');
+        pendingRun.timeout = setTimeout(() => {
+            if (!pendingRun || pendingRun.id !== id) return;
+            pendingRun = null;
+            elements.consoleOutput.textContent = getTextSet().runtimeTimeout;
+            terminateWorker(); // Hard interruption, even for infinite Python loops.
+            createWorker();
+        }, EXECUTION_LIMIT_MS);
+        try { pythonWorker.postMessage({ type: 'RUN', id, code, inputs }); }
+        catch (error) { onWorkerFailure(error.message, workerGeneration); }
     }
 
-    // [개선] 중지 기능: 실행 중인 워커를 강제 종료 후 재발행
-    // function stopPython() {
-    //         const textSet = getTextSet(); // ◀ 현재 설정된 언어셋 가져오기
-    //         elements.consoleOutput.textContent = textSet.stoppedMessage; // ◀ 번역된 텍스트 적용
-    //     }
-
+    function stopPython() {
+        if (!pendingRun) return;
+        clearTimeout(pendingRun.timeout);
+        pendingRun = null;
+        elements.consoleOutput.dataset.hasRun = 'true';
+        elements.consoleOutput.textContent = getTextSet().stoppedMessage;
+        terminateWorker();
+        createWorker();
+    }
 
     function setLanguage(lang) {
+        if (!translations[lang]) return;
         currentLang = lang;
+        document.documentElement.lang = translations[lang].htmlLang || lang;
         updateLanguageButtons();
         updateStaticTexts();
         renderNavigation();
@@ -173,6 +230,11 @@
         elements.brandSubtitle.textContent = textSet.brandSubtitle;
         elements.mobileMenuTitle.textContent = textSet.menuTitle;
         elements.runButton.textContent = textSet.runButton;
+        elements.stopButton.textContent = textSet.stopButton;
+        elements.retryButton.textContent = textSet.retryButton;
+        elements.stdinLabel.textContent = textSet.stdinLabel;
+        elements.stdinHelp.textContent = textSet.stdinHelp;
+        elements.stdinInput.placeholder = textSet.stdinPlaceholder.replace(/\\n/g, '\n');
         elements.answerButton.textContent = textSet.answerButton;
         elements.answerTitle.textContent = textSet.answerTitle;
         elements.codeInput.placeholder = textSet.textareaPlaceholder;
@@ -227,9 +289,13 @@
         const initialCode = lesson.initialCode ? (lesson.initialCode[currentLang] || lesson.initialCode.ko) : "";
 
         elements.theoryView.innerHTML = `<h2>${title}</h2>${theory}`;
-        elements.codeInput.value = initialCode;
+        // 같은 레슨의 저장된 작업본이 있으면 언어별 예제보다 우선합니다.
+        // 빈 문자열도 사용자가 직접 지운 결과일 수 있으므로 보존합니다.
+        const savedDraft = readDraft(index);
+        elements.codeInput.value = savedDraft !== null ? savedDraft : initialCode;
         elements.consoleOutput.textContent = textSet.consoleDefault;
         elements.consoleOutput.dataset.hasRun = 'false';
+        refreshInputPanel();
 
         elements.answerDisplay.style.display = 'none';
         elements.answerText.textContent = lesson.answer[currentLang] || lesson.answer.ko;
@@ -264,7 +330,10 @@
         });
 
         elements.runButton.addEventListener('click', runPython);
+        elements.stopButton.addEventListener('click', stopPython);
+        elements.retryButton.addEventListener('click', createWorker);
         elements.answerButton.addEventListener('click', toggleAnswer);
+        elements.codeInput.addEventListener('input', () => { saveDraft(); refreshInputPanel(); });
     }
 
     bindEvents();
@@ -280,6 +349,7 @@
         renderEmptyState();
     }
     
-    // 페이지 로드 시 워커 시스템 시작
-    initPyodide();
+    // Download the engine inside an isolated worker, never on the main thread.
+    refreshInputPanel();
+    createWorker();
 })();

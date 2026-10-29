@@ -27,6 +27,30 @@ const backdrop = document.getElementById("mobile-backdrop");
 let currentLang = "ko";
 let currentLessonIndex = 0;
 
+// 레슨별 편집 내용은 언어와 분리해 보관합니다.
+// 예제 코드를 언어에 맞춰 다시 보여주는 경우에는 저장된 수정본이 없을 때만 초기화합니다.
+const draftPrefix = "ai-bridge-web-draft-v1-";
+function draftKey(index) { return draftPrefix + index; }
+function readDraft(index) {
+  try { return localStorage.getItem(draftKey(index)); }
+  catch (_) { return null; }
+}
+function saveDraft() {
+  if (!codeArea) return;
+  try { localStorage.setItem(draftKey(currentLessonIndex), codeArea.value); }
+  catch (_) { /* 브라우저 저장소 차단 시에도 편집은 유지 */ }
+}
+function clearDraft(index) {
+  try { localStorage.removeItem(draftKey(index)); }
+  catch (_) { /* 저장소 차단 시 무시 */ }
+}
+function restoreDraftOrExample() {
+  if (!codeArea) return;
+  const saved = readDraft(currentLessonIndex);
+  codeArea.value = saved !== null ? saved : getCurrentLesson().defaultCode;
+  runCode();
+}
+
 // =============================
 // 공통 접근
 // =============================
@@ -49,6 +73,8 @@ function runCode() {
 
 function resetCode() {
   if (!codeArea) return;
+  // 초기화는 의도적인 작업본 삭제입니다. 이후 언어 전환 시 해당 언어의 예제가 표시됩니다.
+  clearDraft(currentLessonIndex);
   codeArea.value = getCurrentLesson().defaultCode;
   runCode();
 }
@@ -56,6 +82,7 @@ function resetCode() {
 function showAnswer() {
   if (!codeArea) return;
   codeArea.value = getCurrentLesson().answerCode;
+  saveDraft();
   runCode();
 }
 
@@ -89,7 +116,7 @@ function bindNavEvents() {
       currentLessonIndex = Number(this.dataset.index);
       renderNav();
       showLessonContent();
-      resetCode();
+      restoreDraftOrExample();
 
       if (mobileMenu) mobileMenu.classList.remove("open");
       if (backdrop) backdrop.classList.remove("show");
@@ -97,40 +124,39 @@ function bindNavEvents() {
     });
   });
 }
-//=========================================
-//Tab키 적용
-const codeEditor = document.getElementById("html-code");
-
-codeEditor.addEventListener('keydown', function(e) {
-  if (e.key === 'Tab') {
-    e.preventDefault(); // 브라우저 기본 포커스 이동 방지
-
-    const start = this.selectionStart;
-    const end = this.selectionEnd;
-    const value = this.value;
-
-    if (!e.shiftKey) {
-      // 1. 일반 Tab: 들여쓰기 (공백 2칸 삽입)
-      this.value = value.substring(0, start) + "  " + value.substring(end);
-      this.selectionStart = this.selectionEnd = start + 2;
+// =============================
+// 편집 키보드 사용성
+// Tab / Shift+Tab은 브라우저 기본 포커스 이동을 허용합니다.
+// 들여쓰기는 Ctrl+] / Ctrl+[ 단축키로 별도 제공합니다.
+// =============================
+if (codeArea) {
+  codeArea.addEventListener("input", saveDraft);
+  codeArea.addEventListener("keydown", function (e) {
+    if (!e.ctrlKey || e.altKey || e.metaKey || (e.key !== "]" && e.key !== "[")) return;
+    e.preventDefault();
+    const start = codeArea.selectionStart;
+    const end = codeArea.selectionEnd;
+    const value = codeArea.value;
+    if (start !== end) {
+      // 여러 줄을 선택한 상태에서는 내용을 지우지 않고 줄별 들여쓰기만 바꿉니다.
+      const selected = value.slice(start, end);
+      const changed = selected.split("\n").map(line =>
+        e.key === "]" ? "  " + line : line.replace(/^ {1,2}/, "")
+      ).join("\n");
+      codeArea.value = value.slice(0, start) + changed + value.slice(end);
+      codeArea.setSelectionRange(start, start + changed.length);
+    } else if (e.key === "]") {
+      codeArea.value = value.slice(0, start) + "  " + value.slice(end);
+      codeArea.setSelectionRange(start + 2, start + 2);
     } else {
-      // 2. Shift + Tab: 내어쓰기 (공백 2칸 제거)
-      // 현재 커서 바로 앞의 두 글자가 공백인지 확인합니다.
-      if (value.substring(start - 2, start) === "  ") {
-        this.value = value.substring(0, start - 2) + value.substring(start);
-        this.selectionStart = this.selectionEnd = start - 2;
-      } 
-      // 만약 한 칸만 공백이라면 한 칸만 지웁니다.
-      else if (value.substring(start - 1, start) === " ") {
-        this.value = value.substring(0, start - 1) + value.substring(start);
-        this.selectionStart = this.selectionEnd = start - 1;
-      }
+      const count = value.slice(Math.max(0, start - 2), start).match(/ {1,2}$/)?.[0].length || 0;
+      if (!count) return;
+      codeArea.value = value.slice(0, start - count) + value.slice(end);
+      codeArea.setSelectionRange(start - count, start - count);
     }
-    
-    // 코드가 변경되었으므로 필요하다면 실시간 미리보기를 갱신합니다.
-    // runCode(); // 실시간 반영을 원할 경우 활성화
-  }
-});
+    saveDraft();
+  });
+}
 
 // =============================
 // 언어 변경
@@ -138,6 +164,7 @@ codeEditor.addEventListener('keydown', function(e) {
 function setLanguage(lang) {
   if (!lessonData[lang]) return;
   currentLang = lang;
+  document.documentElement.lang = lang;
 
   const pack = getCurrentPack();
 
@@ -163,7 +190,7 @@ function setLanguage(lang) {
 
   renderNav();
   showLessonContent();
-  resetCode();
+  restoreDraftOrExample();
 }
 
 langButtons.forEach(btn => {

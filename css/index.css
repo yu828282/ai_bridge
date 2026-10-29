@@ -504,3 +504,12 @@ nav {
 /* UX course portfolio link shares the project-card style with other work. */
 .project-link.ux { background: #2563eb; color: #fff; }
 .project-link.ux:hover { background: #1d4ed8; }
+
+
+/* Stage 4 — prevent narrow-device navigation and long text clipping. */
+.hero, .section, .project-card, .contact-box { min-width: 0; }
+.project-card, .about-box, .contact-box { overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+  .nav-links { max-width: calc(100vw - 32px); max-height: calc(100dvh - 95px); overflow-y: auto; overscroll-behavior: contain; }
+  .container, .nav-inner { width: min(100% - 28px, var(--max-width)); }
+}

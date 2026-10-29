@@ -1636,6 +1636,9 @@ if (document.body.dataset.page === 'week07') {
                 
                 "role-title": "WoZ 실험실의 3가지 핵심 역할",
                 "role-sub": "실험을 성공시키려면 3명이 각자의 역할을 완벽히 소화해야 해요. 역할을 눌러 규칙을 확인해 보세요!",
+                "r1-title": "👤 1. 참여자 (사용자)",
+                "r2-title": "🧙 2. 마법사 (운영자)",
+                "r3-title": "📝 3. 관찰자 (기록자)",
                 "r1-sub": "뒤에 사람이 있는 줄 모름",
                 "r2-sub": "커튼 뒤에서 AI 흉내 내기",
                 "r3-sub": "표정과 당황하는 순간 메모",
@@ -1693,6 +1696,9 @@ if (document.body.dataset.page === 'week07') {
                 
                 "role-title": "3 Core Roles in a WoZ Experiment",
                 "role-sub": "For a successful test, three people must play distinct roles. Click to see their missions!",
+                "r1-title": "👤 1. Participant (User)",
+                "r2-title": "🧙 2. Wizard (Operator)",
+                "r3-title": "📝 3. Observer (Note-taker)",
                 "r1-sub": "Unaware of human behind AI",
                 "r2-sub": "Acts like an AI behind curtain",
                 "r3-sub": "Notes facial cues & hesitation",
@@ -1750,6 +1756,9 @@ Captures hesitation moments, frowns, and user pain points to iterate Figma UI co
                 
                 "role-title": "3 Ключевые Роли в Эксперименте WoZ",
                 "role-sub": "Для успеха эксперимента нужны 3 человека с четкими ролями. Кликните, чтобы узнать!",
+                "r1-title": "👤 1. Участник (пользователь)",
+                "r2-title": "🧙 2. Волшебник (оператор)",
+                "r3-title": "📝 3. Наблюдатель (записывает наблюдения)",
                 "r1-sub": "Не знает о человеке за ИИ",
                 "r2-sub": "Притворяется ИИ за ширмой",
                 "r3-sub": "Записывает эмоции и заминки",

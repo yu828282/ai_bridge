@@ -381,3 +381,13 @@ code {
         flex-direction: column;
     }
 }
+
+
+/* Stage 4 — ensure the AI introduction stays readable at phone widths. */
+.theory-content, .card, .box { overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+  .mobile-menu { max-height: 100dvh; padding-bottom: max(24px, env(safe-area-inset-bottom)); overscroll-behavior: contain; }
+  .mobile-nav { min-height: 0; }
+  main { min-width: 0; }
+  .card { max-width: 100%; }
+}

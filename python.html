@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Study for International Students</title>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/python.css">
 </head>
@@ -64,11 +63,17 @@
 
         <section id="editor-panel">
             <textarea id="python-code" aria-label="Python code editor"></textarea>
-            <div class="console" id="console-output"></div>
+            <div class="python-input-panel" id="python-input-panel" hidden>
+                <label for="python-stdin" id="stdin-label">실행 입력값 (한 줄에 하나씩)</label>
+                <p class="python-input-help" id="stdin-help">input()을 사용하는 코드라면 필요한 값을 순서대로 입력하세요. 반복문은 종료에 필요한 값까지 적어주세요.</p>
+                <textarea id="python-stdin" spellcheck="false" autocomplete="off" aria-describedby="stdin-help" rows="3" placeholder="홍길동"></textarea>
+            </div>
+            <div class="console" id="console-output" role="status" aria-live="polite"></div>
             <div class="action-btns">
                 <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
-                <!-- <button class="stop-btn btn" id="stop-btn" type="button">정지 ⏹</button> -->
+                <button class="stop-btn btn" id="stop-btn" type="button" disabled>정지 ⏹</button>
                 <button class="ans-btn btn" id="answer-btn" type="button">정답 확인</button>
+                <button class="retry-btn btn" id="retry-btn" type="button" hidden>엔진 다시 연결</button>
             </div>
             <div id="ans-display">
                 <strong id="answerTitle" style="color:#1e40af;">[모범 답안]</strong>

@@ -762,3 +762,34 @@ body.ux-course[data-page="week07"] #lesson-content .callout { background:#eff6ff
  body.ux-course[data-page="week07"] #lesson-content .chat-bubble-user,
  body.ux-course[data-page="week07"] #lesson-content .chat-bubble-bot {padding:18px;}
 }
+
+
+/* Stage 4 — preserve spacious cards without hiding off-screen content. */
+body.ux-course { overflow-x: visible; min-width: 0; }
+body.ux-course main, body.ux-course #lesson-content,
+body.ux-course #lesson-content .container { min-width: 0; max-width: 100%; }
+body.ux-course #lesson-content .card { max-width: 100%; overflow-wrap: anywhere; }
+body.ux-course #lesson-content .vs-container > .box { flex-basis: 220px; min-width: min(100%,220px); max-width: 100%; }
+body.ux-course #lesson-content .comp-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%,360px),1fr)); }
+body.ux-course #lesson-content .comp-card { min-width: 0; }
+body.ux-course #lesson-content .matrix-board { min-width: 0; }
+body.ux-course #lesson-content .mock-chat,body.ux-course #lesson-content .callout { max-width: 100%; }
+body.ux-course #lesson-content img,body.ux-course #lesson-content svg { max-width: 100%; height: auto; }
+body.ux-course #lesson-content pre { max-width: 100%; overflow-x: auto; }
+body.ux-course #lesson-content .blueprint-table { max-width: 100%; }
+body.ux-course .lesson-pager { flex-wrap: wrap; }
+body.ux-course .course-guide > *,body.ux-course .lesson-context > * { min-width: 0; }
+@media (max-width: 768px) {
+  body.ux-course .mobile-menu { max-height: 100dvh; padding-bottom: max(24px, env(safe-area-inset-bottom)); overscroll-behavior: contain; }
+  body.ux-course .lesson-pager { align-self: stretch; justify-content: flex-end; }
+  body.ux-course #lesson-content .card { padding: clamp(22px, 5vw, 30px); }
+  body.ux-course #lesson-content .comp-grid { grid-template-columns: minmax(0, 1fr); }
+  body.ux-course #lesson-content .matrix-board { grid-template-columns: minmax(0,1fr); }
+  body.ux-course #lesson-content .blueprint-table { display: block; overflow-x: auto; white-space: normal; }
+}
+/* Stage 4 follow-up: issues reproduced in Russian Week 8 and Week 11 at 320px. */
+body.ux-course .lesson-caption { max-width: 100%; }
+body.ux-course #lesson-subject { display: block; flex: 1 1 auto; min-width: 0; max-width: 100%; }
+body.ux-course[data-page="week08"] .demo-box,
+body.ux-course[data-page="week08"] .drawer-preview-area { contain: paint; }
+body.ux-course[data-page="week11"] .permission-mock { width: min(280px, 100%); max-width: 100%; }

@@ -561,3 +561,27 @@ textarea {
         padding: 10px;
     }
 }
+
+
+/* Stage 4 — keep lesson content and preview reachable at small widths. */
+body { min-width: 0; min-height: 100dvh; }
+main { overflow: visible; min-height: 0; align-items: stretch; }
+#theory-panel, #editor-panel, .preview-wrap { min-width: 0; min-height: 0; }
+#theory-panel { overflow: visible; }
+.theory-content { overflow: visible; min-width: 0; overflow-wrap: anywhere; }
+#editor-panel textarea { width: 100%; max-width: 100%; resize: vertical; }
+#preview-frame { display: block; max-width: 100%; }
+.action-btns { flex-wrap: wrap; }
+.mobile-menu { right: 0; height: 100dvh; transform: translateX(105%); visibility: hidden; pointer-events: none; }
+.mobile-menu.open { transform: translateX(0); visibility: visible; pointer-events: auto; }
+@media (max-width: 1024px) {
+  main { overflow: visible; }
+  #theory-panel, #editor-panel { width: 100%; }
+  .theory-content { overflow: visible; }
+}
+@media (max-width: 768px) {
+  .mobile-menu { max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  #editor-panel textarea { min-height: 240px; }
+  .action-btns .btn { flex: 1 1 100%; min-width: 0; }
+  #theory-panel, #editor-panel { max-width: 100%; }
+}
