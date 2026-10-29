@@ -741,152 +741,83 @@
 
 <template id="lesson-week07">
 
-<div class="container">
-<!-- Intro -->
+ Intro Card 
 <div class="card" style="border-top-color: var(--main-blue);">
-<h1><span class="title-emoji">🎨</span> <span data-key="intro-title">Week 7: Figma 기반 AI 화면 프로토타이핑</span></h1>
+<h1><span class="title-emoji">🧙‍♂️</span> <span data-key="intro-title">Week 07: 오즈의 마법사(WoZ) 프로토타이핑</span></h1>
 <ul class="emoji-list">
-<li>🎯 <strong data-key="intro-l1-b">목표:</strong> <span data-key="intro-l1-t">종이 스케치를 피그마를 이용해 클릭 가능한 앱 화면으로 만들기</span></li>
-<li>💡 <strong data-key="intro-l2-b">핵심:</strong> <span data-key="intro-l2-t">코딩 없이 마우스 클릭만으로 살아 움직이는 3단계 AI 대화 화면 완성하기</span></li>
+<li>🎯 <strong data-key="intro-l1-b">목표:</strong> <span data-key="intro-l1-t">코딩을 한 줄도 하지 않고 사람이 AI인 척 연기하며 사용자 반응 미리 확인하기</span></li>
+<li>💡 <strong data-key="intro-l2-b">이름의 유래:</strong> <span data-key="intro-l2-t">동화 《오즈의 마법사》에서 커튼 뒤에 숨어 거대한 마법사 흉내를 내던 사람 이야기에서 따왔어요!</span></li>
 </ul>
+<div class="callout" data-key="intro-callout">
+                    "AI를 직접 개발하려면 돈과 시간이 몇 달씩 들어요. 하지만 WoZ를 쓰면 단 하루 만에 사용자가 이 말투와 기능을 좋아하는지 확인할 수 있습니다!"
+                </div>
 </div>
-<!-- Figma Workspace -->
+ 3 Roles 
 <div class="card" style="border-top-color: #fb923c;">
-<h2><span class="title-emoji">🖥️</span> <span data-key="work-title">Figma 작업 화면의 4가지 구역</span></h2>
-<p data-key="work-sub">피그마(Figma)에 로그인하면 만나는 화면입니다. 각 구역의 역할을 클릭해서 확인해 보세요.</p>
-<div class="figma-workspace">
-<!-- 1. Toolbar -->
-<div class="figma-toolbar" onclick="alert(translations[currentLang]['js_toolbar'])" style="cursor:help;">
-<span style="font-weight:bold;">1. Toolbar</span>
-<div class="figma-tool">#</div>
-<div class="figma-tool">&square;</div>
-<div class="figma-tool">T</div>
-</div>
-<div class="figma-main">
-<!-- 2. Left Sidebar -->
-<div class="figma-sidebar" onclick="alert(translations[currentLang]['js_leftbar'])" style="cursor:help;">
-<strong data-key="work-l2">2. Layers (왼쪽)</strong><br/><br/>
-                            # iPhone 15<br/>
-                            &nbsp;&nbsp;T Title<br/>
-                            &nbsp;&nbsp;&square; Button
-                        </div>
-<!-- 3. Canvas -->
-<div class="figma-canvas" onclick="alert(translations[currentLang]['js_canvas'])" style="cursor:help;">
-<span data-key="work-l3" style="position:absolute; top:10px; left:10px; font-size:0.8rem; color:#64748b; font-weight:bold;">3. 캔버스 (중앙)</span>
-<div class="mock-frame">
-<div style="font-weight:bold; text-align:center; font-size:0.8rem;">AI Assistant</div>
-<div style="background:#e2e8f0; height:20px; border-radius:10px; margin-top:20px;"></div>
+<h2><span class="title-emoji">🎭</span> <span data-key="role-title">WoZ 실험실의 3가지 핵심 역할</span></h2>
+<p data-key="role-sub">실험을 성공시키려면 3명이 각자의 역할을 완벽히 소화해야 해요. 역할을 눌러 규칙을 확인해 보세요!</p>
+<div class="matrix-board">
+<div class="m-card m-blue" onclick="triggerAlert('js_role_user')">👤 1. 참여자 (사용자)<br/><small data-key="r1-sub">뒤에 사람이 있는 줄 모름</small></div>
+<div class="m-card m-purple" onclick="triggerAlert('js_role_wizard')">🧙 2. 마법사 (운영자)<br/><small data-key="r2-sub">커튼 뒤에서 AI 흉내 내기</small></div>
+<div class="m-card m-green" onclick="triggerAlert('js_role_observer')">📝 3. 관찰자 (기록자)<br/><small data-key="r3-sub">표정과 당황하는 순간 메모</small></div>
 </div>
 </div>
-<!-- 4. Right Sidebar -->
-<div class="figma-right" onclick="alert(translations[currentLang]['js_rightbar'])" style="cursor:help;">
-<strong data-key="work-l4">4. Design (오른쪽)</strong><br/><br/>
-<span style="display:flex; justify-content:space-between;"><span>W: 393</span><span>H: 852</span></span><br/>
-                            Fill: ⬜ #FFFFFF<br/>
-                            Stroke: ⬛ #000000<br/>
-                            Corner: 16px
-                        </div>
-</div>
-</div>
-</div>
-<!-- Shortcuts & Auto Layout -->
-<div class="card" style="border-top-color: var(--success);">
-<h2><span class="title-emoji">🪄</span> <span data-key="auto-title">작업 속도를 3배 높이는 마법 (단축키 &amp; Auto Layout)</span></h2>
-<div class="vs-container">
-<div class="box" style="background: #f8fafc; border: 1px solid #cbd5e1;">
-<h3 data-key="key-title" style="margin-top:0; color:#334155;">⌨️ 필수 단축키 4개</h3>
-<ul class="emoji-list">
-<li><strong>F</strong> : <span data-key="key-f">프레임 (스마트폰 틀 만들기)</span></li>
-<li><strong>T</strong> : <span data-key="key-t">텍스트 (글자 쓰기)</span></li>
-<li><strong>R / O</strong> : <span data-key="key-r">네모 / 동그라미 (버튼, 프로필)</span></li>
-<li><strong>Shift</strong> : <span data-key="key-s">누른 채로 여러 개 동시 선택</span></li>
-</ul>
-</div>
-<div class="box" style="background: #f0fdf4; border: 1px solid #86efac;">
-<h3 data-key="auto-h3" style="margin-top:0; color:#16a34a;">✨ Shift + A (오토 레이아웃)</h3>
-<p data-key="auto-p">상자가 글자 길이에 맞춰 알아서 늘어나고 줄어듭니다! 방향(세로/가로), 간격(Gap), 여백(Padding)을 오른쪽 패널에서 조절하세요.</p>
-<div class="al-demo-container">
-<div class="al-button" id="al-btn">
-<span>🚀</span>
-<span data-key="auto-btn" id="al-text">추천 프롬프트 칩</span>
-</div>
-</div>
-<div style="text-align:center; margin-top:10px;">
-<button class="action-btn" data-key="auto-add" onclick="addTextToAL()" style="padding: 5px 10px; font-size:0.8rem; background:white; color:#334155; border:1px solid #cbd5e1;">글자 추가해보기</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Reusable Components -->
+ Wizard Rules 
 <div class="card" style="border-top-color: #8b5cf6;">
-<h2><span class="title-emoji">💎</span> <span data-key="comp-title">컴포넌트(Components)로 10배 빨리 수정하기</span></h2>
-<p data-key="comp-sub">완벽한 말풍선 딱 하나를 '마스터(컴포넌트)'로 만드세요. 마스터의 색상을 바꾸면 복사본(인스턴스) 100개의 색상도 1초 만에 모두 바뀝니다!</p>
-<div style="text-align:center; background:#f1f5f9; padding:20px; border-radius:12px; margin-top:15px;">
-<div style="display:flex; justify-content:center; gap:20px; align-items:center; margin-bottom:15px;">
-<div id="master-bubble" style="background:var(--main-blue); color:white; padding:10px 20px; border-radius:16px; font-weight:bold;">Master Component 👑</div>
-<div style="font-size:1.5rem;">➡️</div>
-<div style="display:flex; flex-direction:column; gap:10px;">
-<div class="instance-bubble" style="background:var(--main-blue); color:white; padding:5px 15px; border-radius:12px; font-size:0.9rem;">Instance (복사본 1)</div>
-<div class="instance-bubble" style="background:var(--main-blue); color:white; padding:5px 15px; border-radius:12px; font-size:0.9rem;">Instance (복사본 2)</div>
+<h2><span class="title-emoji">📜</span> <span data-key="rule-title">완벽한 AI가 되기 위한 '마법사의 3대 비밀 규칙'</span></h2>
+<p data-key="rule-sub">사람인 게 들키지 않으려면 철저하게 AI처럼 규칙을 지켜 대답해야 해요.</p>
+<div class="vs-container">
+<div class="box">
+<strong data-key="rule1-t">📋 1. 미리 적어둔 답변 복사/붙여넣기</strong>
+<p data-key="rule1-p" style="font-size:0.85rem; color:#475569;">사람마다 말투가 바뀌면 안 되니까 미리 문장 창고(Canned Responses)를 만들어두고 복사해서 보냅니다.</p>
 </div>
+<div class="box">
+<strong data-key="rule2-t">⏳ 2. 3~5초 뜸 들이기 (생각하는 척!)</strong>
+<p data-key="rule2-p" style="font-size:0.85rem; color:#475569;">너무 1초 만에 답장하면 사람인 게 들켜요! AI가 연산하는 것처럼 3~5초 기다렸다가 전송합니다.</p>
 </div>
-<button class="action-btn" data-key="comp-btn" onclick="changeComponentColor()">마스터 색상 변경해보기</button>
-</div>
-</div>
-<!-- The 3-Screen Core Flow & Prototype -->
-<div class="card" style="border-top-color: #ef4444;">
-<h2><span class="title-emoji">📱</span> <span data-key="flow-title">핵심 3단계 화면 조립 &amp; 프로토타입 연결</span></h2>
-<p data-key="flow-sub">지금까지 배운 부품들(말풍선, 입력창, 오토 레이아웃)을 조립하여 3장의 화면을 나란히 완성합니다. 그리고 <strong>Prototype 탭</strong>에서 파란 화살표를 연결해 보세요!</p>
-<div class="flow-demo">
-<!-- Screen 1 -->
-<div class="flow-screen">
-<div class="flow-screen-title">1. Empty</div>
-<div style="text-align:center; font-weight:bold; font-size:0.8rem; margin:10px 0;">무엇을 도와드릴까요?</div>
-<div class="m-chip" onclick="alert(translations[currentLang]['js_proto1'])" style="background:#fef08a;">문서 요약하기 (Click!)</div>
-<div class="m-chip">영문 이메일 작성</div>
-<div class="m-input"></div>
-</div>
-<div class="flow-arrow" onclick="alert(translations[currentLang]['js_proto_onclick'])" style="cursor:help;"></div>
-<!-- Screen 2 -->
-<div class="flow-screen">
-<div class="flow-screen-title">2. Loading</div>
-<div class="m-user">문서 요약하기</div>
-<div class="m-ai" style="display:flex; align-items:center; gap:5px;">
-<img alt="bot" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='%2364748b'&gt;&lt;path d='M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4zm0 8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h4zm0 8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h4z'/&gt;&lt;/svg&gt;"/>
-<div class="m-dots"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
-</div>
-<div class="m-input" style="background:#e2e8f0; border-color:#cbd5e1;"></div>
-</div>
-<div class="flow-arrow" onclick="alert(translations[currentLang]['js_proto_delay'])" style="cursor:help;"></div>
-<!-- Screen 3 -->
-<div class="flow-screen">
-<div class="flow-screen-title">3. Output</div>
-<div class="m-user">문서 요약하기</div>
-<div class="m-ai" style="padding:8px;">
-                            요약 결과입니다...<br/>
-<span style="font-size:0.5rem; background:#cbd5e1; padding:2px; border-radius:2px;">[출처]</span>
-<div style="display:flex; justify-content:space-between; margin-top:5px;">
-<span>👍👎</span> <span>🔄</span>
-</div>
-</div>
-<div class="m-input"></div>
+<div class="box">
+<strong data-key="rule3-t">🤖 3. 일부러 엉뚱한 대답 섞기 (의도된 에러)</strong>
+<p data-key="rule3-p" style="font-size:0.85rem; color:#475569;">AI가 가끔 틀리듯이 엉뚱한 대답을 하나 던져보고, 사용자가 당황할 때 어떻게 고쳐 쓰는지 반응을 살핍니다.</p>
 </div>
 </div>
 </div>
-<!-- Activity & Submission -->
+ Testing Tools 
+<div class="card" style="border-top-color: #10b981;">
+<h2><span class="title-emoji">🛠️</span> <span data-key="tool-title">돈 안 들이고 당장 시작하는 노코드(No-Code) 도구</span></h2>
+<p data-key="tool-sub">전문 프로그램 없이 중학생도 카톡이나 문서로 바로 테스트할 수 있어요.</p>
+<div class="mock-chat">
+<div class="chat-bubble-user" data-key="tool-c1">
+<strong>💬 메신저 활용 (카카오톡, 디스코드, 슬랙):</strong><br/>
+                        계정 이름을 'AI 도우미 챗봇'으로 짓고 로봇 프로필 사진을 걸어둔 뒤, 뒤에서 디자이너가 대신 채팅을 쳐줍니다.
+                    </div>
+<div class="chat-bubble-bot" data-key="tool-c2">
+<strong>📄 공유 문서 (Google Docs / Notion):</strong><br/>
+                        사용자가 문서에 질문을 치면, 커튼 뒤 마법사가 실시간으로 아래에 타이핑하며 답변을 적어줍니다.
+                    </div>
+</div>
+</div>
+ 4-Phase Protocol 
+<div class="card" style="border-top-color: var(--warning);">
+<h2><span class="title-emoji">⏱️</span> <span data-key="flow-title">20분 만에 끝내는 실전 테스트 4단계</span></h2>
+<p data-key="flow-sub">실험은 복잡하지 않아요! 4단계 총 20분이면 충분합니다.</p>
+<div class="phase-timeline">
+<div class="phase-zone zone-p1" data-key="pz1">1단계: 브리핑<br/>(3분)<br/>미션 부여</div>
+<div class="phase-zone zone-p2" data-key="pz2">2단계: 대화 테스트<br/>(10분)<br/>실제 챗봇 대화</div>
+<div class="phase-zone zone-p3" data-key="pz3">3단계: 정체 공개<br/>(5분)<br/>인터뷰 &amp; 진실 고백</div>
+<div class="phase-zone zone-p4" data-key="pz4">4단계: 정리<br/>(2분)<br/>감사 인사 &amp; 메모</div>
+</div>
+</div>
+ Activity & Midterm 
 <div class="card" style="border-top-color: var(--main-blue); text-align: center;">
-<h2><span class="title-emoji">📤</span> <span data-key="sub-title">25분 실습 및 과제 공유 (Sharing)</span></h2>
-<h3 data-key="sub-h3">완성된 프로토타입 링크 제출하기</h3>
-<div class="box" style="background:#fef2f2; border: 2px dashed #ef4444; max-width:600px; margin: 0 auto 20px auto; text-align:left;">
-<strong data-key="sub-warn" style="color:#b91c1c; font-size:1.1rem;">🚨 주의: 제출 전 반드시 권한을 열어주세요!</strong>
-<ol>
-<li><span data-key="sub-l1">피그마 우측 상단의 파란색 <strong>[Share]</strong> 버튼 클릭</span></li>
-<li><span data-key="sub-l2">설정을 반드시 <strong>'Anyone with the link can view'</strong>로 변경 (매우 중요!)</span></li>
-<li><span data-key="sub-l3"><strong>[Copy link]</strong> 버튼을 눌러 복사된 링크를 MS Teams에 제출</span></li>
+<h2><span class="title-emoji">📝</span> <span data-key="mid-title">중간고사 과제 안내 (8주차 제출)</span></h2>
+<h3 data-key="mid-h3">3페이지 중간고사 컨셉 기획서 (PDF) 작성 체크리스트</h3>
+<ol style="text-align:left; display:inline-block; margin-bottom: 20px;">
+<li data-key="mid-l1"><strong>1페이지:</strong> 서비스 이름, 타깃 페르소나(Week 2), 해결하려는 핵심 문제</li>
+<li data-key="mid-l2"><strong>2페이지:</strong> 활용할 AI 기술 종류(시각/언어/음성) &amp; 5단계 대화 흐름도(Logic Flow)</li>
+<li data-key="mid-l3"><strong>3페이지:</strong> 신뢰성 UI 스케치(출처/면책조항), 피드백 버튼(좋아요/싫어요), WoZ 계획</li>
 </ol>
-</div>
-<button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_exam_alert'])">🔔 이번 주 출석 및 과제 제출 안내</button>
-</div>
+<br/>
+<button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_midterm_alert'])">📢 8주차 중간고사 제출 안내 확인하기</button>
 </div>
 
 </template>

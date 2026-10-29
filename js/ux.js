@@ -1,6 +1,6 @@
 /* One HTML entry, 14 preserved interactive lesson modules. */
 (function () {
- const pages = [{"id":"week01","label":"W1","title":"Week 1: AI Service UX","subject":{"ko":"AI & UX 기초","en":"AI & UX Basics","ru":"Основы ИИ и UX"}},{"id":"week02","label":"W2","title":"Week 2: AI Design Thinking","subject":{"ko":"디자인 씽킹과 페르소나","en":"Design Thinking & Personas","ru":"Дизайн-мышление и персоны"}},{"id":"week03","label":"W3","title":"Week 3: The 6 Core States of AI Interfaces","subject":{"ko":"AI 인터페이스의 6가지 상태","en":"Six AI Interface States","ru":"6 состояний интерфейса ИИ"}},{"id":"week04","label":"W4","title":"Week 4: AI Interaction Design & Chat Flows","subject":{"ko":"대화 흐름과 상호작용","en":"Conversation & Interaction","ru":"Диалог и взаимодействие"}},{"id":"week05","label":"W5","title":"Week 5: Trust, Mistakes, & Explainable AI (XAI)","subject":{"ko":"신뢰 · 오류 · 설명 가능성","en":"Trust & Explainability","ru":"Доверие и объяснимость"}},{"id":"week06","label":"W6","title":"Week 6: AI Onboarding & Feedback UI","subject":{"ko":"온보딩과 피드백","en":"Onboarding & Feedback","ru":"Онбординг и обратная связь"}},{"id":"week07","label":"W7","title":"Week 7 (9): Figma Prototyping","subject":{"ko":"Figma 첫걸음","en":"Figma Foundations","ru":"Основы Figma"}},{"id":"week08","label":"W8","title":"Week 8: Midterm / Optional UI Component Lab","subject":{"ko":"중간고사 · 선택 보너스 실습","en":"Midterm · Optional UI Component Lab","ru":"Промежуточный экзамен · факультативная практика UI"}},{"id":"week09","label":"W9","title":"Week 09: Figma Prototyping for AI Services","subject":{"ko":"Figma 프로토타입 실습","en":"Figma Prototype Lab","ru":"Прототипирование в Figma"}},{"id":"week10","label":"W10","title":"Week 10: Ethical AI UX & Human Control","subject":{"ko":"윤리와 인간 통제","en":"Ethics & Human Control","ru":"Этика и контроль человека"}},{"id":"week11","label":"W11","title":"Week 11: Personalization & Privacy","subject":{"ko":"개인화와 개인정보","en":"Personalization & Privacy","ru":"Персонализация и приватность"}},{"id":"week12","label":"W12","title":"Week 12: AI Service Blueprint","subject":{"ko":"서비스 블루프린트","en":"Service Blueprint","ru":"Сервисный чертёж"}},{"id":"week13","label":"W13","title":"Week 13: AI Usability Testing & Self-Audit","subject":{"ko":"AI 사용성 평가와 셀프 진단","en":"AI Usability Testing & Self-Audit","ru":"Юзабилити ИИ и самоаудит"}},{"id":"week14","label":"W14","title":"Week 14: Prototype QA & Final Portfolio","subject":{"ko":"최종 프로토타입 점검","en":"Final Prototype QA","ru":"Финальная проверка прототипа"}}];
+ const pages = [{"id":"week01","label":"W1","title":"Week 1: AI Service UX","subject":{"ko":"AI & UX 기초","en":"AI & UX Basics","ru":"Основы ИИ и UX"}},{"id":"week02","label":"W2","title":"Week 2: AI Design Thinking","subject":{"ko":"디자인 씽킹과 페르소나","en":"Design Thinking & Personas","ru":"Дизайн-мышление и персоны"}},{"id":"week03","label":"W3","title":"Week 3: The 6 Core States of AI Interfaces","subject":{"ko":"AI 인터페이스의 6가지 상태","en":"Six AI Interface States","ru":"6 состояний интерфейса ИИ"}},{"id":"week04","label":"W4","title":"Week 4: AI Interaction Design & Chat Flows","subject":{"ko":"대화 흐름과 상호작용","en":"Conversation & Interaction","ru":"Диалог и взаимодействие"}},{"id":"week05","label":"W5","title":"Week 5: Trust, Mistakes, & Explainable AI (XAI)","subject":{"ko":"신뢰 · 오류 · 설명 가능성","en":"Trust & Explainability","ru":"Доверие и объяснимость"}},{"id":"week06","label":"W6","title":"Week 6: AI Onboarding & Feedback UI","subject":{"ko":"온보딩과 피드백","en":"Onboarding & Feedback","ru":"Онбординг и обратная связь"}},{"id":"week07","label":"W7","title":"Week 7: Wizard of Oz (WoZ) Prototyping","subject":{"ko":"오즈의 마법사(WoZ) 프로토타이핑","en":"Wizard of Oz Prototyping","ru":"Прототипирование Wizard of Oz"}},{"id":"week08","label":"W8","title":"Week 8: Midterm / Optional UI Component Lab","subject":{"ko":"중간고사 · 선택 보너스 실습","en":"Midterm · Optional UI Component Lab","ru":"Промежуточный экзамен · факультативная практика UI"}},{"id":"week09","label":"W9","title":"Week 09: Figma Prototyping for AI Services","subject":{"ko":"Figma 프로토타입 실습","en":"Figma Prototype Lab","ru":"Прототипирование в Figma"}},{"id":"week10","label":"W10","title":"Week 10: Ethical AI UX & Human Control","subject":{"ko":"윤리와 인간 통제","en":"Ethics & Human Control","ru":"Этика и контроль человека"}},{"id":"week11","label":"W11","title":"Week 11: Personalization & Privacy","subject":{"ko":"개인화와 개인정보","en":"Personalization & Privacy","ru":"Персонализация и приватность"}},{"id":"week12","label":"W12","title":"Week 12: AI Service Blueprint","subject":{"ko":"서비스 블루프린트","en":"Service Blueprint","ru":"Сервисный чертёж"}},{"id":"week13","label":"W13","title":"Week 13: AI Usability Testing & Self-Audit","subject":{"ko":"AI 사용성 평가와 셀프 진단","en":"AI Usability Testing & Self-Audit","ru":"Юзабилити ИИ и самоаудит"}},{"id":"week14","label":"W14","title":"Week 14: Prototype QA & Final Portfolio","subject":{"ko":"최종 프로토타입 점검","en":"Final Prototype QA","ru":"Финальная проверка прототипа"}}];
  const qs = new URLSearchParams(window.location.search);
  const requested = qs.get('week') || 'week01';
  const ix = Math.max(0, pages.findIndex(p => p.id === requested));
@@ -10,7 +10,7 @@
  if (!template || !mount) { console.error('UX lecture template missing'); return; }
  document.body.dataset.page = current.id;
  mount.replaceChildren(template.content.cloneNode(true));
- const staticDemos = {"week03":{"텅 빈 입력창 (무엇을 질문해야 할지 모름 👉":["Empty input: the user does not know what to ask →","Пустое поле: пользователь не знает, что спросить →"],"추천 프롬프트 칩 제공!":["Offer suggested prompt chips!","Предложите готовые варианты запроса!"],"구조화되지 않은 거대한 줄글 덩어리 (👉":["One long, unstructured block of text →","Один длинный, неструктурированный текст →"],"카드, 불릿, 표 사용!":["Use cards, bullets and tables!","Используйте карточки, списки и таблицы!"],"에러 발생 시 처음부터 다시 입력하게 강요 (👉":["After an error, the user must retype everything →","После ошибки нужно вводить всё заново →"],"1-Click 재시도 버튼 제공!":["Offer a one-click retry button!","Дайте кнопку повтора в одно нажатие!"]},"week06":{": 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.":[": Place one-tap Like/Dislike buttons beside the safety notice.",": Разместите кнопки «Нравится/Не нравится» рядом с предупреждением."],": [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.":[": Copy signals positive feedback; Regenerate before reading the answer signals negative feedback.",": Копирование даёт положительный сигнал; повторная генерация до чтения — отрицательный."]},"week07":{"Instance (복사본 1)":["Instance (Copy 1)","Экземпляр (копия 1)"],"Instance (복사본 2)":["Instance (Copy 2)","Экземпляр (копия 2)"],"무엇을 도와드릴까요?":["How can I help?","Чем могу помочь?"],"문서 요약하기 (Click!)":["Summarize a document (Click!)","Кратко пересказать документ (Нажмите!)"],"영문 이메일 작성":["Write an email in English","Написать письмо на английском"],"문서 요약하기":["Summarize document","Кратко пересказать документ"],"요약 결과입니다...":["Here is the summary...","Вот краткий пересказ..."],"[출처]":["[Source]","[Источник]"]},"week09":{"단축키를 클릭해 보세요!":["Click a shortcut above!","Нажмите горячую клавишу!"],"짧은 글":["Short text","Короткий текст"],"아이콘":["Icon","Значок"],"PDF 요약...":["Summarize PDF...","Пересказать PDF..."],"요약 결과입니다...":["Here is the summary...","Вот краткий пересказ..."]},"week08":{"✨ AI 요약 결과":["✨ AI summary","✨ Краткий пересказ ИИ"],"방금 전":["Just now","Только что"],"\"비자 서류 번역 및 주요 제출 항목 정리가 완료되었습니다. 독립된 카드 컨테이너로 제공됩니다.\"":["\"Your visa-document translation and submission checklist are ready, inside this card.\"","«Перевод визовых документов и список необходимых материалов готовы в этой карточке.»"],"👤 사용자: 긴 보고서 작성 요청":["👤 User: Please write a long report","👤 Пользователь: напишите длинный отчёт"],"🤖 AI: 1단계 개요 작성 중...":["🤖 AI: Step 1, drafting the outline...","🤖 ИИ: шаг 1, составление плана..."],"🤖 AI: 2단계 본문 데이터 분석 요약...":["🤖 AI: Step 2, analyzing and summarizing data...","🤖 ИИ: шаг 2, анализ и сводка данных..."],"🤖 AI: 3단계 최종 결론 및 권고사항 도출 완료!":["🤖 AI: Step 3, conclusions and recommendations complete!","🤖 ИИ: шаг 3, выводы и рекомендации готовы!"],"스크롤을 계속 내려도 위 파란색 헤더는 상단에 고정되어 유지됩니다!":["The blue header stays visible when you scroll!","Синяя шапка остаётся на месте при прокрутке!"],"✅ 답변 생성이 완료되어 콘텐츠가 노출되었습니다!":["✅ The response is ready and displayed!","✅ Ответ готов и показан!"],"비자 가이드.pdf":["Visa guide.pdf","Визовый гид.pdf"],"HiKorea 문서":["HiKorea document","Документ HiKorea"]}};
+ const staticDemos = {"week03":{"텅 빈 입력창 (무엇을 질문해야 할지 모름 👉":["Empty input: the user does not know what to ask →","Пустое поле: пользователь не знает, что спросить →"],"추천 프롬프트 칩 제공!":["Offer suggested prompt chips!","Предложите готовые варианты запроса!"],"구조화되지 않은 거대한 줄글 덩어리 (👉":["One long, unstructured block of text →","Один длинный, неструктурированный текст →"],"카드, 불릿, 표 사용!":["Use cards, bullets and tables!","Используйте карточки, списки и таблицы!"],"에러 발생 시 처음부터 다시 입력하게 강요 (👉":["After an error, the user must retype everything →","После ошибки нужно вводить всё заново →"],"1-Click 재시도 버튼 제공!":["Offer a one-click retry button!","Дайте кнопку повтора в одно нажатие!"]},"week06":{": 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.":[": Place one-tap Like/Dislike buttons beside the safety notice.",": Разместите кнопки «Нравится/Не нравится» рядом с предупреждением."],": [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.":[": Copy signals positive feedback; Regenerate before reading the answer signals negative feedback.",": Копирование даёт положительный сигнал; повторная генерация до чтения — отрицательный."]},"week09":{"단축키를 클릭해 보세요!":["Click a shortcut above!","Нажмите горячую клавишу!"],"짧은 글":["Short text","Короткий текст"],"아이콘":["Icon","Значок"],"PDF 요약...":["Summarize PDF...","Пересказать PDF..."],"요약 결과입니다...":["Here is the summary...","Вот краткий пересказ..."]},"week08":{"✨ AI 요약 결과":["✨ AI summary","✨ Краткий пересказ ИИ"],"방금 전":["Just now","Только что"],"\"비자 서류 번역 및 주요 제출 항목 정리가 완료되었습니다. 독립된 카드 컨테이너로 제공됩니다.\"":["\"Your visa-document translation and submission checklist are ready, inside this card.\"","«Перевод визовых документов и список необходимых материалов готовы в этой карточке.»"],"👤 사용자: 긴 보고서 작성 요청":["👤 User: Please write a long report","👤 Пользователь: напишите длинный отчёт"],"🤖 AI: 1단계 개요 작성 중...":["🤖 AI: Step 1, drafting the outline...","🤖 ИИ: шаг 1, составление плана..."],"🤖 AI: 2단계 본문 데이터 분석 요약...":["🤖 AI: Step 2, analyzing and summarizing data...","🤖 ИИ: шаг 2, анализ и сводка данных..."],"🤖 AI: 3단계 최종 결론 및 권고사항 도출 완료!":["🤖 AI: Step 3, conclusions and recommendations complete!","🤖 ИИ: шаг 3, выводы и рекомендации готовы!"],"스크롤을 계속 내려도 위 파란색 헤더는 상단에 고정되어 유지됩니다!":["The blue header stays visible when you scroll!","Синяя шапка остаётся на месте при прокрутке!"],"✅ 답변 생성이 완료되어 콘텐츠가 노출되었습니다!":["✅ The response is ready and displayed!","✅ Ответ готов и показан!"],"비자 가이드.pdf":["Visa guide.pdf","Визовый гид.pdf"],"HiKorea 문서":["HiKorea document","Документ HiKorea"]}};
  const localizedNodes=[];
  const localizedMap=staticDemos[current.id] || {};
  const walker=document.createTreeWalker(mount,NodeFilter.SHOW_TEXT);
@@ -1627,138 +1627,174 @@ if (document.body.dataset.page === 'week07') {
         const translations = {
             ko: {
                 "header-subtitle": "AI Service Design & User Experience",
-                "nav-w1": "W1", "nav-w2": "W2", "nav-w3": "W3", "nav-w4": "W4", "nav-w5": "W5", "nav-w6": "W6", "nav-w7": "Week 7: Figma Prototyping",
+                "nav-w07": "Week 07: WoZ Prototyping",
                 
-                "intro-title": "Week 7: Figma 기반 AI 화면 프로토타이핑",
-                "intro-l1-b": "목표:", "intro-l1-t": "종이 스케치를 피그마를 이용해 클릭 가능한 앱 화면으로 만들기",
-                "intro-l2-b": "핵심:", "intro-l2-t": "코딩 없이 마우스 클릭만으로 살아 움직이는 3단계 AI 대화 화면 완성하기",
+                "intro-title": "Week 07: 오즈의 마법사(WoZ) 프로토타이핑",
+                "intro-l1-b": "목표:", "intro-l1-t": "코딩을 한 줄도 하지 않고 사람이 AI인 척 연기하며 사용자 반응 미리 확인하기",
+                "intro-l2-b": "이름의 유래:", "intro-l2-t": "동화 《오즈의 마법사》에서 커튼 뒤에 숨어 거대한 마법사 흉내를 내던 사람 이야기에서 따왔어요!",
+                "intro-callout": '"AI를 직접 개발하려면 돈과 시간이 몇 달씩 들어요. 하지만 WoZ를 쓰면 단 하루 만에 사용자가 이 말투와 기능을 좋아하는지 확인할 수 있습니다!"',
                 
-                "work-title": "Figma 작업 화면의 4가지 구역", "work-sub": "피그마(Figma)에 로그인하면 만나는 화면입니다. 각 구역의 역할을 클릭해서 확인해 보세요.",
-                "work-l2": "2. Layers (왼쪽)", "work-l3": "3. 캔버스 (중앙)", "work-l4": "4. Design (오른쪽)",
+                "role-title": "WoZ 실험실의 3가지 핵심 역할",
+                "role-sub": "실험을 성공시키려면 3명이 각자의 역할을 완벽히 소화해야 해요. 역할을 눌러 규칙을 확인해 보세요!",
+                "r1-sub": "뒤에 사람이 있는 줄 모름",
+                "r2-sub": "커튼 뒤에서 AI 흉내 내기",
+                "r3-sub": "표정과 당황하는 순간 메모",
 
-                "auto-title": "작업 속도를 3배 높이는 마법 (단축키 & Auto Layout)",
-                "key-title": "⌨️ 필수 단축키 4개",
-                "key-f": "프레임 (스마트폰 틀 만들기)", "key-t": "텍스트 (글자 쓰기)", "key-r": "네모 / 동그라미 (버튼, 프로필)", "key-s": "누른 채로 여러 개 동시 선택",
-                "auto-h3": "✨ Shift + A (오토 레이아웃)", "auto-p": "상자가 글자 길이에 맞춰 알아서 늘어나고 줄어듭니다! 방향(세로/가로), 간격(Gap), 여백(Padding)을 오른쪽 패널에서 조절하세요.",
-                "auto-btn": "추천 프롬프트 칩", "auto-add": "글자 추가해보기",
+                "rule-title": "완벽한 AI가 되기 위한 '마법사의 3대 비밀 규칙'",
+                "rule-sub": "사람인 게 들키지 않으려면 철저하게 AI처럼 규칙을 지켜 대답해야 해요.",
+                "rule1-t": "📋 1. 미리 적어둔 답변 복사/붙여넣기", "rule1-p": "사람마다 말투가 바뀌면 안 되니까 미리 문장 창고(Canned Responses)를 만들어두고 복사해서 보냅니다.",
+                "rule2-t": "⏳ 2. 3~5초 뜸 들이기 (생각하는 척!)", "rule2-p": "너무 1초 만에 답장하면 사람인 게 들켜요! AI가 연산하는 것처럼 3~5초 기다렸다가 전송합니다.",
+                "rule3-t": "🤖 3. 일부러 엉뚱한 대답 섞기 (의도된 에러)", "rule3-p": "AI가 가끔 틀리듯이 엉뚱한 대답을 하나 던져보고, 사용자가 당황할 때 어떻게 고쳐 쓰는지 반응을 살핍니다.",
 
-                "comp-title": "컴포넌트(Components)로 10배 빨리 수정하기",
-                "comp-sub": "완벽한 말풍선 딱 하나를 '마스터(컴포넌트)'로 만드세요. 마스터의 색상을 바꾸면 복사본(인스턴스) 100개의 색상도 1초 만에 모두 바뀝니다!",
-                "comp-btn": "마스터 색상 변경해보기",
+                "tool-title": "돈 안 들이고 당장 시작하는 노코드(No-Code) 도구",
+                "tool-sub": "전문 프로그램 없이 중학생도 카톡이나 문서로 바로 테스트할 수 있어요.",
+                "tool-c1": "<strong>💬 메신저 활용 (카카오톡, 디스코드, 슬랙):</strong><br>계정 이름을 'AI 도우미 챗봇'으로 짓고 로봇 프로필 사진을 걸어둔 뒤, 뒤에서 디자이너가 대신 채팅을 쳐줍니다.",
+                "tool-c2": "<strong>📄 공유 문서 (Google Docs / Notion):</strong><br>사용자가 문서에 질문을 치면, 커튼 뒤 마법사가 실시간으로 아래에 타이핑하며 답변을 적어줍니다.",
 
-                "flow-title": "핵심 3단계 화면 조립 & 프로토타입 연결",
-                "flow-sub": "지금까지 배운 부품들(말풍선, 입력창, 오토 레이아웃)을 조립하여 3장의 화면을 나란히 완성합니다. 그리고 <strong>Prototype 탭</strong>에서 파란 화살표를 연결해 보세요!",
+                "flow-title": "20분 만에 끝내는 실전 테스트 4단계",
+                "flow-sub": "실험은 복잡하지 않아요! 4단계 총 20분이면 충분합니다.",
+                "pz1": "1단계: 브리핑<br>(3분)<br>미션 부여",
+                "pz2": "2단계: 대화 테스트<br>(10분)<br>실제 챗봇 대화",
+                "pz3": "3단계: 정체 공개<br>(5분)<br>인터뷰 & 진실 고백",
+                "pz4": "4단계: 정리<br>(2분)<br>감사 인사 & 메모",
 
-                "sub-title": "25분 실습 및 과제 공유 (Sharing)", "sub-h3": "완성된 프로토타입 링크 제출하기",
-                "sub-warn": "🚨 주의: 제출 전 반드시 권한을 열어주세요!",
-                "sub-l1": "피그마 우측 상단의 파란색 <strong>[Share]</strong> 버튼 클릭",
-                "sub-l2": "설정을 반드시 <strong>'Anyone with the link can view'</strong>로 변경 (매우 중요!)",
-                "sub-l3": "<strong>[Copy link]</strong> 버튼을 눌러 복사된 링크를 MS Teams에 제출",
-                "act-btn": "🔔 이번 주 출석 및 과제 제출 안내",
+                "mid-title": "중간고사 과제 안내 (8주차 제출)",
+                "mid-h3": "3페이지 중간고사 컨셉 기획서 (PDF) 작성 체크리스트",
+                "mid-l1": "<strong>1페이지:</strong> 서비스 이름, 타깃 페르소나(Week 2), 해결하려는 핵심 문제",
+                "mid-l2": "<strong>2페이지:</strong> 활용할 AI 기술 종류(시각/언어/음성) & 5단계 대화 흐름도(Logic Flow)",
+                "mid-l3": "<strong>3페이지:</strong> 신뢰성 UI 스케치(출처/면책조항), 피드백 버튼(좋아요/싫어요), WoZ 계획",
+                "act-btn": "📢 8주차 중간고사 제출 안내 확인하기",
                 
                 // Dynamic JS Strings
-                "js_toolbar": "🛠️ Toolbar: 도형, 텍스트, 프레임을 꺼내 쓰는 필통 같은 곳입니다.",
-                "js_leftbar": "📚 Left Sidebar: 내가 그린 버튼과 글자들이 겹겹이 쌓인 순서(레이어)를 보여줍니다.",
-                "js_canvas": "🎨 Center Canvas: 도화지입니다! 화면을 여러 개 나란히 펼쳐놓고 작업할 수 있습니다.",
-                "js_rightbar": "⚙️ Right Sidebar: 버튼의 색상, 둥글기, 크기를 조절하는 마법 리모컨입니다.",
-                "js_proto1": "파란색 화살표(Prototype)가 연결되어 있다면, 클릭 시 로딩 화면으로 넘어갑니다!",
-                "js_proto_onclick": `Trigger: On click
-사용자가 버튼을 터치했을 때 넘어가는 설정입니다.`,
-                "js_proto_delay": `Trigger: After delay (800ms)
-사용자가 누르지 않아도, AI가 0.8초 동안 고민한 뒤 자동으로 완료 화면으로 넘어갑니다!`,
-                "js_exam_alert": `수업이 끝난 후 MS Teams 'Assignments' 탭에서 [9주차(실제 7주차) 출석 퀴즈]를 이번 일요일까지 꼭 제출해주세요!
+                "js_role_user": `👤 참여자 (테스트 사용자):
 
-또한 방금 권한을 열어 복사한 피그마 링크도 과제란에 함께 제출 바랍니다.`
+뒤에서 진짜 사람이 답변을 치고 있다는 것을 전혀 모른 채, 현실적인 미션을 전달받고 AI와 대화하는 사용자입니다. 절대 사람이란 걸 미리 알려주면 안 돼요!`,
+                "js_role_wizard": `🧙 마법사 (운영자):
+
+커튼 뒤에 숨어 진짜 AI인 척 연기하는 디자이너입니다. 철저하게 규칙에 따라 답변 문장을 복사해 붙여넣고 3~5초 뜸을 들여 답장합니다.`,
+                "js_role_observer": `📝 관찰자 (기록자):
+
+사용자가 어디서 대화를 멈추는지, 언제 미간을 찌푸리는지, 어떤 답변에 만족하는지 꼼꼼하게 메모하여 디자인 개선점에 반영하는 사람입니다.`,
+                "js_midterm_alert": `📢 중간고사 과제 제출 안내 (Week 8)
+
+• 제출 형식: PDF 문서 (총 2~3페이지)
+• 제출처: MS Teams ➔ Assignments ➔ [중간고사 과제 제출란]
+• 제출 마감: 다음 주 일요일 밤 11시 59분까지
+• 안내: 실시간 수업이나 라이브 발표는 없으며, 제출한 PDF 기획서로 평가됩니다!`
             },
             en: {
                 "header-subtitle": "AI Service Design & User Experience",
-                "nav-w1": "W1", "nav-w2": "W2", "nav-w3": "W3", "nav-w4": "W4", "nav-w5": "W5", "nav-w6": "W6", "nav-w7": "Week 7: Figma",
+                "nav-w07": "Week 07: WoZ Prototyping",
                 
-                "intro-title": "Week 7: Figma Prototyping for AI Services",
-                "intro-l1-b": "Goal:", "intro-l1-t": "Turn your paper sketches into clickable app screens using Figma.",
-                "intro-l2-b": "Core:", "intro-l2-t": "Make a living 3-step AI chat flow with just mouse clicks, no coding required!",
+                "intro-title": "Week 07: Wizard of Oz (WoZ) Prototyping",
+                "intro-l1-b": "Goal:", "intro-l1-t": "Test conversational AI experiences by human simulation with zero backend coding.",
+                "intro-l2-b": "Origin:", "intro-l2-t": "Inspired by the wizard in 'The Wizard of Oz' who secretly controlled everything behind a curtain!",
+                "intro-callout": '"Building real AI models takes months and huge budgets. WoZ lets you validate user demand and tone in a single afternoon!"',
                 
-                "work-title": "4 Essential Areas of Figma Workspace", "work-sub": "Click on each area of the mockup below to see what it does.",
-                "work-l2": "2. Layers (Left)", "work-l3": "3. Canvas (Center)", "work-l4": "4. Design (Right)",
+                "role-title": "3 Core Roles in a WoZ Experiment",
+                "role-sub": "For a successful test, three people must play distinct roles. Click to see their missions!",
+                "r1-sub": "Unaware of human behind AI",
+                "r2-sub": "Acts like an AI behind curtain",
+                "r3-sub": "Notes facial cues & hesitation",
 
-                "auto-title": "Design 3x Faster (Shortcuts & Auto Layout)",
-                "key-title": "⌨️ 4 Essential Shortcuts",
-                "key-f": "Frame (Create phone screen)", "key-t": "Text (Type words)", "key-r": "Rect / Oval (Buttons, Avatars)", "key-s": "Hold to select multiple items",
-                "auto-h3": "✨ Shift + A (Auto Layout)", "auto-p": "Boxes automatically resize as you type! Control Direction, Gap, and Padding in the right panel.",
-                "auto-btn": "Starter Prompt Chip", "auto-add": "Add more text",
+                "rule-title": "The Wizard's 3 Golden Rules to Mimic AI",
+                "rule-sub": "To avoid breaking the illusion, operators must follow strict rules.",
+                "rule1-t": "📋 1. Use Canned Responses", "rule1-p": "Keep conversational tone consistent by copy-pasting pre-written response snippets.",
+                "rule2-t": "⏳ 2. Simulated Latency (3~5s)", "rule2-p": "Don't reply in 1 second like a human! Wait 3~5 seconds to simulate computing time.",
+                "rule3-t": "🤖 3. Controlled Errors", "rule3-p": "Trigger a minor hallucination or typo on purpose to see how users recover from mistakes.",
 
-                "comp-title": "Update 10x Faster with Components",
-                "comp-sub": "Create one perfect 'Master' component. If you change its color, 100 copies (Instances) will update instantly!",
-                "comp-btn": "Change Master Color",
+                "tool-title": "Zero-Cost No-Code Tools to Start Today",
+                "tool-sub": "Anyone can test conversational AI using standard messengers or docs.",
+                "tool-c1": "<strong>💬 Messengers (Discord, Slack, KakaoTalk):</strong><br>Set up a bot profile image and name like 'AI Assistant Bot', and type replies manually.",
+                "tool-c2": "<strong>📄 Shared Docs (Google Docs / Notion):</strong><br>User writes questions in real time while the wizard types responses directly underneath.",
 
-                "flow-title": "The 3-Screen Core Flow & Prototyping",
-                "flow-sub": "Assemble the parts (bubbles, input bar) to create 3 screens side-by-side. Then use the <strong>Prototype tab</strong> to connect them with blue arrows!",
+                "flow-title": "Step-by-Step WoZ Protocol in 20 Mins",
+                "flow-sub": "A full testing session takes only 4 quick phases and 20 minutes.",
+                "pz1": "Phase 1: Briefing<br>(3 mins)<br>Give Task",
+                "pz2": "Phase 2: Live Chat<br>(10 mins)<br>Interactive Session",
+                "pz3": "Phase 3: Reveal<br>(5 mins)<br>Debrief & Interview",
+                "pz4": "Phase 4: Wrap-up<br>(2 mins)<br>Thanks & Notes",
 
-                "sub-title": "25-Min Workshop & Sharing Link", "sub-h3": "Submit your Prototype Link",
-                "sub-warn": "🚨 Warning: Change Permissions before submitting!",
-                "sub-l1": "Click the blue <strong>[Share]</strong> button on the top right in Figma.",
-                "sub-l2": "Set permission to <strong>'Anyone with the link can view'</strong> (Crucial!).",
-                "sub-l3": "Click <strong>[Copy link]</strong> and paste it into MS Teams.",
-                "act-btn": "🔔 Check Submission Guide",
+                "mid-title": "Midterm Concept Proposal Guide (Due Week 8)",
+                "mid-h3": "3-Page PDF Proposal Submission Checklist",
+                "mid-l1": "<strong>Page 1:</strong> Service Name, Target Persona (Week 2), Core Problem Statement",
+                "mid-l2": "<strong>Page 2:</strong> Chosen AI Tech & 5-Step Logic Flowchart (Week 4)",
+                "mid-l3": "<strong>Page 3:</strong> Trust UI Sketch (Week 5), Feedback Buttons (Week 6), WoZ Plan",
+                "act-btn": "📢 View Midterm Submission Info",
                 
                 // Dynamic JS Strings
-                "js_toolbar": "🛠️ Toolbar: Your pencil case for selecting frames, shapes, and text tools.",
-                "js_leftbar": "📚 Left Sidebar: Shows the layer order of all your buttons and texts.",
-                "js_canvas": "🎨 Center Canvas: Your infinite sketchbook where you draw the screens.",
-                "js_rightbar": "⚙️ Right Sidebar: Your magic remote to change colors, fonts, and roundness.",
-                "js_proto1": "If connected via Prototype, clicking this will move you to the Loading screen!",
-                "js_proto_onclick": `Trigger: On click
-Moves to the next screen when the user taps the button.`,
-                "js_proto_delay": `Trigger: After delay (800ms)
-Automatically moves to the final screen after 0.8s of 'thinking' without user click.`,
-                "js_exam_alert": `Submit your [Week 9 (Actual Week 7) Attendance Quiz] in the MS Teams 'Assignments' tab by Sunday!
+                "js_role_user": `👤 Participant (User):
 
-Also, please paste your shared Figma link in the assignment box.`
+Tests the app believing it is a real automated AI. Never disclose the human secret beforehand!`,
+                "js_role_wizard": `🧙 The Wizard (Operator):
+
+The designer acting as AI behind the curtain. Follows strict script rules and inserts simulated latency.`,
+                "js_role_observer": `📝 Observer (Note-taker):
+
+Captures hesitation moments, frowns, and user pain points to iterate Figma UI components.`,
+                "js_midterm_alert": `📢 Midterm Concept Proposal Submission (Week 8)
+
+• Format: PDF Document (2–3 Pages)
+• Submission: MS Teams ➔ Assignments ➔ [Midterm Project Submission]
+• Deadline: Next Sunday, 11:59 PM
+• Note: No live presentations. Grading is 100% based on your uploaded PDF!`
             },
             ru: {
                 "header-subtitle": "Дизайн ИИ-сервисов и UX",
-                "nav-w1": "W1", "nav-w2": "W2", "nav-w3": "W3", "nav-w4": "W4", "nav-w5": "W5", "nav-w6": "W6", "nav-w7": "Неделя 7: Figma",
+                "nav-w07": "Неделя 07: WoZ Прототипирование",
                 
-                "intro-title": "Неделя 7: Прототипирование ИИ в Figma",
-                "intro-l1-b": "Цель:", "intro-l1-t": "Превратить бумажные наброски в кликабельные экраны в Figma.",
-                "intro-l2-b": "Главное:", "intro-l2-t": "Создать 'живой' 3-шаговый чат-поток ИИ кликами мыши, без программирования!",
+                "intro-title": "Неделя 07: Метод Волшебника страны Оз (WoZ)",
+                "intro-l1-b": "Цель:", "intro-l1-t": "Тестирование ИИ-опыта без строчки кода: человек симулирует ИИ за кулисами.",
+                "intro-l2-b": "Происхождение:", "intro-l2-t": "В честь сказки «Волшебник страны Оз», где маг оказался человеком за занавеской!",
+                "intro-callout": '"Разработка реального ИИ требует месяцев и больших бюджетов. WoZ позволяет проверить идеи за один день!"',
                 
-                "work-title": "4 зоны рабочего пространства Figma", "work-sub": "Кликните по каждой зоне макета ниже, чтобы узнать ее функцию.",
-                "work-l2": "2. Слои (Слева)", "work-l3": "3. Холст (Центр)", "work-l4": "4. Дизайн (Справа)",
+                "role-title": "3 Ключевые Роли в Эксперименте WoZ",
+                "role-sub": "Для успеха эксперимента нужны 3 человека с четкими ролями. Кликните, чтобы узнать!",
+                "r1-sub": "Не знает о человеке за ИИ",
+                "r2-sub": "Притворяется ИИ за ширмой",
+                "r3-sub": "Записывает эмоции и заминки",
 
-                "auto-title": "Дизайн в 3 раза быстрее (Горячие клавиши и Auto Layout)",
-                "key-title": "⌨️ 4 главных клавиши",
-                "key-f": "Frame (Создать экран телефона)", "key-t": "Text (Написать текст)", "key-r": "Квадрат / Круг (Кнопки, Аватары)", "key-s": "Зажать для выделения нескольких",
-                "auto-h3": "✨ Shift + A (Auto Layout)", "auto-p": "Блоки сами меняют размер при вводе текста! Настройте Направление, Отступы и Поля на правой панели.",
-                "auto-btn": "Стартовая подсказка", "auto-add": "Добавить текст",
+                "rule-title": "3 Золотых Правила 'Волшебника' (Оператора)",
+                "rule-sub": "Чтобы пользователь поверил, нужно строго соблюдать правила поведения ИИ.",
+                "rule1-t": "📋 1. Заготовленные фразы", "rule1-p": "Копируйте и вставляйте готовые шаблоны ответов для сохранения единого стиля.",
+                "rule2-t": "⏳ 2. Задержка в 3~5 секунд", "rule2-p": "Не отвечайте за секунду как человек! Подождите 3~5 секунд, симулируя работу модели.",
+                "rule3-t": "🤖 3. Контролируемые ошибки", "rule3-p": "Сделайте намеренную мелкую ошибку, чтобы увидеть, как пользователь среагирует и исправит запрос.",
 
-                "comp-title": "Редактирование в 10 раз быстрее с Components",
-                "comp-sub": "Создайте один идеальный 'Мастер'-компонент. Если изменить его цвет, 100 копий (Instances) обновятся мгновенно!",
-                "comp-btn": "Изменить цвет Мастера",
+                "tool-title": "Бесплатные No-Code инструменты для старта",
+                "tool-sub": "Любой может протестировать диалоговый ИИ с помощью привычных мессенджеров.",
+                "tool-c1": "<strong>💬 Мессенджеры (Telegram, Discord, Slack):</strong><br>Поставьте аватарку робота, назовите аккаунт 'AI Bot' и пишите ответы вручную.",
+                "tool-c2": "<strong>📄 Документы (Google Docs / Notion):</strong><br>Пользователь пишет вопрос, а оператор печатает ответ в реальном времени строкой ниже.",
 
-                "flow-title": "3 базовых экрана и Прототипирование",
-                "flow-sub": "Соберите элементы (пузыри, поле ввода) в 3 экрана. Затем во вкладке <strong>Prototype</strong> соедините их синими стрелками!",
+                "flow-title": "Протокол сессии WoZ: 4 шага за 20 минут",
+                "flow-sub": "Тестирование не требует много времени: всего 4 шага и 20 минут.",
+                "pz1": "Этап 1: Брифинг<br>(3 мин)<br>Постановка задачи",
+                "pz2": "Этап 2: Диалог<br>(10 мин)<br>Тест чат-бота",
+                "pz3": "Этап 3: Раскрытие<br>(5 мин)<br>Интервью и правда",
+                "pz4": "Этап 4: Финал<br>(2 мин)<br>Итоги и заметки",
 
-                "sub-title": "25-мин. воркшоп и Шеринг ссылки", "sub-h3": "Сдайте ссылку на прототип",
-                "sub-warn": "🚨 Внимание: Измените права доступа перед сдачей!",
-                "sub-l1": "Нажмите синюю кнопку <strong>[Share]</strong> в правом верхнем углу Figma.",
-                "sub-l2": "Установите права <strong>'Anyone with the link can view'</strong> (Критично важно!).",
-                "sub-l3": "Нажмите <strong>[Copy link]</strong> и вставьте ссылку в MS Teams.",
-                "act-btn": "🔔 Правила сдачи",
+                "mid-title": "Промежуточный проект (Сдача на 8 неделе)",
+                "mid-h3": "Чек-лист 3-страничного PDF-отчета",
+                "mid-l1": "<strong>Стр 1:</strong> Название сервиса, Персона (Неделя 2), Главная проблема",
+                "mid-l2": "<strong>Стр 2:</strong> Тип ИИ (Vision/NLP/Voice) и Логическая блок-схема (Неделя 4)",
+                "mid-l3": "<strong>Стр 3:</strong> Скетч UI Доверия (Источники), Кнопки фидбека, План WoZ",
+                "act-btn": "📢 Информация о сдаче проекта (Неделя 8)",
                 
                 // Dynamic JS Strings
-                "js_toolbar": "🛠️ Toolbar: Ваш пенал для выбора фреймов, фигур и текста.",
-                "js_leftbar": "📚 Left Sidebar: Показывает порядок слоев всех кнопок и текстов.",
-                "js_canvas": "🎨 Center Canvas: Бесконечный скетчбук для рисования экранов.",
-                "js_rightbar": "⚙️ Right Sidebar: Волшебный пульт для изменения цветов, шрифтов и скруглений.",
-                "js_proto1": "Если соединено через Prototype, клик перенесет вас на экран загрузки!",
-                "js_proto_onclick": `Trigger: On click
-Переходит на следующий экран, когда пользователь нажимает кнопку.`,
-                "js_proto_delay": `Trigger: After delay (800ms)
-Автоматически переходит на финальный экран после 0.8 сек 'раздумий' ИИ.`,
-                "js_exam_alert": `Сдайте [Тест за 9 (фактическую 7) неделю] в MS Teams 'Assignments' до воскресенья!
+                "js_role_user": `👤 Участник (Пользователь):
 
-Также не забудьте прикрепить вашу ссылку на Figma.`
+Выполняет задачу, веря, что общается с реальным ИИ. Ни в коем случае не говорите ему правду заранее!`,
+                "js_role_wizard": `🧙 Волшебник (Оператор):
+
+Дизайнер, имитирующий работу ИИ. Использует скрипты и делает искусственные паузы перед ответом.`,
+                "js_role_observer": `📝 Наблюдатель (Секретарь):
+
+Записывает моменты замешательства, эмоции и проблемы юзабилити для доработки интерфейса в Figma.`,
+                "js_midterm_alert": `📢 Сдача Промежуточного Отчета (Неделя 8)
+
+• Формат: PDF-документ (2–3 страницы)
+• Куда сдавать: MS Teams ➔ Assignments ➔ [Midterm Project Submission]
+• Дедлайн: До следующего воскресенья, 23:59
+• Примечание: Презентаций в эфире нет, оценка ставится по загруженному PDF!`
             }
         };
 
@@ -1767,9 +1803,6 @@ Also, please paste your shared Figma link in the assignment box.`
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
-            });
 
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
@@ -1777,6 +1810,10 @@ Also, please paste your shared Figma link in the assignment box.`
                     el.innerHTML = translations[lang][key];
                 }
             });
+        }
+
+        function triggerAlert(msgKey) {
+            alert(translations[currentLang][msgKey]);
         }
 
         // 스크롤 애니메이션
@@ -1793,54 +1830,13 @@ Also, please paste your shared Figma link in the assignment box.`
             observer.observe(card);
         });
 
-        // 🪄 Auto Layout Interaction
-        let alClickCount = 0;
-        function addTextToAL() {
-            const btn = document.getElementById('al-btn');
-            const txt = document.getElementById('al-text');
-            alClickCount++;
-            
-            if(alClickCount % 3 === 1) {
-                txt.innerText = translations[currentLang]['auto-btn'] + " + 길어집니다";
-            } else if(alClickCount % 3 === 2) {
-                txt.innerText = translations[currentLang]['auto-btn'] + " + 길어집니다 + 더 늘어납니다!";
-            } else {
-                txt.innerText = translations[currentLang]['auto-btn'];
-            }
-            
-            // Add a little pop effect to show it's auto-adjusting
-            btn.style.transform = "scale(1.05)";
-            setTimeout(() => { btn.style.transform = "scale(1)"; }, 200);
-        }
-
-        // 💎 Components Interaction
-        const colors = ['var(--main-blue)', '#ec4899', '#10b981', '#f59e0b', '#8b5cf6'];
-        let colorIdx = 0;
-        function changeComponentColor() {
-            colorIdx = (colorIdx + 1) % colors.length;
-            const newColor = colors[colorIdx];
-            
-            document.getElementById('master-bubble').style.backgroundColor = newColor;
-            
-            // 인스턴스들도 동시에 색상 변경 (살짝 딜레이 줘서 시각적 효과 강조)
-            const instances = document.querySelectorAll('.instance-bubble');
-            instances.forEach(inst => {
-                inst.style.transform = "scale(1.1)";
-                setTimeout(() => { 
-                    inst.style.backgroundColor = newColor; 
-                    inst.style.transform = "scale(1)";
-                }, 150);
-            });
-        }
-
         // 초기 언어 설정
         setLang(window.uxGetPreferredLanguage());
     
+Object.assign(window,{setLang,triggerAlert});
 
-Object.assign(window, {setLang, addTextToAL, changeComponentColor});
 })();
 }
-
 if (document.body.dataset.page === 'week09') {
 (function(){
 

@@ -736,3 +736,29 @@ body.ux-course .week08-exam-note p { margin:0; }
   body.ux-course[data-page="week13"] .matrix-board { grid-template-columns: 1fr; gap: 14px; }
   body.ux-course[data-page="week13"] .latency-timeline { flex-direction: column; }
 }
+
+/* Week 07 — Wizard of Oz classwork. Existing UX card spacing and portfolio theme inherited. */
+body.ux-course[data-page="week07"] #lesson-content .phase-timeline { display:flex; margin-top:24px; border-radius:13px; overflow:hidden; font-size:.88rem; font-weight:700; text-align:center; color:#fff; }
+body.ux-course[data-page="week07"] #lesson-content .phase-zone { padding:20px 13px; flex:1; line-height:1.65; }
+body.ux-course[data-page="week07"] #lesson-content .zone-p1 { background:#2563eb; }
+body.ux-course[data-page="week07"] #lesson-content .zone-p2 { background:#7c3aed; }
+body.ux-course[data-page="week07"] #lesson-content .zone-p3 { background:#f59e0b; color:#451a03; }
+body.ux-course[data-page="week07"] #lesson-content .zone-p4 { background:#059669; }
+body.ux-course[data-page="week07"] #lesson-content .matrix-board { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; margin-top:24px; }
+body.ux-course[data-page="week07"] #lesson-content .m-card { padding:27px 19px; border-radius:15px; font-weight:700; text-align:center; line-height:1.7; cursor:pointer; transition:transform .2s; }
+body.ux-course[data-page="week07"] #lesson-content .m-card:hover { transform:translateY(-3px); }
+body.ux-course[data-page="week07"] #lesson-content .m-blue { background:#dbeafe; border:2px solid #3b82f6; color:#1e40af; }
+body.ux-course[data-page="week07"] #lesson-content .m-purple { background:#f3e8ff; border:2px solid #a855f7; color:#6b21a8; }
+body.ux-course[data-page="week07"] #lesson-content .m-green { background:#dcfce7; border:2px solid #22c55e; color:#15803d; }
+body.ux-course[data-page="week07"] #lesson-content .mock-chat { background:#fff; border:1px solid #cbd5e1; border-radius:15px; padding:28px; margin:24px 0; }
+body.ux-course[data-page="week07"] #lesson-content .chat-bubble-user { background:#eff6ff; border-left:4px solid #2563eb; padding:20px 24px; border-radius:10px; margin-bottom:16px; }
+body.ux-course[data-page="week07"] #lesson-content .chat-bubble-bot { background:#f8fafc; border-left:4px solid #8b5cf6; padding:20px 24px; border-radius:10px; }
+body.ux-course[data-page="week07"] #lesson-content .callout { background:#eff6ff; border-left:4px solid #2563eb; padding:22px 27px; border-radius:0 12px 12px 0; margin:24px 0; line-height:1.7; }
+@media (max-width:768px){
+ body.ux-course[data-page="week07"] #lesson-content .matrix-board { grid-template-columns:1fr; gap:15px; }
+ body.ux-course[data-page="week07"] #lesson-content .phase-timeline { flex-direction:column; }
+ body.ux-course[data-page="week07"] #lesson-content .phase-zone { padding:16px 12px; }
+ body.ux-course[data-page="week07"] #lesson-content .mock-chat { padding:18px; }
+ body.ux-course[data-page="week07"] #lesson-content .chat-bubble-user,
+ body.ux-course[data-page="week07"] #lesson-content .chat-bubble-bot {padding:18px;}
+}
