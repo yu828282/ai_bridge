@@ -23,7 +23,6 @@
 
     let currentLang = 'ko';
     let currentLessonIndex = null;
-    let pyWorker = null;
     let pyodideInstance = null;
 
     const mobileMenuController = window.initMobileMenu({
@@ -46,53 +45,24 @@
         elements.statusBadge.classList.add('loading');
         elements.runButton.disabled = true;
 
-        pyodideInstance = await loadPyodide();
-
-        elements.statusText.textContent = textSet.ready;
-        elements.statusBadge.classList.remove('loading');
-        elements.statusBadge.classList.add('ready');
-        elements.runButton.disabled = false;
+        try {
+            if (typeof loadPyodide !== 'function') {
+                throw new Error('Pyodide library was not loaded');
+            }
+            pyodideInstance = await loadPyodide();
+            elements.statusText.textContent = textSet.ready;
+            elements.statusBadge.classList.remove('loading');
+            elements.statusBadge.classList.add('ready');
+            elements.runButton.disabled = false;
+        } catch (error) {
+            console.error('Python runtime loading failed:', error);
+            elements.statusText.textContent = textSet.loadFailed;
+            elements.statusBadge.classList.remove('loading', 'ready');
+            elements.statusBadge.classList.add('error');
+            elements.consoleOutput.textContent = textSet.loadHint;
+            elements.runButton.disabled = true;
+        }
     }
-    // function initWorker() {
-    //     const textSet = getTextSet();
-        
-    //     // 기존 워커가 있다면 완전히 제거
-    //     if (pyWorker) pyWorker.terminate();
-
-    //     // 상태 표시 업데이트
-    //     elements.statusText.textContent = textSet.loading;
-    //     elements.statusBadge.classList.remove('ready');
-    //     elements.statusBadge.classList.add('loading');
-    //     elements.runButton.disabled = true; // 로딩 중 클릭 방지
-
-    //     // worker.js를 호출 (경로 확인 필수)
-    //     // pyWorker = new Worker('./js/data_python/worker.js');
-
-    //     pyWorker.onmessage = function(event) {
-    //         const { type, output, error } = event.data;
-    //         const textSet = getTextSet();
-
-    //         if (type === 'READY') {
-    //             elements.statusText.textContent = textSet.ready;
-    //             elements.statusBadge.classList.remove('loading');
-    //             elements.statusBadge.classList.add('ready');
-    //             elements.runButton.disabled = false;
-    //         } else if (type === 'SUCCESS') {
-    //             elements.consoleOutput.textContent = output || textSet.finishedNoOutput;
-    //             elements.runButton.disabled = false;
-    //             showToast("✅");
-    //         } else if (type === 'ERROR') {
-    //             elements.consoleOutput.textContent = textSet.errorLabel + ': ' + error;
-    //             elements.runButton.disabled = false;
-    //         }
-    //     };
-
-    //     pyWorker.onerror = function(e) {
-    //         console.error("Worker Error:", e);
-    //         elements.statusText.textContent = "Error";
-    //         elements.runButton.disabled = false;
-    //     };
-    // }
     function updateProgress() {
         const progressBar = document.getElementById('progress-bar');
 
@@ -204,19 +174,17 @@
         elements.mobileMenuTitle.textContent = textSet.menuTitle;
         elements.runButton.textContent = textSet.runButton;
         elements.answerButton.textContent = textSet.answerButton;
-        elements.answerButton.textContent = textSet.answerButton;
         elements.answerTitle.textContent = textSet.answerTitle;
         elements.codeInput.placeholder = textSet.textareaPlaceholder;
 
-        if (elements.consoleOutput.dataset.hasRun !== 'true') {
-            elements.consoleOutput.textContent = textSet.consoleDefault;
-        }
-
-        // 워커 로딩 상태에 따른 텍스트 동기화
-        if (elements.statusBadge.classList.contains('ready')) {
-            elements.statusText.textContent = textSet.ready;
+        if (elements.statusBadge.classList.contains('error')) {
+            elements.statusText.textContent = textSet.loadFailed;
+            elements.consoleOutput.textContent = textSet.loadHint;
         } else {
-            elements.statusText.textContent = textSet.loading;
+            if (elements.consoleOutput.dataset.hasRun !== 'true') {
+                elements.consoleOutput.textContent = textSet.consoleDefault;
+            }
+            elements.statusText.textContent = elements.statusBadge.classList.contains('ready') ? textSet.ready : textSet.loading;
         }
     }
 
@@ -249,7 +217,6 @@
 
     function selectLesson(index) {
         currentLessonIndex = index;
-        localStorage.setItem('python-progress', index);
         const lesson = lessons[index];
         const textSet = getTextSet();
 

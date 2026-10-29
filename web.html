@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML/CSS/JavaScript Learning Center - Lesson 1</title>
+  <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/web.css">
 </head>
 <body>
@@ -22,6 +23,7 @@
         </div>
       </div>
       <div class="top-controls">
+        <a class="portfolio-return" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
         <div class="lang-container" id="desktop-langs">
             <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
             <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
@@ -51,6 +53,7 @@
       
       <div class="mobile-menu-header">Lesson Menu</div>
       <nav class="mobile-nav" id="mobile-nav"></nav>
+    <a class="mobile-portfolio-link" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
   </div>
   <div class="mobile-backdrop" id="mobile-backdrop"></div>
 </header>
@@ -105,7 +108,7 @@
       <span class="editor-title">Practice</span>
     </div>
 
-    <textarea id="html-code" spellcheck="false"></textarea>
+    <textarea id="html-code" spellcheck="false" aria-label="HTML, CSS, JavaScript code editor"></textarea>
 
     <div class="action-btns">
       <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
@@ -117,7 +120,7 @@
       <div class="preview-header">
         <span>실행 결과 미리보기</span>
       </div>
-      <iframe id="preview-frame" title="HTML preview"></iframe>
+      <iframe id="preview-frame" title="HTML preview" sandbox="allow-scripts"></iframe>
     </div>
 
     <div id="ans-display">

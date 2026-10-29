@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yuri Choi | AI Education Designer & RAG System Builder</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
   <nav>
@@ -144,38 +144,11 @@
         <div class="eyebrow">Projects</div>
         <h2>기획하고 직접 만든 작업물</h2>
         <p>
-          외국인 유학생을 위한 생활 안내 서비스, 교육형 웹페이지, 브라우저 실습 환경, 
-          문서 기반 AI 서비스 등 실제 사용을 염두에 두고 기획하고 구현한 결과물입니다.
+          교육형 웹페이지, 브라우저 실습 환경, 문서 기반 AI 서비스 등 실제 사용을 염두에 둔 결과물입니다.
         </p>
       </div>
 
       <div class="project-grid">
-         <article class="project-card project-card-featured">
-          <h3>Global Support Hub for International Students</h3>      
-          <p>
-            AI를 활용해 기획하고 직접 제작한 외국인 유학생 대상 한국생활 안내 사이트입니다.
-            비자, 아르바이트, 생활 정보 등을 질문형으로 확인할 수 있으며,
-            다국어 안내, FAQ, 주요 행정 일정 관리 기능을 함께 구성했습니다.
-          </p>      
-          <div class="project-meta">
-            <span class="tag">AI-Assisted Development</span>
-            <span class="tag">Multilingual UI</span>
-            <span class="tag">International Students</span>
-            <span class="tag">FAQ</span>
-            <span class="tag">Smart Calendar</span>
-          </div>      
-          <div class="project-links">
-            <a
-              href="https://foralien.web.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-link global-support"
-            >
-              라이브 사이트 열기 ↗
-            </a>
-          </div>
-        </article>
-        
         <article class="project-card">
           <h3>AI Introduction for International Students</h3>
           <p>
@@ -186,10 +159,28 @@
             <span class="tag">HTML</span>
             <span class="tag">CSS</span>
             <span class="tag">JavaScript</span>
-            <span class="tag">Multilingual UI</span>
+            <span class="tag">KO / EN / RU</span>
           </div>
           <div class="project-links">
-            <a href="intro_ai.html" target="_blank" class="project-link ai">프로젝트 열기</a>
+            <a href="intro_ai.html" target="_blank" rel="noopener noreferrer" class="project-link ai">프로젝트 열기</a>
+          </div>
+        </article>
+
+
+        <article class="project-card">
+          <h3>AI Service UX Studio</h3>
+          <p>
+            외국인 유학생을 위한 AI 서비스 UX 설계 교육입니다. 페르소나·대화 흐름·신뢰 UI·Figma 프로토타입을
+            한국어·영어·러시아어로 배우고, 주차별 데모를 직접 조작할 수 있습니다.
+          </p>
+          <div class="project-meta">
+            <span class="tag">UX/UI Design</span>
+            <span class="tag">AI Service</span>
+            <span class="tag">Interactive Labs</span>
+            <span class="tag">KO / EN / RU</span>
+          </div>
+          <div class="project-links">
+            <a href="./ux/index.html" target="_blank" rel="noopener noreferrer" class="project-link ux">프로젝트 열기</a>
           </div>
         </article>
 
@@ -200,13 +191,12 @@
             설명과 실습 흐름을 함께 보여주는 구조를 목표로 했습니다.
           </p>
           <div class="project-meta">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
             <span class="tag">Python Learning UI</span>
+            <span class="tag">KO / EN / RU</span>
           </div>
           <div class="project-links">
-            <a href="python.html" target="_blank" class="project-link python">프로젝트 열기</a>
+            <a href="python.html" target="_blank" rel="noopener noreferrer" class="project-link python">프로젝트 열기</a>
           </div>
         </article>
 
@@ -221,9 +211,10 @@
             <span class="tag">CSS</span>
             <span class="tag">JavaScript</span>
             <span class="tag">Web Learning UI</span>
+            <span class="tag">KO / EN / RU</span>
           </div>
           <div class="project-links">
-            <a href="./web.html" target="_blank" class="project-link web">프로젝트 열기</a>
+            <a href="./web.html" target="_blank" rel="noopener noreferrer" class="project-link web">프로젝트 열기</a>
           </div>
         </article>
 
@@ -312,32 +303,6 @@
     <p>Yuri Choi Portfolio</p>
     <p>© 2026 AI Education Designer & System Builder</p>
   </footer>
-
-  <script>
-    function toggleMenu(menuId, button) {
-      const menu = document.getElementById(menuId);
-      const isOpen = menu.classList.toggle('open');
-      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-
-    function closeMenu(menuId) {
-      const menu = document.getElementById(menuId);
-      const button = document.querySelector('[aria-controls="' + menuId + '"]');
-      if (!menu) return;
-      menu.classList.remove('open');
-      if (button) button.setAttribute('aria-expanded', 'false');
-    }
-
-    document.addEventListener('click', (event) => {
-      const menu = document.getElementById('site-nav');
-      const button = document.querySelector('[aria-controls="site-nav"]');
-      if (!menu || !button) return;
-
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
-        menu.classList.remove('open');
-        button.setAttribute('aria-expanded', 'false');
-      }
-    });
-  </script>
+  <script src="./js/common/menu.js"></script>
 </body>
 </html>

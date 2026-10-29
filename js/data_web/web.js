@@ -1,7 +1,4 @@
-import { lessons_ko } from './lessons_ko.js';
-import { lessons_en } from './lessons_en.js';
-import { lessons_ru } from './lessons_ru.js';
-
+import { lessons_ko, lessons_en, lessons_ru } from './lessons.js';
 const lessonData = {
   ko: lessons_ko,
   en: lessons_en,

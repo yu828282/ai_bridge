@@ -16,7 +16,7 @@ body {
 button, input, textarea { font: inherit; }
 
 footer {
-    background: var(--primary-color);
+    background: var(--primary-color, #0f172a);
     color: rgba(248, 250, 252, 0.9);
     text-align: center;
     padding: 36px 20px;
@@ -33,3 +33,86 @@ footer p {
     font-size: 0.85em;
     padding-bottom: 20px;
 }
+
+/* Shared, byte-for-byte identical learning-site components (AI, Python, Web). */
+html {
+    scroll-behavior: smooth;
+}
+body.menu-open {
+    overflow: hidden;
+}
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 20px 14px;
+}
+.brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.brand-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+.nav-shell {
+    margin-top: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+}
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+.nav-btn.active {
+    background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-dark) 100%);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.24);
+}
+.hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    flex-shrink: 0;
+}
+.hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: white;
+    border-radius: 999px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Common keyboard focus indicator across all learning pages. */
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible {outline:3px solid #60a5fa;outline-offset:3px;}
+
+/* Shared navigation back to the main portfolio (AI / Python / Web). */
+a.portfolio-return { color: #cbd5e1; text-decoration: none; font-size: .88rem; font-weight: 700; white-space: nowrap; padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.07); display: inline-flex; align-items: center; justify-content: center; }
+a.portfolio-return:hover, a.portfolio-return:focus-visible { color: white; background: rgba(255,255,255,.16); }
+a.mobile-portfolio-link { display: none; margin: 20px 14px 12px; color: #bfdbfe; text-decoration: none; font-weight: 700; padding: 12px 14px; border: 1px solid rgba(255,255,255,.15); border-radius: 10px; }
+@media(max-width: 768px) { a.portfolio-return { display: none; } a.mobile-portfolio-link { display: block; } }
