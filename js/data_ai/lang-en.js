@@ -419,6 +419,12 @@ const langEn = {
   "ch12-summary-title": "6. Closing the Semester: Future of Generative AI",
   "ch12-sum1": "Generative AI is a technology that learns probabilistic rules to reconstruct new data.",
   "ch12-sum2": "AI is not only a tool for automation; it can also support human creativity and work.",
-  "ch12-sum3": "The ability to critically review AI-generated info with ethical responsibility is more important than ever."  
+  "ch12-sum3": "The ability to critically review AI-generated info with ethical responsibility is more important than ever."  ,
+
+"ch1-q1-detail-title": "💡 Discover More: AI in Daily Life",
+    "ch1-q1-detail-desc": "Smartphone facial recognition, YouTube video recommendations, and language translators are all prime examples of AI computing data to produce results.",
+    "ch1-dl-detail-title": "💡 Why is Deep Learning more powerful than Machine Learning?",
+    "ch1-dl-detail-desc": "Deep learning is modeled after the human brain's neural networks. It requires more data and powerful computer hardware (GPUs), but performs exceptionally well on complex tasks like finding cats in photos or understanding human speech.",
+    "ch1-eliza-detail-title": "💡 What is the ELIZA Effect?",
 
 };
