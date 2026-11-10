@@ -3469,6 +3469,1017 @@ body.pastel-course #quiz-result-dialog .quiz-modal-answer-box { border: 1px soli
 body.pastel-course #quiz-result-dialog[data-result="correct"] .quiz-modal-answer-box { border-color: #D3E6DD; }
 body.pastel-course #quiz-result-dialog[data-result="wrong"] .quiz-modal-answer-box { border-color: #EEDDD0; }
 
+
+/* Readable word help and one shared notice surface. */
+body.pastel-course .learn-visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+body.pastel-course .learn-glossary {
+  margin: 16px 0 24px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 16px; background: var(--learn-soft, #F2F6FF); color: var(--learn-ink, #0F172A);
+}
+body.pastel-course .learn-glossary > summary {
+  display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 13px 18px;
+  cursor: pointer; list-style: none; font-size: .95rem; font-weight: 700; color: inherit;
+}
+body.pastel-course .learn-glossary > summary::-webkit-details-marker { display: none; }
+body.pastel-course .learn-glossary > summary::after { content: '+'; margin-inline-start: auto; font-size: 1.25rem; }
+body.pastel-course .learn-glossary[open] > summary::after { content: '−'; }
+body.pastel-course .learn-glossary-intro { margin: 0 18px 14px; color: var(--learn-muted, #475569); font-size: .9rem; line-height: 1.7; }
+body.pastel-course .learn-glossary-list {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  margin: 0; padding: 0 18px 18px; list-style: none;
+}
+body.pastel-course .learn-glossary-list > li {
+  margin: 0; padding: 12px 14px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 12px; background: var(--learn-surface, #FFFFFF); min-width: 0;
+}
+body.pastel-course .learn-glossary-list p { margin: 6px 0 0; font-size: .9rem; line-height: 1.7; color: var(--learn-muted, #475569); }
+body.pastel-course button.learn-term {
+  display: inline; width: auto; min-width: 0; min-height: 0; margin: 0 .06em; padding: .08em .13em;
+  border: 0; border-bottom: 1px dotted currentColor; border-radius: 4px;
+  background: transparent; color: var(--learn-accent, #1E40AF); font: inherit; line-height: inherit;
+  font-weight: 600; text-align: inherit; white-space: normal; vertical-align: baseline; cursor: help;
+  text-decoration: none; box-shadow: none; transform: none;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+body.pastel-course button.learn-term::after { content: ' ⓘ'; font-size: .75em; white-space: nowrap; }
+body.pastel-course .learn-glossary button.learn-term {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 5px 8px; margin: -4px -8px 0;
+  font-weight: 750; border: none; text-align: start;
+}
+body.pastel-course .learn-term[aria-expanded="true"] { background: var(--learn-soft, #F2F6FF); }
+body.pastel-course :is(.learn-term, .learn-glossary > summary, .learn-popover-close, .learn-toast-close):focus-visible {
+  outline: 3px solid var(--learn-focus, #2563EB); outline-offset: 3px;
+}
+body.pastel-course .learn-popover {
+  position: fixed; z-index: 1500; box-sizing: border-box; width: min(360px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); overflow: auto; overscroll-behavior: contain;
+  padding: 18px; border: 1px solid var(--learn-popover-border, #D9E4F5); border-radius: 16px;
+  background: var(--learn-popover-bg, #FFFFFF); color: var(--learn-popover-color, #0F172A);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .18); text-align: start;
+}
+body.pastel-course :is(.learn-popover, .learn-toast)[hidden] { display: none !important; }
+body.pastel-course .learn-popover-top { display: flex; align-items: flex-start; gap: 12px; }
+body.pastel-course .learn-popover-heading { flex: 1; min-width: 0; }
+body.pastel-course .learn-popover-kicker { display: block; margin-bottom: 5px; color: var(--learn-muted, #475569); font-size: .78rem; font-weight: 600; }
+body.pastel-course .learn-popover h2 { margin: 0; font-size: 1.12rem; line-height: 1.45; color: inherit; }
+body.pastel-course .learn-popover p { margin: 12px 0 0; font-size: .95rem; line-height: 1.75; color: inherit; overflow-wrap: anywhere; }
+body.pastel-course .learn-popover .learn-popover-example {
+  padding: 12px; border: 1px solid var(--learn-border, #D9E4F5); border-radius: 12px;
+  background: var(--learn-soft, #F2F6FF);
+}
+body.pastel-course .learn-popover-example strong { display: block; margin-bottom: 4px; font-size: .8rem; color: var(--learn-muted, #475569); }
+body.pastel-course .learn-popover .learn-popover-english { font-size: .8rem; color: var(--learn-muted, #475569); }
+body.pastel-course :is(.learn-popover-close, .learn-toast-close) {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  min-width: 44px; min-height: 44px; padding: 8px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 10px; background: var(--learn-soft, #F2F6FF); color: inherit; font: inherit; cursor: pointer;
+}
+body.pastel-course .learn-popover-close { margin: -6px -6px 0 0; font-size: 1.4rem; }
+body.pastel-course .learn-toast {
+  position: fixed; inset: auto 18px max(18px, env(safe-area-inset-bottom)) auto; z-index: 1400;
+  display: flex; align-items: center; gap: 14px; box-sizing: border-box;
+  max-width: min(440px, calc(100vw - 36px)); padding: 12px 14px 12px 18px;
+  border: 1px solid var(--learn-toast-border, #D9E4F5); border-radius: 16px;
+  background: var(--learn-toast-bg, #F2F6FF); color: var(--learn-toast-color, #1E3A5F);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .14); font-size: .94rem; line-height: 1.65;
+}
+body.pastel-course .learn-toast-message { min-width: 0; overflow-wrap: anywhere; }
+body.pastel-course .learn-toast-close { background: var(--learn-toast-action, #FFFFFF); font-size: .85rem; }
+@media (hover: hover) and (pointer: fine) {
+  body.pastel-course button.learn-term:hover { background: var(--learn-soft, #F2F6FF); }
+  body.pastel-course :is(.learn-glossary > summary, .learn-popover-close, .learn-toast-close):hover { color: var(--learn-accent, #1E40AF); }
+}
+@media (max-width: 600px) {
+  body.pastel-course .learn-glossary-list { grid-template-columns: minmax(0, 1fr); }
+  body.pastel-course .learn-toast { inset-inline: 12px; max-width: none; bottom: max(12px, env(safe-area-inset-bottom)); }
+  body.pastel-course .learn-popover { padding: 16px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  body.pastel-course .learn-popover.learn-popover-enter { animation: learn-help-appear 150ms ease-out; }
+  body.pastel-course .learn-toast.learn-toast-enter { animation: learn-notice-appear 200ms ease-out; }
+  @keyframes learn-help-appear { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes learn-notice-appear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.pastel-course :is(.learn-term, .learn-popover, .learn-toast) { animation: none !important; transition: none !important; }
+}
+
+
+/* AI Bridge v11: small, action-driven learning cues. No automatic loops. */
+body.learn-motion-ready {
+  --learn-motion-accent: var(--pastel-accent, #2563eb);
+  --learn-motion-ring: rgb(37 99 235 / 24%);
+}
+
+/* The existing week-card hover remains in charge of card elevation. */
+body.learn-motion-ready .roadmap-week .roadmap-arrow {
+  display: inline-block;
+  transition: transform 160ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.learn-motion-ready .roadmap-week:not([aria-disabled="true"]):hover .roadmap-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+body.learn-motion-ready .roadmap-week:focus-visible .roadmap-arrow {
+  transform: translate(2px, -2px);
+}
+
+body.learn-motion-ready :where(
+  .study-core button:not(.learn-term),
+  #w11-sample button:not(.learn-term),
+  .quiz-modal-button,
+  .roadmap-week,
+  .study-actions a,
+  .w11s-complete-actions a
+):not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px) scale(.985);
+}
+
+body.learn-motion-ready .learn-motion-step {
+  animation: learn-motion-ring 360ms ease-out;
+}
+
+body.learn-motion-ready .learn-motion-stage {
+  border-radius: 12px;
+  animation: learn-motion-ring 280ms ease-out;
+}
+
+@keyframes learn-motion-ring {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  32% { box-shadow: 0 0 0 4px var(--learn-motion-ring); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Six blue specks stay beside the existing completion icon for 620ms. */
+body.learn-motion-ready .learn-celebration-anchor {
+  position: relative;
+  overflow: visible;
+}
+
+body.learn-motion-ready .learn-celebration-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+body.learn-motion-ready .learn-celebration-spark {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--learn-motion-accent);
+  opacity: 0;
+  pointer-events: none;
+  animation: learn-motion-spark 620ms cubic-bezier(.2, .7, .35, 1) both;
+}
+
+@keyframes learn-motion-spark {
+  0% { opacity: 0; transform: translate(0, 0) scale(.65); }
+  20% { opacity: .85; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--learn-motion-x), var(--learn-motion-y))
+      rotate(var(--learn-motion-turn)) scale(.65);
+  }
+}
+
+/* Text, final values, selected steps and completion messages remain visible. */
+@media (prefers-reduced-motion: reduce) {
+  body.learn-motion-ready .learn-motion-step,
+  body.learn-motion-ready .learn-motion-stage,
+  body.learn-motion-ready .learn-celebration-spark {
+    animation: none !important;
+    transition: none !important;
+  }
+  body.learn-motion-ready .learn-celebration-burst { display: none; }
+  body.learn-motion-ready .roadmap-week .roadmap-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+  body.learn-motion-ready :where(
+    .study-core button,
+    #w11-sample button,
+    .quiz-modal-button,
+    .roadmap-week,
+    .study-actions a,
+    .w11s-complete-actions a
+  ):active { transform: none !important; }
+}
+
+
+/* AI Bridge v11 — optional dark theme.
+   Place after pastel_theme.css and before the mobile-menu ownership rules.
+   Theme colors never recolor SVG geometry, RGB examples, or source-code tokens. */
+html[data-theme="light"] { color-scheme: light; background: #F8FAFC; }
+html[data-theme="dark"] { color-scheme: dark; background: #0B1220; }
+
+/* Shared tokens also support the new terminology popover and learning toast. */
+body.pastel-course {
+  --theme-link: #1E40AF;
+  --theme-focus: #2563EB;
+  --theme-field-line: #8198BC;
+  --theme-hover: #E6EEFF;
+  --theme-selected-line: #89A9E7;
+  --theme-disabled-bg: #E8EDF5;
+  --theme-disabled-text: #596B83;
+  --learn-surface: #FFFFFF;
+  --learn-soft: #F2F6FF;
+  --learn-border: #D9E4F5;
+  --learn-ink: #0F172A;
+  --learn-muted: #52617A;
+  --learn-accent: #1E40AF;
+  --learn-focus: #2563EB;
+  --learn-popover-bg: #FFFFFF;
+  --learn-popover-color: #0F172A;
+  --learn-popover-border: #D9E4F5;
+  --learn-toast-bg: #F2F6FF;
+  --learn-toast-color: #334D74;
+  --learn-toast-border: #D9E4F5;
+  --learn-toast-action: #FFFFFF;
+}
+
+/* Compact theme control: one icon, one click. */
+body.pastel-course .theme-control {
+  position: relative; display: inline-flex; flex: 0 0 auto; align-items: center;
+  width: auto; min-width: 0; max-width: 100%; color: var(--pastel-text);
+}
+body.pastel-course .theme-toggle {
+  box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; width: 36px; height: 36px; min-width: 36px; min-height: 36px;
+  margin: 0; padding: 8px; border: 1px solid var(--pastel-line); border-radius: 50%;
+  background: var(--pastel-blue); color: var(--theme-link); font: inherit; line-height: 1;
+  cursor: pointer; transition: background-color 160ms ease, transform 160ms ease;
+}
+body.pastel-course .theme-toggle svg { display: block; flex: 0 0 auto; width: 18px; height: 18px; }
+body.pastel-course .theme-toggle .theme-moon { display: none; }
+html[data-theme="dark"] body.pastel-course .theme-toggle .theme-sun { display: none; }
+html[data-theme="dark"] body.pastel-course .theme-toggle .theme-moon { display: block; }
+body.pastel-course .theme-toggle:focus-visible { outline: 3px solid var(--theme-focus); outline-offset: 3px; }
+body.pastel-course .theme-toggle:active { transform: scale(.95); }
+body.pastel-course .theme-storage-note {
+  position: absolute; z-index: 2; top: calc(100% + 8px); right: 0;
+  width: min(260px, calc(100vw - 40px)); margin: 0; padding: 10px 12px;
+  border: 1px solid var(--pastel-line); border-radius: 10px;
+  background: var(--pastel-white); color: var(--pastel-text);
+  box-shadow: var(--pastel-shadow); font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere;
+}
+body.pastel-course .theme-storage-note[hidden] { display: none !important; }
+body.pastel-course .site-header .top-controls { flex-wrap: wrap; min-width: 0; }
+body.pastel-course #mobileMenu .theme-control-mobile { margin-inline-start: auto; }
+body.pastel-course #mobileMenu .theme-toggle { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+body.pastel-course #mobileMenu .theme-storage-note { top: auto; bottom: calc(100% + 8px); }
+body.pastel-course #page-ch9 .w11s-toast-icon { background: var(--pastel-blue); color: var(--theme-link); }
+@media (hover: hover) and (pointer: fine) {
+  body.pastel-course .theme-toggle:hover { background: var(--theme-hover); transform: translateY(-1px); }
+}
+@media (pointer: coarse) {
+  body.pastel-course .theme-toggle { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+  body.pastel-course .site-header .brand-row { flex-wrap: wrap; }
+  body.pastel-course .site-header .top-controls { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.pastel-course .theme-toggle { transition: none; }
+  body.pastel-course .theme-toggle:is(:hover, :active) { transform: none; }
+}
+
+html[data-theme="dark"] body.pastel-course {
+  --pastel-white: #111C2F;
+  --pastel-page: #0B1220;
+  --pastel-ink: #E8EFFA;
+  --pastel-text: #CAD6E8;
+  --pastel-muted: #AABBD2;
+  --pastel-blue: #172840;
+  --pastel-line: #334A68;
+  --pastel-lavender: #29273F;
+  --pastel-mint: #15382B;
+  --pastel-peach: #3A2924;
+  --pastel-accent: #2563EB;
+  --pastel-accent-dark: #1E40AF;
+  --pastel-success: #B8EBCF;
+  --pastel-retry: #FFD6BC;
+  --pastel-shadow: 0 12px 24px -4px rgba(0,0,0,.30);
+  --theme-link: #A8CBFF;
+  --theme-focus: #9AC2FF;
+  --theme-field-line: #718CAC;
+  --theme-hover: #203753;
+  --theme-selected-line: #85AFE9;
+  --theme-disabled-bg: #202D40;
+  --theme-disabled-text: #9AAFCB;
+  --theme-answer-correct-border: #56836D;
+  --theme-answer-wrong-border: #A57861;
+  --theme-emphasis-border: #655E86;
+  --theme-emphasis-ink: #DDD3FF;
+  --learn-surface: #111C2F;
+  --learn-soft: #172840;
+  --learn-border: #334A68;
+  --learn-ink: #E8EFFA;
+  --learn-muted: #AABBD2;
+  --learn-accent: #A8CBFF;
+  --learn-focus: #9AC2FF;
+  --learn-popover-bg: #203753;
+  --learn-popover-color: #F4F7FD;
+  --learn-popover-border: #718CAC;
+  --learn-toast-bg: #203753;
+  --learn-toast-color: #F4F7FD;
+  --learn-toast-border: #718CAC;
+  --learn-toast-action: #2B486A;
+  --learn-motion-accent: #93B8FF;
+  --learn-motion-ring: rgb(147 184 255 / 30%);
+  --bg-header: #111C2F;
+  --bg-gray: #0B1220;
+  --dark-blue: #111C2F;
+  --dark-blue-soft: #172840;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.14);
+  --shadow-md: 0 6px 20px rgba(0,0,0,.18);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.24);
+  background: var(--pastel-page);
+  color: var(--pastel-ink);
+}
+html[data-theme="dark"] body.pastel-course :is(button,a,summary,input,select,textarea):focus-visible {
+  outline-color: var(--theme-focus);
+}
+html[data-theme="dark"] body.pastel-course .study-core :is(h1,h2,h3)[tabindex="-1"]:focus,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice h3:focus,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(h1,h2,h3)[tabindex="-1"]:focus { outline-color: var(--theme-focus); }
+html[data-theme="dark"] body.pastel-course ::selection { color: #FFFFFF; background: #285C9E; }
+html[data-theme="dark"] body.pastel-course :is(input,textarea)::placeholder { color: var(--pastel-muted); opacity: 1; }
+html[data-theme="dark"] body.pastel-course a:not([class]) { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course .course-refresh p { color: var(--pastel-text); }
+
+/* Header and drawer colors; final menu CSS retains all layout/visibility rules. */
+html[data-theme="dark"] body.pastel-course :is(.site-header,.footer,#mobileMenu) {
+  background: var(--pastel-white); color: var(--pastel-ink); border-color: var(--pastel-line);
+}
+html[data-theme="dark"] body.pastel-course .site-header { box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.brand-title,#brand-title),
+html[data-theme="dark"] body.pastel-course #mobileMenu #mobile-menu-title { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.brand-subtitle,.nav-shell),
+html[data-theme="dark"] body.pastel-course .footer { color: var(--pastel-muted); border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn,.lang-btn,.portfolio-return,.mobile-portfolio-link),
+html[data-theme="dark"] body.pastel-course .site-header #hamburgerBtn,
+html[data-theme="dark"] body.pastel-course #mobileMenuClose {
+  background: var(--pastel-blue); color: var(--pastel-text); border-color: var(--pastel-line);
+}
+html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn.active,.nav-btn[aria-current="page"],.lang-btn.active) {
+  color: var(--theme-link); background: var(--pastel-blue); border-color: var(--theme-selected-line);
+  box-shadow: inset 0 -2px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course #mobileMenu :is(.course-menu-heading,.mobile-lang) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course #mobileBackdrop { background: rgba(0,0,0,.62); }
+
+/* Home: ordinary steps and completion remain neutral. */
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-start,.home-assessment,.itbasics-intro,.itbasics-device,.itbasics-steps li,.itbasics-help,.roadmap-week,.roadmap-week.roadmap-break),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-device:nth-child(2n),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-steps li:nth-child(2n),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(.itpractice-device-help,.itpractice-done) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-help-panel,.itbasics-topic),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-step {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-help-panel > summary,.itbasics-topic > summary) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-ink);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(h1,h2,h3,h4,#home-language-label,.itbasics,.itbasics-topic summary strong,.itbasics-phrase,.week-name),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(.itpractice-step h3,.itpractice-done h3) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-lead,.home-reference-lead,.itbasics-note,.itbasics-topic-summary,.itpractice-tip,.itpractice-note,.itpractice-progress),
+html[data-theme="dark"] body.pastel-course #page-main .home-help-panel > summary > small { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-kicker,.itbasics-topic-number,.itbasics-expand,.itbasics-step-number,.week-index,.roadmap-arrow),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-glossary dt,
+html[data-theme="dark"] body.pastel-course #page-main .home-skip a,
+html[data-theme="dark"] body.pastel-course #page-main .home-help-panel > summary::after,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice summary { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.itbasics-block,.itbasics-glossary > div) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course #page-main .home-language-button {
+  color: var(--pastel-text); background: var(--pastel-white); border-color: var(--theme-field-line);
+}
+html[data-theme="dark"] body.pastel-course #page-main .home-language-button[aria-pressed="true"] {
+  color: #FFFFFF; background: var(--pastel-accent); border-color: var(--pastel-accent);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(input[type="text"],select) {
+  background: var(--pastel-white); color: var(--pastel-ink); border-color: var(--theme-field-line);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice input.itpractice-source { background: var(--pastel-blue); }
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button-secondary {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button:disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-feedback,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-feedback[data-kind] { color: var(--pastel-text); }
+
+/* Retained detailed lessons, including their dynamically created numerical cells. */
+html[data-theme="dark"] body.pastel-course .course-refresh .course-hero {
+  background: var(--pastel-blue) !important; border-color: var(--pastel-line) !important;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .course-hero :is(.hero-description,.hero-eyebrow) { color: var(--pastel-muted) !important; }
+html[data-theme="dark"] body.pastel-course .chapter-visual div span { color: var(--theme-link) !important; }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.card,.theory-card,.learning-section) {
+  background: var(--pastel-white) !important; border-color: var(--pastel-line) !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12) !important;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .card-tag { background: var(--pastel-blue) !important; color: var(--theme-link) !important; }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.theory-card h2,.theory-card h3,.w2-factor-card strong,.w2-timeline b,.w2-chat b) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel,.w2-factor-card,.w2-milestone-card,.w2-ext-card),
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel,.w2-factor-card,.w2-milestone-card,.w2-ext-card):nth-child(2n),
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel.highlight,.w2-compare-panel.is-bad,.w2-rule-box,.w2-chat,.w2-rule-output,.w2-callout,.w2-badge,.w2-milestone-year,.w2-nest,.colab-first-run),
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-nest .w2-nest,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-nest .w2-nest .w2-nest {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-rule-btn,.w2-option,.w2-reset-btn,.w3-copy-btn,.w5-bp-step,.w6-num-grid,.w7-check-item,.w9-reshape-grid) {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-rule-btn[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-step-nav a,.w2-letter,.w6-num-cell,.w6-num-cell.is-pos,.w6-num-cell.is-neg,.w6-num-cell.is-zero,.w6-num-cell.is-max,.w9-reshape-cell,.w9-reshape-error) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .w6-num-cell.is-max { border-color: var(--theme-selected-line); box-shadow: inset 0 0 0 1px var(--theme-selected-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-table,.w4-cm-table,.w5-logic-table) { background: var(--pastel-white); color: var(--pastel-text); }
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-table :is(th,td) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-table :is(thead th,tbody th,th.is-active-col,td.is-active-col),
+html[data-theme="dark"] body.pastel-course .course-refresh .w4-cm-table :is(td.is-good,td.is-bad),
+html[data-theme="dark"] body.pastel-course .course-refresh .w5-logic-table :is(th.is-active-col,td.is-active-col) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-question,.w2-quiz-footer,.w2-chat > div + div,.w2-timeline li) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-factor-card p,.w2-quiz-footer,.w3-copy-status,.w3-copy-status.is-error) { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w5-bp-step strong,.w3-copy-btn) { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child:hover {
+  background: var(--theme-hover) !important; border-color: var(--theme-selected-line) !important;
+}
+
+/* Eleven short lesson chapters use one neutral surface hierarchy. */
+html[data-theme="dark"] body.pastel-course :is(.study-header,.study-nav-number,.study-step-number,.study-icon,.study-card,.study-flow-step,.study-prediction,.study-output,.study-slider,.study-number-panel,.study-summary li,.study-caution,.study-feedback,.study-remaining,.study-done,.study-terms > span,.study-step-list > *,.study-matrix > span),
+html[data-theme="dark"] body.pastel-course :is(.study-grid-demo,.study-logic-grid) > *,
+html[data-theme="dark"] body.pastel-course .study-core :is(.study-takeaway,.study-formula),
+html[data-theme="dark"] body.pastel-course .study-done .study-icon,
+html[data-theme="dark"] body.pastel-course .study-terms > span:nth-child(2n),
+html[data-theme="dark"] body.pastel-course .study-logic-grid > [data-value],
+html[data-theme="dark"] body.pastel-course .study-feedback[data-kind="idle"] {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-panel,.study-more,.study-deep,.study-prediction-feedback,.study-option),
+html[data-theme="dark"] body.pastel-course .study-language button,
+html[data-theme="dark"] body.pastel-course .study-meta .study-badge,
+html[data-theme="dark"] body.pastel-course .study-nav button,
+html[data-theme="dark"] body.pastel-course .study-slider output,
+html[data-theme="dark"] body.pastel-course .study-card .study-icon,
+html[data-theme="dark"] body.pastel-course .study-matrix > span.is-missing {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-more > summary,.study-deep > summary,section.study-deep,.study-scenario-controls button),
+html[data-theme="dark"] body.pastel-course .study-option :is(.study-letter,.study-choice-letter) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .study-more > summary > span[aria-hidden="true"] { background: var(--pastel-white); }
+html[data-theme="dark"] body.pastel-course .study-language button[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav][aria-current="step"],
+html[data-theme="dark"] body.pastel-course .study-scenario-controls button[aria-pressed="true"] {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+  box-shadow: inset 0 -3px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course .study-option[aria-pressed="true"] { background: var(--pastel-blue); border-color: var(--theme-selected-line); }
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav]:is([aria-current="step"],[data-complete="true"]) :is(.study-nav-number,.study-step-number) {
+  background: var(--pastel-blue); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-meta,.study-progress strong,.study-help,.study-help[aria-expanded="true"],.study-reset,.study-question-number,.study-matrix-arrow,.study-flow-step:not(:last-child)::after,.study-more > summary::after),
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav][data-complete="true"]::after { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course :is(.study-card h3,.study-prediction h3,.study-output h3,.study-slider label,.study-question h3,.study-remaining h3,.study-done h3,.study-done p,.study-number,.study-more > summary strong,.study-deep-body > h3:first-child),
+html[data-theme="dark"] body.pastel-course .study-grid-demo > div > strong { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course :is(.study-number-caption,.study-number-panel p),
+html[data-theme="dark"] body.pastel-course .study-core .study-matrix-caption,
+html[data-theme="dark"] body.pastel-course .study-grid-demo > div > span:last-child { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course :is(.study-question,.study-more[open] > summary,.study-deep[open] > summary) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .study-secondary { background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course :is(.study-primary,.study-secondary):disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+/* Lavender remains limited to the question that introduces today's lesson. */
+html[data-theme="dark"] body.pastel-course .study-today { background: var(--pastel-lavender); border-color: var(--theme-emphasis-border); }
+html[data-theme="dark"] body.pastel-course .study-today > span,
+html[data-theme="dark"] body.pastel-course .study-today p { color: var(--theme-emphasis-ink); }
+
+/* Existing Week 11 sample and optional explanations. */
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s,.w11s-legacy) {
+  --w11s-ink: #E8EFFA; --w11s-muted: #AABBD2; --w11s-blue: #2563EB;
+  --w11s-line: #334A68; --w11s-green: #CAD6E8;
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-header,.w11s-duration,.w11s-section-icon,.w11s-review-scene,.w11s-concept,.w11s-token-stage,.w11s-chip,.w11s-number-chip,.w11s-complete,.w11s-remaining,.w11s-review-dot,.w11s-choice-letter,.w11s-legacy-note,.w11s-legacy-flow,.w11s-legacy-example),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-legacy-grid > * {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-panel,.w11s-legacy,.w11s-speech,.w11s-mood),
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-step-nav,.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) button,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-language-button {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-legacy > summary,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-word.is-changed,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-number {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-review-options button[aria-pressed="true"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav button[aria-current="step"] {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+  box-shadow: inset 0 -3px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [aria-current="step"] .w11s-step-number,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [data-complete="true"] .w11s-step-number {
+  background: var(--pastel-blue); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-language-button[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-button-secondary {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-button:disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-feedback {
+  background: var(--pastel-blue); border: 1px solid var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-concept h3,.w11s-token-stage h3,.w11s-token-stage > p,.w11s-question h3,.w11s-remaining h3,.w11s-legacy h2,.w11s-legacy h3,.w11s-legacy-section > summary),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-sentence,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-complete :is(h2,h3,p) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(.w11s-small-label,.w11s-change-hint,.w11s-example-note,.w11s-comparison-progress),
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-result-label,.w11s-result-label[data-mood],.w11s-legacy p,.w11s-legacy li,.w11s-legacy-body > p) { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-eyebrow,.w11s-help-button,.w11s-help-button[aria-expanded="true"],.w11s-flow-arrow,.w11s-quote,.w11s-comparison-progress strong,.w11s-change-hint > :first-child,.w11s-example-note > :first-child,.w11s-remaining > span,.w11s-legacy-section > summary::after),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-text-button,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [data-complete="true"]::after { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-question,.w11s-legacy-section,.w11s-legacy[open] > summary) { border-color: var(--pastel-line); }
+
+/* One consistent, high-contrast surface for help and non-blocking notices. */
+html[data-theme="dark"] body.pastel-course .study-tip,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip,
+html[data-theme="dark"] body.pastel-course .learn-popover {
+  background: var(--learn-popover-bg); border-color: var(--learn-popover-border); color: var(--learn-popover-color);
+}
+html[data-theme="dark"] body.pastel-course .study-tip::before,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip::before { background: var(--learn-popover-bg); border-color: var(--learn-popover-border); }
+html[data-theme="dark"] body.pastel-course .study-tip p,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip p { color: inherit; }
+html[data-theme="dark"] body.pastel-course :is(.study-toast,.learn-toast),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-toast {
+  background: var(--learn-toast-bg); border-color: var(--learn-toast-border); color: var(--learn-toast-color);
+}
+html[data-theme="dark"] body.pastel-course .study-toast button,
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-toast-close,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-toast-icon {
+  background: var(--learn-toast-action); border-color: var(--learn-toast-border); color: var(--learn-toast-color);
+}
+
+/* Dialog label colors inherit the answer box only where an answer is shown. */
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-ink);
+  box-shadow: 0 24px 70px rgba(0,0,0,.38);
+}
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog::backdrop { background: rgba(0,0,0,.62); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(.quiz-modal-close,.quiz-modal-answer-box,.quiz-modal-secondary) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(h2,.quiz-modal-answer,.quiz-modal-explanation-label) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog .quiz-modal-context { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog .quiz-modal-answer-box :is(.quiz-modal-answer-label,.quiz-modal-answer,#quiz-modal-answer) { color: inherit; }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="complete"] .quiz-modal-icon { color: var(--theme-link); }
+
+/* Hover never washes an answered option back to the ordinary blue surface. */
+@media (hover: hover) and (pointer: fine) {
+  html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn,.lang-btn,.portfolio-return,.mobile-portfolio-link):hover,
+  html[data-theme="dark"] body.pastel-course #page-main .home-language-button:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button-secondary:not(:disabled):hover,
+  html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child:hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-step-nav a,.w2-reset-btn,.w3-copy-btn,.w7-check-item):hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh .w2-rule-btn:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh .w2-option:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course :is(.study-nav button,.study-scenario-controls button,.study-more > summary):hover,
+  html[data-theme="dark"] body.pastel-course .study-secondary:not(:disabled):hover,
+  html[data-theme="dark"] body.pastel-course .study-option:not([aria-pressed="true"]):not([data-state="correct"]):not([data-state="wrong"]):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-step-nav button,.w11s-review-options button):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(.w11s-language-button:not([aria-pressed="true"]),.w11s-button-secondary:not(:disabled)):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-meaning-options,.w11s-quiz-choices) button:not([data-state="correct"]):not([data-state="wrong"]):hover,
+  html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(.quiz-modal-close,.quiz-modal-secondary):hover {
+    background: var(--theme-hover); border-color: var(--theme-selected-line); color: var(--theme-link);
+  }
+}
+
+/* Only graded answers receive green/peach. Keep this after hover rules. */
+html[data-theme="dark"] body.pastel-course .study-question .study-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-state="correct"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-result="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-review-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-question .w11s-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-meaning-options button[data-state="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-quiz-choices button[data-state="correct"],
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-option[aria-pressed="true"]:not(.is-wrong),
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-quiz-feedback:not(.is-wrong),
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="correct"] .quiz-modal-answer-box {
+  background: var(--pastel-mint); border: 1px solid var(--theme-answer-correct-border); color: var(--pastel-success);
+}
+html[data-theme="dark"] body.pastel-course .study-question .study-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-result="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-review-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-question .w11s-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-meaning-options button[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-quiz-choices button[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-option[aria-pressed="true"].is-wrong,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-quiz-feedback.is-wrong,
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="wrong"] .quiz-modal-answer-box {
+  background: var(--pastel-peach); border: 1px solid var(--theme-answer-wrong-border); color: var(--pastel-retry);
+}
+html[data-theme="dark"] body.pastel-course .study-core .study-feedback[id$="-activity-done"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-token-feedback,
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-token-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="complete"] .quiz-modal-answer-box {
+  background: var(--pastel-blue); border: 1px solid var(--pastel-line); color: var(--pastel-text);
+}
+
+/* These visualizations contain explicitly authored light plot backgrounds,
+   labels, category colors, and RGB values. Keep the canvas light and exact. */
+html[data-theme="dark"] body.pastel-course .study-chart,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-curve {
+  background: #FFFFFF; border-color: var(--pastel-line); color: #334155; color-scheme: light;
+}
+html[data-theme="dark"] body.pastel-course .study-picture-demo,
+html[data-theme="dark"] body.pastel-course .itbasics-device svg {
+  background: #F8FAFC; border-radius: 12px; color-scheme: light;
+}
+
+/* v13: glossary inset, compact practice choices, separated explanations. */
+body.pastel-course .learn-glossary > p.learn-glossary-intro,
+body.pastel-course #page-main .learn-glossary > p.learn-glossary-intro,
+body.pastel-course #page-ch9 .learn-glossary > p.learn-glossary-intro {
+  margin: 0;
+  padding: 4px 20px 16px;
+}
+body.pastel-course .learn-glossary > summary,
+body.pastel-course .learn-glossary > .learn-glossary-list {
+  padding-inline: 20px;
+}
+
+/* Only practice choices are compact; graded quiz controls keep their layout. */
+body.pastel-course .study-core [data-study-panel="try"] .study-prediction-choices,
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls,
+body.pastel-course #study-w5-backprop-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+}
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls {
+  margin: 0 0 20px;
+}
+body.pastel-course .study-core [data-study-panel="try"] .study-option,
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  min-width: 88px;
+  min-height: 40px;
+  padding: 8px 12px;
+  gap: 7px;
+  border-radius: 9px;
+  font-size: .9rem !important;
+  line-height: 1.5;
+  justify-content: center;
+  text-align: start;
+}
+body.pastel-course #study-w5-backprop-controls > button {
+  min-height: 44px;
+}
+body.pastel-course .study-core .study-prediction > p.study-prediction-feedback {
+  margin: 16px 0 0;
+  padding: 13px 16px;
+  border-radius: 11px;
+}
+
+/* A white question area makes the pale-blue answer explanation distinct. */
+html:not([data-theme="dark"]) body.pastel-course .study-core [data-study-panel="try"] .study-prediction {
+  background: #FFFFFF;
+}
+html:not([data-theme="dark"]) body.pastel-course .study-core .study-prediction > p.study-prediction-feedback {
+  background: #F2F6FF;
+  border: 2px solid #D9E4F5;
+  color: #334D74;
+}
+html:not([data-theme="dark"]) body.pastel-course .study-core [data-study-panel="try"] .study-output {
+  background: #F2F6FF;
+  border: 2px solid #D9E4F5;
+}
+
+/* The Week 11 activity uses its own controls, with the same compact rhythm. */
+body.pastel-course #page-ch9 .w11s-review-options,
+body.pastel-course #page-ch9 .w11s-meaning-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body.pastel-course #page-ch9 .w11s-review-options > button,
+body.pastel-course #page-ch9 .w11s-meaning-options > button {
+  flex: 0 1 auto;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  min-width: 88px;
+  min-height: 40px;
+  padding: 8px 12px;
+  gap: 8px;
+  font-size: .9rem;
+  line-height: 1.5;
+  border-radius: 9px;
+}
+body.pastel-course #page-ch9 .w11s-meaning-options .w11s-answer-face { font-size: 1.2rem; }
+body.pastel-course #page-ch9 .w11s #w11s-review-feedback { margin: 16px 0 0; }
+
+@media (max-width: 600px) {
+  body.pastel-course .learn-glossary > p.learn-glossary-intro,
+  body.pastel-course #page-main .learn-glossary > p.learn-glossary-intro,
+  body.pastel-course #page-ch9 .learn-glossary > p.learn-glossary-intro {
+    padding-inline: 16px;
+  }
+  body.pastel-course .learn-glossary > summary,
+  body.pastel-course .learn-glossary > .learn-glossary-list {
+    padding-inline: 16px;
+  }
+}
+@media (max-width: 600px), (pointer: coarse) {
+  body.pastel-course .study-core [data-study-panel="try"] .study-option,
+  body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button,
+  body.pastel-course #page-ch9 .w11s-review-options > button,
+  body.pastel-course #page-ch9 .w11s-meaning-options > button {
+    min-height: 44px;
+  }
+}
+
+
+/* AI Bridge v14: explicit selection cues, without changing answer colors.
+   Append after the v13 component rules, before the final mobile-menu rules. */
+body.pastel-course {
+  --course-selection-line: #2563EB;
+  --course-selection-ink: #1E40AF;
+}
+html[data-theme="dark"] body.pastel-course {
+  --course-selection-line: var(--theme-selected-line);
+  --course-selection-ink: var(--theme-link);
+}
+
+/* Reserve a small end slot in every state, so selecting does not change width.
+   Only the padding changes; compact practice buttons retain their v13 sizing. */
+html body.pastel-course .study-core .study-option,
+html body.pastel-course .study-core [data-study-panel="try"] .study-option,
+html body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button,
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button {
+  position: relative;
+  padding-inline-end: 32px;
+}
+html body.pastel-course .study-core .study-nav > button[data-study-nav],
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav] {
+  padding-inline-end: 32px;
+}
+
+/* A cobalt boundary and a shape identify ungraded selections. Graded choices
+   are explicitly excluded, preserving mint/peach and their result semantics. */
+html body.pastel-course .study-core .study-option[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"])),
+html body.pastel-course .study-core .study-scenario-controls > button[aria-pressed="true"],
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"])),
+html body.pastel-course .study-core .study-nav > button[data-study-nav][aria-current="step"],
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][aria-current="step"] {
+  background: var(--pastel-blue);
+  border-color: var(--course-selection-line);
+  color: var(--course-selection-ink);
+  box-shadow: inset 0 0 0 1px var(--course-selection-line);
+}
+
+/* The check is drawn with an empty pseudo-element. aria-pressed/aria-current
+   remain the accessible state; generated text does not alter button names.
+   Step navigation keeps the check exclusively for completed steps. */
+html body.pastel-course .study-core .study-option[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"]))::after,
+html body.pastel-course .study-core .study-scenario-controls > button[aria-pressed="true"]::after,
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"]))::after,
+html body.pastel-course .study-core .study-nav > button[data-study-nav][data-complete="true"]::after,
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][data-complete="true"]::after {
+  content: "";
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  inset: auto;
+  inset-inline-end: 12px;
+  top: 50%;
+  width: 7px;
+  height: 12px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  color: var(--course-selection-line);
+  background: transparent;
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* Completed noncurrent steps keep a neutral completion check. A completed
+   current step has one cobalt check; an incomplete current step has no check. */
+html body.pastel-course .study-core .study-nav > button[data-study-nav][data-complete="true"]:not([aria-current="step"])::after,
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][data-complete="true"]:not([aria-current="step"])::after {
+  color: var(--pastel-muted);
+}
+
+/* The home W08 note has its own legacy text color; parent inheritance alone
+   cannot replace it when the background switches to the dark blue surface. */
+html[data-theme="dark"] body.pastel-course #page-main .roadmap-break > small {
+  color: var(--pastel-muted);
+}
+
+/* v14: readable mobile lesson steps and a full-width Week 11 example. */
+@media (max-width: 800px) {
+  body.pastel-course .study-nav > button,
+  body.pastel-course #page-ch9 .w11s-step-nav > button {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-inline-end: 32px;
+  }
+
+  body.pastel-course .study-nav > button > :last-child,
+  body.pastel-course #page-ch9 .w11s-step-nav > button > :last-child {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  body.pastel-course #page-ch9 .w11s .w11s-change-hint,
+  body.pastel-course #page-ch9 .w11s-result-label {
+    font-size: .95rem;
+    line-height: 1.6;
+  }
+
+  body.pastel-course #page-ch9 .w11s .w11s-change-hint {
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  body.pastel-course #page-ch9 .w11s-change-hint > :first-child {
+    flex: 0 0 auto;
+  }
+
+  body.pastel-course #page-ch9 .w11s-change-hint > :last-child,
+  body.pastel-course #page-ch9 .w11s-result-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+/* Use the available row for the sentence; the illustration follows in source order. */
+@media (max-width: 600px) {
+  body.pastel-course #page-ch9 .w11s-review-scene {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  body.pastel-course #page-ch9 .w11s-speech {
+    width: 100%;
+    min-width: 0;
+  }
+
+  body.pastel-course #page-ch9 .w11s-food-figure {
+    justify-self: center;
+    width: 160px;
+    max-width: 100%;
+  }
+
+  body.pastel-course #page-ch9 .w11s-mood {
+    top: 70px;
+    right: 0;
+  }
+}
+
+/* Narrow phones give each step a readable label without shrinking its text. */
+@media (max-width: 480px) {
+  body.pastel-course .study-nav,
+  body.pastel-course #page-ch9 .w11s-step-nav {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  body.pastel-course .study-nav > button,
+  body.pastel-course #page-ch9 .w11s-step-nav > button {
+    flex-direction: row;
+    align-items: center;
+    min-height: 52px;
+    padding: 10px 12px;
+    padding-inline-end: 32px;
+    gap: 10px;
+  }
+
+  body.pastel-course .study-nav :is(.study-nav-number, .study-step-number),
+  body.pastel-course #page-ch9 .w11s-step-number {
+    font-size: .875rem;
+  }
+}
+
+/* Quiz results: keep the close row visible while the explanation scrolls.
+   Append after the existing course/theme styles. Colors inherit both themes. */
+#quiz-result-dialog {
+  padding: 0;
+  overflow: hidden;
+}
+/* Do not give a closed native dialog a display override. */
+#quiz-result-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+#quiz-result-dialog .quiz-modal-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 1.25rem .5rem;
+  background: inherit;
+}
+#quiz-result-dialog .quiz-modal-close {
+  position: static;
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+}
+#quiz-result-dialog .quiz-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 1.5rem 1.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scroll-padding-block: .5rem;
+}
+#quiz-result-dialog .quiz-modal-scroll:focus-visible {
+  outline: 3px solid var(--learn-focus, #2563EB);
+  outline-offset: -3px;
+}
+#quiz-result-dialog .quiz-modal-context { margin: 0 0 .35rem; }
+#quiz-result-dialog h2 { margin-right: 0; }
+#quiz-result-dialog .quiz-modal-body { margin-bottom: 0; }
+#quiz-result-dialog .quiz-modal-actions {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--pastel-line, #D9E4F5);
+  background: inherit;
+  /* At unusually short heights or very large text, the actions can scroll
+     independently while the 44px close button above remains available. */
+  max-height: 42vh;
+  max-height: 42dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+#quiz-result-dialog .quiz-modal-actions .quiz-modal-button { flex-shrink: 0; }
+@media (max-width: 380px) {
+  #quiz-result-dialog .quiz-modal-header { padding-inline: .75rem; }
+  #quiz-result-dialog .quiz-modal-scroll { padding-inline: 1rem; }
+  #quiz-result-dialog .quiz-modal-actions {
+    padding-inline: 1rem;
+    /* The inherited small-screen direction is column-reverse. Keep that
+       column from wrapping sideways when its available height is limited. */
+    flex-wrap: nowrap;
+  }
+}
+@media (max-height: 420px) {
+  #quiz-result-dialog .quiz-modal-header { padding-block: .4rem; }
+  #quiz-result-dialog .quiz-modal-scroll { padding-bottom: .75rem; }
+  #quiz-result-dialog .quiz-modal-actions { padding-block: .65rem; }
+}
+
 /* Course navigation owns its mobile breakpoint and wins over legacy inline styles. */
 #hamburgerBtn { display: none; }
 #mobileMenu[hidden], #mobileBackdrop[hidden] { display: none !important; }

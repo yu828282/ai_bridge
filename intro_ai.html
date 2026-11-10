@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Bridge - Learn AI Basics</title>
+    <script>
+/* Run in <head>, before any stylesheet. Light is the intentional default. */
+(function () {
+  'use strict';
+  var preference = 'light';
+  var readable = true;
+  try {
+    var stored = window.localStorage.getItem('aiBridge.theme.v1');
+    stored = typeof stored === 'string' ? stored.trim().toLowerCase() : '';
+    if (stored === 'light' || stored === 'dark' || stored === 'system') preference = stored;
+  } catch (_) {
+    readable = false;
+  }
+  var systemDark = false;
+  if (preference === 'system') {
+    try { systemDark = !!window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (_) {}
+  }
+  var theme = preference === 'dark' || (preference === 'system' && systemDark) ? 'dark' : 'light';
+  var root = document.documentElement;
+  root.setAttribute('data-theme-preference', preference);
+  root.setAttribute('data-theme', theme);
+  root.style.colorScheme = theme;
+  window.__aiBridgeThemeBoot = { preference: preference, theme: theme, storageReadable: readable };
+}());
+
+</script>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/intro_ai.css">
 
@@ -2287,6 +2313,1017 @@ body.pastel-course #quiz-result-dialog .quiz-modal-answer-box { border: 1px soli
 body.pastel-course #quiz-result-dialog[data-result="correct"] .quiz-modal-answer-box { border-color: #D3E6DD; }
 body.pastel-course #quiz-result-dialog[data-result="wrong"] .quiz-modal-answer-box { border-color: #EEDDD0; }
 
+
+/* Readable word help and one shared notice surface. */
+body.pastel-course .learn-visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+body.pastel-course .learn-glossary {
+  margin: 16px 0 24px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 16px; background: var(--learn-soft, #F2F6FF); color: var(--learn-ink, #0F172A);
+}
+body.pastel-course .learn-glossary > summary {
+  display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 13px 18px;
+  cursor: pointer; list-style: none; font-size: .95rem; font-weight: 700; color: inherit;
+}
+body.pastel-course .learn-glossary > summary::-webkit-details-marker { display: none; }
+body.pastel-course .learn-glossary > summary::after { content: '+'; margin-inline-start: auto; font-size: 1.25rem; }
+body.pastel-course .learn-glossary[open] > summary::after { content: '−'; }
+body.pastel-course .learn-glossary-intro { margin: 0 18px 14px; color: var(--learn-muted, #475569); font-size: .9rem; line-height: 1.7; }
+body.pastel-course .learn-glossary-list {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+  margin: 0; padding: 0 18px 18px; list-style: none;
+}
+body.pastel-course .learn-glossary-list > li {
+  margin: 0; padding: 12px 14px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 12px; background: var(--learn-surface, #FFFFFF); min-width: 0;
+}
+body.pastel-course .learn-glossary-list p { margin: 6px 0 0; font-size: .9rem; line-height: 1.7; color: var(--learn-muted, #475569); }
+body.pastel-course button.learn-term {
+  display: inline; width: auto; min-width: 0; min-height: 0; margin: 0 .06em; padding: .08em .13em;
+  border: 0; border-bottom: 1px dotted currentColor; border-radius: 4px;
+  background: transparent; color: var(--learn-accent, #1E40AF); font: inherit; line-height: inherit;
+  font-weight: 600; text-align: inherit; white-space: normal; vertical-align: baseline; cursor: help;
+  text-decoration: none; box-shadow: none; transform: none;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+body.pastel-course button.learn-term::after { content: ' ⓘ'; font-size: .75em; white-space: nowrap; }
+body.pastel-course .learn-glossary button.learn-term {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 5px 8px; margin: -4px -8px 0;
+  font-weight: 750; border: none; text-align: start;
+}
+body.pastel-course .learn-term[aria-expanded="true"] { background: var(--learn-soft, #F2F6FF); }
+body.pastel-course :is(.learn-term, .learn-glossary > summary, .learn-popover-close, .learn-toast-close):focus-visible {
+  outline: 3px solid var(--learn-focus, #2563EB); outline-offset: 3px;
+}
+body.pastel-course .learn-popover {
+  position: fixed; z-index: 1500; box-sizing: border-box; width: min(360px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); overflow: auto; overscroll-behavior: contain;
+  padding: 18px; border: 1px solid var(--learn-popover-border, #D9E4F5); border-radius: 16px;
+  background: var(--learn-popover-bg, #FFFFFF); color: var(--learn-popover-color, #0F172A);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .18); text-align: start;
+}
+body.pastel-course :is(.learn-popover, .learn-toast)[hidden] { display: none !important; }
+body.pastel-course .learn-popover-top { display: flex; align-items: flex-start; gap: 12px; }
+body.pastel-course .learn-popover-heading { flex: 1; min-width: 0; }
+body.pastel-course .learn-popover-kicker { display: block; margin-bottom: 5px; color: var(--learn-muted, #475569); font-size: .78rem; font-weight: 600; }
+body.pastel-course .learn-popover h2 { margin: 0; font-size: 1.12rem; line-height: 1.45; color: inherit; }
+body.pastel-course .learn-popover p { margin: 12px 0 0; font-size: .95rem; line-height: 1.75; color: inherit; overflow-wrap: anywhere; }
+body.pastel-course .learn-popover .learn-popover-example {
+  padding: 12px; border: 1px solid var(--learn-border, #D9E4F5); border-radius: 12px;
+  background: var(--learn-soft, #F2F6FF);
+}
+body.pastel-course .learn-popover-example strong { display: block; margin-bottom: 4px; font-size: .8rem; color: var(--learn-muted, #475569); }
+body.pastel-course .learn-popover .learn-popover-english { font-size: .8rem; color: var(--learn-muted, #475569); }
+body.pastel-course :is(.learn-popover-close, .learn-toast-close) {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  min-width: 44px; min-height: 44px; padding: 8px; border: 1px solid var(--learn-border, #D9E4F5);
+  border-radius: 10px; background: var(--learn-soft, #F2F6FF); color: inherit; font: inherit; cursor: pointer;
+}
+body.pastel-course .learn-popover-close { margin: -6px -6px 0 0; font-size: 1.4rem; }
+body.pastel-course .learn-toast {
+  position: fixed; inset: auto 18px max(18px, env(safe-area-inset-bottom)) auto; z-index: 1400;
+  display: flex; align-items: center; gap: 14px; box-sizing: border-box;
+  max-width: min(440px, calc(100vw - 36px)); padding: 12px 14px 12px 18px;
+  border: 1px solid var(--learn-toast-border, #D9E4F5); border-radius: 16px;
+  background: var(--learn-toast-bg, #F2F6FF); color: var(--learn-toast-color, #1E3A5F);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .14); font-size: .94rem; line-height: 1.65;
+}
+body.pastel-course .learn-toast-message { min-width: 0; overflow-wrap: anywhere; }
+body.pastel-course .learn-toast-close { background: var(--learn-toast-action, #FFFFFF); font-size: .85rem; }
+@media (hover: hover) and (pointer: fine) {
+  body.pastel-course button.learn-term:hover { background: var(--learn-soft, #F2F6FF); }
+  body.pastel-course :is(.learn-glossary > summary, .learn-popover-close, .learn-toast-close):hover { color: var(--learn-accent, #1E40AF); }
+}
+@media (max-width: 600px) {
+  body.pastel-course .learn-glossary-list { grid-template-columns: minmax(0, 1fr); }
+  body.pastel-course .learn-toast { inset-inline: 12px; max-width: none; bottom: max(12px, env(safe-area-inset-bottom)); }
+  body.pastel-course .learn-popover { padding: 16px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  body.pastel-course .learn-popover.learn-popover-enter { animation: learn-help-appear 150ms ease-out; }
+  body.pastel-course .learn-toast.learn-toast-enter { animation: learn-notice-appear 200ms ease-out; }
+  @keyframes learn-help-appear { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes learn-notice-appear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.pastel-course :is(.learn-term, .learn-popover, .learn-toast) { animation: none !important; transition: none !important; }
+}
+
+
+/* AI Bridge v11: small, action-driven learning cues. No automatic loops. */
+body.learn-motion-ready {
+  --learn-motion-accent: var(--pastel-accent, #2563eb);
+  --learn-motion-ring: rgb(37 99 235 / 24%);
+}
+
+/* The existing week-card hover remains in charge of card elevation. */
+body.learn-motion-ready .roadmap-week .roadmap-arrow {
+  display: inline-block;
+  transition: transform 160ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.learn-motion-ready .roadmap-week:not([aria-disabled="true"]):hover .roadmap-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+body.learn-motion-ready .roadmap-week:focus-visible .roadmap-arrow {
+  transform: translate(2px, -2px);
+}
+
+body.learn-motion-ready :where(
+  .study-core button:not(.learn-term),
+  #w11-sample button:not(.learn-term),
+  .quiz-modal-button,
+  .roadmap-week,
+  .study-actions a,
+  .w11s-complete-actions a
+):not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px) scale(.985);
+}
+
+body.learn-motion-ready .learn-motion-step {
+  animation: learn-motion-ring 360ms ease-out;
+}
+
+body.learn-motion-ready .learn-motion-stage {
+  border-radius: 12px;
+  animation: learn-motion-ring 280ms ease-out;
+}
+
+@keyframes learn-motion-ring {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  32% { box-shadow: 0 0 0 4px var(--learn-motion-ring); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Six blue specks stay beside the existing completion icon for 620ms. */
+body.learn-motion-ready .learn-celebration-anchor {
+  position: relative;
+  overflow: visible;
+}
+
+body.learn-motion-ready .learn-celebration-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+body.learn-motion-ready .learn-celebration-spark {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--learn-motion-accent);
+  opacity: 0;
+  pointer-events: none;
+  animation: learn-motion-spark 620ms cubic-bezier(.2, .7, .35, 1) both;
+}
+
+@keyframes learn-motion-spark {
+  0% { opacity: 0; transform: translate(0, 0) scale(.65); }
+  20% { opacity: .85; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--learn-motion-x), var(--learn-motion-y))
+      rotate(var(--learn-motion-turn)) scale(.65);
+  }
+}
+
+/* Text, final values, selected steps and completion messages remain visible. */
+@media (prefers-reduced-motion: reduce) {
+  body.learn-motion-ready .learn-motion-step,
+  body.learn-motion-ready .learn-motion-stage,
+  body.learn-motion-ready .learn-celebration-spark {
+    animation: none !important;
+    transition: none !important;
+  }
+  body.learn-motion-ready .learn-celebration-burst { display: none; }
+  body.learn-motion-ready .roadmap-week .roadmap-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+  body.learn-motion-ready :where(
+    .study-core button,
+    #w11-sample button,
+    .quiz-modal-button,
+    .roadmap-week,
+    .study-actions a,
+    .w11s-complete-actions a
+  ):active { transform: none !important; }
+}
+
+
+/* AI Bridge v11 — optional dark theme.
+   Place after pastel_theme.css and before the mobile-menu ownership rules.
+   Theme colors never recolor SVG geometry, RGB examples, or source-code tokens. */
+html[data-theme="light"] { color-scheme: light; background: #F8FAFC; }
+html[data-theme="dark"] { color-scheme: dark; background: #0B1220; }
+
+/* Shared tokens also support the new terminology popover and learning toast. */
+body.pastel-course {
+  --theme-link: #1E40AF;
+  --theme-focus: #2563EB;
+  --theme-field-line: #8198BC;
+  --theme-hover: #E6EEFF;
+  --theme-selected-line: #89A9E7;
+  --theme-disabled-bg: #E8EDF5;
+  --theme-disabled-text: #596B83;
+  --learn-surface: #FFFFFF;
+  --learn-soft: #F2F6FF;
+  --learn-border: #D9E4F5;
+  --learn-ink: #0F172A;
+  --learn-muted: #52617A;
+  --learn-accent: #1E40AF;
+  --learn-focus: #2563EB;
+  --learn-popover-bg: #FFFFFF;
+  --learn-popover-color: #0F172A;
+  --learn-popover-border: #D9E4F5;
+  --learn-toast-bg: #F2F6FF;
+  --learn-toast-color: #334D74;
+  --learn-toast-border: #D9E4F5;
+  --learn-toast-action: #FFFFFF;
+}
+
+/* Compact theme control: one icon, one click. */
+body.pastel-course .theme-control {
+  position: relative; display: inline-flex; flex: 0 0 auto; align-items: center;
+  width: auto; min-width: 0; max-width: 100%; color: var(--pastel-text);
+}
+body.pastel-course .theme-toggle {
+  box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; width: 36px; height: 36px; min-width: 36px; min-height: 36px;
+  margin: 0; padding: 8px; border: 1px solid var(--pastel-line); border-radius: 50%;
+  background: var(--pastel-blue); color: var(--theme-link); font: inherit; line-height: 1;
+  cursor: pointer; transition: background-color 160ms ease, transform 160ms ease;
+}
+body.pastel-course .theme-toggle svg { display: block; flex: 0 0 auto; width: 18px; height: 18px; }
+body.pastel-course .theme-toggle .theme-moon { display: none; }
+html[data-theme="dark"] body.pastel-course .theme-toggle .theme-sun { display: none; }
+html[data-theme="dark"] body.pastel-course .theme-toggle .theme-moon { display: block; }
+body.pastel-course .theme-toggle:focus-visible { outline: 3px solid var(--theme-focus); outline-offset: 3px; }
+body.pastel-course .theme-toggle:active { transform: scale(.95); }
+body.pastel-course .theme-storage-note {
+  position: absolute; z-index: 2; top: calc(100% + 8px); right: 0;
+  width: min(260px, calc(100vw - 40px)); margin: 0; padding: 10px 12px;
+  border: 1px solid var(--pastel-line); border-radius: 10px;
+  background: var(--pastel-white); color: var(--pastel-text);
+  box-shadow: var(--pastel-shadow); font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere;
+}
+body.pastel-course .theme-storage-note[hidden] { display: none !important; }
+body.pastel-course .site-header .top-controls { flex-wrap: wrap; min-width: 0; }
+body.pastel-course #mobileMenu .theme-control-mobile { margin-inline-start: auto; }
+body.pastel-course #mobileMenu .theme-toggle { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+body.pastel-course #mobileMenu .theme-storage-note { top: auto; bottom: calc(100% + 8px); }
+body.pastel-course #page-ch9 .w11s-toast-icon { background: var(--pastel-blue); color: var(--theme-link); }
+@media (hover: hover) and (pointer: fine) {
+  body.pastel-course .theme-toggle:hover { background: var(--theme-hover); transform: translateY(-1px); }
+}
+@media (pointer: coarse) {
+  body.pastel-course .theme-toggle { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+  body.pastel-course .site-header .brand-row { flex-wrap: wrap; }
+  body.pastel-course .site-header .top-controls { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.pastel-course .theme-toggle { transition: none; }
+  body.pastel-course .theme-toggle:is(:hover, :active) { transform: none; }
+}
+
+html[data-theme="dark"] body.pastel-course {
+  --pastel-white: #111C2F;
+  --pastel-page: #0B1220;
+  --pastel-ink: #E8EFFA;
+  --pastel-text: #CAD6E8;
+  --pastel-muted: #AABBD2;
+  --pastel-blue: #172840;
+  --pastel-line: #334A68;
+  --pastel-lavender: #29273F;
+  --pastel-mint: #15382B;
+  --pastel-peach: #3A2924;
+  --pastel-accent: #2563EB;
+  --pastel-accent-dark: #1E40AF;
+  --pastel-success: #B8EBCF;
+  --pastel-retry: #FFD6BC;
+  --pastel-shadow: 0 12px 24px -4px rgba(0,0,0,.30);
+  --theme-link: #A8CBFF;
+  --theme-focus: #9AC2FF;
+  --theme-field-line: #718CAC;
+  --theme-hover: #203753;
+  --theme-selected-line: #85AFE9;
+  --theme-disabled-bg: #202D40;
+  --theme-disabled-text: #9AAFCB;
+  --theme-answer-correct-border: #56836D;
+  --theme-answer-wrong-border: #A57861;
+  --theme-emphasis-border: #655E86;
+  --theme-emphasis-ink: #DDD3FF;
+  --learn-surface: #111C2F;
+  --learn-soft: #172840;
+  --learn-border: #334A68;
+  --learn-ink: #E8EFFA;
+  --learn-muted: #AABBD2;
+  --learn-accent: #A8CBFF;
+  --learn-focus: #9AC2FF;
+  --learn-popover-bg: #203753;
+  --learn-popover-color: #F4F7FD;
+  --learn-popover-border: #718CAC;
+  --learn-toast-bg: #203753;
+  --learn-toast-color: #F4F7FD;
+  --learn-toast-border: #718CAC;
+  --learn-toast-action: #2B486A;
+  --learn-motion-accent: #93B8FF;
+  --learn-motion-ring: rgb(147 184 255 / 30%);
+  --bg-header: #111C2F;
+  --bg-gray: #0B1220;
+  --dark-blue: #111C2F;
+  --dark-blue-soft: #172840;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.14);
+  --shadow-md: 0 6px 20px rgba(0,0,0,.18);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.24);
+  background: var(--pastel-page);
+  color: var(--pastel-ink);
+}
+html[data-theme="dark"] body.pastel-course :is(button,a,summary,input,select,textarea):focus-visible {
+  outline-color: var(--theme-focus);
+}
+html[data-theme="dark"] body.pastel-course .study-core :is(h1,h2,h3)[tabindex="-1"]:focus,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice h3:focus,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(h1,h2,h3)[tabindex="-1"]:focus { outline-color: var(--theme-focus); }
+html[data-theme="dark"] body.pastel-course ::selection { color: #FFFFFF; background: #285C9E; }
+html[data-theme="dark"] body.pastel-course :is(input,textarea)::placeholder { color: var(--pastel-muted); opacity: 1; }
+html[data-theme="dark"] body.pastel-course a:not([class]) { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course .course-refresh p { color: var(--pastel-text); }
+
+/* Header and drawer colors; final menu CSS retains all layout/visibility rules. */
+html[data-theme="dark"] body.pastel-course :is(.site-header,.footer,#mobileMenu) {
+  background: var(--pastel-white); color: var(--pastel-ink); border-color: var(--pastel-line);
+}
+html[data-theme="dark"] body.pastel-course .site-header { box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.brand-title,#brand-title),
+html[data-theme="dark"] body.pastel-course #mobileMenu #mobile-menu-title { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.brand-subtitle,.nav-shell),
+html[data-theme="dark"] body.pastel-course .footer { color: var(--pastel-muted); border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn,.lang-btn,.portfolio-return,.mobile-portfolio-link),
+html[data-theme="dark"] body.pastel-course .site-header #hamburgerBtn,
+html[data-theme="dark"] body.pastel-course #mobileMenuClose {
+  background: var(--pastel-blue); color: var(--pastel-text); border-color: var(--pastel-line);
+}
+html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn.active,.nav-btn[aria-current="page"],.lang-btn.active) {
+  color: var(--theme-link); background: var(--pastel-blue); border-color: var(--theme-selected-line);
+  box-shadow: inset 0 -2px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course #mobileMenu :is(.course-menu-heading,.mobile-lang) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course #mobileBackdrop { background: rgba(0,0,0,.62); }
+
+/* Home: ordinary steps and completion remain neutral. */
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-start,.home-assessment,.itbasics-intro,.itbasics-device,.itbasics-steps li,.itbasics-help,.roadmap-week,.roadmap-week.roadmap-break),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-device:nth-child(2n),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-steps li:nth-child(2n),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(.itpractice-device-help,.itpractice-done) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-help-panel,.itbasics-topic),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-step {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-help-panel > summary,.itbasics-topic > summary) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-ink);
+}
+html[data-theme="dark"] body.pastel-course #page-main :is(h1,h2,h3,h4,#home-language-label,.itbasics,.itbasics-topic summary strong,.itbasics-phrase,.week-name),
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(.itpractice-step h3,.itpractice-done h3) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-lead,.home-reference-lead,.itbasics-note,.itbasics-topic-summary,.itpractice-tip,.itpractice-note,.itpractice-progress),
+html[data-theme="dark"] body.pastel-course #page-main .home-help-panel > summary > small { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.home-kicker,.itbasics-topic-number,.itbasics-expand,.itbasics-step-number,.week-index,.roadmap-arrow),
+html[data-theme="dark"] body.pastel-course #page-main .itbasics-glossary dt,
+html[data-theme="dark"] body.pastel-course #page-main .home-skip a,
+html[data-theme="dark"] body.pastel-course #page-main .home-help-panel > summary::after,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice summary { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course #page-main :is(.itbasics-block,.itbasics-glossary > div) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course #page-main .home-language-button {
+  color: var(--pastel-text); background: var(--pastel-white); border-color: var(--theme-field-line);
+}
+html[data-theme="dark"] body.pastel-course #page-main .home-language-button[aria-pressed="true"] {
+  color: #FFFFFF; background: var(--pastel-accent); border-color: var(--pastel-accent);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice :is(input[type="text"],select) {
+  background: var(--pastel-white); color: var(--pastel-ink); border-color: var(--theme-field-line);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice input.itpractice-source { background: var(--pastel-blue); }
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button-secondary {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button:disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-feedback,
+html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-feedback[data-kind] { color: var(--pastel-text); }
+
+/* Retained detailed lessons, including their dynamically created numerical cells. */
+html[data-theme="dark"] body.pastel-course .course-refresh .course-hero {
+  background: var(--pastel-blue) !important; border-color: var(--pastel-line) !important;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .course-hero :is(.hero-description,.hero-eyebrow) { color: var(--pastel-muted) !important; }
+html[data-theme="dark"] body.pastel-course .chapter-visual div span { color: var(--theme-link) !important; }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.card,.theory-card,.learning-section) {
+  background: var(--pastel-white) !important; border-color: var(--pastel-line) !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12) !important;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .card-tag { background: var(--pastel-blue) !important; color: var(--theme-link) !important; }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.theory-card h2,.theory-card h3,.w2-factor-card strong,.w2-timeline b,.w2-chat b) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel,.w2-factor-card,.w2-milestone-card,.w2-ext-card),
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel,.w2-factor-card,.w2-milestone-card,.w2-ext-card):nth-child(2n),
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-compare-panel.highlight,.w2-compare-panel.is-bad,.w2-rule-box,.w2-chat,.w2-rule-output,.w2-callout,.w2-badge,.w2-milestone-year,.w2-nest,.colab-first-run),
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-nest .w2-nest,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-nest .w2-nest .w2-nest {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-rule-btn,.w2-option,.w2-reset-btn,.w3-copy-btn,.w5-bp-step,.w6-num-grid,.w7-check-item,.w9-reshape-grid) {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-rule-btn[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-step-nav a,.w2-letter,.w6-num-cell,.w6-num-cell.is-pos,.w6-num-cell.is-neg,.w6-num-cell.is-zero,.w6-num-cell.is-max,.w9-reshape-cell,.w9-reshape-error) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh .w6-num-cell.is-max { border-color: var(--theme-selected-line); box-shadow: inset 0 0 0 1px var(--theme-selected-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-table,.w4-cm-table,.w5-logic-table) { background: var(--pastel-white); color: var(--pastel-text); }
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-table :is(th,td) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-table :is(thead th,tbody th,th.is-active-col,td.is-active-col),
+html[data-theme="dark"] body.pastel-course .course-refresh .w4-cm-table :is(td.is-good,td.is-bad),
+html[data-theme="dark"] body.pastel-course .course-refresh .w5-logic-table :is(th.is-active-col,td.is-active-col) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-question,.w2-quiz-footer,.w2-chat > div + div,.w2-timeline li) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-factor-card p,.w2-quiz-footer,.w3-copy-status,.w3-copy-status.is-error) { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course .course-refresh :is(.w5-bp-step strong,.w3-copy-btn) { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child:hover {
+  background: var(--theme-hover) !important; border-color: var(--theme-selected-line) !important;
+}
+
+/* Eleven short lesson chapters use one neutral surface hierarchy. */
+html[data-theme="dark"] body.pastel-course :is(.study-header,.study-nav-number,.study-step-number,.study-icon,.study-card,.study-flow-step,.study-prediction,.study-output,.study-slider,.study-number-panel,.study-summary li,.study-caution,.study-feedback,.study-remaining,.study-done,.study-terms > span,.study-step-list > *,.study-matrix > span),
+html[data-theme="dark"] body.pastel-course :is(.study-grid-demo,.study-logic-grid) > *,
+html[data-theme="dark"] body.pastel-course .study-core :is(.study-takeaway,.study-formula),
+html[data-theme="dark"] body.pastel-course .study-done .study-icon,
+html[data-theme="dark"] body.pastel-course .study-terms > span:nth-child(2n),
+html[data-theme="dark"] body.pastel-course .study-logic-grid > [data-value],
+html[data-theme="dark"] body.pastel-course .study-feedback[data-kind="idle"] {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-panel,.study-more,.study-deep,.study-prediction-feedback,.study-option),
+html[data-theme="dark"] body.pastel-course .study-language button,
+html[data-theme="dark"] body.pastel-course .study-meta .study-badge,
+html[data-theme="dark"] body.pastel-course .study-nav button,
+html[data-theme="dark"] body.pastel-course .study-slider output,
+html[data-theme="dark"] body.pastel-course .study-card .study-icon,
+html[data-theme="dark"] body.pastel-course .study-matrix > span.is-missing {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-more > summary,.study-deep > summary,section.study-deep,.study-scenario-controls button),
+html[data-theme="dark"] body.pastel-course .study-option :is(.study-letter,.study-choice-letter) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course .study-more > summary > span[aria-hidden="true"] { background: var(--pastel-white); }
+html[data-theme="dark"] body.pastel-course .study-language button[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav][aria-current="step"],
+html[data-theme="dark"] body.pastel-course .study-scenario-controls button[aria-pressed="true"] {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+  box-shadow: inset 0 -3px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course .study-option[aria-pressed="true"] { background: var(--pastel-blue); border-color: var(--theme-selected-line); }
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav]:is([aria-current="step"],[data-complete="true"]) :is(.study-nav-number,.study-step-number) {
+  background: var(--pastel-blue); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course :is(.study-meta,.study-progress strong,.study-help,.study-help[aria-expanded="true"],.study-reset,.study-question-number,.study-matrix-arrow,.study-flow-step:not(:last-child)::after,.study-more > summary::after),
+html[data-theme="dark"] body.pastel-course .study-nav button[data-study-nav][data-complete="true"]::after { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course :is(.study-card h3,.study-prediction h3,.study-output h3,.study-slider label,.study-question h3,.study-remaining h3,.study-done h3,.study-done p,.study-number,.study-more > summary strong,.study-deep-body > h3:first-child),
+html[data-theme="dark"] body.pastel-course .study-grid-demo > div > strong { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course :is(.study-number-caption,.study-number-panel p),
+html[data-theme="dark"] body.pastel-course .study-core .study-matrix-caption,
+html[data-theme="dark"] body.pastel-course .study-grid-demo > div > span:last-child { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course :is(.study-question,.study-more[open] > summary,.study-deep[open] > summary) { border-color: var(--pastel-line); }
+html[data-theme="dark"] body.pastel-course .study-secondary { background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course :is(.study-primary,.study-secondary):disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+/* Lavender remains limited to the question that introduces today's lesson. */
+html[data-theme="dark"] body.pastel-course .study-today { background: var(--pastel-lavender); border-color: var(--theme-emphasis-border); }
+html[data-theme="dark"] body.pastel-course .study-today > span,
+html[data-theme="dark"] body.pastel-course .study-today p { color: var(--theme-emphasis-ink); }
+
+/* Existing Week 11 sample and optional explanations. */
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s,.w11s-legacy) {
+  --w11s-ink: #E8EFFA; --w11s-muted: #AABBD2; --w11s-blue: #2563EB;
+  --w11s-line: #334A68; --w11s-green: #CAD6E8;
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-header,.w11s-duration,.w11s-section-icon,.w11s-review-scene,.w11s-concept,.w11s-token-stage,.w11s-chip,.w11s-number-chip,.w11s-complete,.w11s-remaining,.w11s-review-dot,.w11s-choice-letter,.w11s-legacy-note,.w11s-legacy-flow,.w11s-legacy-example),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-legacy-grid > * {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-panel,.w11s-legacy,.w11s-speech,.w11s-mood),
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-step-nav,.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) button,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-language-button {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-legacy > summary,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-word.is-changed,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-number {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-review-options button[aria-pressed="true"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav button[aria-current="step"] {
+  background: var(--pastel-blue); border-color: var(--theme-selected-line); color: var(--theme-link);
+  box-shadow: inset 0 -3px 0 var(--theme-selected-line);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [aria-current="step"] .w11s-step-number,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [data-complete="true"] .w11s-step-number {
+  background: var(--pastel-blue); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-language-button[aria-pressed="true"] {
+  background: var(--pastel-accent); border-color: var(--pastel-accent); color: #FFFFFF;
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-button-secondary {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--theme-link);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-button:disabled {
+  background: var(--theme-disabled-bg); border-color: var(--pastel-line); color: var(--theme-disabled-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-feedback {
+  background: var(--pastel-blue); border: 1px solid var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-concept h3,.w11s-token-stage h3,.w11s-token-stage > p,.w11s-question h3,.w11s-remaining h3,.w11s-legacy h2,.w11s-legacy h3,.w11s-legacy-section > summary),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-sentence,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-complete :is(h2,h3,p) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(.w11s-small-label,.w11s-change-hint,.w11s-example-note,.w11s-comparison-progress),
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-result-label,.w11s-result-label[data-mood],.w11s-legacy p,.w11s-legacy li,.w11s-legacy-body > p) { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-eyebrow,.w11s-help-button,.w11s-help-button[aria-expanded="true"],.w11s-flow-arrow,.w11s-quote,.w11s-comparison-progress strong,.w11s-change-hint > :first-child,.w11s-example-note > :first-child,.w11s-remaining > span,.w11s-legacy-section > summary::after),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s .w11s-text-button,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-step-nav [data-complete="true"]::after { color: var(--theme-link); }
+html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-question,.w11s-legacy-section,.w11s-legacy[open] > summary) { border-color: var(--pastel-line); }
+
+/* One consistent, high-contrast surface for help and non-blocking notices. */
+html[data-theme="dark"] body.pastel-course .study-tip,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip,
+html[data-theme="dark"] body.pastel-course .learn-popover {
+  background: var(--learn-popover-bg); border-color: var(--learn-popover-border); color: var(--learn-popover-color);
+}
+html[data-theme="dark"] body.pastel-course .study-tip::before,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip::before { background: var(--learn-popover-bg); border-color: var(--learn-popover-border); }
+html[data-theme="dark"] body.pastel-course .study-tip p,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-tooltip p { color: inherit; }
+html[data-theme="dark"] body.pastel-course :is(.study-toast,.learn-toast),
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-toast {
+  background: var(--learn-toast-bg); border-color: var(--learn-toast-border); color: var(--learn-toast-color);
+}
+html[data-theme="dark"] body.pastel-course .study-toast button,
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-toast-close,
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-toast-icon {
+  background: var(--learn-toast-action); border-color: var(--learn-toast-border); color: var(--learn-toast-color);
+}
+
+/* Dialog label colors inherit the answer box only where an answer is shown. */
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog {
+  background: var(--pastel-white); border-color: var(--pastel-line); color: var(--pastel-ink);
+  box-shadow: 0 24px 70px rgba(0,0,0,.38);
+}
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog::backdrop { background: rgba(0,0,0,.62); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(.quiz-modal-close,.quiz-modal-answer-box,.quiz-modal-secondary) {
+  background: var(--pastel-blue); border-color: var(--pastel-line); color: var(--pastel-text);
+}
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(h2,.quiz-modal-answer,.quiz-modal-explanation-label) { color: var(--pastel-ink); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog .quiz-modal-context { color: var(--pastel-muted); }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog .quiz-modal-answer-box :is(.quiz-modal-answer-label,.quiz-modal-answer,#quiz-modal-answer) { color: inherit; }
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="complete"] .quiz-modal-icon { color: var(--theme-link); }
+
+/* Hover never washes an answered option back to the ordinary blue surface. */
+@media (hover: hover) and (pointer: fine) {
+  html[data-theme="dark"] body.pastel-course .site-header :is(.nav-btn,.lang-btn,.portfolio-return,.mobile-portfolio-link):hover,
+  html[data-theme="dark"] body.pastel-course #page-main .home-language-button:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course #page-main .itpractice .itpractice-button-secondary:not(:disabled):hover,
+  html[data-theme="dark"] body.pastel-course .chapter-pager button:first-child:hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh :is(.w2-step-nav a,.w2-reset-btn,.w3-copy-btn,.w7-check-item):hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh .w2-rule-btn:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course .course-refresh .w2-option:not([aria-pressed="true"]):hover,
+  html[data-theme="dark"] body.pastel-course :is(.study-nav button,.study-scenario-controls button,.study-more > summary):hover,
+  html[data-theme="dark"] body.pastel-course .study-secondary:not(:disabled):hover,
+  html[data-theme="dark"] body.pastel-course .study-option:not([aria-pressed="true"]):not([data-state="correct"]):not([data-state="wrong"]):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-step-nav button,.w11s-review-options button):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 .w11s :is(.w11s-language-button:not([aria-pressed="true"]),.w11s-button-secondary:not(:disabled)):hover,
+  html[data-theme="dark"] body.pastel-course #page-ch9 :is(.w11s-meaning-options,.w11s-quiz-choices) button:not([data-state="correct"]):not([data-state="wrong"]):hover,
+  html[data-theme="dark"] body.pastel-course #quiz-result-dialog :is(.quiz-modal-close,.quiz-modal-secondary):hover {
+    background: var(--theme-hover); border-color: var(--theme-selected-line); color: var(--theme-link);
+  }
+}
+
+/* Only graded answers receive green/peach. Keep this after hover rules. */
+html[data-theme="dark"] body.pastel-course .study-question .study-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-state="correct"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-result="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-review-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-question .w11s-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-meaning-options button[data-state="correct"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-quiz-choices button[data-state="correct"],
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-option[aria-pressed="true"]:not(.is-wrong),
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-quiz-feedback:not(.is-wrong),
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="correct"] .quiz-modal-answer-box {
+  background: var(--pastel-mint); border: 1px solid var(--theme-answer-correct-border); color: var(--pastel-success);
+}
+html[data-theme="dark"] body.pastel-course .study-question .study-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course .study-question .study-option[data-result="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-review-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-question .w11s-feedback[data-kind="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-meaning-options button[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course #page-ch9 .w11s-quiz-choices button[data-state="wrong"],
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-option[aria-pressed="true"].is-wrong,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-question .w2-quiz-feedback.is-wrong,
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="wrong"] .quiz-modal-answer-box {
+  background: var(--pastel-peach); border: 1px solid var(--theme-answer-wrong-border); color: var(--pastel-retry);
+}
+html[data-theme="dark"] body.pastel-course .study-core .study-feedback[id$="-activity-done"],
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-token-feedback,
+html[data-theme="dark"] body.pastel-course #page-ch9 #w11s-token-feedback[data-kind="correct"],
+html[data-theme="dark"] body.pastel-course #quiz-result-dialog[data-result="complete"] .quiz-modal-answer-box {
+  background: var(--pastel-blue); border: 1px solid var(--pastel-line); color: var(--pastel-text);
+}
+
+/* These visualizations contain explicitly authored light plot backgrounds,
+   labels, category colors, and RGB values. Keep the canvas light and exact. */
+html[data-theme="dark"] body.pastel-course .study-chart,
+html[data-theme="dark"] body.pastel-course .course-refresh .w2-curve {
+  background: #FFFFFF; border-color: var(--pastel-line); color: #334155; color-scheme: light;
+}
+html[data-theme="dark"] body.pastel-course .study-picture-demo,
+html[data-theme="dark"] body.pastel-course .itbasics-device svg {
+  background: #F8FAFC; border-radius: 12px; color-scheme: light;
+}
+
+/* v13: glossary inset, compact practice choices, separated explanations. */
+body.pastel-course .learn-glossary > p.learn-glossary-intro,
+body.pastel-course #page-main .learn-glossary > p.learn-glossary-intro,
+body.pastel-course #page-ch9 .learn-glossary > p.learn-glossary-intro {
+  margin: 0;
+  padding: 4px 20px 16px;
+}
+body.pastel-course .learn-glossary > summary,
+body.pastel-course .learn-glossary > .learn-glossary-list {
+  padding-inline: 20px;
+}
+
+/* Only practice choices are compact; graded quiz controls keep their layout. */
+body.pastel-course .study-core [data-study-panel="try"] .study-prediction-choices,
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls,
+body.pastel-course #study-w5-backprop-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+}
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls {
+  margin: 0 0 20px;
+}
+body.pastel-course .study-core [data-study-panel="try"] .study-option,
+body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  min-width: 88px;
+  min-height: 40px;
+  padding: 8px 12px;
+  gap: 7px;
+  border-radius: 9px;
+  font-size: .9rem !important;
+  line-height: 1.5;
+  justify-content: center;
+  text-align: start;
+}
+body.pastel-course #study-w5-backprop-controls > button {
+  min-height: 44px;
+}
+body.pastel-course .study-core .study-prediction > p.study-prediction-feedback {
+  margin: 16px 0 0;
+  padding: 13px 16px;
+  border-radius: 11px;
+}
+
+/* A white question area makes the pale-blue answer explanation distinct. */
+html:not([data-theme="dark"]) body.pastel-course .study-core [data-study-panel="try"] .study-prediction {
+  background: #FFFFFF;
+}
+html:not([data-theme="dark"]) body.pastel-course .study-core .study-prediction > p.study-prediction-feedback {
+  background: #F2F6FF;
+  border: 2px solid #D9E4F5;
+  color: #334D74;
+}
+html:not([data-theme="dark"]) body.pastel-course .study-core [data-study-panel="try"] .study-output {
+  background: #F2F6FF;
+  border: 2px solid #D9E4F5;
+}
+
+/* The Week 11 activity uses its own controls, with the same compact rhythm. */
+body.pastel-course #page-ch9 .w11s-review-options,
+body.pastel-course #page-ch9 .w11s-meaning-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body.pastel-course #page-ch9 .w11s-review-options > button,
+body.pastel-course #page-ch9 .w11s-meaning-options > button {
+  flex: 0 1 auto;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  min-width: 88px;
+  min-height: 40px;
+  padding: 8px 12px;
+  gap: 8px;
+  font-size: .9rem;
+  line-height: 1.5;
+  border-radius: 9px;
+}
+body.pastel-course #page-ch9 .w11s-meaning-options .w11s-answer-face { font-size: 1.2rem; }
+body.pastel-course #page-ch9 .w11s #w11s-review-feedback { margin: 16px 0 0; }
+
+@media (max-width: 600px) {
+  body.pastel-course .learn-glossary > p.learn-glossary-intro,
+  body.pastel-course #page-main .learn-glossary > p.learn-glossary-intro,
+  body.pastel-course #page-ch9 .learn-glossary > p.learn-glossary-intro {
+    padding-inline: 16px;
+  }
+  body.pastel-course .learn-glossary > summary,
+  body.pastel-course .learn-glossary > .learn-glossary-list {
+    padding-inline: 16px;
+  }
+}
+@media (max-width: 600px), (pointer: coarse) {
+  body.pastel-course .study-core [data-study-panel="try"] .study-option,
+  body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button,
+  body.pastel-course #page-ch9 .w11s-review-options > button,
+  body.pastel-course #page-ch9 .w11s-meaning-options > button {
+    min-height: 44px;
+  }
+}
+
+
+/* AI Bridge v14: explicit selection cues, without changing answer colors.
+   Append after the v13 component rules, before the final mobile-menu rules. */
+body.pastel-course {
+  --course-selection-line: #2563EB;
+  --course-selection-ink: #1E40AF;
+}
+html[data-theme="dark"] body.pastel-course {
+  --course-selection-line: var(--theme-selected-line);
+  --course-selection-ink: var(--theme-link);
+}
+
+/* Reserve a small end slot in every state, so selecting does not change width.
+   Only the padding changes; compact practice buttons retain their v13 sizing. */
+html body.pastel-course .study-core .study-option,
+html body.pastel-course .study-core [data-study-panel="try"] .study-option,
+html body.pastel-course .study-core [data-study-panel="try"] .study-scenario-controls > button,
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button {
+  position: relative;
+  padding-inline-end: 32px;
+}
+html body.pastel-course .study-core .study-nav > button[data-study-nav],
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav] {
+  padding-inline-end: 32px;
+}
+
+/* A cobalt boundary and a shape identify ungraded selections. Graded choices
+   are explicitly excluded, preserving mint/peach and their result semantics. */
+html body.pastel-course .study-core .study-option[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"])),
+html body.pastel-course .study-core .study-scenario-controls > button[aria-pressed="true"],
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"])),
+html body.pastel-course .study-core .study-nav > button[data-study-nav][aria-current="step"],
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][aria-current="step"] {
+  background: var(--pastel-blue);
+  border-color: var(--course-selection-line);
+  color: var(--course-selection-ink);
+  box-shadow: inset 0 0 0 1px var(--course-selection-line);
+}
+
+/* The check is drawn with an empty pseudo-element. aria-pressed/aria-current
+   remain the accessible state; generated text does not alter button names.
+   Step navigation keeps the check exclusively for completed steps. */
+html body.pastel-course .study-core .study-option[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"]))::after,
+html body.pastel-course .study-core .study-scenario-controls > button[aria-pressed="true"]::after,
+html body.pastel-course #page-ch9 .w11s :is(.w11s-review-options,.w11s-meaning-options,.w11s-quiz-choices) > button[aria-pressed="true"]:where(:not([data-state="correct"]):not([data-state="wrong"]):not([data-result="correct"]):not([data-result="wrong"]))::after,
+html body.pastel-course .study-core .study-nav > button[data-study-nav][data-complete="true"]::after,
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][data-complete="true"]::after {
+  content: "";
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  inset: auto;
+  inset-inline-end: 12px;
+  top: 50%;
+  width: 7px;
+  height: 12px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  color: var(--course-selection-line);
+  background: transparent;
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* Completed noncurrent steps keep a neutral completion check. A completed
+   current step has one cobalt check; an incomplete current step has no check. */
+html body.pastel-course .study-core .study-nav > button[data-study-nav][data-complete="true"]:not([aria-current="step"])::after,
+html body.pastel-course #page-ch9 .w11s .w11s-step-nav > button[data-w11s-nav][data-complete="true"]:not([aria-current="step"])::after {
+  color: var(--pastel-muted);
+}
+
+/* The home W08 note has its own legacy text color; parent inheritance alone
+   cannot replace it when the background switches to the dark blue surface. */
+html[data-theme="dark"] body.pastel-course #page-main .roadmap-break > small {
+  color: var(--pastel-muted);
+}
+
+/* v14: readable mobile lesson steps and a full-width Week 11 example. */
+@media (max-width: 800px) {
+  body.pastel-course .study-nav > button,
+  body.pastel-course #page-ch9 .w11s-step-nav > button {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-inline-end: 32px;
+  }
+
+  body.pastel-course .study-nav > button > :last-child,
+  body.pastel-course #page-ch9 .w11s-step-nav > button > :last-child {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  body.pastel-course #page-ch9 .w11s .w11s-change-hint,
+  body.pastel-course #page-ch9 .w11s-result-label {
+    font-size: .95rem;
+    line-height: 1.6;
+  }
+
+  body.pastel-course #page-ch9 .w11s .w11s-change-hint {
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  body.pastel-course #page-ch9 .w11s-change-hint > :first-child {
+    flex: 0 0 auto;
+  }
+
+  body.pastel-course #page-ch9 .w11s-change-hint > :last-child,
+  body.pastel-course #page-ch9 .w11s-result-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+/* Use the available row for the sentence; the illustration follows in source order. */
+@media (max-width: 600px) {
+  body.pastel-course #page-ch9 .w11s-review-scene {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  body.pastel-course #page-ch9 .w11s-speech {
+    width: 100%;
+    min-width: 0;
+  }
+
+  body.pastel-course #page-ch9 .w11s-food-figure {
+    justify-self: center;
+    width: 160px;
+    max-width: 100%;
+  }
+
+  body.pastel-course #page-ch9 .w11s-mood {
+    top: 70px;
+    right: 0;
+  }
+}
+
+/* Narrow phones give each step a readable label without shrinking its text. */
+@media (max-width: 480px) {
+  body.pastel-course .study-nav,
+  body.pastel-course #page-ch9 .w11s-step-nav {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  body.pastel-course .study-nav > button,
+  body.pastel-course #page-ch9 .w11s-step-nav > button {
+    flex-direction: row;
+    align-items: center;
+    min-height: 52px;
+    padding: 10px 12px;
+    padding-inline-end: 32px;
+    gap: 10px;
+  }
+
+  body.pastel-course .study-nav :is(.study-nav-number, .study-step-number),
+  body.pastel-course #page-ch9 .w11s-step-number {
+    font-size: .875rem;
+  }
+}
+
+/* Quiz results: keep the close row visible while the explanation scrolls.
+   Append after the existing course/theme styles. Colors inherit both themes. */
+#quiz-result-dialog {
+  padding: 0;
+  overflow: hidden;
+}
+/* Do not give a closed native dialog a display override. */
+#quiz-result-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+#quiz-result-dialog .quiz-modal-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 1.25rem .5rem;
+  background: inherit;
+}
+#quiz-result-dialog .quiz-modal-close {
+  position: static;
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+}
+#quiz-result-dialog .quiz-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 1.5rem 1.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scroll-padding-block: .5rem;
+}
+#quiz-result-dialog .quiz-modal-scroll:focus-visible {
+  outline: 3px solid var(--learn-focus, #2563EB);
+  outline-offset: -3px;
+}
+#quiz-result-dialog .quiz-modal-context { margin: 0 0 .35rem; }
+#quiz-result-dialog h2 { margin-right: 0; }
+#quiz-result-dialog .quiz-modal-body { margin-bottom: 0; }
+#quiz-result-dialog .quiz-modal-actions {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--pastel-line, #D9E4F5);
+  background: inherit;
+  /* At unusually short heights or very large text, the actions can scroll
+     independently while the 44px close button above remains available. */
+  max-height: 42vh;
+  max-height: 42dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+#quiz-result-dialog .quiz-modal-actions .quiz-modal-button { flex-shrink: 0; }
+@media (max-width: 380px) {
+  #quiz-result-dialog .quiz-modal-header { padding-inline: .75rem; }
+  #quiz-result-dialog .quiz-modal-scroll { padding-inline: 1rem; }
+  #quiz-result-dialog .quiz-modal-actions {
+    padding-inline: 1rem;
+    /* The inherited small-screen direction is column-reverse. Keep that
+       column from wrapping sideways when its available height is limited. */
+    flex-wrap: nowrap;
+  }
+}
+@media (max-height: 420px) {
+  #quiz-result-dialog .quiz-modal-header { padding-block: .4rem; }
+  #quiz-result-dialog .quiz-modal-scroll { padding-bottom: .75rem; }
+  #quiz-result-dialog .quiz-modal-actions { padding-block: .65rem; }
+}
+
 /* Course navigation owns its mobile breakpoint and wins over legacy inline styles. */
 #hamburgerBtn { display: none; }
 #mobileMenu[hidden], #mobileBackdrop[hidden] { display: none !important; }
@@ -2465,6 +3502,10 @@ body.course-menu-open { overflow: hidden; }
                 </div>
 
                 <div class="top-controls">
+<div class="theme-control" data-theme-control="desktop">
+<button type="button" id="course-theme-toggle" class="theme-toggle" data-course-theme-toggle aria-label="어두운 화면" aria-pressed="false" aria-describedby="course-theme-storage-note" title="현재 밝은 화면 · 어둡게 바꾸기"><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 13.6A8.7 8.7 0 0 1 10.4 3.2a8.8 8.8 0 1 0 10.4 10.4Z"/></svg></button>
+<p id="course-theme-storage-note" class="theme-storage-note" data-theme-storage-note role="status" hidden></p>
+</div>
                 <a class="portfolio-return" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
                 <div class="lang-container desktop-lang">
                     <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">🇰🇷 KO</button>
@@ -2510,11 +3551,16 @@ body.course-menu-open { overflow: hidden; }
                 <button class="nav-btn" type="button" data-mobile-page="ch11" onclick="showPage('ch11')">Chapter 11</button> 
                 <button class="nav-btn" type="button" data-mobile-page="ch12" onclick="showPage('ch12')">Chapter 12</button> 
             </nav>
-            <div class="lang-container mobile-lang">
+            
+<div class="lang-container mobile-lang">
                 <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">🇰🇷 KO</button>
                 <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
                 <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">🇷🇺 RU</button>
-            </div>
+            <div class="theme-control theme-control-mobile" data-theme-control="mobile">
+<button type="button" id="course-theme-toggle-mobile" class="theme-toggle" data-course-theme-toggle aria-label="어두운 화면" aria-pressed="false" aria-describedby="course-theme-storage-note-mobile" title="현재 밝은 화면 · 어둡게 바꾸기"><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 13.6A8.7 8.7 0 0 1 10.4 3.2a8.8 8.8 0 1 0 10.4 10.4Z"/></svg></button>
+<p id="course-theme-storage-note-mobile" class="theme-storage-note" data-theme-storage-note role="status" hidden></p>
+</div>
+</div>
           <a class="mobile-portfolio-link" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
         </div>
         <div class="mobile-backdrop" id="mobileBackdrop" hidden="hidden" aria-hidden="true"></div>
@@ -2536,6 +3582,8 @@ body.course-menu-open { overflow: hidden; }
 </div></div>
 <p class="home-skip"><a href="#orientation-roadmap" data-home-open data-key="home-skip">기기 사용에 익숙하다면 수업 고르기 →</a></p>
 </header>
+<details id="learn-words-w1" class="learn-glossary" data-learn-week="1"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="browser" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="브라우저 — 쉬운 뜻 열기">브라우저</button><p>인터넷의 웹페이지를 열어 보는 앱이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="click_tap" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="클릭·탭 — 쉬운 뜻 열기">클릭·탭</button><p>클릭은 마우스로, 탭은 손가락으로 화면의 버튼 등을 한 번 누르는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="file" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="파일 — 쉬운 뜻 열기">파일</button><p>사진이나 글처럼 이름을 붙여 저장한 자료 한 개예요.</p></li><li><button type="button" class="learn-term" data-learn-term="folder" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="폴더 — 쉬운 뜻 열기">폴더</button><p>파일을 모아 정리하는 공간이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="link" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="링크 — 쉬운 뜻 열기">링크</button><p>누르면 다른 페이지나 파일이 열리는 글·그림·버튼이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="copy_paste" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="복사·붙여넣기 — 쉬운 뜻 열기">복사·붙여넣기</button><p>복사는 선택한 내용을 잠시 기억하고, 붙여넣기는 그 내용을 다른 곳에 넣는 일이에요.</p></li></ul></details>
+
 <div id="it-basics" class="itbasics home-practice">
 <section class="itpractice" id="itpractice" aria-labelledby="itpractice-title">
   <div class="itpractice-heading">
@@ -2894,6 +3942,8 @@ body.course-menu-open { overflow: hidden; }
 <h1 id="study-w2-title" data-study-text="title">AI는 어떻게 답을 고를까요?</h1>
 <p class="study-lead" data-study-text="lead">정해진 규칙을 따르는 방법과, 예시에서 배우는 방법을 비교해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w2" class="learn-glossary" data-learn-week="2"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="ai" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="인공지능 — 쉬운 뜻 열기">인공지능</button><p>사진 구별이나 글 만들기 같은 일을 컴퓨터로 하게 만드는 기술이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="algorithm" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="알고리즘 — 쉬운 뜻 열기">알고리즘</button><p>어떤 일을 처리하기 위해 정한 순서와 규칙이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 — 쉬운 뜻 열기">데이터</button><p>AI가 살펴보는 사진·글·숫자 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="training" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="학습 — 쉬운 뜻 열기">학습</button><p>예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="prediction" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="예측 — 쉬운 뜻 열기">예측</button><p>모델이 새로운 자료를 보고 예상한 결과예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="2주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w2-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w2-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w2-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w2-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w2-panel-look" data-study-panel="look" aria-labelledby="study-w2-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w2-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -3261,6 +4311,8 @@ body.course-menu-open { overflow: hidden; }
 <h1 id="study-w3-title" data-study-text="title">데이터를 바꾸면 예측도 달라져요</h1>
 <p class="study-lead" data-study-text="lead">공부 시간과 점수로 학습과 예측을 구분해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w3" class="learn-glossary" data-learn-week="3"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 — 쉬운 뜻 열기">데이터</button><p>AI가 살펴보는 사진·글·숫자 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="dataset" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터셋 — 쉬운 뜻 열기">데이터셋</button><p>한 가지 일을 배우거나 확인하려고 모아 둔 자료 묶음이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="training" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="학습 — 쉬운 뜻 열기">학습</button><p>예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="prediction" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="예측 — 쉬운 뜻 열기">예측</button><p>모델이 새로운 자료를 보고 예상한 결과예요.</p></li><li><button type="button" class="learn-term" data-learn-term="regression" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="회귀 — 쉬운 뜻 열기">회귀</button><p>온도나 가격처럼 숫자 값을 예상하는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="colab" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="Colab — 쉬운 뜻 열기">Colab</button><p>브라우저에서 설명과 코드를 함께 보고 실행하는 Google의 도구예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="3주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w3-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w3-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w3-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w3-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w3-panel-look" data-study-panel="look" aria-labelledby="study-w3-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w3-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -3638,6 +4690,8 @@ print("Predicted score for 6 hours:", pred[0])</pre>
 <h1 id="study-w4-title" data-study-text="title">이름을 고를까요, 숫자를 맞힐까요?</h1>
 <p class="study-lead" data-study-text="lead">분류와 회귀를 구분하고, 배우지 않은 자료로 확인해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w4" class="learn-glossary" data-learn-week="4"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="classification" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="분류 — 쉬운 뜻 열기">분류</button><p>정해 둔 종류 중에서 알맞은 것을 고르는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="regression" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="회귀 — 쉬운 뜻 열기">회귀</button><p>온도나 가격처럼 숫자 값을 예상하는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="training" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="학습 — 쉬운 뜻 열기">학습</button><p>예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="test_data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="시험용 데이터 — 쉬운 뜻 열기">시험용 데이터</button><p>모델을 다 만든 뒤 성능을 확인하려고 따로 둔 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="overfitting" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="과적합 — 쉬운 뜻 열기">과적합</button><p>학습한 예시에 너무 맞춰져 새 자료에서는 잘하지 못하는 상태예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="4주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w4-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w4-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w4-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w4-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w4-panel-look" data-study-panel="look" aria-labelledby="study-w4-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w4-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -4006,6 +5060,8 @@ print("Predicted score for 6 hours:", pred[0])</pre>
 <h1 id="study-w5-title" data-study-text="title">기준을 바꾸면 답이 달라져요</h1>
 <p class="study-lead" data-study-text="lead">소풍 예시로 입력, 가중치, 출력을 살펴봐요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w5" class="learn-glossary" data-learn-week="5"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="input" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="입력 — 쉬운 뜻 열기">입력</button><p>계산을 시작할 때 넣는 숫자·글·사진 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="weight" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="가중치 — 쉬운 뜻 열기">가중치</button><p>입력값에 곱해서 결과에 미치는 영향을 조절하는 숫자예요.</p></li><li><button type="button" class="learn-term" data-learn-term="threshold" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="기준값 — 쉬운 뜻 열기">기준값</button><p>계산한 값을 두 결과로 나눌 때 쓰는 경계 숫자예요.</p></li><li><button type="button" class="learn-term" data-learn-term="neuron" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="인공 뉴런 — 쉬운 뜻 열기">인공 뉴런</button><p>여러 입력을 계산해 하나의 결과를 내보내는 작은 계산 단위예요.</p></li><li><button type="button" class="learn-term" data-learn-term="hidden_layer" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="숨은 층 — 쉬운 뜻 열기">숨은 층</button><p>신경망의 입력과 마지막 결과 사이에서 계산하는 중간 층이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="xor" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="XOR — 쉬운 뜻 열기">XOR</button><p>0과 1 두 입력이 다르면 1, 같으면 0을 내는 규칙이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="backpropagation" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="역전파 — 쉬운 뜻 열기">역전파</button><p>각 가중치가 조금 변할 때 오차가 얼마나 바뀌는지 뒤에서부터 계산하는 방법이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="gradient" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="기울기 — 쉬운 뜻 열기">기울기</button><p>가중치 같은 값을 조금 바꿀 때 오차가 어느 쪽으로 얼마나 바뀌는지 나타내는 값이에요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="5주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w5-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w5-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w5-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w5-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w5-panel-look" data-study-panel="look" aria-labelledby="study-w5-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w5-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -4417,6 +5473,8 @@ print("Predicted score for 6 hours:", pred[0])</pre>
 <h1 id="study-w6-title" data-study-text="title">사진 속 작은 단서를 찾아요</h1>
 <p class="study-lead" data-study-text="lead">사진의 부분을 살펴보고, 숫자를 바꾸고 줄이는 과정을 비교해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w6" class="learn-glossary" data-learn-week="6"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="cnn" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="합성곱 신경망 — 쉬운 뜻 열기">합성곱 신경망</button><p>작은 영역을 옮겨 보며 단서를 찾는 계산을 사용하는 신경망이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="feature" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="특징 — 쉬운 뜻 열기">특징</button><p>모델이 구별하거나 예상할 때 쓰는 자료의 단서예요.</p></li><li><button type="button" class="learn-term" data-learn-term="relu" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="ReLU — 쉬운 뜻 열기">ReLU</button><p>기본 ReLU는 음수를 0으로 바꾸고, 0과 양수는 그대로 두는 계산이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="pooling" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="맥스 풀링 — 쉬운 뜻 열기">맥스 풀링</button><p>작은 영역마다 가장 큰 값을 골라 자료의 크기를 줄이는 계산이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="neuron" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="인공 뉴런 — 쉬운 뜻 열기">인공 뉴런</button><p>여러 입력을 계산해 하나의 결과를 내보내는 작은 계산 단위예요.</p></li><li><button type="button" class="learn-term" data-learn-term="training" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="학습 — 쉬운 뜻 열기">학습</button><p>예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="6주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w6-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w6-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w6-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w6-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w6-panel-look" data-study-panel="look" aria-labelledby="study-w6-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w6-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -4740,6 +5798,8 @@ print("Predicted score for 6 hours:", pred[0])</pre>
 <h1 id="study-w7-title" data-study-text="title">AI에게 어떤 사진을 보여줄까요?</h1>
 <p class="study-lead" data-study-text="lead">컵과 숟가락을 구분하는 사진 수집 방법을 비교해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w7" class="learn-glossary" data-learn-week="7"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="dataset" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터셋 — 쉬운 뜻 열기">데이터셋</button><p>한 가지 일을 배우거나 확인하려고 모아 둔 자료 묶음이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="classification" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="분류 — 쉬운 뜻 열기">분류</button><p>정해 둔 종류 중에서 알맞은 것을 고르는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="training" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="학습 — 쉬운 뜻 열기">학습</button><p>예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="test_data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="시험용 데이터 — 쉬운 뜻 열기">시험용 데이터</button><p>모델을 다 만든 뒤 성능을 확인하려고 따로 둔 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="overfitting" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="과적합 — 쉬운 뜻 열기">과적합</button><p>학습한 예시에 너무 맞춰져 새 자료에서는 잘하지 못하는 상태예요.</p></li><li><button type="button" class="learn-term" data-learn-term="augmentation" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 늘리기 — 쉬운 뜻 열기">데이터 늘리기</button><p>기존 자료를 조금 바꿔 학습에 쓸 예시를 더 만드는 방법이에요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="7주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w7-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w7-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w7-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w7-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w7-panel-look" data-study-panel="look" aria-labelledby="study-w7-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w7-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -5080,6 +6140,8 @@ print("Predicted score for 6 hours:", pred[0])</pre>
 <h1 id="study-w9-title" data-study-text="title">숫자를 줄과 표로 정리해요</h1>
 <p class="study-lead" data-study-text="lead">숫자 개수는 그대로 두고, 모양을 바꿔보세요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w9" class="learn-glossary" data-learn-week="9"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 — 쉬운 뜻 열기">데이터</button><p>AI가 살펴보는 사진·글·숫자 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="tensor" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="텐서 — 쉬운 뜻 열기">텐서</button><p>AI 계산에 쓰도록 숫자 하나나 여러 개를 일정한 모양으로 담은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="dimension" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="차원 — 쉬운 뜻 열기">차원</button><p>여기서는 배열에서 위치를 찾을 때 필요한 방향의 수예요.</p></li><li><button type="button" class="learn-term" data-learn-term="reshape" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모양 바꾸기 — 쉬운 뜻 열기">모양 바꾸기</button><p>같은 숫자들을 유지하면서 줄과 표의 모양을 바꾸는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="pixel" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="픽셀 — 쉬운 뜻 열기">픽셀</button><p>디지털 사진을 이루는 작은 색 칸이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="rgb" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="RGB — 쉬운 뜻 열기">RGB</button><p>빨강·초록·파랑 빛의 양을 조합해 색을 나타내는 방법이에요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="9주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w9-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w9-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w9-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w9-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w9-panel-look" data-study-panel="look" aria-labelledby="study-w9-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w9-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -5374,6 +6436,8 @@ print(df)</pre>
 <h1 id="study-w10-title" data-study-text="title">순서가 바뀌면 뜻도 달라져요</h1>
 <p class="study-lead" data-study-text="lead">공을 주는 사람을 바꾸고, 앞뒤 문장의 관계를 살펴봐요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w10" class="learn-glossary" data-learn-week="10"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="sequence" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="순서 있는 자료 — 쉬운 뜻 열기">순서 있는 자료</button><p>나온 순서를 함께 살펴봐야 하는 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="rnn" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="순환 신경망 — 쉬운 뜻 열기">순환 신경망</button><p>앞에서 계산한 정보를 다음 단계에 전달하며 순서 있는 자료를 처리하는 신경망이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="attention" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="어텐션 — 쉬운 뜻 열기">어텐션</button><p>결과를 만들 때 입력의 어느 부분을 더 참고할지 계산하는 방법이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="input" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="입력 — 쉬운 뜻 열기">입력</button><p>계산을 시작할 때 넣는 숫자·글·사진 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="prediction" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="예측 — 쉬운 뜻 열기">예측</button><p>모델이 새로운 자료를 보고 예상한 결과예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="10주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w10-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w10-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w10-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w10-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w10-panel-look" data-study-panel="look" aria-labelledby="study-w10-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w10-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -5725,6 +6789,8 @@ print(df)</pre>
       </div>
     </div>
   </header>
+<details id="learn-words-w11" class="learn-glossary" data-learn-week="11"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="nlp" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="자연어 처리 — 쉬운 뜻 열기">자연어 처리</button><p>컴퓨터로 사람이 쓰는 말과 글을 다루는 기술이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="token" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="토큰 — 쉬운 뜻 열기">토큰</button><p>글을 나눈 작은 조각을 토큰이라고 하고, 이렇게 나누는 과정은 토큰화라고 해요.</p></li><li><button type="button" class="learn-term" data-learn-term="embedding" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="임베딩 — 쉬운 뜻 열기">임베딩</button><p>글·사진 같은 자료의 특징을 나타내는 숫자 묶음이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="sequence" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="순서 있는 자료 — 쉬운 뜻 열기">순서 있는 자료</button><p>나온 순서를 함께 살펴봐야 하는 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="classification" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="분류 — 쉬운 뜻 열기">분류</button><p>정해 둔 종류 중에서 알맞은 것을 고르는 일이에요.</p></li></ul></details>
+
 
   <nav class="w11s-step-nav" aria-labelledby="w11s-title">
     <button type="button" data-w11s-nav="review" aria-controls="w11s-panel-review" aria-current="step"><span class="w11s-step-number" aria-hidden="true">1</span><span data-w11s-i18n="w11s-nav-review">후기 비교</span></button>
@@ -5982,6 +7048,8 @@ print(df)</pre>
 <h1 id="study-w12-title" data-study-text="title">말을 글로, 글을 말로 바꿔요</h1>
 <p class="study-lead" data-study-text="lead">음성 인식과 음성 합성의 방향을 비교해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w12" class="learn-glossary" data-learn-week="12"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="stt" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="음성 인식 — 쉬운 뜻 열기">음성 인식</button><p>녹음하거나 말한 내용을 글로 바꾸는 기술이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="tts" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="음성 합성 — 쉬운 뜻 열기">음성 합성</button><p>글을 사람이 들을 수 있는 목소리로 읽어 주는 기술이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 — 쉬운 뜻 열기">데이터</button><p>AI가 살펴보는 사진·글·숫자 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="input" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="입력 — 쉬운 뜻 열기">입력</button><p>계산을 시작할 때 넣는 숫자·글·사진 같은 자료예요.</p></li><li><button type="button" class="learn-term" data-learn-term="prediction" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="예측 — 쉬운 뜻 열기">예측</button><p>모델이 새로운 자료를 보고 예상한 결과예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="12주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w12-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w12-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w12-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w12-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w12-panel-look" data-study-panel="look" aria-labelledby="study-w12-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w12-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -6304,6 +7372,8 @@ print(df)</pre>
 <h1 id="study-w13-title" data-study-text="title">사진은 작은 색 칸의 모임이에요</h1>
 <p class="study-lead" data-study-text="lead">색을 숫자로 나타내고, 물체의 위치와 영역을 구분해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w13" class="learn-glossary" data-learn-week="13"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="pixel" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="픽셀 — 쉬운 뜻 열기">픽셀</button><p>디지털 사진을 이루는 작은 색 칸이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="rgb" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="RGB — 쉬운 뜻 열기">RGB</button><p>빨강·초록·파랑 빛의 양을 조합해 색을 나타내는 방법이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="detection" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="객체 탐지 — 쉬운 뜻 열기">객체 탐지</button><p>사진에서 물체의 종류와 위치를 함께 찾는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="segmentation" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="영역 나누기 — 쉬운 뜻 열기">영역 나누기</button><p>사진의 각 픽셀이 어느 부분에 속하는지 표시해 영역을 나누는 일이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="feature" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="특징 — 쉬운 뜻 열기">특징</button><p>모델이 구별하거나 예상할 때 쓰는 자료의 단서예요.</p></li><li><button type="button" class="learn-term" data-learn-term="augmentation" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 늘리기 — 쉬운 뜻 열기">데이터 늘리기</button><p>기존 자료를 조금 바꿔 학습에 쓸 예시를 더 만드는 방법이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="cnn" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="합성곱 신경망 — 쉬운 뜻 열기">합성곱 신경망</button><p>작은 영역을 옮겨 보며 단서를 찾는 계산을 사용하는 신경망이에요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="13주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w13-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w13-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w13-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w13-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w13-panel-look" data-study-panel="look" aria-labelledby="study-w13-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w13-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -6669,6 +7739,8 @@ blur = cv2.GaussianBlur(img, (5, 5), 0)</pre>
 <h1 id="study-w14-title" data-study-text="title">원하는 일을 짧고 분명하게 말해요</h1>
 <p class="study-lead" data-study-text="lead">할 일과 조건을 적고, AI가 만든 내용을 확인해요.</p>
 <div class="study-language"><span data-study-ui="language">읽기 편한 언어</span><div><button type="button" data-study-lang="ko" aria-pressed="true">한국어</button><button type="button" data-study-lang="en" aria-pressed="false">English</button><button type="button" data-study-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<details id="learn-words-w14" class="learn-glossary" data-learn-week="14"><summary><span aria-hidden="true">📖</span><span data-learn-glossary-label>이 주차의 단어</span></summary><p class="learn-glossary-intro">밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.</p><ul class="learn-glossary-list"><li><button type="button" class="learn-term" data-learn-term="prompt" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="프롬프트 — 쉬운 뜻 열기">프롬프트</button><p>AI에게 할 일을 알려 주는 질문이나 요청 내용이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="generative_ai" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="생성형 AI — 쉬운 뜻 열기">생성형 AI</button><p>배운 자료의 패턴을 이용해 글·그림·소리 등을 만드는 AI예요.</p></li><li><button type="button" class="learn-term" data-learn-term="rag" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="RAG — 쉬운 뜻 열기">RAG</button><p>질문과 관련된 문서를 먼저 찾아 그 내용을 참고해 답을 만드는 방법이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="hallucination" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="그럴듯한 오답 — 쉬운 뜻 열기">그럴듯한 오답</button><p>AI가 사실과 다른 내용을 맞는 말처럼 만드는 현상이에요.</p></li><li><button type="button" class="learn-term" data-learn-term="model" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="모델 — 쉬운 뜻 열기">모델</button><p>입력을 받아 결과를 계산하도록 만든 계산 구조예요.</p></li><li><button type="button" class="learn-term" data-learn-term="data" aria-haspopup="dialog" aria-controls="learn-popover" aria-expanded="false" aria-label="데이터 — 쉬운 뜻 열기">데이터</button><p>AI가 살펴보는 사진·글·숫자 같은 자료예요.</p></li></ul></details>
+
 <nav class="study-nav" aria-label="14주차 · 핵심 복습"><button type="button" data-study-nav="look" aria-controls="study-w14-panel-look" aria-current="step"><span class="study-step-number">1</span><span data-study-ui="look">그림으로 보기</span></button><button type="button" data-study-nav="try" aria-controls="study-w14-panel-try"><span class="study-step-number">2</span><span data-study-ui="try">직접 해보기</span></button><button type="button" data-study-nav="check" aria-controls="study-w14-panel-check"><span class="study-step-number">3</span><span data-study-ui="check">확인하기</span></button></nav>
 <p class="study-progress" id="study-w14-progress" role="status" aria-live="polite"></p>
 <section class="study-panel" id="study-w14-panel-look" data-study-panel="look" aria-labelledby="study-w14-look-title"><div class="study-heading"><span class="study-icon" aria-hidden="true">👀</span><div><h2 id="study-w14-look-title" tabindex="-1" data-study-ui="concepts">세 가지만 기억해요</h2><p data-study-ui="conceptHint">낯선 단어는 ‘쉬운 뜻’을 눌러 보세요.</p></div></div>
@@ -6975,16 +8047,20 @@ blur = cv2.GaussianBlur(img, (5, 5), 0)</pre>
     <!-- This page initializes its own accessible course menu below. -->
     <!-- One shared result dialog, outside all course .page sections. -->
 <dialog id="quiz-result-dialog" class="quiz-modal" aria-labelledby="quiz-modal-title" aria-describedby="quiz-modal-body">
-  <button type="button" id="quiz-modal-close" class="quiz-modal-close" aria-label="결과 창 닫기"><span aria-hidden="true">×</span></button>
-  <div id="quiz-modal-icon" class="quiz-modal-icon" aria-hidden="true">✅</div>
-  <p id="quiz-modal-context" class="quiz-modal-context"></p>
-  <h2 id="quiz-modal-title" tabindex="-1">맞아요!</h2>
-  <div id="quiz-modal-answer-box" class="quiz-modal-answer-box">
-    <span id="quiz-modal-answer-label" class="quiz-modal-answer-label">고른 답</span>
-    <p id="quiz-modal-answer"></p>
+  <div class="quiz-modal-header">
+    <div id="quiz-modal-icon" class="quiz-modal-icon" aria-hidden="true">✅</div>
+    <button type="button" id="quiz-modal-close" class="quiz-modal-close" aria-label="결과 창 닫기"><span aria-hidden="true">×</span></button>
   </div>
-  <p id="quiz-modal-explanation-label" class="quiz-modal-explanation-label">설명</p>
-  <p id="quiz-modal-body" class="quiz-modal-body"></p>
+  <div id="quiz-modal-scroll" class="quiz-modal-scroll" tabindex="0" role="region" aria-labelledby="quiz-modal-title">
+    <p id="quiz-modal-context" class="quiz-modal-context"></p>
+    <h2 id="quiz-modal-title" tabindex="-1">맞아요!</h2>
+    <div id="quiz-modal-answer-box" class="quiz-modal-answer-box">
+      <span id="quiz-modal-answer-label" class="quiz-modal-answer-label">고른 답</span>
+      <p id="quiz-modal-answer"></p>
+    </div>
+    <p id="quiz-modal-explanation-label" class="quiz-modal-explanation-label">설명</p>
+    <p id="quiz-modal-body" class="quiz-modal-body"></p>
+  </div>
   <div class="quiz-modal-actions">
     <button type="button" id="quiz-modal-dismiss" class="quiz-modal-button quiz-modal-secondary">닫기</button>
     <button type="button" id="quiz-modal-primary" class="quiz-modal-button quiz-modal-primary">다음 문제 →</button>
@@ -9035,6 +10111,7 @@ plt.show()          # Display on screen`
     if (toastKey && !toast.contains(document.activeElement) && !toast.matches(':hover')) toastTimer = window.setTimeout(hideToast, 4500);
   }
   function showToast(key) {
+    if (window.aiBridgeNotice) { window.aiBridgeNotice.show(tr(key)); return; }
     pauseToast();
     toastKey = key;
     toast.hidden = false;
@@ -9053,6 +10130,8 @@ plt.show()          # Display on screen`
     tipPinned = false;
   }
   function openTip(name, pinned) {
+    const managedButton = root.querySelector('[data-w11s-tip="' + name + '"]');
+    if (managedButton && managedButton.hasAttribute('data-learn-managed')) return;
     if (!get('tip-' + name)) return;
     if (openTipName !== name) closeTip();
     openTipName = name;
@@ -9294,7 +10373,7 @@ plt.show()          # Display on screen`
     node.classList.remove('study-enter'); void node.offsetWidth; node.classList.add('study-enter');
   }
   function closeTips(root) {
-    (root || document).querySelectorAll('.study-help[aria-expanded="true"]').forEach(function (button) {
+    (root || document).querySelectorAll('.study-help[aria-expanded="true"]:not([data-learn-managed])').forEach(function (button) {
       button.setAttribute('aria-expanded', 'false'); button.removeAttribute('aria-describedby');
       const target = document.getElementById(button.getAttribute('aria-controls')); if (target) target.hidden = true;
     });
@@ -9307,6 +10386,7 @@ plt.show()          # Display on screen`
     if (hadFocus && visible(toastReturn)) focus(toastReturn);
   }
   function showToast(key, variables, target) {
+    if (window.aiBridgeNotice) { window.aiBridgeNotice.show(tr(key, variables), { returnFocus: target || document.activeElement }); return; }
     if (!toast) return;
     hideToast(); toastReturn = target || document.activeElement;
     text(document.getElementById('study-toast-text'), tr(key, variables));
@@ -9543,8 +10623,25 @@ plt.show()          # Display on screen`
       return Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : match;
     });
   }
+  function pointOutsideRect(point, rect) {
+    if (!point || !rect || !Number.isFinite(point.clientX) || !Number.isFinite(point.clientY) ||
+        !Number.isFinite(rect.left) || !Number.isFinite(rect.right) ||
+        !Number.isFinite(rect.top) || !Number.isFinite(rect.bottom) ||
+        rect.right <= rect.left || rect.bottom <= rect.top) return false;
+    // The full border box counts as inside, including its border and padding.
+    return point.clientX < rect.left || point.clientX > rect.right ||
+      point.clientY < rect.top || point.clientY > rect.bottom;
+  }
+  function backdropGesture(start, end, rect) {
+    if (!start || !end || !start.startedOutside || start.moved ||
+        !Number.isFinite(start.pointerId) || !Number.isFinite(end.pointerId) ||
+        start.pointerId !== end.pointerId || end.isPrimary === false || end.button !== 0) return false;
+    // Allow a little touch jitter, but never turn a drag or scroll into dismissal.
+    return pointOutsideRect(end, rect) &&
+      Math.hypot(end.clientX - start.clientX, end.clientY - start.clientY) <= 12;
+  }
   if (typeof module === 'object' && module && module.exports && typeof document === 'undefined') {
-    module.exports = Object.freeze({ planNext: planNext, legacyStatus: legacyStatus, withoutStatusPrefix: withoutStatusPrefix, formatText: formatText });
+    module.exports = Object.freeze({ planNext: planNext, legacyStatus: legacyStatus, withoutStatusPrefix: withoutStatusPrefix, formatText: formatText, pointOutsideRect: pointOutsideRect, backdropGesture: backdropGesture });
     return;
   }
 
@@ -9595,6 +10692,8 @@ plt.show()          # Display on screen`
   if (Object.keys(elements).some(function (key) { return !elements[key]; })) return;
   const weeks = [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14];
   let current = null;
+  let backdropPointer = null;
+  let backdropClick = null;
 
   function language() {
     const lang = String(document.documentElement.lang || 'ko').toLowerCase().split('-')[0];
@@ -9686,10 +10785,17 @@ plt.show()          # Display on screen`
   function closeDialog(restore, target, scrollNode) {
     const previous = current;
     current = null;
+    backdropPointer = null;
+    backdropClick = null;
     if (dialog.open) dialog.close();
     if (!restore || !previous) return;
     const destination = target || (previous.stage === 'complete' ? completionTarget(previous) : previous.source);
     window.requestAnimationFrame(function () { if (!dialog.open) focusTarget(destination, scrollNode); });
+  }
+  function resetDialogScroll() {
+    const scrollBody = get('scroll');
+    dialog.scrollTop = 0;
+    if (scrollBody) scrollBody.scrollTop = 0;
   }
   function renderDialog() {
     if (!current || !current.page.classList.contains('active')) { closeDialog(false); return false; }
@@ -9730,6 +10836,7 @@ plt.show()          # Display on screen`
     current = context;
     if (!renderDialog()) return;
     if (!dialog.open) dialog.showModal();
+    resetDialogScroll();
     focusTarget(elements.title);
   }
   function primaryAction() {
@@ -9743,7 +10850,7 @@ plt.show()          # Display on screen`
     if (!result) { closeDialog(true); return; }
     if (result.action.kind === 'complete') {
       current.stage = 'complete';
-      if (renderDialog()) { dialog.scrollTop = 0; focusTarget(elements.title); }
+      if (renderDialog()) { resetDialogScroll(); focusTarget(elements.title); }
     } else if (result.action.kind === 'next') {
       const next = result.questions[result.action.index].card;
       closeDialog(true, next.querySelector('h3, h2') || next, next);
@@ -9760,8 +10867,49 @@ plt.show()          # Display on screen`
   elements.primary.addEventListener('click', primaryAction);
   dialog.addEventListener('cancel', function (event) { event.preventDefault(); closeDialog(true); });
   dialog.addEventListener('close', function () {
+    backdropPointer = null;
+    backdropClick = null;
     // Also handle callers that close the native dialog directly.
     if (!dialog.open && current) closeDialog(true);
+  });
+  dialog.addEventListener('pointerdown', function (event) {
+    // A second touch or a new gesture cancels any earlier dismissal candidate.
+    backdropPointer = null;
+    backdropClick = null;
+    if (!dialog.open || event.target !== dialog || event.button !== 0 || event.isPrimary === false ||
+        !pointOutsideRect(event, dialog.getBoundingClientRect())) return;
+    backdropPointer = {
+      pointerId: event.pointerId, clientX: event.clientX, clientY: event.clientY,
+      startedOutside: true, moved: false
+    };
+  });
+  dialog.addEventListener('pointermove', function (event) {
+    if (backdropPointer && backdropPointer.pointerId === event.pointerId &&
+        Math.hypot(event.clientX - backdropPointer.clientX, event.clientY - backdropPointer.clientY) > 12) {
+      backdropPointer.moved = true;
+    }
+  });
+  dialog.addEventListener('pointerup', function (event) {
+    const start = backdropPointer;
+    backdropPointer = null;
+    backdropClick = dialog.open && backdropGesture(start, event, dialog.getBoundingClientRect())
+      ? { pointerId: event.pointerId } : null;
+  });
+  function cancelBackdropGesture() { backdropPointer = null; backdropClick = null; }
+  dialog.addEventListener('pointercancel', cancelBackdropGesture);
+  dialog.addEventListener('contextmenu', cancelBackdropGesture);
+  window.addEventListener('blur', cancelBackdropGesture);
+  dialog.addEventListener('click', function (event) {
+    const candidate = backdropClick;
+    backdropClick = null;
+    if (!candidate || !dialog.open || event.target !== dialog || event.detail === 0 || event.button !== 0 ||
+        (Number.isFinite(event.pointerId) && event.pointerId !== candidate.pointerId) ||
+        !pointOutsideRect(event, dialog.getBoundingClientRect())) return;
+    // Wait for click before removing the top layer, so this gesture cannot click
+    // through to an answer underneath. Preserve the existing focus-return path.
+    event.preventDefault();
+    event.stopPropagation();
+    closeDialog(true);
   });
   // Original button / panel handlers have already updated feedback by this point.
   document.addEventListener('click', function (event) {
@@ -9796,6 +10944,784 @@ plt.show()          # Display on screen`
   }
   dialog.dataset.quizModalReady = 'true';
   window.aiBridgeQuizModal = Object.freeze({ ready: true, planNext: planNext });
+})();
+
+</script>
+<!-- Shared word explanation. Existing quiz results keep their own modal dialog. -->
+<aside id="learn-popover" class="learn-popover" role="dialog" aria-modal="false" aria-labelledby="learn-popover-title" aria-describedby="learn-popover-short" tabindex="-1" hidden>
+  <div class="learn-popover-top"><div class="learn-popover-heading"><span id="learn-popover-kicker" class="learn-popover-kicker">쉬운 뜻</span><h2 id="learn-popover-title"></h2></div><button type="button" id="learn-popover-close" class="learn-popover-close" aria-label="단어 설명 닫기">×</button></div>
+  <p id="learn-popover-short"></p>
+  <p id="learn-popover-example" class="learn-popover-example"><strong id="learn-popover-example-label">예를 들어</strong><span id="learn-popover-example-text"></span></p>
+  <p id="learn-popover-english" class="learn-popover-english" hidden></p>
+</aside>
+<div id="learn-toast-announcement" class="learn-visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+<div id="learn-toast" class="learn-toast" hidden><div class="learn-toast-message" aria-hidden="true"><span id="learn-toast-text"></span></div><button type="button" id="learn-toast-close" class="learn-toast-close" aria-describedby="learn-toast-announcement">닫기</button></div>
+
+<script>
+/* Shared short explanations and notices. No lesson answers or scores are changed. */
+(function () {
+  'use strict';
+  const GLOSSARY = {"terms":[{"id":"browser","weeks":[1],"locales":{"ko":{"label":"브라우저","aliases":["웹 브라우저","브라우저"],"short":"인터넷의 웹페이지를 열어 보는 앱이에요.","example":"Chrome이나 Safari를 열고 수업 주소를 입력하면 이 사이트를 볼 수 있어요.","english":"Browser"},"en":{"label":"Browser","aliases":["web browser","browser"],"short":"An app that opens web pages.","example":"Open Chrome or Safari and enter the class web address to visit this site.","english":"Browser"},"ru":{"label":"Браузер","aliases":["веб-браузер","браузер"],"short":"Приложение для просмотра веб-страниц.","example":"Откройте Chrome или Safari и введите адрес курса, чтобы увидеть этот сайт.","english":"Browser"}}},{"id":"click_tap","weeks":[1],"locales":{"ko":{"label":"클릭·탭","aliases":["클릭/탭","클릭·탭","탭하기","클릭"],"short":"클릭은 마우스로, 탭은 손가락으로 화면의 버튼 등을 한 번 누르는 일이에요.","example":"컴퓨터에서는 마우스 왼쪽 버튼을 한 번 눌러요. 스마트폰에서는 화면을 손가락으로 한 번 가볍게 눌러요.","english":"Click / tap"},"en":{"label":"Click / tap","aliases":["click or tap","click / tap","click","tap"],"short":"A click uses a mouse; a tap uses a finger on a touch screen.","example":"On a computer, press the left mouse button once. On a phone, touch the button once.","english":"Click / tap"},"ru":{"label":"Щелчок и касание","aliases":["касание экрана","щелчок мышью","касание","щелчок"],"short":"Щелчок делают мышью, а касание — пальцем по сенсорному экрану.","example":"На компьютере один раз нажмите левую кнопку мыши. На телефоне один раз коснитесь кнопки пальцем.","english":"Click / tap"}}},{"id":"file","weeks":[1],"locales":{"ko":{"label":"파일","aliases":["파일"],"short":"사진이나 글처럼 이름을 붙여 저장한 자료 한 개예요.","example":"여행 사진 한 장이나 숙제 문서 한 개가 파일이에요.","english":"File"},"en":{"label":"File","aliases":["files","file"],"short":"One saved item, such as a photo or document, with a name.","example":"One travel photo or one homework document is a file.","english":"File"},"ru":{"label":"Файл","aliases":["файлы","файл"],"short":"Сохранённый объект с именем, например фотография или документ.","example":"Одна фотография из поездки или один документ с домашней работой — это файл.","english":"File"}}},{"id":"folder","weeks":[1],"locales":{"ko":{"label":"폴더","aliases":["폴더"],"short":"파일을 모아 정리하는 공간이에요.","example":"과목 이름으로 폴더를 만들고 그 안에 숙제 파일을 넣어요.","english":"Folder"},"en":{"label":"Folder","aliases":["folders","folder"],"short":"A place to group and organise files.","example":"Make a folder with the class name and put your homework files inside.","english":"Folder"},"ru":{"label":"Папка","aliases":["папка","папки","папку"],"short":"Место, где файлы собирают и упорядочивают.","example":"Создайте папку с названием курса и положите туда файлы с домашними заданиями.","english":"Folder"}}},{"id":"link","weeks":[1],"locales":{"ko":{"label":"링크","aliases":["하이퍼링크","링크"],"short":"누르면 다른 페이지나 파일이 열리는 글·그림·버튼이에요.","example":"선생님이 보낸 수업 링크를 누르면 수업 페이지로 이동해요.","english":"Link"},"en":{"label":"Link","aliases":["hyperlink","links","link"],"short":"Text, an image, or a button that opens another page or file.","example":"Tap the class link your teacher sent to open the class page.","english":"Link"},"ru":{"label":"Ссылка","aliases":["ссылка","ссылки","ссылку"],"short":"Текст, картинка или кнопка, которая открывает другую страницу или файл.","example":"Нажмите ссылку от преподавателя, чтобы открыть страницу курса.","english":"Link"}}},{"id":"copy_paste","weeks":[1],"locales":{"ko":{"label":"복사·붙여넣기","aliases":["복사 후 붙여넣기","복사/붙여넣기","복사·붙여넣기","붙여넣기","복사"],"short":"복사는 선택한 내용을 잠시 기억하고, 붙여넣기는 그 내용을 다른 곳에 넣는 일이에요.","example":"수업 주소를 복사한 뒤 브라우저의 주소 칸에 붙여넣어요. 원래 내용은 그대로 남아요.","english":"Copy and paste"},"en":{"label":"Copy and paste","aliases":["copy and paste","copy / paste","copy/paste","paste","copy"],"short":"Copy keeps selected content temporarily; paste puts it in another place.","example":"Copy the class address and paste it into the browser address bar. The original stays where it was.","english":"Copy and paste"},"ru":{"label":"Копирование и вставка","aliases":["копирование и вставка","копировать и вставить","копирование","вставка"],"short":"Копирование временно запоминает выбранное, а вставка помещает его в другое место.","example":"Скопируйте адрес курса и вставьте его в адресную строку браузера. Исходный текст останется на месте.","english":"Copy and paste"}}},{"id":"ai","weeks":[2],"locales":{"ko":{"label":"인공지능","aliases":["Artificial Intelligence","인공지능","AI"],"short":"사진 구별이나 글 만들기 같은 일을 컴퓨터로 하게 만드는 기술이에요.","example":"사진 속 동물을 고르거나 문장을 번역하는 데 쓰여요. 결과가 틀릴 수도 있어요.","english":"Artificial intelligence"},"en":{"label":"Artificial intelligence","aliases":["artificial intelligence","AI"],"short":"Technology that lets computers do tasks such as recognising pictures or writing text.","example":"AI can help name an animal in a photo or translate a sentence. Its answer can be wrong.","english":"Artificial intelligence"},"ru":{"label":"Искусственный интеллект","aliases":["искусственного интеллекта","искусственный интеллект","AI","ИИ"],"short":"Технология, с которой компьютеры могут распознавать картинки, писать текст и выполнять похожие задачи.","example":"ИИ может назвать животное на фото или перевести предложение. Он может ошибаться.","english":"Artificial intelligence"}}},{"id":"algorithm","weeks":[2],"locales":{"ko":{"label":"알고리즘","aliases":["알고리즘"],"short":"어떤 일을 처리하기 위해 정한 순서와 규칙이에요.","example":"요리 순서처럼, 먼저 숫자를 더하고 다음에 기준과 비교하도록 정할 수 있어요.","english":"Algorithm"},"en":{"label":"Algorithm","aliases":["algorithms","algorithm"],"short":"A set of steps and rules for doing a task.","example":"Like a recipe, it gives an order: first add the numbers, then compare the total with a limit.","english":"Algorithm"},"ru":{"label":"Алгоритм","aliases":["алгоритмы","алгоритм"],"short":"Порядок шагов и правил для выполнения задачи.","example":"Как рецепт: сначала сложить числа, затем сравнить сумму с выбранной границей.","english":"Algorithm"}}},{"id":"data","weeks":[2,3,9,12,14],"locales":{"ko":{"label":"데이터","aliases":["Data","데이터"],"short":"AI가 살펴보는 사진·글·숫자 같은 자료예요.","example":"날씨 기록, 음식 사진, 짧은 후기 글을 데이터로 쓸 수 있어요.","english":"Data"},"en":{"label":"Data","aliases":["data"],"short":"Information such as pictures, text, or numbers that an AI works with.","example":"Weather records, food photos, and short reviews can all be data.","english":"Data"},"ru":{"label":"Данные","aliases":["данные","данных"],"short":"Информация, с которой работает ИИ: картинки, тексты или числа.","example":"Записи о погоде, фотографии еды и короткие отзывы могут быть данными.","english":"Data"}}},{"id":"dataset","weeks":[3,7],"locales":{"ko":{"label":"데이터셋","aliases":["Dataset","데이터 세트","데이터셋"],"short":"한 가지 일을 배우거나 확인하려고 모아 둔 자료 묶음이에요.","example":"컵 사진 20장과 책 사진 20장을 모으면 사진 분류용 데이터셋이 될 수 있어요.","english":"Dataset"},"en":{"label":"Dataset","aliases":["data sets","data set","datasets","dataset"],"short":"A collection of data gathered to train or check a model.","example":"Twenty cup photos and twenty book photos can form a dataset for a picture task.","english":"Dataset"},"ru":{"label":"Набор данных","aliases":["наборы данных","набор данных","датасет"],"short":"Данные, собранные вместе для обучения или проверки модели.","example":"Двадцать фото чашек и двадцать фото книг могут составить набор данных для работы с картинками.","english":"Dataset"}}},{"id":"model","weeks":[2,3,4,10,11,12,14],"locales":{"ko":{"label":"모델","aliases":["AI 모델","Model","학습 모델","모델"],"short":"입력을 받아 결과를 계산하도록 만든 계산 구조예요.","example":"사진을 넣으면 컵인지 책인지 점수를 계산하는 모델을 만들 수 있어요.","english":"Model"},"en":{"label":"Model","aliases":["AI model","models","model"],"short":"A system of calculations that turns an input into a result.","example":"A model can take a photo and calculate scores for “cup” and “book”.","english":"Model"},"ru":{"label":"Модель","aliases":["модель ИИ","модели","модель"],"short":"Система вычислений, которая получает данные и выдаёт результат.","example":"Модель может получить фото и вычислить оценки для вариантов «чашка» и «книга».","english":"Model"}}},{"id":"training","weeks":[2,3,4,6,7],"locales":{"ko":{"label":"학습","aliases":["Training","모델 학습","학습","훈련"],"short":"예시를 보며 결과를 내는 계산 방법을 조정하는 과정이에요.","example":"컵과 책 사진을 여러 번 보여 주며 두 종류를 구별하는 계산을 조정해요.","english":"Training"},"en":{"label":"Training","aliases":["model training","training"],"short":"The process of adjusting a model using examples.","example":"Show a model cup and book photos so it can adjust how it tells them apart.","english":"Training"},"ru":{"label":"Обучение","aliases":["обучение модели","обучения модели","обучение","обучения"],"short":"Процесс настройки модели на примерах.","example":"Модели показывают фото чашек и книг и настраивают её вычисления, чтобы она различала эти предметы.","english":"Training"}}},{"id":"prediction","weeks":[2,3,10,12],"locales":{"ko":{"label":"예측","aliases":["Prediction","예측"],"short":"모델이 새로운 자료를 보고 예상한 결과예요.","example":"내일 기온을 20도로 예상하거나, 새 사진을 컵으로 고르는 것이 예측이에요.","english":"Prediction"},"en":{"label":"Prediction","aliases":["predictions","prediction"],"short":"The result a model estimates for new data.","example":"Estimating tomorrow’s temperature as 20 degrees or choosing “cup” for a new photo is a prediction.","english":"Prediction"},"ru":{"label":"Прогноз","aliases":["предсказание","прогноз"],"short":"Результат, который модель предполагает для новых данных.","example":"Назвать температуру на завтра — 20 градусов — или выбрать «чашка» для нового фото значит сделать прогноз.","english":"Prediction"}}},{"id":"regression","weeks":[3,4],"locales":{"ko":{"label":"회귀","aliases":["Regression","회귀 분석","회귀"],"short":"온도나 가격처럼 숫자 값을 예상하는 일이에요.","example":"지난 기온을 보고 내일 기온이 몇 도일지 예상해요.","english":"Regression"},"en":{"label":"Regression","aliases":["regression"],"short":"A task that predicts a number, such as a temperature or price.","example":"Use past temperatures to estimate how many degrees it will be tomorrow.","english":"Regression"},"ru":{"label":"Регрессия","aliases":["регрессии","регрессия"],"short":"Задача, в которой предсказывают число, например температуру или цену.","example":"По прошлым температурам модель предполагает, сколько градусов будет завтра.","english":"Regression"}}},{"id":"colab","weeks":[3],"locales":{"ko":{"label":"Colab","aliases":["Google Colaboratory","Colaboratory","Google Colab","Colab","코랩"],"short":"브라우저에서 설명과 코드를 함께 보고 실행하는 Google의 도구예요.","example":"수업 링크를 열고 코드 옆 실행 버튼을 눌러요. 여기서 노트북은 컴퓨터가 아니라 코드가 담긴 문서예요.","english":"Google Colab"},"en":{"label":"Colab","aliases":["Google Colaboratory","Colaboratory","Google Colab","Colab"],"short":"A Google tool for reading notes and running code in a browser.","example":"Open the class link and press the run button beside the code. Here, a notebook is a document with code, not a laptop.","english":"Google Colab"},"ru":{"label":"Colab","aliases":["Google Colaboratory","Colaboratory","Google Colab","Colab"],"short":"Инструмент Google, в котором можно читать пояснения и запускать код в браузере.","example":"Откройте ссылку курса и нажмите кнопку запуска рядом с кодом. Здесь notebook — документ с кодом, а не ноутбук.","english":"Google Colab"}}},{"id":"classification","weeks":[4,7,11],"locales":{"ko":{"label":"분류","aliases":["Classification","분류"],"short":"정해 둔 종류 중에서 알맞은 것을 고르는 일이에요.","example":"사진을 보고 컵인지 책인지 고르거나, 후기를 긍정 또는 부정으로 나눠요.","english":"Classification"},"en":{"label":"Classification","aliases":["classification"],"short":"A task that chooses from a set of categories.","example":"Choose “cup” or “book” for a photo, or “positive” or “negative” for a review.","english":"Classification"},"ru":{"label":"Классификация","aliases":["классификации","классификация"],"short":"Задача, в которой выбирают подходящую категорию.","example":"Для фотографии выбирают «чашка» или «книга», а для отзыва — «положительный» или «отрицательный».","english":"Classification"}}},{"id":"test_data","weeks":[4,7],"locales":{"ko":{"label":"시험용 데이터","aliases":["Test data","새 자료로 확인","시험용 데이터","테스트 데이터","시험 데이터"],"short":"모델을 다 만든 뒤 성능을 확인하려고 따로 둔 자료예요.","example":"학습에 쓰지 않은 컵 사진을 보여 주세요. 시험 결과를 보고 계속 고치면 새 시험 자료가 필요해요.","english":"Test data"},"en":{"label":"Test data","aliases":["check unseen data","test dataset","testing data","test data"],"short":"Data kept separate to check a finished model.","example":"Try cup photos that were not used for training. If you keep changing the model based on this test, use a fresh test set.","english":"Test data"},"ru":{"label":"Данные для проверки","aliases":["проверить новые данные","тестовые данные","тестовых данных"],"short":"Данные, которые откладывают для проверки готовой модели.","example":"Покажите фото чашек, которых не было при обучении. Если модель меняют по результатам этой проверки, нужен новый проверочный набор.","english":"Test data"}}},{"id":"overfitting","weeks":[4,7],"locales":{"ko":{"label":"과적합","aliases":["Overfitting","과적합"],"short":"학습한 예시에 너무 맞춰져 새 자료에서는 잘하지 못하는 상태예요.","example":"같은 책 사진만 잘 맞히고, 다른 각도에서 찍은 책은 자주 틀릴 수 있어요.","english":"Overfitting"},"en":{"label":"Overfitting","aliases":["overfitting"],"short":"When a model fits its training examples too closely and does poorly on new data.","example":"It may recognise the book photos it trained on but often miss a book photographed from a new angle.","english":"Overfitting"},"ru":{"label":"Переобучение","aliases":["переобучение","переобучения"],"short":"Состояние, когда модель слишком подстроилась под учебные примеры и плохо работает с новыми данными.","example":"Она узнаёт книги на знакомых фото, но часто ошибается, если книгу сняли с другого угла.","english":"Overfitting"}}},{"id":"input","weeks":[5,10,12],"locales":{"ko":{"label":"입력","aliases":["Input","입력값","입력"],"short":"계산을 시작할 때 넣는 숫자·글·사진 같은 자료예요.","example":"이 실습에서는 날씨와 간식 여부를 각각 0 또는 1로 넣어요.","english":"Input"},"en":{"label":"Input","aliases":["input values","input value","inputs","input"],"short":"The numbers, text, or pictures given to a calculation or model.","example":"In this activity, weather and having a snack are each entered as 0 or 1.","english":"Input"},"ru":{"label":"Входные данные","aliases":["входные значения","входные данные","вход"],"short":"Числа, текст или картинки, которые передают модели или вычислению.","example":"В этом упражнении погоду и наличие перекуса задают числами 0 или 1.","english":"Input"}}},{"id":"weight","weeks":[5],"locales":{"ko":{"label":"가중치","aliases":["Weight","가중치"],"short":"입력값에 곱해서 결과에 미치는 영향을 조절하는 숫자예요.","example":"이 실습에서는 날씨 값에 0.8, 간식 값에 0.2를 곱해요.","english":"Weight"},"en":{"label":"Weight","aliases":["weights","weight"],"short":"A number multiplied by an input to control its effect on the result.","example":"In this activity, multiply the weather value by 0.8 and the snack value by 0.2.","english":"Weight"},"ru":{"label":"Вес","aliases":["весов","веса","вес"],"short":"Число, на которое умножают входное значение, чтобы задать его влияние на результат.","example":"В этом упражнении значение погоды умножают на 0,8, а значение перекуса — на 0,2.","english":"Weight"}}},{"id":"threshold","weeks":[5],"locales":{"ko":{"label":"기준값","aliases":["Threshold","기준값","임계값","기준"],"short":"계산한 값을 두 결과로 나눌 때 쓰는 경계 숫자예요.","example":"기준이 0.6이고 합계가 0.8이면, “0.6 이상은 1”이라는 규칙에서 결과는 1이에요.","english":"Threshold"},"en":{"label":"Threshold","aliases":["threshold"],"short":"A boundary number used to choose between two results.","example":"If the threshold is 0.6 and the total is 0.8, the rule “0.6 or more gives 1” returns 1.","english":"Threshold"},"ru":{"label":"Порог","aliases":["пороговое значение","порога","порог"],"short":"Числовая граница для выбора между двумя результатами.","example":"Если порог равен 0,6, а сумма — 0,8, правило «не меньше 0,6 даёт 1» выдаст 1.","english":"Threshold"}}},{"id":"neuron","weeks":[5,6],"locales":{"ko":{"label":"인공 뉴런","aliases":["Neuron","인공 뉴런","뉴런"],"short":"여러 입력을 계산해 하나의 결과를 내보내는 작은 계산 단위예요.","example":"날씨 값과 간식 값을 받아 계산한 뒤, 0 또는 1을 내보내는 단위를 만들 수 있어요.","english":"Artificial neuron"},"en":{"label":"Artificial neuron","aliases":["artificial neurons","artificial neuron","neurons","neuron"],"short":"A small calculation unit that combines inputs and produces an output.","example":"You can build one that takes weather and snack values, calculates with them, and returns 0 or 1.","english":"Artificial neuron"},"ru":{"label":"Искусственный нейрон","aliases":["искусственный нейрон","нейроны","нейрон"],"short":"Небольшой вычислительный элемент, который объединяет входы и выдаёт результат.","example":"Можно сделать нейрон, который принимает значения погоды и перекуса, считает и выдаёт 0 или 1.","english":"Artificial neuron"}}},{"id":"hidden_layer","weeks":[5],"locales":{"ko":{"label":"숨은 층","aliases":["Hidden layer","숨겨진 층","은닉 계층","숨은 층","은닉층"],"short":"신경망의 입력과 마지막 결과 사이에서 계산하는 중간 층이에요.","example":"첫 중간 층이 간단한 모양을 찾고, 다음 층이 그 결과를 모아 다른 모양을 찾을 수 있어요.","english":"Hidden layer"},"en":{"label":"Hidden layer","aliases":["hidden layers","hidden layer"],"short":"A middle layer of calculations between a neural network’s input and final output.","example":"One middle layer may find simple shapes, and the next may combine them to find other shapes.","english":"Hidden layer"},"ru":{"label":"Скрытый слой","aliases":["скрытого слоя","скрытые слои","скрытый слой"],"short":"Промежуточный слой вычислений между входом нейросети и её итоговым выходом.","example":"Один слой может находить простые формы, а следующий — объединять их, чтобы находить другие формы.","english":"Hidden layer"}}},{"id":"xor","weeks":[5],"locales":{"ko":{"label":"XOR","aliases":["배타적 논리합","XOR"],"short":"0과 1 두 입력이 다르면 1, 같으면 0을 내는 규칙이에요.","example":"입력이 0과 1이면 결과는 1이에요. 0과 0 또는 1과 1이면 결과는 0이에요.","english":"XOR"},"en":{"label":"XOR","aliases":["exclusive OR","XOR"],"short":"A rule that gives 1 when two binary inputs differ and 0 when they match.","example":"Inputs 0 and 1 give 1. Inputs 0 and 0, or 1 and 1, give 0.","english":"XOR"},"ru":{"label":"XOR","aliases":["исключающее ИЛИ","XOR"],"short":"Правило для двух входов из 0 и 1: разные дают 1, одинаковые — 0.","example":"Входы 0 и 1 дают 1. Входы 0 и 0 или 1 и 1 дают 0.","english":"XOR"}}},{"id":"backpropagation","weeks":[5],"locales":{"ko":{"label":"역전파","aliases":["Backpropagation","오차 역전파","역전파"],"short":"각 가중치가 조금 변할 때 오차가 얼마나 바뀌는지 뒤에서부터 계산하는 방법이에요.","example":"먼저 각 가중치의 영향을 계산해요. 그 값을 이용해 가중치를 고치는 일은 다음 단계예요.","english":"Backpropagation"},"en":{"label":"Backpropagation","aliases":["back-propagation","backpropagation"],"short":"A backward calculation of how a small change in each weight changes the error.","example":"First calculate each weight’s effect on the error. Updating the weights using those values is a separate step.","english":"Backpropagation"},"ru":{"label":"Обратное распространение ошибки","aliases":["обратное распространение ошибки","обратное распространение","backpropagation"],"short":"Вычисление от конца к началу: как небольшое изменение каждого веса меняет ошибку.","example":"Сначала вычисляют влияние весов на ошибку. Изменение самих весов по этим значениям — отдельный шаг.","english":"Backpropagation"}}},{"id":"gradient","weeks":[5],"locales":{"ko":{"label":"기울기","aliases":["Gradient","그래디언트","기울기"],"short":"가중치 같은 값을 조금 바꿀 때 오차가 어느 쪽으로 얼마나 바뀌는지 나타내는 값이에요.","example":"기울기는 어느 방향으로 조정할지 알려 줘요. 한 번에 얼마나 바꿀지는 학습률이라는 별도 숫자로 정해요.","english":"Gradient"},"en":{"label":"Gradient","aliases":["gradients","gradient"],"short":"Values showing how the error changes when weights change a little.","example":"The gradient helps choose a direction for a change. A separate number, the learning rate, controls the step size.","english":"Gradient"},"ru":{"label":"Градиент","aliases":["градиента","градиенты","градиент"],"short":"Значения, которые показывают, как меняется ошибка при небольшом изменении весов.","example":"Градиент помогает выбрать направление изменения. Размер шага задают отдельным числом — скоростью обучения.","english":"Gradient"}}},{"id":"cnn","weeks":[6,13],"locales":{"ko":{"label":"합성곱 신경망","aliases":["컨볼루션 신경망","합성곱 신경망","CNN"],"short":"작은 영역을 옮겨 보며 단서를 찾는 계산을 사용하는 신경망이에요.","example":"사진의 여러 곳에서 선이나 모양 같은 단서를 찾고, 그 단서로 사물을 구별할 수 있어요.","english":"Convolutional neural network"},"en":{"label":"Convolutional neural network","aliases":["convolutional neural network","convolutional network","CNN"],"short":"A neural network that uses calculations over small, moving regions to find patterns.","example":"It can look for lines or shapes in different parts of a photo and use them to identify objects.","english":"Convolutional neural network"},"ru":{"label":"Свёрточная нейросеть","aliases":["сверточная нейронная сеть","свёрточная нейронная сеть","свёрточная нейросеть","CNN"],"short":"Нейросеть, которая ищет признаки, выполняя вычисления в небольших участках данных.","example":"Она может искать линии и формы в разных местах фотографии и по ним распознавать предметы.","english":"Convolutional neural network"}}},{"id":"relu","weeks":[6],"locales":{"ko":{"label":"ReLU","aliases":["ReLU","렐루"],"short":"기본 ReLU는 음수를 0으로 바꾸고, 0과 양수는 그대로 두는 계산이에요.","example":"−2는 0이 되고, 3은 3으로 남아요. 사진의 잡음을 알아서 지우는 기능은 아니에요.","english":"ReLU"},"en":{"label":"ReLU","aliases":["ReLU"],"short":"Standard ReLU changes negative numbers to 0 and leaves 0 and positive numbers unchanged.","example":"−2 becomes 0, while 3 stays 3. This is not a tool that automatically removes image noise.","english":"ReLU"},"ru":{"label":"ReLU","aliases":["ReLU"],"short":"Обычная ReLU заменяет отрицательные числа нулём, а ноль и положительные числа оставляет как есть.","example":"−2 превращается в 0, а 3 остаётся 3. Это не функция, которая сама удаляет шум с фотографии.","english":"ReLU"}}},{"id":"pooling","weeks":[6],"locales":{"ko":{"label":"맥스 풀링","aliases":["Max Pooling","맥스 풀링","최대 풀링"],"short":"작은 영역마다 가장 큰 값을 골라 자료의 크기를 줄이는 계산이에요.","example":"한 영역의 값이 0, 2, 5, 1이면 가장 큰 값 5를 남겨요.","english":"Max pooling"},"en":{"label":"Max pooling","aliases":["maximum pooling","max pooling"],"short":"A calculation that keeps the largest value in each small region to make the data smaller.","example":"For a region with 0, 2, 5, and 1, keep 5.","english":"Max pooling"},"ru":{"label":"Макс-пулинг","aliases":["максимальный пулинг","max pooling","макс-пулинг"],"short":"Вычисление, которое оставляет наибольшее значение в каждом небольшом участке и уменьшает размер данных.","example":"Если в участке числа 0, 2, 5 и 1, остаётся 5.","english":"Max pooling"}}},{"id":"feature","weeks":[6,13],"locales":{"ko":{"label":"특징","aliases":["Feature","특징"],"short":"모델이 구별하거나 예상할 때 쓰는 자료의 단서예요.","example":"사진의 선·색·모양이나, 날씨 기록의 온도를 단서로 쓸 수 있어요.","english":"Feature"},"en":{"label":"Feature","aliases":["features","feature"],"short":"A piece of information a model uses to recognise or predict something.","example":"Lines, colours, shapes, or a temperature value can be features.","english":"Feature"},"ru":{"label":"Признак","aliases":["признаков","признаки","признак"],"short":"Часть информации, которую модель использует для распознавания или прогноза.","example":"Признаками могут быть линии, цвет, форма или значение температуры.","english":"Feature"}}},{"id":"tensor","weeks":[9],"locales":{"ko":{"label":"텐서","aliases":["Tensor","텐서"],"short":"AI 계산에 쓰도록 숫자 하나나 여러 개를 일정한 모양으로 담은 자료예요.","example":"온도 목록은 한 줄로, 사진의 색 값은 가로·세로·색 순서로 담을 수 있어요.","english":"Tensor"},"en":{"label":"Tensor","aliases":["tensors","tensor"],"short":"A structure that holds numbers in a set shape for AI calculations.","example":"Temperatures can form a line; image colours can use height, width, and colour channels.","english":"Tensor"},"ru":{"label":"Тензор","aliases":["тензора","тензоры","тензор"],"short":"Данные с числами, расположенными в заданной форме для вычислений ИИ.","example":"Температуры можно записать строкой, а цвета фото — по высоте, ширине и цветовым каналам.","english":"Tensor"}}},{"id":"reshape","weeks":[9],"locales":{"ko":{"label":"모양 바꾸기","aliases":["Reshape","모양 바꾸기"],"short":"같은 숫자들을 유지하면서 줄과 표의 모양을 바꾸는 일이에요.","example":"숫자 12개는 3×4나 2×6으로 놓을 수 있어요. 5×3에는 15개가 필요해서 그대로 바꿀 수 없어요.","english":"Reshape"},"en":{"label":"Reshape","aliases":["reshaping","reshape"],"short":"Changing the shape of an array while keeping the same values and their total number.","example":"Twelve values can make a 3×4 or 2×6 table. A 5×3 table needs 15 values, so that reshape will not work.","english":"Reshape"},"ru":{"label":"Изменение формы","aliases":["изменение формы","изменить форму","reshape"],"short":"Изменение формы массива с сохранением его значений и их количества.","example":"Из 12 чисел можно сделать таблицу 3×4 или 2×6. Для таблицы 5×3 нужны 15 чисел, поэтому такая форма не подойдёт.","english":"Reshape"}}},{"id":"dimension","weeks":[9],"locales":{"ko":{"label":"차원","aliases":["Dimension","1차원","2차원","3차원","차원"],"short":"여기서는 배열에서 위치를 찾을 때 필요한 방향의 수예요.","example":"한 줄은 1차원이에요. 행과 열로 위치를 찾는 표는 2차원이에요.","english":"Dimension"},"en":{"label":"Dimension","aliases":["three dimensions","two dimensions","one dimension","dimensions","dimension"],"short":"Here, the number of directions needed to locate a value in an array.","example":"A line of numbers has one dimension. A table uses a row and a column, so it has two.","english":"Dimension"},"ru":{"label":"Измерение массива","aliases":["одно измерение","два измерения","три измерения","измерение","измерения"],"short":"Здесь это одно из направлений, по которым находят значение в массиве.","example":"У строки чисел одно измерение. В таблице нужны строка и столбец, поэтому измерений два.","english":"Dimension"}}},{"id":"sequence","weeks":[10,11],"locales":{"ko":{"label":"순서 있는 자료","aliases":["Sequence","순서 있는 자료","시퀀스"],"short":"나온 순서를 함께 살펴봐야 하는 자료예요.","example":"“개가 사람을 쫓아요”와 “사람이 개를 쫓아요”는 단어 순서에 따라 뜻이 달라져요.","english":"Sequence"},"en":{"label":"Sequence","aliases":["sequential data","sequence data","sequences","sequence"],"short":"Data where the order of items matters.","example":"“A dog follows a person” and “A person follows a dog” mean different things because the order changes.","english":"Sequence"},"ru":{"label":"Последовательность","aliases":["последовательные данные","последовательности","последовательность"],"short":"Данные, в которых важен порядок элементов.","example":"«Собака идёт за человеком» и «Человек идёт за собакой» означают разное из-за порядка слов.","english":"Sequence"}}},{"id":"rnn","weeks":[10],"locales":{"ko":{"label":"순환 신경망","aliases":["순환 신경망","순환신경망","RNN"],"short":"앞에서 계산한 정보를 다음 단계에 전달하며 순서 있는 자료를 처리하는 신경망이에요.","example":"문장을 앞에서부터 읽으며 이전 단어의 정보를 다음 단어 계산에 사용해요.","english":"Recurrent neural network"},"en":{"label":"Recurrent neural network","aliases":["recurrent neural network","recurrent network","RNN"],"short":"A neural network that passes information from earlier steps to later steps in a sequence.","example":"It can read a sentence in order and use information from earlier words when processing the next word.","english":"Recurrent neural network"},"ru":{"label":"Рекуррентная нейросеть","aliases":["рекуррентная нейронная сеть","рекуррентная нейросеть","RNN"],"short":"Нейросеть, которая передаёт информацию с предыдущих шагов на следующие при работе с последовательностью.","example":"Она может читать предложение по порядку и использовать предыдущие слова при обработке следующего.","english":"Recurrent neural network"}}},{"id":"attention","weeks":[10],"locales":{"ko":{"label":"어텐션","aliases":["Attention","어텐션"],"short":"결과를 만들 때 입력의 어느 부분을 더 참고할지 계산하는 방법이에요.","example":"번역할 단어에 따라 원문에서 더 참고할 단어가 달라질 수 있어요. 사람이 집중하는 것과 똑같지는 않아요.","english":"Attention"},"en":{"label":"Attention","aliases":["attention mechanism","attention"],"short":"A method that calculates which parts of the input to use more when making a result.","example":"For each translated word, different source words may matter more. It is not the same as human attention.","english":"Attention"},"ru":{"label":"Механизм внимания","aliases":["механизм внимания","attention","внимание"],"short":"Способ вычислить, какие части входных данных сильнее использовать для результата.","example":"При переводе разных слов могут быть важны разные части исходной фразы. Это не то же самое, что внимание человека.","english":"Attention"}}},{"id":"token","weeks":[11],"locales":{"ko":{"label":"토큰","aliases":["Token","토크나이징","토큰화","토큰"],"short":"글을 나눈 작은 조각을 토큰이라고 하고, 이렇게 나누는 과정은 토큰화라고 해요.","example":"“안녕하세요”가 한 조각일 수도, 여러 조각일 수도 있어요. 나누는 방법은 도구마다 달라요.","english":"Token"},"en":{"label":"Token","aliases":["tokenisation","tokenization","tokens","token"],"short":"A token is a small piece of text; tokenization splits text into these pieces.","example":"“Hello” may be one piece, while another word may use several pieces. Different tools can split text differently.","english":"Token"},"ru":{"label":"Токен","aliases":["токенизация","токены","токен"],"short":"Токен — небольшая часть текста, а токенизация — разделение текста на такие части.","example":"«Привет» может быть одной частью, а другое слово — несколькими. Разные инструменты делят текст по-разному.","english":"Token"}}},{"id":"embedding","weeks":[11],"locales":{"ko":{"label":"임베딩","aliases":["Embedding","단어 임베딩","임베딩"],"short":"글·사진 같은 자료의 특징을 나타내는 숫자 묶음이에요.","example":"후기를 여러 숫자로 바꾸면 모델이 비슷한 후기를 비교하는 데 쓸 수 있어요. 단순한 번호표와는 달라요.","english":"Embedding"},"en":{"label":"Embedding","aliases":["word embeddings","word embedding","embeddings","embedding"],"short":"A group of numbers that represents features of text, images, or other data.","example":"A review can be turned into numbers that help a model compare similar reviews. This is more than giving it an ID number.","english":"Embedding"},"ru":{"label":"Эмбеддинг","aliases":["векторное представление","эмбеддинги","эмбеддинг"],"short":"Набор чисел, который представляет признаки текста, изображения или других данных.","example":"Отзыв можно превратить в числа для сравнения с похожими отзывами. Это не просто присвоение номера.","english":"Embedding"}}},{"id":"nlp","weeks":[11],"locales":{"ko":{"label":"자연어 처리","aliases":["자연어 처리","자연어처리","NLP"],"short":"컴퓨터로 사람이 쓰는 말과 글을 다루는 기술이에요.","example":"문장을 번역하거나 음식 후기가 긍정적인지 분류할 때 쓰여요.","english":"Natural language processing"},"en":{"label":"Natural language processing","aliases":["natural language processing","NLP"],"short":"Technology for working with human language using computers.","example":"It can help translate a sentence or classify a food review as positive or negative.","english":"Natural language processing"},"ru":{"label":"Обработка естественного языка","aliases":["обработка естественного языка","обработки естественного языка","NLP"],"short":"Технологии, с помощью которых компьютеры работают с человеческим языком.","example":"Они помогают переводить предложения или определять, положительный отзыв о еде или отрицательный.","english":"Natural language processing"}}},{"id":"stt","weeks":[12],"locales":{"ko":{"label":"음성 인식","aliases":["Speech-to-Text","음성을 글로","음성 인식","음성인식","STT"],"short":"녹음하거나 말한 내용을 글로 바꾸는 기술이에요.","example":"“내일 만나요”라고 말하면 그 말을 글로 적어요. 이름이나 숫자는 틀릴 수 있어 다시 확인해요.","english":"Speech to text"},"en":{"label":"Speech to text","aliases":["speech recognition","speech to text","speech-to-text","STT"],"short":"Technology that turns spoken words into written text.","example":"Say “See you tomorrow” and it writes the words. Check names and numbers because mistakes can happen.","english":"Speech to text"},"ru":{"label":"Речь в текст","aliases":["распознавание речи","речь в текст","STT"],"short":"Технология, которая превращает произнесённые слова в текст.","example":"Вы говорите «Увидимся завтра», и появляется текст. Имена и числа нужно проверить: возможны ошибки.","english":"Speech to text"}}},{"id":"tts","weeks":[12],"locales":{"ko":{"label":"음성 합성","aliases":["Text-to-Speech","텍스트를 음성으로","글을 말로","음성 합성","음성합성","TTS"],"short":"글을 사람이 들을 수 있는 목소리로 읽어 주는 기술이에요.","example":"“수업은 10시에 시작해요”를 입력하면 목소리로 들을 수 있어요.","english":"Text to speech"},"en":{"label":"Text to speech","aliases":["speech synthesis","text to speech","text-to-speech","TTS"],"short":"Technology that reads written text aloud in a generated voice.","example":"Type “Class starts at ten” and listen to a voice read it.","english":"Text to speech"},"ru":{"label":"Текст в речь","aliases":["текст в речь","синтез речи","TTS"],"short":"Технология, которая читает написанный текст созданным голосом.","example":"Введите «Занятие начинается в десять» и послушайте, как голос прочитает фразу.","english":"Text to speech"}}},{"id":"pixel","weeks":[9,13],"locales":{"ko":{"label":"픽셀","aliases":["Pixel","픽셀","화소"],"short":"디지털 사진을 이루는 작은 색 칸이에요.","example":"사진을 크게 확대하면 작은 칸을 볼 수 있어요. 각 칸에 색 값이 들어 있어요.","english":"Pixel"},"en":{"label":"Pixel","aliases":["pixels","pixel"],"short":"A small colour cell that makes up a digital image.","example":"Zoom far into an image to see the small cells. Each cell has colour values.","english":"Pixel"},"ru":{"label":"Пиксель","aliases":["пикселей","пиксели","пиксель"],"short":"Маленькая цветная ячейка, из которой состоит цифровое изображение.","example":"Сильно увеличьте изображение, чтобы увидеть ячейки. У каждой есть значения цвета.","english":"Pixel"}}},{"id":"rgb","weeks":[9,13],"locales":{"ko":{"label":"RGB","aliases":["RGB"],"short":"빨강·초록·파랑 빛의 양을 조합해 색을 나타내는 방법이에요.","example":"수업의 0~255 기준에서 (255, 0, 0)은 빨강이에요. (0, 0, 0)은 검정이에요.","english":"RGB"},"en":{"label":"RGB","aliases":["RGB"],"short":"A way to describe colour using amounts of red, green, and blue light.","example":"On the class scale from 0 to 255, (255, 0, 0) is red and (0, 0, 0) is black.","english":"RGB"},"ru":{"label":"RGB","aliases":["RGB"],"short":"Способ задавать цвет количеством красного, зелёного и синего света.","example":"В шкале урока от 0 до 255 цвет (255, 0, 0) — красный, а (0, 0, 0) — чёрный.","english":"RGB"}}},{"id":"detection","weeks":[13],"locales":{"ko":{"label":"객체 탐지","aliases":["Object detection","Detection","객체 검출","객체 탐지"],"short":"사진에서 물체의 종류와 위치를 함께 찾는 일이에요.","example":"책상 사진에서 컵을 찾고, 컵이 있는 곳에 사각형을 그려 표시해요.","english":"Object detection"},"en":{"label":"Object detection","aliases":["object detection","detection"],"short":"A task that finds what objects are in an image and where they are.","example":"Find a cup on a desk and draw a box around its location.","english":"Object detection"},"ru":{"label":"Обнаружение объектов","aliases":["обнаружение объектов","детекция объектов","детекция"],"short":"Задача, которая определяет, какие объекты есть на изображении и где они находятся.","example":"Найти чашку на столе и отметить её положение прямоугольником.","english":"Object detection"}}},{"id":"segmentation","weeks":[13],"locales":{"ko":{"label":"영역 나누기","aliases":["Segmentation","의미론적 분할","세그멘테이션","영역 나누기","이미지 분할"],"short":"사진의 각 픽셀이 어느 부분에 속하는지 표시해 영역을 나누는 일이에요.","example":"사진에서 사람 부분과 배경 부분을 픽셀 단위로 구분해 색칠할 수 있어요.","english":"Image segmentation"},"en":{"label":"Image segmentation","aliases":["semantic segmentation","image segmentation","segmentation"],"short":"A task that divides an image into regions by assigning its pixels to groups.","example":"Mark which pixels belong to a person and which belong to the background.","english":"Image segmentation"},"ru":{"label":"Сегментация изображения","aliases":["семантическая сегментация","сегментация изображения","сегментация"],"short":"Задача, которая делит изображение на области, указывая, к какой группе относится каждый пиксель.","example":"Можно отметить пиксели человека одним цветом, а пиксели фона — другим.","english":"Image segmentation"}}},{"id":"augmentation","weeks":[7,13],"locales":{"ko":{"label":"데이터 늘리기","aliases":["Data augmentation","Augmentation","데이터 늘리기","데이터 증강"],"short":"기존 자료를 조금 바꿔 학습에 쓸 예시를 더 만드는 방법이에요.","example":"컵 사진의 밝기나 각도를 조금 바꿀 수 있어요. 글자가 뒤집히는 등 뜻이 바뀌는 변화는 조심해요.","english":"Data augmentation"},"en":{"label":"Data augmentation","aliases":["data augmentation","augmentation"],"short":"Making extra training examples by changing existing data a little.","example":"Slightly change a cup photo’s brightness or angle. Be careful with changes that alter the meaning, such as flipped text.","english":"Data augmentation"},"ru":{"label":"Дополнение данных","aliases":["аугментация данных","дополнение данных","аугментация"],"short":"Создание дополнительных учебных примеров с небольшими изменениями исходных данных.","example":"Можно немного изменить яркость или угол фото чашки. Изменения не должны искажать смысл, например переворачивать текст.","english":"Data augmentation"}}},{"id":"prompt","weeks":[14],"locales":{"ko":{"label":"프롬프트","aliases":["Prompt","프롬프트"],"short":"AI에게 할 일을 알려 주는 질문이나 요청 내용이에요.","example":"“친구에게 보낼 생일 축하 말을 쉬운 한국어로 두 문장 써 줘”처럼 요청해요.","english":"Prompt"},"en":{"label":"Prompt","aliases":["prompts","prompt"],"short":"The question or instruction you give an AI.","example":"For example: “Write two simple Korean sentences to wish my friend a happy birthday.”","english":"Prompt"},"ru":{"label":"Промпт","aliases":["промпты","промпт"],"short":"Вопрос или инструкция, которую вы даёте ИИ.","example":"Например: «Напиши два простых предложения на корейском, чтобы поздравить друга с днём рождения».","english":"Prompt"}}},{"id":"generative_ai","weeks":[14],"locales":{"ko":{"label":"생성형 AI","aliases":["Generative AI","생성형 인공지능","생성형 AI"],"short":"배운 자료의 패턴을 이용해 글·그림·소리 등을 만드는 AI예요.","example":"조건을 주면 초대 문구나 그림을 만들 수 있어요. 만든 내용의 사실 여부는 따로 확인해요.","english":"Generative AI"},"en":{"label":"Generative AI","aliases":["generative artificial intelligence","generative AI"],"short":"AI that uses learned patterns to make text, images, sound, or other content.","example":"Ask it to create an invitation or picture. Check factual claims in what it makes.","english":"Generative AI"},"ru":{"label":"Генеративный ИИ","aliases":["генеративный искусственный интеллект","генеративный ИИ"],"short":"ИИ, который использует закономерности из обучения, чтобы создавать текст, изображения, звук и другой контент.","example":"Можно попросить его написать приглашение или создать картинку. Факты в результате нужно проверить.","english":"Generative AI"}}},{"id":"rag","weeks":[14],"locales":{"ko":{"label":"RAG","aliases":["검색 증강 생성","검색증강생성","RAG"],"short":"질문과 관련된 문서를 먼저 찾아 그 내용을 참고해 답을 만드는 방법이에요.","example":"학교 안내문을 찾아 기숙사 질문에 답할 수 있어요. 잘못 찾거나 잘못 읽을 수 있어 원문도 확인해요.","english":"Retrieval-augmented generation"},"en":{"label":"RAG","aliases":["retrieval augmented generation","retrieval-augmented generation","RAG"],"short":"A method that finds relevant documents and uses them to help generate an answer.","example":"It can use a school guide to answer a dormitory question. Check the original: retrieval and the answer can still be wrong.","english":"Retrieval-augmented generation"},"ru":{"label":"RAG","aliases":["генерация с дополнением поиском","генерация с поиском","RAG"],"short":"Метод, который сначала находит подходящие документы, а затем использует их для составления ответа.","example":"Можно найти правила общежития и ответить по ним. Проверьте оригинал: поиск и ответ всё равно могут содержать ошибки.","english":"Retrieval-augmented generation"}}},{"id":"hallucination","weeks":[14],"locales":{"ko":{"label":"그럴듯한 오답","aliases":["Hallucination","그럴듯한 오답","할루시네이션","환각 현상"],"short":"AI가 사실과 다른 내용을 맞는 말처럼 만드는 현상이에요.","example":"없는 책 제목이나 잘못된 수업 날짜를 말할 수 있어요. 공식 안내나 원문과 비교해요.","english":"Hallucination"},"en":{"label":"Hallucination","aliases":["hallucinations","hallucination"],"short":"When AI produces a believable statement that is not true.","example":"It might invent a book title or give the wrong class date. Compare it with the original or an official notice.","english":"Hallucination"},"ru":{"label":"Галлюцинация ИИ","aliases":["галлюцинации ИИ","галлюцинация ИИ","галлюцинации","галлюцинация"],"short":"Ситуация, когда ИИ выдаёт неправдивое утверждение так, будто оно верное.","example":"Он может придумать название книги или назвать неверную дату занятия. Сравните ответ с оригиналом или официальным объявлением.","english":"Hallucination"}}}],"weekTerms":{"1":["browser","click_tap","file","folder","link","copy_paste"],"2":["ai","algorithm","data","model","training","prediction"],"3":["data","dataset","model","training","prediction","regression","colab"],"4":["classification","regression","training","model","test_data","overfitting"],"5":["input","weight","threshold","neuron","hidden_layer","xor","backpropagation","gradient"],"6":["cnn","feature","relu","pooling","neuron","training"],"7":["dataset","classification","training","test_data","overfitting","augmentation"],"9":["data","tensor","dimension","reshape","pixel","rgb"],"10":["sequence","rnn","attention","model","input","prediction"],"11":["nlp","token","embedding","sequence","model","classification"],"12":["stt","tts","data","model","input","prediction"],"13":["pixel","rgb","detection","segmentation","feature","augmentation","cnn"],"14":["prompt","generative_ai","rag","hallucination","model","data"]}};
+  const UI = {
+    ko: { glossary: '이 주차의 단어', hint: '밑줄과 ⓘ가 있는 단어를 누르면 쉬운 뜻과 예시가 열려요.', meaning: '쉬운 뜻', example: '예를 들어', help: '쉬운 뜻 열기', closeHelp: '단어 설명 닫기', close: '닫기', closeToast: '알림 닫기', english: '영어 이름', copied: '코드를 복사했어요.' },
+    en: { glossary: 'Words for this week', hint: 'Tap a word with a dotted underline and ⓘ to read its meaning and an example.', meaning: 'Simple meaning', example: 'For example', help: 'Open simple meaning', closeHelp: 'Close word explanation', close: 'Close', closeToast: 'Close notice', english: 'English name', copied: 'Code copied.' },
+    ru: { glossary: 'Слова этой недели', hint: 'Нажмите на слово с пунктирным подчёркиванием и ⓘ, чтобы прочитать объяснение и пример.', meaning: 'Простое объяснение', example: 'Например', help: 'Открыть простое объяснение', closeHelp: 'Закрыть объяснение слова', close: 'Закрыть', closeToast: 'Закрыть уведомление', english: 'Название по-английски', copied: 'Код скопирован.' }
+  };
+  const PAGES = { main: '1', ch1: '2', ch2: '3', ch3: '4', ch4: '5', ch5: '6', ch6: '7', ch7: '9', ch8: '10', ch9: '11', ch10: '12', ch11: '13', ch12: '14' };
+  const WORD = /[\p{L}\p{N}_]/u;
+  const KOREAN_ENDING = /^(?:으로|에서|처럼|까지|부터|보다|마다|라고|라는|들|은|는|이|가|을|를|의|에|와|과|도|로|만|란|다|하|해|했|되|된|될|입|인)/u;
+  function validBoundary(value, start, alias, locale) {
+    const before = value.slice(0, start).slice(-1), after = value.slice(start + alias.length);
+    if (before && WORD.test(before)) return false;
+    if (!after || !WORD.test(after[0])) return true;
+    return locale === 'ko' && KOREAN_ENDING.test(after);
+  }
+  function entriesFor(week, locale) {
+    return (GLOSSARY.weekTerms[String(week)] || []).map(function (id) {
+      const term = GLOSSARY.terms.find(function (entry) { return entry.id === id; });
+      if (!term) return null;
+      const copy = term.locales[locale] || term.locales.ko;
+      return { id: id, aliases: Array.from(new Set([copy.label].concat(copy.aliases || []))).filter(Boolean) };
+    }).filter(Boolean);
+  }
+  function findTerms(value, entries, locale, alreadyUsed) {
+    const used = new Set(alreadyUsed || []), lower = value.toLowerCase(), candidates = [];
+    entries.forEach(function (term) {
+      if (used.has(term.id)) return;
+      term.aliases.forEach(function (alias) {
+        const needle = alias.toLowerCase();
+        let from = 0, index;
+        while (needle && (index = lower.indexOf(needle, from)) >= 0) {
+          if (validBoundary(value, index, alias, locale)) candidates.push({ start: index, end: index + alias.length, id: term.id });
+          from = index + Math.max(needle.length, 1);
+        }
+      });
+    });
+    candidates.sort(function (a, b) { return a.start - b.start || b.end - a.end || a.id.localeCompare(b.id); });
+    const matches = []; let end = -1;
+    candidates.forEach(function (match) {
+      if (match.start >= end && !used.has(match.id)) { matches.push(match); used.add(match.id); end = match.end; }
+    });
+    return matches;
+  }
+  function wordCopy(id, locale) {
+    const term = GLOSSARY.terms.find(function (entry) { return entry.id === id; });
+    return term ? term.locales[locale] || term.locales.ko : null;
+  }
+  if (typeof module === 'object' && module.exports && typeof document === 'undefined') {
+    module.exports = { validBoundary: validBoundary, findTerms: findTerms, entriesFor: entriesFor, wordCopy: wordCopy, glossary: GLOSSARY, ui: UI, pages: PAGES };
+    return;
+  }
+  const main = document.querySelector('main'), popover = document.getElementById('learn-popover'), notice = document.getElementById('learn-toast');
+  if (!main || !popover || !notice || window.aiBridgeLearningHelp) return;
+  const get = function (id) { return document.getElementById('learn-' + id); };
+  const lang = function () { const value = (document.documentElement.lang || 'ko').split('-')[0]; return UI[value] ? value : 'ko'; };
+  const t = function (key) { return UI[lang()][key]; };
+  const activePage = function () { return main.querySelector('.page.active'); };
+  const visible = function (node) {
+    if (!node || !node.isConnected || node.closest('[hidden], [inert]')) return false;
+    const page = node.closest('.page');
+    if (page && !page.classList.contains('active')) return false;
+    let parent = node.parentElement;
+    while (parent) {
+      if (parent.tagName === 'DETAILS' && !parent.open && !parent.querySelector(':scope > summary')?.contains(node)) return false;
+      parent = parent.parentElement;
+    }
+    return true;
+  };
+  const focus = function (node) { if (visible(node)) node.focus({ preventScroll: true }); };
+  let current = null, pinned = false, closeTimer = 0, suppressedFocus = null, annotationTimer = 0;
+  let toastTimer = 0, toastReturn = null;
+  const triggerSelector = '.learn-term, [data-learn-managed]';
+  const skipSelector = 'a,button,summary,h1,h2,h3,h4,h5,h6,nav,header,footer,code,pre,script,style,svg,canvas,textarea,select,option,input,kbd,label,[contenteditable],[role="status"],[aria-live],.study-tip,.w11s-tooltip,.learn-glossary,.study-question,.w11s-question,.w2-question,[data-study-q],[data-w11s-question],[data-learn-skip],.itpractice';
+
+  function hideNotice(restoreFocus) {
+    clearTimeout(toastTimer); toastTimer = 0;
+    const hadFocus = notice.contains(document.activeElement);
+    notice.hidden = true;
+    get('toast-announcement').textContent = '';
+    if (restoreFocus !== false && hadFocus) focus(toastReturn);
+  }
+  function resumeNotice() {
+    clearTimeout(toastTimer);
+    if (!notice.hidden && !notice.contains(document.activeElement) && !notice.matches(':hover')) toastTimer = window.setTimeout(function () { hideNotice(false); }, 6500);
+  }
+  function showNotice(message, options) {
+    if (!message || document.hidden) return;
+    const menu = document.getElementById('mobileMenu');
+    // The mobile menu owns focus; its theme control already displays the selected value.
+    if (menu && !menu.hidden) return;
+    const requestedReturn = options && options.returnFocus || document.activeElement;
+    if (!notice.contains(requestedReturn)) toastReturn = requestedReturn;
+    get('toast-text').textContent = String(message);
+    notice.hidden = false;
+    get('toast-announcement').textContent = String(message);
+    notice.classList.remove('learn-toast-enter'); void notice.offsetWidth; notice.classList.add('learn-toast-enter');
+    resumeNotice();
+  }
+  window.aiBridgeNotice = Object.freeze({ show: showNotice, hide: hideNotice });
+  notice.addEventListener('pointerenter', function () { clearTimeout(toastTimer); });
+  notice.addEventListener('pointerleave', resumeNotice);
+  notice.addEventListener('focusin', function () { clearTimeout(toastTimer); });
+  notice.addEventListener('focusout', function () { window.setTimeout(resumeNotice, 0); });
+  get('toast-close').addEventListener('click', function () { hideNotice(true); });
+
+  function closeHelp(restoreFocus) {
+    clearTimeout(closeTimer);
+    const previous = current, hadFocus = popover.contains(document.activeElement);
+    if (previous) { previous.setAttribute('aria-expanded', 'false'); previous.removeAttribute('aria-describedby'); }
+    current = null; pinned = false; popover.hidden = true;
+    if (previous && (restoreFocus || hadFocus) && visible(previous) && document.activeElement !== previous) {
+      suppressedFocus = previous; focus(previous);
+    }
+  }
+  function positionHelp() {
+    if (!current || popover.hidden) return;
+    if (!visible(current)) { closeHelp(false); return; }
+    const rect = current.getBoundingClientRect(), width = window.innerWidth, height = window.innerHeight;
+    if (rect.bottom < 0 || rect.top > height || rect.right < 0 || rect.left > width) { closeHelp(false); return; }
+    const size = popover.getBoundingClientRect(), left = Math.max(12, Math.min(rect.left, width - size.width - 12));
+    const below = rect.bottom + 6, above = rect.top - size.height - 6;
+    const top = below + size.height <= height - 12 ? below : above >= 12 ? above : Math.max(12, Math.min(below, height - size.height - 12));
+    popover.style.left = left + 'px'; popover.style.top = top + 'px';
+  }
+  function legacyCopy(button) {
+    const source = document.getElementById(button.dataset.learnSourceTip || '');
+    const card = button.closest('.study-card, .w11s-concept');
+    const heading = card && card.querySelector('h3');
+    return { label: heading ? heading.textContent : t('meaning'), short: source ? source.textContent : '', example: '', english: '' };
+  }
+  function openHelp(button, pin) {
+    if (!visible(button)) return;
+    const copy = button.dataset.learnTerm ? wordCopy(button.dataset.learnTerm, lang()) : legacyCopy(button);
+    if (!copy || !copy.short) return;
+    clearTimeout(closeTimer);
+    if (current !== button) closeHelp(false);
+    current = button; pinned = Boolean(pin) || pinned;
+    get('popover-title').textContent = copy.label;
+    get('popover-short').textContent = copy.short;
+    get('popover-example-text').textContent = copy.example || '';
+    get('popover-example').hidden = !copy.example;
+    const english = copy.english && copy.english.toLowerCase() !== copy.label.toLowerCase();
+    get('popover-english').textContent = english ? t('english') + ': ' + copy.english : '';
+    get('popover-english').hidden = !english;
+    button.setAttribute('aria-expanded', 'true'); button.setAttribute('aria-describedby', 'learn-popover-short');
+    popover.hidden = false; positionHelp();
+    popover.classList.remove('learn-popover-enter'); void popover.offsetWidth; popover.classList.add('learn-popover-enter');
+  }
+  function delayedClose() {
+    clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(function () {
+      if (!current || pinned || current === document.activeElement || popover.contains(document.activeElement) || current.matches(':hover') || popover.matches(':hover')) return;
+      closeHelp(false);
+    }, 220);
+  }
+  function prepareTrigger(button) {
+    button.setAttribute('aria-haspopup', 'dialog');
+    button.setAttribute('aria-controls', 'learn-popover');
+    button.setAttribute('aria-expanded', 'false');
+    if (button.dataset.learnTerm) button.setAttribute('aria-label', button.textContent + ' — ' + t('help'));
+  }
+  function prepareLegacy() {
+    document.querySelectorAll('[data-study-help], [data-w11s-tip]').forEach(function (button) {
+      if (!button.dataset.learnSourceTip) button.dataset.learnSourceTip = button.getAttribute('aria-controls');
+      button.dataset.learnManaged = 'true'; prepareTrigger(button);
+      const old = document.getElementById(button.dataset.learnSourceTip); if (old) old.hidden = true;
+    });
+  }
+  document.addEventListener('pointerover', function (event) {
+    if (event.pointerType !== 'mouse') return;
+    const button = event.target.closest(triggerSelector);
+    if (button && !button.contains(event.relatedTarget) && !pinned) openHelp(button, false);
+    if (popover.contains(event.target)) clearTimeout(closeTimer);
+  });
+  document.addEventListener('pointerout', function (event) {
+    if (event.pointerType !== 'mouse') return;
+    if (event.target.closest(triggerSelector) || popover.contains(event.target)) delayedClose();
+  });
+  document.addEventListener('focusin', function (event) {
+    const button = event.target.closest(triggerSelector);
+    if (button) {
+      if (suppressedFocus === button) { suppressedFocus = null; return; }
+      if (current !== button || !pinned) openHelp(button, false);
+    } else if (popover.contains(event.target)) clearTimeout(closeTimer);
+    else if (current) { if (pinned) closeHelp(false); else delayedClose(); }
+  });
+  document.addEventListener('focusout', function (event) {
+    if (event.target.closest(triggerSelector) || popover.contains(event.target)) delayedClose();
+  });
+  document.addEventListener('click', function (event) {
+    const button = event.target.closest(triggerSelector);
+    if (button) {
+      event.preventDefault(); event.stopPropagation();
+      if (current === button && pinned) closeHelp(false);
+      else { openHelp(button, true); if (event.detail === 0) focus(get('popover-close')); }
+      return;
+    }
+    if (!popover.contains(event.target)) closeHelp(false);
+    if (event.target.closest('#hamburgerBtn')) hideNotice(false);
+  }, true);
+  get('popover-close').addEventListener('click', function () { closeHelp(true); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    if (current) { event.preventDefault(); event.stopPropagation(); closeHelp(true); }
+    else if (notice.contains(document.activeElement)) { event.preventDefault(); hideNotice(true); }
+  }, true);
+  window.addEventListener('resize', positionHelp, { passive: true });
+  window.addEventListener('scroll', positionHelp, { passive: true, capture: true });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) { closeHelp(false); hideNotice(false); } });
+  document.addEventListener('ai-bridge:themechange', function (event) {
+    closeHelp(false);
+    if (event.detail && event.detail.source === 'user') showNotice(event.detail.message);
+  });
+
+  function refreshLabels() {
+    get('popover-kicker').textContent = t('meaning'); get('popover-example-label').textContent = t('example');
+    get('popover-close').setAttribute('aria-label', t('closeHelp'));
+    get('toast-close').textContent = t('close'); get('toast-close').setAttribute('aria-label', t('closeToast'));
+    document.querySelectorAll('.learn-glossary').forEach(function (details) {
+      details.querySelector('[data-learn-glossary-label]').textContent = t('glossary');
+      details.querySelector('.learn-glossary-intro').textContent = t('hint');
+      const list = details.querySelector('.learn-glossary-list');
+      const fragment = document.createDocumentFragment();
+      (GLOSSARY.weekTerms[details.dataset.learnWeek] || []).forEach(function (id) {
+        const copy = wordCopy(id, lang()); if (!copy) return;
+        const li = document.createElement('li'), button = document.createElement('button'), definition = document.createElement('p');
+        button.type = 'button'; button.className = 'learn-term'; button.dataset.learnTerm = id; button.textContent = copy.label; prepareTrigger(button);
+        definition.textContent = copy.short; li.append(button, definition); fragment.append(li);
+      });
+      list.replaceChildren(fragment);
+    });
+  }
+  function removeAnnotations() {
+    main.querySelectorAll('button[data-learn-inline]').forEach(function (button) {
+      const parent = button.parentNode; button.replaceWith(document.createTextNode(button.textContent)); if (parent) parent.normalize();
+    });
+  }
+  const observer = typeof MutationObserver === 'function' ? new MutationObserver(function () { scheduleAnnotations(); }) : null;
+  function observe() { if (observer) observer.observe(main, { subtree: true, childList: true, characterData: true }); }
+  function annotate() {
+    annotationTimer = 0;
+    const page = activePage(); if (!page) return;
+    if (observer) observer.disconnect();
+    try {
+      if (current && !visible(current)) closeHelp(false);
+      const week = PAGES[page.id.replace('page-', '')], entries = entriesFor(week, lang()), scopes = new Map();
+      const scopeFor = function (node) { return node.closest('[data-study-panel], [data-w11s-panel], .study-more, .w11s-legacy, .home-help-panel, .itbasics-section') || page; };
+      page.querySelectorAll('button[data-learn-inline]').forEach(function (button) {
+        const scope = scopeFor(button);
+        if (!scopes.has(scope)) scopes.set(scope, new Set());
+        scopes.get(scope).add(button.dataset.learnTerm);
+      });
+      const nodes = [], walker = document.createTreeWalker(page, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const parent = node.parentElement;
+        if (node.nodeValue.trim() && parent && !parent.closest(skipSelector) && visible(parent) && parent.closest('p, li, dd, td, .study-flow-step, .study-terms')) nodes.push(node);
+      }
+      nodes.forEach(function (textNode) {
+        const scope = scopeFor(textNode.parentElement);
+        if (!scopes.has(scope)) scopes.set(scope, new Set());
+        const used = scopes.get(scope), value = textNode.nodeValue, matches = findTerms(value, entries, lang(), Array.from(used));
+        if (!matches.length) return;
+        const fragment = document.createDocumentFragment(); let start = 0;
+        matches.forEach(function (match) {
+          fragment.append(document.createTextNode(value.slice(start, match.start)));
+          const button = document.createElement('button'); button.type = 'button'; button.className = 'learn-term';
+          button.dataset.learnTerm = match.id; button.dataset.learnInline = 'true'; button.textContent = value.slice(match.start, match.end);
+          prepareTrigger(button); fragment.append(button); used.add(match.id); start = match.end;
+        });
+        fragment.append(document.createTextNode(value.slice(start))); textNode.replaceWith(fragment);
+      });
+    } finally { observe(); }
+  }
+  function scheduleAnnotations() {
+    clearTimeout(annotationTimer); annotationTimer = window.setTimeout(annotate, 90);
+  }
+  main.addEventListener('click', function (event) {
+    if (event.target.closest('button, summary, a')) { if (current && !visible(current)) closeHelp(false); scheduleAnnotations(); }
+  });
+  main.addEventListener('input', scheduleAnnotations);
+  main.addEventListener('toggle', function (event) { if (event.target.tagName === 'DETAILS') { closeHelp(false); scheduleAnnotations(); } }, true);
+  if (typeof window.setLang === 'function') {
+    const previous = window.setLang;
+    window.setLang = function () {
+      closeHelp(false); hideNotice(false);
+      if (observer) observer.disconnect(); removeAnnotations();
+      const result = previous.apply(this, arguments);
+      prepareLegacy(); refreshLabels(); observe(); scheduleAnnotations(); return result;
+    };
+  }
+  if (typeof window.showPage === 'function') {
+    const previous = window.showPage;
+    window.showPage = function () {
+      closeHelp(false); hideNotice(false);
+      const result = previous.apply(this, arguments); scheduleAnnotations(); return result;
+    };
+  }
+  prepareLegacy(); refreshLabels(); annotate();
+  window.aiBridgeLearningHelp = Object.freeze({ ready: true, close: closeHelp, refresh: scheduleAnnotations });
+}());
+
+
+/* Optional theme settings. No lesson rendering, progress, or answer state is changed. */
+(function () {
+  'use strict';
+  function normalizePreference(value) {
+    var next = typeof value === 'string' ? value.trim().toLowerCase() : '';
+    return next === 'light' || next === 'dark' || next === 'system' ? next : 'light';
+  }
+  function resolveTheme(preference, systemDark) {
+    var normalized = normalizePreference(preference);
+    return normalized === 'dark' || (normalized === 'system' && systemDark === true) ? 'dark' : 'light';
+  }
+  var pure = { normalizePreference: normalizePreference, resolveTheme: resolveTheme };
+  if (typeof module === 'object' && module.exports) module.exports = pure;
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  if (window.aiBridgeTheme && window.aiBridgeTheme.initialized) return;
+
+  var KEY = 'aiBridge.theme.v1';
+  var messages = {
+  "ko": {
+    "appliedLight": "밝은 화면으로 바꿨어요.",
+    "appliedDark": "어두운 화면으로 바꿨어요.",
+    "appliedSystem": "기기의 화면 설정을 따라가요.",
+    "saveFailed": "화면은 바뀌었지만, 선택을 저장하지 못했어요. 다음에 다시 골라 주세요.",
+    "toggleLabel": "어두운 화면",
+    "currentLight": "현재 밝은 화면",
+    "currentDark": "현재 어두운 화면",
+    "toDark": "어둡게 바꾸기",
+    "toLight": "밝게 바꾸기"
+  },
+  "en": {
+    "appliedLight": "Light display is on.",
+    "appliedDark": "Dark display is on.",
+    "appliedSystem": "The display follows your device setting.",
+    "saveFailed": "The display changed, but your choice could not be saved. Please choose again next time.",
+    "toggleLabel": "Dark display",
+    "currentLight": "Light display is on",
+    "currentDark": "Dark display is on",
+    "toDark": "Switch to dark",
+    "toLight": "Switch to light"
+  },
+  "ru": {
+    "appliedLight": "Включена светлая тема.",
+    "appliedDark": "Включена тёмная тема.",
+    "appliedSystem": "Тема меняется вместе с настройками устройства.",
+    "saveFailed": "Тема изменена, но выбор не сохранён. В следующий раз выберите тему снова.",
+    "toggleLabel": "Тёмная тема",
+    "currentLight": "Сейчас светлая тема",
+    "currentDark": "Сейчас тёмная тема",
+    "toDark": "Включить тёмную тему",
+    "toLight": "Включить светлую тему"
+  }
+};
+  var media = null;
+  try { media = window.matchMedia('(prefers-color-scheme: dark)'); } catch (_) {}
+  var state = {
+    preference: normalizePreference(document.documentElement.getAttribute('data-theme-preference')),
+    theme: 'light',
+    storageFailed: false
+  };
+
+  function language() {
+    var lang = (document.documentElement.lang || 'ko').toLowerCase().split('-')[0];
+    return messages[lang] ? lang : 'ko';
+  }
+  function refreshLabels() {
+    var copy = messages[language()];
+    var dark = state.theme === 'dark';
+    document.querySelectorAll('button[data-course-theme-toggle]').forEach(function (button) {
+      // A stable accessible name plus pressed state describes this toggle.
+      button.setAttribute('aria-label', copy.toggleLabel);
+      button.setAttribute('aria-pressed', String(dark));
+      button.setAttribute('title', (dark ? copy.currentDark : copy.currentLight) + ' · ' + (dark ? copy.toLight : copy.toDark));
+    });
+    document.querySelectorAll('[data-theme-storage-note]').forEach(function (note) {
+      note.hidden = !state.storageFailed;
+      note.textContent = state.storageFailed ? copy.saveFailed : '';
+    });
+  }
+  function changeMessage(preference, persisted) {
+    var copy = messages[language()];
+    if (persisted === false) return copy.saveFailed;
+    return preference === 'system' ? copy.appliedSystem : (preference === 'dark' ? copy.appliedDark : copy.appliedLight);
+  }
+  function apply(preference, persist, source) {
+    state.preference = normalizePreference(preference);
+    state.theme = resolveTheme(state.preference, !!(media && media.matches));
+    var root = document.documentElement;
+    root.setAttribute('data-theme-preference', state.preference);
+    root.setAttribute('data-theme', state.theme);
+    root.style.colorScheme = state.theme;
+    var persisted = null;
+    if (persist) {
+      try {
+        window.localStorage.setItem(KEY, state.preference);
+        persisted = true;
+        state.storageFailed = false;
+      } catch (_) {
+        persisted = false;
+        state.storageFailed = true;
+      }
+    }
+    refreshLabels();
+    var detail = {
+      preference: state.preference, theme: state.theme, persisted: persisted,
+      source: source || 'api', message: changeMessage(state.preference, persisted)
+    };
+    // The shared learning UI may show this as a toast for source === 'user'.
+    // No toast or focus change happens automatically when a device setting changes.
+    if (typeof window.CustomEvent === 'function') {
+      document.dispatchEvent(new window.CustomEvent('ai-bridge:themechange', { detail: detail }));
+    }
+    return detail;
+  }
+  function wrapLanguage() {
+    var previous = window.setLang;
+    if (typeof previous !== 'function' || previous.__aiBridgeThemeWrapper) return;
+    function wrapped() {
+      var result = previous.apply(this, arguments);
+      refreshLabels();
+      return result;
+    }
+    wrapped.__aiBridgeThemeWrapper = true;
+    window.setLang = wrapped;
+  }
+  function initialize() {
+    if (window.aiBridgeTheme.initialized) return;
+    // A late loading runtime can still recover the preference if early boot was omitted.
+    if (!document.documentElement.hasAttribute('data-theme-preference')) {
+      try { state.preference = normalizePreference(window.localStorage.getItem(KEY)); } catch (_) {}
+    }
+    apply(state.preference, false, 'initial');
+    wrapLanguage();
+    document.addEventListener('click', function (event) {
+      var target = event.target && typeof event.target.closest === 'function' ? event.target.closest('button[data-course-theme-toggle]') : null;
+      if (target && !target.disabled) {
+        // Resolve saved system preferences before deciding the opposite theme.
+        apply(state.theme === 'dark' ? 'light' : 'dark', true, 'user');
+      }
+    });
+    function onSystemChange() {
+      if (state.preference === 'system') apply('system', false, 'system');
+    }
+    if (media) {
+      if (typeof media.addEventListener === 'function') media.addEventListener('change', onSystemChange);
+      else if (typeof media.addListener === 'function') media.addListener(onSystemChange);
+    }
+    window.addEventListener('storage', function (event) {
+      if (event.key !== KEY && event.key !== null) return;
+      // Ignore a same-named sessionStorage event if it can be identified.
+      try { if (event.storageArea && event.storageArea !== window.localStorage) return; } catch (_) {}
+      state.storageFailed = false;
+      apply(event.key === null ? 'light' : event.newValue, false, 'storage');
+    });
+    window.aiBridgeTheme.initialized = true;
+  }
+  window.aiBridgeTheme = {
+    normalizePreference: normalizePreference,
+    resolveTheme: resolveTheme,
+    getPreference: function () { return state.preference; },
+    getResolvedTheme: function () { return state.theme; },
+    setPreference: function (preference) { return apply(preference, true, 'api'); },
+    refreshLabels: refreshLabels,
+    initialized: false
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  else initialize();
+}());
+
+
+(function () {
+  'use strict';
+
+  // Pure helpers keep the regression marker's movement in SVG coordinates.
+  function translationOf(value) {
+    const match = /^matrix(3d)?\(([^)]+)\)$/.exec(String(value || '').trim());
+    if (!match) return { x: 0, y: 0 };
+    const values = match[2].split(',').map(Number);
+    const x = values[match[1] ? 12 : 4];
+    const y = values[match[1] ? 13 : 5];
+    return Number.isFinite(x) && Number.isFinite(y) ? { x: x, y: y } : { x: 0, y: 0 };
+  }
+  function pointOffset(before, after) {
+    if (!before || !after || ![before.x, before.y, after.x, after.y].every(Number.isFinite)) return null;
+    return { x: before.x - after.x, y: before.y - after.y };
+  }
+  if (typeof module === 'object' && module && module.exports && typeof document === 'undefined') {
+    module.exports = Object.freeze({ translationOf: translationOf, pointOffset: pointOffset });
+    return;
+  }
+  if (!document.body || (window.aiBridgeMotion && window.aiBridgeMotion.ready)) return;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const jobs = new Map();
+  const celebratedWeeks = new Set();
+  const requestedCompletions = new Set();
+  const snapshots = new WeakMap();
+  const dialog = document.getElementById('quiz-result-dialog');
+  let completionQueued = false;
+  let pendingCompletion = null;
+  let quizWeek = null;
+  const actions = [
+    '[data-study-nav]', '[data-study-looked]', '[data-study-predict]',
+    '[data-study-scenario]', '[data-study-answer]', '[data-study-backprop]',
+    '[data-study-reset]', '[data-study-next-page]', '[data-w11s-nav]',
+    '[data-w11s-go]', '[data-w11s-review]', '[data-w11s-meaning]',
+    '[data-w11s-answer]', '#w11s-split', '#w11s-numbers', '#w11s-reset'
+  ].join(',');
+
+  function visible(node) {
+    if (!node || !node.isConnected || document.hidden || node.closest('[hidden], details:not([open])')) return false;
+    const page = node.closest('.page');
+    const modal = node.closest('dialog');
+    return (!page || page.classList.contains('active')) && (!modal || modal.open);
+  }
+  function mayMove(node) { return !reduced.matches && visible(node); }
+  function elementTarget(event) {
+    return event.target && typeof event.target.closest === 'function' ? event.target : null;
+  }
+  function lessonRoot(node) { return node ? node.closest('.study-core[data-study-week], #w11-sample') : null; }
+  function weekOf(root) { return root ? (root.id === 'w11-sample' ? 11 : Number(root.dataset.studyWeek)) : null; }
+  function completeCard(week) { return document.getElementById(week === 11 ? 'w11s-complete' : 'study-w' + week + '-complete'); }
+
+  function cancelJob(key) {
+    const job = jobs.get(key);
+    if (!job) return;
+    jobs.delete(key);
+    job.timers.forEach(function (timer) { window.clearTimeout(timer); });
+    job.animations.forEach(function (animation) { animation.cancel(); });
+    job.classes.forEach(function (item) { item.node.classList.remove(item.name); });
+    job.decorations.forEach(function (node) { node.remove(); });
+  }
+  function cancelEffects() { Array.from(jobs.keys()).forEach(cancelJob); }
+  function cancel() {
+    cancelEffects();
+    requestedCompletions.clear();
+    pendingCompletion = null;
+    quizWeek = null;
+  }
+  function createJob(key, node) {
+    cancelJob(key);
+    const job = { key: key, node: node, timers: new Set(), animations: [], classes: [], decorations: [] };
+    jobs.set(key, job);
+    return job;
+  }
+  function later(job, callback, milliseconds) {
+    const timer = window.setTimeout(function () {
+      job.timers.delete(timer);
+      if (jobs.get(job.key) !== job) return;
+      if (!mayMove(job.node)) { cancelJob(job.key); return; }
+      callback();
+    }, milliseconds);
+    job.timers.add(timer);
+  }
+  function addClass(job, node, name) {
+    if (!node || !mayMove(node)) return;
+    node.classList.add(name);
+    job.classes.push({ node: node, name: name });
+  }
+  function pulse(node, key, isStep) {
+    if (!mayMove(node)) return;
+    const job = createJob(key, node);
+    addClass(job, node, isStep ? 'learn-motion-step' : 'learn-motion-stage');
+    later(job, function () { cancelJob(key); }, isStep ? 380 : 300);
+  }
+
+  function capturePrediction(event, target) {
+    const root = lessonRoot(target);
+    if (weekOf(root) !== 3) return;
+    if (!target.matches('[data-study-slider]') && !target.closest('[data-study-scenario]')) return;
+    const point = document.getElementById('study-w3-prediction-point');
+    if (!mayMove(point)) return;
+    const offset = jobs.has('prediction-3') ? translationOf(window.getComputedStyle(point).transform) : { x: 0, y: 0 };
+    snapshots.set(event, { x: Number(point.getAttribute('cx')) + offset.x, y: Number(point.getAttribute('cy')) + offset.y });
+  }
+  function movePrediction(event) {
+    const before = snapshots.get(event);
+    snapshots.delete(event);
+    const point = document.getElementById('study-w3-prediction-point');
+    if (!before || !mayMove(point) || typeof point.animate !== 'function') return;
+    const offset = pointOffset(before, { x: Number(point.getAttribute('cx')), y: Number(point.getAttribute('cy')) });
+    if (!offset || (Math.abs(offset.x) < .01 && Math.abs(offset.y) < .01)) return;
+    const job = createJob('prediction-3', point);
+    // The real cx/cy and numeric answer were already updated by the lesson.
+    // Only a temporary visual transform interpolates toward that exact state.
+    let animation;
+    try {
+      animation = point.animate([
+        { transform: 'translate(' + offset.x + 'px, ' + offset.y + 'px)' },
+        { transform: 'translate(0px, 0px)' }
+      ], { duration: 170, easing: 'ease-out' });
+    } catch (error) {
+      cancelJob(job.key);
+      return;
+    }
+    job.animations.push(animation);
+    if (animation.finished && typeof animation.finished.then === 'function') {
+      animation.finished.then(function () {
+        if (jobs.get(job.key) === job) cancelJob(job.key);
+      }, function () { /* A new input, navigation or reduced-motion cancels it. */ });
+    } else later(job, function () { cancelJob(job.key); }, 190);
+  }
+
+  function calculationSequence(target) {
+    const output = document.getElementById('study-w5-output');
+    if (!mayMove(output)) return;
+    const first = target.matches('[data-study-slider]') ? output.querySelector('.study-slider') : output.querySelector('.study-grid-demo');
+    const stages = [first, document.getElementById('study-w5-formula'), output.querySelector('.study-number-panel')];
+    const job = createJob('calculation-5', output);
+    stages.forEach(function (node, index) {
+      const start = function () { addClass(job, node, 'learn-motion-stage'); };
+      if (index === 0) start();
+      else later(job, start, index * 170);
+    });
+    later(job, function () { cancelJob(job.key); }, 650);
+  }
+
+  function celebrate(week, container) {
+    if (celebratedWeeks.has(week) || !visible(container)) return;
+    celebratedWeeks.add(week);
+    if (pendingCompletion === week) pendingCompletion = null;
+    if (!mayMove(container)) return;
+    const icon = container === dialog ? document.getElementById('quiz-modal-icon') : container.querySelector('.w11s-complete-icon, .study-icon');
+    if (!icon) return;
+    const job = createJob('complete-' + week, icon);
+    const burst = document.createElement('span');
+    burst.className = 'learn-celebration-burst';
+    burst.setAttribute('aria-hidden', 'true');
+    const positions = [[-28, -5, -40], [-19, -25, 35], [1, -31, -20], [22, -23, 55], [29, 0, -35], [10, 20, 25]];
+    positions.forEach(function (position) {
+      const spark = document.createElement('span');
+      spark.className = 'learn-celebration-spark';
+      spark.style.setProperty('--learn-motion-x', position[0] + 'px');
+      spark.style.setProperty('--learn-motion-y', position[1] + 'px');
+      spark.style.setProperty('--learn-motion-turn', position[2] + 'deg');
+      burst.appendChild(spark);
+    });
+    addClass(job, icon, 'learn-celebration-anchor');
+    icon.appendChild(burst);
+    job.decorations.push(burst);
+    later(job, function () { cancelJob(job.key); }, 680);
+  }
+  function checkComplete(week) {
+    const card = completeCard(week);
+    if (celebratedWeeks.has(week) || !visible(card)) return;
+    if (reduced.matches) { celebratedWeeks.add(week); return; }
+    if (dialog && dialog.open) {
+      pendingCompletion = week;
+      if (dialog.dataset.result === 'complete' && quizWeek === week) celebrate(week, dialog);
+    } else celebrate(week, card);
+  }
+  function complete(week) {
+    week = Number(week);
+    if (!Number.isInteger(week) || week < 1 || week > 15) return;
+    requestedCompletions.add(week);
+    if (completionQueued) return;
+    completionQueued = true;
+    // Wait only for this event's existing grading and modal listeners.
+    // The completion message itself is never delayed or changed here.
+    Promise.resolve().then(function () {
+      completionQueued = false;
+      const weeks = Array.from(requestedCompletions);
+      requestedCompletions.clear();
+      weeks.forEach(checkComplete);
+    });
+  }
+  function reset(week) {
+    week = Number(week);
+    celebratedWeeks.delete(week);
+    requestedCompletions.delete(week);
+    if (pendingCompletion === week) pendingCompletion = null;
+    if (quizWeek === week) quizWeek = null;
+    cancelEffects();
+  }
+  function answerWeek(button) {
+    if (button.matches('[data-study-answer], [data-w11s-answer]')) return weekOf(lessonRoot(button));
+    for (let week = 2; week <= 14; week += 1) {
+      if (button.hasAttribute('data-w' + week + '-q') && button.hasAttribute('data-w' + week + '-ans')) return week;
+    }
+    return null;
+  }
+
+  document.addEventListener('click', function (event) {
+    const target = elementTarget(event);
+    const button = target && target.closest('button');
+    if (!button || !button.matches(actions)) return;
+    capturePrediction(event, button);
+    cancelEffects();
+    if (button.matches('[data-study-reset], #w11s-reset')) reset(weekOf(lessonRoot(button)));
+  }, true);
+
+  document.addEventListener('click', function (event) {
+    const target = elementTarget(event);
+    const button = target && target.closest('button');
+    if (!button || button.disabled) return;
+    const answeredWeek = answerWeek(button);
+    if (answeredWeek && dialog && dialog.open) quizWeek = answeredWeek;
+    if (dialog && dialog.contains(button)) {
+      if (dialog.open && dialog.dataset.result === 'complete' && quizWeek) celebrate(quizWeek, dialog);
+      return;
+    }
+    if (!button.matches(actions)) return;
+    const root = lessonRoot(button);
+    const week = weekOf(root);
+    if (!root || !week) return;
+    if (button.matches('[data-study-nav], [data-study-looked], [data-w11s-nav], [data-w11s-go]')) {
+      pulse(root.querySelector('[data-study-nav][aria-current="step"], [data-w11s-nav][aria-current="step"]'), 'step-' + week, true);
+    }
+    if (week === 3 && button.hasAttribute('data-study-scenario')) movePrediction(event);
+    if (week === 5 && button.hasAttribute('data-study-scenario')) calculationSequence(button);
+    if (week === 5 && button.hasAttribute('data-study-backprop')) pulse(button, 'backprop-5', true);
+    if (button.matches('#w11s-split, #w11s-numbers')) pulse(button.closest('.w11s-token-stage'), 'token-stage-11', false);
+    complete(week);
+  });
+
+  document.addEventListener('input', function (event) {
+    const target = elementTarget(event);
+    if (!target || !target.matches('[data-study-slider]')) return;
+    capturePrediction(event, target);
+    cancelJob('prediction-3');
+    cancelJob('calculation-5');
+  }, true);
+  document.addEventListener('input', function (event) {
+    const target = elementTarget(event);
+    if (!target || !target.matches('[data-study-slider]')) return;
+    const week = weekOf(lessonRoot(target));
+    if (week === 3) movePrediction(event);
+    if (week === 5) calculationSequence(target);
+    if (week) complete(week);
+  });
+
+  if (dialog) dialog.addEventListener('close', function () {
+    const week = pendingCompletion;
+    pendingCompletion = null;
+    quizWeek = null;
+    if (week) complete(week);
+  });
+
+  // Observe only navigation/language attributes, never text or child nodes.
+  // Glossary annotations and tooltip/toast renders cannot replay animations.
+  const navigationObserver = new MutationObserver(function (records) {
+    const changed = records.some(function (record) {
+      if (record.attributeName === 'lang') return record.oldValue !== record.target.getAttribute('lang');
+      const wasActive = (' ' + (record.oldValue || '') + ' ').includes(' active ');
+      return wasActive !== record.target.classList.contains('active');
+    });
+    if (changed) cancel();
+  });
+  navigationObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'], attributeOldValue: true });
+  document.querySelectorAll('.page').forEach(function (page) {
+    navigationObserver.observe(page, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+  });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) cancel(); });
+  const motionPreferenceChanged = function () { if (reduced.matches) cancel(); };
+  if (typeof reduced.addEventListener === 'function') reduced.addEventListener('change', motionPreferenceChanged);
+  else if (typeof reduced.addListener === 'function') reduced.addListener(motionPreferenceChanged);
+
+  document.body.classList.add('learn-motion-ready');
+  window.aiBridgeMotion = Object.freeze({ ready: true, complete: complete, reset: reset, cancel: cancel });
 })();
 
 </script>
