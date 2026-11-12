@@ -1,75 +1,38 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="외국인 학생을 위한 AI 서비스 UX/UI 인터랙티브 교육: 3개 언어, 14개 주차 자료">
-  <title>UX Studio · AI Service UX Learning</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/ux.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore AI service UX with clear explanations and interactive examples, in English, Korean and Russian.">
+<meta name="color-scheme" content="light">
+<title>UX Studio · AI Service UX</title>
+<link rel="stylesheet" href="../css/ux.css">
 </head>
 <body class="ux-course" data-page="week01">
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand-row">
-        <div class="brand-left">
-          <button type="button" class="hamburger" id="hamburgerBtn" aria-label="강의 메뉴 열기" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
-          <div class="brand-block">
-            <span class="brand-title"><strong>UX Studio</strong></span>
-            <span class="brand-subtitle" data-key="header-subtitle">AI Service Design &amp; User Experience</span>
-          </div>
-        </div>
-        <div class="top-controls">
-          <a class="portfolio-return" href="../index.html#projects" aria-label="포트폴리오의 프로젝트 목록으로 이동">← Portfolio</a>
-          <div class="lang-container desktop-lang" role="group" aria-label="강의 언어 선택">
-            <button type="button" class="lang-btn active" data-lang="ko" onclick="setLang('ko')">한국어 KO</button>
-            <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">English EN</button>
-            <button type="button" class="lang-btn" data-lang="ru" onclick="setLang('ru')">Русский RU</button>
-          </div>
-        </div>
-      </div>
-      <div class="nav-shell desktop-nav">
-        <nav class="nav-container" aria-label="주차별 강의 선택"></nav>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu-header" data-ui="menu-title">강의 목록 · Course lessons</div>
-      <nav class="mobile-nav" id="mobile-ux-nav" aria-label="모바일 주차별 강의 선택"></nav>
-      <div class="lang-container mobile-lang" role="group" aria-label="강의 언어 선택">
-        <button type="button" class="lang-btn active" data-lang="ko" onclick="setLang('ko')">한국어 KO</button>
-        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">English EN</button>
-        <button type="button" class="lang-btn" data-lang="ru" onclick="setLang('ru')">Русский RU</button>
-      </div>
-      <a class="mobile-portfolio-link" href="../index.html#projects">← Portfolio</a>
-    </div>
-    <div class="mobile-backdrop" id="mobileBackdrop"></div>
-  </header>
-  <main id="main-content">
-    <section class="course-guide" aria-label="강의 시작 안내">
-      <div class="guide-left">
-        <div class="guide-eyebrow" data-ui="guide-eyebrow">AI UX DESIGN · LEARNING STUDIO</div>
-        <h2 data-ui="guide-title">AI 서비스 UX, 직접 경험하며 배우기</h2>
-        <p data-ui="guide-desc">처음이라면 1주차부터 시작하세요. 개념을 읽고 실습 화면의 버튼을 직접 눌러보세요.</p>
-        <div class="guide-tags"><span data-ui="guide-tag1">개념 이해</span><span data-ui="guide-tag2">인터랙티브 실습</span><span data-ui="guide-tag3">스스로 점검</span></div>
-        <a class="prereq-link" href="../intro_ai.html" data-ui="prereq-link">AI가 처음인가요? AI 기초 강의 먼저 보기 →</a>
-      </div>
-      <div class="guide-right">
-        <div class="lesson-progress" id="lesson-progress">Lesson 1 / 13</div>
-        <div class="guide-hint" data-ui="guide-hint">이 페이지의 데모는 학습용 예시입니다. 실제 AI 서비스나 Figma 화면을 변경하지 않습니다.</div>
-      </div>
-    </section>
-    <div class="lesson-context">
-      <div class="lesson-caption"><span class="chapter-label" id="lesson-caption">Week 1</span><span id="lesson-subject"></span></div>
-      <nav class="lesson-pager" aria-label="이전/다음 강의 이동">
-        <a class="pager-link" id="prev-lesson" href="?week=week01">← <span data-ui="prev">이전</span></a>
-        <a class="pager-link pager-next" id="next-lesson" href="?week=week02"><span data-ui="next">다음</span> →</a>
-      </nav>
-    </div>
-    <div id="lesson-content" aria-live="off"></div>
-    <div class="lesson-bottom-pager" aria-label="다음 강의로 이동"><a id="next-lesson-bottom" href="?week=week02">다음 강의 →</a></div>
-  </main>
-  <footer class="footer course-footer"><p>Yuri Choi Portfolio · UX Studio</p><p>© 2026 AI Education Designer &amp; System Builder</p></footer>
-
+<a href="#main-content" class="skip-link" data-ui="skip">Skip to content</a>
+<header class="studio-header" id="top">
+ <a class="studio-brand" id="studio-home" href="?week=week01"><span class="brand-mark" aria-hidden="true">ux</span><strong>UX Studio</strong></a>
+ <div class="header-actions"><div class="language-switch" role="group" aria-label="Choose a language"><button class="lang-btn active" type="button" data-lang="en" aria-pressed="true" onclick="setLang('en')">English EN</button><button class="lang-btn" type="button" data-lang="ko" aria-pressed="false" onclick="setLang('ko')">한국어 KO</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false" onclick="setLang('ru')">Русский RU</button></div><button class="mobile-menu-toggle" id="menu-toggle" type="button" aria-label="Open week menu" aria-expanded="false" aria-controls="course-sidebar"><span aria-hidden="true">☰</span></button></div>
+</header>
+<div class="studio-layout">
+ <aside class="course-sidebar" id="course-sidebar">
+  <div class="sidebar-head"><strong data-ui="weeks">15 weeks</strong><button class="sidebar-close" id="sidebar-close" type="button" aria-label="Close week menu">×</button></div>
+  <nav id="course-nav" aria-label="Weeks"></nav>
+ </aside>
+ <button type="button" class="sidebar-backdrop" id="sidebar-backdrop" tabindex="-1" aria-label="Close week menu"></button>
+ <main class="studio-main" id="main-content" tabindex="-1">
+  <header class="lesson-heading"><span class="lesson-kicker" id="lesson-kicker">Week 01 / 15</span><h1 id="lesson-title">Start with the person</h1><p class="lesson-intro" id="lesson-summary"></p></header>
+  <p class="lesson-bridge" id="lesson-intro"><span id="lesson-bridge"></span></p>
+  <aside class="course-note" id="exam-note" hidden></aside>
+  <div class="examples-header" id="examples-header"><p id="demo-instruction"></p></div>
+  <div id="lesson-content"></div>
+  <section class="final-panel" id="final-panel" hidden><div class="final-stamp" aria-hidden="true">15</div><h2 data-ui="finalAction">Please wait for the instructor’s announcement.</h2><p data-ui="finalReview">You can revisit earlier weeks and review your own design.</p><a id="final-review-link" class="action-btn" href="?week=week14" data-ui="reviewLink">Return to Week 14</a></section>
+  <nav class="lesson-footer" aria-label="Previous and next weeks"><a class="nav-lesson" id="prev-lesson" href="?week=week01">← Previous week</a><span id="end-note"></span><a class="nav-lesson nav-next" id="next-lesson-bottom" href="?week=week02">Next week →</a></nav>
+  <footer class="studio-footer"><small>Yuri Choi · UX Studio · 2026</small></footer>
+ </main>
+</div>
+<div id="term-tooltip" class="term-tooltip" role="tooltip" hidden><strong id="term-tooltip-title"></strong><p id="term-tooltip-body" class="term-definition"></p><p id="term-tooltip-example" class="term-example"></p></div>
+<button id="back-to-top" class="round-top" type="button" aria-label="Back to top" title="Back to top"><span aria-hidden="true">↑</span></button>
 <template id="lesson-week01">
 
 <div class="container">
@@ -203,7 +166,7 @@
 <!-- Design Thinking Stages -->
 <div class="card" style="border-top-color: #fb923c;">
 <h2><span class="title-emoji">🔄</span> <span data-key="dt-title">디자인 씽킹 5단계</span></h2>
-<p data-key="dt-sub">성공적인 AI 서비스를 만드는 글로벌 표준 프로세스</p>
+
 <div class="stage-container">
 <div class="stage-box">
 <span class="stage-num">1</span>
@@ -238,21 +201,21 @@
 <div class="vs-container">
 <div class="box" style="background: #fef2f2;">
 <h3 data-key="emp-bad-t" style="color: #dc2626;">❌ 기술 먼저 (잘못된 접근)</h3>
-<p data-key="emp-bad-p">"우리 쩌는 AI 기술 있는데, 앱 어디에다 끼워 넣지?"<br/>👉 쓸모없는 챗봇 남발 (AI for the sake of AI)</p>
+<p data-key="emp-bad-p">"우리 쩌는 AI 기술 있는데, 앱 어디에다 끼워 넣지?"<br>👉 쓸모없는 챗봇 남발 (AI for the sake of AI)</p>
 </div>
 <div class="box" style="background: #f0fdf4;">
 <h3 data-key="emp-good-t" style="color: #16a34a;">✅ 인간 먼저 (올바른 접근)</h3>
-<p data-key="emp-good-p">"사용자가 매일 어떤 작업을 귀찮아하고 스트레스 받을까?"<br/>👉 공감에서 진짜 필요한 서비스 탄생</p>
+<p data-key="emp-good-p">"사용자가 매일 어떤 작업을 귀찮아하고 스트레스 받을까?"<br>👉 공감에서 진짜 필요한 서비스 탄생</p>
 </div>
 </div>
 </div>
 <!-- User Persona -->
 <div class="card" style="border-top-color: var(--main-blue);">
 <h2><span class="title-emoji">👤</span> <span data-key="per-title">타겟 페르소나 만들기</span></h2>
-<p data-key="per-sub">페르소나란 우리 서비스의 대표적인 가상 사용자입니다. 실제 지인 1명이 아닌, 여러 데이터의 공통점을 모아야 합니다.</p>
+
 <div class="persona-card">
 <div class="persona-header">
-<div class="persona-icon">👨&zwj;🎓</div>
+<div class="persona-icon">👨‍🎓</div>
 <div>
 <h2 data-key="per-name" style="margin:0; color:#b91c1c;">라지 (Raj, 24)</h2>
 <span class="badge-red" data-key="per-job">한국 거주 외국인 유학생</span>
@@ -270,8 +233,8 @@
 <h2><span class="title-emoji">⚖️</span> <span data-key="val-title">AI 서비스의 진짜 가치 공식</span></h2>
 <p data-key="val-sub">단순 계산이나 쉬운 검색(HTML/JS가 빠름)이 아닌, <strong>복잡하고 정리되지 않은 데이터</strong>를 처리할 때 AI가 필요합니다.</p>
 <div class="formula-box">
-                    USER VALUE = <br/>
-                    (<span class="formula-hl" data-key="val-f1">시간 절약</span> + <span class="formula-hl" data-key="val-f2">스트레스 감소</span>) <br/>
+                    USER VALUE = <br>
+                    (<span class="formula-hl" data-key="val-f1">시간 절약</span> + <span class="formula-hl" data-key="val-f2">스트레스 감소</span>) <br>
                     - <span class="formula-bad" data-key="val-f3">사용하기 위한 노력</span>
 </div>
 <p data-key="val-warn" style="text-align:center; color:#dc2626; font-weight:bold; margin-top:15px;">🚨 주의: AI에 명령하는 과정(프롬프트, 챗봇 실랑이)이 직접 손으로 하는 것보다 오래 걸린다면 그 UX는 실패한 것입니다!</p>
@@ -279,7 +242,7 @@
 <!-- Problem Statement -->
 <div class="card" style="border-top-color: #8b5cf6;">
 <h2><span class="title-emoji">📝</span> <span data-key="state-title">핵심 문제 정의하기 (1줄 공식)</span></h2>
-<p data-key="state-sub">기획 방향을 잃지 않기 위해 다음 공식을 항상 기억하세요.</p>
+
 <div class="box" style="background: #fdf4ff; border: 2px dashed #d946ef;">
 <strong data-key="state-f1" style="color:#a21caf;">[사용자/페르소나]</strong> <span data-key="state-f2">는</span> <strong data-key="state-f3" style="color:#0369a1;">[목표/원하는 것]</strong> <span data-key="state-f4">을(를) 할 방법이 필요하다. 왜냐하면</span> <strong data-key="state-f5" style="color:#b91c1c;">[근본적인 어려움/Pain Point]</strong> <span data-key="state-f6">때문이다.</span>
 </div>
@@ -290,10 +253,10 @@
 <!-- GenAI Assistant -->
 <div class="card" style="border-top-color: var(--warning);">
 <h2><span class="title-emoji">🤖</span> <span data-key="ai-title">GenAI로 초안 만들기</span></h2>
-<p data-key="ai-sub">페르소나 상상이 막막하다면 ChatGPT나 Claude에게 초안을 부탁하고 자신의 경험을 더해 수정하세요.</p>
+
 <div class="prompt-box">
-<span data-key="ai-p1" style="color:#fff;">Prompt:</span><br/><br/>
-<span data-key="ai-p2">"UX 리서처가 되어서 한국의 외국인 유학생을 돕는 AI 앱을 위한 상세한 페르소나를 작성해 줘."</span><br/><br/>
+<span data-key="ai-p1" style="color:#fff;">Prompt:</span><br><br>
+<span data-key="ai-p2">"UX 리서처가 되어서 한국의 외국인 유학생을 돕는 AI 앱을 위한 상세한 페르소나를 작성해 줘."</span><br><br>
 <span data-key="ai-p3">"포함할 내용: 이름, 나이, 일상에서 겪는 가장 큰 어려움 3가지"</span>
 </div>
 <button class="action-btn" data-key="ai-btn" onclick="triggerGenAI()" style="margin-top: 15px; background:var(--warning); color:#1e293b;">✨ AI 답변 보기</button>
@@ -308,7 +271,7 @@
 <li data-key="work-l3">1줄 문제 정의 공식 채우기</li>
 <li data-key="work-l4">어떤 AI 기술(비전, 텍스트, 음성)을 쓸지 선택</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="triggerChecklistAlert()">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -331,12 +294,12 @@
 <h2><span class="title-emoji">🗺️</span> <span data-key="map-title">The Full 6-State Lifecycle</span></h2>
 <p data-key="map-sub">사용자가 AI 앱을 열고 답변을 얻기까지 거치는 6가지 흐름입니다. (클릭하여 아래 인터랙티브 화면을 직접 테스트해 보세요!)</p>
 <div class="state-map">
-<div class="state-step active" id="step1" onclick="resetMockup()">1. Empty<br/><small data-key="map-s1" style="font-weight:normal;">첫 화면</small></div>
-<div class="state-step" id="step2" onclick="focusInput()">2. Input<br/><small data-key="map-s2" style="font-weight:normal;">질문 입력</small></div>
-<div class="state-step" id="step3" onclick="startAI('retry')">3. Loading<br/><small data-key="map-s3" style="font-weight:normal;">AI 계산 중</small></div>
-<div class="state-step" id="step4">4. Streaming<br/><small data-key="map-s4" style="font-weight:normal;">답변 출력</small></div>
-<div class="state-step" id="step5">5. Complete<br/><small data-key="map-s5" style="font-weight:normal;">결과 및 버튼</small></div>
-<div class="state-step" id="step6" onclick="triggerErrorMockup()">6. Error<br/><small data-key="map-s6" style="font-weight:normal;">복구 및 에러</small></div>
+<div class="state-step active" id="step1" onclick="resetMockup()">1. Empty<br><small data-key="map-s1" style="font-weight:normal;">첫 화면</small></div>
+<div class="state-step" id="step2" onclick="focusInput()">2. Input<br><small data-key="map-s2" style="font-weight:normal;">질문 입력</small></div>
+<div class="state-step" id="step3" onclick="startAI('retry')">3. Loading<br><small data-key="map-s3" style="font-weight:normal;">AI 계산 중</small></div>
+<div class="state-step" id="step4">4. Streaming<br><small data-key="map-s4" style="font-weight:normal;">답변 출력</small></div>
+<div class="state-step" id="step5">5. Complete<br><small data-key="map-s5" style="font-weight:normal;">결과 및 버튼</small></div>
+<div class="state-step" id="step6" onclick="triggerErrorMockup()">6. Error<br><small data-key="map-s6" style="font-weight:normal;">복구 및 에러</small></div>
 </div>
 <!-- 💻 Interactive Mockup Window -->
 <div class="interactive-mockup">
@@ -345,8 +308,8 @@
 <div id="mock-empty">
 <h2 data-key="mock-greeting" style="color:white; margin-bottom: 5px;">안녕하세요! 무엇을 도와드릴까요?</h2>
 <div class="starter-chips">
-<div class="chip" data-key="mock-chip1" onclick="startAI('translate')">📝 영문 이메일 초안 작성</div>
-<div class="chip" data-key="mock-chip2" onclick="startAI('summary')">📄 기획서 요약하기</div>
+<button class="chip" data-key="mock-chip1" onclick="startAI('translate')" type="button">📝 영문 이메일 초안 작성</button>
+<button class="chip" data-key="mock-chip2" onclick="startAI('summary')" type="button">📄 기획서 요약하기</button>
 </div>
 </div>
 <!-- State 3: Loading -->
@@ -372,8 +335,8 @@
 </div>
 <!-- State 2: Input Bar -->
 <div class="input-bar" id="mock-input-bar">
-<input data-key="mock-input-ph" id="mock-input" onkeypress="handleEnter(event)" placeholder="메시지를 입력하세요... (힌트: 날씨 어때?)" type="text"/>
-<button class="send-btn" onclick="startAI('custom')">&uarr;</button>
+<input data-key="mock-input-ph" id="mock-input" onkeypress="handleEnter(event)" placeholder="메시지를 입력하세요... (힌트: 날씨 어때?)" type="text">
+<button class="send-btn" onclick="startAI('custom')">↑</button>
 </div>
 </div>
 </div>
@@ -390,13 +353,63 @@
 <p data-key="det-b2-p">AI가 단어를 완성하는 즉시 화면에 타자기처럼 실시간으로 밀어냅니다. 사용자가 바로 읽기 시작하므로 대기 시간이 80% 이상 줄어든 것처럼 느껴집니다.</p>
 </div>
 </div>
-<hr style="border: 1px dashed #cbd5e1; margin: 20px 0;"/>
+<hr style="border: 1px dashed #cbd5e1; margin: 20px 0;">
 <h3 data-key="det-h3">🚫 나쁜 UX 피하기 (Error &amp; Recovery)</h3>
 <ul class="emoji-list">
 <li>❌ <strong>Blank Box:</strong> 텅 빈 입력창 (무엇을 질문해야 할지 모름 👉 <strong>추천 프롬프트 칩 제공!</strong>)</li>
 <li>❌ <strong>Unstructured Text Blob:</strong> 구조화되지 않은 거대한 줄글 덩어리 (👉 <strong>카드, 불릿, 표 사용!</strong>)</li>
 <li>❌ <strong>No Editing:</strong> 에러 발생 시 처음부터 다시 입력하게 강요 (👉 <strong>1-Click 재시도 버튼 제공!</strong>)</li>
 </ul>
+<section class="v3-demo v3-er v3-er-recovery" data-er-kind="recovery" aria-labelledby="er-compare-title">
+    <h4 id="er-compare-title" class="v3-er-title" data-v3-key="er.title">Same error. Two different experiences.</h4>
+    <p class="v3-er-intro" data-v3-key="er.intro">Both apps lose their connection. Try the buttons and compare what happens to your request.</p>
+    <div class="v3-er-pair">
+      <article class="v3-er-lane v3-er-lane-bad">
+        <div class="v3-er-lane-title"><span class="v3-er-dot" aria-hidden="true"></span><strong data-v3-key="er.badLabel">A dead end</strong></div>
+        <div class="v3-er-phone">
+          <div class="v3-er-phone-top" aria-hidden="true"><span>9:41</span><i></i><span>▰</span></div>
+          <div class="v3-er-appbar"><span class="v3-er-app-icon" aria-hidden="true">N</span><span data-v3-key="er.app">Note helper</span></div>
+          <div class="v3-er-screen">
+            <div class="v3-er-lost" data-v3-key="er.lost">Your request was not saved.</div>
+            <div class="v3-er-error" data-er-role="bad-error">
+              <span class="v3-er-state-icon" aria-hidden="true">!</span>
+              <strong data-v3-key="er.badError">Something went wrong.</strong>
+              <p data-v3-key="er.badDetail">Error 503</p>
+            </div>
+            <button type="button" class="v3-er-button v3-er-secondary" data-er-action="bad-restart" data-v3-key="er.startAgain">Start again</button>
+            <p class="v3-er-result" data-er-role="bad-result" role="status" hidden></p>
+            <div class="v3-er-input-blank" data-er-role="bad-input" aria-hidden="true" data-v3-key="er.emptyInput" hidden>Type your whole request again…</div>
+          </div>
+        </div>
+        <p class="v3-er-caption" data-v3-key="er.badCaption">No reason, no saved text, no quick way back.</p>
+      </article>
+      <article class="v3-er-lane v3-er-lane-good">
+        <div class="v3-er-lane-title"><span class="v3-er-dot" aria-hidden="true"></span><strong data-v3-key="er.goodLabel">A way to recover</strong></div>
+        <div class="v3-er-phone">
+          <div class="v3-er-phone-top" aria-hidden="true"><span>9:41</span><i></i><span>▰</span></div>
+          <div class="v3-er-appbar"><span class="v3-er-app-icon" aria-hidden="true">N</span><span data-v3-key="er.app">Note helper</span></div>
+          <div class="v3-er-screen" data-er-role="good-screen" aria-busy="false">
+            <div class="v3-er-user-bubble" data-v3-key="er.request">Summarize my design notes.</div>
+            <div data-er-recovery-view="error">
+              <div class="v3-er-error v3-er-recoverable"><span class="v3-er-state-icon" aria-hidden="true">!</span><strong data-v3-key="er.goodError">Connection lost.</strong><p data-v3-key="er.goodDetail">Your request is saved. Try once more.</p></div>
+              <button type="button" class="v3-er-button" data-er-action="retry" data-v3-key="er.retry">Retry</button>
+            </div>
+            <div class="v3-er-loading" data-er-recovery-view="loading" hidden>
+              <span class="v3-er-spinner" aria-hidden="true"></span><span data-v3-key="er.loading">Trying again…</span>
+            </div>
+            <div class="v3-er-success" data-er-recovery-view="success" tabindex="-1" hidden>
+              <span class="v3-er-state-icon" aria-hidden="true">✓</span><strong data-v3-key="er.success">Your summary is ready.</strong>
+              <ul><li data-v3-key="er.point1">Find one user problem.</li><li data-v3-key="er.point2">Sketch a screen that helps.</li></ul>
+              <span class="v3-er-saved-tag" data-v3-key="er.savedRequest">No need to type again</span>
+            </div>
+            <p class="v3-er-live" data-er-role="recovery-live" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="v3-er-caption" data-v3-key="er.goodCaption">Explain the problem, keep the work, offer one clear action.</p>
+      </article>
+    </div>
+    <div class="v3-er-bottom"><p class="v3-er-takeaway" data-v3-key="er.takeaway">A good error message helps the person continue.</p><button type="button" class="v3-er-text-button" data-er-action="recovery-reset" data-v3-key="er.replay">Replay comparison ↺</button></div>
+  </section>
 </div>
 <!-- Activity -->
 <div class="card" style="border-top-color: var(--main-blue); text-align: center;">
@@ -408,7 +421,7 @@
 <li data-key="act-l2"><strong>Loading/Streaming:</strong> 질문 후 로딩 기호나 글자가 써지는 모습</li>
 <li data-key="act-l3"><strong>Complete:</strong> 완성된 답변 하단의 액션 버튼들(복사, 공유 등)</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -448,7 +461,7 @@
 </div>
 <div class="box box-center" style="background:#eff6ff; border:2px solid var(--main-blue); margin-top: 15px;">
 <h3 data-key="type-multi-t" style="color:var(--main-blue);">✨ Multi-Modal (멀티모달)</h3>
-<p data-key="type-multi-p" style="margin-bottom:0;">텍스트, 음성, 카메라(시각)를 결합합니다.<br/><em>예: 냉장고 사진을 찍으면(카메라), AI가 레시피를 화면에 띄우고(시각) 음성으로 요리법을 읽어줌(음성).</em></p>
+<p data-key="type-multi-p" style="margin-bottom:0;">텍스트, 음성, 카메라(시각)를 결합합니다.<br><em>예: 냉장고 사진을 찍으면(카메라), AI가 레시피를 화면에 띄우고(시각) 음성으로 요리법을 읽어줌(음성).</em></p>
 </div>
 </div>
 <!-- Turn-Taking & Clarification -->
@@ -467,17 +480,17 @@
 <div class="bubble ai">
 <div data-key="turn-a2">어디로 떠나시나요? 목적지를 선택해 주세요.</div>
 <div class="chip-group">
-<span class="action-chip" data-key="turn-c1" onclick="alert(translations[currentLang]['js_chip'])">도쿄</span>
-<span class="action-chip" data-key="turn-c2" onclick="alert(translations[currentLang]['js_chip'])">런던</span>
-<span class="action-chip" data-key="turn-c3" onclick="alert(translations[currentLang]['js_chip'])">뉴욕</span>
+<button class="action-chip" data-key="turn-c1" type="button" data-v3-city="turn-c1" aria-pressed="false">도쿄</button>
+<button class="action-chip" data-key="turn-c2" type="button" data-v3-city="turn-c2" aria-pressed="false">런던</button>
+<button class="action-chip" data-key="turn-c3" type="button" data-v3-city="turn-c3" aria-pressed="false">뉴욕</button>
 </div>
 </div>
-</div>
+<div id="v3-turn-next" class="v3-demo" hidden><div class="bubble user" id="v3-turn-selection"></div><div class="bubble ai" role="status" aria-live="polite"><span data-v3-key="v3-turn-next">When would you like to travel?</span></div></div></div>
 </div>
 <!-- Fallback UX -->
 <div class="card" style="border-top-color: #f87171;">
 <h2><span class="title-emoji">🛡️</span> <span data-key="fall-title">우아한 실패 (Fallback UX)</span></h2>
-<p data-key="fall-sub">AI가 대답할 수 없을 때 거짓말(환각)을 하거나 에러를 내지 말고, 솔직하고 친절하게 대안을 제시하세요.</p>
+
 <div class="box" style="background:#fef2f2; border-left: 4px solid #ef4444; text-align:left;">
 <h3 data-key="fall-h3" style="color:#b91c1c; margin-top:0;">3단계 폴백 패턴 (3-Step Pattern)</h3>
 <ol>
@@ -490,23 +503,23 @@
 <!-- Dialogue Tree Mini-Map -->
 <div class="card" style="border-top-color: #8b5cf6;">
 <h2><span class="title-emoji">🗺️</span> <span data-key="tree-title">대화 흐름도 (Dialogue Tree) 설계</span></h2>
-<p data-key="tree-sub">피그마(Figma)에서 화면을 그리기 전에, 갈래길을 순서도로 먼저 정리해야 합니다.</p>
+
 <div class="tree-container">
-<div class="node user" data-key="tree-user">User Node<br/><small style="font-weight:normal;">사용자 질문/버튼 클릭</small></div>
+<div class="node user" data-key="tree-user">User Node<br><small style="font-weight:normal;">사용자 질문/버튼 클릭</small></div>
 <div class="arrow-down"></div>
-<div class="node decision"><span data-key="tree-ai">AI<br/>판단</span></div>
+<div class="node decision"><span data-key="tree-ai">AI<br>판단</span></div>
 <div class="arrow-down"></div>
 <div class="row-flex" style="width: 100%;">
 <div class="branch-line"></div>
 <div style="display:flex; flex-direction:column; align-items:center; z-index:2;">
-<div style="background:white; padding:0 5px; font-size:0.8rem; color:#16a34a; font-weight:bold; margin-top:-25px; margin-bottom:5px;">Yes</div>
+<div style="background:#f7faff;padding:0 5px;font-size:0.85rem;color:#4b6074;font-weight:650;margin-top:-25px;margin-bottom:5px;text-align:center;" data-v3-key="v3-tree-yes">Yes</div>
 <div class="branch-arrow"></div>
-<div class="node response" data-key="tree-res">AI Response<br/><small style="font-weight:normal;">정상 답변 + 추천 칩</small></div>
+<div class="node response" data-key="tree-res">AI Response<br><small style="font-weight:normal;">정상 답변 + 추천 칩</small></div>
 </div>
 <div style="display:flex; flex-direction:column; align-items:center; z-index:2;">
-<div style="background:white; padding:0 5px; font-size:0.8rem; color:#dc2626; font-weight:bold; margin-top:-25px; margin-bottom:5px;">No</div>
+<div style="background:#f7faff;padding:0 5px;font-size:0.85rem;color:#4b6074;font-weight:650;margin-top:-25px;margin-bottom:5px;text-align:center;" data-v3-key="v3-tree-no">No</div>
 <div class="branch-arrow"></div>
-<div class="node fallback" data-key="tree-fall">Fallback<br/><small style="font-weight:normal;">되묻기 / 대안 제시</small></div>
+<div class="node fallback" data-key="tree-fall">Fallback<br><small style="font-weight:normal;">되묻기 / 대안 제시</small></div>
 </div>
 </div>
 </div>
@@ -557,15 +570,15 @@
 <!-- Explainable AI (XAI) -->
 <div class="card" style="border-top-color: var(--main-blue);">
 <h2><span class="title-emoji">🔍</span> <span data-key="xai-title">설명 가능한 AI (XAI): 이유를 보여주세요!</span></h2>
-<p data-key="xai-sub">결과만 툭 던지지 말고, 그 결론에 도달한 과정과 출처를 시각적으로 투명하게 공개해야 합니다.</p>
+
 <div class="box" style="background: #f8fafc; border: 2px solid #cbd5e1; text-align: left;">
 <h3 data-key="xai-h3" style="margin-top:0;">훌륭한 XAI를 위한 5가지 단서 (Clues)</h3>
 <ul class="emoji-list">
-<li>🤷&zwj;&male;️ <strong>"I'm not sure":</strong> <span data-key="xai-l1">모를 때는 100% 확신하는 척하지 말고 솔직히 한계를 인정합니다.</span></li>
+<li>🤷‍♂️ <strong>"I'm not sure":</strong> <span data-key="xai-l1">모를 때는 100% 확신하는 척하지 말고 솔직히 한계를 인정합니다.</span></li>
 <li>🔗 <strong>Show Links:</strong> <span data-key="xai-l2">참고한 웹사이트나 문서의 정확한 출처 링크를 제공합니다.</span></li>
 <li>🚨 <strong>Warning Badges:</strong> <span data-key="xai-l3">건강, 금융, 법률 등 민감한 주제에는 눈에 띄는 안전 경고 배지를 붙입니다.</span></li>
 <li>⚖️ <strong>Option A vs B:</strong> <span data-key="xai-l4">단 하나의 정답만 강요하지 않고 비교할 수 있는 대안을 줍니다.</span></li>
-<li>👨&zwj;⚕️ <strong>Human Expert Tag:</strong> <span data-key="xai-l5">최종 결정 전 실제 전문가(의사 등)와 상담하라는 안내를 추가합니다.</span></li>
+<li>👨‍⚕️ <strong>Human Expert Tag:</strong> <span data-key="xai-l5">최종 결정 전 실제 전문가(의사 등)와 상담하라는 안내를 추가합니다.</span></li>
 </ul>
 </div>
 </div>
@@ -582,7 +595,7 @@
 <p data-key="ui-good-p">문장 끝에 공식 출처 링크를 뱃지로 달아줍니다. 1-Click 팩트체크가 가능해 신뢰가 상승합니다.</p>
 <div style="background:white; padding:10px; border-radius:6px; border:1px solid #cbd5e1; margin-top:10px; font-size:0.9rem;">
 <span data-key="ui-ex-txt">한국의 유학생 비자 발급 수수료는 6만 원입니다.</span>
-<a class="source-link" data-key="ui-ex-btn" href="#" onclick="alert(translations[currentLang]['js_source_open'])">[1] 하이코리아</a>
+<button type="button" class="source-link" data-key="ui-ex-btn" onclick="alert(translations[currentLang]['js_source_open'])">[1] 하이코리아</button>
 </div>
 </div>
 </div>
@@ -590,7 +603,7 @@
 <div class="warning-box">
 <div style="font-size: 2rem;">⚠️</div>
 <div>
-<strong data-key="warn-t">의료/건강 검색 경고 (Google AI Overview)</strong><br/>
+<strong data-key="warn-t">의료/건강 검색 경고 (Google AI Overview)</strong><br>
 <span data-key="warn-p" style="font-size:0.9rem; color:#451a03;">타이레놀 복용량처럼 위험한 질문에는 <strong>[WebMD]</strong> 같은 전문 출처를 달고, <strong>"이것은 의학적 진단이 아닙니다. 의사와 상담하세요."</strong>라는 노란색 경고문을 반드시 배치해야 합니다.</span>
 </div>
 </div>
@@ -598,19 +611,19 @@
 <!-- Smart Trust -->
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">⚖️</span> <span data-key="smart-title">The Sweet Spot: 스마트한 신뢰 (Smart Trust)</span></h2>
-<p data-key="smart-sub">우리는 맹신과 불신이라는 두 가지 위험한 함정을 모두 피해야 합니다.</p>
+
 <div class="trust-meter">
 <div class="trust-section blind">
-                        🙈 <span data-key="smart-t1">맹신 (Blind Faith)</span><br/>
-<small data-key="smart-p1" style="font-weight:normal;">"AI는 항상 옳아!"<br/>(치명적인 사고 유발)</small>
+                        🙈 <span data-key="smart-t1">맹신 (Blind Faith)</span><br>
+<small data-key="smart-p1" style="font-weight:normal;">"AI는 항상 옳아!"<br>(치명적인 사고 유발)</small>
 </div>
 <div class="trust-section smart">
-                        🌟 <span data-key="smart-t2">스마트한 신뢰 (Smart Trust)</span><br/>
+                        🌟 <span data-key="smart-t2">스마트한 신뢰 (Smart Trust)</span><br>
 <small data-key="smart-p2" style="font-weight:normal; color:#1e293b;">"이메일 초안 작성엔 좋지만, 세금 정보는 내가 직접 교차검증 해야지!"</small>
 </div>
 <div class="trust-section none">
-                        😠 <span data-key="smart-t3">불신 (No Trust)</span><br/>
-<small data-key="smart-p3" style="font-weight:normal;">"AI는 쓸모없어!"<br/>(앱 삭제 및 이탈)</small>
+                        😠 <span data-key="smart-t3">불신 (No Trust)</span><br>
+<small data-key="smart-p3" style="font-weight:normal;">"AI는 쓸모없어!"<br>(앱 삭제 및 이탈)</small>
 </div>
 </div>
 </div>
@@ -621,14 +634,14 @@
 <p data-key="act-p">다음의 엉터리 AI 답변 화면에 오늘 배운 <strong>신뢰성 UI 요소 3가지</strong>를 추가해 다시 스케치하세요.</p>
 <div class="mockup-window" style="text-align:left; max-width: 500px; margin: 15px auto;">
 <div style="color:#ef4444; margin-bottom:5px; font-weight:bold;">❌ Bad AI Screen</div>
-<div class="fake-ai-msg" data-key="act-bad-msg">"당신은 독감입니다. 즉시 X 약을 드세요. 100% 보장합니다!"<br/><small style="color:#94a3b8;">(출처 없음, 경고 없음)</small></div>
+<div class="fake-ai-msg" data-key="act-bad-msg">"당신은 독감입니다. 즉시 X 약을 드세요. 100% 보장합니다!"<br><small style="color:#94a3b8;">(출처 없음, 경고 없음)</small></div>
 </div>
 <ul class="emoji-list" style="text-align:left; display:inline-block; margin-bottom: 20px;">
 <li data-key="act-l1">✅ 1. 믿을 수 있는 <strong>출처 링크 배지</strong> 추가</li>
 <li data-key="act-l2">✅ 2. 한계를 인정하는 <strong>안전 경고 박스</strong> 추가</li>
 <li data-key="act-l3">✅ 3. 대안을 주는 <strong>[전문 의사와 상담하기]</strong> 버튼 추가</li>
 </ul>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -649,7 +662,7 @@
 <!-- Blank Canvas Paradox -->
 <div class="card" style="border-top-color: #f87171;">
 <h2><span class="title-emoji">🖼️</span> <span data-key="blank-title">빈 도화지의 역설 (Blank Canvas Paradox)</span></h2>
-<p data-key="blank-sub">AI 서비스의 첫 화면을 텅 빈 입력창으로 방치하면 안 되는 이유입니다.</p>
+
 <div class="vs-container">
 <div class="box" style="background: #f8fafc; border: 1px solid #cbd5e1;">
 <h3 data-key="blank-b1-t" style="color:#334155; margin-top:0;">📱 일반 앱 (Normal App)</h3>
@@ -664,24 +677,65 @@
 <!-- Progressive Disclosure -->
 <div class="card" style="border-top-color: var(--main-blue);">
 <h2><span class="title-emoji">📈</span> <span data-key="prog-title">점진적 공개 (Progressive Disclosure)</span></h2>
-<p data-key="prog-sub">처음부터 복잡한 프롬프트를 요구하지 말고, 숙련도에 따라 3단계로 기능을 열어주세요.</p>
-<div class="vs-container">
-<div class="level-box" onclick="showLevel(1)">
-<span class="level-badge level-1" data-key="prog-l1-b">Level 1: 초보자</span>
-<div data-key="prog-l1-t" style="font-weight:bold; color:#1e293b;">1-Click 시작 칩</div>
-<div class="level-demo" data-key="prog-l1-d" id="demo-l1">[문서 요약하기] 버튼 탭</div>
-</div>
-<div class="level-box" onclick="showLevel(2)">
-<span class="level-badge level-2" data-key="prog-l2-b">Level 2: 중급자</span>
-<div data-key="prog-l2-t" style="font-weight:bold; color:#1e293b;">빈칸 채우기 템플릿</div>
-<div class="level-demo" data-key="prog-l2-d" id="demo-l2">"이 글을 [3줄]로 요약해 줘"</div>
-</div>
-<div class="level-box" onclick="showLevel(3)">
-<span class="level-badge level-3" data-key="prog-l3-b">Level 3: 숙련자</span>
-<div data-key="prog-l3-t" style="font-weight:bold; color:#1e293b;">자유 입력 + 슬라이더</div>
-<div class="level-demo" data-key="prog-l3-d" id="demo-l3">말투 조절, 창의성(Temperature) 설정창 제공</div>
-</div>
-</div>
+
+<div class="v3-demo v3-pb v3-pd" data-v3-progressive>
+    <div class="v3-pd-grid">
+      <section class="v3-pd-level" data-v3-pd-level="1" aria-labelledby="v3-pd-heading1">
+        <p class="v3-pb-eyebrow" data-v3-key="v3-pd-level1">Level 1 · Start simply</p>
+        <h3 id="v3-pd-heading1" data-v3-key="v3-pd-heading1">One clear action</h3>
+        <p class="v3-pd-caption" data-v3-key="v3-pd-caption1">A ready-made button helps the user begin.</p>
+        <div class="v3-pb-phone v3-pd-phone">
+          <div class="v3-pb-device-bar" aria-hidden="true"><span>9:41</span><svg viewbox="0 0 44 16" width="44" height="16"><path d="M2 13V9m5 4V6m5 7V3" stroke="currentColor" stroke-width="3"></path><rect x="24" y="4" width="16" height="9" rx="2" fill="none" stroke="currentColor"></rect><rect x="26" y="6" width="11" height="5" rx="1" fill="currentColor"></rect></svg></div>
+          <header class="v3-pb-phone-header"><span class="v3-pb-app-icon" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h7"></path></svg></span><strong data-v3-key="v3-pd-app">Study helper</strong></header>
+          <div class="v3-pb-phone-body">
+            <div class="v3-pb-document"><span class="v3-pb-label" data-v3-key="v3-pd-sample-label">Sample class note</span><p data-v3-key="v3-pd-note">Our group is designing a study planner. Students choose a study time and set a reminder. We will test whether they can change the plan.</p></div>
+            <button type="button" class="v3-pb-button v3-pb-primary" data-v3-pd-run="1"><span data-v3-key="v3-pd-summary-action">Summarize this note</span><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
+            <p class="v3-pb-loading" data-v3-pd-loading hidden role="status"><span class="v3-pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span data-v3-key="v3-pd-working">Preparing the sample answer…</span></p>
+            <div class="v3-pb-result" data-v3-pd-result hidden role="status" aria-live="polite" aria-atomic="true"><strong data-v3-key="v3-pd-result-label">Example answer</strong><p class="v3-pb-multiline" data-v3-pd-output></p></div>
+          </div>
+        </div>
+      </section>
+      <section class="v3-pd-level" data-v3-pd-level="2" aria-labelledby="v3-pd-heading2">
+        <p class="v3-pb-eyebrow" data-v3-key="v3-pd-level2">Level 2 · Choose a template</p>
+        <h3 id="v3-pd-heading2" data-v3-key="v3-pd-heading2">A few useful choices</h3>
+        <p class="v3-pd-caption" data-v3-key="v3-pd-caption2">A template helps the user describe the result they want.</p>
+        <div class="v3-pb-phone v3-pd-phone">
+          <div class="v3-pb-device-bar" aria-hidden="true"><span>9:41</span><svg viewbox="0 0 44 16" width="44" height="16"><path d="M2 13V9m5 4V6m5 7V3" stroke="currentColor" stroke-width="3"></path><rect x="24" y="4" width="16" height="9" rx="2" fill="none" stroke="currentColor"></rect><rect x="26" y="6" width="11" height="5" rx="1" fill="currentColor"></rect></svg></div>
+          <header class="v3-pb-phone-header"><span class="v3-pb-app-icon" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h7"></path></svg></span><strong data-v3-key="v3-pd-app">Study helper</strong></header>
+          <div class="v3-pb-phone-body">
+            <p class="v3-pb-file"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H6V3Zm7 0v5h5M9 12h6m-6 4h6"></path></svg><span data-v3-key="v3-pd-sample-label">Sample class note</span></p>
+            <fieldset class="v3-pb-fieldset"><legend data-v3-key="v3-pd-template-label">Choose a format</legend><div class="v3-pb-choices"><button type="button" class="v3-pb-choice" data-v3-pd-template="points" aria-pressed="true" data-v3-key="v3-pd-template-points">3 key points</button><button type="button" class="v3-pb-choice" data-v3-pd-template="tasks" aria-pressed="false" data-v3-key="v3-pd-template-tasks">To-do list</button></div></fieldset>
+            <div class="v3-pb-request"><span class="v3-pb-label" data-v3-key="v3-pd-prompt-label">Your request</span><p data-v3-pd-template-prompt data-v3-key="v3-pd-prompt-points">Summarize this note in 3 key points.</p></div>
+            <button type="button" class="v3-pb-button v3-pb-primary" data-v3-pd-run="2"><span data-v3-key="v3-pd-template-action">Use this template</span><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
+            <p class="v3-pb-loading" data-v3-pd-loading hidden role="status"><span class="v3-pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span data-v3-key="v3-pd-working">Preparing the sample answer…</span></p>
+            <div class="v3-pb-result" data-v3-pd-result hidden role="status" aria-live="polite" aria-atomic="true"><strong data-v3-key="v3-pd-result-label">Example answer</strong><p class="v3-pb-multiline" data-v3-pd-output></p></div>
+          </div>
+        </div>
+      </section>
+      <section class="v3-pd-level" data-v3-pd-level="3" aria-labelledby="v3-pd-heading3">
+        <p class="v3-pb-eyebrow" data-v3-key="v3-pd-level3">Level 3 · Add control</p>
+        <h3 id="v3-pd-heading3" data-v3-key="v3-pd-heading3">Extra options on request</h3>
+        <p class="v3-pd-caption" data-v3-key="v3-pd-caption3">Keep advanced settings closed until the user needs them.</p>
+        <div class="v3-pb-phone v3-pd-phone">
+          <div class="v3-pb-device-bar" aria-hidden="true"><span>9:41</span><svg viewbox="0 0 44 16" width="44" height="16"><path d="M2 13V9m5 4V6m5 7V3" stroke="currentColor" stroke-width="3"></path><rect x="24" y="4" width="16" height="9" rx="2" fill="none" stroke="currentColor"></rect><rect x="26" y="6" width="11" height="5" rx="1" fill="currentColor"></rect></svg></div>
+          <header class="v3-pb-phone-header"><span class="v3-pb-app-icon" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h7"></path></svg></span><strong data-v3-key="v3-pd-app">Study helper</strong></header>
+          <div class="v3-pb-phone-body">
+            <p class="v3-pb-file"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H6V3Zm7 0v5h5M9 12h6m-6 4h6"></path></svg><span data-v3-key="v3-pd-sample-label">Sample class note</span></p>
+            <button type="button" class="v3-pb-button v3-pb-options-toggle" data-v3-pd-toggle aria-expanded="false" aria-controls="v3-pd-options"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path><circle cx="8" cy="6" r="2"></circle><circle cx="16" cy="12" r="2"></circle><circle cx="10" cy="18" r="2"></circle></svg><span data-v3-key="v3-pd-advanced-action">Advanced options</span><span class="v3-pb-chevron" aria-hidden="true">⌄</span></button>
+            <div id="v3-pd-options" class="v3-pb-options" data-v3-pd-options hidden>
+              <label class="v3-pb-field"><span data-v3-key="v3-pd-length-label">Length</span><select data-v3-pd-length><option value="short" data-v3-key="v3-pd-short">Short</option><option value="detailed" data-v3-key="v3-pd-detailed">More detail</option></select></label>
+              <label class="v3-pb-field"><span data-v3-key="v3-pd-tone-label">Tone</span><select data-v3-pd-tone><option value="neutral" data-v3-key="v3-pd-neutral">Neutral</option><option value="friendly" data-v3-key="v3-pd-friendly">Friendly</option></select></label>
+            </div>
+            <div class="v3-pb-request"><span class="v3-pb-label" data-v3-key="v3-pd-prompt-label">Your request</span><p data-v3-pd-options-prompt data-v3-key="v3-pd-prompt-default">Summarize the class note. Length: Short. Tone: Neutral.</p></div>
+            <button type="button" class="v3-pb-button v3-pb-primary" data-v3-pd-run="3"><span data-v3-key="v3-pd-generate-action">Create a summary</span><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"></path></svg></button>
+            <p class="v3-pb-loading" data-v3-pd-loading hidden role="status"><span class="v3-pb-dots" aria-hidden="true"><i></i><i></i><i></i></span><span data-v3-key="v3-pd-working">Preparing the sample answer…</span></p>
+            <div class="v3-pb-result" data-v3-pd-result hidden role="status" aria-live="polite" aria-atomic="true"><strong data-v3-key="v3-pd-result-label">Example answer</strong><p class="v3-pb-multiline" data-v3-pd-output></p></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="v3-pb-footer"><button type="button" class="v3-pb-button v3-pb-quiet" data-v3-pd-reset data-v3-key="v3-pd-reset">Reset the three examples</button></div>
+  </div>
 </div>
 <!-- Starter Prompts Rules -->
 <div class="card" style="border-top-color: #fb923c;">
@@ -695,31 +749,30 @@
 <!-- Explicit & Implicit Feedback -->
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">👍</span> <span data-key="feed-title">피드백: 사용자의 목소리 듣기</span></h2>
-<p data-key="feed-sub">긴 설문조사는 사용자를 지치게 합니다. 가장 직관적인 피드백 루프를 설계하세요.</p>
+
 <!-- Feedback Mockup -->
-<div class="feedback-container">
-<div class="ai-msg-mock" data-key="feed-mock-msg">
-                        여기 요청하신 [프로젝트 기획서 요약본]입니다.<br/>추가로 수정할 부분이 있다면 알려주세요.
-                    </div>
-<div class="feedback-actions">
-<div>
-<span data-key="feed-mock-warn" style="font-size:0.85rem; color:#64748b; margin-right:10px;">⚠️ AI는 실수할 수 있습니다.</span>
-<button class="icon-btn thumb" onclick="submitFeedback('up')">👍</button>
-<button class="icon-btn thumb" onclick="submitFeedback('down')">👎</button>
-</div>
-<div>
-<button class="icon-btn" onclick="alert(translations[currentLang]['js_copied'])">📋 <span data-key="feed-mock-copy">복사</span></button>
-<button class="icon-btn" onclick="alert(translations[currentLang]['js_edit'])">✏️ <span data-key="feed-mock-edit">인라인 수정</span></button>
-</div>
-</div>
-<!-- Thank you Toast -->
-<div class="feedback-toast" id="thankyou-toast">
-<span data-key="feed-toast-msg">피드백 감사합니다! AI 개선에 도움이 됩니다.</span>
-<button onclick="closeToast()" style="background:transparent; border:none; color:white; font-weight:bold; cursor:pointer;">X</button>
-</div>
-</div>
+<div class="v3-demo v3-pb v3-fb" data-v3-feedback>
+    <header class="v3-fb-header"><span class="v3-pb-app-icon" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M5 7h14M5 12h10M5 17h7"></path></svg></span><div><strong data-v3-key="v3-fb-title">Study helper</strong><p data-v3-key="v3-fb-subtitle">Example conversation</p></div></header>
+    <div class="v3-fb-thread">
+      <div class="v3-fb-message v3-fb-user"><span class="v3-pb-label" data-v3-key="v3-fb-user-label">You</span><p data-v3-key="v3-fb-user-message">Turn our study-planner idea into a simple plan.</p><span class="v3-fb-attachment"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H6V3Zm7 0v5h5M9 12h6m-6 4h6"></path></svg><span data-v3-key="v3-fb-file">Project note</span></span></div>
+      <div class="v3-fb-message v3-fb-assistant"><span class="v3-pb-label" data-v3-key="v3-fb-ai-label">Assistant</span><p class="v3-pb-multiline" data-v3-fb-answer data-v3-key="v3-fb-answer">Here is a plan you can test:
+
+1. Let students choose a study time.
+2. Offer a reminder.
+3. Ask a student to change the plan and explain any difficulty.</p><p class="v3-fb-check" data-v3-key="v3-fb-warning">Check the answer against your original note.</p></div>
+      <div class="v3-fb-actions">
+        <div class="v3-fb-votes"><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="up" aria-pressed="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 10H3v11h4Zm0 10h11a2 2 0 0 0 2-1.7l1-7A2 2 0 0 0 19 9h-5l1-5a2 2 0 0 0-2-2l-6 8Z"></path></svg><span data-v3-key="v3-fb-helpful">Helpful</span></button><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="down" aria-pressed="false" aria-controls="v3-fb-reasons" aria-expanded="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 14H3V3h4Zm0-10h11a2 2 0 0 1 2 1.7l1 7a2 2 0 0 1-2 2.3h-5l1 5a2 2 0 0 1-2 2l-6-8Z"></path></svg><span data-v3-key="v3-fb-unhelpful">Not helpful</span></button></div>
+        <div class="v3-fb-tools"><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-copy><svg aria-hidden="true" viewbox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H4v13h4"></path></svg><span data-v3-key="v3-fb-copy">Copy</span></button><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-edit aria-expanded="false" aria-controls="v3-fb-editor"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m14 5 5 5M4 20l5-1L21 7l-5-5L4 14Z"></path></svg><span data-v3-key="v3-fb-edit">Edit</span></button></div>
+      </div>
+      <fieldset id="v3-fb-reasons" class="v3-fb-reasons v3-pb-fieldset" data-v3-fb-reasons hidden><legend data-v3-key="v3-fb-reason-title">What could be better? (optional)</legend><div class="v3-pb-choices"><button type="button" class="v3-pb-choice" data-v3-fb-reason="long" aria-pressed="false" data-v3-key="v3-fb-reason-long">Too long</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="unclear" aria-pressed="false" data-v3-key="v3-fb-reason-unclear">Hard to understand</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="offtopic" aria-pressed="false" data-v3-key="v3-fb-reason-offtopic">Misses my question</button></div></fieldset>
+      <div id="v3-fb-editor" class="v3-fb-editor" data-v3-fb-editor hidden><label for="v3-fb-edit-text" data-v3-key="v3-fb-edit-label">Edit this sample answer</label><textarea id="v3-fb-edit-text" rows="6" data-v3-fb-edit-text></textarea><div class="v3-pb-controls"><button type="button" class="v3-pb-button v3-pb-primary" data-v3-fb-save data-v3-key="v3-fb-save">Save changes</button><button type="button" class="v3-pb-button" data-v3-fb-cancel data-v3-key="v3-fb-cancel">Cancel</button></div></div>
+      <div class="v3-fb-copy-panel" data-v3-fb-copy-panel hidden><label for="v3-fb-copy-text" data-v3-key="v3-fb-copy-label">Answer to copy</label><textarea id="v3-fb-copy-text" rows="6" readonly data-v3-fb-copy-text></textarea></div>
+      <p class="v3-fb-status" data-v3-fb-status role="status" aria-live="polite" aria-atomic="true"></p>
+    </div>
+    <div class="v3-pb-footer"><button type="button" class="v3-pb-button v3-pb-quiet" data-v3-fb-reset data-v3-key="v3-fb-reset">Reset conversation</button></div>
+  </div>
 <div style="margin-top: 20px; font-size: 0.95rem;">
-<strong data-key="feed-h1">명시적 피드백 (Explicit)</strong>: 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.<br/>
+<strong data-key="feed-h1">명시적 피드백 (Explicit)</strong>: 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.<br>
 <strong data-key="feed-h2">묵시적 피드백 (Implicit)</strong>: [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.
                 </div>
 </div>
@@ -732,7 +785,7 @@
 <li data-key="exam-l2">🗺️ 2. AI 상태(6 States)와 <strong>대화 흐름도(Dialogue Flow)</strong> 스케치</li>
 <li data-key="exam-l3">🛡️ 3. <strong>신뢰(Trust) 및 피드백(Feedback) UI</strong> 설계 아이디어</li>
 </ul>
-<br/>
+<br>
 <button class="action-btn" data-key="exam-btn" onclick="alert(translations[currentLang]['js_exam_alert'])" style="background:#dc2626;">🔔 이번 주 출석 퀴즈 제출하기</button>
 </div>
 </div>
@@ -741,8 +794,7 @@
 
 <template id="lesson-week07">
 
- Intro Card 
-<div class="card" style="border-top-color: var(--main-blue);">
+<div class="container"><div class="card" style="border-top-color: var(--main-blue);">
 <h1><span class="title-emoji">🧙‍♂️</span> <span data-key="intro-title">Week 07: 오즈의 마법사(WoZ) 프로토타이핑</span></h1>
 <ul class="emoji-list">
 <li>🎯 <strong data-key="intro-l1-b">목표:</strong> <span data-key="intro-l1-t">코딩을 한 줄도 하지 않고 사람이 AI인 척 연기하며 사용자 반응 미리 확인하기</span></li>
@@ -752,20 +804,20 @@
                     "AI를 직접 개발하려면 돈과 시간이 몇 달씩 들어요. 하지만 WoZ를 쓰면 단 하루 만에 사용자가 이 말투와 기능을 좋아하는지 확인할 수 있습니다!"
                 </div>
 </div>
- 3 Roles 
+
 <div class="card" style="border-top-color: #fb923c;">
 <h2><span class="title-emoji">🎭</span> <span data-key="role-title">WoZ 실험실의 3가지 핵심 역할</span></h2>
 <p data-key="role-sub">실험을 성공시키려면 3명이 각자의 역할을 완벽히 소화해야 해요. 역할을 눌러 규칙을 확인해 보세요!</p>
 <div class="matrix-board">
-<div class="m-card m-blue" onclick="triggerAlert('js_role_user')"><span data-key="r1-title">👤 1. 참여자 (사용자)</span><br/><small data-key="r1-sub">뒤에 사람이 있는 줄 모름</small></div>
-<div class="m-card m-purple" onclick="triggerAlert('js_role_wizard')"><span data-key="r2-title">🧙 2. 마법사 (운영자)</span><br/><small data-key="r2-sub">커튼 뒤에서 AI 흉내 내기</small></div>
-<div class="m-card m-green" onclick="triggerAlert('js_role_observer')"><span data-key="r3-title">📝 3. 관찰자 (기록자)</span><br/><small data-key="r3-sub">표정과 당황하는 순간 메모</small></div>
+<div class="m-card m-blue" onclick="triggerAlert('js_role_user')"><span data-key="r1-title">👤 1. 참여자 (사용자)</span><br><small data-key="r1-sub">뒤에 사람이 있는 줄 모름</small></div>
+<div class="m-card m-purple" onclick="triggerAlert('js_role_wizard')"><span data-key="r2-title">🧙 2. 마법사 (운영자)</span><br><small data-key="r2-sub">커튼 뒤에서 AI 흉내 내기</small></div>
+<div class="m-card m-green" onclick="triggerAlert('js_role_observer')"><span data-key="r3-title">📝 3. 관찰자 (기록자)</span><br><small data-key="r3-sub">표정과 당황하는 순간 메모</small></div>
 </div>
 </div>
- Wizard Rules 
+
 <div class="card" style="border-top-color: #8b5cf6;">
 <h2><span class="title-emoji">📜</span> <span data-key="rule-title">완벽한 AI가 되기 위한 '마법사의 3대 비밀 규칙'</span></h2>
-<p data-key="rule-sub">사람인 게 들키지 않으려면 철저하게 AI처럼 규칙을 지켜 대답해야 해요.</p>
+
 <div class="vs-container">
 <div class="box">
 <strong data-key="rule1-t">📋 1. 미리 적어둔 답변 복사/붙여넣기</strong>
@@ -781,33 +833,33 @@
 </div>
 </div>
 </div>
- Testing Tools 
+
 <div class="card" style="border-top-color: #10b981;">
 <h2><span class="title-emoji">🛠️</span> <span data-key="tool-title">돈 안 들이고 당장 시작하는 노코드(No-Code) 도구</span></h2>
-<p data-key="tool-sub">전문 프로그램 없이 중학생도 카톡이나 문서로 바로 테스트할 수 있어요.</p>
+
 <div class="mock-chat">
 <div class="chat-bubble-user" data-key="tool-c1">
-<strong>💬 메신저 활용 (카카오톡, 디스코드, 슬랙):</strong><br/>
+<strong>💬 메신저 활용 (카카오톡, 디스코드, 슬랙):</strong><br>
                         계정 이름을 'AI 도우미 챗봇'으로 짓고 로봇 프로필 사진을 걸어둔 뒤, 뒤에서 디자이너가 대신 채팅을 쳐줍니다.
                     </div>
 <div class="chat-bubble-bot" data-key="tool-c2">
-<strong>📄 공유 문서 (Google Docs / Notion):</strong><br/>
+<strong>📄 공유 문서 (Google Docs / Notion):</strong><br>
                         사용자가 문서에 질문을 치면, 커튼 뒤 마법사가 실시간으로 아래에 타이핑하며 답변을 적어줍니다.
                     </div>
 </div>
 </div>
- 4-Phase Protocol 
+
 <div class="card" style="border-top-color: var(--warning);">
 <h2><span class="title-emoji">⏱️</span> <span data-key="flow-title">20분 만에 끝내는 실전 테스트 4단계</span></h2>
 <p data-key="flow-sub">실험은 복잡하지 않아요! 4단계 총 20분이면 충분합니다.</p>
 <div class="phase-timeline">
-<div class="phase-zone zone-p1" data-key="pz1">1단계: 브리핑<br/>(3분)<br/>미션 부여</div>
-<div class="phase-zone zone-p2" data-key="pz2">2단계: 대화 테스트<br/>(10분)<br/>실제 챗봇 대화</div>
-<div class="phase-zone zone-p3" data-key="pz3">3단계: 정체 공개<br/>(5분)<br/>인터뷰 &amp; 진실 고백</div>
-<div class="phase-zone zone-p4" data-key="pz4">4단계: 정리<br/>(2분)<br/>감사 인사 &amp; 메모</div>
+<div class="phase-zone zone-p1" data-key="pz1">1단계: 브리핑<br>(3분)<br>미션 부여</div>
+<div class="phase-zone zone-p2" data-key="pz2">2단계: 대화 테스트<br>(10분)<br>실제 챗봇 대화</div>
+<div class="phase-zone zone-p3" data-key="pz3">3단계: 정체 공개<br>(5분)<br>인터뷰 &amp; 진실 고백</div>
+<div class="phase-zone zone-p4" data-key="pz4">4단계: 정리<br>(2분)<br>감사 인사 &amp; 메모</div>
 </div>
 </div>
- Activity & Midterm 
+
 <div class="card" style="border-top-color: var(--main-blue); text-align: center;">
 <h2><span class="title-emoji">📝</span> <span data-key="mid-title">중간고사 과제 안내 (8주차 제출)</span></h2>
 <h3 data-key="mid-h3">3페이지 중간고사 컨셉 기획서 (PDF) 작성 체크리스트</h3>
@@ -816,11 +868,11 @@
 <li data-key="mid-l2"><strong>2페이지:</strong> 활용할 AI 기술 종류(시각/언어/음성) &amp; 5단계 대화 흐름도(Logic Flow)</li>
 <li data-key="mid-l3"><strong>3페이지:</strong> 신뢰성 UI 스케치(출처/면책조항), 피드백 버튼(좋아요/싫어요), WoZ 계획</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_midterm_alert'])">📢 8주차 중간고사 제출 안내 확인하기</button>
 </div>
 
-</template>
+</div></template>
 
 <template id="lesson-week09">
 
@@ -836,7 +888,7 @@
 <!-- Deep Dive into Components with Live Interactive Demos -->
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">🛠️</span> <span data-key="deep-title">피그마 핵심 기능 심층 실습</span></h2>
-<p data-key="deep-sub" style="color:#64748b; font-size:0.95rem; margin-top:0;">실제 피그마에서 사용하는 주요 툴과 AI 챗봇 디자인 규칙을 인터랙티브 예시로 확인하세요.</p>
+
 <div class="comp-grid">
 <!-- 1. Keyboard Shortcuts -->
 <div class="comp-card">
@@ -867,7 +919,7 @@
 </div>
 <button class="action-btn" data-key="c2-btn" id="al-btn" onclick="toggleAutoLayout()" style="margin-top:15px;">✨ Shift + A 마법 걸기</button>
 </div>
-<p class="comp-desc" data-key="c2-desc">요소들을 선택하고 <strong>Shift + A</strong>를 누르면 텍스트 길이에 맞춰 자동으로 크기가 변하고 간격이 맞춰지는 마법 상자(컨테이너)가 됩니다.</p>
+
 </div>
 <!-- 3. Components -->
 <div class="comp-card">
@@ -886,7 +938,7 @@
 <div class="chat-bubble-demo instance-bub" data-key="c3-inst2">복사본 2</div>
 </div>
 </div>
-<p class="comp-desc" data-key="c3-desc">원본(Master)을 만들어두고 복사해서 쓰면, 나중에 <strong>원본의 색상이나 폰트를 바꿀 때 수십 개의 복사본(Instances)이 1초 만에 동시에 업데이트</strong>됩니다.</p>
+
 </div>
 <!-- 4. AI Chat UI -->
 <div class="comp-card">
@@ -950,7 +1002,7 @@
 </div>
 <button class="action-btn" data-key="c5-reset" onclick="resetPrototype()" style="position:absolute; bottom:10px; right:10px; font-size:0.7rem;">🔄 처음으로</button>
 </div>
-<p class="comp-desc" data-key="c5-desc">Prototype 탭에서 <strong>추천 칩 클릭 시 (On click)</strong> 로딩 화면으로, <strong>0.8초 후 (After delay)</strong> 최종 답변 화면으로 선을 연결하면 코딩 없이 실제 구동되는 앱이 완성됩니다.</p>
+
 </div>
 <!-- 6. Share Permission -->
 <div class="comp-card">
@@ -989,7 +1041,7 @@
 <li data-key="act-l4"><strong>Prototype 탭</strong>에서 클릭(On click)과 지연(After delay) 화살표 연결하기</li>
 </ol>
 </div>
-<br/>
+<br>
 <div data-key="act-help" style="color:var(--danger); font-size:0.9rem; font-weight:bold; margin-bottom:15px;">🙋 막히는 부분이 있다면 언제든 손을 들고 질문하세요!</div>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_done'])" style="padding:10px 20px; font-size:1rem; background:var(--main-blue);">🚀 9주차 실습 완료 확인</button>
 </div>
@@ -1011,7 +1063,7 @@
 <!-- Bias & Case Study -->
 <div class="card" style="border-top-color: #f87171;">
 <h2><span class="title-emoji">🚫</span> <span data-key="bias-title">알고리즘의 편견 (Algorithmic Bias)</span></h2>
-<p data-key="bias-sub">AI는 백지상태가 아닙니다. 과거 데이터를 학습하며 인간의 성별, 인종적 편견을 그대로 답습합니다.</p>
+
 <div class="alert-box">
 <h3 data-key="bias-ex-t" style="margin-top:0; color:#b91c1c;">🚨 Case Study: 아마존 AI 채용 실패 사례</h3>
 <p data-key="bias-ex-p">과거 남성 중심의 이력서 데이터를 학습한 AI가 <strong>'여성(Women's)'</strong>이란 단어가 들어간 서류에 무조건 낮은 점수를 주는 치명적 성차별 오류를 일으켜 프로젝트가 폐기되었습니다. AI에게 통제권을 100% 넘기면 끔찍한 차별이 발생합니다.</p>
@@ -1032,7 +1084,7 @@
 <!-- User Controls Mockup -->
 <div class="card" style="border-top-color: #8b5cf6;">
 <h2><span class="title-emoji">🎛️</span> <span data-key="ctrl-title">사용자 통제 버튼 (User Override Controls)</span></h2>
-<p data-key="ctrl-sub">사용자가 언제든 AI의 실수를 멈추고 되돌릴 수 있는 3가지 필수 버튼입니다.</p>
+
 <div class="mock-chat-wrapper">
 <!-- User Bubble with Edit -->
 <div class="mock-bubble">
@@ -1041,11 +1093,11 @@
 </div>
 <!-- AI Bubble with Stop & Report -->
 <div class="mock-ai">
-<span data-key="ctrl-mock-a">네, 내일 제주도행 비행기를 알아보고 결제를 진행합니...</span><br/>
+<span data-key="ctrl-mock-a">네, 내일 제주도행 비행기를 알아보고 결제를 진행합니...</span><br>
 <div class="stop-btn-mock" onclick="triggerAlert('js_stop')">
 <span style="color:black;">⬛</span> <span data-key="ctrl-btn-stop">생성 중단 (Stop Generating)</span>
 </div>
-<br/>
+<br>
 <div class="report-link" data-key="ctrl-link-report" onclick="triggerAlert('js_report')">
                             🚩 오류 신고 / 이의 제기 (Contestability)
                         </div>
@@ -1060,15 +1112,67 @@
 <!-- Dark Patterns -->
 <div class="card" style="border-top-color: #fb923c;">
 <h2><span class="title-emoji">😈</span> <span data-key="dark-title">다크 패턴 (Dark Patterns) 피하기</span></h2>
-<p data-key="dark-sub">사용자를 속여 신뢰를 파괴하는 사악한 인터페이스를 절대 만들지 마세요.</p>
+
 <div class="vs-container">
 <div class="box" style="background: white; border: 1px dashed #cbd5e1;">
 <h4 data-key="dark-b1-t" style="margin-top:0; color:#334155;">1. 가짜 감정 연기 (Fake Sentience)</h4>
-<p data-key="dark-b1-p" style="font-size:0.9rem;">AI가 인간처럼 감정이 있는 척하며 <em>"안 사시면 저 너무 슬퍼요"</em>라며 죄책감을 유발하는 가스라이팅.</p>
+
+<section class="v3-demo v3-er v3-er-ethics" data-er-kind="sentience" aria-labelledby="eth-sent-title">
+    <h5 id="eth-sent-title" class="v3-er-title" data-v3-key="eth.sent.title">When the app asks you to stay</h5>
+    <div class="v3-er-mode" role="group" data-v3-label="eth.modeLabel">
+      <button type="button" data-er-action="mode-bad" aria-pressed="true" data-v3-key="eth.problem">Problem example</button>
+      <button type="button" data-er-action="mode-good" aria-pressed="false" data-v3-key="eth.better">Better design</button>
+    </div>
+    <div class="v3-er-phone">
+      <div class="v3-er-phone-top" aria-hidden="true"><span>9:41</span><i></i><span>▰</span></div>
+      <div class="v3-er-appbar"><span class="v3-er-app-icon" aria-hidden="true">A</span><span data-v3-key="eth.sent.app">AI study helper</span></div>
+      <div class="v3-er-screen" data-er-mode-view="bad">
+        <div class="v3-er-user-bubble" data-v3-key="eth.sent.user">I do not want a paid plan.</div>
+        <div class="v3-er-bot-bubble v3-er-bubble-bad"><span class="v3-er-avatar" aria-hidden="true">☹</span><p data-v3-key="eth.sent.badMessage">Please don't leave. I will feel sad if you do not pay.</p></div>
+        <div class="v3-er-choice-row"><button type="button" class="v3-er-button v3-er-secondary" data-er-action="sent-leave-bad" data-v3-key="eth.sent.leave">Leave</button><button type="button" class="v3-er-button v3-er-pressure" data-er-action="sent-pay" data-v3-key="eth.sent.pay">Upgrade</button></div>
+        <p class="v3-er-result v3-er-result-bad" data-er-role="sent-bad-result" role="status" hidden></p>
+      </div>
+      <div class="v3-er-screen" data-er-mode-view="good" hidden>
+        <div class="v3-er-user-bubble" data-v3-key="eth.sent.user">I do not want a paid plan.</div>
+        <div class="v3-er-bot-bubble v3-er-bubble-good"><span class="v3-er-avatar" aria-hidden="true">✦</span><div><strong class="v3-er-ai-label" data-v3-key="eth.sent.aiLabel">AI assistant</strong><p data-v3-key="eth.sent.goodMessage">A paid plan is optional. You can keep the free plan or leave.</p></div></div>
+        <div class="v3-er-choice-row"><button type="button" class="v3-er-button" data-er-action="sent-free" data-v3-key="eth.sent.keepFree">Keep the free plan</button><button type="button" class="v3-er-button v3-er-secondary" data-er-action="sent-leave-good" data-v3-key="eth.sent.leave">Leave</button></div>
+        <p class="v3-er-result v3-er-result-good" data-er-role="sent-good-result" role="status" hidden></p>
+      </div>
+    </div>
+    <p class="v3-er-insight" data-er-role="insight" role="status" data-v3-key="eth.sent.badWhy">The bot pretends to have feelings and uses guilt to push a purchase.</p>
+    <button type="button" class="v3-er-text-button" data-er-action="ethics-reset" data-v3-key="eth.reset">Reset example ↺</button>
+  </section>
 </div>
 <div class="box" style="background: white; border: 1px dashed #cbd5e1;">
 <h4 data-key="dark-b2-t" style="margin-top:0; color:#334155;">2. 강제 데이터 수집 (Forced Traps)</h4>
 <p data-key="dark-b2-p" style="font-size:0.9rem;">사적인 대화를 AI 훈련용으로 쓰도록 <strong>기본 동의 체크박스</strong>를 눈에 띄지 않게 숨겨두는 행위.</p>
+<section class="v3-demo v3-er v3-er-ethics" data-er-kind="trap" aria-labelledby="eth-trap-title">
+    <h5 id="eth-trap-title" class="v3-er-title" data-v3-key="eth.trap.title">Can you say no to sharing data?</h5>
+    <div class="v3-er-mode" role="group" data-v3-label="eth.modeLabel">
+      <button type="button" data-er-action="mode-bad" aria-pressed="true" data-v3-key="eth.problem">Problem example</button>
+      <button type="button" data-er-action="mode-good" aria-pressed="false" data-v3-key="eth.better">Better design</button>
+    </div>
+    <div class="v3-er-phone">
+      <div class="v3-er-phone-top" aria-hidden="true"><span>9:41</span><i></i><span>▰</span></div>
+      <div class="v3-er-appbar"><span class="v3-er-app-icon" aria-hidden="true">A</span><span data-v3-key="eth.trap.app">Turn on AI help</span></div>
+      <div class="v3-er-screen" data-er-mode-view="bad">
+        <div class="v3-er-feature-icon" aria-hidden="true">✦</div><strong class="v3-er-screen-title" data-v3-key="eth.trap.start">Get help with your study notes</strong>
+        <p class="v3-er-screen-copy" data-v3-key="eth.trap.badIntro">One click and you are ready.</p>
+        <label class="v3-er-consent v3-er-consent-bad"><input type="checkbox" data-er-consent="bad" checked><span data-v3-key="eth.trap.badConsent">Use my private chats to improve AI.</span></label>
+        <button type="button" class="v3-er-button" data-er-action="trap-continue-bad" data-v3-key="eth.continue">Continue</button>
+        <p class="v3-er-result" data-er-role="trap-bad-result" role="status" hidden></p>
+      </div>
+      <div class="v3-er-screen" data-er-mode-view="good" hidden>
+        <div class="v3-er-feature-icon v3-er-feature-mint" aria-hidden="true">✦</div><strong class="v3-er-screen-title" data-v3-key="eth.trap.start">Get help with your study notes</strong>
+        <label class="v3-er-consent v3-er-consent-good"><input type="checkbox" data-er-consent="good"><span><strong data-v3-key="eth.trap.goodConsent">Share chats to improve AI</strong><small data-v3-key="eth.trap.optional">Optional · off by default</small></span></label>
+        <p class="v3-er-screen-copy" data-v3-key="eth.trap.goodIntro">AI help works even if you leave this off.</p>
+        <button type="button" class="v3-er-button" data-er-action="trap-continue-good" data-v3-key="eth.continue">Continue</button>
+        <p class="v3-er-result v3-er-result-good" data-er-role="trap-good-result" role="status" hidden></p>
+      </div>
+    </div>
+    <p class="v3-er-insight" data-er-role="insight" role="status" data-v3-key="eth.trap.badWhy">The box is already checked. Try turning it off, then press Continue.</p>
+    <button type="button" class="v3-er-text-button" data-er-action="ethics-reset" data-v3-key="eth.reset">Reset example ↺</button>
+  </section>
 </div>
 </div>
 </div>
@@ -1082,7 +1186,7 @@
 <li data-key="act-l3">사용자 말풍선 옆에 <strong>'수정(Edit) ✏️'</strong> 아이콘 추가하기</li>
 <li data-key="act-l4">AI 답변 하단에 <strong>'오류 신고(Report) 🚩'</strong> 링크 달기</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -1094,7 +1198,7 @@
 <div class="container">
 <!-- Intro -->
 <div class="card" style="border-top-color: var(--main-blue);">
-<h1><span class="title-emoji">🕵️&zwj;&male;️</span> <span data-key="intro-title">Week 11: 개인 맞춤화와 개인정보 보호 (Privacy UX)</span></h1>
+<h1><span class="title-emoji">🕵️‍♂️</span> <span data-key="intro-title">Week 11: 개인 맞춤화와 개인정보 보호 (Privacy UX)</span></h1>
 <ul class="emoji-list">
 <li>🎯 <strong data-key="intro-l1-b">목표:</strong> <span data-key="intro-l1-t">사용자 데이터를 안전하게 다루는 투명한 프라이버시 UI 설계하기</span></li>
 <li>💡 <strong data-key="intro-l2-b">핵심:</strong> <span data-key="intro-l2-t">설명 없는 개인 맞춤화는 '친절함'이 아니라 <strong>'소름 돋는 감시(Creepy Surveillance)'</strong>로 느껴집니다.</span></li>
@@ -1107,18 +1211,18 @@
 <div class="vs-container">
 <div class="box" style="background: #f0fdf4; border: 1px solid #86efac;">
 <h3 data-key="creepy-good-t" style="color:#16a34a; margin-top:0;">✅ 친절한 개인화 (Helpful)</h3>
-<p data-key="creepy-good-p">"어제 [한국어 단어 A]를 검색하셔서 관련된 [퀴즈 B]를 추천해 드려요."<br/>👉 내가 과거에 했던 행동과 연결하여 이유를 분명히 설명함.</p>
+<p data-key="creepy-good-p">"어제 [한국어 단어 A]를 검색하셔서 관련된 [퀴즈 B]를 추천해 드려요."<br>👉 내가 과거에 했던 행동과 연결하여 이유를 분명히 설명함.</p>
 </div>
 <div class="box" style="background: #fef2f2; border: 1px solid #fca5a5;">
 <h3 data-key="creepy-bad-t" style="color:#dc2626; margin-top:0;">❌ 소름 돋는 감시 (Creepy)</h3>
-<p data-key="creepy-bad-p">카페에서 친구와 '신발' 이야기를 한 직후, 스마트폰에 갑자기 신발 광고가 뜸.<br/>👉 데이터 수집 출처를 몰라 스마트폰이 도청한다고 느낌.</p>
+<p data-key="creepy-bad-p">카페에서 친구와 '신발' 이야기를 한 직후, 스마트폰에 갑자기 신발 광고가 뜸.<br>👉 데이터 수집 출처를 몰라 스마트폰이 도청한다고 느낌.</p>
 </div>
 </div>
 </div>
 <!-- Contextual Consent & ℹ️ Icon -->
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">💬</span> <span data-key="just-title">"이게 왜 뜨나요?" &amp; 적시 요청 (Just-in-Time)</span></h2>
-<p data-key="just-sub">권한이나 추천 이유는 사용자가 필요한 딱 그 순간에(Contextual) 물어봐야 합니다.</p>
+
 <div class="vs-container">
 <!-- Why am I seeing this -->
 <div class="box">
@@ -1195,7 +1299,7 @@
 <li data-key="act-l3">설정 화면에 <strong>'AI 학습 허용(On/Off)' 토글 스위치</strong> 달기</li>
 <li data-key="act-l4">설정 화면에 <strong>'대화 기록 삭제(🗑️)'</strong> 버튼 배치하기</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -1236,10 +1340,10 @@
 </div>
 </div>
 <!-- Interactive Blueprint Template -->
-<div class="card" style="border-top-color: var(--success); overflow-x: auto;">
+<div class="card">
 <h2><span class="title-emoji">📋</span> <span data-key="bp-title">AI 서비스 블루프린트 5단 템플릿</span></h2>
 <p data-key="bp-sub">각 상자(박스)를 클릭하면 자세한 설명을 볼 수 있습니다. (예시: 비자 서류 번역 앱)</p>
-<table class="blueprint-table">
+<div class="v3-blueprint-table-scroll" tabindex="0"><table class="blueprint-table">
 <thead>
 <tr>
 <th data-key="bp-th1" style="width: 15%;">계층 (Layers)</th>
@@ -1251,14 +1355,14 @@
 <tbody>
 <!-- Row 1 -->
 <tr class="row-frontstage">
-<td><strong>1. User Action</strong><br/><small data-key="bp-r1-sub">사용자 행동</small></td>
+<td><strong>1. User Action</strong><br><small data-key="bp-r1-sub">사용자 행동</small></td>
 <td><div class="bp-step" data-key="bp-r1-c1" onclick="triggerAlert('js_r1_1')">앱 켜고 서류 사진 업로드</div></td>
 <td><div class="bp-step" data-key="bp-r1-c2" onclick="triggerAlert('js_r1_2')">로딩 화면 보며 대기</div></td>
 <td><div class="bp-step" data-key="bp-r1-c3" onclick="triggerAlert('js_r1_3')">결과 확인 및 '복사' 클릭</div></td>
 </tr>
 <!-- Row 2 -->
 <tr class="row-frontstage">
-<td><strong>2. UI Touchpoint</strong><br/><small data-key="bp-r2-sub">눈에 보이는 화면</small></td>
+<td><strong>2. UI Touchpoint</strong><br><small data-key="bp-r2-sub">눈에 보이는 화면</small></td>
 <td><div class="bp-step" data-key="bp-r2-c1" onclick="triggerAlert('js_r2_1')">카메라 UI &amp; 업로드 버튼</div></td>
 <td><div class="bp-step" data-key="bp-r2-c2" onclick="triggerAlert('js_r2_2')">스켈레톤 로딩 (읽는 중...)</div></td>
 <td><div class="bp-step" data-key="bp-r2-c3" onclick="triggerAlert('js_r2_3')">번역 완료 카드 &amp; 출처 링크</div></td>
@@ -1271,27 +1375,66 @@
 </tr>
 <!-- Row 3 -->
 <tr class="row-backstage">
-<td><strong>3. AI Processing</strong><br/><small data-key="bp-r3-sub">AI 모델 연산</small></td>
+<td><strong>3. AI Processing</strong><br><small data-key="bp-r3-sub">AI 모델 연산</small></td>
 <td><div class="bp-step" data-key="bp-r3-c1" onclick="triggerAlert('js_r3_1')">이미지 화질 개선 (전처리)</div></td>
-<td><div class="bp-step" data-key="bp-r3-c2" onclick="triggerAlert('js_r3_2')">Vision OCR 텍스트 추출<br/>+ LLM 영어 번역</div></td>
+<td><div class="bp-step" data-key="bp-r3-c2" onclick="triggerAlert('js_r3_2')">Vision OCR 텍스트 추출<br>+ LLM 영어 번역</div></td>
 <td><div class="bp-step" data-key="bp-r3-c3" onclick="triggerAlert('js_r3_3')">신뢰도 점수(Confidence) 계산</div></td>
 </tr>
 <!-- Row 4 -->
 <tr class="row-backstage">
-<td><strong>4. Data / APIs</strong><br/><small data-key="bp-r4-sub">외부 연동 및 서버</small></td>
+<td><strong>4. Data / APIs</strong><br><small data-key="bp-r4-sub">외부 연동 및 서버</small></td>
 <td><div class="bp-step" data-key="bp-r4-c1" onclick="triggerAlert('js_r4_1')">AWS S3 사진 임시 저장</div></td>
 <td><div class="bp-step" data-key="bp-r4-c2" onclick="triggerAlert('js_r4_2')">DeepL Translation API</div></td>
 <td><div class="bp-step" data-key="bp-r4-c3" onclick="triggerAlert('js_r4_3')">사용자 프로필 DB (기록 저장)</div></td>
 </tr>
 <!-- Row 5 -->
 <tr class="row-fallback">
-<td style="color:#b91c1c;"><strong>5. Fallback ⚠️</strong><br/><small data-key="bp-r5-sub">에러 대처망</small></td>
-<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_1')"><span data-key="bp-r5-c1">⚠️ 업로드 지연 (Wi-Fi 약함)</span><br/>👉 <small data-key="bp-r5-c1-sol">"다시 업로드" 팝업 제공</small></div></td>
-<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_2')"><span data-key="bp-r5-c2">⚠️ 흐린 사진 (인식률 60% 이하)</span><br/>👉 <small data-key="bp-r5-c2-sol">"조명 켜고 다시 찍기" 유도</small></div></td>
-<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_3')"><span data-key="bp-r5-c3">⚠️ 할루시네이션(거짓말) 방지</span><br/>👉 <small data-key="bp-r5-c3-sol">"사람 전문가에게 질문하기" 버튼</small></div></td>
+<td style="color:#b91c1c;"><strong>5. Fallback ⚠️</strong><br><small data-key="bp-r5-sub">에러 대처망</small></td>
+<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_1')"><span data-key="bp-r5-c1">⚠️ 업로드 지연 (Wi-Fi 약함)</span><br>👉 <small data-key="bp-r5-c1-sol">"다시 업로드" 팝업 제공</small></div></td>
+<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_2')"><span data-key="bp-r5-c2">⚠️ 흐린 사진 (인식률 60% 이하)</span><br>👉 <small data-key="bp-r5-c2-sol">"조명 켜고 다시 찍기" 유도</small></div></td>
+<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_3')"><span data-key="bp-r5-c3">⚠️ 할루시네이션(거짓말) 방지</span><br>👉 <small data-key="bp-r5-c3-sol">"사람 전문가에게 질문하기" 버튼</small></div></td>
 </tr>
 </tbody>
 </table>
+</div><section class="v3-demo v3-pb v3-bp" data-v3-blueprint aria-labelledby="v3-bp-title">
+    <h3 id="v3-bp-title" data-v3-key="v3-bp-title">Follow one document through the service</h3>
+    <p class="v3-bp-intro" data-v3-key="v3-bp-intro">Play the example. See how one action changes the screen and the work behind it.</p>
+    <div class="v3-pb-controls"><button type="button" class="v3-pb-button v3-pb-primary" data-v3-bp-play><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8 5 11 7-11 7Z"></path></svg><span data-v3-bp-play-label data-v3-key="v3-bp-play">Play the example</span></button><button type="button" class="v3-pb-button" data-v3-bp-pause hidden data-v3-key="v3-bp-pause">Pause</button><button type="button" class="v3-pb-button v3-pb-quiet" data-v3-bp-reset data-v3-key="v3-bp-reset">Reset</button></div>
+    <div class="v3-bp-steps" role="group" data-v3-label="v3-bp-steps-label" aria-label="Example stage"><button type="button" class="v3-pb-choice" data-v3-bp-step="input" aria-current="step" data-v3-key="v3-bp-step-input">1 · Input</button><button type="button" class="v3-pb-choice" data-v3-bp-step="processing" data-v3-key="v3-bp-step-processing">2 · Processing</button><button type="button" class="v3-pb-choice" data-v3-bp-step="output" data-v3-key="v3-bp-step-output">3 · Output</button></div>
+    <div class="v3-bp-grid">
+      <ol class="v3-bp-lanes">
+        <li data-v3-bp-lane="1"><span class="v3-bp-lane-number" aria-hidden="true">1</span><div><strong data-v3-key="v3-bp-lane1">User Action</strong><p data-v3-bp-lane-copy="1" data-v3-key="v3-bp-input-lane1">Choose a sample photo.</p></div></li>
+        <li data-v3-bp-lane="2"><span class="v3-bp-lane-number" aria-hidden="true">2</span><div><strong data-v3-key="v3-bp-lane2">UI Touchpoint</strong><p data-v3-bp-lane-copy="2" data-v3-key="v3-bp-input-lane2">Show the selected file and Upload action.</p></div></li>
+        <li class="v3-bp-backstage" data-v3-bp-lane="3"><span class="v3-bp-visibility" data-v3-key="v3-bp-visibility">Line of visibility</span><span class="v3-bp-lane-number" aria-hidden="true">3</span><div><strong data-v3-key="v3-bp-lane3">AI Processing</strong><p data-v3-bp-lane-copy="3" data-v3-key="v3-bp-input-lane3">Wait for the document.</p></div></li>
+        <li data-v3-bp-lane="4"><span class="v3-bp-lane-number" aria-hidden="true">4</span><div><strong data-v3-key="v3-bp-lane4">Data / APIs</strong><p data-v3-bp-lane-copy="4" data-v3-key="v3-bp-input-lane4">The document image is the input data.</p></div></li>
+        <li class="v3-bp-fallback" data-v3-bp-lane="5"><span class="v3-bp-lane-number" aria-hidden="true">5</span><div><strong data-v3-key="v3-bp-lane5">Fallback</strong><p data-v3-bp-lane-copy="5" data-v3-key="v3-bp-input-lane5">Keep a Retry route ready if upload fails.</p></div></li>
+      </ol>
+      <div class="v3-pb-phone v3-bp-phone">
+        <div class="v3-pb-device-bar" aria-hidden="true"><span>9:41</span><svg viewbox="0 0 44 16" width="44" height="16"><path d="M2 13V9m5 4V6m5 7V3" stroke="currentColor" stroke-width="3"></path><rect x="24" y="4" width="16" height="9" rx="2" fill="none" stroke="currentColor"></rect><rect x="26" y="6" width="11" height="5" rx="1" fill="currentColor"></rect></svg></div>
+        <header class="v3-pb-phone-header"><span class="v3-pb-app-icon" aria-hidden="true"><svg viewbox="0 0 24 24"><path d="M7 3h7l4 4v14H6V3Zm7 0v5h5M9 12h6m-6 4h6"></path></svg></span><strong data-v3-key="v3-bp-phone-app">Document helper</strong></header>
+        <div class="v3-pb-phone-body">
+          <span class="v3-pb-label" data-v3-key="v3-bp-phone-example">Example</span>
+          <div data-v3-bp-panel="input">
+            <div class="v3-bp-photo"><span class="v3-pb-label" data-v3-key="v3-bp-source-label">Sample note · Spanish</span><div class="v3-bp-paper" lang="es"><p data-v3-key="v3-bp-source-line1">Sala: B2</p><p data-v3-key="v3-bp-source-line2">Hora: 14:00</p><span class="v3-bp-paper-rule" aria-hidden="true"></span><span class="v3-bp-paper-rule" aria-hidden="true"></span></div></div>
+            <p class="v3-pb-file" data-v3-key="v3-bp-source-file">appointment-note.jpg</p><button type="button" class="v3-pb-button v3-pb-primary" data-v3-bp-upload data-v3-key="v3-bp-upload">Use the sample photo</button>
+          </div>
+          <div data-v3-bp-panel="processing" hidden>
+            <div class="v3-bp-scan" aria-hidden="true"><svg viewbox="0 0 160 130"><rect x="25" y="15" width="110" height="102" rx="8" fill="#fff" stroke="#cbdad9"></rect><path d="M44 39h60M44 57h74M44 75h54M44 93h66" stroke="#cbdad9" stroke-width="6" stroke-linecap="round"></path><path class="v3-bp-scan-line" d="M16 24h128" stroke="#527c80" stroke-width="3"></path></svg></div><strong data-v3-key="v3-bp-reading">Reading the document…</strong><p data-v3-key="v3-bp-reading-detail">Finding the letters, then preparing a draft translation.</p><div class="v3-bp-skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
+          <div data-v3-bp-panel="output" hidden>
+            <div class="v3-pb-result"><strong data-v3-key="v3-bp-draft-label">Draft translation</strong><p data-v3-key="v3-bp-result-line1">Room: B2</p><p data-v3-key="v3-bp-result-line2">Time: 14:00</p></div><p data-v3-key="v3-bp-check">Compare names and numbers with the source.</p>
+            <button type="button" class="v3-pb-button" data-v3-bp-compare aria-expanded="false" aria-controls="v3-bp-source"><span data-v3-bp-compare-label data-v3-key="v3-bp-compare">Compare with the source</span></button>
+            <div id="v3-bp-source" class="v3-bp-source" data-v3-bp-source hidden><span class="v3-pb-label" data-v3-key="v3-bp-source-label">Sample note · Spanish</span><div lang="es"><p data-v3-key="v3-bp-source-line1">Sala: B2</p><p data-v3-key="v3-bp-source-line2">Hora: 14:00</p></div></div>
+            <button type="button" class="v3-pb-button v3-pb-quiet" data-v3-bp-new data-v3-key="v3-bp-new-photo">Choose another photo</button>
+          </div>
+          <div data-v3-bp-panel="error" hidden>
+            <div class="v3-bp-blurred" aria-hidden="true"><span>Sala: B2</span><span>Hora: 14:00</span></div><div class="v3-bp-error-copy"><strong data-v3-key="v3-bp-error-title">Some letters are hard to read</strong><p data-v3-key="v3-bp-error-copy">Use a sharper photo with more light, so the text can be checked.</p></div><button type="button" class="v3-pb-button v3-pb-primary" data-v3-bp-retry data-v3-key="v3-bp-retry">Use a clearer sample</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="v3-pb-footer"><p class="v3-bp-status" data-v3-bp-status data-v3-key="v3-bp-state-input" role="status" aria-live="polite" aria-atomic="true">Input: the sample photo is ready.</p><button type="button" class="v3-pb-button v3-pb-quiet" data-v3-bp-error data-v3-key="v3-bp-try-error">Try a blurry photo</button></div>
+  </section>
 </div>
 <!-- Activity -->
 <div class="card" style="border-top-color: var(--main-blue); text-align: center;">
@@ -1304,7 +1447,7 @@
 <li data-key="act-l4">최소 1개 이상의 <strong>실패 위험 지점(⚠️)</strong>과 해결 UI 적기</li>
 </ol>
 <p data-key="act-note" style="font-size:0.9rem; color:#64748b;">Figma, 구글 스프레드시트, 엑셀, 빈 종이 중 편한 도구를 사용하세요!</p>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">🔔 이번 주 제출 안내 확인</button>
 </div>
 </div>
@@ -1324,7 +1467,7 @@
 <!-- Traditional vs AI Metrics -->
 <div class="card" style="border-top-color: #fb923c;">
 <h2><span class="title-emoji">📈</span> <span data-key="metric-title">AI 맞춤형 사용성 평가 지표</span></h2>
-<p data-key="metric-sub">일반 앱(클릭 횟수, 체류 시간)과 달리 AI 앱은 다른 기준을 측정해야 합니다.</p>
+
 <div class="vs-container">
 <div class="box">
 <strong data-key="m1-t">🎯 프롬프트 성공률 (Prompt Success Rate)</strong>
@@ -1346,11 +1489,11 @@
 <!-- Latency Tolerance -->
 <div class="card" style="border-top-color: var(--danger);">
 <h2><span class="title-emoji">⏳</span> <span data-key="lat-title">지연 시간 인내도 (Latency Tolerance)</span></h2>
-<p data-key="lat-sub">화면이 멈춘 상태로 사용자가 얼마나 버틸 수 있을까요? 6초가 넘어가면 50%가 앱을 끕니다.</p>
+
 <div class="latency-timeline">
-<div class="time-zone zone-safe" data-key="lat-z1">0~2초<br/>안전 지대<br/>(점 애니메이션 충분)</div>
-<div class="time-zone zone-warn" data-key="lat-z2">3~5초<br/>진행 텍스트 필요<br/>("데이터 검색 중...")</div>
-<div class="time-zone zone-danger" data-key="lat-z3">6초 이상<br/>위험 구역<br/>(앱 고장으로 오해 👉 이탈!)</div>
+<div class="time-zone zone-safe" data-key="lat-z1">0~2초<br>안전 지대<br>(점 애니메이션 충분)</div>
+<div class="time-zone zone-warn" data-key="lat-z2">3~5초<br>진행 텍스트 필요<br>("데이터 검색 중...")</div>
+<div class="time-zone zone-danger" data-key="lat-z3">6초 이상<br>위험 구역<br>(앱 고장으로 오해 👉 이탈!)</div>
 </div>
 </div>
 <!-- Asynchronous & Peer Review -->
@@ -1373,9 +1516,9 @@
 <h2><span class="title-emoji">🗂️</span> <span data-key="mat-title">UI 버그 수정 우선순위 매트릭스</span></h2>
 <p data-key="mat-sub">피드백을 받았다고 해서 전부 당장 고칠 수는 없습니다. 색상을 눌러 우선순위를 확인하세요.</p>
 <div class="matrix-board">
-<div aria-label="🔴 Critical 치명적 (오늘 즉시 수정)" class="m-card m-red" onclick="triggerAlert('js_mat_red')" role="button" tabindex="0">🔴 Critical<br/><small data-key="mat-r">치명적 (오늘 즉시 수정)</small></div>
-<div aria-label="🟡 Important 중요 (이번 주 내 수정)" class="m-card m-yellow" onclick="triggerAlert('js_mat_yel')" role="button" tabindex="0">🟡 Important<br/><small data-key="mat-y">중요 (이번 주 내 수정)</small></div>
-<div aria-label="🟢 Nice-to-Have 선택 사항 (시간 남을 때)" class="m-card m-green" onclick="triggerAlert('js_mat_grn')" role="button" tabindex="0">🟢 Nice-to-Have<br/><small data-key="mat-g">선택 사항 (시간 남을 때)</small></div>
+<div aria-label="🔴 Critical 치명적 (오늘 즉시 수정)" class="m-card m-red" onclick="triggerAlert('js_mat_red')" role="button" tabindex="0">🔴 Critical<br><small data-key="mat-r">치명적 (오늘 즉시 수정)</small></div>
+<div aria-label="🟡 Important 중요 (이번 주 내 수정)" class="m-card m-yellow" onclick="triggerAlert('js_mat_yel')" role="button" tabindex="0">🟡 Important<br><small data-key="mat-y">중요 (이번 주 내 수정)</small></div>
+<div aria-label="🟢 Nice-to-Have 선택 사항 (시간 남을 때)" class="m-card m-green" onclick="triggerAlert('js_mat_grn')" role="button" tabindex="0">🟢 Nice-to-Have<br><small data-key="mat-g">선택 사항 (시간 남을 때)</small></div>
 </div>
 </div>
 <!-- Activity -->
@@ -1388,7 +1531,7 @@
 <li data-key="act-l3">출처 뱃지, Stop 버튼, 프라이버시 설명이 다 있는지 확인하기</li>
 <li data-key="act-l4">다음 주 기말 포트폴리오를 위해 <strong>고쳐야 할 버그 2가지 메모하기</strong></li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="triggerAlert('js_checklist')">📢 이번 주 출석 퀴즈 및 과제 안내</button>
 </div>
 </div>
@@ -1464,7 +1607,7 @@
 <!-- PDF Portfolio Structure -->
 <div class="card" style="border-top-color: #8b5cf6;">
 <h2><span class="title-emoji">📄</span> <span data-key="pdf-title">기말 포트폴리오(PDF) 작성 가이드 (Week 15 제출)</span></h2>
-<p data-key="pdf-sub">파워포인트나 Canva를 활용하여 한 학기 동안 만든 자료를 4~5장짜리 매거진처럼 엮어주세요.</p>
+
 <div class="pdf-grid">
 <div class="pdf-page">
 <div class="page-num">1</div>
@@ -1516,7 +1659,7 @@
 <li data-key="act-l3">완성된 화면들을 <strong>PNG 이미지 캡처</strong> 또는 PDF로 내려받습니다.</li>
 <li data-key="act-l4">파워포인트나 Canva를 켜서 <strong>기말 포트폴리오 PDF의 1~5페이지 초안</strong> 레이아웃을 만듭니다.</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])">📢 15주차 최종 기말고사 제출 안내</button>
 </div>
 </div>
@@ -1539,7 +1682,7 @@
 <!-- Deep Dive into Components with Live Interactive Demos (Cards Layout) -->
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">📚</span> <span data-key="deep-title">핵심 UI 컴포넌트 심층 해부</span></h2>
-<p data-key="deep-sub" style="color:#64748b; font-size:0.95rem; margin-top:0;">컴포넌트마다 이름, 바로 동작해볼 수 있는 실시간 예시, 하단 설명 텍스트를 카드 형태로 구성했습니다.</p>
+
 <div class="comp-grid">
 <!-- 1. Card Layout -->
 <div class="comp-card">
@@ -1597,7 +1740,7 @@
                             </div>
 <button class="action-btn" data-key="c3-btn" onclick="replaySkeleton()" style="margin-top:12px; font-size:0.75rem; padding:5px 10px;">🔄 로딩 다시 재생</button>
 </div>
-<p class="comp-desc" data-key="c3-desc">단순 회전 스피너 대신 콘텐츠 윤곽에 은은한 빛(Shimmer) 애니메이션을 주어 <strong>사용자의 체감 대기 시간을 대폭 줄입니다.</strong></p>
+
 </div>
 <!-- 4. Tooltip -->
 <div class="comp-card">
@@ -1611,7 +1754,7 @@
 <span class="tooltip-box" data-key="c4-tooltip">법무부 및 출입국관리소 공식 포털(HiKorea) 데이터베이스 검증 완료!</span>
 </span>
 </div>
-<p class="comp-desc" data-key="c4-desc">화면을 어지럽히지 않으면서도 필요한 순간 마우스 오버 시 즉각 부가 설명과 신뢰도 근거를 제공하는 <strong>마이크로 안내 컴포넌트</strong>입니다.</p>
+
 </div>
 <!-- 5. Micro-interaction -->
 <div class="comp-card">
@@ -1677,15 +1820,14 @@
 <li data-key="act-l3">출처 뱃지(Citation)에 마우스를 올리면 뜨는 <strong>툴팁(Tooltip)</strong> 설명 팝업 만들기</li>
 <li data-key="act-l4">복사 버튼을 눌렀을 때 나타나는 <strong>토스트(Toast) 알림</strong> 컴포넌트 배치하기</li>
 </ol>
-<br/>
+<br>
 <button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])" style="padding:10px 20px; font-size:1rem;">🔔 보너스 랩 수강 완료 확인</button>
 </div>
 </div>
 
 </template>
+<noscript><p class="course-note">Please enable JavaScript to use the interactive lessons. / 인터랙티브 강의를 보려면 JavaScript를 활성화해 주세요. / Для интерактивных уроков включите JavaScript.</p></noscript>
 
-  <noscript><p class="noscript-note">이 인터랙티브 강의는 JavaScript를 사용합니다. JavaScript를 활성화하고 새로고침하세요. / Please enable JavaScript to view the lessons.</p></noscript>
-  <script src="../js/common/menu.js"></script>
-  <script src="../js/ux.js"></script>
+<script src="../js/ux.js"></script>
 </body>
 </html>

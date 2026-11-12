@@ -793,3 +793,1542 @@ body.ux-course #lesson-subject { display: block; flex: 1 1 auto; min-width: 0; m
 body.ux-course[data-page="week08"] .demo-box,
 body.ux-course[data-page="week08"] .drawer-preview-area { contain: paint; }
 body.ux-course[data-page="week11"] .permission-mock { width: min(280px, 100%); max-width: 100%; }
+
+/* UX Studio · Quiet classroom edition
+   Appended after the original ux.css. Demonstration interactions are preserved. */
+
+body.ux-course {
+  --paper: #fbfaf6;
+  --surface: #fffefa;
+  --ink: #25342e;
+  --muted: #5f6b63;
+  --line: #dedfd6;
+  --sage: #e7eee1;
+  --sage-deep: #355a47;
+  --peach: #f7e7db;
+  --lavender: #eee9f5;
+  --sky: #e5eff4;
+  --butter: #f7f0d6;
+  --main-blue: #3b6151;
+  --bg-color: var(--paper);
+  --card-bg: var(--surface);
+  --text-color: var(--ink);
+  --success: #8dba96;
+  --danger: #b64845;
+  --warning: #dfbd67;
+  --ux-card-space: 28px;
+  --ux-inner-space: 22px;
+  font-family: Inter, "Segoe UI", Arial, "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+body.ux-course *, body.ux-course *::before, body.ux-course *::after { box-sizing: border-box; }
+body.ux-course [hidden] { display: none !important; }
+body.ux-course button, body.ux-course input, body.ux-course select, body.ux-course textarea { font: inherit; }
+body.ux-course button, body.ux-course a, body.ux-course summary { -webkit-tap-highlight-color: transparent; }
+body.ux-course button { cursor: pointer; }
+body.ux-course :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline: 3px solid #356753;
+  outline-offset: 4px;
+}
+body.ux-course a { color: var(--sage-deep); text-underline-offset: 3px; }
+body.ux-course ::selection { background: #e2e8cf; color: #1d3327; }
+body.ux-course .skip-link { position: fixed; left: 20px; top: -100px; z-index: 120; padding: 12px 20px; background: #fff; color: var(--ink); border: 2px solid var(--sage-deep); }
+body.ux-course .skip-link:focus { top: 12px; }
+body.ux-course .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* The course stays present, but never competes with the lesson. */
+body.ux-course .studio-header {
+  min-height: 78px;
+  padding: 14px max(28px, calc((100vw - 1392px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251,250,246,.98);
+  border-bottom: 1px solid var(--line);
+}
+body.ux-course .studio-brand { display: flex; gap: 12px; align-items: center; color: var(--ink); text-decoration: none; min-width: 0; }
+body.ux-course .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; flex: 0 0 auto; background: var(--sage); border: 1px solid #c6d4be; border-radius: 13px 13px 13px 3px; font-size: 17px; font-weight: 800; letter-spacing: -1px; color: #2e4f3c; }
+body.ux-course .studio-brand strong { font-size: 21px; font-weight: 750; letter-spacing: -.6px; line-height: 1.2; display: block; }
+body.ux-course .studio-brand small { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; line-height: 1.3; }
+body.ux-course .header-actions { display: flex; align-items: center; gap: 18px; flex: 0 0 auto; }
+body.ux-course .header-note { color: var(--muted); font-size: 12px; }
+body.ux-course .language-switch { display: flex; gap: 3px; padding: 3px; background: #f0f0e9; border: 1px solid var(--line); border-radius: 10px; }
+body.ux-course .language-switch button { min-height: 38px; padding: 7px 11px; background: transparent; color: var(--muted); border: 1px solid transparent; border-radius: 7px; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+body.ux-course .language-switch button:is(.active,[aria-pressed="true"]) { background: var(--surface); color: var(--ink); border-color: #d5dace; box-shadow: 0 1px 2px #243b2410; }
+body.ux-course .language-switch button:hover { color: var(--ink); background: #fffdf9; }
+body.ux-course .mobile-menu-toggle { display: none; background: transparent; border: 1px solid var(--line); border-radius: 9px; width: 44px; height: 44px; color: var(--ink); flex: 0 0 auto; }
+body.ux-course .studio-layout { display: grid; grid-template-columns: 244px minmax(0,1fr); max-width: 1392px; margin: 0 auto; }
+body.ux-course .course-sidebar { align-self: start; position: sticky; top: 78px; height: calc(100dvh - 78px); padding: 30px 19px 20px 24px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 13px; background: var(--paper); overflow-y: auto; scrollbar-width: thin; scrollbar-color: #cdd4c7 transparent; }
+body.ux-course .sidebar-head { font-size: 11px; text-transform: uppercase; font-weight: 750; letter-spacing: 1.8px; color: #687360; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 2px; }
+body.ux-course .sidebar-head span { letter-spacing: 0; font-size: 12px; font-weight: 500; }
+body.ux-course #course-nav { display: flex; flex-direction: column; gap: 5px; }
+body.ux-course .course-link { position: relative; display: grid; grid-template-columns: 27px minmax(0,1fr); column-gap: 9px; align-items: start; padding: 9px 9px; min-height: 45px; border: 1px solid transparent; border-radius: 9px; color: #59655b; text-decoration: none; line-height: 1.4; transition: background .15s ease; }
+body.ux-course .course-link:hover { background: #f0f0e8; color: #263d2f; }
+body.ux-course .course-link:is(.active,[aria-current="page"]) { background: var(--sage); color: #2f4c39; border-color: #cfddc6; font-weight: 650; }
+body.ux-course .course-link:is(.active,[aria-current="page"])::before { content: ""; position: absolute; left: -9px; top: 12px; bottom: 12px; width: 3px; background: #45674f; border-radius: 2px; }
+body.ux-course .week-number { font-size: 12px; line-height: 20px; font-variant-numeric: tabular-nums; color: #5b6955; font-weight: 650; }
+body.ux-course .week-topic { font-size: 12px; line-height: 20px; overflow-wrap: anywhere; }
+body.ux-course .week-status { grid-column: 2; color: #687367; font-size: 10px; font-weight: 500; display: block; margin-top: 2px; }
+body.ux-course .course-link.exam { background: #f2eee3; margin: 5px 0; }
+body.ux-course .course-link.completed .week-number { color: #3d6a46; }
+body.ux-course .sidebar-progress { border-top: 1px solid var(--line); padding-top: 15px; margin-top: auto; font-size: 12px; color: var(--muted); }
+body.ux-course .sidebar-progress strong { color: #425746; font-size: 13px; }
+body.ux-course .sidebar-progress progress { appearance: none; width: 100%; height: 5px; border: 0; display: block; margin: 8px 0; background: #e5e7dc; border-radius: 3px; overflow: hidden; }
+body.ux-course .sidebar-progress progress::-webkit-progress-bar { background: #e5e7dc; }
+body.ux-course .sidebar-progress progress::-webkit-progress-value { background: #6d9167; border-radius: 3px; }
+body.ux-course .sidebar-progress progress::-moz-progress-bar { background: #6d9167; }
+body.ux-course .sidebar-progress p { font-size: 11px; line-height: 1.5; margin: 8px 0 0; }
+body.ux-course .sidebar-backdrop { display: none; }
+
+/* Lesson opening: a small publication, with a clear way to begin. */
+body.ux-course main.studio-main { width: 100%; min-width: 0; max-width: 1030px; padding: 33px clamp(28px,4.5vw,64px) 58px; margin: 0 auto; }
+body.ux-course .lesson-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 12px; margin-bottom: 24px; }
+body.ux-course .lesson-topline a { font-size: 12px; text-decoration: none; border-bottom: 1px solid #bdcaba; }
+body.ux-course .lesson-heading { padding: 0 0 25px; position: relative; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+body.ux-course .lesson-kicker { display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; background: var(--peach); color: #71503d; border-radius: 4px; font-size: 11px; letter-spacing: 1.4px; font-weight: 750; line-height: 1.5; text-transform: uppercase; margin-bottom: 13px; }
+body.ux-course .lesson-heading h1 { color: var(--ink); font-size: clamp(29px,3.5vw,41px); line-height: 1.14; letter-spacing: -1.4px; font-weight: 750; border: 0; padding: 0; margin: 0 0 15px; max-width: 760px; }
+body.ux-course .lesson-intro { color: #59665b; font-size: 16px; line-height: 1.75; max-width: 720px; margin: 0; }
+body.ux-course .lesson-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-size: 12px; color: #63715f; }
+body.ux-course .study-modes { display: flex; gap: 0; flex-wrap: wrap; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: #efefe7; width: fit-content; max-width: 100%; margin: 24px 0; }
+body.ux-course .study-modes button { min-height: 43px; border: 1px solid transparent; border-radius: 7px; background: none; padding: 9px 20px; color: #64705e; font-size: 13px; font-weight: 650; }
+body.ux-course .study-modes button:is(.active,[aria-pressed="true"]) { background: var(--surface); color: #2c4b36; border-color: #d9dfd0; box-shadow: 0 1px 3px #2b3b1e09; }
+body.ux-course .study-modes button:hover { color: #233c2b; }
+body.ux-course .study-modes button small { display: inline; font-size: 11px; font-weight: 500; margin-left: 6px; }
+body.ux-course .course-note { padding: 16px 20px; background: var(--butter); border: 1px solid #e7ddbb; border-radius: 9px; color: #665a36; font-size: 14px; line-height: 1.7; margin: 20px 0; }
+body.ux-course .course-note strong { color: #594b27; }
+
+/* Short review has a distinct colour, while explanations stay easy to scan. */
+body.ux-course .quick-review { background: var(--sage); border: 1px solid #d6e1ce; border-radius: 15px; padding: 25px 28px; margin-bottom: 26px; }
+body.ux-course .quick-review h2 { font-size: 20px; color: #2e4937; letter-spacing: -.5px; margin: 0 0 9px; }
+body.ux-course .quick-review > p { color: #49634d; font-size: 15px; margin: 0 0 17px; }
+body.ux-course .quick-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; margin-top: 16px; }
+body.ux-course .quick-step { padding: 15px 17px; border: 1px solid #d4deca; background: #f8faf3; border-radius: 9px; min-width: 0; font-size: 14px; line-height: 1.6; }
+body.ux-course .quick-step strong { display: block; color: #34503c; font-size: 14px; margin-bottom: 6px; }
+body.ux-course .quick-step p { margin: 0; color: #52644f; }
+body.ux-course .quick-step a { display: inline-block; margin-top: 9px; font-weight: 650; font-size: 13px; }
+body.ux-course .key-terms { border: 1px solid #ded8e8; border-radius: 12px; background: #f5f1f9; margin: 25px 0; overflow: hidden; }
+body.ux-course .key-terms > summary, body.ux-course .key-terms summary { min-height: 54px; padding: 17px 22px; color: #584766; font-size: 15px; font-weight: 650; cursor: pointer; }
+body.ux-course .key-terms summary::marker { color: #9c88af; }
+body.ux-course .key-terms summary small { color: #70627d; font-weight: 500; margin-left: 8px; }
+body.ux-course .key-terms h2 { color: #584766; font-size: 18px; margin: 0; }
+body.ux-course .term-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 24px; padding: 0 22px 15px; }
+body.ux-course .term-item { padding: 15px 0; border-top: 1px solid #e0d8e8; min-width: 0; font-size: 14px; line-height: 1.65; }
+body.ux-course .term-item :is(strong,dt) { display: block; color: #574064; margin-bottom: 5px; font-size: 15px; font-weight: 650; }
+body.ux-course .term-item :is(p,dd) { margin: 0; color: #655c70; }
+body.ux-course .term-item em { display: block; margin-top: 6px; color: #73667f; font-size: 13px; }
+body.ux-course .learning-guide { margin: 28px 0; }
+body.ux-course .learning-guide > h2 { margin-bottom: 20px; color: var(--ink); letter-spacing: -.5px; }
+body.ux-course .guide-step { position: relative; padding: 0 0 24px 32px; margin-left: 8px; border-left: 1px solid #d8dfd0; }
+body.ux-course .guide-step:last-child { padding-bottom: 0; border-left-color: transparent; }
+body.ux-course .guide-step::before { content: ""; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: #8aa277; outline: 4px solid var(--paper); }
+body.ux-course .guide-step h3 { margin: 0 0 7px; color: #344b36; font-size: 17px; line-height: 1.5; }
+body.ux-course .guide-step p { margin: 0; font-size: 15px; color: #59655c; max-width: 730px; }
+body.ux-course .worked-example { padding: 24px 27px; background: var(--peach); border: 1px solid #eddac9; border-radius: 12px; margin: 26px 0; }
+body.ux-course .worked-example h3 { font-size: 18px; color: #734e39; margin: 0 0 12px; }
+body.ux-course .worked-example :is(p,li) { font-size: 15px; color: #6f5748; line-height: 1.75; }
+body.ux-course .worked-example p:last-child { margin-bottom: 0; }
+body.ux-course .explanation-note { margin: 20px 0; padding: 18px 21px; border-left: 3px solid #b8c8d4; border-radius: 0 8px 8px 0; background: var(--sky); font-size: 15px; color: #435d6c; }
+body.ux-course .explanation-note p { margin: 0; }
+body.ux-course .explanation-note strong { color: #314f61; }
+body.ux-course .lesson-toc { padding: 18px 0 21px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 28px 0; }
+body.ux-course .lesson-toc > :is(h2,h3,strong) { display: block; font-size: 11px; font-weight: 750; color: #6b7366; letter-spacing: 1.4px; text-transform: uppercase; margin: 0 0 12px; }
+body.ux-course .lesson-toc > div, body.ux-course .lesson-toc ol { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+body.ux-course .lesson-toc a { display: inline-flex; align-items: center; min-height: 38px; padding: 6px 11px; font-size: 12px; line-height: 1.4; color: #556550; text-decoration: none; border: 1px solid #dde2d4; border-radius: 5px; background: #f7f8f1; }
+body.ux-course .lesson-toc a:hover { background: #e7eee1; border-color: #bdceb2; }
+
+/* The preserved examples form chapter sections, not a wall of floating cards. */
+body.ux-course #lesson-content { margin-top: 30px; }
+body.ux-course #lesson-content .container { max-width: none; margin: 0; padding: 0; }
+body.ux-course #lesson-content .card {
+  position: relative;
+  padding: 28px 0 32px;
+  border: 0;
+  border-top: 1px solid var(--line) !important;
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: 0;
+  box-shadow: none;
+  opacity: 1;
+  transform: none;
+  transition: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-height: 1.75;
+  scroll-margin-top: 108px;
+}
+body.ux-course #lesson-content .card:hover { transform: none !important; box-shadow: none; }
+body.ux-course #lesson-content .card > :is(h1,h2) { color: var(--ink); margin: 0 0 16px; padding: 0; border: 0; line-height: 1.35; letter-spacing: -.5px; font-size: 24px; }
+body.ux-course #lesson-content .card > h1 { font-size: 26px; }
+body.ux-course #lesson-content .title-emoji { font-size: 22px; vertical-align: baseline; animation: none; margin-right: 4px; }
+body.ux-course #lesson-content .card > p { color: #5c675e; margin: 0 0 20px; font-size: 16px; }
+body.ux-course #lesson-content .emoji-list li { font-size: 15px; line-height: 1.75; margin-bottom: 10px; }
+body.ux-course #lesson-content .emoji-list { margin-top: 14px; }
+body.ux-course #lesson-content .vs-container { gap: 18px; margin: 20px 0; }
+body.ux-course #lesson-content .vs-container > .box { flex: 1 1 240px; min-width: min(100%,240px); max-width: 100%; background: #f1f3e9; border: 1px solid #dde2d3; padding: 23px; border-radius: 12px; transition: none; }
+body.ux-course #lesson-content .box:hover { transform: none; background: #f1f3e9; box-shadow: none; }
+body.ux-course #lesson-content .box > h3 { font-size: 17px; line-height: 1.5; }
+body.ux-course #lesson-content .box > p { font-size: 15px; margin: 12px 0 18px; }
+body.ux-course #lesson-content :is(.comp-card,.persona-card,.chat-container,.state-map,.tree-container,.mock-comment) { box-shadow: none; border-radius: 12px; }
+body.ux-course #lesson-content .comp-card { border-color: #dde1d4; padding: 21px; background: #f4f4ed; }
+body.ux-course #lesson-content .comp-card:hover { background: #f4f4ed; box-shadow: none; transform: none; }
+body.ux-course #lesson-content .comp-card-header { gap: 10px; align-items: start; }
+body.ux-course #lesson-content .comp-card-title { line-height: 1.5; font-size: 16px; }
+body.ux-course #lesson-content .comp-desc { background: #fffef9; font-size: 14px; line-height: 1.7; border-left: 2px solid #c6d5bb; }
+body.ux-course #lesson-content .comp-badge { background: var(--lavender); color: #665075; flex: 0 0 auto; }
+body.ux-course #lesson-content .stage-box { background: #f3f3e9; border-width: 1px; border-color: #dbdfcf; min-width: min(120px,100%); padding: 17px 12px; box-shadow: none; }
+body.ux-course #lesson-content .stage-box:hover { transform: none; background: #e8efdf; border-color: #c1cfb5; }
+body.ux-course #lesson-content .persona-card { background: #f7e9e2; border: 1px solid #e6ccbb; padding: 25px; }
+body.ux-course #lesson-content .persona-header { border-bottom-color: #e6ccbb; }
+body.ux-course #lesson-content .persona-icon { border: 1px solid #e6ccbb; background: #fffaf5; font-size: 32px; padding: 10px; }
+body.ux-course #lesson-content .badge-red { background: #f3ddd2; color: #92513b; }
+body.ux-course #lesson-content :is(.mockup-box,.mock-chat) { border-width: 1px; box-shadow: none; }
+body.ux-course #lesson-content .mockup-box:hover { transform: translateY(-2px); box-shadow: 0 3px 9px #2033210a; }
+body.ux-course #lesson-content :is(.formula-box,.prompt-box) { border-radius: 12px; padding: 23px; line-height: 1.8; }
+body.ux-course #lesson-content .interactive-mockup { box-shadow: none; border-radius: 12px; }
+body.ux-course #lesson-content .action-btn { min-height: 44px; border-radius: 8px; padding: 10px 17px; font-size: 14px; font-weight: 650; box-shadow: none; line-height: 1.45; }
+body.ux-course #lesson-content .action-btn:hover { background: #2d503f; transform: none; }
+body.ux-course #lesson-content .action-btn.btn-red { background: #ac4c45; color: #fff; }
+body.ux-course #lesson-content .action-btn.btn-red:hover { background: #883c36; }
+body.ux-course #lesson-content .action-btn.btn-green { background: #567d57; color: #fff; }
+body.ux-course #lesson-content .action-btn.btn-green:hover { background: #3d623f; }
+body.ux-course #lesson-content :is(.chip,.action-chip,.action-icon,.micro-btn,.key-box) { min-height: 44px; }
+body.ux-course #lesson-content .tooltip-container { padding: 8px 0; }
+body.ux-course #lesson-content .tooltip-container:focus-within .tooltip-box { visibility: visible; opacity: 1; }
+body.ux-course #lesson-content .tooltip-box { max-width: calc(100vw - 80px); font-size: 12px; }
+body.ux-course #lesson-content .week08-exam-note { background: var(--butter); border-color: #e5d9ad; border-left: 3px solid #c0a14e; border-radius: 8px; margin-top: 10px; color: #62532e; }
+body.ux-course #lesson-content .callout { background: var(--sky); border-color: #a7bfcc; color: #3f5d6b; }
+body.ux-course #lesson-content .blueprint-table { box-shadow: none; line-height: 1.55; }
+body.ux-course #lesson-content .blueprint-table th { font-size: 13px; }
+body.ux-course #lesson-content .blueprint-table td { font-size: 13px; }
+body.ux-course #lesson-content .comp-grid { gap: 18px; }
+body.ux-course #lesson-content .demo-box { padding: 18px; }
+body.ux-course[data-page="week09"] #lesson-content .perm-select.correct { color: #b5daa9; border-color: #91b787; }
+
+/* Check understanding without turning the page into a dashboard. */
+body.ux-course .check-section { margin: 35px 0 25px; padding: 25px 28px; background: var(--sky); border: 1px solid #cfdfe5; border-radius: 13px; scroll-margin-top: 105px; }
+body.ux-course .check-section > h2 { color: #35586b; font-size: 22px; margin: 0 0 8px; letter-spacing: -.5px; }
+body.ux-course .check-section > p { color: #506d7d; font-size: 14px; margin: 0 0 20px; }
+body.ux-course .check-question { padding-top: 19px; margin-top: 18px; border-top: 1px solid #c9d9e0; }
+body.ux-course .check-question h3, body.ux-course .check-question legend { color: #345568; font-size: 16px; font-weight: 650; margin: 0 0 12px; padding: 0; }
+body.ux-course .check-question fieldset { border: 0; padding: 0; margin: 0; }
+body.ux-course .check-options { display: flex; flex-wrap: wrap; gap: 8px; }
+body.ux-course .check-options button { flex: 1 1 210px; padding: 12px 15px; text-align: left; min-height: 47px; color: #3e5968; background: #f9fcfc; border: 1px solid #c8d8df; border-radius: 8px; font-size: 14px; line-height: 1.55; transition: background .15s ease; }
+body.ux-course .check-options button:hover { background: #edf4f7; border-color: #8eaebd; }
+body.ux-course .check-options button:is(.selected,[aria-pressed="true"]) { border-color: #527a8b; background: #dbeaf0; }
+body.ux-course .check-options button.correct { border-color: #7a9e72; background: #e4eedc; color: #305433; }
+body.ux-course .check-options button.incorrect { border-color: #bf8e7d; background: #f7e6df; color: #774534; }
+body.ux-course .check-feedback { margin-top: 12px; padding: 12px 15px; border-radius: 7px; background: #f8fbfc; color: #405e6d; font-size: 14px; line-height: 1.7; }
+body.ux-course .check-feedback:empty { display: none; }
+body.ux-course .check-feedback.correct { background: #e7efdf; color: #36563c; }
+body.ux-course .check-feedback.incorrect { background: #f7e9e0; color: #79513d; }
+body.ux-course .completion-button { margin-top: 22px; padding: 12px 21px; min-height: 46px; border: 1px solid #365c46; border-radius: 8px; background: #3e634e; color: white; font-weight: 650; font-size: 14px; }
+body.ux-course .completion-button:hover { background: #294b39; }
+body.ux-course .lesson-footer { padding: 26px 0; margin-top: 28px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+body.ux-course .nav-lesson { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 12px 16px; min-height: 55px; text-decoration: none; border: 1px solid #d4deca; background: #eff3e8; color: #38583f; border-radius: 9px; font-size: 14px; max-width: 49%; line-height: 1.5; }
+body.ux-course .nav-lesson small { color: #61745b; font-size: 11px; }
+body.ux-course .nav-lesson:hover { background: #e7eddf; }
+body.ux-course .nav-lesson[aria-disabled="true"] { visibility: hidden; pointer-events: none; }
+body.ux-course .studio-footer { margin-top: 15px; color: #65725c; font-size: 11px; line-height: 1.6; }
+body.ux-course .studio-footer p { margin: 4px 0; }
+body.ux-course .reset-progress { font-size: 11px; color: #64725d; border: 0; background: transparent; text-decoration: underline; padding: 8px 0; }
+body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10px 0 22px; }
+
+@media (min-width: 1500px) {
+  body.ux-course .studio-layout { grid-template-columns: 254px minmax(0,1fr); }
+  body.ux-course main.studio-main { padding-left: 74px; padding-right: 74px; }
+}
+@media (max-width: 1100px) {
+  body.ux-course .studio-layout { grid-template-columns: 218px minmax(0,1fr); }
+  body.ux-course .course-sidebar { padding-left: 17px; padding-right: 13px; }
+  body.ux-course main.studio-main { padding-left: 30px; padding-right: 30px; }
+  body.ux-course .quick-grid { grid-template-columns: 1fr; gap: 9px; }
+  body.ux-course .quick-step { padding: 12px 15px; }
+  body.ux-course .quick-step strong { margin-bottom: 3px; }
+}
+@media (max-width: 800px) {
+  body.ux-course .studio-header { min-height: 72px; padding: 12px 18px; gap: 12px; }
+  body.ux-course .studio-brand { gap: 9px; flex: 1 1 auto; }
+  body.ux-course .studio-brand strong { font-size: 19px; }
+  body.ux-course .studio-brand small { font-size: 11px; }
+  body.ux-course .brand-mark { width: 37px; height: 37px; border-radius: 11px 11px 11px 3px; font-size: 15px; }
+  body.ux-course .header-note { display: none; }
+  body.ux-course .header-actions { gap: 9px; }
+  body.ux-course .mobile-menu-toggle { display: inline-grid; place-items: center; }
+  body.ux-course .language-switch { gap: 1px; padding: 2px; }
+  body.ux-course .language-switch button { min-height: 44px; padding: 6px 8px; font-size: 11px; }
+  body.ux-course .studio-layout { display: block; }
+  body.ux-course .course-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(84vw,300px); height: 100dvh; z-index: 102; padding: 26px 22px 25px; transform: translateX(-105%); transition: transform .22s ease; border-right: 1px solid #cdd5c6; box-shadow: 10px 0 30px #1c2e1c1a; }
+  body.ux-course.sidebar-open, body.ux-course.menu-open { overflow: hidden; }
+  body.ux-course.sidebar-open .course-sidebar, body.ux-course.menu-open .course-sidebar, body.ux-course .course-sidebar.is-open { transform: translateX(0); }
+  body.ux-course .sidebar-backdrop { position: fixed; inset: 0; z-index: 101; background: #1e2d2559; border: 0; padding: 0; }
+  body.ux-course.sidebar-open .sidebar-backdrop, body.ux-course.menu-open .sidebar-backdrop, body.ux-course .sidebar-backdrop.is-open { display: block; }
+  body.ux-course .course-link { min-height: 47px; padding: 10px 12px; }
+  body.ux-course .week-topic { font-size: 13px; }
+  body.ux-course .sidebar-head { margin-bottom: 9px; }
+  body.ux-course main.studio-main { max-width: 760px; padding: 25px 24px 36px; }
+  body.ux-course .lesson-topline { font-size: 11px; margin-bottom: 20px; }
+  body.ux-course .lesson-heading h1 { font-size: clamp(28px,5.5vw,37px); letter-spacing: -1px; }
+  body.ux-course .quick-review { padding: 22px; }
+  body.ux-course .term-grid { gap: 0 20px; }
+  body.ux-course #lesson-content .card { padding: 26px 0; }
+  body.ux-course #lesson-content .vs-container > .box { padding: 20px; }
+  body.ux-course #lesson-content .comp-grid { grid-template-columns: minmax(0,1fr); }
+  body.ux-course #lesson-content .matrix-board { grid-template-columns: minmax(0,1fr); }
+  body.ux-course #lesson-content .blueprint-table { display: block; overflow: auto; }
+  body.ux-course .check-section { padding: 23px 22px; }
+}
+@media (max-width: 480px) {
+  body.ux-course .studio-header { flex-wrap: wrap; gap: 7px 10px; padding: 10px 16px; }
+  body.ux-course .header-actions { margin-left: auto; }
+  body.ux-course .studio-brand { flex: 1; }
+  body.ux-course .studio-brand small { display: none; }
+  body.ux-course .studio-brand strong { font-size: 18px; }
+  body.ux-course .brand-mark { width: 32px; height: 32px; font-size: 13px; }
+  body.ux-course .mobile-menu-toggle { width: 44px; height: 44px; }
+  body.ux-course .language-switch button { min-height: 44px; padding: 6px 7px; font-size: 11px; }
+  body.ux-course main.studio-main { padding: 23px 18px 30px; }
+  body.ux-course .lesson-topline { margin-bottom: 17px; }
+  body.ux-course .lesson-heading { padding-bottom: 20px; }
+  body.ux-course .lesson-heading h1 { font-size: 30px; line-height: 1.18; }
+  body.ux-course .lesson-intro { font-size: 15px; }
+  body.ux-course .study-modes { width: 100%; }
+  body.ux-course .study-modes button { flex: 1; padding: 9px 11px; font-size: 12px; }
+  body.ux-course .study-modes button small { display: block; margin-left: 0; }
+  body.ux-course .quick-review { padding: 20px; border-radius: 11px; }
+  body.ux-course .quick-review h2 { font-size: 19px; }
+  body.ux-course .term-grid { grid-template-columns: minmax(0,1fr); padding: 0 19px 10px; }
+  body.ux-course .key-terms summary { padding: 16px 19px; font-size: 14px; }
+  body.ux-course .key-terms summary small { display: block; margin: 4px 0 0; }
+  body.ux-course .guide-step { padding-left: 25px; margin-left: 5px; }
+  body.ux-course .worked-example { padding: 21px; }
+  body.ux-course #lesson-content .card > :is(h1,h2) { font-size: 22px; }
+  body.ux-course #lesson-content .title-emoji { font-size: 19px; }
+  body.ux-course #lesson-content .vs-container { gap: 13px; }
+  body.ux-course #lesson-content .vs-container > .box { flex-basis: 100%; min-width: 0; padding: 20px; }
+  body.ux-course #lesson-content .mockup-container { gap: 15px; }
+  body.ux-course #lesson-content .mockup-box { flex-basis: 100%; min-width: 0; }
+  body.ux-course #lesson-content .stage-box { flex-basis: calc(50% - 10px); min-width: 0; }
+  body.ux-course #lesson-content .persona-card { padding: 20px; }
+  body.ux-course #lesson-content .persona-header { align-items: start; gap: 10px; }
+  body.ux-course #lesson-content .persona-icon { font-size: 24px; padding: 6px; flex-shrink: 0; }
+  body.ux-course #lesson-content .persona-header h2 { font-size: 21px; }
+  body.ux-course #lesson-content :is(.prompt-box,.formula-box) { padding: 19px; font-size: 14px; }
+  body.ux-course #lesson-content .state-map { padding: 15px; gap: 8px; }
+  body.ux-course #lesson-content .state-step { min-width: 0; flex-basis: calc(50% - 8px); }
+  body.ux-course #lesson-content .input-bar { left: 14px; right: 14px; padding: 8px 11px; }
+  body.ux-course #lesson-content .input-bar input { min-width: 0; }
+  body.ux-course #lesson-content .interactive-mockup { min-height: 300px; }
+  body.ux-course #lesson-content .send-btn { flex-shrink: 0; }
+  body.ux-course #lesson-content .comp-card { padding: 18px; }
+  body.ux-course #lesson-content .comp-card-header { flex-wrap: wrap; gap: 8px; }
+  body.ux-course .check-section { padding: 22px 19px; }
+  body.ux-course .check-options button { flex-basis: 100%; }
+  body.ux-course .lesson-footer { align-items: stretch; gap: 9px; }
+  body.ux-course .nav-lesson { padding: 11px 12px; font-size: 12px; }
+  body.ux-course .course-note { padding: 15px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ux-course *, body.ux-course *::before, body.ux-course *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  body.ux-course { background: #fff; color: #000; font-size: 11pt; }
+  body.ux-course .studio-header, body.ux-course .course-sidebar, body.ux-course .sidebar-backdrop, body.ux-course .study-modes, body.ux-course .lesson-footer { display: none !important; }
+  body.ux-course .studio-layout { display: block; }
+  body.ux-course main.studio-main { max-width: none; padding: 0; }
+  body.ux-course #lesson-content .card { break-inside: avoid; }
+  body.ux-course .quick-review, body.ux-course .key-terms, body.ux-course .worked-example, body.ux-course .check-section { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* Integration additions: comfortable explanatory copy and accessible controls. */
+body.ux-course .studio-layout { width: 100%; }
+body.ux-course .lesson-bridge { margin: 20px 0; color: #546657; font-size: 16px; line-height: 1.75; max-width: 76ch; }
+body.ux-course .demo-label { color: #65725e; font-size: 12px; line-height: 1.6; display: block; }
+body.ux-course .term-item,
+body.ux-course .term-item :is(p,dd,em),
+body.ux-course #lesson-content .comp-desc {
+  font-size: 15px;
+  line-height: 1.75;
+}
+body.ux-course .term-item em { font-style: normal; margin-top: 9px; }
+body.ux-course #lesson-content .comp-grid { grid-template-columns: minmax(0,1fr); }
+body.ux-course #lesson-content .comp-card { gap: 16px; }
+body.ux-course #lesson-content .comp-card-header { align-items: start; }
+body.ux-course #lesson-content .comp-card-title { font-size: 18px; }
+body.ux-course #lesson-content .comp-card > .explanation-note {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  color: #526357;
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 75ch;
+}
+body.ux-course #lesson-content .comp-card > .explanation-note p { margin: 0 0 10px; }
+body.ux-course #lesson-content .comp-card > .explanation-note p:last-child { margin-bottom: 0; }
+body.ux-course #lesson-content .comp-card .comp-desc { border-left-color: #b9ccb1; padding: 15px 18px; }
+body.ux-course #lesson-content .comp-card .demo-box { min-height: 180px; }
+body.ux-course #lesson-content .comp-card :is(button.action-btn,.micro-btn) { white-space: normal; max-width: 100%; overflow-wrap: break-word; min-height: 44px; height: auto; }
+body.ux-course #lesson-content .comp-card button.action-btn { font-size: 14px !important; }
+body.ux-course #lesson-content .comp-card [role="button"] { min-height: 44px; }
+body.ux-course #lesson-content .comp-card .comp-badge { white-space: normal; }
+body.ux-course #lesson-content .key-row { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+body.ux-course #lesson-content .key-box { min-width: 0; flex: 1 1 68px; }
+body.ux-course #lesson-content .key-label { overflow-wrap: anywhere; }
+body.ux-course #lesson-content #key-result { height: auto !important; min-height: 22px; max-width: 100%; text-align: center; }
+body.ux-course #lesson-content .al-container { min-width: 0; max-width: 100%; }
+body.ux-course #lesson-content .al-container.applied { flex-wrap: wrap; }
+body.ux-course #lesson-content .al-item { white-space: normal; max-width: 100%; overflow-wrap: break-word; }
+body.ux-course #lesson-content .proto-wrapper { flex-wrap: wrap; }
+body.ux-course #lesson-content .proto-phone { flex: 0 0 120px; }
+body.ux-course #lesson-content .proto-wrapper + button.action-btn { position: static !important; margin-top: 16px; }
+body.ux-course #lesson-content .share-modal { position: relative; max-width: 100%; width: min(320px,100%); margin-top: 14px; box-shadow: 0 4px 14px #00000020; }
+body.ux-course #lesson-content .perm-select { min-height: 44px; }
+body.ux-course #lesson-content .share-modal [role="button"],
+body.ux-course #lesson-content .demo-drawer [role="button"] { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; flex-shrink: 0; }
+body.ux-course #lesson-content .drawer-preview-area { min-height: 190px; height: auto; }
+body.ux-course #lesson-content .demo-drawer { width: min(250px,100%); }
+body.ux-course #lesson-content .send-btn { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+body.ux-course #lesson-content .feedback-actions { flex-wrap: wrap; gap: 10px; }
+body.ux-course #lesson-content .info-icon { width: 44px; height: 44px; border: 12px solid transparent; background: #586f62; background-clip: padding-box; padding: 0; }
+body.ux-course #lesson-content .toggle-switch { width: 62px; height: 44px; border: 11px solid transparent; background-clip: padding-box; border-radius: 32px; flex-shrink: 0; }
+body.ux-course .key-terms > summary { line-height: 1.6; }
+body.ux-course .key-terms .term-grid { column-gap: 30px; }
+body.ux-course .key-terms .term-item strong { line-height: 1.5; }
+
+body.ux-course .sidebar-close,
+body.ux-course #sidebar-close {
+  display: none;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border: 1px solid #cbd5c1;
+  border-radius: 8px;
+  background: #f8faf4;
+  color: #3e573d;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+body.ux-course .check-section fieldset.check-question {
+  min-inline-size: 0;
+  margin: 22px 0 0;
+  padding: 17px 0 0;
+  border: 0;
+  border-top: 1px solid #c9d9e0;
+}
+body.ux-course .check-section fieldset.check-question legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #345568;
+}
+body.ux-course .check-section fieldset.check-question legend + * { clear: both; }
+body.ux-course .question-number { color: #577d90; font-weight: 750; margin-right: 2px; }
+body.ux-course .check-options button { white-space: normal; overflow-wrap: break-word; font-size: 15px; }
+body.ux-course .check-feedback { font-size: 15px; }
+body.ux-course :is(.completion-button,#save-review):disabled { background: #dce4df; border-color: #c4d0c8; color: #53655b; cursor: not-allowed; box-shadow: none; }
+body.ux-course #completion-hint { font-size: 13px; color: #506b7c; line-height: 1.7; margin-top: 12px; }
+body.ux-course #practice-section { padding: 26px 28px; margin-top: 28px; border: 1px solid #eddac9; scroll-margin-top: 110px; }
+body.ux-course #practice-section > h2 { font-size: 23px; color: #734e39; line-height: 1.35; margin: 0 0 13px; }
+body.ux-course #practice-prompt { font-size: 16px; color: #6b5446; line-height: 1.75; }
+body.ux-course #practice-section label { display: block; font-size: 14px; font-weight: 650; color: #465d48; margin-bottom: 8px; }
+body.ux-course .worked-answer { padding: 0 0 16px; margin: 12px 0 18px; border-bottom: 1px solid #e4cfbc; }
+body.ux-course .worked-answer summary { min-height: 44px; padding: 10px 0; color: #73543e; font-size: 15px; font-weight: 650; cursor: pointer; }
+body.ux-course .worked-answer p { margin: 8px 0 0; font-size: 15px; line-height: 1.75; }
+body.ux-course #practice-section .practice-hint { font-size: 15px; line-height: 1.7; color: #735b4b; margin: 0 0 12px; }
+body.ux-course .note-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+body.ux-course #practice-note {
+  display: block;
+  width: 100%;
+  min-height: 115px;
+  padding: 17px 19px;
+  border: 1px solid #bccbb5;
+  border-radius: 10px;
+  background: #fffefb;
+  color: #2f4536;
+  line-height: 1.75;
+  font-size: 16px;
+  resize: vertical;
+}
+body.ux-course #practice-note::placeholder { color: #687763; opacity: 1; }
+body.ux-course #practice-note:focus { border-color: #6b8d61; }
+body.ux-course #note-status { display: block; color: #5a7258; font-size: 12px; min-height: 21px; margin-top: 8px; }
+body.ux-course #clear-note { background: transparent; color: #5b6c58; border: 0; padding: 10px 0; min-height: 44px; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+body.ux-course #expand-lessons { width: 100%; min-height: 48px; background: #f0f3e9; border: 1px solid #cdd9c3; color: #3c5b3f; padding: 13px 18px; border-radius: 9px; white-space: normal; font-size: 14px; line-height: 1.6; text-align: center; }
+body.ux-course #expand-lessons:hover { background: #e7eddf; }
+body.ux-course #examples-header { margin: 30px 0 16px; }
+body.ux-course #examples-title { font-size: 25px; color: var(--ink); margin-bottom: 9px; letter-spacing: -.5px; }
+body.ux-course #demo-instruction { color: #53675a; font-size: 15px; line-height: 1.75; }
+body.ux-course #source-location { color: #61705c; font-size: 12px; }
+body.ux-course .review-save { margin-top: 24px; }
+body.ux-course #save-review { min-height: 46px; max-width: 100%; height: auto; font-size: 15px; line-height: 1.6; padding: 11px 18px; white-space: normal; overflow-wrap: break-word; }
+body.ux-course #save-review:hover { transform: none; }
+body.ux-course #save-review:disabled:hover { background: #dce4df; }
+body.ux-course #final-panel { background: var(--butter); border: 1px solid #e2d5a9; border-radius: 12px; padding: 25px 27px; margin: 26px 0; color: #665732; }
+body.ux-course #final-panel h2 { color: #5f4e26; }
+body.ux-course #final-panel p { font-size: 16px; line-height: 1.75; }
+body.ux-course .final-stamp { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #d4c692; background: #fff9e4; color: #85703c; border-radius: 11px; font-size: 21px; font-weight: 750; margin-bottom: 18px; }
+body.ux-course #final-review-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; padding: 10px 15px; border: 1px solid #d1c398; border-radius: 8px; background: #fffcf2; color: #5e512f; text-decoration: none; font-size: 14px; line-height: 1.5; }
+body.ux-course.quick-mode #lesson-content .container > .card:not(.quick-demo) { display: none; }
+body.ux-course.quick-mode #lesson-content .has-quick-component .comp-card:not(.quick-component) { display: none; }
+body.ux-course.quick-mode #lesson-content .has-quick-component .comp-grid { grid-template-columns: minmax(0,1fr); }
+body.ux-course.quick-mode #lesson-content .quick-component { grid-column: 1 / -1; }
+
+@media (max-width: 800px) {
+  body.ux-course .sidebar-close, body.ux-course #sidebar-close { display: inline-grid; place-items: center; }
+  body.ux-course #course-sidebar .sidebar-head { gap: 12px; }
+  body.ux-course #course-sidebar .sidebar-head > :first-child { min-width: 0; }
+  body.ux-course .term-grid { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 480px) {
+  body.ux-course #practice-section { padding: 23px 20px; }
+  body.ux-course #practice-note { min-height: 135px; padding: 15px; }
+  body.ux-course #lesson-content .comp-card .demo-box { padding: 16px; }
+  body.ux-course #lesson-content .comp-card .comp-desc { padding: 13px 15px; }
+  body.ux-course #lesson-content .comp-card .demo-box[style*="flex-direction:row"] { flex-wrap: wrap; }
+  body.ux-course #examples-title { font-size: 22px; }
+  body.ux-course #final-panel { padding: 22px 20px; }
+  body.ux-course #completion-hint { font-size: 13px; }
+  body.ux-course #practice-section, body.ux-course #check-section, body.ux-course #lesson-content .card { scroll-margin-top: 150px; }
+}
+
+/* Integration states and progressive study routes. */
+body.ux-course .lesson-bridge{font-size:15px;color:var(--muted);margin:0 0 22px;}
+body.ux-course .sidebar-close{display:none;}
+body.ux-course .examples-header h2{font-size:22px;margin:0 0 7px;letter-spacing:-.4px;}
+body.ux-course .examples-header p{font-size:15px;margin:0 0 9px;color:var(--muted);}
+body.ux-course .demo-label{font-size:12px;color:#59695b;display:inline-block;background:#eef0e8;border-radius:5px;padding:5px 10px;}
+body.ux-course .worked-answer summary{cursor:pointer;min-height:44px;display:list-item;font-size:14px;color:#6b4630;padding:10px 0;}
+body.ux-course .worked-answer p{border-top:1px solid #e2cdbc;padding-top:12px;}
+body.ux-course .note-label{display:block;font-size:14px;font-weight:650;margin-top:20px;}
+body.ux-course .practice-hint{font-size:15px!important;margin:3px 0 12px!important;}
+body.ux-course #practice-note{display:block;width:100%;min-height:100px;padding:14px;border:1px solid #c7b6a7;border-radius:8px;background:#fffdf9;color:var(--ink);resize:vertical;font-size:16px;}
+body.ux-course .note-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:6px;}
+body.ux-course #note-status{font-size:12px;color:#635442;}
+body.ux-course .text-button{border:0;min-height:44px;background:none;color:#6b4630;font-size:12px;text-decoration:underline;}
+body.ux-course fieldset.check-question{padding:20px 0;border:0;border-top:1px solid #ccdde4;margin:22px 0 0;min-width:0;}
+body.ux-course .check-question legend{font-size:16px;font-weight:650;padding:0 10px 0 0;max-width:100%;}
+body.ux-course .question-number{color:#4d6e7c;}
+body.ux-course .check-options button{white-space:normal;text-align:left;min-height:48px;}
+body.ux-course .check-options button.selected.correct{background:#e1ecdb;border-color:#64845b;color:#294b2c;}
+body.ux-course .check-options button.selected.incorrect{background:#f5e3da;border-color:#a7785c;color:#6b3e2c;}
+body.ux-course .check-feedback.incorrect{color:#703f2c;background:#f8e9df;}
+body.ux-course .review-save{margin-top:24px;padding-top:20px;border-top:1px solid #ccdde4;}
+body.ux-course #completion-hint{font-size:13px;line-height:1.6;}
+body.ux-course button:disabled{cursor:default;opacity:.55;transform:none!important;}
+body.ux-course .expand-lessons{display:block;margin:20px 0;border:1px solid #bccbb6;background:#edf2e8;color:#34513c;min-height:48px;padding:12px 18px;border-radius:9px;text-align:left;}
+body.ux-course .final-panel{background:var(--lavender);border:1px solid #d9d0e4;border-radius:18px;padding:34px;margin:24px 0 40px;}
+body.ux-course .final-stamp{font:700 21px Georgia,serif;color:#78613c;}
+body.ux-course .studio-footer{border-top:1px solid var(--line);padding-top:22px;color:#5c6b60;font-size:12px;line-height:1.7;}
+body.ux-course .studio-footer summary{cursor:pointer;padding:8px 0;}
+body.ux-course .studio-footer p{margin:0 0 10px;}
+body.ux-course .studio-footer small{display:block;font-size:11px;color:#64715f;margin-top:20px;}
+body.ux-course .studio-footer>a{display:inline-block;margin-top:14px;min-height:32px;}
+body.ux-course [id]{scroll-margin-top:100px;}
+body.ux-course.quick-mode #lesson-content .container>.card:not(.quick-demo){display:none;}
+body.ux-course.quick-mode #lesson-content .has-quick-component .comp-card:not(.quick-component){display:none;}
+body.ux-course.quick-mode #lesson-content .has-quick-component .comp-grid{grid-template-columns:minmax(0,1fr);}
+body.ux-course.quick-mode #lesson-content .explanation-note{display:none;}
+body.ux-course .tooltip-container:focus .tooltip-box,body.ux-course .tooltip-container:focus-within .tooltip-box,body.ux-course .tooltip-container.tooltip-open .tooltip-box{visibility:visible;opacity:1;}
+body.ux-course[data-page="week08"] .comp-card:has(.tooltip-container) .demo-box{contain:none;overflow:visible;}
+body.ux-course .explanation-note p+p{margin-top:10px;}
+@media(max-width:800px){body.ux-course .sidebar-close{display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--surface);border-radius:8px;width:44px;height:44px;flex-shrink:0;color:var(--ink);font-size:24px;}.sidebar-head{flex-wrap:wrap;}.header-note{display:none!important;}}
+@media(max-width:500px){body.ux-course .check-options{grid-template-columns:1fr!important;}body.ux-course .final-panel{padding:24px;}body.ux-course [id]{scroll-margin-top:124px;}}
+@media print{body.ux-course .studio-header,body.ux-course .course-sidebar,body.ux-course .study-modes,body.ux-course .note-actions,body.ux-course .lesson-footer{display:none;}body.ux-course .studio-layout{display:block;}body.ux-course main.studio-main{max-width:none;padding:0;}body.ux-course #lesson-content .card{break-inside:avoid;}body.ux-course .card{opacity:1!important;transform:none!important;}}
+
+/* UX Studio revision: neutral light surfaces and restrained pastel accents.
+   Load last. Existing demonstration animation and warning/error colours remain. */
+
+body.ux-course {
+  --paper: #f7faff;
+  --surface: #fcfdff;
+  --ink: #263445;
+  --muted: #596779;
+  --line: #e7ecf2;
+  --sky: #eef4fb;
+  --peach: #fdf2f0;
+  --mint: #edf7f3;
+  --sage: #eaf1ed;
+  --sage-deep: #3f6556;
+  --lavender: #f1f1f8;
+  --butter: #eef4fb;
+  --main-blue: #416b8c;
+  --bg-color: #f7faff;
+  --card-bg: #fcfdff;
+  --text-color: #263445;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Noto Sans KR", sans-serif;
+  background: #f7faff;
+  color: var(--ink);
+  line-height: 1.7;
+}
+body.ux-course ::selection { background: #dce9f5; color: #263445; }
+body.ux-course :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline-color: #527d9d;
+}
+body.ux-course .studio-header {
+  background: rgba(252,253,255,.97);
+  border-bottom-color: #e7ecf2;
+  box-shadow: 0 1px 7px rgba(34,55,81,.025);
+}
+body.ux-course .brand-mark {
+  background: var(--sky);
+  border-color: #dce6ef;
+  border-radius: 12px;
+  color: #3b617e;
+}
+body.ux-course .studio-brand strong { color: #253345; font-weight: 700; }
+body.ux-course .language-switch { background: #f4f6f9; border-color: #e7ecf2; }
+body.ux-course .language-switch button:is(.active,[aria-pressed="true"]) {
+  background: #fcfdff;
+  border-color: #dfe6ee;
+  color: #314d66;
+  box-shadow: 0 1px 4px rgba(31,53,78,.06);
+}
+body.ux-course .language-switch button:hover { background: #fcfdff; color: #314d66; }
+body.ux-course .mobile-menu-toggle { border-color: #e0e7ee; color: #41576d; background: #fcfdff; }
+body.ux-course .course-sidebar {
+  background: #fbfcfe;
+  border-right-color: #e7ecf2;
+  scrollbar-color: #d6dee8 transparent;
+}
+body.ux-course .sidebar-head { color: #647183; }
+body.ux-course .course-link { color: #526176; }
+body.ux-course .course-link:hover { background: #f1f5f9; color: #344e66; }
+body.ux-course .course-link:is(.active,[aria-current="page"]) {
+  background: #eef4fb;
+  border-color: #dbe6f0;
+  color: #355c7b;
+}
+body.ux-course .course-link:is(.active,[aria-current="page"])::before { background: #6589a4; }
+body.ux-course .course-link.exam { background: #f2f5f7; }
+body.ux-course .course-link.exam:is(.active,[aria-current="page"]) { background: #eef4fb; }
+body.ux-course .week-number { color: #657587; }
+body.ux-course .week-topic { font-size: 13px; }
+body.ux-course .week-status { color: #627184; }
+body.ux-course .sidebar-close, body.ux-course #sidebar-close {
+  background: #fcfdff;
+  border-color: #e0e7ee;
+  color: #41576d;
+}
+body.ux-course .sidebar-backdrop { background: rgba(31,45,62,.3); }
+body.ux-course .lesson-heading { border-bottom-color: #e7ecf2; padding-bottom: 25px; margin-bottom: 23px; }
+body.ux-course .lesson-heading h1 { color: #243246; letter-spacing: -1.25px; }
+body.ux-course .lesson-kicker { background: #eef4fb; color: #526e89; border-radius: 6px; }
+body.ux-course .lesson-intro, body.ux-course .lesson-bridge { color: #596779; }
+body.ux-course #lesson-content { margin-top: 25px; }
+
+/* Cool-white chapter surfaces; pastel is used for meaning inside each chapter. */
+body.ux-course #lesson-content .container > .card {
+  padding: 27px 29px;
+  margin: 0 0 24px;
+  background: #fcfdff;
+  border: 1px solid #e7ecf2 !important;
+  border-radius: 15px;
+  box-shadow: 0 2px 9px rgba(33,53,78,.035);
+  opacity: 1;
+  transform: none;
+}
+body.ux-course #lesson-content .container > .card:hover {
+  transform: none !important;
+  box-shadow: 0 2px 9px rgba(33,53,78,.035);
+}
+body.ux-course #lesson-content .card > :is(h1,h2) { color: #2c3b50; }
+body.ux-course #lesson-content .card > p { color: #56677b; }
+body.ux-course #lesson-content .vs-container > .box {
+  background: #eef4fb;
+  border-color: #e0e8f1;
+  border-radius: 11px;
+}
+body.ux-course #lesson-content .vs-container > .box:nth-child(even) { background: #edf7f3; }
+body.ux-course #lesson-content .box:hover { background: #eef4fb; }
+body.ux-course #lesson-content .vs-container > .box:nth-child(even):hover { background: #edf7f3; }
+/* These two warm fills were decorative explanatory panels, not warning states. */
+body.ux-course #lesson-content .box[style*="#fff7ed"] { background: #fdf2f0 !important; border-color: #f0e3e1; }
+body.ux-course #lesson-content .box[style*="#fff7ed"] > h3 { color: #875b53 !important; }
+body.ux-course #lesson-content .box[style*="#fffbeb"] { background: #eef4fb !important; border-color: #e0e8f1 !important; }
+body.ux-course #lesson-content .box[style*="#fffbeb"] > h3 { color: #456580 !important; }
+body.ux-course #lesson-content .comp-card,
+body.ux-course #lesson-content .comp-card:hover {
+  background: #f8fafc;
+  border-color: #e7ecf2;
+  box-shadow: none;
+}
+body.ux-course #lesson-content .comp-card .comp-desc {
+  background: #eef4fb;
+  border-left-color: #c6d7e7;
+  color: #4a6076;
+  font-size: 15px;
+}
+body.ux-course #lesson-content .comp-card:nth-child(even) .comp-desc {
+  background: #edf7f3;
+  border-left-color: #c1d9cc;
+  color: #45685a;
+}
+body.ux-course #lesson-content .comp-card > .explanation-note { background: transparent; color: #546477; }
+body.ux-course #lesson-content .comp-badge { background: #eef4fb; color: #526c86; }
+body.ux-course #lesson-content .stage-box { background: #f5f8fb; border-color: #e0e7ef; }
+body.ux-course #lesson-content .stage-box:hover { background: #eef4fb; border-color: #ccdae7; }
+body.ux-course #lesson-content .persona-card { background: #fdf2f0; border-color: #efdfdc; }
+body.ux-course #lesson-content .persona-header { border-bottom-color: #efdfdc; }
+body.ux-course #lesson-content .persona-icon { background: #fcfdff; border-color: #efdfdc; }
+body.ux-course #lesson-content .badge-red { background: #f5e5e1; color: #8b5145; }
+body.ux-course .explanation-note,
+body.ux-course #lesson-content .callout {
+  background: #eef4fb;
+  border-left-color: #c6d7e7;
+  color: #4a6076;
+}
+body.ux-course .explanation-note strong { color: #365b79; }
+body.ux-course .course-note, body.ux-course #exam-note,
+body.ux-course #lesson-content .week08-exam-note {
+  background: #eef4fb;
+  border-color: #dce7f1;
+  color: #4e6680;
+}
+body.ux-course .course-note strong { color: #3c5a75; }
+body.ux-course #final-panel {
+  background: #edf7f3;
+  border-color: #dcebe3;
+  color: #466557;
+  box-shadow: 0 2px 9px rgba(37,64,51,.035);
+}
+body.ux-course #final-panel h2 { color: #375b49; }
+body.ux-course .final-stamp { background: #fcfdff; border-color: #d8e6df; color: #557762; }
+body.ux-course #final-review-link { background: #fcfdff; border-color: #d5e5db; color: #466557; }
+body.ux-course .nav-lesson { background: #eef4fb; border-color: #dce6f0; color: #456783; }
+body.ux-course .nav-lesson:hover { background: #e6eff8; }
+body.ux-course .nav-lesson small { color: #5c7187; }
+body.ux-course .lesson-footer { border-top-color: #e7ecf2; }
+body.ux-course .studio-footer { border-top-color: #e7ecf2; color: #647184; }
+body.ux-course .studio-footer small { color: #647184; }
+
+/* Source references now use real buttons while keeping their existing palette. */
+body.ux-course button.source-link {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+/* A term is explained where it appears, without interrupting the lesson. */
+body.ux-course button.term-trigger {
+  display: inline;
+  vertical-align: baseline;
+  appearance: none;
+  margin: 0 1px;
+  padding: 0 2px;
+  min-height: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  border-bottom: 1px dotted #86a5bd;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: none;
+  color: #365f80;
+  font: inherit;
+  font-weight: 650;
+  line-height: inherit;
+  letter-spacing: inherit;
+  white-space: normal;
+  text-align: inherit;
+  text-decoration: none;
+  cursor: help;
+  transition: background-color .15s ease, color .15s ease;
+}
+body.ux-course button.term-trigger:hover,
+body.ux-course button.term-trigger[aria-expanded="true"] {
+  color: #254e71;
+  background: #eef4fb;
+  border-bottom-style: solid;
+  transform: none;
+}
+body.ux-course button.term-trigger:focus-visible { outline: 2px solid #6a91b0; outline-offset: 3px; }
+body.ux-course #term-tooltip {
+  position: fixed;
+  z-index: 200;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  max-height: min(420px, 72dvh);
+  margin: 0;
+  padding: 21px 23px;
+  background: #fcfdff;
+  border: 1px solid #dce6ef;
+  border-radius: 14px;
+  color: #344a60;
+  box-shadow: 0 10px 35px rgba(28,49,73,.12), 0 2px 6px rgba(28,49,73,.04);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6e1ec transparent;
+  font-size: 15px;
+  line-height: 1.7;
+}
+body.ux-course #term-tooltip[hidden] { display: none !important; }
+body.ux-course #term-tooltip :is(h2,h3,.term-tooltip-title,#term-tooltip-title) {
+  display: block;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: -.2px;
+  color: #2e526f;
+}
+body.ux-course #term-tooltip p { margin: 0 0 11px; font-size: 15px; line-height: 1.7; }
+body.ux-course #term-tooltip p:last-child { margin-bottom: 0; }
+body.ux-course #term-tooltip :is(.term-example,.term-tooltip-example,#term-tooltip-example,#term-example) {
+  margin-top: 13px;
+  padding: 12px 14px;
+  background: #edf7f3;
+  border: 1px solid #e1eee7;
+  border-radius: 8px;
+  color: #496b5d;
+  font-size: 15px;
+  line-height: 1.7;
+}
+/* Only the arrow moves; the circular hit area stays in the same place. */
+body.ux-course #back-to-top.round-top {
+  position: fixed;
+  right: max(25px, env(safe-area-inset-right));
+  bottom: max(25px, calc(env(safe-area-inset-bottom) + 14px));
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  border: 1px solid #dde6ee;
+  border-radius: 50%;
+  background: #fcfdff;
+  color: #4b6e89;
+  box-shadow: 0 3px 15px rgba(34,56,81,.09);
+  font-size: 23px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+body.ux-course #back-to-top.round-top:hover { background: #eef4fb; border-color: #c9dae9; box-shadow: 0 5px 18px rgba(34,56,81,.12); transform: none; }
+body.ux-course #back-to-top.round-top > :is(span,svg) { display: block; pointer-events: none; animation: ux-top-arrow 2.8s ease-in-out infinite; }
+body.ux-course #back-to-top.round-top > svg { width: 21px; height: 21px; }
+body.ux-course.sidebar-open #back-to-top.round-top { visibility: hidden; }
+@keyframes ux-top-arrow { 0%, 65%, 100% { transform: translateY(0); } 36% { transform: translateY(-3px); } }
+
+@media (max-width: 800px) {
+  body.ux-course .course-sidebar { background: #fcfdff; box-shadow: 10px 0 32px rgba(28,47,70,.09); }
+  body.ux-course #lesson-content .container > .card { padding: 24px; margin-bottom: 20px; }
+  body.ux-course main.studio-main { padding-bottom: 95px; }
+}
+@media (max-width: 480px) {
+  body.ux-course #lesson-content .container > .card { padding: 21px 18px; border-radius: 12px; }
+  body.ux-course #lesson-content .card > :is(h1,h2) { font-size: 21px; }
+  body.ux-course #term-tooltip { width: min(360px, calc(100vw - 24px)); padding: 19px 20px; max-height: 66dvh; border-radius: 12px; }
+  body.ux-course #back-to-top.round-top {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(17px, calc(env(safe-area-inset-bottom) + 12px));
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+@media (hover: none) {
+  body.ux-course button.term-trigger { padding-top: 2px; padding-bottom: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ux-course #back-to-top.round-top > :is(span,svg) { animation: none !important; transform: none; }
+  body.ux-course #back-to-top.round-top, body.ux-course button.term-trigger { transition: none; }
+}
+@media print {
+  body.ux-course #back-to-top.round-top, body.ux-course #term-tooltip { display: none !important; }
+  body.ux-course button.term-trigger { color: inherit; border-bottom: 0; padding: 0; }
+  body.ux-course #lesson-content .container > .card { box-shadow: none; }
+}
+
+/* Larger readable examples; all changes are scoped to the relevant lesson. */
+body.ux-course[data-page="week01"] #lesson-content .mockup-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+body.ux-course[data-page="week01"] #lesson-content .mockup-box {
+  min-width: 0;
+  min-height: 350px;
+  height: auto;
+  max-height: none;
+  border-color: var(--line);
+}
+body.ux-course[data-page="week01"] #lesson-content :is(.cli-body,.gui-body,.ai-body) {
+  height: auto;
+  min-height: 255px;
+  max-height: none;
+  padding: 20px;
+  flex: 1 0 auto;
+  font-size: 15px;
+  line-height: 1.65;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+body.ux-course[data-page="week01"] #lesson-content :is(.cli-header,.gui-header,.ai-header) {
+  padding: 11px 16px;
+  min-height: 42px;
+  font-size: 14px;
+}
+body.ux-course[data-page="week01"] #lesson-content .chat-bubble {
+  max-width: 100%;
+  flex-shrink: 0;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+body.ux-course[data-page="week01"] #lesson-content .ai-body { gap: 14px; }
+body.ux-course[data-page="week01"] #lesson-content .gui-btn-mock { min-height: 52px; }
+
+body.ux-course[data-page="week03"] #lesson-content .interactive-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 470px;
+  height: auto;
+  max-height: none;
+  padding: 26px;
+  overflow: visible;
+}
+body.ux-course[data-page="week03"] #lesson-content :is(#mock-empty,#mock-loading,#mock-output,#mock-error) {
+  min-width: 0;
+  flex: 1 0 auto;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+body.ux-course[data-page="week03"] #lesson-content #mock-empty h2 { font-size: clamp(20px,3vw,27px); line-height: 1.45; }
+body.ux-course[data-page="week03"] #lesson-content .starter-chips { gap: 12px; margin: 24px 0 6px; }
+body.ux-course[data-page="week03"] #lesson-content .starter-chips .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 260px;
+  min-width: 0;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+body.ux-course[data-page="week03"] #lesson-content .input-bar {
+  position: static;
+  inset: auto;
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  padding: 10px 14px;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+body.ux-course[data-page="week03"] #lesson-content .input-bar input { min-width: 0; width: 100%; font-size: 16px; }
+body.ux-course[data-page="week03"] #lesson-content #ai-typing-text {
+  min-height: 135px;
+  height: auto;
+  max-height: none;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+body.ux-course[data-page="week03"] #lesson-content .action-bar { flex-wrap: wrap; gap: 10px; }
+body.ux-course[data-page="week03"] #lesson-content .action-icon { min-height: 44px; padding: 10px 14px; color: #d5e2ef; line-height: 1.4; }
+body.ux-course[data-page="week03"] #lesson-content .thinking-dots { flex-wrap: wrap; row-gap: 12px; }
+
+body.ux-course[data-page="week04"] #lesson-content .chat-container { padding: 24px; gap: 16px; background: #f6f9fc; border: 1px solid var(--line); }
+body.ux-course[data-page="week04"] #lesson-content .bubble { min-width: 0; max-width: 92%; line-height: 1.65; }
+body.ux-course[data-page="week04"] #lesson-content .bubble.ai { max-width: 100%; }
+body.ux-course[data-page="week04"] #lesson-content .chip-group { gap: 9px; margin-top: 15px; align-items: center; }
+body.ux-course[data-page="week04"] #lesson-content button.action-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 78px;
+  max-width: 100%;
+  height: auto;
+  padding: 9px 16px;
+  border: 1px solid #cbdbea;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #365f80;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: normal;
+  text-align: center;
+  cursor: pointer;
+}
+body.ux-course[data-page="week04"] #lesson-content button.action-chip:hover { background: #e1edf9; transform: none; }
+body.ux-course[data-page="week04"] #lesson-content button.action-chip[aria-pressed="true"] { background: #416b8c; color: #fff; border-color: #416b8c; }
+body.ux-course #v3-turn-next { display: flex; flex-direction: column; gap: 14px; }
+body.ux-course #v3-turn-next[hidden] { display: none; }
+body.ux-course #v3-turn-next.v3-message-enter { animation: v3-message-enter .3s ease-out both; }
+@keyframes v3-message-enter { from { opacity: .35; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+
+body.ux-course[data-page="week04"] #lesson-content .tree-container { gap: 18px; padding: 28px 22px; overflow: visible; border: 1px solid var(--line); background: #f7faff; }
+body.ux-course[data-page="week04"] #lesson-content .node { max-width: 100%; font-size: 15px; line-height: 1.6; box-shadow: none; }
+body.ux-course[data-page="week04"] #lesson-content .node.decision {
+  position: relative;
+  isolation: isolate;
+  transform: none;
+  width: min(100%,280px);
+  min-width: 0;
+  min-height: 110px;
+  height: auto;
+  padding: 25px 37px;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #345c7c;
+}
+body.ux-course[data-page="week04"] #lesson-content .node.decision::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #e3edf8;
+  clip-path: polygon(12% 0,88% 0,100% 50%,88% 100%,12% 100%,0 50%);
+}
+body.ux-course[data-page="week04"] #lesson-content .node.decision > span {
+  transform: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+body.ux-course[data-page="week04"] #lesson-content .tree-container .row-flex {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 16px;
+  align-items: stretch;
+  min-width: 0;
+  margin-top: 12px;
+}
+body.ux-course[data-page="week04"] #lesson-content .tree-container .row-flex > div:not(.branch-line) { min-width: 0; width: 100%; }
+body.ux-course[data-page="week04"] #lesson-content .branch-line { width: 52%; }
+body.ux-course[data-page="week04"] #lesson-content :is(.node.response,.node.fallback) { width: 100%; height: 100%; min-width: 0; padding: 15px 12px; border-width: 1px; overflow-wrap: break-word; }
+body.ux-course[data-page="week04"] #lesson-content .node.response { background: #edf7f3; color: #365f50; border-color: #d3e6dc; }
+body.ux-course[data-page="week04"] #lesson-content .node.fallback { background: #fdf2f0; color: #86584f; border-color: #eddcd7; }
+
+/* The inline definition must remain readable inside coloured visibility tags. */
+body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  min-height: 34px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fff;
+}
+body.ux-course[data-page="week12"] #lesson-content .front-tag { background: #416b8c; }
+body.ux-course[data-page="week12"] #lesson-content .back-tag { background: #526477; }
+body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger,
+body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger:hover,
+body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger[aria-expanded="true"] {
+  color: #fff;
+  background: transparent;
+  border-bottom-color: #dfefff;
+  font-size: inherit;
+  font-weight: inherit;
+}
+body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger:focus-visible { outline-color: #fff; }
+body.ux-course[data-page="week12"] #lesson-content .v3-blueprint-table-scroll { max-width: 100%; overflow-x: auto; margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; }
+body.ux-course[data-page="week12"] #lesson-content .v3-blueprint-table-scroll .blueprint-table { margin: 0; }
+
+@media(min-width:601px) and (max-width:1399px) {
+  body.ux-course[data-page="week01"] #lesson-content .mockup-container { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  body.ux-course[data-page="week01"] #lesson-content .mockup-box:last-child { grid-column: 1 / -1; }
+}
+@media(max-width:520px) {
+  body.ux-course[data-page="week01"] #lesson-content .mockup-box { min-height: 320px; }
+  body.ux-course[data-page="week01"] #lesson-content :is(.cli-body,.gui-body,.ai-body) { min-height: 230px; padding: 17px; }
+  body.ux-course[data-page="week03"] #lesson-content .interactive-mockup { min-height: 500px; padding: 20px 15px; }
+  body.ux-course[data-page="week03"] #lesson-content .starter-chips .chip { flex-basis: 100%; }
+  body.ux-course[data-page="week03"] #lesson-content #ai-typing-text { padding: 16px; }
+  body.ux-course[data-page="week04"] #lesson-content .chat-container { padding: 16px; }
+  body.ux-course[data-page="week04"] #lesson-content .bubble { max-width: 100%; padding: 14px; }
+  body.ux-course[data-page="week04"] #lesson-content .tree-container { padding: 24px 12px; }
+  body.ux-course[data-page="week04"] #lesson-content .tree-container .row-flex { gap: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.ux-course #v3-turn-next.v3-message-enter { animation: none; }
+}
+
+/* Added visual examples only. The existing lesson and simulator styles stay intact. */
+body.ux-course #lesson-content .v3-er {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e7ecf2;
+  min-width: 0;
+  max-width: 100%;
+  color: #334b62;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.65;
+}
+body.ux-course #lesson-content .v3-er [hidden] { display: none !important; }
+body.ux-course #lesson-content .v3-er .v3-er-title {
+  margin: 0 0 9px;
+  padding: 0;
+  color: #35556f;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+body.ux-course #lesson-content .v3-er p { font-size: 14px; line-height: 1.7; }
+body.ux-course #lesson-content .v3-er .v3-er-intro { color: #5a7084; margin: 0 0 19px; }
+body.ux-course #lesson-content .v3-er-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: stretch; }
+body.ux-course #lesson-content .v3-er-lane { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+body.ux-course #lesson-content .v3-er-lane-title { display: flex; align-items: center; gap: 8px; color: #76554e; font-size: 15px; }
+body.ux-course #lesson-content .v3-er-lane-good .v3-er-lane-title { color: #426c5b; }
+body.ux-course #lesson-content .v3-er-dot { width: 8px; height: 8px; border-radius: 50%; background: #cb9384; flex: 0 0 auto; }
+body.ux-course #lesson-content .v3-er-lane-good .v3-er-dot { background: #7cae94; }
+body.ux-course #lesson-content .v3-er-phone {
+  width: 100%;
+  max-width: 320px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #e7ecf2;
+  border-radius: 27px;
+  background: #fcfdff;
+  box-shadow: 0 5px 18px rgba(45,68,92,.045);
+  display: flex;
+  flex-direction: column;
+}
+body.ux-course #lesson-content .v3-er-lane > .v3-er-phone { flex: 1; }
+body.ux-course #lesson-content .v3-er-phone-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 10px 11px;
+  color: #738498;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+body.ux-course #lesson-content .v3-er-phone-top i { width: 42px; height: 4px; border-radius: 9px; background: #e7ecf2; }
+body.ux-course #lesson-content .v3-er-appbar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 10px 14px;
+  border-bottom: 1px solid #e7ecf2;
+  color: #415f79;
+  font-size: 14px;
+  font-weight: 650;
+}
+body.ux-course #lesson-content .v3-er-app-icon { display: grid; place-items: center; width: 28px; height: 28px; flex: 0 0 auto; border-radius: 8px; background: #eef4fb; color: #5d7f9b; font-size: 13px; font-weight: 700; }
+body.ux-course #lesson-content .v3-er-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 15px;
+  flex: 1;
+  min-height: 330px;
+  padding: 18px 10px 13px;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  color: #445f76;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+body.ux-course #lesson-content .v3-er-user-bubble { align-self: flex-end; max-width: 93%; background: #eef4fb; border: 1px solid #e1eaf4; border-radius: 13px 13px 4px 13px; padding: 11px 13px; color: #476982; font-size: 14px; line-height: 1.6; }
+body.ux-course #lesson-content .v3-er-lost { padding: 12px 13px; background: #f5f7fa; border: 1px dashed #d7e0e9; border-radius: 10px; color: #687a8b; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-error { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 16px; background: #fdf2f0; border: 1px solid #f0e1dc; border-radius: 12px; color: #82584c; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-error p { color: #875d51; margin: 0; }
+body.ux-course #lesson-content .v3-er-state-icon { display: grid; place-items: center; width: 26px; height: 26px; flex: 0 0 auto; border: 1px solid #e5c8bd; border-radius: 50%; color: #9a6653; font-size: 15px; font-weight: 750; background: #fffaf8; }
+body.ux-course #lesson-content .v3-er-recoverable { margin-bottom: 12px; }
+body.ux-course #lesson-content .v3-er-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  height: auto;
+  margin: 0;
+  padding: 10px 13px;
+  border: 1px solid #416b8c;
+  border-radius: 10px;
+  background: #416b8c;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  white-space: normal;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color .15s ease;
+}
+body.ux-course #lesson-content .v3-er-button:hover { background: #355c7a; border-color: #355c7a; transform: none; }
+body.ux-course #lesson-content .v3-er-button.v3-er-secondary { border-color: #dbe5ee; background: #f7faff; color: #536f87; }
+body.ux-course #lesson-content .v3-er-button.v3-er-secondary:hover { background: #eef4fb; border-color: #c7d8e6; }
+body.ux-course #lesson-content .v3-er-button.v3-er-pressure { border-color: #ead3ca; background: #f5e3dd; color: #875849; }
+body.ux-course #lesson-content .v3-er-button.v3-er-pressure:hover { background: #eed7cf; }
+body.ux-course #lesson-content .v3-er-input-blank { margin-top: auto; padding: 11px 13px; border: 1px solid #e3e9ef; border-radius: 10px; background: #fcfdff; color: #677d90; font-size: 14px; }
+body.ux-course #lesson-content .v3-er .v3-er-caption { margin: 0; color: #617587; }
+body.ux-course #lesson-content .v3-er-loading { min-height: 150px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 24px 12px; color: #5a768f; background: #f5f9fd; border-radius: 12px; }
+body.ux-course #lesson-content .v3-er-spinner { width: 20px; height: 20px; flex: 0 0 auto; border: 2px solid #cdddeb; border-top-color: #507b9c; border-radius: 50%; animation: v3-er-spin .8s linear infinite; }
+body.ux-course #lesson-content .v3-er-success { padding: 17px 15px; border: 1px solid #d8eadd; border-radius: 12px; background: #edf7f3; color: #476b57; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-success > strong { display: block; margin-top: 9px; line-height: 1.5; }
+body.ux-course #lesson-content .v3-er-success .v3-er-state-icon { background: #f8fcf9; color: #5b8a6b; border-color: #c4ddcd; }
+body.ux-course #lesson-content .v3-er-success ul { padding-left: 19px; margin: 13px 0; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-success li { margin: 6px 0; }
+body.ux-course #lesson-content .v3-er-saved-tag { display: block; padding-top: 11px; border-top: 1px solid #d6e6dd; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-live { margin: 0; min-height: 0; color: #527261; }
+body.ux-course #lesson-content .v3-er-live:empty { display: none; }
+body.ux-course #lesson-content .v3-er-result { padding: 12px 13px; background: #eef4fb; color: #4f6a81; border: 1px solid #dce8f2; border-radius: 9px; margin: 0; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-result.v3-er-result-bad { background: #fdf2f0; color: #865b4e; border-color: #f0dfd8; }
+body.ux-course #lesson-content .v3-er-result.v3-er-result-good { background: #edf7f3; color: #476d5b; border-color: #d7e9de; }
+body.ux-course #lesson-content .v3-er-appeared { animation: v3-er-reveal .25s ease-out 1; }
+body.ux-course #lesson-content .v3-er-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-top: 18px; }
+body.ux-course #lesson-content .v3-er .v3-er-takeaway { margin: 0; color: #4d6d60; font-weight: 600; flex: 1 1 210px; }
+body.ux-course #lesson-content .v3-er-text-button { appearance: none; border: 0; background: transparent; padding: 10px 3px; min-height: 44px; max-width: 100%; color: #537695; font: inherit; font-size: 14px; line-height: 1.5; text-align: left; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; white-space: normal; }
+body.ux-course #lesson-content .v3-er-text-button:hover { color: #365f80; }
+body.ux-course #lesson-content .v3-er-mode { display: flex; gap: 4px; padding: 4px; background: #f0f5fa; border: 1px solid #e1eaf3; border-radius: 11px; margin: 15px 0 18px; }
+body.ux-course #lesson-content .v3-er-mode > button { appearance: none; flex: 1 1 0; min-width: 0; min-height: 44px; padding: 8px 9px; border: 1px solid transparent; border-radius: 8px; color: #64798d; background: transparent; font: inherit; font-size: 14px; line-height: 1.4; font-weight: 650; white-space: normal; cursor: pointer; }
+body.ux-course #lesson-content .v3-er-mode > button[aria-pressed="true"] { border-color: #dce6ef; background: #fcfdff; color: #3d6483; box-shadow: 0 1px 4px rgba(32,58,83,.045); }
+body.ux-course #lesson-content .v3-er-mode > button:hover { background: #fcfdff; }
+body.ux-course #lesson-content .v3-er-ethics { margin-top: 18px; padding-top: 17px; }
+body.ux-course #lesson-content .v3-er-ethics .v3-er-screen { min-height: 330px; }
+body.ux-course #lesson-content .v3-er-bot-bubble { display: flex; align-items: flex-start; gap: 9px; padding: 13px 12px; border-radius: 12px 12px 12px 4px; background: #fdf2f0; border: 1px solid #f0e2dd; }
+body.ux-course #lesson-content .v3-er-bot-bubble p { margin: 0; color: #7b584e; }
+body.ux-course #lesson-content .v3-er-bubble-good { background: #edf7f3; border-color: #e0ede5; }
+body.ux-course #lesson-content .v3-er-bubble-good p { color: #506e60; }
+body.ux-course #lesson-content .v3-er-avatar { display: grid; place-items: center; flex: 0 0 auto; width: 24px; height: 24px; border-radius: 8px; background: #f8e6df; color: #9b7161; font-size: 16px; }
+body.ux-course #lesson-content .v3-er-bubble-good .v3-er-avatar { background: #e0eee5; color: #5b8069; }
+body.ux-course #lesson-content .v3-er-ai-label { display: block; font-size: 14px; color: #4b705a; margin-bottom: 6px; }
+body.ux-course #lesson-content .v3-er-choice-row { display: flex; gap: 8px; align-items: stretch; }
+body.ux-course #lesson-content .v3-er-choice-row > button { flex: 1 1 0; min-width: 0; }
+body.ux-course #lesson-content .v3-er .v3-er-insight { margin: 18px 0 0; padding: 13px 14px; border-radius: 10px; background: #eef4fb; border: 1px solid #e2eaf3; color: #526d85; line-height: 1.7; }
+body.ux-course #lesson-content .v3-er[data-er-current-mode="good"] .v3-er-insight { background: #edf7f3; color: #466c59; border-color: #ddece3; }
+body.ux-course #lesson-content .v3-er-feature-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 13px; background: #eef4fb; color: #6d91af; font-size: 25px; }
+body.ux-course #lesson-content .v3-er-feature-mint { background: #edf7f3; color: #70927d; }
+body.ux-course #lesson-content .v3-er-screen-title { display: block; font-size: 16px; line-height: 1.5; color: #3f5e78; }
+body.ux-course #lesson-content .v3-er .v3-er-screen-copy { margin: 0; color: #60788e; }
+body.ux-course #lesson-content .v3-er-consent { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 10px 0; font-size: 14px; line-height: 1.6; cursor: pointer; }
+body.ux-course #lesson-content .v3-er-consent > input { appearance: auto; flex: 0 0 auto; width: 18px; height: 18px; margin: 3px 0 0; accent-color: #6285a1; }
+body.ux-course #lesson-content .v3-er-consent-bad { margin-top: 4px; color: #607489; border-top: 1px solid #e7ecf2; }
+body.ux-course #lesson-content .v3-er-consent-good { padding: 13px 12px; background: #edf7f3; border: 1px solid #dcece2; border-radius: 10px; color: #4b6f5a; }
+body.ux-course #lesson-content .v3-er-consent-good strong { display: block; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-consent-good small { display: block; font-size: 14px; color: #537b63; margin-top: 4px; }
+body.ux-course #lesson-content .v3-er :is(button,input):focus-visible { outline: 3px solid #7198b8; outline-offset: 3px; }
+body.ux-course #lesson-content .v3-er-success:focus-visible { outline: 2px solid #7ca58b; outline-offset: 3px; }
+body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) { align-items: stretch; }
+body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-width: 0; }
+@keyframes v3-er-spin { to { transform: rotate(360deg); } }
+@keyframes v3-er-reveal { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 680px) {
+  body.ux-course #lesson-content .v3-er-pair { grid-template-columns: minmax(0,1fr); gap: 23px; }
+  body.ux-course #lesson-content .v3-er-lane-title { max-width: 320px; width: 100%; margin: 0 auto; }
+  body.ux-course #lesson-content .v3-er .v3-er-caption { max-width: 320px; margin: 0 auto; }
+  body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) { flex-direction: column; }
+  body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { flex-basis: auto; width: 100%; }
+}
+@media (max-width: 380px) {
+  body.ux-course #lesson-content .v3-er-phone { padding: 8px; border-radius: 23px; }
+  body.ux-course #lesson-content .v3-er-screen { padding: 15px 8px 11px; }
+  body.ux-course #lesson-content .v3-er-choice-row { flex-direction: column; }
+  body.ux-course #lesson-content .v3-er-mode > button { padding-left: 6px; padding-right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ux-course #lesson-content .v3-er-spinner, body.ux-course #lesson-content .v3-er-appeared { animation: none !important; }
+  body.ux-course #lesson-content .v3-er-button { transition: none; }
+}
+
+/* W6 progressive disclosure / feedback and W12 blueprint. All rules are scoped. */
+.v3-demo.v3-pb {
+  --v3-pb-ink: #2d3c50;
+  --v3-pb-muted: #57677a;
+  --v3-pb-line: #e7ecf2;
+  --v3-pb-blue: #e7effa;
+  --v3-pb-mint: #e5f2ed;
+  --v3-pb-peach: #fff0e5;
+  color: var(--v3-pb-ink);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 100%;
+  min-width: 0;
+  margin-block: 24px 12px;
+}
+.v3-pb *, .v3-pb *::before, .v3-pb *::after { box-sizing: border-box; }
+.v3-pb [hidden] { display: none !important; }
+.v3-pb p { margin: 0; }
+.v3-pb h3 { margin: 4px 0 9px; color: var(--v3-pb-ink); font-size: 19px; line-height: 1.4; }
+.v3-pb button, .v3-pb select, .v3-pb textarea {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  color: inherit;
+  max-width: 100%;
+}
+.v3-pb button { cursor: pointer; white-space: normal; overflow-wrap: anywhere; }
+.v3-pb button:focus-visible, .v3-pb select:focus-visible, .v3-pb textarea:focus-visible {
+  outline: 3px solid #537aa7;
+  outline-offset: 3px;
+}
+.v3-pb button:disabled { cursor: wait; opacity: .7; }
+.v3-pb svg { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.v3-pb .v3-pb-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: none;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+.v3-pb .v3-pb-button:hover { background: #f2f6fa; border-color: #a8bacd; }
+.v3-pb .v3-pb-primary { background: #dfebfa; border-color: #cadbf0; color: #294768; }
+.v3-pb .v3-pb-primary:hover { background: #d3e3f7; border-color: #9db8dc; }
+.v3-pb .v3-pb-quiet { background: transparent; border-color: transparent; font-weight: 500; }
+.v3-pb .v3-pb-quiet:hover { border-color: var(--v3-pb-line); }
+.v3-pb .v3-pb-eyebrow, .v3-pb .v3-pb-label { display: block; font-size: 14px; font-weight: 600; color: var(--v3-pb-muted); }
+.v3-pb .v3-pb-controls, .v3-pb .v3-pb-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.v3-pb .v3-pb-footer { margin-top: 16px; justify-content: space-between; }
+.v3-pb .v3-pb-multiline { white-space: pre-line; overflow-wrap: anywhere; }
+.v3-pb .v3-pb-phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  max-width: 340px;
+  margin-inline: auto;
+  padding: 7px;
+  border: 1px solid #d9e1eb;
+  border-radius: 29px;
+  background: #f1f5f9;
+  box-shadow: 0 5px 14px rgba(49, 72, 94, .045);
+}
+.v3-pb .v3-pb-device-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px 10px;
+  border-radius: 23px 23px 0 0;
+  color: #506174;
+  background: #fcfdff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.v3-pb .v3-pb-device-bar svg { width: 44px; height: 16px; stroke-width: 1; }
+.v3-pb .v3-pb-phone-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 10px 13px 15px;
+  border-bottom: 1px solid var(--v3-pb-line);
+  background: #fcfdff;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.v3-pb .v3-pb-phone-header strong { min-width: 0; overflow-wrap: anywhere; }
+.v3-pb .v3-pb-app-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d9e6f5;
+  border-radius: 11px;
+  background: var(--v3-pb-blue);
+  color: #496b93;
+}
+.v3-pb .v3-pb-phone-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 16px 13px 20px;
+  border-radius: 0 0 23px 23px;
+  background: #fcfdff;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.v3-pb .v3-pb-phone-body > * + * { margin-top: 14px; }
+.v3-pb .v3-pb-phone-body p { overflow-wrap: anywhere; }
+.v3-pb .v3-pb-phone-body .v3-pb-button { width: 100%; }
+.v3-pb .v3-pb-document, .v3-pb .v3-pb-request, .v3-pb .v3-pb-result { padding: 14px; border: 1px solid var(--v3-pb-line); border-radius: 15px; }
+.v3-pb .v3-pb-document { background: #fff; }
+.v3-pb .v3-pb-request { background: #f0f5fc; border-color: #e0e8f4; }
+.v3-pb .v3-pb-result { background: #edf7f2; border-color: #d7e8df; color: #304f44; }
+.v3-pb .v3-pb-document p, .v3-pb .v3-pb-request p, .v3-pb .v3-pb-result p { margin-top: 7px; }
+.v3-pb .v3-pb-file { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #586b81; overflow-wrap: anywhere; }
+.v3-pb .v3-pb-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.v3-pb .v3-pb-fieldset legend { padding: 0 0 8px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.v3-pb .v3-pb-choices { display: flex; flex-wrap: wrap; gap: 7px; }
+.v3-pb .v3-pb-choice {
+  min-height: 44px;
+  min-width: 0;
+  padding: 9px 11px;
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-radius: 11px;
+  text-align: left;
+  transition: background-color .16s ease, border-color .16s ease;
+}
+.v3-pb .v3-pb-choice:hover { background: #f1f6fc; border-color: #9fb5d0; }
+.v3-pb .v3-pb-choice[aria-pressed="true"], .v3-pb .v3-pb-choice[aria-current="step"] {
+  color: #294768;
+  background: #e7effa;
+  border-color: #8faed1;
+  box-shadow: inset 0 0 0 1px #8faed1;
+}
+.v3-pb .v3-pb-field { display: grid; gap: 5px; font-size: 14px; font-weight: 600; }
+.v3-pb .v3-pb-field + .v3-pb-field { margin-top: 11px; }
+.v3-pb select { width: 100%; min-width: 0; min-height: 44px; padding: 9px 8px; border: 1px solid #d2dce8; border-radius: 10px; background: #fff; }
+.v3-pb .v3-pb-options { padding: 13px; border: 1px solid var(--v3-pb-line); border-radius: 12px; background: #f7f9fc; }
+.v3-pb .v3-pb-options-toggle { justify-content: flex-start; text-align: left; }
+.v3-pb .v3-pb-chevron { margin-left: auto; font-size: 20px; transform-origin: center; }
+.v3-pb .v3-pb-options-toggle[aria-expanded="true"] .v3-pb-chevron { transform: rotate(180deg); }
+.v3-pb .v3-pb-loading { display: flex; align-items: center; gap: 9px; color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-pb-dots { display: inline-flex; flex: 0 0 auto; gap: 4px; }
+.v3-pb .v3-pb-dots i { display: block; width: 5px; height: 5px; border-radius: 50%; background: #6d8cab; animation: v3-pb-dot .7s ease-in-out infinite alternate; }
+.v3-pb .v3-pb-dots i:nth-child(2) { animation-delay: .14s; }
+.v3-pb .v3-pb-dots i:nth-child(3) { animation-delay: .28s; }
+.v3-pb .v3-pb-result.is-entering { animation: v3-pb-appear .25s ease-out; }
+.v3-pb .v3-pd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 22px; align-items: start; }
+.v3-pb .v3-pd-level { min-width: 0; padding: 0; }
+.v3-pb .v3-pd-caption { margin-bottom: 16px; color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-pd-phone { min-height: 430px; background: #f1f5f9; }
+.v3-pb .v3-pd-level:nth-child(2) .v3-pb-app-icon { background: var(--v3-pb-mint); border-color: #d4e8dd; color: #486f5d; }
+.v3-pb .v3-pd-level:nth-child(3) .v3-pb-app-icon { background: var(--v3-pb-peach); border-color: #f0ddcd; color: #865e43; }
+.v3-demo.v3-fb { max-width: 720px; margin-inline: auto; border: 1px solid #e1e8f0; border-radius: 24px; background: #fbfdff; }
+.v3-pb .v3-fb-header { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--v3-pb-line); }
+.v3-pb .v3-fb-header p { font-size: 14px; color: var(--v3-pb-muted); }
+.v3-pb .v3-fb-thread { padding: 22px; }
+.v3-pb .v3-fb-message { min-width: 0; max-width: 92%; padding: 16px 18px; border: 1px solid #e6edf4; border-radius: 17px; }
+.v3-pb .v3-fb-message > p { margin-top: 7px; }
+.v3-pb .v3-fb-user { margin-left: auto; background: #eaf1fc; border-color: #dce6f5; border-bottom-right-radius: 5px; }
+.v3-pb .v3-fb-assistant { margin: 22px 0 0; max-width: 100%; background: #fff; border-bottom-left-radius: 5px; }
+.v3-pb .v3-fb-attachment { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 9px; background: rgba(255,255,255,.72); border: 1px solid #d6e1ef; border-radius: 9px; font-size: 14px; }
+.v3-pb .v3-fb-check { padding-top: 10px; border-top: 1px solid var(--v3-pb-line); color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-fb-actions, .v3-pb .v3-fb-votes, .v3-pb .v3-fb-tools { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.v3-pb .v3-fb-actions { justify-content: space-between; margin-top: 12px; }
+.v3-pb .v3-pb-tool { padding: 8px 10px; background: transparent; border-color: transparent; font-weight: 500; }
+.v3-pb .v3-pb-tool[aria-pressed="true"] { background: #e5f2ed; border-color: #a5cbbb; color: #2d604c; }
+.v3-pb .v3-pb-tool[data-v3-fb-vote="down"][aria-pressed="true"] { background: #fff0e5; border-color: #dcb99d; color: #795035; }
+.v3-pb .v3-fb-reasons { margin-top: 16px; padding: 15px; border-radius: 13px; border: 1px solid #efdfd2; background: #fff7f0; }
+.v3-pb .v3-fb-reasons legend { padding: 0; margin-bottom: 8px; float: left; width: 100%; }
+.v3-pb .v3-fb-editor, .v3-pb .v3-fb-copy-panel { margin-top: 15px; }
+.v3-pb .v3-fb-editor label, .v3-pb .v3-fb-copy-panel label { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 600; }
+.v3-pb textarea { display: block; width: 100%; min-width: 0; min-height: 150px; padding: 12px; border: 1px solid #c9d7e7; border-radius: 12px; background: #fff; resize: vertical; }
+.v3-pb .v3-fb-editor .v3-pb-controls { margin-top: 10px; }
+.v3-pb .v3-fb-status { margin-top: 12px; color: #3d6455; font-size: 14px; overflow-wrap: anywhere; }
+.v3-pb .v3-fb-status:empty { display: none; }
+.v3-pb.v3-fb > .v3-pb-footer { margin: 0; padding: 4px 16px 12px; justify-content: flex-end; }
+.v3-pb.v3-bp { padding-top: 24px; border-top: 1px solid var(--v3-pb-line); }
+.v3-pb .v3-bp-intro { max-width: 65ch; margin-bottom: 15px; color: var(--v3-pb-muted); }
+.v3-pb .v3-bp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 8px; margin-block: 20px; }
+.v3-pb .v3-bp-steps .v3-pb-choice { text-align: center; font-weight: 600; }
+.v3-pb .v3-bp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); align-items: start; gap: 25px; }
+.v3-pb .v3-bp-lanes { display: grid; gap: 10px; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.v3-pb .v3-bp-lanes li { display: flex; align-items: flex-start; gap: 12px; position: relative; min-width: 0; padding: 14px; border: 1px solid var(--v3-pb-line); border-radius: 13px; background: #f8fafc; transition: background-color .25s, border-color .25s; }
+.v3-pb .v3-bp-lanes li > div { min-width: 0; }
+.v3-pb .v3-bp-lanes strong { display: block; font-size: 14px; }
+.v3-pb .v3-bp-lanes p { margin-top: 4px; font-size: 14px; line-height: 1.55; color: var(--v3-pb-muted); }
+.v3-pb .v3-bp-lane-number { display: grid; place-items: center; flex: 0 0 30px; width: 30px; height: 30px; border: 1px solid #d9e2ed; border-radius: 50%; background: #fff; color: #4b627c; font-size: 14px; font-weight: 700; }
+.v3-pb .v3-bp-lanes li.is-current { background: #eaf2fc; border-color: #afc8e5; }
+.v3-pb .v3-bp-lanes li.is-current .v3-bp-lane-number { background: #d2e3f8; border-color: #9ab7da; color: #2e537e; }
+.v3-pb .v3-bp-lanes .v3-bp-backstage { margin-top: 28px; }
+.v3-pb .v3-bp-visibility { position: absolute; top: -29px; left: 0; right: 0; text-align: center; border-top: 1px dashed #b9c7d6; font-size: 14px; color: #617183; line-height: 1.55; }
+.v3-pb .v3-bp-lanes .v3-bp-fallback { background: #fff8f2; border-color: #efdfd0; }
+.v3-pb .v3-bp-lanes .v3-bp-fallback.is-current { background: #ffebdc; border-color: #d8ad8d; }
+.v3-pb .v3-bp-phone { max-width: 340px; }
+.v3-pb .v3-bp-phone .v3-pb-phone-body { min-height: 360px; }
+.v3-pb [data-v3-bp-panel] > * + * { margin-top: 14px; }
+.v3-pb .v3-bp-photo { padding: 13px; border: 1px solid #e1e7ed; border-radius: 13px; background: #edf2f6; }
+.v3-pb .v3-bp-paper { padding: 20px 15px; margin-top: 12px; border: 1px solid #dce3e8; border-radius: 5px; background: #fff; transform: rotate(-2deg); box-shadow: 0 3px 5px rgba(51,65,85,.04); }
+.v3-pb .v3-bp-paper p { margin: 0 0 8px; font-size: 16px; }
+.v3-pb .v3-bp-paper-rule { display: block; width: 78%; height: 3px; background: #e6e9ed; margin-top: 15px; }
+.v3-pb .v3-bp-paper-rule:last-child { width: 52%; }
+.v3-pb .v3-bp-scan { display: grid; place-items: center; padding: 15px; border-radius: 14px; background: #edf6f3; }
+.v3-pb .v3-bp-scan svg { width: 160px; height: 130px; max-width: 100%; }
+.v3-pb .v3-bp-scan-line { transform: translateY(0); }
+.v3-pb .v3-bp-skeleton { display: grid; gap: 8px; }
+.v3-pb .v3-bp-skeleton i { display: block; height: 9px; width: 100%; border-radius: 8px; background: #dce8e4; }
+.v3-pb .v3-bp-skeleton i:nth-child(2) { width: 82%; }
+.v3-pb .v3-bp-skeleton i:nth-child(3) { width: 60%; }
+.v3-pb .v3-bp-source { padding: 13px; background: #f3f6fa; border: 1px solid #dce4ee; border-radius: 12px; }
+.v3-pb .v3-bp-source > div { margin-top: 8px; }
+.v3-pb .v3-bp-blurred { display: grid; gap: 10px; padding: 28px 20px; background: #f3f0e9; border: 1px solid #e6e0d4; border-radius: 13px; }
+.v3-pb .v3-bp-blurred span { filter: blur(2px); font-size: 17px; color: #77736d; }
+.v3-pb .v3-bp-error-copy { padding: 14px; border: 1px solid #efd8c4; border-radius: 13px; background: #fff4e9; color: #72513a; }
+.v3-pb .v3-bp-error-copy p { margin-top: 7px; }
+.v3-pb .v3-bp-status { flex: 1 1 260px; font-size: 14px; color: var(--v3-pb-muted); }
+.v3-pb.v3-bp.is-playing .v3-bp-scan-line { animation: v3-pb-scan 1.2s ease-in-out infinite alternate; }
+.v3-pb.v3-bp.is-playing .v3-bp-lanes li.is-current .v3-bp-lane-number { animation: v3-pb-mark 1.1s ease-in-out infinite alternate; }
+@keyframes v3-pb-appear { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes v3-pb-dot { from { opacity: .35; transform: translateY(1px); } to { opacity: 1; transform: translateY(-2px); } }
+@keyframes v3-pb-scan { from { transform: translateY(0); } to { transform: translateY(78px); } }
+@keyframes v3-pb-mark { from { box-shadow: 0 0 0 0 rgba(126,161,201,.14); } to { box-shadow: 0 0 0 5px rgba(126,161,201,.14); } }
+@media (max-width: 540px) {
+  .v3-pb .v3-pd-grid { gap: 28px; }
+  .v3-pb .v3-pd-phone { min-height: 0; }
+  .v3-pb .v3-fb-header, .v3-pb .v3-fb-thread { padding: 16px; }
+  .v3-pb .v3-fb-message { max-width: 100%; padding: 13px; }
+  .v3-pb .v3-fb-actions { align-items: flex-start; }
+  .v3-pb .v3-pb-controls > .v3-pb-button { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v3-pb *, .v3-pb *::before, .v3-pb *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .v3-pb .v3-bp-paper { transform: none; }
+}

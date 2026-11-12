@@ -1,98 +1,240 @@
-/* One HTML entry, 14 preserved interactive lesson modules. */
+window.UX_DATA = {"learning":{"week01":{"title":{"en":"Start with the person","ko":"사람에서 시작하는 UX","ru":"Начните с человека"},"summary":{"en":"UX means the whole experience of using a service: what a person tries to do, what happens, and how easy or hard it feels. UI is the part they see and use, such as buttons, text, and menus.","ko":"UX는 서비스를 이용하는 전체 경험입니다. 사용자가 하려는 일, 그 과정에서 일어나는 일, 쉽거나 어렵게 느끼는 점을 함께 봅니다. UI는 버튼·글자·메뉴처럼 보고 조작하는 부분입니다.","ru":"UX — это весь опыт использования сервиса: цель человека, его действия и то, насколько легко или трудно её достичь. UI — это видимые и доступные для действий элементы: кнопки, текст и меню."},"bridge":{"en":"No design experience is needed. Think of one app you use before or after your part-time job.","ko":"디자인 경험이 없어도 괜찮습니다. 아르바이트 전후에 자주 쓰는 앱 하나를 떠올려 보세요.","ru":"Опыт в дизайне не нужен. Вспомните приложение, которым пользуетесь до или после подработки."},"try":{"en":"Press Ask in both examples. Notice how a waiting message changes what you think is happening.","ko":"두 예시의 질문하기 버튼을 누르고, 기다리는 동안 안내가 있을 때와 없을 때를 비교하세요.","ru":"Нажмите «Спросить» в обоих примерах. Сравните ожидание с сообщением о ходе работы и без него."},"anchor":"gb-title","scriptPages":[1,2]},"week02":{"title":{"en":"Understand who you are helping","ko":"누구를 돕는지 이해하기","ru":"Поймите, кому вы помогаете"},"summary":{"en":"Connect the user’s goal and pain point to a useful design. Use a persona to keep those needs in focus.","ko":"사용자의 목표와 페인 포인트를 디자인 선택에 연결해 봅니다. 페르소나를 통해 누구를 위해 무엇을 개선하는지 정리하세요.","ru":"Свяжите цель пользователя и его трудности с решениями в дизайне. Используйте персону, чтобы помнить, кому и в чём вы помогаете."},"bridge":{"en":"In Week 1 you looked at a user’s experience. Now ask: whose experience are we trying to improve?","ko":"1주차에는 사용자 경험을 살펴봤습니다. 이번에는 누구의 경험을 개선할지 정합니다.","ru":"На неделе 1 вы изучали опыт пользователя. Теперь спросите: чей опыт мы хотим улучшить?"},"try":{"en":"Read Raj’s example. Find his goal and his difficulty. Then connect each one to a possible screen change.","ko":"라지의 예시에서 목표와 어려움을 찾고, 각각 어떤 화면 수정으로 연결할지 생각해 보세요.","ru":"Прочитайте пример Раджа. Найдите его цель и трудность. Подумайте, какое изменение экрана поможет."},"anchor":"per-title","scriptPages":[3,4,5,6]},"week03":{"title":{"en":"Show what the AI is doing","ko":"AI의 현재 상태 보여 주기","ru":"Покажите, что делает ИИ"},"summary":{"en":"Help people know whether to type, wait, use the answer or try again. Give each screen state a clear next step.","ko":"사용자가 입력할지, 기다릴지, 답변을 쓸지, 다시 시도할지 알 수 있게 도와주세요. 각 화면 상태에서 다음 행동이 분명해야 합니다.","ru":"Помогите человеку понять, нужно ли вводить текст, ждать, использовать ответ или повторить попытку. У каждого состояния экрана должен быть понятный следующий шаг."},"bridge":{"en":"You know the user’s goal. Next, guide the user through the small steps needed to reach it.","ko":"사용자의 목표를 정했습니다. 이제 목표까지 가는 작은 단계들을 안내합니다.","ru":"Вы определили цель пользователя. Теперь помогите пройти шаги к ней."},"try":{"en":"Try a prompt in the simulator. Watch Input → Loading → Streaming → Complete. Then try Error and Retry.","ko":"시뮬레이터에서 요청하고 입력→로딩→스트리밍→완료를 관찰하세요. 오류와 재시도도 눌러 보세요.","ru":"Отправьте запрос в симуляторе. Посмотрите этапы: ввод → загрузка → появление текста → готово. Затем попробуйте ошибку и повтор."},"anchor":"map-title","scriptPages":[7,8,9,10]},"week04":{"title":{"en":"Help a conversation move forward","ko":"대화가 이어지도록 돕기","ru":"Помогите продолжить диалог"},"summary":{"en":"A conversation flow is a plan for what happens next in a chat. It includes the user’s request, the AI’s response, and a way forward when the request is unclear or cannot be completed.","ko":"대화 흐름은 채팅에서 다음에 무엇이 일어날지 정리한 계획입니다. 사용자의 요청, AI의 응답, 요청이 모호하거나 처리되지 않을 때의 다음 경로까지 포함합니다.","ru":"Сценарий диалога — план того, что происходит дальше в чате: запрос пользователя, ответ ИИ и выход, если запрос непонятен или его нельзя выполнить."},"bridge":{"en":"Week 3 showed screen states. Now decide what the AI should ask or offer between those states.","ko":"3주차에는 화면 상태를 배웠습니다. 이제 상태 사이에서 AI가 무엇을 묻거나 제안할지 정합니다.","ru":"На неделе 3 вы изучали состояния экрана. Теперь решите, что ИИ должен спросить или предложить между ними."},"try":{"en":"Follow the dialogue tree. Find where the AI asks one short question instead of guessing.","ko":"대화 흐름도를 따라가며, AI가 추측하지 않고 짧게 되묻는 지점을 찾으세요.","ru":"Проследите дерево диалога. Найдите место, где ИИ задаёт короткий вопрос вместо догадки."},"anchor":"tree-title","scriptPages":[11,12,13]},"week05":{"title":{"en":"Help people check an AI answer","ko":"AI 답을 확인할 수 있게 돕기","ru":"Помогите проверить ответ ИИ"},"summary":{"en":"An AI answer can sound clear and still be wrong. A trustworthy interface helps people inspect sources, see limits, and correct a result. Confident wording or a “verified” badge alone is not proof.","ko":"AI 답변은 자연스럽게 들려도 틀릴 수 있습니다. 신뢰할 수 있는 화면은 출처를 살펴보고, 한계를 알고, 결과를 수정하도록 돕습니다. 자신 있는 말투나 ‘검증됨’ 배지만으로는 증명이 되지 않습니다.","ru":"Ответ ИИ может звучать уверенно и быть неверным. Надёжный интерфейс помогает проверить источники, увидеть ограничения и исправить результат. Уверенный тон или значок «проверено» сами по себе ничего не доказывают."},"bridge":{"en":"A smooth conversation is useful only when the user can judge the answer.","ko":"대화가 매끄러워도 사용자가 답을 판단할 수 있어야 합니다.","ru":"Удобный диалог полезен, если пользователь может оценить ответ."},"try":{"en":"Compare a confidence number with a source link. Ask what you could actually check with each one.","ko":"신뢰도 숫자와 출처 링크를 비교하고, 각각 무엇을 직접 확인할 수 있는지 생각해 보세요.","ru":"Сравните число «уверенности» со ссылкой на источник. Что вы можете проверить в каждом случае?"},"anchor":"ui-title","scriptPages":[14,15,16]},"week06":{"title":{"en":"Make the first step easy","ko":"첫 사용을 쉽게 만들기","ru":"Сделайте первый шаг простым"},"summary":{"en":"Help a first-time user start one useful task with clear choices. Use feedback to find what helped and what needs to change.","ko":"명확한 선택지로 처음 온 사용자가 필요한 작업 하나를 시작하게 도와주세요. 피드백으로 도움이 된 점과 바꿀 점을 찾습니다.","ru":"Помогите новичку начать одну полезную задачу с понятными вариантами действий. По обратной связи выясняйте, что помогло, а что нужно изменить."},"bridge":{"en":"You have designed answers and error messages. Now help a new user get started.","ko":"답변과 오류 안내를 설계했습니다. 이번에는 처음 온 사용자의 시작을 돕습니다.","ru":"Вы спроектировали ответы и сообщения об ошибках. Теперь помогите новому пользователю начать."},"try":{"en":"Open the levels of help. Notice which choices a beginner needs first and which can wait.","ko":"도움말 단계를 눌러 보고, 초보자가 먼저 필요한 선택과 나중에 볼 선택을 나눠 보세요.","ru":"Откройте уровни помощи. Определите, какие варианты нужны новичку сразу, а какие можно показать позже."},"anchor":"prog-title","scriptPages":[17,18,19]},"week07":{"title":{"en":"Test an idea before building AI","ko":"AI를 만들기 전에 아이디어 시험하기","ru":"Проверьте идею до создания ИИ"},"summary":{"en":"In a Wizard of Oz test, focus on whether a person can complete a useful task with your service idea. The test checks the experience, not the capabilities of a real AI model.","ko":"오즈의 마법사 테스트로 사용자가 내 서비스 아이디어를 통해 필요한 일을 해낼 수 있는지 살펴봅니다. 사용 경험을 확인하는 것이며 실제 AI 모델의 능력을 시험하는 것은 아닙니다.","ru":"В тесте «Волшебник страны Оз» проверьте, сможет ли человек выполнить полезную задачу с вашей идеей сервиса. Тест оценивает опыт использования, а не возможности настоящей модели ИИ."},"bridge":{"en":"Use the persona, chat flow, and feedback ideas from Weeks 2–6 in one small test.","ko":"2~6주차의 페르소나·대화 흐름·피드백을 작은 테스트 하나로 연결합니다.","ru":"Объедините персону, диалог и обратную связь из недель 2–6 в одном небольшом тесте."},"try":{"en":"Compare the three roles. The observer records what happened without helping the participant finish the task.","ko":"세 역할을 비교하세요. 관찰자는 사용자를 대신 도와주지 않고 실제로 일어난 일을 기록합니다.","ru":"Сравните три роли. Наблюдатель записывает происходящее, не помогая участнику выполнить задание."},"anchor":"role-title","scriptPages":[20,21,22]},"week08":{"title":{"en":"Midterm · UI practice to revisit","ko":"중간고사 · 기본 UI 다시 보기","ru":"Промежуточный экзамен · повторение UI"},"summary":{"en":"There is no regular lesson in Week 8. These are the basic UI examples already used in class. You can revisit them if you want to practise; this page does not set an exam task or deadline.","ko":"8주차는 정규 강의가 없는 중간고사 기간입니다. 이곳에는 수업에서 다뤘던 기본 UI 예시를 모았습니다. 필요할 때 자율 복습하며, 이 페이지가 시험 과제나 마감일을 정하지는 않습니다.","ru":"На неделе 8 обычного занятия нет. Здесь собраны базовые примеры UI, уже разобранные на занятии. Их можно повторить по желанию; страница не задаёт экзаменационную работу или срок сдачи."},"bridge":{"en":"Choose one component, try it, and say when it would help a user.","ko":"컴포넌트 하나를 골라 눌러 보고, 언제 사용자를 도울지 말해 보세요.","ru":"Выберите один компонент, попробуйте его и объясните, когда он поможет пользователю."},"try":{"en":"Replay the loading animation. Notice the placeholder shapes, then the finished content.","ko":"로딩 애니메이션을 다시 재생하고, 임시 영역이 실제 내용으로 바뀌는 순간을 보세요.","ru":"Повторите анимацию загрузки. Посмотрите, как каркас сменяется готовым содержимым."},"anchor":"c3-title","scriptPages":[]},"week09":{"title":{"en":"Turn your idea into clickable screens","ko":"아이디어를 클릭 가능한 화면으로","ru":"Превратите идею в кликабельные экраны"},"summary":{"en":"A prototype is a practice version of a product. In Figma, you can connect screens so people can click through a task. The buttons can show the flow even when no real AI is connected.","ko":"프로토타입은 제품을 시험하기 위한 연습 버전입니다. Figma에서는 화면을 연결해 사용자가 클릭하며 작업을 진행하도록 만들 수 있습니다. 실제 AI를 연결하지 않아도 버튼으로 흐름을 보여 줄 수 있습니다.","ru":"Прототип — пробная версия продукта. В Figma можно связать экраны, чтобы человек прошёл задание с помощью кликов. Так показывают сценарий даже без подключённого ИИ."},"bridge":{"en":"Use the flow you tested in Week 7. Begin with a few screens instead of drawing the whole app.","ko":"7주차에 시험한 흐름을 사용합니다. 앱 전체보다 몇 개의 화면부터 시작하세요.","ru":"Используйте сценарий из недели 7. Начните с нескольких экранов, а не со всего приложения."},"try":{"en":"Run the three-screen prototype. Notice the start, waiting, and result screens. Reset it and try again.","ko":"3화면 프로토타입을 실행해 시작·대기·결과 화면을 관찰하세요. 초기화해 다시 눌러 보세요.","ru":"Запустите прототип из трёх экранов. Найдите начало, ожидание и результат. Сбросьте и попробуйте снова."},"anchor":"c5-title","scriptPages":[23,24,25]},"week10":{"title":{"en":"Keep the person in control","ko":"사용자에게 선택권 주기","ru":"Оставьте управление человеку"},"summary":{"en":"Human control means the user can stop, check, change, or undo an AI action. Ethical design also asks whether the service treats different people fairly and whether the choices are honest and clear.","ko":"인간의 통제권은 사용자가 AI의 행동을 멈추고, 확인하고, 수정하거나 되돌릴 수 있다는 뜻입니다. 윤리적 디자인은 사람들을 공정하게 대하는지, 선택지가 정직하고 명확한지도 살펴봅니다.","ru":"Контроль человека означает возможность остановить, проверить, изменить или отменить действие ИИ. Этичный дизайн также учитывает справедливое отношение к разным людям и честные, понятные варианты выбора."},"bridge":{"en":"Your prototype now works as a flow. Add ways for the user to change their mind.","ko":"프로토타입 흐름을 만들었습니다. 사용자가 마음을 바꿀 수 있는 방법을 더합니다.","ru":"У вашего прототипа есть сценарий. Добавьте возможность изменить решение."},"try":{"en":"Try the control examples. Ask how Stop, Edit, and Report help in different situations.","ko":"조작 예시를 눌러 보고, 중지·수정·신고가 각각 어떤 상황에서 도움이 되는지 생각해 보세요.","ru":"Попробуйте элементы управления. В каких разных ситуациях помогают остановка, изменение и сообщение об ошибке?"},"anchor":"ctrl-title","scriptPages":[26,27,28]},"week11":{"title":{"en":"Personalize with permission","ko":"동의를 바탕으로 개인화하기","ru":"Персонализация с согласия"},"summary":{"en":"Personalization means changing a service to fit a person’s needs or choices. Privacy means people can understand and control how their information is used. Ask only for information the feature needs, at the time it needs it.","ko":"개인화는 사용자의 필요나 선택에 맞게 서비스를 바꾸는 것입니다. 개인정보 보호는 정보의 사용 방식을 사용자가 이해하고 통제할 수 있게 하는 것입니다. 기능에 필요한 정보만, 필요한 순간에 요청합니다.","ru":"Персонализация — настройка сервиса под потребности или выбор человека. Приватность означает, что человек понимает и контролирует использование своих данных. Запрашивайте только данные, необходимые для этой функции, и только в нужный момент."},"bridge":{"en":"Week 10 gave the user control over actions. This week gives them control over information.","ko":"10주차에는 행동의 통제권을 배웠습니다. 이번에는 정보의 통제권을 다룹니다.","ru":"На неделе 10 пользователь управлял действиями. Теперь он управляет своими данными."},"try":{"en":"Open “Why am I seeing this?” and try the privacy switches. Check what the user can understand and change.","ko":"‘왜 이 추천을 보나요?’와 개인정보 스위치를 눌러 보고, 무엇을 이해하고 바꿀 수 있는지 확인하세요.","ru":"Откройте «Почему я это вижу?» и попробуйте настройки приватности. Что пользователь может понять и изменить?"},"anchor":"ctrl-title","scriptPages":[29,30]},"week12":{"title":{"en":"Connect the screen to the service","ko":"화면과 서비스의 뒷단 연결하기","ru":"Свяжите экран с работой сервиса"},"summary":{"en":"A service blueprint is a table connecting a user’s steps, visible screens and hidden work. It helps you plan what happens when a step fails.","ko":"서비스 블루프린트는 사용자의 단계, 보이는 화면, 뒤에서 하는 일을 연결한 표입니다. 각 단계가 실패했을 때의 대응도 함께 계획합니다.","ru":"Схема сервиса (Service blueprint) — таблица, связывающая шаги пользователя, видимые экраны и скрытую работу. Она помогает продумать действия при сбое."},"bridge":{"en":"You have drawn the screens. Now ask what must happen behind each one for the service to work.","ko":"화면을 그렸다면, 각 화면 뒤에서 어떤 일이 일어나야 하는지 생각해 봅니다.","ru":"Экраны уже нарисованы. Теперь подумайте, какие процессы нужны за каждым экраном."},"try":{"en":"Read one column of the blueprint from top to bottom. Connect a user action, a screen, and the work behind it.","ko":"블루프린트의 한 열을 위에서 아래로 읽으며 사용자 행동·화면·뒷단 작업을 연결하세요.","ru":"Прочитайте один столбец чертежа сверху вниз. Свяжите действие пользователя, экран и скрытую работу."},"anchor":"bp-title","scriptPages":[31,32]},"week13":{"title":{"en":"Watch people use your design","ko":"사용하는 모습을 보고 개선하기","ru":"Наблюдайте и улучшайте"},"summary":{"en":"Usability testing means watching someone try a task with your design. Record where they get stuck and whether they finish. A self-audit is useful, but it cannot replace seeing another person use the design.","ko":"사용성 테스트는 다른 사람이 디자인으로 작업하는 모습을 관찰하는 것입니다. 어디서 막히는지, 끝까지 마치는지 기록합니다. 스스로 점검하는 것도 유용하지만 다른 사용자의 관찰을 대신하지는 못합니다.","ru":"Тест удобства — наблюдение за тем, как человек выполняет задание в вашем интерфейсе. Запишите затруднения и результат. Самопроверка полезна, но не заменяет наблюдение за другим пользователем."},"bridge":{"en":"The design looks clear to you because you made it. Let someone else try it without giving step-by-step hints.","ko":"만든 사람에게는 화면이 익숙합니다. 다른 사람이 단계별 힌트 없이 써 보게 하세요.","ru":"Создателю интерфейс знаком. Попросите другого человека попробовать его без пошаговых подсказок."},"try":{"en":"Use the priority examples to choose what to fix first. Focus on problems that block a real task.","ko":"우선순위 예시로 먼저 고칠 문제를 고르세요. 실제 작업을 막는 문제부터 봅니다.","ru":"По примерам приоритетов выберите, что исправить первым. Начните с проблем, мешающих выполнить задание."},"anchor":"mat-title","scriptPages":[33,34,35,36,37,38]},"week14":{"title":{"en":"Explain and review your design","ko":"내 디자인을 점검하고 설명하기","ru":"Проверьте и объясните дизайн"},"summary":{"en":"A design review checks whether the main task works and whether important choices are explained. A portfolio records the problem, your design and what you improved.","ko":"디자인 검토는 주요 과제가 작동하고 중요한 선택의 이유가 설명되는지 확인하는 일입니다. 포트폴리오는 문제, 디자인, 개선한 내용을 기록합니다.","ru":"Проверка дизайна показывает, работает ли основная задача и объяснены ли важные решения. Портфолио сохраняет проблему, ваш дизайн и внесённые улучшения."},"bridge":{"en":"Use what you found in Week 13. Fix one important problem and explain why the change helps.","ko":"13주차에 찾은 내용을 활용해 중요한 문제 하나를 고치고, 왜 도움이 되는지 설명합니다.","ru":"Используйте наблюдения недели 13. Исправьте одну важную проблему и объясните пользу изменения."},"try":{"en":"Follow the prototype review checklist. Start with the first screen and try to complete the whole task.","ko":"프로토타입 점검표를 따라 첫 화면부터 전체 작업을 끝까지 진행해 보세요.","ru":"Пройдите проверку прототипа: начните с первого экрана и выполните задание до конца."},"anchor":"qa-title","scriptPages":[39,40]}},"notes":{"week01":[{"anchor":"uiux-title","en":"<p>Think about a bus-ticket app. The button, text and colour are its <strong>UI</strong>; finding your bus, paying and knowing that your booking worked are part of the <strong>UX</strong>. Ask: “Can a first-time user finish the task without help?”</p>","ko":"<p>버스 예매 앱을 떠올려 보세요. 버튼·글자·색은 <strong>UI</strong>이고, 버스를 찾고 결제하고 예매가 끝났음을 확인하는 전체 경험은 <strong>UX</strong>입니다. “처음 쓰는 사람도 도움 없이 목적을 이룰 수 있을까?”를 확인하세요.</p>","ru":"<p>Представьте приложение для покупки билета на автобус. Кнопки, текст и цвета — это <strong>UI</strong>; поиск автобуса, оплата и понятное подтверждение покупки — часть <strong>UX</strong>. Спросите себя: «Сможет ли новичок выполнить задачу без помощи?»</p>","sourcePages":[1]},{"anchor":"hist-title","en":"<p>An <strong>interface</strong> is the place where a person gives instructions to a system and sees its response. In these demos, the same idea appears as a typed command, a button and a conversation. Click each one and notice what the user must know before starting. In a conversation, the user gives the AI a prompt.</p>","ko":"<p><strong>인터페이스</strong>는 사람이 시스템에 지시하고 응답을 확인하는 접점입니다. 아래에서는 명령어 입력, 버튼 클릭, 대화라는 세 가지 방식을 비교합니다. 각각 눌러 보고 시작 전에 사용자가 무엇을 알아야 하는지 생각해 보세요. 대화에서는 사용자가 AI에게 프롬프트를 전달합니다.</p>","ru":"<p><strong>Интерфейс</strong> — это место, где человек даёт системе команды и видит её ответ. Здесь сравниваются ввод команды, нажатие кнопки и разговор. Попробуйте каждый вариант: что нужно знать пользователю, чтобы начать? В разговоре пользователь отправляет запрос к ИИ.</p>","sourcePages":[1]},{"anchor":"diff-title","en":"<p>A calculator follows a fixed rule, while a generative AI answer can depend on its instructions and settings. The design lesson is to help users check an answer and recover when it is wrong.</p>","ko":"<p>계산기는 정해진 규칙을 따르지만 생성형 AI의 답은 지시와 설정에 따라 달라질 수 있습니다. 핵심은 사용자가 답을 확인하고 틀렸을 때 수정할 수 있게 설계하는 것입니다.</p>","ru":"<p>Калькулятор работает по фиксированному правилу, а ответ генеративного ИИ может зависеть от запроса и настроек. Задача дизайна — помочь проверить ответ и исправить ошибку.</p>","sourcePages":[1]},{"anchor":"gb-title","en":"<p>Press both “Ask” buttons. In the silent version, you cannot tell whether the app received your request; in the other version, movement shows that work is happening. This visible response to an action is called <strong>feedback</strong>.</p>","ko":"<p>두 “질문하기” 버튼을 모두 눌러 보세요. 멈춘 화면에서는 요청이 전달됐는지 모르지만, 다른 화면에서는 진행 중임을 볼 수 있습니다. 행동에 대한 이런 화면의 반응을 <strong>피드백</strong>이라고 합니다.</p>","ru":"<p>Нажмите обе кнопки «Спросить». На неподвижном экране непонятно, получила ли система запрос; в другом варианте движение показывает, что работа идёт. Такой ответ интерфейса на действие называется <strong>обратной связью</strong>.</p>","sourcePages":[2]}],"week02":[{"anchor":"dt-title","en":"<p><strong>Design thinking</strong> is a way to solve a problem by learning about people, trying ideas and improving them. Example: before designing a notice-translation app, ask students how they read notices today. You can return to an earlier step when a test reveals a new problem.</p>","ko":"<p><strong>디자인 씽킹</strong>은 사람을 이해하고 아이디어를 시험하며 개선하는 문제 해결 방법입니다. 예를 들어 공지 번역 앱을 만들기 전에 학생들이 지금 공지를 어떻게 읽는지 먼저 물어봅니다. 테스트에서 새 문제가 드러나면 앞 단계로 돌아가도 됩니다.</p>","ru":"<p><strong>Дизайн-мышление</strong> — способ решать проблемы: изучать людей, пробовать идеи и улучшать их. Например, перед созданием приложения для перевода объявлений спросите студентов, как они читают их сейчас. Если тест выявил новую проблему, вернитесь к предыдущему шагу.</p>","sourcePages":[3,4]},{"anchor":"per-title","en":"<p>A <strong>persona</strong> is a short profile that represents a type of user. It helps a team remember the person’s <strong>goal</strong> (what they want to do) and <strong>pain point</strong> (what makes it hard). Raj below is a teaching example; a research-based persona combines patterns from real interviews or observations, not guesses about a nationality.</p>","ko":"<p><strong>페르소나</strong>는 특정 유형의 사용자를 대표하도록 만든 짧은 인물 소개입니다. 팀이 사용자의 <strong>목표</strong>(하고 싶은 일)와 <strong>페인 포인트</strong>(그 일을 어렵게 만드는 점)를 기억하게 돕습니다. 아래 라지는 수업용 예시입니다. 실제 기획에서는 국적에 대한 추측이 아니라 인터뷰·관찰에서 반복되는 특징을 모아 만듭니다.</p>","ru":"<p><strong>Персона</strong> — краткий профиль, представляющий определённый тип пользователей. Он помогает помнить <strong>цель</strong> человека — что он хочет сделать — и <strong>трудность</strong>, которая ему мешает. Радж ниже — учебный пример; исследовательская персона опирается на повторяющиеся результаты интервью и наблюдений, а не на предположения о национальности.</p>","sourcePages":[4,5]},{"anchor":"state-title","en":"<p>A <strong>problem statement</strong> says who needs help, what they need to do and why it is difficult. “Build an AI chatbot” is a solution idea, not a user problem. Try: “A student needs to find a deadline because a long notice is hard to read.”</p>","ko":"<p><strong>문제 정의문</strong>에는 도움이 필요한 사람, 하려는 일, 어려운 이유를 적습니다. “AI 챗봇을 만들자”는 해결책 아이디어이지 사용자의 문제가 아닙니다. “학생은 긴 공지를 읽기 어려워서 제출 기한을 쉽게 찾을 방법이 필요하다”처럼 써 보세요.</p>","ru":"<p><strong>Формулировка проблемы</strong> объясняет, кому нужна помощь, что человек хочет сделать и почему это трудно. «Создадим чат-бота» — идея решения, а не проблема пользователя. Пример: «Студенту нужно найти срок сдачи, потому что длинное объявление трудно читать».</p>","sourcePages":[5,6]},{"anchor":"ai-title","en":"<p>An AI can suggest a starting draft, but it cannot replace talking to your users. Mark any invented details as <strong>assumptions</strong>, then check them with an interview or observation. Change or remove a detail when the evidence does not support it.</p>","ko":"<p>AI는 첫 초안을 제안할 수 있지만 사용자를 직접 만나는 일을 대신하지는 못합니다. 만들어 낸 내용에는 <strong>가정</strong>이라고 표시하고 인터뷰나 관찰로 확인하세요. 근거가 맞지 않으면 그 내용을 수정하거나 삭제합니다.</p>","ru":"<p>ИИ может предложить черновик, но не заменяет общение с пользователями. Пометьте выдуманные сведения как <strong>предположения</strong> и проверьте их в интервью или наблюдении. Если данные не подтверждают деталь, исправьте или удалите её.</p>","sourcePages":[6]}],"week03":[{"anchor":"map-title","en":"<p>A <strong>state</strong> is what the interface is doing at one moment: waiting for input, working, showing an answer or reporting a problem. Start a request and watch the highlighted state change. The error state is an alternative path; every successful request does not have to go through an error.</p>","ko":"<p><strong>상태</strong>는 입력을 기다림, 처리 중, 답변 표시, 문제 알림처럼 특정 순간 화면이 하는 일입니다. 요청을 시작하고 강조된 상태가 어떻게 바뀌는지 보세요. 오류는 별도 갈래이며, 성공한 요청이 반드시 오류 상태를 거치는 것은 아닙니다.</p>","ru":"<p><strong>Состояние</strong> показывает, что интерфейс делает сейчас: ждёт ввод, работает, выдаёт ответ или сообщает об ошибке. Запустите запрос и следите за выделением. Ошибка — отдельная ветка, а не обязательный шаг успешного запроса.</p>","sourcePages":[7,8,9]},{"anchor":"det-title","en":"<p>A loading indicator answers “Is the app working?” An error message should answer “What can I do next?” In the demo, compare the empty screen, a suggested prompt and the retry action. Notice how each one gives the user a next step. Check whether error recovery keeps the text you already entered.</p>","ko":"<p>로딩 표시는 “앱이 작동 중인가?”에 답합니다. 오류 안내는 “이제 무엇을 하면 되나?”에도 답해야 합니다. 데모에서 빈 화면, 추천 질문, 재시도 동작을 비교하고 각각 다음 행동을 어떻게 알려주는지 확인하세요. 오류 복구 과정에서 이미 입력한 글이 유지되는지도 확인하세요.</p>","ru":"<p>Индикатор загрузки отвечает на вопрос «Приложение работает?». Сообщение об ошибке должно также объяснять, что делать дальше. Сравните пустой экран, предложенный запрос и повторную попытку. Как каждый из них помогает выбрать следующий шаг? Проверьте, сохраняет ли восстановление после ошибки уже введённый текст.</p>","sourcePages":[8,9,10]},{"anchor":"act-title","en":"<p>Choose one small task, such as summarising a class notice, and follow it in one AI app. Use your screenshots to compare what the user can do next: start, wait or use the answer.</p>","ko":"<p>수업 공지 요약처럼 작은 작업 하나를 정하고 한 AI 앱에서 진행해 보세요. 캡처한 화면을 보며 사용자가 다음에 할 일인 시작하기, 기다리기, 답변 사용하기를 비교합니다.</p>","ru":"<p>Выберите одну небольшую задачу, например краткое изложение объявления, и выполните её в одном приложении с ИИ. По скриншотам сравните следующий шаг пользователя: начать, подождать или использовать ответ.</p>","sourcePages":[10]}],"week04":[{"anchor":"type-title","en":"<p>Choose the interface around the user’s task. A chat is useful for a question that needs discussion; a button can be easier for a repeated task such as “Summarise this page”. <strong>Multimodal</strong> means using more than one kind of input or output, such as a photo plus text.</p>","ko":"<p>사용자가 하려는 일에 맞춰 인터페이스를 고릅니다. 대화가 필요한 질문에는 채팅이 좋고, “이 페이지 요약”처럼 반복하는 작업에는 버튼이 더 쉬울 수 있습니다. <strong>멀티모달</strong>은 사진과 글처럼 여러 종류의 입력·출력을 함께 쓰는 방식입니다.</p>","ru":"<p>Выбирайте интерфейс под задачу человека. Чат полезен, если нужно что-то обсудить; для повторяющегося действия вроде «Кратко изложить страницу» может быть проще кнопка. <strong>Мультимодальность</strong> означает несколько видов ввода или вывода, например фото и текст.</p>","sourcePages":[11]},{"anchor":"turn-title","en":"<p>A <strong>turn</strong> is one person’s or the AI’s chance to respond. If a student says “Translate this”, the AI may need to ask which language they want. A short, specific question is easier to answer than asking the student to explain everything again. Identify the user’s intent before choosing the next reply.</p>","ko":"<p><strong>턴</strong>은 사용자나 AI가 한 번 응답할 차례입니다. 학생이 “이것을 번역해 줘”라고 하면 어떤 언어로 번역할지 물어야 할 수 있습니다. 모든 내용을 다시 설명하게 하기보다 짧고 구체적인 확인 질문을 제시하세요. 다음 답변을 정하기 전에 사용자 의도를 확인하세요.</p>","ru":"<p><strong>Ход диалога</strong> — очередь пользователя или ИИ ответить. Если студент пишет «Переведи это», возможно, нужно уточнить язык. На короткий конкретный вопрос ответить проще, чем заново объяснять всю задачу. Определите намерение пользователя, прежде чем выбирать следующий ответ.</p>","sourcePages":[11,12]},{"anchor":"fall-title","en":"<p>A <strong>fallback</strong> is a useful next path when the first method does not work. Example: if a photo is too blurry to read, offer “Retake photo” and “Type the text”. “Something went wrong” alone leaves the user with no action to take.</p>","ko":"<p><strong>폴백</strong>은 처음 방법이 실패했을 때 사용할 수 있는 대안 경로입니다. 예를 들어 사진이 흐리면 “다시 촬영”과 “글자 직접 입력”을 제공합니다. “문제가 발생했습니다”만 보여주면 사용자는 다음에 무엇을 해야 할지 모릅니다.</p>","ru":"<p><strong>Резервный путь</strong> помогает продолжить, если первый способ не сработал. Например, для размытого фото предложите «Переснять» и «Ввести текст». Одно сообщение «Что-то пошло не так» не объясняет, что делать дальше.</p>","sourcePages":[12,13]},{"anchor":"tree-title","en":"<p>A <strong>dialogue tree</strong> maps possible conversation paths. Use a box for each message or screen. Label arrows with a choice or condition. Include a path for an unclear request that leads back to a useful next action.</p>","ko":"<p><strong>대화 흐름도</strong>는 대화가 진행될 수 있는 여러 경로를 그린 지도입니다. 메시지나 화면은 상자로, 선택이나 조건은 화살표의 이름으로 표시합니다. 질문이 모호할 때도 다음 행동으로 이어지는 경로를 넣으세요.</p>","ru":"<p><strong>Дерево диалога</strong> показывает возможные пути разговора. Изобразите сообщение или экран блоком, а на стрелках укажите выбор или условие. Для неясного запроса добавьте путь к полезному следующему действию.</p>","sourcePages":[13]}],"week05":[{"anchor":"hal-title","en":"<p>A <strong>hallucination</strong> is an AI answer that sounds believable but contains unsupported or incorrect information. It does not mean that the system is deliberately lying. Ask what a student could use to check an important name, number or deadline in the answer.</p>","ko":"<p><strong>할루시네이션</strong>은 그럴듯하지만 근거가 없거나 틀린 정보가 포함된 AI 답변입니다. AI가 의도적으로 거짓말한다는 뜻은 아닙니다. 답변 속 중요한 이름·숫자·기한을 학생이 무엇으로 확인할 수 있을지 생각해 보세요.</p>","ru":"<p><strong>Галлюцинация ИИ</strong> — правдоподобный ответ с неверной или неподтверждённой информацией. Это не означает, что система намеренно обманывает. Подумайте, как студент сможет проверить важное имя, число или срок в ответе.</p>","sourcePages":[14]},{"anchor":"xai-title","en":"<p><strong>Explainability</strong> helps a user understand why a result appeared and what information supports it. A short explanation or a source link can help, but neither guarantees that the answer is correct. A useful design lets the user open the source and compare it with the claim. Show uncertainty when reliable information is missing, and explain what the user should check.</p>","ko":"<p><strong>설명 가능성</strong>은 결과가 왜 나왔고 어떤 정보가 뒷받침하는지 사용자가 이해하도록 돕는 것입니다. 짧은 이유나 출처 링크가 도움이 되지만 답의 정확성을 보장하지는 않습니다. 출처를 열어 답변과 비교할 수 있게 만드세요. 믿을 만한 정보가 부족하면 불확실성을 알리고 사용자가 무엇을 확인할지 설명하세요.</p>","ru":"<p><strong>Объяснимость</strong> помогает понять, почему появился результат и какие сведения его поддерживают. Краткое объяснение или ссылка полезны, но не гарантируют правильность. Дайте пользователю возможность открыть источник и сравнить его с ответом. Покажите неопределённость, если надёжной информации недостаточно, и объясните, что нужно проверить.</p>","sourcePages":[14,15]},{"anchor":"ui-title","en":"<p>A <strong>confidence score</strong> is not automatically the chance that an answer is true. Without a clear meaning, “99%” may make a weak answer look certain. In this lesson, look for a named source, a readable explanation and a way to check the information.</p>","ko":"<p><strong>신뢰도 점수</strong>가 곧 답이 사실일 확률을 뜻하는 것은 아닙니다. 의미 설명 없이 “99%”만 쓰면 약한 답변도 확실해 보일 수 있습니다. 이 수업에서는 출처 이름, 이해할 수 있는 설명, 내용을 확인할 방법이 있는지 보세요.</p>","ru":"<p><strong>Оценка уверенности</strong> не всегда равна вероятности того, что ответ верен. Без понятного объяснения «99%» может создать ложную уверенность. Ищите название источника, ясное пояснение и способ проверить информацию.</p>","sourcePages":[15]},{"anchor":"smart-title","en":"<p><strong>Appropriate trust</strong> means knowing when AI is useful and when another check is needed. Example: an AI can help rewrite an email, but an official deadline should be checked in the original notice. The interface should support checking instead of demanding blind trust.</p>","ko":"<p><strong>적절한 신뢰</strong>는 AI가 유용한 때와 추가 확인이 필요한 때를 구분하는 것입니다. 예를 들어 이메일 표현을 다듬는 데 AI를 쓰더라도 공식 제출 기한은 원문 공지로 확인합니다. 무조건 믿게 하기보다 확인을 도와야 합니다.</p>","ru":"<p><strong>Разумное доверие</strong> — понимание, когда ИИ полезен, а когда нужна дополнительная проверка. Например, ИИ может улучшить письмо, но официальный срок стоит сверить с исходным объявлением. Интерфейс должен помогать проверять, а не требовать слепого доверия.</p>","sourcePages":[15,16]}],"week06":[{"anchor":"blank-title","en":"<p><strong>Onboarding</strong> helps someone use a service for the first time. An empty input box can be hard because the person may not know what the AI can do. A starter example such as “Summarise a class notice” shows both a useful task and how to begin.</p>","ko":"<p><strong>온보딩</strong>은 처음 온 사람이 서비스를 시작하도록 돕는 과정입니다. 빈 입력창만 있으면 AI가 무엇을 할 수 있는지 몰라서 시작하기 어려울 수 있습니다. “수업 공지 요약”처럼 구체적인 예시는 가능한 작업과 시작 방법을 함께 보여줍니다.</p>","ru":"<p><strong>Онбординг</strong> помогает человеку начать пользоваться сервисом. Пустое поле может затруднять первый шаг: непонятно, что умеет ИИ. Пример «Кратко изложить объявление о занятии» показывает полезную задачу и способ её начать.</p>","sourcePages":[17]},{"anchor":"prog-title","en":"<p><strong>Progressive disclosure</strong> means showing the essentials first and more options when they are needed. Example: show a Translate button first, then offer tone or length settings under “More options”. Try the demo levels and ask which choices a new student needs immediately.</p>","ko":"<p><strong>점진적 공개</strong>는 꼭 필요한 것을 먼저 보여주고 추가 옵션은 필요할 때 보여주는 방식입니다. 예를 들어 번역 버튼을 먼저 두고 문체·길이 설정은 “추가 옵션”에 넣습니다. 데모 단계를 바꾸며 초보 학생에게 당장 필요한 선택이 무엇인지 확인하세요.</p>","ru":"<p><strong>Постепенное раскрытие</strong> означает: сначала главное, дополнительные настройки — по необходимости. Например, сначала кнопка перевода, а стиль и длина текста — в «Дополнительных настройках». Сравните уровни демо: что новичку нужно сразу?</p>","sourcePages":[17,18]},{"anchor":"start-title","en":"<p>A good starter button describes an action and an object: “Translate a notice” is clearer than “Try AI”. The label helps the student predict what will happen after clicking. Compare the examples and choose the one you could explain without extra instructions.</p>","ko":"<p>좋은 시작 버튼에는 행동과 대상이 들어갑니다. “AI 체험”보다 “공지 번역”이 더 구체적입니다. 학생이 누른 뒤 일어날 일을 예측할 수 있게 예시를 비교하고, 추가 설명 없이 이해할 수 있는 문구를 골라 보세요.</p>","ru":"<p>Хорошая стартовая кнопка называет действие и объект: «Перевести объявление» понятнее, чем «Попробовать ИИ». Надпись помогает предсказать результат нажатия. Сравните примеры и выберите вариант, понятный без дополнительных инструкций.</p>","sourcePages":[18]},{"anchor":"feed-title","en":"<p>Try the chat below: mark whether the answer helped, choose an optional reason, or edit the answer. Each control gives the designer a different clue about what to improve.</p>","ko":"<p>아래 채팅에서 답변이 도움이 되었는지 표시하고, 원하면 이유를 고르거나 답변을 수정해 보세요. 각각의 반응은 디자이너가 개선할 점을 찾는 서로 다른 단서가 됩니다.</p>","ru":"<p>Попробуйте чат ниже: отметьте, помог ли ответ, при желании выберите причину или исправьте текст. Каждое действие даёт дизайнеру свой сигнал о том, что стоит улучшить.</p>","sourcePages":[18,19]}],"week07":[{"anchor":"role-title","en":"<p>In a <strong>Wizard of Oz test</strong>, a person produces the responses that the prototype appears to get from an AI. This lets you test the experience before building the technology. In a class exercise, agree on the simulation and roles first: one student uses it, one responds and one observes.</p>","ko":"<p><strong>오즈의 마법사 테스트</strong>에서는 AI가 답하는 것처럼 보이는 프로토타입 뒤에서 사람이 응답을 만듭니다. 기술을 개발하기 전에 사용 경험을 시험할 수 있습니다. 수업 실습에서는 시뮬레이션임을 설명하고 사용자·응답 담당자·관찰자 역할을 먼저 정하세요.</p>","ru":"<p>В тесте <strong>«Волшебник страны Оз»</strong> человек создаёт ответы, которые прототип показывает как ответы ИИ. Так можно проверить опыт использования до разработки технологии. На занятии сначала договоритесь о симуляции и ролях: пользователь, отвечающий и наблюдатель.</p>","sourcePages":[20]},{"anchor":"rule-title","en":"<p>The responder follows a short <strong>response script</strong>: rules for what the simulated service can and cannot do. Keep similar wording and waiting times across tests. Otherwise, a particularly helpful responder may hide problems in the design.</p>","ko":"<p>응답 담당자는 모의 서비스가 할 수 있는 일과 없는 일을 적은 짧은 <strong>응답 규칙</strong>을 따릅니다. 테스트마다 표현과 기다리는 시간을 비슷하게 유지하세요. 담당자가 지나치게 잘 도와주면 화면 설계의 문제가 가려질 수 있습니다.</p>","ru":"<p>Отвечающий следует короткому <strong>сценарию ответов</strong>: что имитируемый сервис умеет и чего не умеет. Используйте сходные формулировки и время ожидания в разных тестах. Иначе слишком полезный помощник может скрыть недостатки интерфейса.</p>","sourcePages":[20,21]},{"anchor":"tool-title","en":"<p>A <strong>prototype</strong> is a version made to test an idea; it does not need a real AI model. A few linked screens or paper cards can be enough. Choose tools that let the tester attempt one realistic task, rather than spending all your time making the prototype look finished.</p>","ko":"<p><strong>프로토타입</strong>은 아이디어를 시험하려고 만든 시제품이며 실제 AI 모델이 없어도 됩니다. 연결된 화면 몇 개나 종이 카드로도 시작할 수 있습니다. 완성품처럼 꾸미는 데 시간을 쓰기보다 실제 작업 하나를 시도할 수 있게 하세요.</p>","ru":"<p><strong>Прототип</strong> — версия для проверки идеи; настоящая модель ИИ не обязательна. Иногда достаточно нескольких связанных экранов или бумажных карточек. Выберите средство, с которым участник сможет выполнить одну реалистичную задачу, вместо долгой полировки внешнего вида.</p>","sourcePages":[21]},{"anchor":"flow-title","en":"<p>Give the tester a goal, not instructions for every click: “Find the deadline in this notice”. The observer records where the tester hesitates or needs help. After the task, ask what was confusing and change one part of the prototype before trying again. Include a short debrief to explain which parts of the service were simulated.</p>","ko":"<p>참여자에게 클릭 순서를 알려주기보다 “이 공지에서 제출 기한을 찾아보세요”라는 목표를 주세요. 관찰자는 망설이거나 도움을 요청한 지점을 기록합니다. 끝난 뒤 헷갈린 점을 묻고 한 부분을 고쳐 다시 시도하세요. 사후 설명을 통해 서비스의 어느 부분을 모의로 구현했는지도 알려 주세요.</p>","ru":"<p>Дайте участнику цель, а не порядок нажатий: «Найдите срок в этом объявлении». Наблюдатель отмечает заминки и просьбы о помощи. После задания спросите, что было непонятно, измените одну часть прототипа и повторите тест. Проведите обсуждение после теста: объясните, какие части сервиса имитировались.</p>","sourcePages":[21,22]}],"week08":[{"anchor":"deep-title","en":"<p>A <strong>UI component</strong> is a reusable part of a screen, such as a card or a message. Try one example at a time and ask: “What does this help the user understand or do?”</p>","ko":"<p><strong>UI 컴포넌트</strong>는 카드나 메시지처럼 화면에서 다시 사용하는 부분입니다. 예시를 하나씩 조작하며 “사용자가 무엇을 이해하거나 하도록 돕는가?”를 생각해 보세요.</p>","ru":"<p><strong>UI-компонент</strong> — повторно используемая часть экрана, например карточка или сообщение. Пробуйте по одному примеру и спрашивайте: «Что он помогает пользователю понять или сделать?»</p>"},{"anchor":"c3-title","en":"<p>A <strong>skeleton</strong> is a temporary shape where content will appear while loading. It is a placeholder, not a measured progress bar, and it does not make loading faster. Replay the demo and notice how the shapes become the answer.</p>","ko":"<p><strong>스켈레톤</strong>은 내용을 불러오는 동안 내용이 들어갈 자리를 보여주는 임시 모양입니다. 실제 진행률을 나타내거나 로딩을 빠르게 하지는 않습니다. 예시를 다시 재생해 모양이 답변으로 바뀌는 모습을 보세요.</p>","ru":"<p><strong>Скелетная загрузка</strong> — временные формы на месте будущего содержимого. Они обозначают ожидание, но не измеряют прогресс и не ускоряют загрузку. Повторите демо и посмотрите, как формы сменяются ответом.</p>"},{"anchor":"c4-title","en":"<p>A <strong>tooltip</strong> gives a short extra explanation near a control. It is useful for optional help, but important instructions must also work on touchscreens and with a keyboard. Try opening the explanation without relying only on a mouse hover.</p>","ko":"<p><strong>툴팁</strong>은 조작 요소 가까이에 짧은 부가 설명을 보여줍니다. 보충 도움말에 유용하지만 중요한 안내는 터치 화면과 키보드로도 볼 수 있어야 합니다. 마우스를 올리는 방식 외에도 설명을 열 수 있는지 확인하세요.</p>","ru":"<p><strong>Всплывающая подсказка</strong> даёт краткое пояснение рядом с элементом. Она полезна для дополнительной помощи, но важные инструкции должны быть доступны и на сенсорном экране, и с клавиатуры. Попробуйте открыть подсказку без наведения мыши.</p>"}],"week09":[{"anchor":"deep-title","en":"<p><strong>Figma</strong> is a tool for drawing interface screens and linking them into a clickable prototype. These small demos explain its ideas; they do not edit a Figma file. First try a demo here, then repeat the action in your own Figma project when you have time. Before sharing a prototype, check its view permission.</p>","ko":"<p><strong>Figma</strong>는 화면을 그리고 연결하여 클릭 가능한 프로토타입을 만드는 도구입니다. 아래 데모는 기능의 개념을 보여주며 Figma 파일을 직접 변경하지 않습니다. 여기에서 먼저 동작을 보고 시간이 있을 때 자신의 Figma 프로젝트에서 따라 해 보세요. 프로토타입을 공유하기 전에 보기 권한을 확인하세요.</p>","ru":"<p><strong>Figma</strong> — инструмент для рисования интерфейсов и соединения экранов в кликабельный прототип. Демо ниже объясняют идеи, но не изменяют файл Figma. Сначала попробуйте их здесь, затем повторите действие в своём проекте, когда будет время. Перед отправкой прототипа проверьте права просмотра.</p>","sourcePages":[23]},{"anchor":"c2-title","en":"<p><strong>Auto Layout</strong> arranges items with consistent spacing. With suitable size settings, the container can grow when a translated label becomes longer. Try the longer text and check that the words still fit.</p>","ko":"<p><strong>오토 레이아웃</strong>은 요소를 일정한 간격으로 배치합니다. 크기를 알맞게 설정하면 번역된 글이 길어져도 영역이 늘어날 수 있습니다. 긴 글로 바꿔 글자가 잘리지 않는지 확인하세요.</p>","ru":"<p><strong>Auto Layout</strong> размещает элементы с одинаковыми отступами. При подходящих настройках размера контейнер может расширяться, если перевод надписи длиннее. Включите длинный текст и проверьте, помещаются ли слова.</p>","sourcePages":[23,24]},{"anchor":"c3-title","en":"<p>A <strong>main component</strong> is a reusable design part. An <strong>instance</strong> is a copy linked to it. Change the colour and see the linked chat bubbles update together. A setting changed only on one instance can stay different.</p>","ko":"<p><strong>주요 컴포넌트</strong>는 다시 사용하는 원본 디자인입니다. <strong>인스턴스</strong>는 원본과 연결된 복사본입니다. 색을 바꾸고 연결된 말풍선이 함께 바뀌는지 보세요. 한 인스턴스에서만 바꾼 설정은 다르게 유지될 수 있습니다.</p>","ru":"<p><strong>Главный компонент</strong> — повторно используемый образец дизайна. <strong>Экземпляр</strong> — связанная с ним копия. Измените цвет и посмотрите, как обновятся связанные сообщения. Настройка, изменённая только в одном экземпляре, может остаться другой.</p>","sourcePages":[24]},{"anchor":"c5-title","en":"<p>A <strong>prototype connection</strong> links an action to another screen or state. Here, a click moves through input, a simulated wait and a result. A real service waits for its actual result. Use Reset to try the journey again.</p>","ko":"<p><strong>프로토타입 연결</strong>은 한 행동을 다른 화면이나 상태로 이어 줍니다. 여기서는 클릭하면 입력·모의 대기·결과 순서로 이동합니다. 실제 서비스는 실제 처리 결과를 기다립니다. 처음으로 버튼을 눌러 흐름을 다시 따라가 보세요.</p>","ru":"<p><strong>Связь в прототипе</strong> соединяет действие с другим экраном или состоянием. Здесь нажатие ведёт от ввода через имитацию ожидания к результату. Настоящий сервис ждёт фактического результата. Нажмите «Заново», чтобы повторить сценарий.</p>","sourcePages":[24,25]}],"week10":[{"anchor":"bias-title","en":"<p><strong>Bias</strong> is a pattern that can give some people unfair results. In an AI service, problems can come from the training examples, labels or design choices. Ask who might be left out of your test, including people with different languages, abilities or devices.</p>","ko":"<p><strong>편향</strong>은 일부 사람에게 불공정한 결과를 줄 수 있는 경향입니다. AI에서는 학습 사례, 분류 기준, 설계 선택 등에서 문제가 생길 수 있습니다. 다른 언어·능력·기기를 쓰는 사람이 테스트에서 빠지지 않았는지 생각해 보세요.</p>","ru":"<p><strong>Предвзятость</strong> — закономерность, из-за которой некоторые люди могут получать несправедливые результаты. Причины бывают в обучающих примерах, метках или решениях дизайнера. Подумайте, кого не хватает в тестах: людей с другими языками, возможностями или устройствами.</p>","sourcePages":[26]},{"anchor":"hitl-title","en":"<p><strong>Human-in-the-loop</strong> means a person takes part in checking or deciding, rather than leaving every decision to the AI. Example: the AI drafts a message, but the student reviews it before sending. The review step should show enough information for a real choice.</p>","ko":"<p><strong>휴먼 인 더 루프</strong>는 모든 결정을 AI에게 맡기지 않고 사람이 확인·판단 과정에 참여하는 방식입니다. 예를 들어 AI가 메시지 초안을 만들고 학생이 검토한 후 보냅니다. 검토 단계에는 실제로 선택할 수 있는 정보가 있어야 합니다.</p>","ru":"<p><strong>Участие человека в процессе</strong> означает, что человек проверяет результат или принимает решение, а не передаёт всё ИИ. Например, ИИ составляет сообщение, а студент проверяет его перед отправкой. Для осмысленного выбора на экране должно быть достаточно информации.</p>","sourcePages":[26,27]},{"anchor":"ctrl-title","en":"<p>The example offers <strong>Stop</strong>, <strong>Edit</strong> and <strong>Report</strong>. Choose the control that fits the mistake. Reporting asks for a review; it is not <strong>Undo</strong> and does not reverse an action already completed.</p>","ko":"<p>아래 예시에는 <strong>중지</strong>, <strong>수정</strong>, <strong>오류 신고</strong>가 있습니다. 실수의 종류에 맞는 기능을 골라 보세요. 신고는 재검토를 요청하는 기능이며, 이미 끝난 행동을 <strong>되돌리기</strong>하는 기능은 아닙니다.</p>","ru":"<p>В примере есть <strong>Остановить</strong>, <strong>Редактировать</strong> и <strong>Сообщить об ошибке</strong>. Выберите действие под ошибку. Сообщение запрашивает проверку; оно не отменяет уже выполненное действие.</p>","sourcePages":[27]},{"anchor":"dark-title","en":"<p>A <strong>dark pattern</strong> is a design that pressures or misleads people into a choice they did not want. Example: make “Accept” easy to see but hide “Decline”. Compare the choices: can a user refuse as clearly as they can agree?</p>","ko":"<p><strong>다크 패턴</strong>은 원하지 않는 선택을 하도록 압박하거나 오도하는 설계입니다. 예를 들어 “동의”는 잘 보이게 하고 “거절”은 숨기는 것입니다. 사용자가 동의하는 것만큼 분명하게 거절할 수 있는지 비교해 보세요.</p>","ru":"<p><strong>Тёмный паттерн</strong> — дизайн, который давит на человека или вводит его в заблуждение, подталкивая к нежелательному выбору. Например, «Принять» заметно, а «Отказаться» спрятано. Можно ли отказаться так же понятно, как согласиться?</p>","sourcePages":[27]}],"week11":[{"anchor":"creepy-title","en":"<p><strong>Personalisation</strong> changes a service to fit a person’s needs or preferences. <strong>Privacy</strong> concerns how their personal information is collected and used. Example: remembering a chosen language can help, but collecting unrelated location history needs a separate reason and choice.</p>","ko":"<p><strong>개인화</strong>는 필요나 선호에 맞게 서비스를 바꾸는 것입니다. <strong>프라이버시</strong>는 개인정보를 어떻게 수집하고 사용하는지와 관련됩니다. 선택한 언어를 기억하면 편리하지만 관련 없는 위치 이력을 수집하려면 별도 이유와 선택이 필요합니다.</p>","ru":"<p><strong>Персонализация</strong> подстраивает сервис под потребности или предпочтения человека. <strong>Приватность</strong> касается сбора и использования его личной информации. Запомнить выбранный язык удобно, но сбор не связанной с задачей истории местоположений требует отдельного объяснения и выбора.</p>","sourcePages":[28]},{"anchor":"just-title","en":"<p><strong>Just-in-time permission</strong> asks for access when a task needs it. For a camera request, explain which photo you need and why, then ask for the user’s <strong>consent</strong>. If they decline, offer selecting an existing image or typing the text.</p>","ko":"<p><strong>적시 권한 요청</strong>은 과제에 접근 권한이 필요한 순간에 요청하는 것입니다. 카메라를 사용하려면 어떤 사진이 왜 필요한지 설명한 뒤 <strong>동의</strong>를 구하세요. 거절하면 기존 이미지 선택이나 직접 입력 같은 다른 방법을 제공하세요.</p>","ru":"<p><strong>Разрешение в нужный момент</strong> запрашивает доступ тогда, когда он нужен для задачи. Объясните, какое фото нужно и зачем, затем запросите <strong>согласие</strong> на камеру. При отказе предложите выбрать готовое изображение или ввести текст.</p>","sourcePages":[28,29]},{"anchor":"ctrl-title","en":"<p>A <strong>toggle</strong> switches one setting on or off. The text should say what changes, and the state should be understandable without colour alone. These controls are simulations: changing them here does not change an account or delete real personal data.</p>","ko":"<p><strong>토글</strong>은 설정 하나를 켜거나 끄는 스위치입니다. 어떤 설정이 바뀌는지 적고 색만으로 상태를 구분하지 않도록 하세요. 여기의 조작은 모의 실습이며 실제 계정을 변경하거나 개인정보를 삭제하지 않습니다.</p>","ru":"<p><strong>Переключатель</strong> включает или выключает одну настройку. Подпись должна объяснять изменение, а состояние — быть понятным не только по цвету. Здесь это симуляция: настройки настоящего аккаунта не меняются и личные данные не удаляются.</p>","sourcePages":[29]},{"anchor":"rule-title","en":"<p><strong>Data minimisation</strong> means asking only for information needed for the stated task. Before adding a form field, ask: “Could this service work without it?” A notice-translation demo, for example, does not need a student’s bank password.</p>","ko":"<p><strong>데이터 최소화</strong>는 설명한 작업에 필요한 정보만 요청하는 원칙입니다. 입력칸을 추가하기 전에 “이 정보 없이도 작동할 수 있을까?”를 물어보세요. 예를 들어 공지 번역 데모에는 학생의 은행 비밀번호가 필요하지 않습니다.</p>","ru":"<p><strong>Минимизация данных</strong> — запрос только той информации, которая нужна для заявленной задачи. Перед добавлением поля спросите: «Может ли сервис работать без этого?». Например, для перевода объявления не нужен банковский пароль студента.</p>","sourcePages":[29]}],"week12":[{"anchor":"lov-title","en":"<p>The <strong>line of visibility</strong> separates what the user sees from what happens in the background. A translation card is visible; retrieving a document or processing its text usually is not.</p>","ko":"<p><strong>가시성의 선</strong>은 사용자에게 보이는 부분과 뒤에서 처리하는 일을 나눕니다. 번역 결과 카드는 보이지만 문서를 불러오거나 글을 처리하는 과정은 보통 보이지 않습니다.</p>","ru":"<p><strong>Линия видимости</strong> отделяет то, что видит пользователь, от фоновых процессов. Карточка перевода видна, а поиск документа и обработка текста обычно не видны.</p>","sourcePages":[30,31]},{"anchor":"bp-title","en":"<p>Read this chart in two directions. Across a row, follow the task over time; down a column, connect the user’s action to the UI, AI, data and recovery plan. If uploading a photo fails, the visible screen should offer a next step even though the failure happened behind it.</p>","ko":"<p>표를 두 방향으로 읽으세요. 가로로는 시간에 따른 작업 흐름을, 세로로는 같은 순간의 사용자 행동·UI·AI·데이터·복구 계획을 연결합니다. 사진 업로드가 내부에서 실패해도 화면에는 다음 행동이 보여야 합니다.</p>","ru":"<p>Читайте таблицу в двух направлениях. По строке следите за задачей во времени; по столбцу связывайте действие пользователя, UI, ИИ, данные и восстановление. Если загрузка фото не удалась в фоне, экран всё равно должен предложить следующий шаг.</p>","sourcePages":[31,32]},{"anchor":"act-title","en":"<p>Describe each step in everyday words, such as “read the text from the photo”. Use the example above as a guide when mapping your own task. You do not need to write code.</p>","ko":"<p>“사진에서 글자 읽기”처럼 각 단계의 일을 쉬운 말로 적어 보세요. 위 예시를 참고해 자신의 과제를 표로 연결하면 됩니다. 코드를 작성할 필요는 없습니다.</p>","ru":"<p>Описывайте шаги обычными словами, например «прочитать текст на фото». Используйте пример выше как ориентир для схемы своей задачи. Писать код не нужно.</p>","sourcePages":[32]}],"week13":[{"anchor":"metric-title","en":"<p>A <strong>usability test</strong> observes someone trying a task. A <strong>metric</strong> is a defined thing you record, such as task completion or time spent finding Retry. Decide what “success” means before testing; a polite AI answer is not a success if the user still cannot complete the task.</p>","ko":"<p><strong>사용성 테스트</strong>는 사람이 작업을 시도하는 모습을 관찰하는 것입니다. <strong>지표</strong>는 작업 완료 여부나 재시도 버튼을 찾는 시간처럼 정해서 기록하는 항목입니다. 테스트 전에 성공 기준을 정하세요. AI가 공손히 답해도 사용자가 목적을 이루지 못했다면 성공이 아닙니다.</p>","ru":"<p><strong>Тест удобства использования</strong> наблюдает, как человек выполняет задачу. <strong>Метрика</strong> — заранее определённый показатель, например завершение задачи или время поиска кнопки повтора. Определите успех до теста: вежливый ответ ИИ не означает успех, если задача осталась нерешённой.</p>","sourcePages":[33,34]},{"anchor":"lat-title","en":"<p><strong>Latency</strong> is the delay before the system responds. Waiting feels different depending on the task, device and feedback, so the times shown here are practice scenarios, not universal limits. Compare whether the user can tell what is happening and can stop or retry.</p>","ko":"<p><strong>지연 시간</strong>은 시스템이 응답하기까지 걸리는 시간입니다. 작업·기기·안내 방식에 따라 기다림은 다르게 느껴지므로 여기의 시간은 실습 상황이며 모든 서비스에 적용되는 기준이 아닙니다. 진행 상황을 알 수 있고 중지·재시도할 수 있는지 비교하세요.</p>","ru":"<p><strong>Задержка</strong> — время до ответа системы. Ожидание зависит от задачи, устройства и обратной связи, поэтому показанные времена — учебные сценарии, а не универсальные границы. Сравните, понятно ли происходящее и можно ли остановить или повторить действие.</p>","sourcePages":[34,35]},{"anchor":"peer-title","en":"<p><strong>Asynchronous</strong> means people do not have to participate at the same time. A classmate can try your prototype when they are free and leave a comment. Write an observation plus its effect: “I could not find Back, so I had to restart” is more useful than “The UX is bad”.</p>","ko":"<p><strong>비동기식</strong>은 모두가 같은 시간에 참여하지 않아도 된다는 뜻입니다. 친구가 여유 있을 때 프로토타입을 써 보고 댓글을 남길 수 있습니다. “UX가 나빠요”보다 “뒤로 가기를 찾지 못해 처음부터 다시 했어요”처럼 관찰과 영향을 함께 적으세요.</p>","ru":"<p><strong>Асинхронно</strong> означает, что участвовать одновременно не обязательно. Однокурсник может проверить прототип в свободное время и оставить комментарий. Наблюдение с последствием — «Я не нашёл Назад и начал заново» — полезнее, чем «Плохой UX».</p>","sourcePages":[35,36]},{"anchor":"mat-title","en":"<p><strong>Priority</strong> tells you what to fix first. Start with a problem that prevents the task, then address confusing wording or hard-to-read text. Record the screen, the action and the observed result so another person can reproduce the problem.</p>","ko":"<p><strong>우선순위</strong>는 무엇부터 고칠지 정하는 것입니다. 작업 자체를 막는 문제를 먼저 고치고, 헷갈리는 문구나 읽기 어려운 글을 다듬습니다. 다른 사람도 같은 문제를 확인할 수 있도록 화면·행동·실제 결과를 기록하세요.</p>","ru":"<p><strong>Приоритет</strong> определяет, что исправить первым. Начните с проблемы, блокирующей задачу, затем улучшайте непонятные надписи и трудночитаемый текст. Запишите экран, действие и результат, чтобы другой человек мог воспроизвести проблему.</p>","sourcePages":[36,37]}],"week14":[{"anchor":"qa-title","en":"<p><strong>QA</strong> means checking that the designed experience works as intended. The <strong>happy path</strong> is the normal route when everything succeeds; an <strong>edge case</strong> is a less usual condition such as an empty upload or a timeout. Test both, including a way back from a problem. Check every route for dead ends.</p>","ko":"<p><strong>QA</strong>는 설계한 경험이 의도대로 동작하는지 확인하는 일입니다. <strong>해피 패스</strong>는 모두 성공하는 일반 경로이고, <strong>예외 상황</strong>은 빈 업로드나 시간 초과 같은 덜 일반적인 조건입니다. 두 경로와 문제에서 돌아오는 방법을 함께 점검하세요. 각 경로에 막다른 흐름이 없는지 확인하세요.</p>","ru":"<p><strong>QA</strong> — проверка, что опыт работает так, как задумано. <strong>Основной успешный путь</strong> — обычный сценарий без ошибок; <strong>особый случай</strong> — например, пустая загрузка или тайм-аут. Проверьте оба сценария и путь выхода из проблемы. Проверьте, нет ли в сценариях тупиков.</p>","sourcePages":[39,40]},{"anchor":"ui-title","en":"<p>A checklist helps you inspect the same important points on every screen. Do more than check that a button exists: click it and confirm the result. Also try keyboard navigation and a narrow screen, because a control may be visible but difficult to use.</p>","ko":"<p><strong>체크리스트</strong>는 모든 화면에서 중요한 항목을 빠뜨리지 않게 돕습니다. 버튼이 있다는 것만 확인하지 말고 눌러서 결과까지 확인하세요. 보이는 버튼도 사용하기 어려울 수 있으므로 키보드와 좁은 화면으로도 시도해 보세요.</p>","ru":"<p><strong>Чек-лист</strong> помогает проверять важные пункты на каждом экране. Недостаточно убедиться, что кнопка есть: нажмите её и проверьте результат. Попробуйте клавиатуру и узкий экран — видимый элемент ещё не обязательно удобен.</p>","sourcePages":[39,40]},{"anchor":"pdf-title","en":"<p>Use the optional structure below to connect each design choice with evidence: the user’s problem, a screen, a test finding and the change you made.</p>","ko":"<p>아래의 선택적 구성 예시를 활용해 사용자의 문제, 화면, 테스트에서 발견한 점, 수정한 내용을 연결해 보세요. 각 디자인 선택의 근거가 드러나면 됩니다.</p>","ru":"<p>Используйте необязательную структуру ниже, чтобы связать решения с основаниями: проблемой пользователя, экраном, результатом теста и вашим изменением.</p>","sourcePages":[40]},{"anchor":"act-title","en":"<p>Choose one complete journey and run it from the first screen to the result. Then create one failure and check whether you can recover without losing your work. Keep a short before-and-after note so you can explain what improved and why.</p>","ko":"<p>처음 화면부터 결과까지 이어지는 흐름 하나를 끝까지 실행하세요. 다음으로 실패 상황 하나를 만들고 작업을 잃지 않고 복구할 수 있는지 확인합니다. 무엇이 왜 좋아졌는지 설명할 수 있도록 수정 전·후를 짧게 기록하세요.</p>","ru":"<p>Пройдите один полный путь от первого экрана до результата. Затем создайте одну ошибку и проверьте восстановление без потери работы. Сохраните короткую запись «до и после», чтобы объяснить, что и почему улучшилось.</p>","sourcePages":[40]}]},"glossary":{"week01":[{"term":"UX","en":{"name":"User experience (UX)","definition":"The whole experience of using a product to do something. It includes ease, feelings, and whether the task succeeds.","example":"You find a bus route quickly and feel sure you chose the right bus."},"ko":{"name":"사용자 경험 (UX)","definition":"어떤 일을 하려고 제품을 사용하는 전체 경험입니다. 쉬운지, 어떤 기분인지, 목적을 이루었는지를 포함합니다.","example":"버스 경로를 쉽게 찾고, 맞는 버스를 탔다는 확신이 드는 경험입니다."},"ru":{"name":"Пользовательский опыт (UX)","definition":"Весь опыт использования продукта для решения задачи: удобство, чувства и результат.","example":"Вы быстро находите маршрут и уверены, что сели в нужный автобус."}},{"term":"UI","en":{"name":"User interface (UI)","definition":"The parts of a product you see or use to interact with it, such as buttons, text, and menus.","example":"The search box and the Search button in a bus app are UI."},"ko":{"name":"사용자 인터페이스 (UI)","definition":"버튼, 글자, 메뉴처럼 사용자가 보고 조작하는 제품의 접점입니다.","example":"버스 앱의 검색창과 검색 버튼은 UI입니다."},"ru":{"name":"Пользовательский интерфейс (UI)","definition":"Элементы продукта, которые вы видите и используете: кнопки, текст и меню.","example":"Строка поиска и кнопка «Найти» в приложении автобусов — это UI."}},{"term":"AI","en":{"name":"Artificial intelligence (AI)","definition":"Computer systems that do tasks such as finding patterns, understanding text, or creating answers. Their answers can be wrong.","example":"A writing assistant suggests a polite email to your teacher."},"ko":{"name":"인공지능 (AI)","definition":"패턴 찾기, 글 이해하기, 답변 만들기 같은 일을 하는 컴퓨터 시스템입니다. 답이 틀릴 수 있습니다.","example":"글쓰기 도우미가 교수님께 보낼 공손한 이메일 초안을 제안합니다."},"ru":{"name":"Искусственный интеллект (ИИ)","definition":"Компьютерные системы, которые находят закономерности, работают с текстом или создают ответы. Они могут ошибаться.","example":"Помощник предлагает вежливый черновик письма преподавателю."}},{"term":"Prompt","en":{"name":"Prompt","definition":"The instruction or question you give an AI system. Clear context helps explain what you need.","example":"“Write a short email asking my teacher about the homework.”"},"ko":{"name":"프롬프트 (Prompt)","definition":"AI에게 주는 질문이나 지시입니다. 상황을 함께 알려주면 원하는 일을 더 분명히 전달할 수 있습니다.","example":"“교수님께 과제 내용을 묻는 짧은 이메일을 써 줘.”"},"ru":{"name":"Запрос к ИИ (Prompt)","definition":"Вопрос или инструкция для ИИ. Контекст помогает объяснить, что вам нужно.","example":"«Напиши короткое письмо преподавателю с вопросом о домашнем задании»."}},{"term":"Feedback","en":{"name":"Interface feedback","definition":"A visible or audible response showing that the product received your action or is doing work.","example":"After you press Send, a “Sending…” message appears."},"ko":{"name":"화면의 반응 (Feedback)","definition":"제품이 조작을 받았거나 처리 중임을 알려주는 화면 또는 소리의 반응입니다.","example":"보내기를 누르면 “전송 중…”이 나타납니다."},"ru":{"name":"Отклик интерфейса (Feedback)","definition":"Визуальный или звуковой ответ, показывающий, что система получила действие или выполняет работу.","example":"После нажатия «Отправить» появляется «Отправка…»."}}],"week02":[{"term":"Persona","en":{"name":"Persona","definition":"A short profile representing a group of users with similar goals and difficulties. A research-based persona uses real observations; an invented one is only a starting idea.","example":"Example only: Raj wants to read bank forms, but unfamiliar Korean words slow him down."},"ko":{"name":"페르소나 (Persona)","definition":"비슷한 목표와 어려움을 가진 사용자 집단을 대표하는 짧은 인물 소개입니다. 실제 관찰을 바탕으로 만들며, 상상한 인물은 검증할 초안입니다.","example":"가상 예시: 라지는 은행 서류를 읽고 싶지만 낯선 한국어 때문에 오래 걸립니다."},"ru":{"name":"Персона (Persona)","definition":"Краткий образ группы пользователей с похожими целями и трудностями. Он опирается на наблюдения; выдуманный образ — лишь гипотеза.","example":"Учебный пример: Радж хочет понять банковскую форму, но незнакомые корейские слова мешают."}},{"term":"Pain point","en":{"name":"Pain point","definition":"A specific difficulty that stops or slows a user while they try to reach a goal.","example":"A student cannot find the homework deadline in a long notice."},"ko":{"name":"어려움·불편 지점 (Pain point)","definition":"목표를 이루는 과정에서 사용자를 막거나 일을 느리게 만드는 구체적인 어려움입니다.","example":"공지문이 길어서 과제 마감일을 찾기 어렵습니다."},"ru":{"name":"Трудность пользователя (Pain point)","definition":"Конкретная проблема, которая мешает человеку достичь цели или замедляет его.","example":"Студент не может найти срок сдачи задания в длинном объявлении."}},{"term":"Empathy","en":{"name":"Empathy","definition":"Trying to understand another person’s situation by listening and observing. Do not assume that everyone has your needs.","example":"Ask a classmate how they read Korean notices and watch where they get stuck."},"ko":{"name":"공감 (Empathy)","definition":"듣고 관찰하며 다른 사람의 상황을 이해하는 것입니다. 모두가 나와 같은 필요를 갖는다고 가정하지 않습니다.","example":"친구가 한국어 공지를 어떻게 읽는지 묻고 어디서 막히는지 살펴봅니다."},"ru":{"name":"Эмпатия (Empathy)","definition":"Попытка понять ситуацию другого человека через вопросы и наблюдение. Его потребности могут отличаться от ваших.","example":"Спросите, как одногруппник читает корейские объявления, и посмотрите, где ему трудно."}},{"term":"Problem statement","en":{"name":"Problem statement","definition":"One clear sentence naming the user, their goal, and the difficulty. It describes the problem before choosing a solution.","example":"“Raj needs to understand bank forms because unfamiliar words make him afraid of mistakes.”"},"ko":{"name":"문제 정의문 (Problem statement)","definition":"사용자, 목표, 어려움을 한 문장으로 정리한 것입니다. 해결책을 고르기 전에 문제를 설명합니다.","example":"“라지는 낯선 단어 때문에 실수가 걱정되어 은행 서류를 이해할 방법이 필요하다.”"},"ru":{"name":"Формулировка проблемы (Problem statement)","definition":"Одно понятное предложение о пользователе, его цели и трудности. Сначала описываем проблему, затем выбираем решение.","example":"«Раджу нужен способ понять банковские формы, потому что незнакомые слова вызывают страх ошибки»."}},{"term":"Prototype","en":{"name":"Prototype","definition":"An early model used to try an idea. It may be a paper sketch or clickable screens, without a working AI.","example":"Three connected screens show how a student uploads and translates a notice."},"ko":{"name":"프로토타입 (Prototype)","definition":"아이디어를 시험해 보는 초기 모형입니다. 실제 AI 없이 종이 그림이나 클릭 가능한 화면으로 만들 수 있습니다.","example":"공지문 업로드와 번역 과정을 연결된 세 화면으로 보여줍니다."},"ru":{"name":"Прототип (Prototype)","definition":"Ранняя модель для проверки идеи. Это могут быть рисунки или кликабельные экраны без настоящего ИИ.","example":"Три связанных экрана показывают загрузку и перевод объявления."}}],"week03":[{"term":"State","en":{"name":"Interface state","definition":"What the screen shows at a particular moment in a task. The same screen changes as the task moves forward.","example":"A translation screen can be empty, loading, finished, or showing an error."},"ko":{"name":"화면 상태 (State)","definition":"작업 중 특정 순간에 화면이 보여주는 모습입니다. 작업이 진행되면 같은 화면의 상태가 바뀝니다.","example":"번역 화면에는 시작 전, 처리 중, 완료, 오류 상태가 있습니다."},"ru":{"name":"Состояние интерфейса (State)","definition":"То, что экран показывает в определённый момент работы. По ходу задачи состояние меняется.","example":"Экран перевода бывает пустым, загружающимся, готовым или с ошибкой."}},{"term":"Empty state","en":{"name":"Empty state","definition":"A screen with no user content yet. Explain what to do next and give a useful starting action.","example":"“Upload a notice to translate it” appears before any file is added."},"ko":{"name":"빈 상태 (Empty state)","definition":"아직 사용자 콘텐츠가 없는 화면입니다. 다음에 무엇을 할지와 시작할 행동을 알려줍니다.","example":"파일을 올리기 전 “번역할 공지문을 올려 주세요”가 표시됩니다."},"ru":{"name":"Пустое состояние (Empty state)","definition":"Экран, на котором ещё нет пользовательского содержимого. Он должен объяснять, как начать.","example":"До загрузки файла показано: «Загрузите объявление для перевода»."}},{"term":"Loading","en":{"name":"Loading state","definition":"A sign that the system is working and the result is not ready. Show an honest status and allow cancellation when possible.","example":"“Reading your document…” appears while the file is processed."},"ko":{"name":"처리 중 상태 (Loading)","definition":"시스템이 작업 중이며 결과가 아직 준비되지 않았음을 알리는 상태입니다. 실제 진행 상태와 가능한 취소 방법을 보여줍니다.","example":"파일을 처리하는 동안 “문서를 읽는 중…”이 나타납니다."},"ru":{"name":"Состояние загрузки (Loading)","definition":"Сигнал, что система работает, а результат ещё не готов. Покажите реальный статус и возможность отмены, если она есть.","example":"Во время обработки файла видно: «Читаем документ…»."}},{"term":"Streaming","en":{"name":"Streaming","definition":"Showing an answer in small parts as it is produced, instead of waiting for the whole answer. It does not guarantee correctness.","example":"An email draft appears a few words at a time."},"ko":{"name":"스트리밍 (Streaming)","definition":"답변이 만들어지는 대로 조금씩 보여주는 방식입니다. 전체 답변이 끝날 때까지 기다리지 않아도 되지만 정확성을 보장하지는 않습니다.","example":"이메일 초안의 단어가 차례로 나타납니다."},"ru":{"name":"Потоковый вывод (Streaming)","definition":"Показ ответа небольшими частями по мере создания. Это не гарантирует правильность ответа.","example":"Черновик письма появляется по нескольку слов."}},{"term":"Recovery","en":{"name":"Error recovery","definition":"Helping a user continue after something goes wrong. Keep their work and offer a clear next action.","example":"After a network error, Retry sends the same message again."},"ko":{"name":"오류 복구 (Recovery)","definition":"문제가 생긴 뒤 작업을 계속할 수 있도록 돕는 것입니다. 입력한 내용을 보존하고 다음 행동을 보여줍니다.","example":"통신 오류 후 다시 시도를 누르면 같은 메시지를 재전송합니다."},"ru":{"name":"Восстановление после ошибки (Recovery)","definition":"Помощь пользователю в продолжении работы после сбоя. Сохраните его данные и предложите следующий шаг.","example":"После сбоя сети кнопка «Повторить» снова отправляет то же сообщение."}}],"week04":[{"term":"Conversation flow","en":{"name":"Conversation flow","definition":"The order of messages and choices in a conversation. Include what happens when information is missing.","example":"The assistant asks where you want to go before searching for a ticket."},"ko":{"name":"대화 흐름 (Conversation flow)","definition":"대화에서 메시지와 선택이 이어지는 순서입니다. 정보가 부족한 경우의 흐름도 포함합니다.","example":"항공권을 찾기 전에 도착지를 묻는 과정입니다."},"ru":{"name":"Ход диалога (Conversation flow)","definition":"Порядок сообщений и выборов в разговоре. Включает действия при нехватке информации.","example":"Перед поиском билета помощник спрашивает пункт назначения."}},{"term":"Intent","en":{"name":"User intent","definition":"What a user wants to achieve, even if their message is short or unclear.","example":"“I’m late for class” may mean “Help me find the fastest route.” Ask if unsure."},"ko":{"name":"사용자 의도 (Intent)","definition":"메시지가 짧거나 불분명해도 사용자가 이루려는 목적을 말합니다.","example":"“수업에 늦었어”는 빠른 길을 찾고 싶다는 뜻일 수 있습니다. 불확실하면 물어봅니다."},"ru":{"name":"Намерение пользователя (Intent)","definition":"То, чего человек хочет добиться, даже если его сообщение короткое или неясное.","example":"«Опаздываю на занятие» может означать поиск быстрого маршрута. Если неясно, уточните."}},{"term":"Clarifying question","en":{"name":"Clarifying question","definition":"A question that asks for missing information before the system acts.","example":"“Which language should I translate this into?”"},"ko":{"name":"확인 질문 (Clarifying question)","definition":"시스템이 행동하기 전에 부족한 정보를 물어보는 질문입니다.","example":"“어떤 언어로 번역할까요?”"},"ru":{"name":"Уточняющий вопрос (Clarifying question)","definition":"Вопрос о недостающей информации перед выполнением действия.","example":"«На какой язык перевести текст?»"}},{"term":"Fallback","en":{"name":"Fallback","definition":"A useful alternative when the system cannot finish the requested task. Explain the limit and offer a next step.","example":"“I cannot read this photo. Try a clearer photo or type the text.”"},"ko":{"name":"대안 경로 (Fallback)","definition":"시스템이 요청을 끝낼 수 없을 때 제공하는 다른 방법입니다. 한계를 설명하고 다음 행동을 제안합니다.","example":"“사진을 읽기 어렵습니다. 선명한 사진을 올리거나 글을 입력해 주세요.”"},"ru":{"name":"Запасной путь (Fallback)","definition":"Другой способ помочь, если система не может выполнить запрос. Объясните ограничение и следующий шаг.","example":"«Фото не читается. Загрузите более чёткое фото или введите текст»."}},{"term":"Multimodal","en":{"name":"Multimodal interface","definition":"An interface using more than one kind of input or output, such as text, images, and voice.","example":"A student takes a photo of a menu and hears its translation."},"ko":{"name":"멀티모달 인터페이스 (Multimodal)","definition":"글, 이미지, 음성처럼 둘 이상의 종류로 입력하거나 결과를 보여주는 인터페이스입니다.","example":"메뉴 사진을 찍고 번역된 내용을 음성으로 듣습니다."},"ru":{"name":"Мультимодальный интерфейс (Multimodal)","definition":"Интерфейс с несколькими видами ввода или вывода: текстом, изображениями, голосом.","example":"Студент фотографирует меню и слушает перевод."}}],"week05":[{"term":"Hallucination","en":{"name":"Hallucination","definition":"An AI answer that sounds believable but is false or unsupported. It is not the same as an intentional lie.","example":"An AI invents a scholarship deadline that is not in the notice."},"ko":{"name":"환각·잘못 생성한 정보 (Hallucination)","definition":"그럴듯하게 들리지만 틀렸거나 근거가 없는 AI 답변입니다. 의도적인 거짓말과는 다릅니다.","example":"공지문에 없는 장학금 마감일을 AI가 만들어 냅니다."},"ru":{"name":"Галлюцинация ИИ (Hallucination)","definition":"Правдоподобный, но ложный или неподтверждённый ответ ИИ. Это не то же самое, что намеренная ложь.","example":"ИИ придумывает срок подачи на стипендию, которого нет в объявлении."}},{"term":"Citation","en":{"name":"Citation / source link","definition":"A reference showing where a statement comes from. The linked source must actually support that statement.","example":"A summary links to the original school notice so you can check the date."},"ko":{"name":"출처 표시 (Citation)","definition":"어떤 내용의 근거가 어디에 있는지 알려주는 표시입니다. 연결된 자료가 실제로 그 내용을 뒷받침해야 합니다.","example":"학교 공지 원문 링크를 열어 날짜가 맞는지 확인합니다."},"ru":{"name":"Ссылка на источник (Citation)","definition":"Указание, откуда взято утверждение. Источник должен действительно его подтверждать.","example":"В пересказе есть ссылка на объявление университета для проверки даты."}},{"term":"XAI","en":{"name":"Explainable AI (XAI)","definition":"Ways to help people understand an AI result and its limits. A useful explanation may show relevant reasons, evidence, or missing information.","example":"A recommendation explains that it used the study topic you selected."},"ko":{"name":"설명 가능한 AI (XAI)","definition":"AI 결과와 한계를 이해하도록 돕는 방법입니다. 관련 이유, 근거, 빠진 정보를 설명할 수 있습니다.","example":"추천 결과가 사용자가 선택한 공부 주제를 참고했다고 설명합니다."},"ru":{"name":"Объяснимый ИИ (XAI)","definition":"Способы помочь человеку понять результат ИИ и его ограничения: причины, основания и недостающие данные.","example":"Рекомендация объясняет, что опирается на выбранную вами тему учёбы."}},{"term":"Uncertainty","en":{"name":"Uncertainty","definition":"A situation where the system does not have enough reliable information to be sure. Say what is unknown and how to check it.","example":"“The date is hard to read. Please check the original notice.”"},"ko":{"name":"불확실성 (Uncertainty)","definition":"확신할 만큼 믿을 수 있는 정보가 충분하지 않은 상태입니다. 모르는 점과 확인 방법을 알려줍니다.","example":"“날짜가 선명하지 않습니다. 원본 공지에서 확인해 주세요.”"},"ru":{"name":"Неопределённость (Uncertainty)","definition":"Ситуация, когда надёжной информации недостаточно для уверенного ответа. Укажите, что неизвестно и как это проверить.","example":"«Дата плохо видна. Проверьте исходное объявление»."}},{"term":"Calibrated trust","en":{"name":"Appropriate trust","definition":"Trusting a system according to what it can and cannot do. The level of checking should match the importance of the task.","example":"Use AI to draft an email, but verify important dates before sending."},"ko":{"name":"적절한 신뢰 (Calibrated trust)","definition":"시스템이 할 수 있는 일과 없는 일에 맞게 믿는 것입니다. 중요한 일일수록 필요한 확인을 합니다.","example":"AI로 이메일 초안을 쓰되 중요한 날짜는 보내기 전에 확인합니다."},"ru":{"name":"Обоснованное доверие (Calibrated trust)","definition":"Доверие с учётом возможностей и ограничений системы. Чем важнее задача, тем тщательнее проверка.","example":"Используйте ИИ для черновика письма, но проверьте важные даты."}}],"week06":[{"term":"Onboarding","en":{"name":"Onboarding","definition":"Helping a new user understand what a product does and take a useful first step.","example":"A translation app shows an example notice and an Upload button."},"ko":{"name":"첫 사용 안내 (Onboarding)","definition":"처음 온 사용자가 제품의 역할을 이해하고 유용한 첫 행동을 하도록 돕는 과정입니다.","example":"번역 앱이 예시 공지와 업로드 버튼을 보여줍니다."},"ru":{"name":"Знакомство с продуктом (Onboarding)","definition":"Помощь новому пользователю в понимании продукта и выполнении первого полезного действия.","example":"Приложение перевода показывает пример объявления и кнопку загрузки."}},{"term":"Progressive disclosure","en":{"name":"Progressive disclosure","definition":"Showing the most useful choices first and extra choices when they are needed.","example":"Show Translate first; put tone and length settings under More options."},"ko":{"name":"점진적 공개 (Progressive disclosure)","definition":"먼저 필요한 선택을 보여주고 추가 선택은 필요할 때 펼쳐 주는 방법입니다.","example":"번역 버튼을 먼저 보여주고 말투·길이는 추가 설정에 넣습니다."},"ru":{"name":"Постепенное раскрытие (Progressive disclosure)","definition":"Сначала показываем основные варианты, а дополнительные — когда они нужны.","example":"Сначала видна кнопка «Перевести», а тон и длина — в дополнительных настройках."}},{"term":"Starter prompt","en":{"name":"Starter prompt","definition":"A ready-made example request that helps a user begin. It should describe a useful task clearly.","example":"A “Summarize this notice” chip fills the empty input box."},"ko":{"name":"시작 질문 예시 (Starter prompt)","definition":"사용자가 시작하도록 돕는 미리 만든 요청문입니다. 유용한 작업이 무엇인지 분명히 알려줍니다.","example":"“이 공지 요약하기” 칩을 누르면 입력창에 요청이 들어갑니다."},"ru":{"name":"Начальный запрос (Starter prompt)","definition":"Готовый пример запроса, помогающий начать. Он должен ясно описывать полезную задачу.","example":"Кнопка «Кратко перескажи объявление» заполняет поле ввода."}},{"term":"Explicit feedback","en":{"name":"Explicit feedback","definition":"Feedback a user gives directly, such as a rating or comment.","example":"A student selects Not helpful and writes “The answer was too long.”"},"ko":{"name":"직접 피드백 (Explicit feedback)","definition":"평가나 의견처럼 사용자가 직접 알려주는 반응입니다.","example":"학생이 도움이 안 됨을 누르고 “답이 너무 길어요”라고 씁니다."},"ru":{"name":"Явная обратная связь (Explicit feedback)","definition":"Оценка или комментарий, которые пользователь даёт напрямую.","example":"Студент нажимает «Не помогло» и пишет: «Ответ слишком длинный»."}},{"term":"Implicit feedback","en":{"name":"Implicit feedback","definition":"A possible signal inferred from actions, such as copying or retrying. The action alone does not prove satisfaction.","example":"Copying an answer may mean it is useful, or that the student wants to edit it elsewhere."},"ko":{"name":"간접 피드백 (Implicit feedback)","definition":"복사·재시도 같은 행동에서 추정하는 신호입니다. 행동 하나만으로 만족 여부를 단정할 수 없습니다.","example":"복사는 답이 유용해서일 수도 있고 다른 곳에서 고치려는 것일 수도 있습니다."},"ru":{"name":"Неявная обратная связь (Implicit feedback)","definition":"Возможный сигнал из действий, например копирования или повтора. Одно действие не доказывает удовлетворённость.","example":"Ответ могут скопировать потому, что он полезен, или чтобы исправить его в другом месте."}}],"week07":[{"term":"Wizard of Oz","en":{"name":"Wizard of Oz (WoZ)","definition":"A test where a person produces responses behind a prototype that looks automated. It helps test an experience before building the full system.","example":"A teammate types example replies for a study-planning assistant."},"ko":{"name":"오즈의 마법사 실험 (WoZ)","definition":"자동으로 작동하는 것처럼 보이는 프로토타입 뒤에서 사람이 답하는 실험입니다. 완성된 시스템 전에 사용 경험을 시험합니다.","example":"팀원이 학습 계획 도우미의 예시 답변을 직접 입력합니다."},"ru":{"name":"Метод «Волшебник страны Оз» (WoZ)","definition":"Тест, в котором за прототипом с видимостью автоматизации отвечает человек. Так проверяют опыт до создания системы.","example":"Участник команды вручную отвечает от имени учебного помощника."}},{"term":"Participant","en":{"name":"Participant","definition":"The person who tries a task during a test. Tell them what participation involves and allow them to stop.","example":"A classmate tries to create a study plan with your prototype."},"ko":{"name":"참여자 (Participant)","definition":"테스트에서 과제를 직접 해 보는 사람입니다. 참여 방법을 알리고 원하면 중단할 수 있게 합니다.","example":"친구가 프로토타입으로 공부 계획을 만들어 봅니다."},"ru":{"name":"Участник (Participant)","definition":"Человек, который выполняет задание в тесте. Объясните условия участия и возможность остановиться.","example":"Одногруппник пробует составить учебный план в прототипе."}},{"term":"Observer","en":{"name":"Observer","definition":"The person who records what happened during a test without doing the task for the user.","example":"Write “looked for Retry for 8 seconds,” instead of “bad at using apps.”"},"ko":{"name":"관찰자 (Observer)","definition":"사용자 대신 과제를 해 주지 않고 테스트에서 일어난 일을 기록하는 사람입니다.","example":"“앱을 못 쓴다” 대신 “다시 시도 버튼을 8초간 찾았다”라고 기록합니다."},"ru":{"name":"Наблюдатель (Observer)","definition":"Человек, который записывает события теста, не выполняя задачу за пользователя.","example":"Запишите «искал кнопку повтора 8 секунд», а не «плохо пользуется приложениями»."}},{"term":"Script","en":{"name":"Test script","definition":"A written plan for tasks, prompts, and responses. It helps keep different test sessions consistent.","example":"Each participant gets the same task: “Plan three short study sessions.”"},"ko":{"name":"테스트 대본 (Script)","definition":"과제, 질문, 답변을 적은 계획입니다. 여러 테스트를 비슷한 조건으로 진행하도록 돕습니다.","example":"모두에게 “짧은 공부 시간 세 번을 계획해 보세요”라는 같은 과제를 줍니다."},"ru":{"name":"Сценарий теста (Script)","definition":"План заданий, вопросов и ответов. Он помогает проводить разные сессии в похожих условиях.","example":"Каждому дают одну задачу: «Запланируйте три коротких занятия»."}},{"term":"Debrief","en":{"name":"Debrief","definition":"A discussion after a test about what happened. Explain what was simulated and ask about the participant’s experience.","example":"Tell the classmate which replies came from a person, then ask what felt confusing."},"ko":{"name":"실험 후 설명·대화 (Debrief)","definition":"테스트 뒤에 과정을 설명하고 경험을 듣는 시간입니다. 무엇을 모의로 구현했는지 알립니다.","example":"어떤 답변을 사람이 작성했는지 설명하고 헷갈린 점을 묻습니다."},"ru":{"name":"Обсуждение после теста (Debrief)","definition":"Разговор о прошедшем тесте. Объясните, что имитировалось, и спросите об опыте участника.","example":"Расскажите, какие ответы писал человек, затем спросите, что было непонятно."}}],"week08":[{"term":"Card","en":{"name":"Card layout","definition":"A small visual group containing related information and actions.","example":"A translation result, source link, and Copy button appear in one card."},"ko":{"name":"카드 레이아웃 (Card)","definition":"관련된 정보와 행동을 하나의 작은 시각적 영역으로 묶는 배치입니다.","example":"번역 결과, 출처, 복사 버튼을 한 카드에 담습니다."},"ru":{"name":"Карточка (Card)","definition":"Небольшой визуальный блок с относящимися друг к другу данными и действиями.","example":"Перевод, ссылка на источник и кнопка копирования находятся в одной карточке."}},{"term":"Sticky header","en":{"name":"Sticky header","definition":"A heading or toolbar that stays visible while the nearby content scrolls.","example":"The title remains visible while you scroll through a long answer."},"ko":{"name":"고정 헤더 (Sticky header)","definition":"주변 내용을 스크롤해도 계속 보이는 제목 또는 도구 영역입니다.","example":"긴 답변을 내려 읽어도 제목이 계속 보입니다."},"ru":{"name":"Закреплённая панель (Sticky header)","definition":"Заголовок или панель, которые остаются видны при прокрутке содержимого.","example":"Название остаётся на экране, пока вы читаете длинный ответ."}},{"term":"Skeleton","en":{"name":"Skeleton loading","definition":"Simple placeholder shapes showing where content will appear while it loads. They do not show real progress by themselves.","example":"Grey lines stand in for an answer until the text is ready."},"ko":{"name":"스켈레톤 로딩 (Skeleton)","definition":"로딩 중 콘텐츠가 나타날 자리를 간단한 도형으로 보여주는 것입니다. 이것만으로 실제 진행률을 알 수는 없습니다.","example":"답변이 준비될 때까지 회색 줄로 글의 위치를 보여줍니다."},"ru":{"name":"Каркас загрузки (Skeleton)","definition":"Простые формы на месте будущего содержимого во время загрузки. Сами по себе они не показывают реальный прогресс.","example":"До готовности ответа вместо текста видны серые линии."}},{"term":"Tooltip","en":{"name":"Tooltip","definition":"A small explanation shown when you hover over or focus on an element. Essential instructions should also be available without hover.","example":"A source icon explains what “Source” means when focused."},"ko":{"name":"툴팁 (Tooltip)","definition":"요소에 마우스를 올리거나 키보드 초점을 두면 나오는 짧은 설명입니다. 필수 안내는 마우스 없이도 볼 수 있어야 합니다.","example":"출처 아이콘에 초점을 두면 출처의 의미를 설명합니다."},"ru":{"name":"Подсказка (Tooltip)","definition":"Короткое пояснение при наведении или фокусе на элементе. Важные инструкции должны быть доступны и без наведения.","example":"Значок источника показывает пояснение при фокусе."}},{"term":"Toast","en":{"name":"Toast notification","definition":"A short status message that appears briefly without blocking the page.","example":"“Copied” appears after a real copy action succeeds."},"ko":{"name":"토스트 알림 (Toast)","definition":"페이지를 막지 않고 잠깐 나타나는 상태 메시지입니다.","example":"실제 복사에 성공하면 “복사했습니다”가 잠깐 나타납니다."},"ru":{"name":"Краткое уведомление (Toast)","definition":"Сообщение о состоянии, которое ненадолго появляется, не блокируя страницу.","example":"После успешного копирования ненадолго появляется «Скопировано»."}},{"term":"Drawer","en":{"name":"Side drawer","definition":"A panel that slides in from the side to show extra information or settings.","example":"A Sources panel opens beside the answer and can be closed."},"ko":{"name":"사이드 드로어 (Drawer)","definition":"추가 정보나 설정을 보여주려고 화면 옆에서 나오는 패널입니다.","example":"답변 옆에 출처 패널이 열리고 닫힙니다."},"ru":{"name":"Боковая панель (Drawer)","definition":"Панель, появляющаяся сбоку для дополнительных сведений или настроек.","example":"Рядом с ответом открывается и закрывается панель источников."}}],"week09":[{"term":"Frame","en":{"name":"Frame","definition":"A container for a screen or a group of design elements in Figma.","example":"A phone-sized frame contains the title, input box, and Send button."},"ko":{"name":"프레임 (Frame)","definition":"Figma에서 화면이나 여러 디자인 요소를 담는 영역입니다.","example":"휴대폰 크기의 프레임 안에 제목, 입력창, 보내기 버튼을 배치합니다."},"ru":{"name":"Фрейм (Frame)","definition":"Контейнер для экрана или группы элементов в Figma.","example":"Фрейм размером с телефон содержит заголовок, поле ввода и кнопку отправки."}},{"term":"Auto Layout","en":{"name":"Auto Layout","definition":"A Figma feature that arranges items and adjusts spacing or size as content changes.","example":"A button grows when “Send” changes to “Send message.”"},"ko":{"name":"오토 레이아웃 (Auto Layout)","definition":"내용이 바뀔 때 요소를 배치하고 간격이나 크기를 조정하는 Figma 기능입니다.","example":"“전송”이 “메시지 전송”으로 길어지면 버튼이 커집니다."},"ru":{"name":"Автоматическая компоновка (Auto Layout)","definition":"Функция Figma для размещения элементов и изменения размеров или отступов при изменении содержимого.","example":"Кнопка растёт, когда «Отправить» меняется на более длинный текст."}},{"term":"Component","en":{"name":"Component and instance","definition":"A component is a reusable design element. An instance is a linked use of it that can receive changes from the main component.","example":"Several screens use instances of the same Send button."},"ko":{"name":"컴포넌트와 인스턴스 (Component / Instance)","definition":"컴포넌트는 다시 쓸 수 있는 디자인 요소입니다. 인스턴스는 원본과 연결되어 변경을 전달받을 수 있는 사용본입니다.","example":"여러 화면에서 같은 보내기 버튼의 인스턴스를 씁니다."},"ru":{"name":"Компонент и экземпляр (Component / Instance)","definition":"Компонент — повторно используемый элемент. Экземпляр связан с главным компонентом и может получать его изменения.","example":"На нескольких экранах используются экземпляры одной кнопки отправки."}},{"term":"Prototype connection","en":{"name":"Prototype connection","definition":"A link that defines which screen or state appears after an action in a prototype.","example":"Clicking Translate moves from the input screen to the loading screen."},"ko":{"name":"프로토타입 연결 (Prototype connection)","definition":"프로토타입에서 어떤 행동 뒤에 어느 화면·상태가 나올지 정하는 연결입니다.","example":"번역하기를 누르면 입력 화면에서 로딩 화면으로 이동합니다."},"ru":{"name":"Связь прототипа (Prototype connection)","definition":"Связь, определяющая, какой экран или состояние появляется после действия.","example":"Нажатие «Перевести» переводит экран ввода в состояние загрузки."}},{"term":"View permission","en":{"name":"View permission","definition":"A setting that controls who can open a design or prototype. Choose access suitable for the intended viewers.","example":"Check that your teacher can open the link you submit."},"ko":{"name":"보기 권한 (View permission)","definition":"디자인이나 프로토타입을 누가 열 수 있는지 정하는 설정입니다. 보려는 사람에게 맞는 권한을 정합니다.","example":"제출한 링크를 교수님이 열 수 있는지 확인합니다."},"ru":{"name":"Доступ для просмотра (View permission)","definition":"Настройка, определяющая, кто может открыть дизайн или прототип. Доступ должен подходить вашим зрителям.","example":"Проверьте, что преподаватель может открыть отправленную ссылку."}}],"week10":[{"term":"Bias","en":{"name":"Bias","definition":"A pattern that gives unfair or systematically different results for some people. It can come from data, design choices, or how a system is used.","example":"A study app gives poorer help to students using a less common language."},"ko":{"name":"편향 (Bias)","definition":"일부 사람에게 불공정하거나 일정하게 다른 결과가 나타나는 경향입니다. 데이터, 설계, 사용 방식 등에서 생길 수 있습니다.","example":"사용자가 적은 언어를 쓰는 학생에게 학습 앱이 더 나쁜 도움을 줍니다."},"ru":{"name":"Предвзятость (Bias)","definition":"Устойчивая разница или несправедливость результатов для некоторых людей. Причиной могут быть данные, дизайн или применение системы.","example":"Учебное приложение хуже помогает студентам, использующим редкий язык."}},{"term":"Human-in-the-loop","en":{"name":"Human-in-the-loop (HITL)","definition":"A design where a person takes part in checking or deciding during an automated process.","example":"AI drafts an email, and the student reviews it before sending."},"ko":{"name":"사람의 검토·결정 참여 (HITL)","definition":"자동 처리 과정에서 사람이 확인하거나 결정하도록 설계하는 것입니다.","example":"AI가 이메일 초안을 쓰고 학생이 검토한 뒤 보냅니다."},"ru":{"name":"Человек в процессе (HITL)","definition":"Подход, при котором человек участвует в проверке или принятии решений в автоматизированном процессе.","example":"ИИ пишет черновик, а студент проверяет его перед отправкой."}},{"term":"Override","en":{"name":"User override","definition":"A way for the user to stop or change what the system is doing.","example":"A Stop button ends text generation when the answer goes off topic."},"ko":{"name":"사용자 개입·변경 (Override)","definition":"사용자가 시스템의 작업을 멈추거나 바꾸는 방법입니다.","example":"답변이 엉뚱한 방향으로 가면 중지 버튼으로 생성을 멈춥니다."},"ru":{"name":"Вмешательство пользователя (Override)","definition":"Возможность остановить или изменить действие системы.","example":"Кнопка остановки прекращает генерацию ответа, если он ушёл от темы."}},{"term":"Contestability","en":{"name":"Contestability","definition":"A way to question an automated decision and ask for a review.","example":"A rejected application offers “Request a human review.”"},"ko":{"name":"이의 제기 가능성 (Contestability)","definition":"자동 결정에 질문하고 재검토를 요청할 수 있도록 하는 것입니다.","example":"신청이 거절되면 “담당자 재검토 요청”을 제공합니다."},"ru":{"name":"Возможность оспорить решение (Contestability)","definition":"Возможность поставить под сомнение автоматическое решение и запросить пересмотр.","example":"После отказа в заявке есть действие «Запросить проверку человеком»."}},{"term":"Dark pattern","en":{"name":"Dark pattern","definition":"A design that pressures or misleads people into choices they did not intend to make.","example":"A hidden, preselected option shares chat data without a clear choice."},"ko":{"name":"다크 패턴 (Dark pattern)","definition":"사용자가 의도하지 않은 선택을 하도록 압박하거나 오해하게 만드는 설계입니다.","example":"눈에 띄지 않게 미리 선택된 항목이 대화 데이터를 공유하게 만듭니다."},"ru":{"name":"Тёмный паттерн (Dark pattern)","definition":"Дизайн, который давит на человека или вводит в заблуждение, подталкивая к нежелательному выбору.","example":"Незаметная заранее отмеченная настройка разрешает передачу переписки."}}],"week11":[{"term":"Personalization","en":{"name":"Personalization","definition":"Changing content or choices using relevant information about a user. Explain what information was used.","example":"A study app suggests practice for the topic you selected."},"ko":{"name":"개인화 (Personalization)","definition":"사용자와 관련된 정보를 바탕으로 내용이나 선택지를 바꾸는 것입니다. 어떤 정보를 썼는지 설명합니다.","example":"학습 앱이 선택한 주제에 맞는 연습문제를 추천합니다."},"ru":{"name":"Персонализация (Personalization)","definition":"Изменение содержимого или вариантов на основе подходящей информации о пользователе. Объясняйте, какие данные использованы.","example":"Учебное приложение предлагает упражнения по выбранной вами теме."}},{"term":"Privacy","en":{"name":"Privacy","definition":"How personal information is collected, used, shared, and controlled. Clear words should match the service’s real behavior.","example":"A settings page explains whether chat history is saved and how to remove it."},"ko":{"name":"개인정보 보호 (Privacy)","definition":"개인정보를 수집·사용·공유·관리하는 방식에 관한 것입니다. 안내와 실제 서비스 동작이 일치해야 합니다.","example":"설정에서 대화 기록 저장 여부와 삭제 방법을 설명합니다."},"ru":{"name":"Приватность (Privacy)","definition":"То, как личные данные собираются, используются, передаются и контролируются. Обещания должны совпадать с работой сервиса.","example":"Настройки объясняют, сохраняется ли переписка и как её удалить."}},{"term":"Consent","en":{"name":"Informed choice / consent","definition":"A clear choice made after understanding what data is needed and why. Do not hide the purpose or make refusal hard.","example":"The app explains camera use before asking Allow or Deny."},"ko":{"name":"설명을 이해한 뒤 하는 선택·동의 (Consent)","definition":"필요한 데이터와 이유를 이해한 뒤 하는 분명한 선택입니다. 목적을 숨기거나 거절을 어렵게 만들지 않습니다.","example":"카메라 사용 이유를 설명한 다음 허용과 거절을 묻습니다."},"ru":{"name":"Осознанный выбор / согласие (Consent)","definition":"Понятный выбор после объяснения, какие данные нужны и зачем. Не скрывайте цель и не затрудняйте отказ.","example":"Приложение объясняет доступ к камере, затем предлагает разрешить или отказать."}},{"term":"Just-in-time permission","en":{"name":"Just-in-time permission","definition":"Asking for access when a user reaches the task that needs it.","example":"Ask for camera access when the student chooses Scan a document."},"ko":{"name":"필요한 순간의 권한 요청 (Just-in-time permission)","definition":"그 권한이 필요한 작업을 시작하는 시점에 접근 허용을 묻는 방식입니다.","example":"학생이 문서 촬영을 선택할 때 카메라 권한을 묻습니다."},"ru":{"name":"Разрешение в нужный момент (Just-in-time permission)","definition":"Запрос доступа именно тогда, когда пользователь начинает задачу, которой он нужен.","example":"Доступ к камере запрашивается при выборе сканирования документа."}},{"term":"Data minimization","en":{"name":"Data minimization","definition":"Collecting only the data needed for a clear purpose. Less unnecessary data means less to protect.","example":"A notice translator needs the notice text, not your whole contact list."},"ko":{"name":"데이터 최소 수집 (Data minimization)","definition":"분명한 목적에 필요한 데이터만 모으는 것입니다. 불필요한 데이터가 적으면 보호할 정보도 줄어듭니다.","example":"공지 번역에는 공지 글이 필요하며 연락처 전체는 필요하지 않습니다."},"ru":{"name":"Минимизация данных (Data minimization)","definition":"Сбор только тех данных, которые нужны для конкретной цели. Чем меньше лишних данных, тем меньше нужно защищать.","example":"Переводчику объявления нужен текст, а не весь список контактов."}}],"week12":[{"term":"Service blueprint","en":{"name":"Service blueprint","definition":"A map connecting a user’s steps to visible screens and the work behind them. It also helps plan what happens when something fails.","example":"For document translation, map upload, processing, result, and recovery."},"ko":{"name":"서비스 블루프린트 (Service blueprint)","definition":"사용자의 단계, 보이는 화면, 뒤에서 하는 일을 연결한 지도입니다. 실패할 때의 대응도 함께 계획합니다.","example":"문서 번역의 업로드·처리·결과·오류 대응을 연결해 봅니다."},"ru":{"name":"Схема сервиса (Service blueprint)","definition":"Карта, связывающая шаги пользователя, видимые экраны и работу за ними. Она помогает продумать действия при сбое.","example":"Для перевода документа сопоставьте загрузку, обработку, результат и восстановление."}},{"term":"Frontstage","en":{"name":"Frontstage","definition":"The parts of the service the user can see or interact with.","example":"An Upload button and “Reading…” message are frontstage."},"ko":{"name":"사용자에게 보이는 영역 (Frontstage)","definition":"사용자가 보거나 직접 조작할 수 있는 서비스 부분입니다.","example":"업로드 버튼과 “읽는 중…” 메시지가 여기에 해당합니다."},"ru":{"name":"Видимая часть сервиса (Frontstage)","definition":"Часть сервиса, которую пользователь видит или с которой взаимодействует.","example":"Кнопка загрузки и сообщение «Читаем…» относятся к видимой части."}},{"term":"Backstage","en":{"name":"Backstage","definition":"The work that supports the service but is not directly visible to the user.","example":"The system reads text from the uploaded image behind the screen."},"ko":{"name":"화면 뒤 처리 영역 (Backstage)","definition":"서비스를 작동시키지만 사용자에게 직접 보이지 않는 일입니다.","example":"시스템이 업로드된 이미지에서 글을 읽는 처리입니다."},"ru":{"name":"Невидимая часть сервиса (Backstage)","definition":"Работа, которая обеспечивает сервис, но напрямую не видна пользователю.","example":"Система извлекает текст из загруженной картинки за экраном интерфейса."}},{"term":"API","en":{"name":"Application programming interface (API)","definition":"An agreed way for one software service to request data or work from another.","example":"A study app sends text to a translation service and receives a translation."},"ko":{"name":"서비스 간 연결 방법 (API)","definition":"한 소프트웨어가 다른 서비스에 데이터나 작업을 요청하는 약속된 방법입니다.","example":"학습 앱이 번역 서비스에 글을 보내고 번역 결과를 받습니다."},"ru":{"name":"Программный интерфейс (API)","definition":"Согласованный способ, которым одна программа запрашивает данные или работу у другой.","example":"Учебное приложение отправляет текст сервису перевода и получает результат."}},{"term":"OCR","en":{"name":"Optical character recognition (OCR)","definition":"Turning text in an image into text a computer can use. Blurry photos can make this step fail.","example":"A photo of a school notice becomes editable text before translation."},"ko":{"name":"광학 문자 인식 (OCR)","definition":"사진 속 글자를 컴퓨터가 사용할 수 있는 글자로 바꾸는 기술입니다. 사진이 흐리면 실패할 수 있습니다.","example":"학교 공지 사진에서 글자를 추출한 다음 번역합니다."},"ru":{"name":"Распознавание текста (OCR)","definition":"Преобразование букв на изображении в текст, с которым может работать компьютер. Размытое фото может вызвать ошибку.","example":"Текст объявления извлекается из фотографии перед переводом."}}],"week13":[{"term":"Usability test","en":{"name":"Usability test","definition":"Watching people try realistic tasks to find where a design helps or blocks them. Test the design, not the person.","example":"Ask a classmate to change the translation language without giving hints."},"ko":{"name":"사용성 테스트 (Usability test)","definition":"사람이 실제 같은 과제를 해 보는 모습을 관찰하여 도움이 되거나 막히는 부분을 찾는 것입니다. 사람의 능력을 평가하는 것이 아닙니다.","example":"힌트를 주지 않고 친구에게 번역 언어를 바꿔 달라고 합니다."},"ru":{"name":"Тест удобства использования (Usability test)","definition":"Наблюдение за выполнением реальных задач, чтобы найти удобства и трудности дизайна. Проверяется дизайн, а не человек.","example":"Попросите одногруппника изменить язык перевода без подсказок."}},{"term":"Task success","en":{"name":"Task success","definition":"Whether a user reaches the task’s goal. Decide what counts as success before the test.","example":"Success means finding the correct homework deadline in the original notice."},"ko":{"name":"과제 성공 (Task success)","definition":"사용자가 과제의 목표에 도달했는지 확인하는 것입니다. 테스트 전에 성공 기준을 정합니다.","example":"공지 원문에서 정확한 과제 마감일을 찾는 것을 성공으로 정합니다."},"ru":{"name":"Успех задачи (Task success)","definition":"Достижение пользователем цели задания. Определите критерий успеха до теста.","example":"Успех — найти правильный срок сдачи в исходном объявлении."}},{"term":"Recovery time","en":{"name":"Recovery time","definition":"The time needed to continue successfully after an error. Record where the delay happens.","example":"Time how long it takes to notice Retry and get a new result."},"ko":{"name":"오류 복구 시간 (Recovery time)","definition":"오류 뒤에 다시 작업을 성공적으로 이어가는 데 걸린 시간입니다. 어디서 지체되는지 기록합니다.","example":"다시 시도 버튼을 발견하고 새 결과를 얻을 때까지 시간을 잽니다."},"ru":{"name":"Время восстановления (Recovery time)","definition":"Время, необходимое для успешного продолжения после ошибки. Записывайте, где возникла задержка.","example":"Измерьте время до нахождения кнопки повтора и получения нового результата."}},{"term":"Peer review","en":{"name":"Peer review","definition":"Feedback from a classmate using a specific example, not just a score or personal taste.","example":"“The status text helped me know the upload was still working.”"},"ko":{"name":"동료 검토 (Peer review)","definition":"점수나 취향만 말하지 않고 구체적 예시를 들어 친구에게 주는 피드백입니다.","example":"“상태 글이 있어서 업로드가 계속 진행 중임을 알 수 있었어.”"},"ru":{"name":"Обратная связь одногруппника (Peer review)","definition":"Конкретные замечания одногруппника, а не только оценка или личный вкус.","example":"«Текст состояния помог понять, что загрузка ещё идёт»."}},{"term":"Priority","en":{"name":"Fix priority","definition":"The order for fixing issues, based on their impact and how often they happen.","example":"Fix a broken Submit button before adjusting a decorative background."},"ko":{"name":"수정 우선순위 (Priority)","definition":"문제의 영향과 발생 빈도를 보고 먼저 고칠 순서를 정하는 것입니다.","example":"장식 배경보다 작동하지 않는 제출 버튼을 먼저 고칩니다."},"ru":{"name":"Приоритет исправлений (Priority)","definition":"Порядок исправления проблем с учётом последствий и частоты.","example":"Сначала исправьте неработающую отправку, затем декоративный фон."}}],"week14":[{"term":"QA","en":{"name":"Quality assurance (QA)","definition":"Planned checks to see whether a product works as intended. Record what was checked and what still needs fixing.","example":"Try every important button and confirm the next screen is correct."},"ko":{"name":"품질 점검 (QA)","definition":"제품이 의도한 대로 작동하는지 계획을 세워 확인하는 것입니다. 확인한 것과 남은 문제를 기록합니다.","example":"주요 버튼을 눌러 다음 화면이 맞게 열리는지 확인합니다."},"ru":{"name":"Проверка качества (QA)","definition":"Запланированные проверки работы продукта. Записывайте, что проверено и что ещё нужно исправить.","example":"Нажмите все важные кнопки и проверьте правильность следующего экрана."}},{"term":"Happy path","en":{"name":"Happy path","definition":"The normal route where all inputs are valid and nothing goes wrong.","example":"A clear document uploads and translates successfully."},"ko":{"name":"정상 흐름 (Happy path)","definition":"입력이 올바르고 오류가 없는 정상적인 진행 경로입니다.","example":"선명한 문서를 올리고 번역에 성공하는 과정입니다."},"ru":{"name":"Основной успешный путь (Happy path)","definition":"Обычный ход задачи с правильными данными и без сбоев.","example":"Чёткий документ успешно загружается и переводится."}},{"term":"Edge case","en":{"name":"Edge case","definition":"An unusual or difficult situation outside the normal flow that still needs a sensible response.","example":"A very long name, an empty upload, or a lost connection needs a planned screen."},"ko":{"name":"예외 상황 (Edge case)","definition":"일반적인 흐름 밖에서도 적절히 대응해야 하는 드물거나 까다로운 상황입니다.","example":"매우 긴 이름, 파일 없는 업로드, 연결 끊김에도 대응 화면이 필요합니다."},"ru":{"name":"Особый случай (Edge case)","definition":"Необычная или сложная ситуация вне обычного хода, для которой тоже нужен понятный ответ.","example":"Очень длинное имя, пустая загрузка или потеря связи требуют продуманного экрана."}},{"term":"Dead end","en":{"name":"Dead end / orphan screen","definition":"A dead end offers no useful next action. An orphan screen has no connection from the tested flow.","example":"An error page has neither Retry nor Back, so the user cannot continue."},"ko":{"name":"막다른 흐름·고립 화면 (Dead end / Orphan screen)","definition":"막다른 흐름에는 다음 행동이 없고, 고립 화면은 테스트 경로에서 연결되어 있지 않습니다.","example":"오류 화면에 다시 시도와 뒤로가기가 없어 계속할 수 없습니다."},"ru":{"name":"Тупик / несвязанный экран (Dead end / Orphan screen)","definition":"В тупике нет полезного следующего действия. Несвязанный экран недоступен из проверяемого пути.","example":"На экране ошибки нет ни повтора, ни возврата, и продолжить нельзя."}},{"term":"Portfolio","en":{"name":"UX portfolio","definition":"A collection showing your design work, why you made decisions, and what you learned. Exam requirements must come from the course announcement.","example":"Show a user problem, a screen change, and evidence that explains the change."},"ko":{"name":"UX 포트폴리오 (Portfolio)","definition":"만든 디자인, 선택한 이유, 배운 점을 모은 자료입니다. 시험 제출 요건은 수업 공지에서 확인합니다.","example":"사용자 문제, 바뀐 화면, 왜 바꿨는지 보여주는 근거를 담습니다."},"ru":{"name":"UX-портфолио (Portfolio)","definition":"Подборка работ, причин решений и полученных выводов. Требования к экзамену нужно смотреть в объявлении курса.","example":"Покажите проблему пользователя, изменение экрана и основание для него."}}]},"overrides":{"week08":{"en":{"js_checklist":"Week 8 is the midterm period, with no regular lesson. This UI practice is optional review. Check the current MS Teams announcement for exam details.","intro-title":"Week 8: Midterm Period · Optional UI Review","intro-l1-t":"Review basic UI components with small interactive examples. No regular lecture this week.","deep-title":"Try the Basic UI Components","deep-sub":"Read the name, try the example, then explain how it helps the user.","c1-desc":"A card groups related text, images, and actions. It helps the user see <strong>which information belongs together.</strong>","c2-desc":"The header stays visible while you scroll inside this example. It keeps the title or key controls close at hand.","c3-desc":"Placeholder shapes show where content will appear. They can help explain the wait, but <strong>do not show real progress or make loading faster.</strong>","c4-desc":"A tooltip gives a short extra explanation. It should also work with keyboard focus; essential instructions must not depend on mouse hover.","c5-desc":"A small movement or color change confirms an action. Keep it brief, and still make the state clear when animation is turned off.","c6-desc":"A toast is a short status message that does not block the page. Show success only after the action really succeeds.","c6-toast-msg":"Copy-success notification (demo)","c7-desc":"A side panel shows extra details without leaving the main page. Give it a clear close control and return focus when it closes.","c4-badge":"🧩 [Example citation] Open explanation","act-l3":"Design a Tooltip that can open with hover, a tap, or keyboard focus."},"ko":{"js_checklist":"8주차는 정규 강의가 없는 중간고사 기간입니다. 이 UI 자료는 선택 복습용입니다. 시험 안내는 MS Teams의 최신 공지를 확인하세요.","intro-title":"8주차: 중간고사 기간 · 선택 UI 복습","intro-l1-t":"작은 동작 예시로 기본 UI 요소를 복습합니다. 이번 주에는 정규 강의가 없습니다.","deep-title":"기본 UI 요소 직접 눌러보기","deep-sub":"이름을 읽고 예시를 조작한 뒤 사용자에게 어떻게 도움이 되는지 말해 보세요.","c1-desc":"카드는 관련된 글, 이미지, 행동을 묶습니다. <strong>어떤 정보가 한 묶음인지</strong> 알기 쉽게 합니다.","c2-desc":"이 예시 안에서 스크롤해도 헤더가 보입니다. 제목과 주요 조작을 계속 찾기 쉽게 합니다.","c3-desc":"자리 표시 도형은 내용이 나올 위치를 보여줍니다. 기다림을 이해하는 데 도움이 되지만 <strong>실제 진행률이나 속도 개선을 뜻하지는 않습니다.</strong>","c4-desc":"툴팁은 짧은 추가 설명입니다. 키보드 초점으로도 열 수 있어야 하며 필수 안내를 마우스 올리기에만 의존하면 안 됩니다.","c5-desc":"작은 움직임이나 색 변화는 조작 결과를 알려줍니다. 짧게 사용하고 애니메이션을 꺼도 상태가 분명해야 합니다.","c6-desc":"토스트는 페이지를 막지 않는 짧은 상태 메시지입니다. 실제 동작에 성공한 뒤에만 성공을 알립니다.","c6-toast-msg":"복사 성공 알림 예시","c7-desc":"사이드 패널은 현재 페이지에서 추가 정보를 보여줍니다. 닫기 조작을 분명하게 하고 닫은 뒤 초점을 돌려줍니다.","c4-badge":"🧩 [예시 출처] 설명 열기","act-l3":"마우스 올리기, 터치 또는 키보드 초점으로 열 수 있는 툴팁을 설계하세요."},"ru":{"js_checklist":"Неделя 8 — период промежуточного экзамена без обычного занятия. Практика UI предназначена для добровольного повторения. Сведения об экзамене смотрите в MS Teams.","intro-title":"Неделя 8: промежуточный экзамен · повторение UI по желанию","intro-l1-t":"Повторите основные элементы UI на небольших примерах. Обычного занятия на этой неделе нет.","deep-title":"Попробуйте основные элементы UI","deep-sub":"Прочитайте название, попробуйте пример и объясните пользу для пользователя.","c1-desc":"Карточка объединяет связанные текст, изображения и действия. Так видно, <strong>какая информация относится друг к другу.</strong>","c2-desc":"Заголовок остаётся виден при прокрутке внутри примера. Название и основные действия всегда рядом.","c3-desc":"Формы показывают место будущего содержимого. Они поясняют ожидание, но <strong>не показывают реальный прогресс и не ускоряют загрузку.</strong>","c4-desc":"Подсказка даёт краткое пояснение. Она должна работать и при фокусе с клавиатуры; важные инструкции не должны зависеть от наведения.","c5-desc":"Небольшое движение или смена цвета подтверждает действие. Эффект должен быть коротким, а состояние понятным и без анимации.","c6-desc":"Краткое уведомление не блокирует страницу. Сообщайте об успехе только после успешного действия.","c6-toast-msg":"Уведомление об успешном копировании (демо)","c7-desc":"Боковая панель показывает детали без ухода со страницы. Нужна понятная кнопка закрытия и возврат фокуса после закрытия.","c4-badge":"🧩 [Пример источника] Открыть пояснение","act-l3":"Спроектируйте подсказку, которую можно открыть наведением, касанием или фокусом клавиатуры."}},"week01":{"en":{"js_checklist_alert":"Week 1 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","intro-l1-t":"Online lessons every Thursday; use the posted materials to review.","uiux-ui-desc":"The buttons, text, and controls you use.<br>In this bottle example: its shape, label, and opening.","uiux-ux-desc":"The whole experience of reaching your goal.<br>Can you get the ketchup out easily?","hist-gui-desc":"Choose visible icons and buttons","hist-ai-desc":"Ask using everyday words; voice is optional","diff-sub":"Press each button several times and compare the results.","diff-trad-p":"This calculator follows the same fixed rule.","diff-ai-p":"Generated replies may vary and may contain errors.","gb-good-p":"Show a working status and the answer as it arrives.","js_good_ux":"The answer appears in parts while the system is working.","js_gui_alert":"Demo: this click represents opening a folder."},"ko":{"js_checklist_alert":"1주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","intro-l1-t":"매주 목요일 온라인 강의; 게시된 자료로 복습합니다.","uiux-ui-desc":"사용자가 보고 조작하는 버튼·글·요소입니다.<br>병의 예에서는 모양·라벨·입구에 해당합니다.","uiux-ux-desc":"목적을 이루는 전체 경험입니다.<br>케첩을 쉽고 편하게 꺼낼 수 있나요?","hist-gui-desc":"눈에 보이는 아이콘과 버튼을 선택","hist-ai-desc":"일상 언어로 요청하기; 음성만 가능한 것은 아님","diff-sub":"각 버튼을 여러 번 눌러 결과를 비교해 보세요.","diff-trad-p":"이 계산기는 같은 규칙을 따릅니다.","diff-ai-p":"생성된 답변은 달라지거나 틀릴 수 있습니다.","gb-good-p":"진행 상태와 만들어지는 답변을 보여줍니다.","js_good_ux":"시스템이 일하는 동안 답변을 조금씩 보여줍니다.","js_gui_alert":"데모: 이 클릭은 폴더를 여는 동작을 나타냅니다."},"ru":{"js_checklist_alert":"Практика недели 1: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","intro-l1-t":"Онлайн-занятия по четвергам; повторяйте по опубликованным материалам.","uiux-ui-desc":"Кнопки, текст и элементы управления.<br>В примере с бутылкой: форма, этикетка и отверстие.","uiux-ux-desc":"Весь опыт достижения цели.<br>Легко ли выдавить кетчуп?","hist-gui-desc":"Выбор видимых значков и кнопок","hist-ai-desc":"Запрос обычными словами; голос не обязателен","diff-sub":"Нажмите каждую кнопку несколько раз и сравните результаты.","diff-trad-p":"Этот калькулятор следует одному фиксированному правилу.","diff-ai-p":"Создаваемые ответы могут различаться и содержать ошибки.","gb-good-p":"Показывает статус работы и ответ по мере появления.","js_good_ux":"Ответ появляется частями, пока система работает.","js_gui_alert":"Демо: это нажатие обозначает открытие папки."}},"week02":{"en":{"js_checklist_alert":"Week 2 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","dt-sub":"A useful cycle for learning about users and improving an idea. You can return to an earlier step.","dt-1-p":"Listen and observe","dt-3-p":"Think of several solutions","dt-4-p":"Make a simple model","per-sub":"A <strong>persona</strong> is a short profile that represents users with similar goals and difficulties. Build it from interviews or observations. Raj below is a <strong>fictional learning example</strong>, not a report about all international students.","per-job":"Fictional example: international student in Korea","per-tech-t":"Uses messaging apps; unfamiliar with bank forms (example)","val-sub":"AI may help with tasks such as reading varied text or images. First ask whether a simpler method would solve the user’s problem well.","val-title":"A Simple Way to Think About User Value","val-warn":"Ask: does the time or effort saved make the extra steps worthwhile? This is a thinking tool, not a measured equation.","ai-sub":"AI can suggest a <strong>fictional draft</strong>. Label its assumptions, then check them with real users. An AI-generated persona is not user research.","ai-p2":"“Create a fictional persona draft for a student notice-translation app. Clearly label all assumptions.”","ai-p3":"“Include a goal, two difficulties, and questions to ask real users.”","js_ai_reply":"Example draft — assumptions, not research:\nRaj, 24, wants to understand a bank form. Unfamiliar words and long instructions slow him down.\nCheck with users: Which words are difficult? How do they solve this today?","emp-bad-p":"“We already have AI. Where can we add it?”<br>👉 A feature with no clear user problem to solve.","emp-good-p":"“What task is difficult for the user?”<br>👉 Start with the problem the person needs to solve."},"ko":{"js_checklist_alert":"2주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","dt-sub":"사용자를 이해하고 아이디어를 개선하는 과정입니다. 필요하면 앞 단계로 돌아갈 수 있습니다.","dt-1-p":"듣고 관찰하기","dt-3-p":"여러 해결책 생각하기","dt-4-p":"간단한 모형 만들기","per-sub":"<strong>페르소나</strong>는 비슷한 목표와 어려움을 가진 사용자를 대표하는 짧은 인물 소개입니다. 인터뷰나 관찰을 바탕으로 만듭니다. 아래 라지는 <strong>가상 학습 예시</strong>이며 모든 유학생을 설명하는 조사 결과가 아닙니다.","per-job":"가상 예시: 한국에 거주하는 유학생","per-tech-t":"메신저는 익숙하지만 은행 서류는 낯섦 (예시)","val-sub":"AI는 다양한 글이나 이미지를 다루는 일에 도움이 될 수 있습니다. 먼저 더 간단한 방법으로 사용자 문제를 잘 해결할 수 있는지 살펴봅니다.","val-title":"사용자 가치를 생각하는 간단한 방법","val-warn":"질문: 절약한 시간·노력이 추가 조작보다 가치 있나요? 이 공식은 생각을 돕는 도구이며 실제 측정식은 아닙니다.","ai-sub":"AI는 <strong>가상 초안</strong>을 제안할 수 있습니다. 가정한 부분을 표시하고 실제 사용자에게 확인하세요. AI가 만든 페르소나를 사용자 조사로 보아서는 안 됩니다.","ai-p2":"“학생 공지 번역 앱을 위한 가상 페르소나 초안을 만들어 줘. 모든 가정을 분명히 표시해 줘.”","ai-p3":"“목표, 어려움 두 가지, 실제 사용자에게 확인할 질문을 포함해 줘.”","js_ai_reply":"가상 초안 — 조사 결과가 아닌 가정입니다:\n라지, 24세. 은행 서류를 이해하고 싶습니다. 낯선 단어와 긴 안내 때문에 오래 걸립니다.\n실제 사용자에게 확인: 어떤 단어가 어렵나요? 지금은 어떻게 해결하나요?","emp-bad-p":"“AI 기술이 있으니 어디에 넣을까?”<br>👉 해결할 사용자 문제를 정하지 않은 기능.","emp-good-p":"“사용자는 어떤 일을 어려워할까?”<br>👉 사용자가 해결하려는 문제에서 시작합니다."},"ru":{"js_checklist_alert":"Практика недели 2: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","dt-sub":"Полезный цикл для понимания пользователей и улучшения идеи. Можно возвращаться к предыдущим шагам.","dt-1-p":"Слушать и наблюдать","dt-3-p":"Придумать несколько решений","dt-4-p":"Создать простую модель","per-sub":"<strong>Персона</strong> — краткий образ пользователей с похожими целями и трудностями, созданный по интервью или наблюдениям. Радж ниже — <strong>учебный вымышленный пример</strong>, а не описание всех иностранных студентов.","per-job":"Вымышленный пример: иностранный студент в Корее","per-tech-t":"Умеет пользоваться мессенджерами, но не знаком с банковскими формами (пример)","val-sub":"ИИ может помогать с разными текстами и изображениями. Сначала проверьте, решит ли задачу более простой способ.","val-title":"Простой способ оценить пользу для пользователя","val-warn":"Спросите: оправдывает ли экономия времени и усилий дополнительные действия? Это схема для размышления, а не точная формула.","ai-sub":"ИИ может предложить <strong>вымышленный черновик</strong>. Отметьте предположения и проверьте их с реальными пользователями. Персона от ИИ не заменяет исследование.","ai-p2":"«Создай вымышленный черновик персоны для приложения перевода объявлений студентам. Явно отметь все предположения».","ai-p3":"«Включи цель, две трудности и вопросы для проверки с реальными пользователями».","js_ai_reply":"Учебный черновик — предположения, не исследование:\nРадж, 24 года, хочет понять банковскую форму. Незнакомые слова и длинные инструкции замедляют его.\nВопросы пользователям: Какие слова трудны? Как вы решаете это сейчас?","emp-bad-p":"«У нас уже есть ИИ. Куда его добавить?»<br>👉 Функция без понятной задачи пользователя.","emp-good-p":"«Какая задача трудна для пользователя?»<br>👉 Начните с проблемы, которую человеку нужно решить."}},"week03":{"en":{"js_checklist":"Week 3 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","map-sub":"These are useful states to consider when designing an AI interface. Real products may combine or skip some states. Try the demo below.","det-b1-p":"AI response time changes with the task and connection. If nothing changes on screen, users may wonder whether the app is working. Show an honest status.","det-b2-p":"Show text as it is created so users can start reading before the full answer is ready. This can make waiting easier, but it does not make the answer correct or guarantee a faster result.","js_ai_res_sum":"Example summary:\n1. Design clear interface states.\n2. Show useful status while waiting.\n3. Keep the input and offer Retry after an error."},"ko":{"js_checklist":"3주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","map-sub":"AI 인터페이스를 설계할 때 살펴볼 상태입니다. 실제 제품은 일부 상태를 합치거나 건너뛸 수 있습니다. 아래 데모를 눌러 보세요.","det-b1-p":"AI 응답 시간은 작업과 연결 상태에 따라 달라집니다. 화면 변화가 없으면 작동 중인지 알기 어렵습니다. 실제 상태를 알려주세요.","det-b2-p":"답변이 만들어지는 대로 보여주면 완료 전에 읽기 시작할 수 있습니다. 기다림을 도울 수 있지만 정확성이나 실제 속도를 보장하지는 않습니다.","js_ai_res_sum":"예시 요약:\n1. 화면 상태를 분명히 설계합니다.\n2. 기다리는 동안 상태를 알려줍니다.\n3. 오류가 나도 입력을 보존하고 다시 시도를 제공합니다."},"ru":{"js_checklist":"Практика недели 3: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","map-sub":"Эти состояния полезно учитывать при проектировании ИИ-интерфейса. В реальном продукте некоторые объединяются или пропускаются. Попробуйте демо.","det-b1-p":"Время ответа зависит от задачи и соединения. Без изменений на экране пользователь не понимает, работает ли приложение. Покажите реальный статус.","det-b2-p":"Показывайте текст по мере создания: чтение начнётся до готовности всего ответа. Это может облегчить ожидание, но не гарантирует правильность или ускорение.","js_ai_res_sum":"Пример краткого ответа:\n1. Создайте понятные состояния интерфейса.\n2. Показывайте статус во время ожидания.\n3. Сохраняйте ввод и предлагайте повтор после ошибки."}},"week04":{"en":{"js_checklist":"Week 4 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","intro-l2-t":"AI interfaces often use requests in everyday language. Buttons, menus, and direct controls are still useful.","type-cui-l1":"<strong>Pro:</strong> Messaging feels familiar to many people, especially with clear example prompts.","type-vui-l3":"<strong>Answer:</strong> Start with a short answer. Offer more detail when the user needs it.","fall-title":"When AI Cannot Help: A Fallback Path","tree-ai":"AI decision","type-multi-p":"Example: take a fridge photo. The AI shows recipe cards and reads the steps aloud."},"ko":{"js_checklist":"4주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","intro-l2-t":"AI 인터페이스는 일상 언어 요청을 자주 사용합니다. 버튼·메뉴·직접 조작도 여전히 유용합니다.","type-cui-l1":"<strong>장점:</strong> 많은 사람에게 메시지 방식이 익숙합니다. 시작 질문 예시가 있으면 도움이 됩니다.","type-vui-l3":"<strong>답변:</strong> 짧게 시작하고 사용자가 원할 때 자세한 내용을 제공합니다.","fall-title":"AI가 해결하지 못할 때: 대안 경로","tree-ai":"AI 판단","type-multi-p":"예: 냉장고 사진을 보내면 AI가 레시피를 화면에 보여주고 요리 순서를 음성으로 읽어 줍니다."},"ru":{"js_checklist":"Практика недели 4: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","intro-l2-t":"ИИ-интерфейсы часто принимают запросы обычными словами. Кнопки, меню и прямое управление тоже полезны.","type-cui-l1":"<strong>Плюс:</strong> Переписка знакома многим людям, особенно если есть понятные примеры запросов.","type-vui-l3":"<strong>Ответ:</strong> Начните кратко; дополнительные детали давайте по необходимости.","fall-title":"Когда ИИ не может помочь: запасной путь","tree-ai":"Решение ИИ","type-multi-p":"Пример: отправьте фото холодильника. ИИ покажет карточки рецептов и прочитает шаги вслух."}},"week05":{"en":{"js_checklist":"Week 5 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","hal-title":"Why Can AI Give Wrong Answers?","hal-b1-p":"If people cannot see what an answer is based on, they cannot judge when to rely on it. Confident errors can damage trust.","hal-b2-p":"A text-generating model builds answers from learned patterns. A fluent answer can still contain false details.","xai-sub":"Explain the information used, useful reasons, and known limits. A fluent explanation alone is not proof that the answer is correct.","ui-bad-p":"An unexplained “87.34% sure” can look precise without helping the user. Use numbers only when they have a clear, tested meaning.","ui-good-t":"Checkable Source Links","ui-good-p":"Put a source link beside the claim it supports. The user can open the original and check whether it really matches.","ui-ex-txt":"Example: check the original notice for the application details.","ui-ex-btn":"[1] Example source","warn-t":"Designing a Safety Notice","warn-p":"For high-impact topics, show appropriate sources and clear limits. A notice should help the user take the next safe step, such as contacting a qualified professional.","js_source_open":"This is a learning example. Including a source link like this lets users check the original source.","act-l1":"✅ 1. A source link users can open and check"},"ko":{"js_checklist":"5주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","hal-title":"AI는 왜 잘못된 답을 만들까요?","hal-b1-p":"답변의 근거가 보이지 않으면 언제 믿어도 되는지 판단하기 어렵습니다. 자신 있게 틀린 답은 신뢰를 떨어뜨릴 수 있습니다.","hal-b2-p":"문장을 생성하는 모델은 학습한 패턴으로 답변을 만듭니다. 문장이 자연스러워도 내용은 틀릴 수 있습니다.","xai-sub":"사용한 정보, 도움이 되는 이유, 알고 있는 한계를 설명합니다. 설명이 자연스럽다는 이유만으로 정답이 되는 것은 아닙니다.","ui-bad-p":"뜻을 설명하지 않은 “87.34% 확신”은 정밀해 보여도 도움이 되지 않을 수 있습니다. 의미를 검증하고 설명할 수 있을 때 수치를 사용합니다.","ui-good-t":"확인할 수 있는 출처 링크","ui-good-p":"근거가 되는 문장 옆에 출처 링크를 둡니다. 사용자가 원문을 열어 내용이 실제로 맞는지 확인할 수 있습니다.","ui-ex-txt":"학습 예시: 신청 내용은 원본 안내문에서 확인하세요.","ui-ex-btn":"[1] 예시 출처","warn-t":"안전 안내 설계하기","warn-p":"영향이 큰 주제에는 적절한 출처와 분명한 한계를 보여줍니다. 안내는 전문가에게 문의하는 등 다음 행동에 도움이 되어야 합니다.","js_source_open":"학습용 예시입니다. 이렇게 출처 링크를 함께 두면 사용자가 원문을 확인할 수 있어요.","act-l1":"✅ 1. 사용자가 열어 확인할 수 있는 출처 링크"},"ru":{"js_checklist":"Практика недели 5: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","hal-title":"Почему ИИ может отвечать неправильно?","hal-b1-p":"Когда основание ответа не видно, трудно решить, можно ли ему доверять. Уверенные ошибки могут подорвать доверие.","hal-b2-p":"Модель создаёт текст на основе изученных закономерностей. Даже связный ответ может содержать неверные сведения.","xai-sub":"Объясните использованную информацию, полезные причины и ограничения. Гладкое объяснение само по себе не доказывает правильность.","ui-bad-p":"Необъяснённое «уверен на 87,34%» выглядит точным, но может не помогать. Используйте числа с понятным, проверенным смыслом.","ui-good-t":"Проверяемые ссылки на источники","ui-good-p":"Разместите ссылку рядом с утверждением, которое она подтверждает. Пользователь может открыть оригинал и сравнить.","ui-ex-txt":"Учебный пример: проверьте условия подачи в исходном объявлении.","ui-ex-btn":"[1] Пример источника","warn-t":"Проектирование предупреждения","warn-p":"Для важных решений покажите подходящие источники и ясные ограничения. Предупреждение должно подсказывать следующий шаг, например обращение к специалисту.","js_source_open":"Это учебный пример. Такая ссылка на источник позволяет пользователю проверить оригинал.","act-l1":"✅ 1. Ссылка на источник, который пользователь может открыть и проверить"}},"week06":{"en":{"js_exam_alert":"Week 6 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","intro-l2-t":"An empty input box can be hard for a beginner. Show examples of useful things to ask.","blank-sub":"Help first-time users know what the service can do and how to begin.","blank-b1-p":"Buttons and menus can show what is possible. A short tour may help, but test whether users can complete their first task.","prog-sub":"Show the most useful choices first. Let users open extra settings when they need them.","feed-sub":"Make it easy to say what helped and what did not. Use the feedback to investigate problems.","feed-toast-msg":"Thank you. Your feedback has been noted in this demo.","exam-title":"Preparing for the Midterm Period (Week 8)","exam-sub":"For practice, bring together your persona, flow, and trust UI. <strong>Confirm the actual exam format and submission requirements in the course announcement.</strong>","js_copied":"Copy feedback demo: copying can be a useful signal, but it does not prove the user is satisfied.","blank-b2-p":"A blank “Ask anything” box gives no example. A new user may not know how to start.","feed-h1":"Explicit Feedback","feed-h2":"Implicit Feedback"},"ko":{"js_exam_alert":"6주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","intro-l2-t":"빈 입력창은 초보자에게 어려울 수 있습니다. 유용한 질문 예시를 보여주세요.","blank-sub":"처음 온 사용자가 서비스의 역할과 시작 방법을 알도록 돕습니다.","blank-b1-p":"버튼과 메뉴는 가능한 일을 보여줍니다. 짧은 안내도 도움이 되지만, 첫 과제를 실제로 해낼 수 있는지 확인해야 합니다.","prog-sub":"먼저 필요한 선택을 보여주고 추가 설정은 필요할 때 열게 합니다.","feed-sub":"도움이 된 점과 안 된 점을 쉽게 알려줄 수 있게 하고, 그 반응으로 문제를 살펴봅니다.","feed-toast-msg":"감사합니다. 이 데모에서 의견을 확인했습니다.","exam-title":"중간고사 기간(8주차) 준비","exam-sub":"연습으로 페르소나, 대화 흐름, 신뢰 UI를 모아 보세요. <strong>실제 시험 방식과 제출 요건은 수업 공지에서 확인하세요.</strong>","js_copied":"복사 피드백 데모: 복사는 참고할 신호이지만 사용자가 만족했다는 증거는 아닙니다.","blank-b2-p":"“무엇이든 물어보세요”라는 빈 입력창에는 예시가 없습니다. 처음 쓰는 사람은 무엇부터 할지 모를 수 있습니다.","feed-h1":"명시적 피드백 (Explicit)","feed-h2":"묵시적 피드백 (Implicit)"},"ru":{"js_exam_alert":"Практика недели 6: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","intro-l2-t":"Пустое поле может затруднять начало. Покажите примеры полезных запросов.","blank-sub":"Помогите новичку понять возможности сервиса и первый шаг.","blank-b1-p":"Кнопки и меню показывают возможности. Краткий тур может помочь, но важно проверить выполнение первой задачи.","prog-sub":"Сначала покажите основные варианты. Дополнительные настройки открываются при необходимости.","feed-sub":"Сделайте простой способ сообщить, что помогло, а что нет. Используйте отзывы для изучения проблем.","feed-toast-msg":"Спасибо. Отзыв отмечен в этом демо.","exam-title":"Подготовка к промежуточному экзамену (неделя 8)","exam-sub":"Для практики соберите персону, ход диалога и элементы доверия. <strong>Реальный формат экзамена и требования уточняйте в объявлении курса.</strong>","js_copied":"Демо копирования: действие может быть полезным сигналом, но не доказывает удовлетворённость.","blank-b2-p":"Пустое поле «Спросите что угодно» не даёт примера. Новичок может не понять, с чего начать.","feed-h1":"Явная обратная связь (Explicit feedback)","feed-h2":"Неявная обратная связь (Implicit feedback)"}},"week07":{"en":{"js_midterm_alert":"Week 7 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","intro-callout":"“Before building the full system, try a small human-run simulation to learn where users need help.”","role-sub":"These are three useful roles. In a small class activity, one person may take more than one role.","r1-sub":"Tries an agreed task in the test","rule-sub":"Keep the test consistent. Use safe tasks, agree on participation, and explain what was simulated afterward.","rule2-t":"2. Planned response delay","rule2-p":"Use the same planned delay across sessions. A 3–5 second pause is one classroom example, not a rule for every AI service.","rule3-p":"Use a harmless planned error, such as a typo, to test recovery. Avoid personal or high-stakes tasks.","tool-title":"Simple Tools for a Classroom Test","flow-sub":"Here is a 20-minute example plan. Change the timing to fit your task and participants.","mid-title":"Midterm Preparation: A Proposal Example","mid-h3":"Practice structure; confirm the official requirements","js_role_user":"Participant: try the agreed task naturally. You can pause or stop. The team will explain which parts were simulated and ask about your experience."},"ko":{"js_midterm_alert":"7주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","intro-callout":"“전체 시스템을 만들기 전에 사람이 답하는 작은 모의 실험으로 사용자가 어디서 도움이 필요한지 알아봅니다.”","role-sub":"다음 세 역할이 도움이 됩니다. 작은 수업 실습에서는 한 사람이 여러 역할을 맡을 수 있습니다.","r1-sub":"동의한 실험에서 과제 수행","rule-sub":"비슷한 조건으로 테스트합니다. 안전한 과제를 사용하고 참여 동의를 얻으며, 끝난 뒤 모의로 구현한 내용을 설명합니다.","rule2-t":"2. 계획한 응답 지연","rule2-p":"테스트마다 같은 계획의 지연 시간을 사용합니다. 3~5초 대기는 수업용 예시이지 모든 AI 서비스의 규칙이 아닙니다.","rule3-p":"오타처럼 해가 적은 계획된 오류로 복구 과정을 시험합니다. 개인정보나 중요한 결정을 다루는 과제는 피하세요.","tool-title":"수업 실습에 쓰기 쉬운 도구","flow-sub":"20분 실습 계획 예시입니다. 과제와 참여자에 맞게 시간을 조정합니다.","mid-title":"중간고사 준비: 기획서 예시","mid-h3":"연습용 구성; 실제 요건은 공식 공지 확인","js_role_user":"참여자: 동의한 과제를 자연스럽게 해 봅니다. 잠시 멈추거나 중단할 수 있습니다. 팀은 모의로 구현한 부분을 설명하고 경험을 묻습니다."},"ru":{"js_midterm_alert":"Практика недели 7: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","intro-callout":"«До создания полной системы проведите небольшую симуляцию с человеком и узнайте, где пользователям нужна помощь».","role-sub":"Полезны три роли. В небольшом учебном задании один человек может совмещать роли.","r1-sub":"Выполняет согласованное тестовое задание","rule-sub":"Сохраняйте одинаковые условия. Используйте безопасные задания, согласуйте участие и после теста объясните симуляцию.","rule2-t":"2. Запланированная задержка ответа","rule2-p":"Используйте одинаковую запланированную задержку. Пауза 3–5 секунд — учебный пример, а не правило для любого ИИ.","rule3-p":"Для проверки восстановления используйте безвредную запланированную ошибку, например опечатку. Избегайте задач с личными данными или важными решениями.","tool-title":"Простые инструменты для учебного теста","flow-sub":"Пример плана на 20 минут. Меняйте время под задачу и участников.","mid-title":"Подготовка к экзамену: пример предложения","mid-h3":"Структура для практики; требования уточняйте в объявлении","js_role_user":"Участник: выполняйте согласованную задачу естественно. Можно сделать паузу или остановиться. Команда объяснит симуляцию и спросит об опыте."}},"week10":{"en":{"js_checklist":"Week 10 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","bias-sub":"Bias is a pattern that produces unfair or systematically different outcomes. Data, design choices, and the way a system is used can all contribute.","hitl-sub":"For actions with serious consequences, show what will happen and require the appropriate review or confirmation before execution.","ctrl-l1-t":"Stops further generation. A separate confirmation or undo flow may be needed for actions already executed.","act-l1":"Open the Figma prototype you practised in <strong>Week 9</strong>.","js_stop":"Demo: Stop ends further text generation. It does not automatically cancel a payment or undo an action already completed. Design those controls separately.","ctrl-mock-a":"Okay, here is a flight to Jeju...","ctrl-l1-b":"Stop generating:","ctrl-l3-b":"Report / request review (Contestability):","dark-b2-p":"Making an optional data-sharing choice a condition for continuing.","bias-ex-p":"In this case, a hiring tool trained on male-dominated tech resumes downgraded resumes containing the word “Women’s”."},"ko":{"js_checklist":"10주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","bias-sub":"편향은 불공정하거나 일정하게 다른 결과가 나타나는 경향입니다. 데이터, 설계, 사용 방식이 모두 영향을 줄 수 있습니다.","hitl-sub":"영향이 큰 행동은 무엇이 일어날지 보여주고 실행 전에 필요한 검토나 확인을 받도록 설계합니다.","ctrl-l1-t":"추가 생성을 멈춥니다. 이미 실행한 행동에는 별도의 확인·취소 흐름이 필요할 수 있습니다.","act-l1":"<strong>9주차</strong>에 연습한 Figma 프로토타입을 엽니다.","js_stop":"데모: 중지는 추가 텍스트 생성을 멈춥니다. 이미 완료된 결제나 행동을 자동 취소하지는 않습니다. 해당 조작은 별도로 설계해야 합니다.","ctrl-mock-a":"네, 제주행 항공편을 안내하겠습니다...","ctrl-l1-b":"생성 중지:","ctrl-l3-b":"오류 신고 / 재검토 요청 (이의 제기):","dark-b2-p":"선택 사항인 데이터 공유에 동의해야만 계속 이용할 수 있게 만드는 설계입니다.","bias-ex-p":"이 사례에서는 남성 이력서가 많은 기술직 자료로 학습한 채용 도구가 “Women’s”라는 단어가 포함된 이력서의 평가를 낮췄습니다."},"ru":{"js_checklist":"Практика недели 10: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","bias-sub":"Предвзятость — устойчивая несправедливость или разница результатов. На неё могут влиять данные, дизайн и применение системы.","hitl-sub":"Для действий с серьёзными последствиями объясните результат и предусмотрите нужную проверку или подтверждение до выполнения.","ctrl-l1-t":"Останавливает дальнейшую генерацию. Для уже выполненных действий может понадобиться отдельное подтверждение или отмена.","act-l1":"Откройте прототип Figma, с которым работали на <strong>неделе 9</strong>.","js_stop":"Демо: остановка прекращает дальнейший текст. Она не отменяет автоматически платёж или уже выполненное действие. Для них нужны отдельные средства управления.","ctrl-mock-a":"Хорошо, вот рейс на Чеджу...","ctrl-l1-b":"Остановить генерацию:","ctrl-l3-b":"Сообщить об ошибке / запросить проверку (Contestability):","dark-b2-p":"Необязательное согласие на передачу данных становится условием продолжения.","bias-ex-p":"В этом примере инструмент найма обучался на резюме из технической сферы, где преобладали мужчины, и снижал оценки резюме со словом «Women’s»."}},"week11":{"en":{"js_checklist":"Week 11 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","creepy-bad-p":"Example: a shoe ad appears without explaining why.<br>The user may feel watched. <strong>This alone does not prove that the phone recorded a conversation.</strong>","why-desc":"Click (i) to see a short explanation of which information influenced this recommendation.","ctrl-p1":"Example setting: do not use this session for model training. Explain storage and retention separately.","ctrl-p3":"Let users request deletion. Explain what will be removed and when.","js_deny":"Demo: camera access was declined. Offer another path, such as choosing an existing image or entering text.","js_allow":"Demo: permission accepted in this example. No camera is opened here.","js_toggle_on":"Private-session setting ON (demo)","js_toggle_off":"Private-session setting OFF (demo)","js_reset":"Demo: this action represents resetting preferences. No stored user profile is changed.","js_delete":"Demo: this action represents requesting history deletion. No real chat history is stored or deleted here.","ctrl-sub":"Try each control and watch its setting or message change."},"ko":{"js_checklist":"11주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","creepy-bad-p":"예시: 이유 설명 없이 신발 광고가 나타납니다.<br>사용자는 감시받는 느낌이 들 수 있지만 <strong>이것만으로 휴대폰이 대화를 녹음했다고 볼 수는 없습니다.</strong>","why-desc":"(i)를 눌러 어떤 정보가 이 추천에 영향을 주었는지 짧게 확인합니다.","ctrl-p1":"예시 설정: 이 세션을 모델 학습에 사용하지 않음. 저장 여부와 보관 기간은 별도로 설명해야 합니다.","ctrl-p3":"삭제를 요청할 수 있게 하고 무엇이 언제 삭제되는지 설명하세요.","js_deny":"데모: 카메라 접근을 거절했습니다. 기존 이미지 선택이나 글 입력처럼 다른 방법을 제공합니다.","js_allow":"데모: 예시에서 허용을 선택했습니다. 실제 카메라는 열리지 않습니다.","js_toggle_on":"비공개 세션 설정 켜짐 (데모)","js_toggle_off":"비공개 세션 설정 꺼짐 (데모)","js_reset":"데모: 선호 설정 초기화 동작을 나타냅니다. 실제 저장된 사용자 정보는 바뀌지 않습니다.","js_delete":"데모: 기록 삭제 요청 동작을 나타냅니다. 여기에서는 실제 대화 기록을 저장하거나 삭제하지 않습니다.","ctrl-sub":"각 기능을 눌러 설정이나 안내가 어떻게 바뀌는지 확인하세요."},"ru":{"js_checklist":"Практика недели 11: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","creepy-bad-p":"Пример: реклама обуви появляется без объяснения причины.<br>Пользователь может почувствовать слежку, но <strong>это само по себе не доказывает запись разговора телефоном.</strong>","why-desc":"Нажмите (i), чтобы увидеть, какая информация повлияла на рекомендацию.","ctrl-p1":"Пример настройки: не использовать сессию для обучения модели. Хранение и сроки нужно объяснять отдельно.","ctrl-p3":"Дайте пользователю запросить удаление. Объясните, что и когда будет удалено.","js_deny":"Демо: доступ к камере отклонён. Предложите иной путь: выбрать изображение или ввести текст.","js_allow":"Демо: в примере выбрано разрешение. Настоящая камера не открывается.","js_toggle_on":"Настройка приватной сессии включена (демо)","js_toggle_off":"Настройка приватной сессии выключена (демо)","js_reset":"Демо: действие обозначает сброс предпочтений. Реальный профиль не изменяется.","js_delete":"Демо: действие обозначает запрос удаления истории. Настоящая переписка здесь не сохраняется и не удаляется.","ctrl-sub":"Попробуйте элементы управления и посмотрите, как меняются настройка или сообщение."}},"week12":{"en":{"js_checklist":"Week 12 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","lov-sub":"Connect what the user sees to the work behind it. One screen may depend on several hidden steps; the relationship is not always one-to-one.","bp-sub":"Click a cell to see what happens in that layer.","bp-r3-c3":"Checks the result and known limits","bp-r5-c2":"Blurry photo: text cannot be read reliably","js_r3_3":"[AI processing]\nCheck whether text extraction or translation failed. If a confidence value is shown, its meaning and reliability must be tested; a number alone does not prove correctness.","js_r4_1":"[Data / APIs]\nAn example service may temporarily store an image for processing. It must define access, security, and deletion rules; using cloud storage alone does not guarantee safety.","js_r5_2":"[Recovery]\nIf the photo is too blurry to read, explain the problem and offer “Retake with more light.” Choose any threshold using tests for the actual system, not a universal percentage.","lov-b-p":"Work behind the screen includes reading text from a photo (OCR), translating it, and connecting to another service through an API.","bp-title":"The 5-Layer AI Service Blueprint","bp-r3-c1":"Prepare the image for reading","bp-r3-c2":"Read text from the photo (OCR)<br>then translate it","bp-r4-sub":"Data and service connections","bp-r4-c1":"Photo data for processing","bp-r4-c2":"Translation service connection (API)","bp-r4-c3":"Translation data for the result screen","js_r3_1":"[AI processing]\nPrepare the uploaded image so its text can be read. Describe the work this step needs before choosing a particular tool.","js_r3_2":"[AI processing]\nOCR turns the text in a photo into text the computer can use. The next step translates that text into the chosen language.","js_r4_2":"[Data / APIs]\nAn API lets this service send text to a translation service and receive its result. The blueprint records this connection without requiring a particular product.","js_r4_3":"[Data / APIs]\nThe result screen needs the translated text and source information. If a history feature saves them, explain what is kept and give the user control.","act-h3":"Draft Your AI Service Blueprint"},"ko":{"js_checklist":"12주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","lov-sub":"사용자가 보는 화면과 뒤의 처리를 연결합니다. 한 화면이 여러 처리에 의존할 수 있으므로 항상 일대일 관계는 아닙니다.","bp-sub":"칸을 눌러 그 계층에서 하는 일을 확인하세요.","bp-r3-c3":"결과와 알려진 한계 점검","bp-r5-c2":"흐린 사진: 글을 정확히 읽기 어려움","js_r3_3":"[AI 처리]\n글자 추출이나 번역 실패를 확인합니다. 신뢰도 수치를 보여준다면 그 의미와 신뢰성을 검증해야 합니다. 숫자만으로 정확성을 증명할 수 없습니다.","js_r4_1":"[데이터 / API]\n예시 서비스는 처리를 위해 이미지를 잠시 저장할 수 있습니다. 접근·보안·삭제 기준을 정해야 하며 클라우드 저장소라는 이유만으로 안전이 보장되지는 않습니다.","js_r5_2":"[오류 복구]\n사진이 흐려 읽기 어렵다면 이유와 “밝은 곳에서 다시 찍기”를 제공합니다. 판단 기준은 보편적인 백분율이 아니라 실제 시스템 테스트로 정합니다.","lov-b-p":"사진 속 글자 읽기(OCR), 번역, API를 통한 다른 서비스와의 연결처럼 화면 뒤에서 하는 일입니다.","bp-title":"AI 서비스 블루프린트 5단 템플릿","bp-r3-c1":"글자를 읽기 위한 이미지 준비","bp-r3-c2":"사진에서 글자 읽기 (OCR)<br>→ 번역하기","bp-r4-sub":"데이터와 서비스 연결","bp-r4-c1":"처리에 사용할 사진 데이터","bp-r4-c2":"번역 서비스 연결 (API)","bp-r4-c3":"결과 화면에 보여줄 번역 데이터","js_r3_1":"[AI 처리]\n업로드된 사진의 글자를 읽을 수 있도록 준비합니다. 특정 도구를 고르기 전에 이 단계에서 필요한 일을 적어 보세요.","js_r3_2":"[AI 처리]\nOCR은 사진 속 글자를 컴퓨터가 사용할 수 있는 글자로 바꿉니다. 다음 단계에서는 그 글을 선택한 언어로 번역합니다.","js_r4_2":"[데이터 / API]\nAPI를 통해 번역 서비스에 글을 보내고 결과를 받을 수 있습니다. 블루프린트에는 특정 제품을 정하기보다 이 연결의 역할을 적습니다.","js_r4_3":"[데이터 / API]\n결과 화면에는 번역문과 출처 정보가 필요합니다. 기록 기능으로 저장한다면 무엇을 보관하는지 설명하고 사용자에게 선택권을 주세요.","act-h3":"나의 AI 서비스 블루프린트 작성하기"},"ru":{"js_checklist":"Практика недели 12: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","lov-sub":"Свяжите видимую часть с работой за ней. Один экран может зависеть от нескольких скрытых шагов: связь не всегда один к одному.","bp-sub":"Нажмите ячейку, чтобы узнать, что происходит в этом слое.","bp-r3-c3":"Проверка результата и ограничений","bp-r5-c2":"Размытое фото: текст трудно надёжно прочитать","js_r3_3":"[Обработка ИИ]\nПроверьте ошибки распознавания и перевода. Если показывается уверенность, её смысл и надёжность нужно проверять; число не доказывает правильность.","js_r4_1":"[Данные / API]\nСервис может временно хранить изображение для обработки. Нужны правила доступа, защиты и удаления; облачное хранилище само по себе не гарантирует безопасность.","js_r5_2":"[Восстановление]\nЕсли фото не читается, объясните проблему и предложите переснять при лучшем свете. Порог выбирается по тестам системы, а не по универсальному проценту.","lov-b-p":"Работа за экраном включает распознавание текста на фото (OCR), перевод и связь с другим сервисом через API.","bp-title":"Схема ИИ-сервиса: пять слоёв","bp-r3-c1":"Подготовить изображение к чтению","bp-r3-c2":"Распознать текст на фото (OCR)<br>и перевести его","bp-r4-sub":"Данные и связи с сервисами","bp-r4-c1":"Фото для обработки","bp-r4-c2":"Связь с сервисом перевода (API)","bp-r4-c3":"Данные перевода для экрана результата","js_r3_1":"[Обработка ИИ]\nПодготовьте загруженное изображение к чтению текста. Сначала опишите работу этого шага, затем выбирайте инструмент.","js_r3_2":"[Обработка ИИ]\nOCR превращает буквы на фото в текст, с которым может работать компьютер. Затем этот текст переводится на выбранный язык.","js_r4_2":"[Данные / API]\nЧерез API можно отправить текст сервису перевода и получить результат. В схеме описывается эта связь без обязательного выбора конкретного продукта.","js_r4_3":"[Данные / API]\nЭкран результата использует перевод и сведения об источнике. Если функция истории сохраняет их, объясните, что хранится, и дайте пользователю выбор.","act-h3":"Составьте схему своего ИИ-сервиса"}},"week14":{"en":{"js_checklist":"Week 15 is the final-exam period, with no regular lesson. The final-exam format and submission requirements have not been decided yet. This portfolio activity is practice only. Follow the instructor’s later announcement.","intro-l1-t":"Check your prototype and practise explaining your design decisions. Final-exam requirements are still to be announced.","intro-l2-t":"Check both the normal flow and the moments when something goes wrong.","ui-l3":"<strong>Unreadable input:</strong> “Photo too blurry” + [Retake]. This helps prevent bad input; it does not prevent every AI error.","pdf-title":"Optional Portfolio Practice: One Possible Structure","pdf-sub":"You may organise your work using the five sections below. This is a practice suggestion, <strong>not a confirmed final-exam format or page requirement.</strong>","warn-title":"Three Things to Check Before Sharing","warn-l1":"<strong>Access:</strong> Make sure the intended reviewer can open your Figma link. Choose permissions that fit your course and the file’s contents.","warn-tip":"<strong>Try the reviewer’s view:</strong> Test link access and image readability. A signed-out window can test a public link; a restricted link should be tested with an authorised account.","act-h3":"Polish Your Prototype and Explain One Improvement","act-l4":"If useful, collect your screens and reasons in a short document.","act-btn":"Week 15: Final-exam details pending","pdf-p2-p":"Sketch of one conversation flow (W4)","pdf-p3-t":"Service Blueprint","pdf-p3-p":"Visible and hidden work (W12)"},"ko":{"js_checklist":"15주차는 정규 강의가 없는 기말고사 기간입니다. 기말고사 방식과 제출 요건은 아직 정해지지 않았습니다. 이 포트폴리오 활동은 연습용이며, 추후 교수자의 공지를 확인하세요.","intro-l1-t":"프로토타입을 점검하고 디자인 선택 이유를 설명하는 연습을 합니다. 기말고사 요건은 추후 공지 예정입니다.","intro-l2-t":"정상 흐름과 문제가 생기는 순간을 함께 확인합니다.","ui-l3":"<strong>읽기 어려운 입력:</strong> “사진이 흐립니다” + [다시 촬영]. 입력 문제를 줄이는 방법이며 모든 AI 오류를 막는 것은 아닙니다.","pdf-title":"선택 포트폴리오 연습: 구성 예시","pdf-sub":"아래 다섯 항목으로 작업을 정리해 볼 수 있습니다. 연습 제안이며 <strong>확정된 기말고사 방식이나 페이지 요건이 아닙니다.</strong>","warn-title":"공유 전에 확인할 세 가지","warn-l1":"<strong>접근 권한:</strong> 검토자가 Figma 링크를 열 수 있는지 확인합니다. 수업과 파일 내용에 맞는 권한을 선택하세요.","warn-tip":"<strong>검토자 입장에서 확인:</strong> 링크 권한과 이미지 가독성을 확인하세요. 공개 링크는 로그아웃 창으로, 제한된 링크는 허용된 계정으로 확인합니다.","act-h3":"프로토타입을 다듬고 개선 한 가지 설명하기","act-l4":"필요하면 화면과 선택 이유를 짧은 문서로 모아 보세요.","act-btn":"15주차: 기말고사 세부 안내 미정","pdf-p2-p":"한 대화 흐름의 스케치 (4주차)","pdf-p3-t":"서비스 블루프린트","pdf-p3-p":"보이는 화면과 뒤에서 하는 일 (12주차)"},"ru":{"js_checklist":"Неделя 15 — период итогового экзамена без обычного занятия. Формат экзамена и требования к сдаче пока не определены. Работа над портфолио здесь — практика. Следите за последующим объявлением преподавателя.","intro-l1-t":"Проверьте прототип и потренируйтесь объяснять решения. Требования к итоговому экзамену будут объявлены позже.","intro-l2-t":"Проверяйте и обычный путь, и ситуации, когда что-то идёт не так.","ui-l3":"<strong>Нечитаемый ввод:</strong> «Фото размыто» + [Переснять]. Это помогает с качеством ввода, но не предотвращает все ошибки ИИ.","pdf-title":"Портфолио по желанию: пример структуры","pdf-sub":"Можно собрать работы по пяти разделам ниже. Это рекомендация для практики, <strong>а не утверждённый формат экзамена или число страниц.</strong>","warn-title":"Три проверки перед отправкой","warn-l1":"<strong>Доступ:</strong> Проверьте, что нужный человек может открыть ссылку Figma. Выберите доступ с учётом курса и содержимого файла.","warn-tip":"<strong>Проверьте глазами получателя:</strong> Доступность ссылки и читаемость изображений. Публичную ссылку можно открыть без входа; ограниченную проверяют разрешённой учётной записью.","act-h3":"Улучшите прототип и объясните одно изменение","act-l4":"При желании соберите экраны и причины решений в короткий документ.","act-btn":"Неделя 15: подробности экзамена ожидаются","pdf-p2-p":"Эскиз одного сценария диалога (Н4)","pdf-p3-t":"Схема сервиса","pdf-p3-p":"Видимая и скрытая работа (Н12)"}},"week13":{"en":{"js_checklist":"Week 13 practice: review your work, then check the current MS Teams announcement for attendance, assignments, and deadlines. Finishing this demo does not submit an assignment or record attendance.","intro-l1-t":"Choose simple ways to observe task success, errors, and recovery in your prototype.","intro-l2-t":"Ask <strong>“Can this person complete their task?”</strong> before asking whether the design looks impressive.","metric-sub":"Use task success and errors, then add checks for AI-specific issues such as wrong answers and recovery.","m2-p":"Measure the time from the error to a useful recovery action. Compare attempts using the same start and end points.","m3-p":"Observe whether users check relevant sources when needed, and whether they understand what those sources support. A click alone is not proof of understanding.","lat-title":"Planning for Different Waiting Times","lat-sub":"These time ranges are classroom examples, not measured drop-off rates. Test with your users and your task. Keep the status honest and allow a way out.","lat-z1":"Short wait<br>Example: 0–2 sec<br>Show a working indicator","lat-z2":"Longer wait<br>Example: 3–5 sec<br>Explain the current step","lat-z3":"Extended wait<br>Example: 6+ sec<br>Offer Stop or a useful next step","m1-t":"🎯 First-Try Task Success","m1-p":"Record whether the person completes the task on the first try. To calculate a rate, divide successful attempts by all attempts.","m3-t":"🛡️ Checking Sources","act-title":"25-Min Studio: Check Your Prototype","act-h3":"Check one task from start to result","act-l2":"Follow one task to the result and note any dead ends.","act-l3":"Try the source links, Stop button and privacy controls; record what each action does.","act-l4":"Record two issues to fix. If a classmate can try the same task, watch where they get stuck without giving hints."},"ko":{"js_checklist":"13주차 연습 내용을 확인한 뒤 MS Teams의 최신 공지에서 출석·과제·마감일을 확인하세요. 이 데모를 완료해도 과제가 제출되거나 출석이 기록되지는 않습니다.","intro-l1-t":"프로토타입에서 과제 성공, 오류, 복구를 관찰할 간단한 방법을 정합니다.","intro-l2-t":"보기 좋은지보다 먼저 <strong>“이 사람이 과제를 끝낼 수 있나?”</strong>를 확인합니다.","metric-sub":"과제 성공과 오류를 보고, 잘못된 AI 답변이나 복구 같은 항목을 추가로 확인합니다.","m2-p":"오류가 발생한 때부터 도움이 되는 복구 행동을 할 때까지의 시간을 재세요. 같은 시작점과 끝점을 기준으로 시도들을 비교합니다.","m3-p":"필요할 때 관련 출처를 확인하는지, 그 출처가 무엇의 근거인지 이해하는지 살펴봅니다. 클릭만으로 이해를 증명할 수는 없습니다.","lat-title":"대기 시간에 맞춰 설계하기","lat-sub":"아래 시간대는 수업용 예시이며 측정된 이탈률 기준이 아닙니다. 사용자와 과제에 맞게 확인하고, 실제 상태와 벗어날 방법을 제공합니다.","lat-z1":"짧은 대기<br>예시: 0~2초<br>처리 중 표시","lat-z2":"더 긴 대기<br>예시: 3~5초<br>현재 단계 설명","lat-z3":"오래 기다림<br>예시: 6초 이상<br>중지 또는 다음 행동","m1-t":"🎯 첫 시도 과제 성공","m1-p":"사용자가 첫 시도에 과제를 끝냈는지 기록하세요. 성공률은 성공한 시도 수를 전체 시도 수로 나누어 계산합니다.","m3-t":"🛡️ 출처 확인 행동","act-title":"25분 실습: 프로토타입 점검","act-h3":"하나의 과제를 처음부터 결과까지 확인하기","act-l2":"하나의 과제를 결과까지 따라가며 막다른 흐름을 기록하세요.","act-l3":"출처 링크, 중지 버튼, 개인정보 제어 기능을 조작하고 결과를 기록하세요.","act-l4":"고칠 문제 두 가지를 기록하세요. 친구가 같은 과제를 해 볼 수 있다면 힌트를 주지 말고 어디서 막히는지 관찰하세요."},"ru":{"js_checklist":"Практика недели 13: проверьте свою работу, затем уточните задания, посещаемость и сроки в актуальном объявлении MS Teams. Завершение демо не отправляет задание и не отмечает посещаемость.","intro-l1-t":"Выберите простые способы наблюдать успех задачи, ошибки и восстановление в прототипе.","intro-l2-t":"Сначала спросите <strong>«Может ли человек выполнить задачу?»</strong>, затем оценивайте внешний вид.","metric-sub":"Оценивайте успех задачи и ошибки, добавляя проверки неверных ответов ИИ и восстановления.","m2-p":"Измерьте время от ошибки до полезного действия восстановления. Сравнивайте попытки с одинаковыми точками начала и конца.","m3-p":"Наблюдайте, проверяют ли люди нужные источники и понимают ли их связь с ответом. Сам клик не доказывает понимание.","lat-title":"Проектирование для разного времени ожидания","lat-sub":"Эти интервалы — учебные примеры, а не измеренные показатели ухода. Проверяйте со своими пользователями, честно показывайте статус и выход.","lat-z1":"Короткое ожидание<br>Пример: 0–2 с<br>Индикатор работы","lat-z2":"Дольше<br>Пример: 3–5 с<br>Пояснение текущего шага","lat-z3":"Длительное ожидание<br>Пример: от 6 с<br>Остановка или следующий шаг","m1-t":"🎯 Успех задачи с первой попытки","m1-p":"Отметьте, выполнил ли человек задачу с первой попытки. Для доли успеха разделите число успешных попыток на число всех попыток.","m3-t":"🛡️ Проверка источников","act-title":"25 минут: проверка прототипа","act-h3":"Проверьте одну задачу от начала до результата","act-l2":"Пройдите одну задачу до результата и запишите тупики.","act-l3":"Попробуйте ссылки на источники, остановку и настройки данных; запишите результат каждого действия.","act-l4":"Запишите две проблемы для исправления. Если одногруппник может попробовать ту же задачу, наблюдайте, где он затрудняется, без подсказок."}},"week09":{"en":{"c1-desc":"In this demo, click a key to see its role. In Figma, <strong>F</strong> selects Frame, <strong>T</strong> Text, and <strong>R / O</strong> Rectangle / Ellipse.","c2-title":"2. Auto Layout: Content That Fits","c2-desc":"Auto Layout arranges items with set spacing. With the right size settings, the container grows as the text gets longer. Try the button and watch the spacing.","c3-desc":"A <strong>main component</strong> is a reusable design. An <strong>instance</strong> stays linked to it. Changes can update linked instances; local overrides may keep some properties different.","c4-desc":"This example places user messages on the right and AI answers on the left. Clear labels and a working indicator help users tell who is speaking and what happens next.","c5-desc":"Connect the input screen to a loading screen, then to a result. This demo uses a fixed delay to show the flow; a real product waits for the actual result.","c6-desc":"Use <strong>Share</strong> to give the intended reviewer <strong>view permission</strong>, then check the link. “Anyone with the link” is one option when appropriate; it is not required for every file.","act-help":"If you get stuck, save a screenshot and ask your instructor or classmate.","js_copied":"Demo: this shows where a share link would be copied. Open your own Figma file to copy its real link.","js_done":"Practice complete. This demo does not create or submit a Figma file. Try the same steps in your own project.","c3-btn":"Change main component colour","c3-inst1":"Instance 1","c3-inst2":"Instance 2","c4-user":"Summarize this PDF.","c5-title":"⚡ 5. A Three-Screen Flow","c5-chip":"⚡ Summarize the PDF"},"ko":{"c1-desc":"이 데모에서는 키를 눌러 역할을 확인합니다. Figma에서 <strong>F</strong>는 프레임, <strong>T</strong>는 글자, <strong>R / O</strong>는 사각형 / 타원입니다.","c2-title":"2. 오토 레이아웃: 내용에 맞는 배치","c2-desc":"오토 레이아웃은 정해진 간격으로 요소를 배치합니다. 크기 설정에 따라 글이 길어지면 영역이 커집니다. 버튼을 누르고 간격을 살펴보세요.","c3-desc":"<strong>주요 컴포넌트</strong>는 재사용하는 원본입니다. <strong>인스턴스</strong>는 원본과 연결됩니다. 원본 변경을 전달받을 수 있지만 개별 수정한 속성은 다를 수 있습니다.","c4-desc":"이 예시는 사용자 글을 오른쪽, AI 답을 왼쪽에 둡니다. 분명한 표시와 진행 안내로 누가 말하는지, 다음에 무엇이 일어나는지 알려줍니다.","c5-desc":"입력 화면을 로딩 화면, 결과 화면으로 연결합니다. 이 데모는 일정한 지연으로 흐름을 보여주며 실제 제품은 실제 처리 결과를 기다립니다.","c6-desc":"<strong>Share</strong>에서 검토자에게 맞는 <strong>보기 권한</strong>을 주고 링크를 확인하세요. “링크가 있는 모든 사용자”는 적절할 때 선택하는 한 방법이며 모든 파일의 필수 설정은 아닙니다.","act-help":"막히면 화면을 저장하고 교수자나 친구에게 질문하세요.","js_copied":"데모: 공유 링크를 복사하는 위치를 보여줍니다. 실제 링크는 본인의 Figma 파일에서 복사하세요.","js_done":"연습을 마쳤습니다. 이 데모는 Figma 파일을 만들거나 제출하지 않습니다. 본인의 프로젝트에서 같은 단계를 해 보세요.","c3-btn":"원본 컴포넌트 색상 바꾸기","c3-inst1":"인스턴스 1","c3-inst2":"인스턴스 2","c4-user":"이 PDF 내용을 요약해 줘.","c5-title":"⚡ 5. 세 화면으로 이어지는 흐름","c5-chip":"⚡ PDF 요약하기"},"ru":{"c1-desc":"В демо нажмите клавишу и посмотрите её роль. В Figma <strong>F</strong> — фрейм, <strong>T</strong> — текст, <strong>R / O</strong> — прямоугольник / эллипс.","c2-title":"2. Auto Layout: компоновка по содержимому","c2-desc":"Auto Layout размещает элементы с заданными отступами. При нужных настройках контейнер растёт вместе с текстом. Нажмите кнопку и следите за расстояниями.","c3-desc":"<strong>Главный компонент</strong> — повторно используемый образец. <strong>Экземпляр</strong> связан с ним и может получать изменения; локальные переопределения могут сохранять отличия.","c4-desc":"В примере сообщения пользователя справа, ответы ИИ слева. Подписи и индикатор работы помогают понять, кто говорит и что будет дальше.","c5-desc":"Свяжите ввод, загрузку и результат. В демо задержка фиксирована для показа пути; реальный продукт ждёт фактического результата.","c6-desc":"В <strong>Share</strong> настройте <strong>права просмотра</strong> для нужного человека и проверьте ссылку. «Все, у кого есть ссылка» — один из возможных вариантов, а не правило для каждого файла.","act-help":"Если возникла трудность, сохраните снимок экрана и спросите преподавателя или одногруппника.","js_copied":"Демо показывает место копирования ссылки. Настоящую ссылку скопируйте из своего файла Figma.","js_done":"Практика завершена. Демо не создаёт и не отправляет файл Figma. Повторите шаги в своём проекте.","c3-btn":"Изменить цвет главного компонента","c3-inst1":"Экземпляр 1","c3-inst2":"Экземпляр 2","c4-user":"Кратко изложи содержание PDF.","c5-title":"⚡ 5. Сценарий из трёх экранов","c5-chip":"⚡ Кратко изложить PDF"}}},"pages":[{"id":"week01","label":"W1","title":"Week 1: AI Service UX","subject":{"ko":"AI & UX 기초","en":"AI & UX Basics","ru":"Основы ИИ и UX"}},{"id":"week02","label":"W2","title":"Week 2: AI Design Thinking","subject":{"ko":"디자인 씽킹과 페르소나","en":"Design Thinking & Personas","ru":"Дизайн-мышление и персоны"}},{"id":"week03","label":"W3","title":"Week 3: The 6 Core States of AI Interfaces","subject":{"ko":"AI 인터페이스의 6가지 상태","en":"Six AI Interface States","ru":"6 состояний интерфейса ИИ"}},{"id":"week04","label":"W4","title":"Week 4: AI Interaction Design & Chat Flows","subject":{"ko":"대화 흐름과 상호작용","en":"Conversation & Interaction","ru":"Диалог и взаимодействие"}},{"id":"week05","label":"W5","title":"Week 5: Trust, Mistakes, & Explainable AI (XAI)","subject":{"ko":"신뢰 · 오류 · 설명 가능성","en":"Trust & Explainability","ru":"Доверие и объяснимость"}},{"id":"week06","label":"W6","title":"Week 6: AI Onboarding & Feedback UI","subject":{"ko":"온보딩과 피드백","en":"Onboarding & Feedback","ru":"Онбординг и обратная связь"}},{"id":"week07","label":"W7","title":"Week 7: Wizard of Oz (WoZ) Prototyping","subject":{"ko":"오즈의 마법사(WoZ) 프로토타이핑","en":"Wizard of Oz Prototyping","ru":"Прототипирование Wizard of Oz"}},{"id":"week08","label":"W8","title":"Week 8: Midterm / Optional UI Component Lab","subject":{"en":"Midterm · basic UI review","ko":"중간고사 · 기본 UI 복습","ru":"Экзамен · повторение UI"}},{"id":"week09","label":"W9","title":"Week 09: Figma Prototyping for AI Services","subject":{"ko":"Figma 프로토타입 실습","en":"Figma Prototype Lab","ru":"Прототипирование в Figma"}},{"id":"week10","label":"W10","title":"Week 10: Ethical AI UX & Human Control","subject":{"ko":"윤리와 인간 통제","en":"Ethics & Human Control","ru":"Этика и контроль человека"}},{"id":"week11","label":"W11","title":"Week 11: Personalization & Privacy","subject":{"ko":"개인화와 개인정보","en":"Personalization & Privacy","ru":"Персонализация и приватность"}},{"id":"week12","label":"W12","title":"Week 12: AI Service Blueprint","subject":{"ko":"서비스 블루프린트","en":"Service Blueprint","ru":"Сервисный чертёж"}},{"id":"week13","label":"W13","title":"Week 13: AI Usability Testing & Self-Audit","subject":{"ko":"AI 사용성 평가와 셀프 진단","en":"AI Usability Testing & Self-Audit","ru":"Юзабилити ИИ и самоаудит"}},{"id":"week14","label":"W14","title":"Week 14: Prototype QA & Final Portfolio","subject":{"en":"Design review & portfolio practice","ko":"디자인 점검 · 정리 연습","ru":"Проверка дизайна и портфолио"}},{"id":"week15","label":"W15","title":"Week 15: Final exam information","subject":{"en":"Final exam information","ko":"기말고사 안내","ru":"Итоговый экзамен"}}],"staticDemos":{"week03":{"텅 빈 입력창 (무엇을 질문해야 할지 모름 👉":["Empty input: the user does not know what to ask →","Пустое поле: пользователь не знает, что спросить →"],"추천 프롬프트 칩 제공!":["Offer suggested prompt chips!","Предложите готовые варианты запроса!"],"구조화되지 않은 거대한 줄글 덩어리 (👉":["One long, unstructured block of text →","Один длинный, неструктурированный текст →"],"카드, 불릿, 표 사용!":["Use cards, bullets and tables!","Используйте карточки, списки и таблицы!"],"에러 발생 시 처음부터 다시 입력하게 강요 (👉":["After an error, the user must retype everything →","После ошибки нужно вводить всё заново →"],"1-Click 재시도 버튼 제공!":["Offer a one-click retry button!","Дайте кнопку повтора в одно нажатие!"]},"week06":{": 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.":[": Place one-tap Like/Dislike buttons beside the safety notice.",": Разместите кнопки «Нравится/Не нравится» рядом с предупреждением."],": [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.":[": Copy signals positive feedback; Regenerate before reading the answer signals negative feedback.",": Копирование даёт положительный сигнал; повторная генерация до чтения — отрицательный."]},"week09":{"단축키를 클릭해 보세요!":["Click a shortcut above!","Нажмите горячую клавишу!"],"짧은 글":["Short text","Короткий текст"],"아이콘":["Icon","Значок"],"PDF 요약...":["Summarize PDF...","Пересказать PDF..."],"요약 결과입니다...":["Here is the summary...","Вот краткий пересказ..."]},"week08":{"✨ AI 요약 결과":["✨ AI summary","✨ Краткий пересказ ИИ"],"방금 전":["Just now","Только что"],"\"비자 서류 번역 및 주요 제출 항목 정리가 완료되었습니다. 독립된 카드 컨테이너로 제공됩니다.\"":["\"Your visa-document translation and submission checklist are ready, inside this card.\"","«Перевод визовых документов и список необходимых материалов готовы в этой карточке.»"],"👤 사용자: 긴 보고서 작성 요청":["👤 User: Please write a long report","👤 Пользователь: напишите длинный отчёт"],"🤖 AI: 1단계 개요 작성 중...":["🤖 AI: Step 1, drafting the outline...","🤖 ИИ: шаг 1, составление плана..."],"🤖 AI: 2단계 본문 데이터 분석 요약...":["🤖 AI: Step 2, analyzing and summarizing data...","🤖 ИИ: шаг 2, анализ и сводка данных..."],"🤖 AI: 3단계 최종 결론 및 권고사항 도출 완료!":["🤖 AI: Step 3, conclusions and recommendations complete!","🤖 ИИ: шаг 3, выводы и рекомендации готовы!"],"스크롤을 계속 내려도 위 파란색 헤더는 상단에 고정되어 유지됩니다!":["The blue header stays visible when you scroll!","Синяя шапка остаётся на месте при прокрутке!"],"✅ 답변 생성이 완료되어 콘텐츠가 노출되었습니다!":["✅ The response is ready and displayed!","✅ Ответ готов и показан!"],"비자 가이드.pdf":["Visa guide.pdf","Визовый гид.pdf"],"HiKorea 문서":["HiKorea document","Документ HiKorea"]}},"staticOverrides":{"week06":{": 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.":{"en":": Let users directly say whether the answer helped. Ask a short follow-up question when useful.","ko":": 답변이 도움이 되었는지 직접 알려줄 수 있게 하세요. 필요하면 짧은 추가 질문을 합니다.","ru":": Дайте пользователю прямо сказать, помог ли ответ. При необходимости задайте короткий уточняющий вопрос."},": [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.":{"en":": Copying or trying again may suggest a reaction, but does not prove satisfaction or dissatisfaction. Look at the context and ask when unsure.","ko":": 복사나 다시 생성은 반응을 추정하는 단서일 뿐 만족·불만족을 증명하지 않습니다. 상황을 함께 보고 불확실하면 물어봅니다.","ru":": Копирование или повтор могут быть сигналами, но не доказывают довольство или недовольство. Учитывайте контекст и уточняйте, если неясно."}},"week10":{},"week13":{"85% Success":{"en":"Example: 85%","ko":"예시: 85%","ru":"Пример: 85%"},"2.1s (Fast!)":{"en":"Example: 2.1 s","ko":"예시: 2.1초","ru":"Пример: 2,1 с"},"60% Verified":{"en":"Example: 60%","ko":"예시: 60%","ru":"Пример: 60%"}},"week01":{"UI (Look)":{"en":"UI · What you use","ko":"UI · 보고 조작하는 요소","ru":"UI · Элементы интерфейса"},"UX (Feel)":{"en":"UX · The whole experience","ko":"UX · 전체 사용 경험","ru":"UX · Весь опыт использования"}},"week09":{"❖ Master":{"en":"❖ Main component","ko":"❖ 원본 컴포넌트","ru":"❖ Главный компонент"},"PDF 요약...":{"en":"Summarize PDF...","ko":"PDF 요약...","ru":"Кратко изложи PDF..."},"요약 결과입니다...":{"en":"Here is the summary...","ko":"요약 결과입니다...","ru":"Вот краткое изложение..."}}},"attributeOverrides":{"week06":[],"week10":[{"selector":".edit-icon","attribute":"title","en":"Edit your request","ko":"요청 수정","ru":"Изменить запрос"},{"selector":".edit-icon","attribute":"aria-label","en":"Edit your request","ko":"요청 수정","ru":"Изменить запрос"}],"week13":[{"selector":".m-red","attribute":"aria-label","en":"Critical issue: fix first","ko":"치명적인 문제: 먼저 수정","ru":"Критическая проблема: исправить в первую очередь"},{"selector":".m-yellow","attribute":"aria-label","en":"Important issue: fix next","ko":"중요한 문제: 다음으로 수정","ru":"Важная проблема: исправить следующей"},{"selector":".m-green","attribute":"aria-label","en":"Optional improvement: fix when time allows","ko":"선택 개선: 여유가 있을 때 수정","ru":"Дополнительное улучшение: при наличии времени"}]},"termAliases":{"week01":{"UX":{"en":["user experience","UX"],"ko":["사용자 경험","UX"],"ru":["пользовательский опыт","опыт пользователя","UX"]},"UI":{"en":["user interface","UI"],"ko":["사용자 인터페이스","UI"],"ru":["пользовательский интерфейс","UI"]},"AI":{"en":["artificial intelligence","AI"],"ko":["인공지능","AI"],"ru":["искусственного интеллекта","искусственный интеллект","ИИ","AI"]},"Prompt":{"en":["prompts","prompt"],"ko":["Prompt","프롬프트"],"ru":["запроса к ИИ","запрос к ИИ","промпты","промпт","prompt"]},"Feedback":{"en":["interface feedback","feedback"],"ko":["Feedback","화면의 반응","피드백"],"ru":["отклик интерфейса","обратная связь","обратной связи","feedback"]}},"week02":{"Persona":{"en":["personas","persona"],"ko":["Persona","페르소나"],"ru":["персоной","персона","персоны","персону","персоне","persona"]},"Pain point":{"en":["pain points","pain point"],"ko":["Pain Points","Pain Point","어려움·불편 지점","페인 포인트"],"ru":["трудность пользователя","болевая точка","болевые точки","болевую точку","болевых точек","Pain Points","Pain Point"]},"Empathy":{"en":["empathize","empathy"],"ko":["Empathy","공감"],"ru":["эмпатия","эмпатии","эмпатию","Empathy"]},"Problem statement":{"en":["problem statements","problem statement"],"ko":["Problem Statement","문제 정의문","문제 정의"],"ru":["формулировка проблемы","формулировку проблемы","формулировки проблемы","Problem Statement","формула проблемы"]},"Prototype":{"en":["prototyping","prototypes","prototype"],"ko":["Prototype","프로토타이핑","프로토타입"],"ru":["прототипирование","прототипа","прототипы","Prototype","прототип"]}},"week03":{"State":{"en":["interface states","interface state","screen states","system states","screen state","system state","states","state"],"ko":["시스템 상태","화면 상태","State","상태"],"ru":["состояние интерфейса","состояния интерфейса","состояние экрана","состояния экрана","состояние","состояния","состояний","state"]},"Empty state":{"en":["empty states","empty state"],"ko":["Empty State","빈 화면 상태","빈 상태"],"ru":["пустого состояния","пустое состояние","пустом состоянии","Empty State"]},"Loading":{"en":["loading states","loading state","loading"],"ko":["처리 중 상태","Loading","로딩 상태","로딩"],"ru":["состояние загрузки","состояния загрузки","загрузка","загрузки","Loading"]},"Streaming":{"en":["streaming"],"ko":["Streaming","스트리밍"],"ru":["потокового вывода","потоковом выводе","потоковый вывод","Streaming"]},"Recovery":{"en":["error recovery","recovery"],"ko":["Recovery","오류 복구","에러 복구","복구"],"ru":["восстановление после ошибки","восстановление","восстановления","восстановлении","Recovery"]}},"week04":{"Conversation flow":{"en":["conversation flows","conversation flow","dialogue flows","dialogue flow","chat flows","chat flow"],"ko":["Conversation Flow","대화 플로우","대화 흐름"],"ru":["диалоговые потоки","Conversation Flow","сценарий диалога","сценария диалога","хода диалога","ход диалога"]},"Intent":{"en":["intent-based","user intent","intent"],"ko":["사용자 의도","Intent","의도 기반","의도"],"ru":["намерение пользователя","намерения пользователя","намерение","намерения","Intent"]},"Clarifying question":{"en":["clarifying questions","clarifying question","clarify"],"ko":["Clarifying Question","명확화 질문","확인 질문","되묻기"],"ru":["уточняющего вопроса","Clarifying Question","уточняющие вопросы","уточняющий вопрос","уточнение"]},"Fallback":{"en":["fallback path","fallback UX","fallbacks","fallback"],"ko":["Fallback","대안 경로","대체 경로","폴백"],"ru":["запасного пути","резервный путь","запасной путь","Fallback"]},"Multimodal":{"en":["multi-modal interface","multimodal interface","multi-modal","multimodal"],"ko":["Multi-Modal","Multimodal","멀티모달 인터페이스","멀티 모달","멀티모달"],"ru":["мультимодальный интерфейс","мультимодальность","мультимодальные","мультимодальный","Multi-Modal","Multimodal"]}},"week05":{"Hallucination":{"en":["hallucinations","hallucination"],"ko":["Hallucination","환각·잘못 생성한 정보","할루시네이션","환각"],"ru":["галлюцинация ИИ","Hallucination","галлюцинация","галлюцинации","галлюцинацию","галлюцинаций"]},"Citation":{"en":["Citation / source link","source links","source link","citations","citation"],"ko":["Citation","출처 표시","출처 링크","출처","인용"],"ru":["ссылки на источники","ссылкой на источник","ссылка на источник","ссылку на источник","цитирование","Citation"]},"XAI":{"en":["explainable AI","XAI"],"ko":["설명 가능한 AI","설명가능한 AI","설명 가능성","XAI"],"ru":["объяснимость ИИ","объяснимого ИИ","объяснимый ИИ","XAI"]},"Uncertainty":{"en":["uncertainty","uncertain"],"ko":["Uncertainty","불확실성","불확실"],"ru":["неопределённость","неопределенность","неуверенность","Uncertainty"]},"Calibrated trust":{"en":["appropriate trust","trust calibration","calibrated trust","smart trust"],"ko":["Smart Trust","적절한 신뢰","조정된 신뢰","똑똑한 신뢰","스마트 신뢰"],"ru":["обоснованного доверия","калиброванное доверие","обоснованное доверие","разумное доверие","умное доверие","Smart Trust"]}},"week06":{"Onboarding":{"en":["onboarding"],"ko":["Onboarding","첫 사용 안내","온보딩"],"ru":["знакомство с продуктом","онбординга","Onboarding","онбординг"]},"Progressive disclosure":{"en":["progressive disclosure"],"ko":["Progressive Disclosure","점진적 공개","점진적 노출"],"ru":["прогрессивное раскрытие","Progressive Disclosure","постепенное раскрытие"]},"Starter prompt":{"en":["starter prompt chips","starter prompts","starter prompt","starter chips","starter cards"],"ko":["Starter Prompts","Starter Prompt","시작 질문 예시","스타터 프롬프트","추천 질문 버튼","추천 프롬프트","시작 프롬프트","시작 질문","시작 버튼","시작 카드"],"ru":["стартовые подсказки","стартовые карточки","начальные запросы","стартовые промпты","стартовые запросы","начальный запрос","стартовая кнопка","стартовые кнопки","стартовых кнопок","стартовой кнопки","Starter Prompts","Starter Prompt"]},"Explicit feedback":{"en":["explicit feedback","direct feedback"],"ko":["Explicit Feedback","명시적 피드백","직접 피드백"],"ru":["явная обратная связь","явной обратной связи","Explicit Feedback"]},"Implicit feedback":{"en":["implicit feedback","indirect feedback"],"ko":["Implicit Feedback","암묵적 피드백","묵시적 피드백","간접 피드백"],"ru":["косвенная обратная связь","неявная обратная связь","неявной обратной связи","Implicit Feedback","неявные отзывы"]}},"week07":{"Wizard of Oz":{"en":["Wizard of Oz","WoZ"],"ko":["Wizard of Oz","오즈의 마법사 실험","오즈의 마법사","WoZ"],"ru":["Метод «Волшебник страны Оз»","Волшебник страны Оз","Wizard of Oz","метод WoZ","WoZ"]},"Participant":{"en":["participants","participant"],"ko":["Participant","참여자","참가자"],"ru":["Participant","участников","участника","участники","участнику","участник"]},"Observer":{"en":["note-taker","observers","observer"],"ko":["Observer","관찰자"],"ru":["наблюдатель","наблюдателя","наблюдатели","наблюдателю","Observer"]},"Script":{"en":["test scripts","test script","scripts","script"],"ko":["테스트 대본","실험 대본","응답 규칙","스크립트","대본"],"ru":["тестовый сценарий","сценарий ответов","сценарию ответов","сценария ответов","сценарий теста","сценария теста","Script"]},"Debrief":{"en":["debrief & interview","debriefing","debrief"],"ko":["실험 후 설명·대화","실험 후 설명","Debrief","사후 설명","결과 설명","디브리핑"],"ru":["обсуждение после теста","разбор после теста","дебрифинг","Debrief","разбор"]}},"week08":{"Card":{"en":["card layout","cards","card"],"ko":["Card Layout","카드 레이아웃","카드"],"ru":["Card Layout","карточка","карточки","карточку","карточке"]},"Sticky header":{"en":["sticky headers","sticky header"],"ko":["Sticky Header","스티키 헤더","고정 헤더"],"ru":["закреплённая панель","закрепленная панель","фиксированная шапка","Sticky Header","липкая шапка"]},"Skeleton":{"en":["skeleton loading","skeletons","skeleton"],"ko":["Skeleton Loading","Skeleton","스켈레톤 로딩","스켈레톤"],"ru":["скелетная загрузка","Skeleton Loading","каркас загрузки","скелетоны","скелетон","Skeleton"]},"Tooltip":{"en":["tooltips","tooltip"],"ko":["Tooltip","툴팁"],"ru":["всплывающая подсказка","всплывающую подсказку","подсказка","подсказку","подсказки","Tooltip"]},"Toast":{"en":["toast notifications","toast notification","toasts","toast"],"ko":["토스트 알림","Toast","토스트"],"ru":["всплывающее уведомление","короткое уведомление","краткое уведомление","Toast","тост"]},"Drawer":{"en":["source drawer","side drawer","slide-over","drawers","drawer"],"ko":["Side Drawer","사이드 드로어","사이드 드로워","출처 서랍","드로어","드로워","서랍"],"ru":["панель источников","выдвижная панель","боковая панель","боковую панель","боковой панели","Side Drawer","Drawer"]}},"week09":{"Frame":{"en":["frames","frame"],"ko":["Frame","프레임"],"ru":["фреймов","фрейма","фреймы","фрейм","Frame"]},"Auto Layout":{"en":["Auto Layout","auto-layout"],"ko":["Auto Layout","오토 레이아웃","자동 레이아웃"],"ru":["автоматическая компоновка","Auto Layout","auto-layout","автолейаут"]},"Component":{"en":["Component and instance","master component","main component","components","component","instances","instance"],"ko":["컴포넌트와 인스턴스","Component","Instance","컴포넌트","인스턴스"],"ru":["Компонент и экземпляр","компонентов","экземпляров","компоненты","компонента","экземпляры","экземпляра","компонент","экземпляр","Component","Instance","инстанс"]},"Prototype connection":{"en":["prototype connections","prototype connection","connect the screens","connect screens"],"ko":["Prototype 연결","프로토타입 연결","화면 연결"],"ru":["Prototype connection","соединения экранов","связь в прототипе","связи в прототипе","связывать экраны","соединить экраны","связь прототипа","связи прототипа","связать экраны"]},"View permission":{"en":["sharing permissions","share permissions","view permissions","view permission","view access"],"ko":["View permission","보기 권한","공유 권한","공유 설정"],"ru":["доступ для просмотра","настройки доступа","права просмотра","View permission","права доступа"]}},"week10":{"Bias":{"en":["algorithmic bias","bias"],"ko":["알고리즘 편향","Bias","편향"],"ru":["алгоритмическая предвзятость","смещение алгоритма","предвзятость","предвзятости","Bias"]},"Human-in-the-loop":{"en":["Human-in-the-loop","Human in the loop","HITL"],"ko":["Human-in-the-Loop","사람의 검토·결정 참여","휴먼 인 더 루프","사람의 검토","인간 참여","HITL"],"ru":["человек в процессе","Human-in-the-Loop","участие человека","человек в цикле","HITL"]},"Override":{"en":["override controls","user override","overrides","override"],"ko":["사용자 개입·변경","Override","사용자 개입","사용자 제어","사용자 통제"],"ru":["переопределение пользователем","вмешательство пользователя","пользовательского контроля","пользовательский контроль","Override"]},"Contestability":{"en":["request human review","right to appeal","contestability"],"ko":["Contestability","이의 제기 가능성","이의 제기","이의 신청","이의제기"],"ru":["возможность оспорить решение","право на апелляцию","Contestability","оспаривание","оспоримость"]},"Dark pattern":{"en":["dark patterns","dark pattern"],"ko":["Dark Patterns","Dark Pattern","다크 패턴","다크패턴"],"ru":["тёмные паттерны","темные паттерны","тёмный паттерн","темный паттерн","Dark Patterns","Dark Pattern"]}},"week11":{"Personalization":{"en":["personalization","personalisation"],"ko":["Personalization","개인 맞춤화","맞춤형 추천","개인화"],"ru":["Personalization","персонализация","персонализации","персонализацию"]},"Privacy":{"en":["data privacy","privacy"],"ko":["개인정보 보호","Privacy","프라이버시"],"ru":["конфиденциальность","конфиденциальности","приватность","приватности","Privacy"]},"Consent":{"en":["Informed choice / consent","informed consent","informed choice","consent"],"ko":["설명을 이해한 뒤 하는 선택·동의","Consent","사용자 동의","명시적 동의","동의"],"ru":["Осознанный выбор / согласие","информированное согласие","осознанное согласие","согласие","согласия","согласии","Consent"]},"Just-in-time permission":{"en":["just-in-time permission","contextual permissions","contextual permission","just-in-time"],"ko":["필요한 순간의 권한 요청","Just-in-Time","맥락 기반 권한","맥락적 권한","권한 요청","적시 요청"],"ru":["разрешение в нужный момент","контекстное разрешение","контекстные разрешения","своевременного запроса","своевременный запрос","Just-in-Time"]},"Data minimization":{"en":["minimize data collection","data minimization","data minimisation","minimize data"],"ko":["Minimize Data","데이터 최소 수집","데이터 최소화","최소 수집"],"ru":["сбор только необходимых данных","минимальный сбор данных","минимизировать данные","минимизация данных","Minimize Data"]}},"week12":{"Service blueprint":{"en":["service blueprint","blueprints","blueprint"],"ko":["Service Blueprint","서비스 블루프린트","서비스 청사진","블루프린트"],"ru":["сервисного чертежа","сервисном чертеже","Service Blueprint","сервисный чертёж","карта ИИ-сервиса","чертёж сервиса","схема сервиса","схемы сервиса","карта сервиса","карты сервиса","Blueprint","блюпринта","блюпринт"]},"Frontstage":{"en":["front stage","frontstage"],"ko":["사용자에게 보이는 영역","Frontstage","프론트 스테이지","프런트 스테이지","프론트스테이지","프런트스테이지"],"ru":["видимая часть сервиса","видимую часть","видимая часть","фронтстейдж","Frontstage"]},"Backstage":{"en":["back stage","backstage"],"ko":["화면 뒤 처리 영역","Backstage","백 스테이지","백스테이지"],"ru":["невидимая часть сервиса","невидимая часть","скрытая часть","бэкстейдж","Backstage","закулисья","закулисье"]},"API":{"en":["application programming interface","APIs","API"],"ko":["서비스 간 연결 방법","API"],"ru":["программный интерфейс","API"]},"OCR":{"en":["optical character recognition","Vision OCR","OCR"],"ko":["광학 문자 인식","광학문자인식","문자 인식","OCR"],"ru":["оптическое распознавание","распознавание текста","распознавания текста","OCR"]}},"week13":{"Usability test":{"en":["usability testing","usability tests","usability test"],"ko":["Usability Testing","사용성 테스트","사용성 평가"],"ru":["тест удобства использования","юзабилити-тестирование","тестирование юзабилити","тестирование удобства","Usability Testing","тест удобства"]},"Task success":{"en":["task completion rate","task success rate","task completion","task success"],"ko":["Task Success","작업 성공률","과제 성공률","과제 성공","작업 성공"],"ru":["успешность выполнения задачи","выполнение задания","успешность задачи","успех задачи","Task Success"]},"Recovery time":{"en":["error recovery time","recovery time"],"ko":["Error Recovery Time","오류 복구 시간","에러 복구 시간","복구 시간"],"ru":["время восстановления после ошибки","времени восстановления","время восстановления","Error Recovery Time"]},"Peer review":{"en":["classmate feedback","peer feedback","peer review"],"ko":["Peer Review","동료 피드백","동료 검토","상호 평가","동료 평가"],"ru":["обратная связь одногруппника","взаимная проверка","взаимная оценка","взаимооценка","Peer Review"]},"Priority":{"en":["fix priority","priorities","prioritize","priority"],"ko":["Priority","수정 우선순위","우선순위"],"ru":["приоритет исправлений","приоритетов","приоритетам","приоритеты","приоритета","приоритет","Priority"]}},"week14":{"QA":{"en":["quality assurance","QA"],"ko":["품질 점검","품질 보증","품질 검사","QA"],"ru":["обеспечение качества","проверка качества","контроль качества","QA"]},"Happy path":{"en":["successful path","happy paths","normal flow","happy path"],"ko":["Happy Path","성공 경로","정상 흐름","정상 경로","해피 패스","해피패스"],"ru":["основной успешный путь","обычного пути","успешный путь","обычный путь","Happy Path"]},"Edge case":{"en":["edge cases","edge case"],"ko":["Edge Cases","Edge Case","예외 케이스","엣지 케이스","예외 상황"],"ru":["граничные случаи","краевые случаи","особый случай","особые случаи","Edge Cases","Edge Case"]},"Dead end":{"en":["Dead end / orphan screen","disconnected screen","orphan screens","orphan screen","dead ends","dead-ends","dead end","dead-end"],"ko":["Orphan Screen","막다른 흐름·고립 화면","Dead End","막다른 흐름","고립된 화면","고립 화면","막다른 길","데드엔드"],"ru":["Тупик / несвязанный экран","изолированный экран","несвязанные экраны","оторванного экрана","несвязанный экран","осиротевший экран","оторванный экран","Orphan Screen","Dead End","тупиков","тупики","тупик"]},"Portfolio":{"en":["UX portfolio","portfolio"],"ko":["Portfolio","UX 포트폴리오","포트폴리오"],"ru":["UX-портфолио","портфолио","Portfolio"]}}},"visualTranslations":{"en":{"v3-turn-next":"When would you like to travel?","v3-tree-yes":"Enough details","v3-tree-no":"More details needed","er.title":"Same error. Two different experiences.","er.intro":"Both apps lose their connection. Try the buttons and compare what happens to your request.","er.badLabel":"A dead end","er.goodLabel":"A way to recover","er.app":"Note helper","er.lost":"Your request was not saved.","er.badError":"Something went wrong.","er.badDetail":"Error 503","er.startAgain":"Start again","er.emptyInput":"Type your whole request again…","er.badCaption":"No reason, no saved text, no quick way back.","er.request":"Summarize my design notes.","er.goodError":"Connection lost.","er.goodDetail":"Your request is saved. Try once more.","er.retry":"Retry","er.loading":"Trying again…","er.success":"Your summary is ready.","er.point1":"Find one user problem.","er.point2":"Sketch a screen that helps.","er.savedRequest":"No need to type again","er.goodCaption":"Explain the problem, keep the work, offer one clear action.","er.takeaway":"A good error message helps the person continue.","er.replay":"Replay comparison ↺","er.badRestart":"The app opens an empty box. You must type the same request again.","er.retryingLive":"Retrying your saved request.","er.finishedLive":"Done. Your original request was kept.","eth.modeLabel":"Compare the two designs","eth.problem":"Problem example","eth.better":"Better design","eth.reset":"Reset example ↺","eth.continue":"Continue","eth.sent.title":"When the app asks you to stay","eth.sent.app":"AI study helper","eth.sent.user":"I do not want a paid plan.","eth.sent.badMessage":"Please don't leave. I will feel sad if you do not pay.","eth.sent.leave":"Leave","eth.sent.pay":"Upgrade","eth.sent.aiLabel":"AI assistant","eth.sent.goodMessage":"A paid plan is optional. You can keep the free plan or leave.","eth.sent.keepFree":"Keep the free plan","eth.sent.badWhy":"The bot pretends to have feelings and uses guilt to push a purchase.","eth.sent.goodWhy":"The app identifies itself as AI and respects your choice. It does not claim to feel hurt.","eth.sent.badLeaveResult":"Please stay. I will be sad if you leave.","eth.sent.badPayResult":"Upgrade selected in this example. No payment is made.","eth.sent.goodFreeResult":"Free plan kept. You can decide later.","eth.sent.goodLeaveResult":"You are free to leave. Come back any time.","eth.trap.title":"Can you say no to sharing data?","eth.trap.app":"Turn on AI help","eth.trap.start":"Get help with your study notes","eth.trap.badIntro":"One click and you are ready.","eth.trap.badConsent":"Use my private chats to improve AI.","eth.trap.goodConsent":"Share chats to improve AI","eth.trap.optional":"Optional · off by default","eth.trap.goodIntro":"AI help works even if you leave this off.","eth.trap.badWhy":"The box is already checked. Try turning it off, then press Continue.","eth.trap.goodWhy":"Sharing is a separate, optional choice. The service still works when you say no.","eth.trap.badCheckedResult":"AI help is on. Sharing your private chats was also turned on.","eth.trap.badUncheckedResult":"To continue, you must allow chat sharing.","eth.trap.badCheckedWhy":"The design combined two decisions. A preselected box made data sharing easy to miss.","eth.trap.badUncheckedWhy":"You said no, but the service blocked you. Optional data sharing should not be forced.","eth.trap.goodOffResult":"AI help is on. Chat sharing stays off.","eth.trap.goodOnResult":"AI help is on. You chose to turn chat sharing on.","v3-pd-level1":"Level 1 · Start simply","v3-pd-level2":"Level 2 · Choose a template","v3-pd-level3":"Level 3 · Add control","v3-pd-heading1":"One clear action","v3-pd-heading2":"A few useful choices","v3-pd-heading3":"Extra options on request","v3-pd-caption1":"A ready-made button helps the user begin.","v3-pd-caption2":"A template helps the user describe the result they want.","v3-pd-caption3":"Keep advanced settings closed until the user needs them.","v3-pd-app":"Study helper","v3-pd-sample-label":"Sample class note","v3-pd-note":"Our group is designing a study planner. Students choose a study time and set a reminder. We will test whether they can change the plan.","v3-pd-summary-action":"Summarize this note","v3-pd-template-label":"Choose a format","v3-pd-template-points":"3 key points","v3-pd-template-tasks":"To-do list","v3-pd-prompt-label":"Your request","v3-pd-prompt-points":"Summarize this note in 3 key points.","v3-pd-prompt-tasks":"Turn this note into a to-do list.","v3-pd-template-action":"Use this template","v3-pd-advanced-action":"Advanced options","v3-pd-length-label":"Length","v3-pd-short":"Short","v3-pd-detailed":"More detail","v3-pd-tone-label":"Tone","v3-pd-neutral":"Neutral","v3-pd-friendly":"Friendly","v3-pd-prompt-options":"Summarize the class note. Length: {length}. Tone: {tone}.","v3-pd-generate-action":"Create a summary","v3-pd-working":"Preparing the sample answer…","v3-pd-result-label":"Example answer","v3-pd-result-short-neutral":"The group will test whether students can change a study plan with a reminder.","v3-pd-result-short-friendly":"Let’s help students plan study time, add a reminder, and easily change their plan.","v3-pd-result-detailed-neutral":"The group is designing a study planner. Students will choose a study time and set a reminder. The first test will check whether they can change the plan.","v3-pd-result-detailed-friendly":"Here is our plan: help students choose a study time and add a reminder. Then ask them to try changing the plan, so we can see what is easy or confusing.","v3-pd-result-points":"1. Design a study planner.\n2. Let students choose a time and reminder.\n3. Test whether the plan is easy to change.","v3-pd-result-tasks":"□ Sketch a screen for choosing study time.\n□ Add a reminder option.\n□ Ask a student to change the plan.","v3-pd-replay":"Show again","v3-pd-reset":"Reset the three examples","v3-fb-title":"Study helper","v3-fb-subtitle":"Example conversation","v3-fb-user-label":"You","v3-fb-ai-label":"Assistant","v3-fb-user-message":"Turn our study-planner idea into a simple plan.","v3-fb-file":"Project note","v3-fb-answer":"Here is a plan you can test:\n\n1. Let students choose a study time.\n2. Offer a reminder.\n3. Ask a student to change the plan and explain any difficulty.","v3-fb-warning":"Check the answer against your original note.","v3-fb-helpful":"Helpful","v3-fb-unhelpful":"Not helpful","v3-fb-copy":"Copy","v3-fb-edit":"Edit","v3-fb-reason-title":"What could be better? (optional)","v3-fb-reason-long":"Too long","v3-fb-reason-unclear":"Hard to understand","v3-fb-reason-offtopic":"Misses my question","v3-fb-up-status":"Marked helpful. Tap again to undo.","v3-fb-down-status":"Marked not helpful. You can add a reason.","v3-fb-reason-status":"Your reason: {reason}.","v3-fb-clear-status":"Feedback cleared.","v3-fb-copy-success":"Answer copied.","v3-fb-copy-fallback":"Select the answer below and copy it with your device’s copy command.","v3-fb-copy-label":"Answer to copy","v3-fb-edit-label":"Edit this sample answer","v3-fb-save":"Save changes","v3-fb-cancel":"Cancel","v3-fb-edit-saved":"Your edited answer is shown.","v3-fb-edit-empty":"Write an answer before saving.","v3-fb-reset":"Reset conversation","v3-bp-title":"Follow one document through the service","v3-bp-intro":"Play the example. See how one action changes the screen and the work behind it.","v3-bp-play":"Play the example","v3-bp-replay":"Replay","v3-bp-pause":"Pause","v3-bp-resume":"Continue","v3-bp-reset":"Reset","v3-bp-step-input":"1 · Input","v3-bp-step-processing":"2 · Processing","v3-bp-step-output":"3 · Output","v3-bp-steps-label":"Example stage","v3-bp-lane1":"User Action","v3-bp-lane2":"UI Touchpoint","v3-bp-lane3":"AI Processing","v3-bp-lane4":"Data / APIs","v3-bp-lane5":"Fallback","v3-bp-visibility":"Line of visibility","v3-bp-input-lane1":"Choose a sample photo.","v3-bp-input-lane2":"Show the selected file and Upload action.","v3-bp-input-lane3":"Wait for the document.","v3-bp-input-lane4":"The document image is the input data.","v3-bp-input-lane5":"Keep a Retry route ready if upload fails.","v3-bp-processing-lane1":"Wait and read the progress message.","v3-bp-processing-lane2":"Show that the document is being read.","v3-bp-processing-lane3":"OCR reads the letters; translation produces a draft.","v3-bp-processing-lane4":"The diagram connects the text to a translation API.","v3-bp-processing-lane5":"If letters are unclear, ask for a clearer photo.","v3-bp-output-lane1":"Read the draft and compare it with the source.","v3-bp-output-lane2":"Show the draft beside a way to open the source.","v3-bp-output-lane3":"Return the draft for the user to check.","v3-bp-output-lane4":"Keep the source image available for comparison.","v3-bp-output-lane5":"Offer a new photo when the text needs checking.","v3-bp-error-lane1":"See the problem and choose a next step.","v3-bp-error-lane2":"Explain what is hard to read and show a retry action.","v3-bp-error-lane3":"The sample letters are too blurry to read.","v3-bp-error-lane4":"Keep the original image available.","v3-bp-error-lane5":"Ask for a clearer photo instead of guessing.","v3-bp-phone-app":"Document helper","v3-bp-phone-example":"Example","v3-bp-source-label":"Sample note · Spanish","v3-bp-source-line1":"Sala: B2","v3-bp-source-line2":"Hora: 14:00","v3-bp-source-file":"appointment-note.jpg","v3-bp-upload":"Use the sample photo","v3-bp-reading":"Reading the document…","v3-bp-reading-detail":"Finding the letters, then preparing a draft translation.","v3-bp-draft-label":"Draft translation","v3-bp-result-line1":"Room: B2","v3-bp-result-line2":"Time: 14:00","v3-bp-check":"Compare names and numbers with the source.","v3-bp-compare":"Compare with the source","v3-bp-close-source":"Hide the source","v3-bp-new-photo":"Choose another photo","v3-bp-try-error":"Try a blurry photo","v3-bp-error-title":"Some letters are hard to read","v3-bp-error-copy":"Use a sharper photo with more light, so the text can be checked.","v3-bp-retry":"Use a clearer sample","v3-bp-state-input":"Input: the sample photo is ready.","v3-bp-state-processing":"Processing: the screen and the hidden work change together.","v3-bp-state-output":"Output: check the draft against the source.","v3-bp-state-error":"Fallback: the screen offers a clear next step.","v3-bp-state-paused":"Animation paused. Use Continue or choose a stage.","v3-pd-prompt-default":"Summarize the class note. Length: Short. Tone: Neutral."},"ko":{"v3-turn-next":"언제 출발하고 싶으신가요?","v3-tree-yes":"정보가 충분함","v3-tree-no":"추가 확인 필요","er.title":"같은 오류, 다른 경험","er.intro":"두 앱 모두 연결이 끊겼습니다. 버튼을 눌러 내 요청이 어떻게 처리되는지 비교해 보세요.","er.badLabel":"막다른 길","er.goodLabel":"다시 이어갈 수 있는 길","er.app":"노트 도우미","er.lost":"내 요청이 저장되지 않았습니다.","er.badError":"오류가 발생했습니다.","er.badDetail":"오류 503","er.startAgain":"처음부터 시작","er.emptyInput":"요청을 처음부터 다시 입력하세요…","er.badCaption":"이유 설명도, 저장된 글도, 간단한 재시도도 없습니다.","er.request":"내 디자인 노트를 요약해 줘.","er.goodError":"연결이 끊겼습니다.","er.goodDetail":"요청은 저장되어 있습니다. 다시 시도해 보세요.","er.retry":"다시 시도","er.loading":"다시 시도하는 중…","er.success":"요약이 준비되었습니다.","er.point1":"사용자의 문제 하나를 찾기","er.point2":"문제를 해결하는 화면을 그리기","er.savedRequest":"다시 입력할 필요가 없습니다","er.goodCaption":"문제를 설명하고, 작업을 보존하고, 다음 행동을 알려 줍니다.","er.takeaway":"좋은 오류 안내는 사용자가 계속할 수 있게 돕습니다.","er.replay":"비교 다시 보기 ↺","er.badRestart":"빈 입력창으로 돌아왔습니다. 같은 요청을 다시 입력해야 합니다.","er.retryingLive":"저장된 요청으로 다시 시도합니다.","er.finishedLive":"완료되었습니다. 처음 입력한 요청을 그대로 사용했습니다.","eth.modeLabel":"두 디자인 비교","eth.problem":"문제 있는 예","eth.better":"더 나은 디자인","eth.reset":"예시 처음으로 ↺","eth.continue":"계속하기","eth.sent.title":"앱이 떠나지 말라고 할 때","eth.sent.app":"AI 학습 도우미","eth.sent.user":"유료 요금제를 원하지 않아요.","eth.sent.badMessage":"떠나지 마세요. 결제하지 않으면 저는 슬플 거예요.","eth.sent.leave":"나가기","eth.sent.pay":"유료로 전환","eth.sent.aiLabel":"AI 도우미","eth.sent.goodMessage":"유료 요금제는 선택 사항입니다. 무료로 계속 쓰거나 나갈 수 있습니다.","eth.sent.keepFree":"무료로 계속 사용","eth.sent.badWhy":"AI가 감정이 있는 것처럼 행동하며 죄책감으로 결제를 유도합니다.","eth.sent.goodWhy":"AI임을 밝히고 사용자의 선택을 존중합니다. 감정이 상한다고 말하지 않습니다.","eth.sent.badLeaveResult":"계속 있어 주세요. 떠나면 저는 슬플 거예요.","eth.sent.badPayResult":"이 예시에서 유료 전환을 골랐습니다. 실제 결제는 없습니다.","eth.sent.goodFreeResult":"무료 요금제를 유지합니다. 나중에 결정해도 됩니다.","eth.sent.goodLeaveResult":"자유롭게 나갈 수 있습니다. 언제든 다시 이용하세요.","eth.trap.title":"데이터 공유를 거절할 수 있을까요?","eth.trap.app":"AI 도움 켜기","eth.trap.start":"학습 노트에 AI 도움 받기","eth.trap.badIntro":"한 번만 누르면 준비가 끝납니다.","eth.trap.badConsent":"내 개인 대화를 AI 개선에 사용합니다.","eth.trap.goodConsent":"AI 개선을 위한 대화 공유","eth.trap.optional":"선택 사항 · 기본값은 꺼짐","eth.trap.goodIntro":"이 항목을 꺼 두어도 AI 도움을 이용할 수 있습니다.","eth.trap.badWhy":"이미 동의에 체크되어 있습니다. 체크를 끄고 계속하기를 눌러 보세요.","eth.trap.goodWhy":"공유 여부를 따로 선택합니다. 거절해도 서비스를 이용할 수 있습니다.","eth.trap.badCheckedResult":"AI 도움이 켜졌습니다. 개인 대화 공유도 함께 켜졌습니다.","eth.trap.badUncheckedResult":"계속하려면 대화 공유에 동의해야 합니다.","eth.trap.badCheckedWhy":"두 결정을 한꺼번에 묶었습니다. 미리 체크된 동의 때문에 데이터 공유를 놓치기 쉽습니다.","eth.trap.badUncheckedWhy":"거절하자 이용이 막혔습니다. 선택 사항인 데이터 공유를 강요하면 안 됩니다.","eth.trap.goodOffResult":"AI 도움이 켜졌습니다. 대화 공유는 꺼진 상태입니다.","eth.trap.goodOnResult":"AI 도움이 켜졌습니다. 본인이 선택한 대로 대화 공유도 켜졌습니다.","v3-pd-level1":"1단계 · 간단하게 시작","v3-pd-level2":"2단계 · 템플릿 선택","v3-pd-level3":"3단계 · 더 세밀한 조절","v3-pd-heading1":"명확한 행동 하나","v3-pd-heading2":"꼭 필요한 선택 몇 가지","v3-pd-heading3":"필요할 때 추가 설정","v3-pd-caption1":"준비된 버튼으로 쉽게 시작할 수 있습니다.","v3-pd-caption2":"템플릿으로 원하는 결과를 쉽게 요청합니다.","v3-pd-caption3":"고급 설정은 사용자가 필요할 때 열게 합니다.","v3-pd-app":"공부 도우미","v3-pd-sample-label":"예시 수업 메모","v3-pd-note":"우리 팀은 공부 계획 앱을 디자인합니다. 학생은 공부 시간을 정하고 알림을 설정합니다. 계획을 쉽게 바꿀 수 있는지 테스트할 예정입니다.","v3-pd-summary-action":"이 메모 요약하기","v3-pd-template-label":"결과 형식 선택","v3-pd-template-points":"핵심 3가지","v3-pd-template-tasks":"할 일 목록","v3-pd-prompt-label":"요청 내용","v3-pd-prompt-points":"이 메모의 핵심을 3가지로 요약해 줘.","v3-pd-prompt-tasks":"이 메모를 할 일 목록으로 바꿔 줘.","v3-pd-template-action":"이 템플릿 사용하기","v3-pd-advanced-action":"고급 설정","v3-pd-length-label":"길이","v3-pd-short":"짧게","v3-pd-detailed":"자세히","v3-pd-tone-label":"말투","v3-pd-neutral":"담백하게","v3-pd-friendly":"친근하게","v3-pd-prompt-options":"수업 메모를 요약해 줘. 길이: {length}. 말투: {tone}.","v3-pd-generate-action":"요약 만들기","v3-pd-working":"예시 답변을 준비하고 있어요…","v3-pd-result-label":"예시 답변","v3-pd-result-short-neutral":"학생이 알림이 있는 공부 계획을 쉽게 바꿀 수 있는지 테스트합니다.","v3-pd-result-short-friendly":"공부 시간을 정하고 알림을 추가한 뒤, 계획도 쉽게 바꾸도록 도와줘요.","v3-pd-result-detailed-neutral":"우리 팀은 공부 계획 앱을 디자인합니다. 학생은 공부 시간을 정하고 알림을 설정합니다. 첫 테스트에서는 계획을 쉽게 바꿀 수 있는지 확인합니다.","v3-pd-result-detailed-friendly":"우리의 계획이에요. 먼저 공부 시간을 정하고 알림을 추가하도록 도와줘요. 그다음 학생에게 계획을 바꿔 보게 하고, 쉬운 점과 헷갈리는 점을 알아봐요.","v3-pd-result-points":"1. 공부 계획 앱을 디자인합니다.\n2. 공부 시간과 알림을 설정하게 합니다.\n3. 계획을 쉽게 바꿀 수 있는지 테스트합니다.","v3-pd-result-tasks":"□ 공부 시간을 정하는 화면 그리기\n□ 알림 설정 추가하기\n□ 학생에게 계획을 바꿔 보게 하기","v3-pd-replay":"다시 보기","v3-pd-reset":"세 가지 예시 초기화","v3-fb-title":"공부 도우미","v3-fb-subtitle":"예시 대화","v3-fb-user-label":"나","v3-fb-ai-label":"도우미","v3-fb-user-message":"우리의 공부 계획 앱 아이디어를 간단한 계획으로 정리해 줘.","v3-fb-file":"프로젝트 메모","v3-fb-answer":"이렇게 계획하고 테스트해 보세요.\n\n1. 학생이 공부 시간을 정하게 합니다.\n2. 알림 기능을 제공합니다.\n3. 학생에게 계획을 바꿔 보게 하고 어려운 점을 듣습니다.","v3-fb-warning":"답변을 원래 메모와 비교해 확인하세요.","v3-fb-helpful":"도움이 돼요","v3-fb-unhelpful":"아쉬워요","v3-fb-copy":"복사","v3-fb-edit":"수정","v3-fb-reason-title":"어떤 점이 아쉬운가요? (선택)","v3-fb-reason-long":"너무 길어요","v3-fb-reason-unclear":"이해하기 어려워요","v3-fb-reason-offtopic":"질문과 달라요","v3-fb-up-status":"‘도움이 돼요’를 선택했습니다. 다시 누르면 취소됩니다.","v3-fb-down-status":"‘아쉬워요’를 선택했습니다. 이유도 선택할 수 있습니다.","v3-fb-reason-status":"선택한 이유: {reason}.","v3-fb-clear-status":"피드백 선택을 취소했습니다.","v3-fb-copy-success":"답변을 복사했습니다.","v3-fb-copy-fallback":"아래 답변을 선택하고 기기의 복사 기능을 사용하세요.","v3-fb-copy-label":"복사할 답변","v3-fb-edit-label":"예시 답변 수정","v3-fb-save":"수정 내용 저장","v3-fb-cancel":"취소","v3-fb-edit-saved":"수정한 답변을 표시했습니다.","v3-fb-edit-empty":"답변을 입력한 뒤 저장하세요.","v3-fb-reset":"대화 초기화","v3-bp-title":"문서 하나가 서비스를 통과하는 과정","v3-bp-intro":"예시를 재생하고 하나의 행동이 화면과 화면 뒤의 처리를 어떻게 바꾸는지 보세요.","v3-bp-play":"예시 재생","v3-bp-replay":"다시 재생","v3-bp-pause":"일시 정지","v3-bp-resume":"계속 보기","v3-bp-reset":"초기화","v3-bp-step-input":"1 · 입력","v3-bp-step-processing":"2 · 처리","v3-bp-step-output":"3 · 출력","v3-bp-steps-label":"예시 단계","v3-bp-lane1":"사용자 행동","v3-bp-lane2":"UI 접점","v3-bp-lane3":"AI 처리","v3-bp-lane4":"데이터 / API","v3-bp-lane5":"오류 대안 (Fallback)","v3-bp-visibility":"가시성의 선","v3-bp-input-lane1":"예시 사진을 선택합니다.","v3-bp-input-lane2":"선택한 파일과 업로드 버튼을 보여줍니다.","v3-bp-input-lane3":"문서 입력을 기다립니다.","v3-bp-input-lane4":"문서 이미지가 입력 데이터입니다.","v3-bp-input-lane5":"업로드 실패에 대비해 재시도 경로를 둡니다.","v3-bp-processing-lane1":"진행 안내를 보며 기다립니다.","v3-bp-processing-lane2":"문서를 읽고 있다는 안내를 보여줍니다.","v3-bp-processing-lane3":"OCR로 글자를 읽고 번역 초안을 만듭니다.","v3-bp-processing-lane4":"이 설계도는 텍스트와 번역 API를 연결합니다.","v3-bp-processing-lane5":"글자가 불명확하면 더 선명한 사진을 요청합니다.","v3-bp-output-lane1":"번역 초안을 읽고 원문과 비교합니다.","v3-bp-output-lane2":"초안과 함께 원문을 여는 방법을 보여줍니다.","v3-bp-output-lane3":"사용자가 확인할 번역 초안을 전달합니다.","v3-bp-output-lane4":"비교할 수 있도록 원본 이미지를 보여줍니다.","v3-bp-output-lane5":"확인이 필요하면 새 사진을 선택하게 합니다.","v3-bp-error-lane1":"문제를 보고 다음 행동을 선택합니다.","v3-bp-error-lane2":"읽기 어려운 부분을 알리고 재시도 방법을 보여줍니다.","v3-bp-error-lane3":"예시 사진의 글자가 흐려 읽기 어렵습니다.","v3-bp-error-lane4":"원본 이미지를 계속 확인할 수 있게 합니다.","v3-bp-error-lane5":"추측하지 않고 더 선명한 사진을 요청합니다.","v3-bp-phone-app":"문서 도우미","v3-bp-phone-example":"예시","v3-bp-source-label":"예시 메모 · 스페인어","v3-bp-source-line1":"Sala: B2","v3-bp-source-line2":"Hora: 14:00","v3-bp-source-file":"appointment-note.jpg","v3-bp-upload":"예시 사진 사용하기","v3-bp-reading":"문서를 읽고 있어요…","v3-bp-reading-detail":"글자를 찾은 뒤 번역 초안을 준비합니다.","v3-bp-draft-label":"번역 초안","v3-bp-result-line1":"장소: B2","v3-bp-result-line2":"시간: 14:00","v3-bp-check":"이름과 숫자를 원문과 비교하세요.","v3-bp-compare":"원문과 비교하기","v3-bp-close-source":"원문 접기","v3-bp-new-photo":"다른 사진 선택","v3-bp-try-error":"흐린 사진으로 보기","v3-bp-error-title":"일부 글자를 읽기 어려워요","v3-bp-error-copy":"글자를 확인할 수 있도록 더 밝고 선명한 사진을 사용해 주세요.","v3-bp-retry":"선명한 예시로 다시 보기","v3-bp-state-input":"입력: 예시 사진이 준비되었습니다.","v3-bp-state-processing":"처리: 보이는 화면과 화면 뒤의 처리가 함께 바뀝니다.","v3-bp-state-output":"출력: 번역 초안을 원문과 비교합니다.","v3-bp-state-error":"오류 대안: 화면에서 다음 행동을 안내합니다.","v3-bp-state-paused":"애니메이션을 멈췄습니다. 계속 보거나 단계를 선택하세요.","v3-pd-prompt-default":"수업 메모를 요약해 줘. 길이: 짧게. 말투: 담백하게."},"ru":{"v3-turn-next":"Когда вы хотите отправиться?","v3-tree-yes":"Данных достаточно","v3-tree-no":"Нужно уточнение","er.title":"Одна ошибка — два разных опыта","er.intro":"В обоих приложениях пропала связь. Нажмите кнопки и сравните, что происходит с вашим запросом.","er.badLabel":"Тупик","er.goodLabel":"Можно продолжить","er.app":"Помощник с заметками","er.lost":"Ваш запрос не сохранился.","er.badError":"Что-то пошло не так.","er.badDetail":"Ошибка 503","er.startAgain":"Начать заново","er.emptyInput":"Введите весь запрос заново…","er.badCaption":"Нет объяснения, сохранённого текста и быстрого повтора.","er.request":"Кратко изложи мои заметки о дизайне.","er.goodError":"Связь прервалась.","er.goodDetail":"Ваш запрос сохранён. Попробуйте ещё раз.","er.retry":"Повторить","er.loading":"Повторяем запрос…","er.success":"Краткое изложение готово.","er.point1":"Найдите одну проблему пользователя.","er.point2":"Набросайте экран, который помогает.","er.savedRequest":"Не нужно вводить заново","er.goodCaption":"Объясните проблему, сохраните работу и предложите понятное действие.","er.takeaway":"Хорошее сообщение об ошибке помогает продолжить работу.","er.replay":"Повторить сравнение ↺","er.badRestart":"Открылось пустое поле. Тот же запрос нужно ввести заново.","er.retryingLive":"Повторяем сохранённый запрос.","er.finishedLive":"Готово. Исходный запрос сохранился.","eth.modeLabel":"Сравнить два варианта дизайна","eth.problem":"Плохой пример","eth.better":"Лучший вариант","eth.reset":"Сначала ↺","eth.continue":"Продолжить","eth.sent.title":"Когда приложение просит остаться","eth.sent.app":"Учебный ИИ-помощник","eth.sent.user":"Мне не нужен платный тариф.","eth.sent.badMessage":"Пожалуйста, не уходите. Мне будет грустно, если вы не заплатите.","eth.sent.leave":"Выйти","eth.sent.pay":"Платный тариф","eth.sent.aiLabel":"ИИ-помощник","eth.sent.goodMessage":"Платный тариф необязателен. Можно остаться на бесплатном или выйти.","eth.sent.keepFree":"Остаться бесплатно","eth.sent.badWhy":"Бот изображает чувства и давит на вину, чтобы склонить к покупке.","eth.sent.goodWhy":"Приложение ясно называет себя ИИ и уважает ваш выбор. Оно не заявляет, что ему обидно.","eth.sent.badLeaveResult":"Пожалуйста, останьтесь. Мне будет грустно, если вы уйдёте.","eth.sent.badPayResult":"В примере выбран платный тариф. Настоящего платежа нет.","eth.sent.goodFreeResult":"Бесплатный тариф сохранён. Решить можно позже.","eth.sent.goodLeaveResult":"Вы можете свободно выйти и вернуться в любое время.","eth.trap.title":"Можно ли отказаться от передачи данных?","eth.trap.app":"Включить помощь ИИ","eth.trap.start":"Получайте помощь с учебными заметками","eth.trap.badIntro":"Один клик — и всё готово.","eth.trap.badConsent":"Использовать мои личные чаты для улучшения ИИ.","eth.trap.goodConsent":"Передавать чаты для улучшения ИИ","eth.trap.optional":"Необязательно · изначально выключено","eth.trap.goodIntro":"Помощь ИИ доступна и без этой опции.","eth.trap.badWhy":"Галочка уже стоит. Снимите её и нажмите «Продолжить».","eth.trap.goodWhy":"Передача данных — отдельный и добровольный выбор. Сервис работает и при отказе.","eth.trap.badCheckedResult":"Помощь ИИ включена. Передача личных чатов тоже включилась.","eth.trap.badUncheckedResult":"Чтобы продолжить, нужно разрешить передачу чатов.","eth.trap.badCheckedWhy":"Два решения объединили в одно. Из-за заранее поставленной галочки передачу данных легко не заметить.","eth.trap.badUncheckedWhy":"Вы отказались, но сервис вас заблокировал. Необязательную передачу данных нельзя навязывать.","eth.trap.goodOffResult":"Помощь ИИ включена. Передача чатов остаётся выключенной.","eth.trap.goodOnResult":"Помощь ИИ включена. Передача чатов включена по вашему выбору.","v3-pd-level1":"Уровень 1 · Простой старт","v3-pd-level2":"Уровень 2 · Выбор шаблона","v3-pd-level3":"Уровень 3 · Больше контроля","v3-pd-heading1":"Одно понятное действие","v3-pd-heading2":"Несколько полезных вариантов","v3-pd-heading3":"Настройки по запросу","v3-pd-caption1":"Готовая кнопка помогает начать.","v3-pd-caption2":"Шаблон помогает описать нужный результат.","v3-pd-caption3":"Показывайте дополнительные настройки, когда они нужны пользователю.","v3-pd-app":"Помощник в учёбе","v3-pd-sample-label":"Пример заметки","v3-pd-note":"Наша группа создаёт планировщик учёбы. Студенты выбирают время и ставят напоминание. Мы проверим, легко ли изменить план.","v3-pd-summary-action":"Сократить заметку","v3-pd-template-label":"Выберите формат","v3-pd-template-points":"3 главных пункта","v3-pd-template-tasks":"Список дел","v3-pd-prompt-label":"Ваш запрос","v3-pd-prompt-points":"Изложи эту заметку в 3 главных пунктах.","v3-pd-prompt-tasks":"Преврати эту заметку в список дел.","v3-pd-template-action":"Использовать шаблон","v3-pd-advanced-action":"Дополнительные настройки","v3-pd-length-label":"Длина","v3-pd-short":"Кратко","v3-pd-detailed":"Подробнее","v3-pd-tone-label":"Тон","v3-pd-neutral":"Нейтральный","v3-pd-friendly":"Дружелюбный","v3-pd-prompt-options":"Сократи заметку. Длина: {length}. Тон: {tone}.","v3-pd-generate-action":"Создать краткое изложение","v3-pd-working":"Готовим пример ответа…","v3-pd-result-label":"Пример ответа","v3-pd-result-short-neutral":"Группа проверит, легко ли студентам изменить учебный план с напоминанием.","v3-pd-result-short-friendly":"Поможем студентам выбрать время учёбы, добавить напоминание и легко изменить план.","v3-pd-result-detailed-neutral":"Группа создаёт планировщик учёбы. Студенты выберут время и добавят напоминание. Первый тест покажет, легко ли изменить план.","v3-pd-result-detailed-friendly":"Вот наш план: поможем студентам выбрать время учёбы и добавить напоминание. Затем попросим изменить план и узнаем, что было легко, а что вызвало трудности.","v3-pd-result-points":"1. Создать планировщик учёбы.\n2. Дать выбор времени и напоминания.\n3. Проверить, легко ли изменить план.","v3-pd-result-tasks":"□ Нарисовать экран выбора времени.\n□ Добавить напоминание.\n□ Попросить студента изменить план.","v3-pd-replay":"Показать снова","v3-pd-reset":"Сбросить три примера","v3-fb-title":"Помощник в учёбе","v3-fb-subtitle":"Пример диалога","v3-fb-user-label":"Вы","v3-fb-ai-label":"Помощник","v3-fb-user-message":"Преврати нашу идею планировщика учёбы в простой план.","v3-fb-file":"Заметка о проекте","v3-fb-answer":"Вот план для проверки:\n\n1. Дайте студентам выбрать время учёбы.\n2. Предложите напоминание.\n3. Попросите студента изменить план и рассказать о трудностях.","v3-fb-warning":"Сравните ответ с исходной заметкой.","v3-fb-helpful":"Полезно","v3-fb-unhelpful":"Не помогло","v3-fb-copy":"Копировать","v3-fb-edit":"Изменить","v3-fb-reason-title":"Что можно улучшить? (необязательно)","v3-fb-reason-long":"Слишком длинно","v3-fb-reason-unclear":"Трудно понять","v3-fb-reason-offtopic":"Не по моему вопросу","v3-fb-up-status":"Выбрано «Полезно». Нажмите ещё раз, чтобы отменить.","v3-fb-down-status":"Выбрано «Не помогло». Можно указать причину.","v3-fb-reason-status":"Ваша причина: {reason}.","v3-fb-clear-status":"Оценка отменена.","v3-fb-copy-success":"Ответ скопирован.","v3-fb-copy-fallback":"Выделите ответ ниже и скопируйте его средствами вашего устройства.","v3-fb-copy-label":"Ответ для копирования","v3-fb-edit-label":"Измените пример ответа","v3-fb-save":"Сохранить изменения","v3-fb-cancel":"Отмена","v3-fb-edit-saved":"Показан ваш изменённый ответ.","v3-fb-edit-empty":"Введите ответ перед сохранением.","v3-fb-reset":"Сбросить диалог","v3-bp-title":"Проследите путь одного документа","v3-bp-intro":"Запустите пример: посмотрите, как одно действие меняет экран и работу за ним.","v3-bp-play":"Запустить пример","v3-bp-replay":"Повторить","v3-bp-pause":"Пауза","v3-bp-resume":"Продолжить","v3-bp-reset":"Сбросить","v3-bp-step-input":"1 · Ввод","v3-bp-step-processing":"2 · Обработка","v3-bp-step-output":"3 · Результат","v3-bp-steps-label":"Этап примера","v3-bp-lane1":"Действие пользователя","v3-bp-lane2":"Точка контакта UI","v3-bp-lane3":"Обработка ИИ","v3-bp-lane4":"Данные / API","v3-bp-lane5":"Запасной путь","v3-bp-visibility":"Линия видимости","v3-bp-input-lane1":"Выбрать пример фотографии.","v3-bp-input-lane2":"Показать файл и кнопку загрузки.","v3-bp-input-lane3":"Ожидать документ.","v3-bp-input-lane4":"Входные данные — изображение документа.","v3-bp-input-lane5":"Предусмотреть повтор при сбое загрузки.","v3-bp-processing-lane1":"Ждать и читать сообщение о ходе работы.","v3-bp-processing-lane2":"Показать, что документ читается.","v3-bp-processing-lane3":"OCR распознаёт буквы; перевод создаёт черновик.","v3-bp-processing-lane4":"Схема связывает текст с API перевода.","v3-bp-processing-lane5":"Если буквы неясны, запросить чёткое фото.","v3-bp-output-lane1":"Прочитать черновик и сравнить с источником.","v3-bp-output-lane2":"Показать черновик и способ открыть источник.","v3-bp-output-lane3":"Вернуть черновик для проверки пользователем.","v3-bp-output-lane4":"Оставить исходное изображение для сравнения.","v3-bp-output-lane5":"Предложить другое фото для проверки текста.","v3-bp-error-lane1":"Увидеть проблему и выбрать следующий шаг.","v3-bp-error-lane2":"Объяснить, что трудно прочитать, и предложить повтор.","v3-bp-error-lane3":"Буквы на примере слишком размыты.","v3-bp-error-lane4":"Сохранить доступ к исходному изображению.","v3-bp-error-lane5":"Запросить чёткое фото, а не угадывать текст.","v3-bp-phone-app":"Помощник с документами","v3-bp-phone-example":"Пример","v3-bp-source-label":"Пример заметки · испанский","v3-bp-source-line1":"Sala: B2","v3-bp-source-line2":"Hora: 14:00","v3-bp-source-file":"appointment-note.jpg","v3-bp-upload":"Использовать пример фото","v3-bp-reading":"Читаем документ…","v3-bp-reading-detail":"Распознаём буквы и готовим черновой перевод.","v3-bp-draft-label":"Черновой перевод","v3-bp-result-line1":"Комната: B2","v3-bp-result-line2":"Время: 14:00","v3-bp-check":"Сравните имена и числа с источником.","v3-bp-compare":"Сравнить с источником","v3-bp-close-source":"Скрыть источник","v3-bp-new-photo":"Выбрать другое фото","v3-bp-try-error":"Попробовать размытое фото","v3-bp-error-title":"Некоторые буквы трудно прочитать","v3-bp-error-copy":"Используйте более чёткое фото при хорошем освещении, чтобы проверить текст.","v3-bp-retry":"Взять чёткий пример","v3-bp-state-input":"Ввод: пример фотографии готов.","v3-bp-state-processing":"Обработка: экран и скрытые процессы меняются вместе.","v3-bp-state-output":"Результат: сравните черновик с источником.","v3-bp-state-error":"Запасной путь: экран предлагает понятный следующий шаг.","v3-bp-state-paused":"Анимация на паузе. Продолжите или выберите этап.","v3-pd-prompt-default":"Сократи заметку. Длина: Кратко. Тон: Нейтральный."}}};
+/* UX Studio: a focused reading shell around the original interactive examples. */
 (function () {
- const pages = [{"id":"week01","label":"W1","title":"Week 1: AI Service UX","subject":{"ko":"AI & UX 기초","en":"AI & UX Basics","ru":"Основы ИИ и UX"}},{"id":"week02","label":"W2","title":"Week 2: AI Design Thinking","subject":{"ko":"디자인 씽킹과 페르소나","en":"Design Thinking & Personas","ru":"Дизайн-мышление и персоны"}},{"id":"week03","label":"W3","title":"Week 3: The 6 Core States of AI Interfaces","subject":{"ko":"AI 인터페이스의 6가지 상태","en":"Six AI Interface States","ru":"6 состояний интерфейса ИИ"}},{"id":"week04","label":"W4","title":"Week 4: AI Interaction Design & Chat Flows","subject":{"ko":"대화 흐름과 상호작용","en":"Conversation & Interaction","ru":"Диалог и взаимодействие"}},{"id":"week05","label":"W5","title":"Week 5: Trust, Mistakes, & Explainable AI (XAI)","subject":{"ko":"신뢰 · 오류 · 설명 가능성","en":"Trust & Explainability","ru":"Доверие и объяснимость"}},{"id":"week06","label":"W6","title":"Week 6: AI Onboarding & Feedback UI","subject":{"ko":"온보딩과 피드백","en":"Onboarding & Feedback","ru":"Онбординг и обратная связь"}},{"id":"week07","label":"W7","title":"Week 7: Wizard of Oz (WoZ) Prototyping","subject":{"ko":"오즈의 마법사(WoZ) 프로토타이핑","en":"Wizard of Oz Prototyping","ru":"Прототипирование Wizard of Oz"}},{"id":"week08","label":"W8","title":"Week 8: Midterm / Optional UI Component Lab","subject":{"ko":"중간고사 · 선택 보너스 실습","en":"Midterm · Optional UI Component Lab","ru":"Промежуточный экзамен · факультативная практика UI"}},{"id":"week09","label":"W9","title":"Week 09: Figma Prototyping for AI Services","subject":{"ko":"Figma 프로토타입 실습","en":"Figma Prototype Lab","ru":"Прототипирование в Figma"}},{"id":"week10","label":"W10","title":"Week 10: Ethical AI UX & Human Control","subject":{"ko":"윤리와 인간 통제","en":"Ethics & Human Control","ru":"Этика и контроль человека"}},{"id":"week11","label":"W11","title":"Week 11: Personalization & Privacy","subject":{"ko":"개인화와 개인정보","en":"Personalization & Privacy","ru":"Персонализация и приватность"}},{"id":"week12","label":"W12","title":"Week 12: AI Service Blueprint","subject":{"ko":"서비스 블루프린트","en":"Service Blueprint","ru":"Сервисный чертёж"}},{"id":"week13","label":"W13","title":"Week 13: AI Usability Testing & Self-Audit","subject":{"ko":"AI 사용성 평가와 셀프 진단","en":"AI Usability Testing & Self-Audit","ru":"Юзабилити ИИ и самоаудит"}},{"id":"week14","label":"W14","title":"Week 14: Prototype QA & Final Portfolio","subject":{"ko":"최종 프로토타입 점검","en":"Final Prototype QA","ru":"Финальная проверка прототипа"}}];
- const qs = new URLSearchParams(window.location.search);
- const requested = qs.get('week') || 'week01';
- const ix = Math.max(0, pages.findIndex(p => p.id === requested));
- const current = pages[ix];
- const template = document.getElementById('lesson-' + current.id);
- const mount = document.getElementById('lesson-content');
- if (!template || !mount) { console.error('UX lecture template missing'); return; }
- document.body.dataset.page = current.id;
- mount.replaceChildren(template.content.cloneNode(true));
- const staticDemos = {"week03":{"텅 빈 입력창 (무엇을 질문해야 할지 모름 👉":["Empty input: the user does not know what to ask →","Пустое поле: пользователь не знает, что спросить →"],"추천 프롬프트 칩 제공!":["Offer suggested prompt chips!","Предложите готовые варианты запроса!"],"구조화되지 않은 거대한 줄글 덩어리 (👉":["One long, unstructured block of text →","Один длинный, неструктурированный текст →"],"카드, 불릿, 표 사용!":["Use cards, bullets and tables!","Используйте карточки, списки и таблицы!"],"에러 발생 시 처음부터 다시 입력하게 강요 (👉":["After an error, the user must retype everything →","После ошибки нужно вводить всё заново →"],"1-Click 재시도 버튼 제공!":["Offer a one-click retry button!","Дайте кнопку повтора в одно нажатие!"]},"week06":{": 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.":[": Place one-tap Like/Dislike buttons beside the safety notice.",": Разместите кнопки «Нравится/Не нравится» рядом с предупреждением."],": [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.":[": Copy signals positive feedback; Regenerate before reading the answer signals negative feedback.",": Копирование даёт положительный сигнал; повторная генерация до чтения — отрицательный."]},"week09":{"단축키를 클릭해 보세요!":["Click a shortcut above!","Нажмите горячую клавишу!"],"짧은 글":["Short text","Короткий текст"],"아이콘":["Icon","Значок"],"PDF 요약...":["Summarize PDF...","Пересказать PDF..."],"요약 결과입니다...":["Here is the summary...","Вот краткий пересказ..."]},"week08":{"✨ AI 요약 결과":["✨ AI summary","✨ Краткий пересказ ИИ"],"방금 전":["Just now","Только что"],"\"비자 서류 번역 및 주요 제출 항목 정리가 완료되었습니다. 독립된 카드 컨테이너로 제공됩니다.\"":["\"Your visa-document translation and submission checklist are ready, inside this card.\"","«Перевод визовых документов и список необходимых материалов готовы в этой карточке.»"],"👤 사용자: 긴 보고서 작성 요청":["👤 User: Please write a long report","👤 Пользователь: напишите длинный отчёт"],"🤖 AI: 1단계 개요 작성 중...":["🤖 AI: Step 1, drafting the outline...","🤖 ИИ: шаг 1, составление плана..."],"🤖 AI: 2단계 본문 데이터 분석 요약...":["🤖 AI: Step 2, analyzing and summarizing data...","🤖 ИИ: шаг 2, анализ и сводка данных..."],"🤖 AI: 3단계 최종 결론 및 권고사항 도출 완료!":["🤖 AI: Step 3, conclusions and recommendations complete!","🤖 ИИ: шаг 3, выводы и рекомендации готовы!"],"스크롤을 계속 내려도 위 파란색 헤더는 상단에 고정되어 유지됩니다!":["The blue header stays visible when you scroll!","Синяя шапка остаётся на месте при прокрутке!"],"✅ 답변 생성이 완료되어 콘텐츠가 노출되었습니다!":["✅ The response is ready and displayed!","✅ Ответ готов и показан!"],"비자 가이드.pdf":["Visa guide.pdf","Визовый гид.pdf"],"HiKorea 문서":["HiKorea document","Документ HiKorea"]}};
- const localizedNodes=[];
- const localizedMap=staticDemos[current.id] || {};
- const walker=document.createTreeWalker(mount,NodeFilter.SHOW_TEXT);
- const pending=[]; let textNode;
- while((textNode=walker.nextNode())) {
-   const rawText=textNode.textContent; const compact=rawText.trim();
-   if (localizedMap[compact] && !textNode.parentElement.closest('[data-key]')) pending.push({node:textNode,key:compact});
- }
- pending.forEach(({node,key})=>{
-   const span=document.createElement('span');
-   const i=localizedNodes.length;
-   span.dataset.uxStatic=String(i);
-   span.textContent=node.textContent;
-   node.parentNode.replaceChild(span,node);
-   localizedNodes.push({span,key,ko:span.textContent,prefix:span.textContent.match(/^\s*/)[0],suffix:span.textContent.match(/\s*$/)[0]});
- });
- document.title = current.title + ' | UX Studio';
- const urlFor = id => 'index.html?week=' + encodeURIComponent(id);
- for (const [sel, mobile] of [['.nav-container',false],['#mobile-ux-nav',true]]) {
-   const nav = document.querySelector(sel);
-   if (!nav) continue;
-   const items = document.createDocumentFragment();
-   pages.forEach(p => {
-     const a = document.createElement('a');
-     a.href = urlFor(p.id); a.textContent = p.label;
-     a.className = 'nav-btn nav-link';
-     a.title = p.title;
-     if (p.id === current.id) { a.classList.add('active'); a.setAttribute('aria-current','page'); }
-     items.appendChild(a);
-   });
-   nav.replaceChildren(items);
-   const active = nav.querySelector('[aria-current="page"]');
-   if (active && !mobile && active.scrollIntoView && window.matchMedia('(max-width: 768px)').matches === false) {
-     // Avoid jumping the document vertically when selecting a lesson near the end.
-     nav.scrollLeft = active.offsetLeft - nav.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
-   }
- }
- const prev = pages[ix-1] || null;
- const next = pages[ix+1] || null;
- for (const [name,p] of [['prev-lesson',prev],['next-lesson',next],['next-lesson-bottom',next]]) {
-   const a = document.getElementById(name);
-   if (!a) continue;
-   if (p) a.href=urlFor(p.id);
-   else { a.removeAttribute('href'); a.setAttribute('aria-disabled','true'); }
- }
- document.getElementById('lesson-caption').textContent = 'Week ' + Number(current.id.substring(4));
- document.getElementById('lesson-progress').textContent = 'Lesson ' + (ix+1) + ' / ' + pages.length;
- const strings={
-   ko:{'menu-title':'강의 목록','guide-eyebrow':'AI UX DESIGN · LEARNING STUDIO','guide-title':'AI 서비스 UX, 직접 경험하며 배우기','guide-desc':'처음이라면 1주차부터 시작하세요. 개념을 읽고 실습 화면의 버튼을 직접 눌러보세요.','guide-tag1':'개념 이해','guide-tag2':'인터랙티브 실습','guide-tag3':'스스로 점검','prereq-link':'AI가 처음인가요? AI 기초 강의 먼저 보기 →','guide-hint':'8주차는 중간고사 기간이며 선택 보너스 실습입니다. 화면과 버튼은 학습용 데모로 Figma 파일을 변경하지 않습니다. 제출 기한은 공식 공지를 확인하세요.','exam-note-title':'8주차 · 중간고사 기간','exam-note-desc':'정규 수업자료 대신 선택형 보너스 UI 실습을 제공합니다. 중간고사 및 과제 안내는 학교 공식 공지를 확인하세요.','prev':'이전','next':'다음'},
-   en:{'menu-title':'Course lessons','guide-eyebrow':'AI UX DESIGN · LEARNING STUDIO','guide-title':'Learn AI Service UX by trying it','guide-desc':'New here? Begin with Week 1. Read the concepts, then click the demo controls to see how each interface works.','guide-tag1':'Understand','guide-tag2':'Try the demos','guide-tag3':'Check your learning','prereq-link':'New to AI? Try the AI Basics course first →','guide-hint':'Week 8 is the midterm period, with an optional bonus lab. Demos do not change your Figma file. Confirm deadlines in official announcements.','exam-note-title':'Week 8 · Midterm period','exam-note-desc':'There is no regular Week 8 lesson. This optional UI lab is provided for practice. Check your school announcements for exam and assignment details.','prev':'Previous','next':'Next'},
-   ru:{'menu-title':'Уроки курса','guide-eyebrow':'AI UX DESIGN · LEARNING STUDIO','guide-title':'Изучайте UX для ИИ на практике','guide-desc':'Вы здесь впервые? Начните с недели 1. Прочитайте объяснение и нажмите на элементы демо.','guide-tag1':'Понимание','guide-tag2':'Практика','guide-tag3':'Самопроверка','prereq-link':'Впервые изучаете ИИ? Сначала курс по основам →','guide-hint':'Неделя 8 — промежуточный экзамен с факультативной лабораторной работой. Демо не изменяют файл Figma. Сроки уточняйте в официальных объявлениях.','exam-note-title':'Неделя 8 · Промежуточный экзамен','exam-note-desc':'Обычного занятия нет; эта лабораторная работа предлагается по желанию. Следите за официальными объявлениями об экзамене.','prev':'Назад','next':'Далее'}
- };
- window.uxGetPreferredLanguage = function () { try { const lang=localStorage.getItem('ux-studio-lang'); return ['ko','en','ru'].includes(lang)?lang:'ko'; } catch(e){return 'ko';} };
- window.uxApplyChrome = function (lang) {
-   const l=['ko','en','ru'].includes(lang)?lang:'ko';
-   document.documentElement.lang=l;
-   try {localStorage.setItem('ux-studio-lang',l);} catch(e){}
-   document.querySelectorAll('[data-ui]').forEach(el => { const t=strings[l][el.dataset.ui]; if (t) el.textContent=t; });
-   document.getElementById('lesson-subject').textContent = current.subject[l];
-   localizedNodes.forEach(item=>{const t=localizedMap[item.key];item.span.textContent=l==='ko'?item.ko:item.prefix+t[l==='en'?0:1]+item.suffix;});
-   document.querySelectorAll('.lang-btn[data-lang]').forEach(btn => { const selected=btn.dataset.lang===l; btn.classList.toggle('active',selected); btn.setAttribute('aria-pressed',String(selected)); });
-   const btn=document.getElementById('hamburgerBtn'); if(btn)btn.setAttribute('aria-label',l==='en'?'Open course menu':l==='ru'?'Открыть меню курса':'강의 메뉴 열기');
- };
- window.uxAlert = function (key) { const l=window.currentLang || 'ko'; const d=window.translations || {}; window.alert(d[l] && d[l][key] ? d[l][key] : key); };
- // Hover demos should also work with keyboard focus or touch-to-focus.
- mount.querySelectorAll('.tooltip-container').forEach(el => { el.setAttribute('tabindex','0'); el.setAttribute('aria-label','Tooltip demonstration'); });
- // Div-based historic demos retain click handlers and gain keyboard access.
- mount.querySelectorAll('[onclick]').forEach(el => {
-   if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) return;
-   el.setAttribute('role','button'); el.setAttribute('tabindex','0');
-   el.addEventListener('keydown', e => { if (e.key==='Enter' || e.key===' ') {e.preventDefault();e.stopPropagation();el.click();} });
- });
- // Present in every UX lesson without requiring extra files.
- window.uxCurrentPage = current.id;
- // Make custom course notes available to the shared 3-language text rendering.
- if (current.id === 'week08') {
-   mount.querySelectorAll('.week08-exam-note [data-key]').forEach(el=> { el.dataset.ui = el.dataset.key; el.removeAttribute('data-key'); });
- }
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const languages = ['en', 'ko', 'ru'];
+  const query = new URLSearchParams(location.search);
+  const requestedWeek = query.get('week');
+  const page = /^week(0[1-9]|1[0-5])$/.test(requestedWeek || '') ? requestedWeek : 'week01';
+  const number = Number(page.slice(4));
+  const data = window.UX_DATA;
+  const lesson = data.learning[page];
+  const localGet = (key, fallback) => {try {return localStorage.getItem(key) || fallback;} catch (_) {return fallback;}};
+  const localSet = (key, value) => {try {localStorage.setItem(key, value);} catch (_) { /* Reading and examples remain available. */ }};
+  const requestedLanguage = query.get('lang') || localGet('ux-studio-lang', 'en');
+  let lang = languages.includes(requestedLanguage) ? requestedLanguage : 'en';
+  let lastMenuFocus;
+  const translations = {
+    en: {
+      weeks: '15 weeks', skip: 'Skip to content', menu: 'Open week menu', closeMenu: 'Close week menu',
+      outline: 'Weeks', week: 'Week', midterm: 'Midterm · optional review', final: 'Final exam',
+      next: 'Next week', prev: 'Previous week', nextExam: 'Next: final exam information', last: 'End of course',
+      backTop: 'Back to top', finalTitle: 'Final exam information',
+      finalSummary: 'Week 15 is the final exam period. There is no regular class. The exam format, any task, and deadlines have not been decided yet.',
+      finalAction: 'Please wait for the instructor’s announcement.',
+      finalReview: 'You can revisit earlier weeks and review your own design.', reviewLink: 'Return to Week 14',
+      examReminder: 'This portfolio activity is practice. The final exam format, any task, and deadlines have not been decided yet.',
+      langLabel: 'Choose a language', home: 'UX Studio home', pager: 'Previous and next weeks',
+      demoHelp: 'Read the explanation, try the controls, then say what changed.'
+    },
+    ko: {
+      weeks: '15주 과정', skip: '본문으로 건너뛰기', menu: '주차 목록 열기', closeMenu: '주차 목록 닫기',
+      outline: '주차 목록', week: '주차', midterm: '중간고사 · 자율 복습', final: '기말고사',
+      next: '다음 주차', prev: '이전 주차', nextExam: '다음: 기말고사 안내', last: '마지막 주차입니다',
+      backTop: '맨 위로', finalTitle: '기말고사 안내',
+      finalSummary: '15주차는 기말고사 기간입니다. 정규 수업은 없으며 시험 방식·과제 여부·마감일은 아직 정해지지 않았습니다.',
+      finalAction: '교수자의 공지를 기다려 주세요.',
+      finalReview: '이전 주차와 본인의 디자인을 자율 복습할 수 있습니다.', reviewLink: '14주차로 돌아가기',
+      examReminder: '이 포트폴리오 활동은 연습용입니다. 기말고사 방식·과제 여부·마감일은 아직 정해지지 않았습니다.',
+      langLabel: '언어 선택', home: 'UX Studio 홈', pager: '이전 주차와 다음 주차',
+      demoHelp: '설명을 읽고 버튼을 누른 뒤, 무엇이 달라졌는지 말해 보세요.'
+    },
+    ru: {
+      weeks: '15 недель', skip: 'Перейти к содержимому', menu: 'Открыть список недель', closeMenu: 'Закрыть список недель',
+      outline: 'Недели', week: 'Неделя', midterm: 'Промежуточный экзамен · повторение', final: 'Итоговый экзамен',
+      next: 'Следующая неделя', prev: 'Предыдущая неделя', nextExam: 'Далее: информация об экзамене', last: 'Конец курса',
+      backTop: 'Наверх', finalTitle: 'Информация об итоговом экзамене',
+      finalSummary: 'Неделя 15 — период итогового экзамена. Обычного занятия нет. Формат экзамена, возможные задания и сроки пока не определены.',
+      finalAction: 'Пожалуйста, дождитесь объявления преподавателя.',
+      finalReview: 'Можно повторить материал предыдущих недель и проверить свой дизайн.', reviewLink: 'Вернуться к неделе 14',
+      examReminder: 'Это задание с портфолио — практика. Формат итогового экзамена, возможные задания и сроки пока не определены.',
+      langLabel: 'Выбрать язык', home: 'Главная UX Studio', pager: 'Предыдущая и следующая недели',
+      demoHelp: 'Прочитайте объяснение, нажмите элементы и расскажите, что изменилось.'
+    }
+  };
+  const text = key => translations[lang][key] || key;
+  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fileName = location.pathname.split('/').pop() || 'index.html';
+  const urlFor = id => fileName + '?week=' + id + '&lang=' + lang;
+  document.body.dataset.page = page;
+  window.uxCurrentPage = page;
+  window.uxGetPreferredLanguage = () => lang;
+  const mount = $('lesson-content');
+  const template = $('lesson-' + page);
+  if (template) {
+    mount.replaceChildren(template.content.cloneNode(true));
+    const intro = mount.querySelector('.card h1');
+    if (intro) intro.closest('.card').remove();
+    mount.querySelectorAll('.week08-exam-note').forEach(node => node.remove());
+  }
+  const notes = data.notes[page] || [];
+  notes.forEach((note, index) => {
+    const target = mount.querySelector('[data-key="' + note.anchor + '"]');
+    if (!target) return;
+    const head = target.closest('.comp-card-header') || target.closest('h2,h3') || target;
+    const box = document.createElement('div');
+    box.className = 'explanation-note';
+    box.dataset.noteIndex = index;
+    head.after(box);
+  });
+  mount.querySelectorAll('.container > .card').forEach((card, index) => {
+    card.id = 'lesson-section-' + index;
+    card.classList.add('visible');
+  });
+  const localizedNodes = [];
+  const originalStatic = data.staticDemos[page] || {};
+  const correctedStatic = (data.staticOverrides && data.staticOverrides[page]) || {};
+  const walker = document.createTreeWalker(mount, NodeFilter.SHOW_TEXT);
+  const staticNodes = [];
+  let node;
+  while ((node = walker.nextNode())) {
+    const key = node.textContent.trim();
+    if ((originalStatic[key] || correctedStatic[key]) && !node.parentElement.closest('[data-key],[data-note-index]')) {
+      staticNodes.push({node, key});
+    }
+  }
+  staticNodes.forEach(({node, key}) => {
+    const span = document.createElement('span');
+    span.textContent = node.textContent;
+    node.parentNode.replaceChild(span, node);
+    localizedNodes.push({span, key, ko: span.textContent});
+  });
+  mount.querySelectorAll('[onclick]').forEach(el => {
+    if (/^(BUTTON|A|INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) return;
+    el.setAttribute('role', 'button');
+    el.tabIndex = 0;
+    el.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {event.preventDefault(); event.stopPropagation(); el.click();}
+    });
+  });
+  mount.querySelectorAll('.tooltip-container').forEach(el => {el.tabIndex = 0;});
+  function translateStatic() {
+    localizedNodes.forEach(item => {
+      const fix = correctedStatic[item.key];
+      item.span.textContent = fix ? (fix[lang] || item.ko) : lang === 'ko' ? item.ko : originalStatic[item.key][lang === 'en' ? 0 : 1];
+    });
+  }
+  function renderNav() {
+    $('course-nav').innerHTML = data.pages.map(p => {
+      const current = p.id === page;
+      const exam = p.id === 'week08' || p.id === 'week15';
+      const status = p.id === 'week08' ? text('midterm') : p.id === 'week15' ? text('final') : '';
+      return '<a class="course-link' + (current ? ' active' : '') + (exam ? ' exam' : '') + '" href="' + escape(urlFor(p.id)) + '"' + (current ? ' aria-current="page"' : '') + '><span class="week-number">' + p.id.slice(4) + '</span><span class="week-topic">' + escape(p.subject[lang]) + '</span>' + (status ? '<span class="week-status">' + escape(status) + '</span>' : '') + '</a>';
+    }).join('');
+    $('course-nav').setAttribute('aria-label', text('outline'));
+  }
+  function renderPager() {
+    const prev = number > 1 ? 'week' + String(number - 1).padStart(2, '0') : null;
+    const next = number < 15 ? 'week' + String(number + 1).padStart(2, '0') : null;
+    [['prev-lesson', prev, 'prev'], ['next-lesson-bottom', next, number === 14 ? 'nextExam' : 'next']].forEach(([id, target, key]) => {
+      const link = $(id);
+      link.hidden = !target;
+      if (target) {link.href = urlFor(target); link.textContent = (id === 'prev-lesson' ? '← ' : '') + text(key) + (id === 'prev-lesson' ? '' : ' →');}
+      else link.removeAttribute('href');
+    });
+    $('end-note').textContent = number === 15 ? text('last') : '';
+    document.querySelector('.lesson-footer').setAttribute('aria-label', text('pager'));
+  }
+  window.uxApplyChrome = function (value) {
+    if (window.uxClearTerms) window.uxClearTerms();
+    lang = languages.includes(value) ? value : 'en';
+    document.documentElement.lang = lang;
+    window.currentLang = lang;
+    localSet('ux-studio-lang', lang);
+    document.querySelectorAll('[data-ui]').forEach(el => {if (translations[lang][el.dataset.ui]) el.textContent = text(el.dataset.ui);});
+    document.querySelectorAll('.lang-btn[data-lang]').forEach(btn => {
+      const selected = btn.dataset.lang === lang;
+      btn.classList.toggle('active', selected);
+      btn.setAttribute('aria-pressed', String(selected));
+    });
+    document.querySelector('.language-switch').setAttribute('aria-label', text('langLabel'));
+    $('menu-toggle').setAttribute('aria-label', text(document.body.classList.contains('sidebar-open') ? 'closeMenu' : 'menu'));
+    $('sidebar-close').setAttribute('aria-label', text('closeMenu'));
+    $('sidebar-backdrop').setAttribute('aria-label', text('closeMenu'));
+    $('studio-home').setAttribute('aria-label', text('home'));
+    $('studio-home').href = urlFor('week01');
+    $('back-to-top').setAttribute('aria-label', text('backTop'));
+    $('back-to-top').setAttribute('title', text('backTop'));
+    $('lesson-kicker').textContent = (lang === 'ko' ? number + '주차' : text('week') + ' ' + String(number).padStart(2, '0')) + ' / 15';
+    $('lesson-title').textContent = lesson ? lesson.title[lang] : text('finalTitle');
+    $('lesson-summary').textContent = lesson ? lesson.summary[lang] : text('finalSummary');
+    document.title = $('lesson-title').textContent + ' · UX Studio';
+    $('lesson-intro').hidden = !lesson;
+    $('examples-header').hidden = !lesson;
+    $('final-panel').hidden = !!lesson;
+    $('exam-note').hidden = number !== 14;
+    $('exam-note').textContent = number === 14 ? text('examReminder') : '';
+    if (lesson) {
+      $('lesson-bridge').textContent = lesson.bridge[lang];
+      $('demo-instruction').textContent = lesson.try[lang];
+      notes.forEach((note, index) => {
+        const box = mount.querySelector('[data-note-index="' + index + '"]');
+        if (box) box.innerHTML = note[lang];
+      });
+    }
+    $('final-review-link').href = urlFor('week14');
+    renderNav(); renderPager(); translateStatic();
+    mount.querySelectorAll('.tooltip-container').forEach(el => el.setAttribute('aria-label', text('demoHelp')));
+  };
+  window.uxAlert = function (key) {const dictionary = (window.translations || {})[lang] || {}; window.alert(dictionary[key] || key);};
+  function syncMenuAvailability() {
+    const mobile = window.matchMedia('(max-width: 800px)').matches;
+    const opened = mobile && document.body.classList.contains('sidebar-open');
+    $('course-sidebar').inert = mobile && !opened;
+    $('course-sidebar').setAttribute('aria-hidden', String(mobile && !opened));
+    $('main-content').inert = opened;
+    document.querySelector('.studio-header').inert = opened;
+    $('back-to-top').inert = opened;
+  }
+  function closeMenu() {
+    document.body.classList.remove('sidebar-open');
+    $('menu-toggle').setAttribute('aria-expanded', 'false');
+    $('menu-toggle').setAttribute('aria-label', text('menu'));
+    syncMenuAvailability();
+    if (lastMenuFocus) lastMenuFocus.focus({preventScroll: true});
+  }
+  $('menu-toggle').addEventListener('click', () => {
+    if (document.body.classList.contains('sidebar-open')) {closeMenu(); return;}
+    if (window.uxDismissTerm) window.uxDismissTerm();
+    lastMenuFocus = document.activeElement;
+    document.body.classList.add('sidebar-open');
+    $('menu-toggle').setAttribute('aria-expanded', 'true');
+    $('menu-toggle').setAttribute('aria-label', text('closeMenu'));
+    syncMenuAvailability();
+    $('sidebar-close').focus({preventScroll: true});
+  });
+  $('sidebar-close').addEventListener('click', closeMenu);
+  $('sidebar-backdrop').addEventListener('click', closeMenu);
+  document.addEventListener('keydown', event => {
+    if (!document.body.classList.contains('sidebar-open')) return;
+    if (event.key === 'Escape') {event.preventDefault(); closeMenu();}
+    if (event.key === 'Tab') {
+      const focusables = Array.from($('course-sidebar').querySelectorAll('button,a')).filter(el => !el.hidden);
+      if (event.shiftKey && document.activeElement === focusables[0]) {event.preventDefault(); focusables[focusables.length - 1].focus();}
+      else if (!event.shiftKey && document.activeElement === focusables[focusables.length - 1]) {event.preventDefault(); focusables[0].focus();}
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (!window.matchMedia('(max-width: 800px)').matches && document.body.classList.contains('sidebar-open')) closeMenu();
+    else syncMenuAvailability();
+  });
+  $('back-to-top').addEventListener('click', () => {
+    if (window.uxDismissTerm) window.uxDismissTerm();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top: 0, behavior: reduced ? 'auto' : 'smooth'});
+  });
+  syncMenuAvailability();
+  if (page === 'week15') {window.setLang = window.uxApplyChrome; window.uxApplyChrome(lang);}
 })();
 
 if (document.body.dataset.page === 'week08') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -256,12 +398,16 @@ if (document.body.dataset.page === 'week08') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -279,7 +425,7 @@ if (document.body.dataset.page === 'week08') {
             loading.style.display = 'flex';
             content.style.display = 'none';
 
-            setTimeout(() => {
+            uxLater(() => {
                 loading.style.display = 'none';
                 content.style.display = 'block';
             }, 1600);
@@ -309,8 +455,8 @@ if (document.body.dataset.page === 'week08') {
         function triggerToastDemo() {
             const toast = document.getElementById('card-toast-demo');
             toast.classList.add('show');
-            if (toastTimer) clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
+            if (toastTimer) uxCancel(toastTimer);
+            toastTimer = uxLater(() => {
                 toast.classList.remove('show');
             }, 2200);
         }
@@ -342,8 +488,14 @@ Object.assign(window, {setLang, replaySkeleton, toggleMicroLike, triggerToastDem
 })();
 }
 
+
 if (document.body.dataset.page === 'week01') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -468,12 +620,16 @@ if (document.body.dataset.page === 'week01') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -515,16 +671,16 @@ if (document.body.dataset.page === 'week01') {
             
             box.innerText = "";
             line1.style.display = "block";
-            clearTimeout(cliTimeout);
+            uxCancel(cliTimeout);
             let i = 0;
             
             function typeCLI() {
                 if (i < text.length) {
                     box.innerText += text.charAt(i);
                     i++;
-                    cliTimeout = setTimeout(typeCLI, 100);
+                    cliTimeout = uxLater(typeCLI, 100);
                 } else {
-                    setTimeout(() => { box.innerHTML += "<br>Loading...<br>Done!"; }, 300);
+                    uxLater(() => { box.innerHTML += "<br>Loading...<br>Done!"; }, 300);
                 }
             }
             typeCLI();
@@ -539,7 +695,7 @@ if (document.body.dataset.page === 'week01') {
             const reply = document.getElementById("ai-chat-reply");
             reply.style.display = "block";
             reply.innerText = "";
-            clearTimeout(aiTimeout);
+            uxCancel(aiTimeout);
             
             const text = translations[currentLang]["js_ai_reply"];
             let i = 0;
@@ -548,7 +704,7 @@ if (document.body.dataset.page === 'week01') {
                 if (i < text.length) {
                     reply.innerText += text.charAt(i);
                     i++;
-                    aiTimeout = setTimeout(typeAI, 50);
+                    aiTimeout = uxLater(typeAI, 50);
                 }
             }
             typeAI();
@@ -565,7 +721,7 @@ if (document.body.dataset.page === 'week01') {
             resultBox.innerText = translations[currentLang]["js_calculating"];
             resultBox.style.color = "#fbbf24";
             
-            setTimeout(() => {
+            uxLater(() => {
                 const random = results[Math.floor(Math.random() * results.length)];
                 resultBox.innerText = random;
                 // Add red color if the word '환각', 'Hallucination', 'Галлюцинация', '오류', 'error', 'Ошибка' is in the text
@@ -578,7 +734,7 @@ if (document.body.dataset.page === 'week01') {
         function simulateBadUX() {
             const box = document.getElementById('bad-ux-box');
             box.innerText = "";
-            setTimeout(() => {
+            uxLater(() => {
                 box.innerText = translations[currentLang]["js_bad_ux"];
             }, 3000);
         }
@@ -589,18 +745,18 @@ if (document.body.dataset.page === 'week01') {
             const spinner = document.getElementById('spinner');
             box.innerText = "";
             spinner.style.display = "block";
-            clearTimeout(streamTimeout);
+            uxCancel(streamTimeout);
 
             const text = translations[currentLang]["js_good_ux"];
             let i = 0;
 
-            setTimeout(() => {
+            uxLater(() => {
                 spinner.style.display = "none";
                 function typeWriter() {
                     if (i < text.length) {
                         box.innerHTML += text.charAt(i);
                         i++;
-                        streamTimeout = setTimeout(typeWriter, 50);
+                        streamTimeout = uxLater(typeWriter, 50);
                     }
                 }
                 typeWriter();
@@ -619,8 +775,14 @@ Object.assign(window, {setLang, runCLI, triggerGUIAlert, runAI, triggerTradResul
 })();
 }
 
+
 if (document.body.dataset.page === 'week02') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -778,12 +940,16 @@ if (document.body.dataset.page === 'week02') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -826,8 +992,14 @@ Object.assign(window, {setLang, triggerGenAI, triggerChecklistAlert});
 })();
 }
 
+
 if (document.body.dataset.page === 'week03') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -955,12 +1127,16 @@ if (document.body.dataset.page === 'week03') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -1005,7 +1181,7 @@ if (document.body.dataset.page === 'week03') {
         }
 
         function resetMockup() {
-            clearTimeout(typeTimeout);
+            uxCancel(typeTimeout);
             hideAllMockupStates();
             document.getElementById('mock-empty').style.display = 'block';
             document.getElementById('ai-typing-text').innerHTML = '';
@@ -1014,7 +1190,7 @@ if (document.body.dataset.page === 'week03') {
         }
 
                 function focusInput() {
-            clearTimeout(typeTimeout);
+            uxCancel(typeTimeout);
             document.getElementById('mock-input').focus();
             updateStepHighlight(2);
         }
@@ -1026,15 +1202,15 @@ if (document.body.dataset.page === 'week03') {
         }
 
         function startAI(intent) {
-            clearTimeout(typeTimeout);
+            uxCancel(typeTimeout);
             updateStepHighlight(2); // Input
             
-            setTimeout(() => {
+            uxLater(() => {
                 hideAllMockupStates();
                 document.getElementById('mock-loading').style.display = 'block'; // Loading
                 updateStepHighlight(3);
 
-                setTimeout(() => {
+                uxLater(() => {
                     document.getElementById('mock-loading').style.display = 'none';
                     document.getElementById('mock-output').style.display = 'block'; // Streaming
                     updateStepHighlight(4);
@@ -1060,7 +1236,7 @@ if (document.body.dataset.page === 'week03') {
                             if (char === '\n') char = '<br>';
                             textBox.innerHTML = textBox.innerHTML.replace('<span class="typing-cursor"></span>', '') + char + '<span class="typing-cursor"></span>';
                             i++;
-                            typeTimeout = setTimeout(typeWriter, 30);
+                            typeTimeout = uxLater(typeWriter, 30);
                         } else {
                             textBox.innerHTML = textBox.innerHTML.replace('<span class="typing-cursor"></span>', ''); // Remove cursor
                             document.getElementById('mock-actions').style.display = 'flex'; // Complete actions
@@ -1073,7 +1249,7 @@ if (document.body.dataset.page === 'week03') {
         }
 
         function triggerErrorMockup() {
-            clearTimeout(typeTimeout);
+            uxCancel(typeTimeout);
             hideAllMockupStates();
             document.getElementById('mock-error').style.display = 'block';
             updateStepHighlight(6);
@@ -1087,8 +1263,14 @@ Object.assign(window, {setLang, updateStepHighlight, hideAllMockupStates, resetM
 })();
 }
 
+
 if (document.body.dataset.page === 'week04') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -1207,12 +1389,16 @@ if (document.body.dataset.page === 'week04') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -1245,8 +1431,14 @@ Object.assign(window, {setLang});
 })();
 }
 
+
 if (document.body.dataset.page === 'week05') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -1383,12 +1575,16 @@ if (document.body.dataset.page === 'week05') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -1421,8 +1617,14 @@ Object.assign(window, {setLang});
 })();
 }
 
+
 if (document.body.dataset.page === 'week06') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -1562,12 +1764,16 @@ if (document.body.dataset.page === 'week06') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -1602,7 +1808,7 @@ if (document.body.dataset.page === 'week06') {
         function submitFeedback(type) {
             const toast = document.getElementById('thankyou-toast');
             toast.style.display = 'flex';
-            setTimeout(() => {
+            uxLater(() => {
                 toast.style.display = 'none';
             }, 4000);
         }
@@ -1619,8 +1825,14 @@ Object.assign(window, {setLang, showLevel, submitFeedback, closeToast});
 })();
 }
 
+
 if (document.body.dataset.page === 'week07') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -1808,6 +2020,10 @@ Captures hesitation moments, frowns, and user pain points to iterate Figma UI co
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
@@ -1846,8 +2062,14 @@ Object.assign(window,{setLang,triggerAlert});
 
 })();
 }
+
 if (document.body.dataset.page === 'week09') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -2020,12 +2242,16 @@ if (document.body.dataset.page === 'week09') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -2086,16 +2312,16 @@ if (document.body.dataset.page === 'week09') {
             s1.classList.remove('active');
             s2.classList.add('active'); // Loading Screen
 
-            if(protoTimer) clearTimeout(protoTimer);
+            if(protoTimer) uxCancel(protoTimer);
             
-            protoTimer = setTimeout(() => {
+            protoTimer = uxLater(() => {
                 s2.classList.remove('active');
                 s3.classList.add('active'); // Output Screen
             }, 1200); // simulated 800ms
         }
 
         function resetPrototype() {
-            if(protoTimer) clearTimeout(protoTimer);
+            if(protoTimer) uxCancel(protoTimer);
             document.getElementById('p-scr1').classList.add('active');
             document.getElementById('p-scr2').classList.remove('active');
             document.getElementById('p-scr3').classList.remove('active');
@@ -2148,8 +2374,14 @@ Object.assign(window, {setLang, triggerKey, toggleAutoLayout, changeComponentCol
 })();
 }
 
+
 if (document.body.dataset.page === 'week10') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -2286,12 +2518,16 @@ if (document.body.dataset.page === 'week10') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -2328,8 +2564,14 @@ Object.assign(window, {setLang, triggerAlert});
 })();
 }
 
+
 if (document.body.dataset.page === 'week11') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -2472,12 +2714,16 @@ if (document.body.dataset.page === 'week11') {
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -2527,8 +2773,14 @@ Object.assign(window, {setLang, triggerAlert, toggleSwitch});
 })();
 }
 
+
 if (document.body.dataset.page === 'week12') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -2749,12 +3001,16 @@ What if the AI cannot perfectly translate complex legal terms? 👉 Do not let u
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -2791,8 +3047,14 @@ Object.assign(window, {setLang, triggerAlert});
 })();
 }
 
+
 if (document.body.dataset.page === 'week14') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -2977,12 +3239,16 @@ Deadline: Next Sunday at 11:59 PM.
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
             if (typeof window.uxApplyChrome === 'function') window.uxApplyChrome(lang);
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang));
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
             document.querySelectorAll('[data-key]').forEach(el => {
@@ -3018,8 +3284,14 @@ Deadline: Next Sunday at 11:59 PM.
 Object.assign(window, {setLang, triggerAlert});
 })();
 }
+
 if (document.body.dataset.page === 'week13') {
 (function(){
+ const uxTimers = new Set();
+ function uxLater(fn, delay) { let id = window.setTimeout(() => { uxTimers.delete(id); fn(); }, delay); uxTimers.add(id); return id; }
+ function uxCancel(id) { window.clearTimeout(id); uxTimers.delete(id); }
+ function uxCancelAll() { uxTimers.forEach(id => window.clearTimeout(id)); uxTimers.clear(); }
+
 
         let currentLang = 'ko';
 
@@ -3174,6 +3446,10 @@ Please complete the [Week 13 Attendance Quiz] on the MS Teams Assignments tab by
         };
 
         function setLang(lang) {
+            uxCancelAll();
+            const edits = window.UX_DATA.overrides[window.uxCurrentPage] || {};
+            ['en','ko','ru'].forEach(code => { if(edits[code]) Object.assign(translations[code], edits[code]); });
+
             currentLang = lang;
             window.currentLang = lang;
             window.translations = translations;
@@ -3213,3 +3489,1020 @@ Object.assign(window,{setLang,triggerAlert});
 
 })();
 }
+
+/* Targeted interaction repairs. Load after the preserved ux.js lesson module. */
+(function () {
+  'use strict';
+  const page = document.body.dataset.page;
+  const el = id => document.getElementById(id);
+  const lang = () => ['en', 'ko', 'ru'].includes(window.currentLang) ? window.currentLang : 'en';
+  const tr = key => ((window.translations || {})[lang()] || {})[key] || '';
+  const copy = values => values[lang()];
+  const afterLanguage = [];
+
+  if (page === 'week03') {
+    let pending = [];
+    let generation = 0;
+    let lastIntent = 'custom';
+    const cancel = () => {
+      generation += 1;
+      pending.forEach(clearTimeout);
+      pending = [];
+    };
+    const later = (fn, delay) => {
+      const version = generation;
+      const timer = setTimeout(() => {
+        pending = pending.filter(t => t !== timer);
+        if (version === generation) fn();
+      }, delay);
+      pending.push(timer);
+    };
+    const hideStates = () => ['mock-empty', 'mock-loading', 'mock-output', 'mock-error', 'mock-actions'].forEach(id => {
+      const node = el(id);
+      if (node) node.style.display = 'none';
+    });
+    const step = number => {
+      document.querySelectorAll('.state-step').forEach(node => node.classList.remove('active'));
+      const node = el('step' + number);
+      if (node) node.classList.add('active');
+    };
+    const reset = () => {
+      cancel();
+      hideStates();
+      el('mock-empty').style.display = 'block';
+      el('ai-typing-text').textContent = '';
+      el('mock-input').value = '';
+      step(1);
+    };
+    const start = intent => {
+      cancel();
+      hideStates();
+      step(2);
+      if (intent !== 'retry') lastIntent = intent === 'translate' || intent === 'summary' ? intent : 'custom';
+      later(() => {
+        el('mock-loading').style.display = 'block';
+        step(3);
+        later(() => {
+          el('mock-loading').style.display = 'none';
+          el('mock-output').style.display = 'block';
+          step(4);
+          const text = tr(lastIntent === 'translate' ? 'js_ai_res_trans' : lastIntent === 'summary' ? 'js_ai_res_sum' : 'js_ai_res_custom');
+          const target = el('ai-typing-text');
+          target.textContent = '';
+          target.style.whiteSpace = 'pre-line';
+          let index = 0;
+          const write = () => {
+            if (index < text.length) {
+              target.textContent += text.charAt(index++);
+              later(write, window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 30);
+            } else {
+              el('mock-actions').style.display = 'flex';
+              step(5);
+            }
+          };
+          write();
+        }, 1500);
+      }, 300);
+    };
+    const error = () => {
+      cancel();
+      hideStates();
+      el('mock-error').style.display = 'block';
+      step(6);
+    };
+    const focus = () => {
+      cancel();
+      hideStates();
+      el('mock-empty').style.display = 'block';
+      el('mock-input').focus();
+      step(2);
+    };
+    Object.assign(window, {
+      startAI: start,
+      resetMockup: reset,
+      triggerErrorMockup: error,
+      focusInput: focus,
+      hideAllMockupStates: hideStates,
+      updateStepHighlight: step,
+      handleEnter(event) {
+        if (event.key === 'Enter' && !event.isComposing) {
+          event.preventDefault();
+          start('custom');
+        }
+      }
+    });
+    afterLanguage.push(reset);
+  }
+
+  if (page === 'week08') {
+    let skeletonTimer;
+    window.replaySkeleton = function () {
+      clearTimeout(skeletonTimer);
+      el('sk-demo-loading').style.display = 'flex';
+      el('sk-demo-content').style.display = 'none';
+      skeletonTimer = setTimeout(() => {
+        el('sk-demo-loading').style.display = 'none';
+        el('sk-demo-content').style.display = 'block';
+      }, 1600);
+    };
+  }
+
+  if (page === 'week09') {
+    let autoLayoutState = 0;
+    let shareOpener = null;
+    const resetLayout = () => {
+      autoLayoutState = 0;
+      el('al-demo').classList.remove('applied');
+      el('al-text').textContent = copy({en:'Short text', ko:'짧은 글', ru:'Короткий текст'});
+      el('al-btn').style.display = '';
+      el('al-btn').textContent = tr('c2-btn');
+    };
+    window.toggleAutoLayout = function () {
+      if (autoLayoutState === 0) {
+        autoLayoutState = 1;
+        el('al-demo').classList.add('applied');
+        el('al-btn').textContent = tr('js_al_btn2');
+      } else if (autoLayoutState === 1) {
+        autoLayoutState = 2;
+        el('al-text').textContent = tr('js_al_long');
+        el('al-btn').textContent = copy({en:'Reset demo', ko:'데모 다시 시작', ru:'Начать заново'});
+      } else resetLayout();
+    };
+    window.checkPermission = function () {
+      const allowed = el('perm-select').value === 'anyone';
+      el('perm-select').classList.toggle('correct', allowed);
+      const button = el('copy-link-btn');
+      button.disabled = !allowed;
+      button.setAttribute('aria-disabled', String(!allowed));
+      button.style.opacity = allowed ? '1' : '0.5';
+      button.style.pointerEvents = allowed ? 'auto' : 'none';
+      button.style.background = allowed ? 'var(--main-blue)' : '#475569';
+    };
+    const prepareDialog = () => {
+      const dialog = el('share-modal');
+      dialog.setAttribute('role', 'dialog');
+      dialog.setAttribute('aria-modal', 'false');
+      dialog.setAttribute('aria-label', copy({en:'Sharing settings demonstration', ko:'공유 설정 데모', ru:'Демонстрация настроек доступа'}));
+      el('perm-select').setAttribute('aria-label', copy({en:'Who can open the demo link?', ko:'데모 링크를 열 수 있는 사람', ru:'Кто может открыть учебную ссылку?'}));
+      const close = dialog.querySelector('[onclick="closeShareModal()"]');
+      if (close) close.setAttribute('aria-label', copy({en:'Close sharing settings', ko:'공유 설정 닫기', ru:'Закрыть настройки доступа'}));
+      window.checkPermission();
+    };
+    window.openShareModal = function () {
+      shareOpener = document.activeElement;
+      el('share-modal').classList.add('show');
+      prepareDialog();
+      el('perm-select').focus();
+    };
+    window.closeShareModal = function () {
+      el('share-modal').classList.remove('show');
+      if (shareOpener && shareOpener.isConnected) shareOpener.focus();
+    };
+    el('share-modal').addEventListener('keydown', event => {
+      if (event.key === 'Escape') {event.preventDefault(); window.closeShareModal();}
+    });
+    prepareDialog();
+    afterLanguage.push(resetLayout, prepareDialog);
+  }
+
+  if (page === 'week11') {
+    const switches = Array.from(document.querySelectorAll('.toggle-switch'));
+    switches.forEach((node, index) => {
+      node.setAttribute('role', 'switch');
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('aria-checked', String(node.dataset.state === 'on'));
+      const row = node.closest('.setting-row');
+      const label = row && row.querySelector('strong');
+      if (label) {
+        label.id = label.id || 'privacy-setting-label-' + index;
+        node.setAttribute('aria-labelledby', label.id);
+      }
+      node.addEventListener('keydown', event => {
+        if (event.key === ' ' || event.key === 'Enter') {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          window.toggleSwitch(node);
+        }
+      }, true);
+    });
+    window.toggleSwitch = function (node) {
+      const active = node.dataset.state !== 'on';
+      node.dataset.state = active ? 'on' : 'off';
+      node.classList.toggle('on', active);
+      node.setAttribute('aria-checked', String(active));
+    };
+  }
+
+  if (afterLanguage.length && typeof window.setLang === 'function') {
+    const original = window.setLang;
+    window.setLang = function (value) {
+      original(value);
+      afterLanguage.forEach(fn => fn());
+    };
+  }
+})();
+
+
+/* Language and demonstration state repair after the original modules. */
+(function(){
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const T=(en,ko,ru)=>({en,ko,ru}[window.currentLang]||en);
+  const page=window.uxCurrentPage;
+  let liked=false;
+  if(page==='week08'){
+    window.toggleMicroLike=function(){
+      liked=!liked;const btn=$('card-like-btn'),txt=$('card-like-text'),hint=$('micro-feedback');
+      if(!btn)return;
+      btn.classList.toggle('liked',liked);btn.setAttribute('aria-pressed',String(liked));if($('card-like-icon'))$('card-like-icon').textContent=liked?'💖':'👍';
+      if(txt)txt.textContent=liked?T('Liked','좋아요 완료','Отмечено'):window.translations[window.currentLang]['c5-btn-like'];
+      if(hint)hint.textContent=liked?T('Your feedback is visible','반응이 표시되었습니다','Ваш отклик виден'):window.translations[window.currentLang]['c5-click-hint'];
+    };
+  }
+  function syncAttributes(){
+    document.querySelectorAll('[data-i18n-attr]').forEach(el=>{const config=JSON.parse(el.dataset.i18nAttr);Object.entries(config).forEach(([attr,values])=>el.setAttribute(attr,values[window.currentLang]));});
+    const extra=window.UX_DATA.attributeOverrides[page]||[];extra.forEach(item=>document.querySelectorAll(item.selector).forEach(el=>el.setAttribute(item.attribute,item[window.currentLang])));
+    document.querySelectorAll('.info-icon').forEach(el=>el.setAttribute('aria-label',T('Why am I seeing this?','이 추천을 보는 이유','Почему я это вижу?')));
+    document.querySelectorAll('.info-icon').forEach(el=>el.setAttribute('title',T('Why am I seeing this?','이 추천을 보는 이유','Почему я это вижу?')));
+    document.querySelectorAll('.send-btn').forEach(el=>el.setAttribute('aria-label',T('Send a demo request','데모 요청 보내기','Отправить учебный запрос')));
+    if($('mock-input'))$('mock-input').setAttribute('aria-label',T('Your demo request','데모 요청 내용','Ваш учебный запрос'));
+    document.querySelectorAll('.demo-drawer [onclick="toggleCardDrawer()"]:not([data-key])').forEach(el=>el.setAttribute('aria-label',T('Close source drawer','출처 서랍 닫기','Закрыть панель источников')));
+    document.querySelectorAll('#lesson-content button:not([type])').forEach(b=>b.type='button');
+  }
+  function resetDynamic(){
+    if(page==='week01'){
+      ['cli-text','ai-chat-reply','bad-ux-box','stream-text'].forEach(id=>{if($(id))$(id).textContent='';});
+      if($('spinner'))$('spinner').style.display='none';
+      if($('cli-line1'))$('cli-line1').style.display='none';
+    }
+    if(page==='week08'){
+      liked=false;if($('card-like-icon'))$('card-like-icon').textContent='👍';const btn=$('card-like-btn');if(btn){btn.classList.remove('liked');btn.setAttribute('aria-pressed','false');}
+      const hint=$('micro-feedback');if(hint)hint.textContent=window.translations[window.currentLang]['c5-click-hint'];
+      const txt=$('card-like-text');if(txt)txt.textContent=window.translations[window.currentLang]['c5-btn-like'];
+    }
+    if(page==='week09'){
+      if(typeof window.resetPrototype==='function')window.resetPrototype();
+      if($('key-result'))$('key-result').textContent=T('Click a shortcut above!','위의 단축키를 눌러 보세요!','Нажмите сочетание клавиш выше!');
+      document.querySelectorAll('.key-box').forEach(el=>el.classList.remove('active'));
+    }
+    syncAttributes();
+  }
+  const prior=window.setLang;
+  if(typeof prior==='function')window.setLang=function(lang){prior(lang);resetDynamic();};
+  resetDynamic();
+  // Refresh pointer/keyboard-accessible tooltip guidance without a hover-only dependency.
+  document.querySelectorAll('.tooltip-container').forEach(node=>{
+    node.addEventListener('click',()=>node.classList.toggle('tooltip-open'));
+    node.addEventListener('keydown',event=>{if(event.key==='Escape')node.classList.remove('tooltip-open');});
+  });
+})();
+
+/* Added visual demos: called by the course only after its language localizer. */
+(function () {
+  'use strict';
+  const bound = new WeakSet();
+  const states = new WeakMap();
+  const activeTimers = new Set();
+  const allowedLanguages = ['en', 'ko', 'ru'];
+
+  function words(lang, key) {
+    const dictionaries = (window.UX_DATA && window.UX_DATA.visualTranslations) || {};
+    return String((dictionaries[lang] && dictionaries[lang][key]) ||
+      (dictionaries.en && dictionaries.en[key]) || '');
+  }
+  function one(root, role) { return root.querySelector('[data-er-role="' + role + '"]'); }
+  function action(root, name) { return root.querySelector('[data-er-action="' + name + '"]'); }
+  function cancel(state) {
+    if (state.timer !== null) {
+      window.clearTimeout(state.timer);
+      activeTimers.delete(state.timer);
+      state.timer = null;
+    }
+    state.busy = false;
+  }
+  function reducedMotion() {
+    return typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function revealResult(root, role, key, tone) {
+    const node = one(root, role);
+    if (!node) return;
+    const state = states.get(root);
+    node.textContent = words(state.lang, key);
+    node.hidden = false;
+    node.classList.toggle('v3-er-result-bad', tone === 'bad');
+    node.classList.toggle('v3-er-result-good', tone === 'good');
+    node.classList.add('v3-er-appeared');
+  }
+  function clearResults(root) {
+    root.querySelectorAll('.v3-er-result').forEach(node => {
+      node.hidden = true;
+      node.textContent = '';
+      node.classList.remove('v3-er-appeared');
+    });
+  }
+  function showRecovery(root, view) {
+    root.querySelectorAll('[data-er-recovery-view]').forEach(node => {
+      node.hidden = node.dataset.erRecoveryView !== view;
+      node.classList.remove('v3-er-appeared');
+      if (!node.hidden && view === 'success') node.classList.add('v3-er-appeared');
+    });
+  }
+  function resetRecovery(root) {
+    const state = states.get(root);
+    cancel(state);
+    clearResults(root);
+    showRecovery(root, 'error');
+    const retry = action(root, 'retry');
+    if (retry) retry.disabled = false;
+    const restart = action(root, 'bad-restart');
+    if (restart) restart.hidden = false;
+    one(root, 'bad-error').hidden = false;
+    one(root, 'bad-input').hidden = true;
+    one(root, 'good-screen').setAttribute('aria-busy', 'false');
+    one(root, 'recovery-live').textContent = '';
+  }
+  function finishRecovery(root) {
+    const state = states.get(root);
+    if (!state || !root.isConnected) return;
+    state.timer = null;
+    state.busy = false;
+    showRecovery(root, 'success');
+    one(root, 'good-screen').setAttribute('aria-busy', 'false');
+    one(root, 'recovery-live').textContent = words(state.lang, 'er.finishedLive');
+    // Announce through the existing status region; never move focus after a delay.
+  }
+  function retryRecovery(root) {
+    const state = states.get(root);
+    if (state.busy) return;
+    state.busy = true;
+    action(root, 'retry').disabled = true;
+    showRecovery(root, 'loading');
+    one(root, 'good-screen').setAttribute('aria-busy', 'true');
+    one(root, 'recovery-live').textContent = words(state.lang, 'er.retryingLive');
+    if (reducedMotion()) {
+      finishRecovery(root);
+      return;
+    }
+    const id = window.setTimeout(function () {
+      activeTimers.delete(id);
+      if (state.timer !== id) return;
+      finishRecovery(root);
+    }, 1050);
+    state.timer = id;
+    activeTimers.add(id);
+  }
+  function setMode(root, mode) {
+    const state = states.get(root);
+    cancel(state);
+    clearResults(root);
+    state.mode = mode === 'good' ? 'good' : 'bad';
+    root.dataset.erCurrentMode = state.mode;
+    root.querySelectorAll('[data-er-mode-view]').forEach(node => {
+      node.hidden = node.dataset.erModeView !== state.mode;
+    });
+    action(root, 'mode-bad').setAttribute('aria-pressed', String(state.mode === 'bad'));
+    action(root, 'mode-good').setAttribute('aria-pressed', String(state.mode === 'good'));
+    const badConsent = root.querySelector('[data-er-consent="bad"]');
+    const goodConsent = root.querySelector('[data-er-consent="good"]');
+    if (badConsent) badConsent.checked = true;
+    if (goodConsent) goodConsent.checked = false;
+    const prefix = state.kind === 'sentience' ? 'eth.sent.' : 'eth.trap.';
+    one(root, 'insight').textContent = words(state.lang, prefix + (state.mode === 'good' ? 'goodWhy' : 'badWhy'));
+  }
+  function handle(root, name) {
+    const state = states.get(root);
+    if (!state) return;
+    if (state.kind === 'recovery') {
+      if (name === 'retry') retryRecovery(root);
+      else if (name === 'recovery-reset') resetRecovery(root);
+      else if (name === 'bad-restart') {
+        one(root, 'bad-error').hidden = true;
+        one(root, 'bad-input').hidden = false;
+        action(root, 'bad-restart').hidden = true;
+        revealResult(root, 'bad-result', 'er.badRestart', 'bad');
+      }
+      return;
+    }
+    if (name === 'mode-bad' || name === 'mode-good') { setMode(root, name === 'mode-good' ? 'good' : 'bad'); return; }
+    if (name === 'ethics-reset') { setMode(root, 'bad'); return; }
+    if (state.kind === 'sentience') {
+      const choices = {
+        'sent-leave-bad': ['sent-bad-result', 'eth.sent.badLeaveResult', 'bad'],
+        'sent-pay': ['sent-bad-result', 'eth.sent.badPayResult', 'bad'],
+        'sent-free': ['sent-good-result', 'eth.sent.goodFreeResult', 'good'],
+        'sent-leave-good': ['sent-good-result', 'eth.sent.goodLeaveResult', 'good']
+      };
+      if (choices[name]) revealResult(root, choices[name][0], choices[name][1], choices[name][2]);
+      return;
+    }
+    if (name === 'trap-continue-bad') {
+      const checked = root.querySelector('[data-er-consent="bad"]').checked;
+      revealResult(root, 'trap-bad-result', checked ? 'eth.trap.badCheckedResult' : 'eth.trap.badUncheckedResult', 'bad');
+      one(root, 'insight').textContent = words(state.lang, checked ? 'eth.trap.badCheckedWhy' : 'eth.trap.badUncheckedWhy');
+    } else if (name === 'trap-continue-good') {
+      const checked = root.querySelector('[data-er-consent="good"]').checked;
+      revealResult(root, 'trap-good-result', checked ? 'eth.trap.goodOnResult' : 'eth.trap.goodOffResult', 'good');
+      one(root, 'insight').textContent = words(state.lang, 'eth.trap.goodWhy');
+    }
+  }
+  function attach(root) {
+    if (bound.has(root)) return;
+    bound.add(root);
+    root.addEventListener('click', function (event) {
+      const target = event.target;
+      const button = target && typeof target.closest === 'function' ? target.closest('button[data-er-action]') : null;
+      if (!button || !root.contains(button) || button.disabled) return;
+      handle(root, button.dataset.erAction);
+    });
+    // A changed choice invalidates a previous simulated result until Continue is pressed again.
+    root.addEventListener('change', function (event) {
+      const target = event.target;
+      if (!target || !target.matches('[data-er-consent]')) return;
+      const role = target.dataset.erConsent === 'bad' ? 'trap-bad-result' : 'trap-good-result';
+      const result = one(root, role);
+      if (result) { result.hidden = true; result.textContent = ''; }
+      const state = states.get(root);
+      if (state) one(root, 'insight').textContent = words(state.lang, 'eth.trap.' + (state.mode === 'good' ? 'goodWhy' : 'badWhy'));
+    });
+  }
+
+  window.uxEthicsRecoveryRefresh = function (language) {
+    const lang = allowedLanguages.includes(language) ? language : 'en';
+    // No callback from an earlier language or detached lesson may update a new view.
+    activeTimers.forEach(id => window.clearTimeout(id));
+    activeTimers.clear();
+    document.querySelectorAll('.v3-demo[data-er-kind]').forEach(root => {
+      let state = states.get(root);
+      if (!state) { state = { kind: root.dataset.erKind, lang: lang, mode: 'bad', busy: false, timer: null }; states.set(root, state); }
+      state.lang = lang;
+      attach(root);
+      if (state.kind === 'recovery') resetRecovery(root);
+      else setMode(root, 'bad');
+    });
+  };
+})();
+
+/* Requires UX_DATA.visualTranslations. Root calls the exported refresh after setLang. */
+(function () {
+  'use strict';
+  let lang = 'en';
+  let generation = 0;
+  let progressive = null;
+  let feedback = null;
+  let blueprint = null;
+  const bound = new WeakSet();
+  const timers = new Map();
+  const motion = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const pdState = {template: 'points', length: 'short', tone: 'neutral'};
+  const fbState = {vote: null, reason: null, answer: '', copyToken: 0};
+  const bpState = {stage: 'input', playing: false, paused: false, hasPlayed: false};
+  const q = (root, selector) => root ? root.querySelector(selector) : null;
+  const all = (root, selector) => root ? Array.from(root.querySelectorAll(selector)) : [];
+  function text(key, values) {
+    const dict = (window.UX_DATA && window.UX_DATA.visualTranslations) || {};
+    let value = (dict[lang] && dict[lang][key]) || (dict.en && dict.en[key]) || '';
+    if (values) Object.keys(values).forEach(name => { value = value.split('{' + name + '}').join(String(values[name])); });
+    return value;
+  }
+  function write(root, selector, value) { const el = q(root, selector); if (el) el.textContent = value; }
+  function reduced() { return !!(motion && motion.matches); }
+  function cancel(group) {
+    const ids = timers.get(group);
+    if (ids) ids.forEach(id => window.clearTimeout(id));
+    timers.delete(group);
+  }
+  function cancelAll() { Array.from(timers.keys()).forEach(cancel); }
+  function later(group, root, callback, delay) {
+    const revision = generation;
+    if (!timers.has(group)) timers.set(group, new Set());
+    const id = window.setTimeout(() => {
+      const ids = timers.get(group);
+      if (ids) { ids.delete(id); if (!ids.size) timers.delete(group); }
+      if (revision === generation && root && root.isConnected) callback();
+    }, delay);
+    timers.get(group).add(id);
+    return id;
+  }
+  function focus(el) { if (el && !el.hidden) el.focus({preventScroll: true}); }
+
+  // W6: three progressively richer ways to make the same request.
+  function phone(level) { return q(progressive, '[data-v3-pd-level="' + level + '"]'); }
+  function resetPhone(level) {
+    const root = phone(level);
+    if (!root) return;
+    cancel('pd-' + level);
+    delete root.dataset.v3PdPending;
+    root.removeAttribute('aria-busy');
+    const result = q(root, '[data-v3-pd-result]');
+    result.hidden = true;
+    result.classList.remove('is-entering');
+    q(root, '[data-v3-pd-loading]').hidden = true;
+    q(root, '[data-v3-pd-output]').textContent = '';
+    const button = q(root, '[data-v3-pd-run]');
+    button.disabled = false;
+    const label = {1: 'v3-pd-summary-action', 2: 'v3-pd-template-action', 3: 'v3-pd-generate-action'}[level];
+    write(button, 'span[data-v3-key]', text(label));
+  }
+  function updateRequests() {
+    if (!progressive) return;
+    write(progressive, '[data-v3-pd-template-prompt]', text('v3-pd-prompt-' + pdState.template));
+    write(progressive, '[data-v3-pd-options-prompt]', text('v3-pd-prompt-options', {
+      length: text('v3-pd-' + pdState.length), tone: text('v3-pd-' + pdState.tone)
+    }));
+    all(progressive, '[data-v3-pd-template]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.v3PdTemplate === pdState.template)));
+  }
+  function finishPhone(level) {
+    const root = phone(level);
+    if (!root || !root.dataset.v3PdPending) return;
+    const key = root.dataset.v3PdPending;
+    cancel('pd-' + level);
+    delete root.dataset.v3PdPending;
+    root.removeAttribute('aria-busy');
+    q(root, '[data-v3-pd-loading]').hidden = true;
+    const result = q(root, '[data-v3-pd-result]');
+    write(root, '[data-v3-pd-output]', text(key));
+    result.hidden = false;
+    result.classList.add('is-entering');
+    const button = q(root, '[data-v3-pd-run]');
+    button.disabled = false;
+    write(button, 'span[data-v3-key]', text('v3-pd-replay'));
+  }
+  function runPhone(level) {
+    const root = phone(level);
+    if (!root) return;
+    resetPhone(level);
+    root.dataset.v3PdPending = level === '1' ? 'v3-pd-result-short-neutral' : level === '2' ? 'v3-pd-result-' + pdState.template : 'v3-pd-result-' + pdState.length + '-' + pdState.tone;
+    root.setAttribute('aria-busy', 'true');
+    q(root, '[data-v3-pd-loading]').hidden = false;
+    q(root, '[data-v3-pd-run]').disabled = true;
+    if (reduced()) finishPhone(level);
+    else later('pd-' + level, root, () => finishPhone(level), 650);
+  }
+  function resetProgressive() {
+    if (!progressive) return;
+    pdState.template = 'points'; pdState.length = 'short'; pdState.tone = 'neutral';
+    ['1', '2', '3'].forEach(resetPhone);
+    q(progressive, '[data-v3-pd-options]').hidden = true;
+    q(progressive, '[data-v3-pd-toggle]').setAttribute('aria-expanded', 'false');
+    q(progressive, '[data-v3-pd-length]').value = 'short';
+    q(progressive, '[data-v3-pd-tone]').value = 'neutral';
+    updateRequests();
+  }
+  function progressiveClick(event) {
+    const button = event.target.closest('button');
+    if (!button || !progressive.contains(button)) return;
+    if (button.hasAttribute('data-v3-pd-run')) runPhone(button.dataset.v3PdRun);
+    else if (button.hasAttribute('data-v3-pd-template')) {
+      pdState.template = button.dataset.v3PdTemplate;
+      resetPhone('2'); updateRequests();
+    } else if (button.hasAttribute('data-v3-pd-toggle')) {
+      const panel = q(progressive, '[data-v3-pd-options]');
+      panel.hidden = !panel.hidden;
+      button.setAttribute('aria-expanded', String(!panel.hidden));
+    } else if (button.hasAttribute('data-v3-pd-reset')) resetProgressive();
+  }
+  function progressiveChange(event) {
+    if (event.target.matches('[data-v3-pd-length]')) pdState.length = event.target.value;
+    else if (event.target.matches('[data-v3-pd-tone]')) pdState.tone = event.target.value;
+    else return;
+    resetPhone('3'); updateRequests();
+  }
+
+  // W6: feedback belongs to the displayed answer. Editing clears the previous vote.
+  function feedbackStatus(key, values) { write(feedback, '[data-v3-fb-status]', key ? text(key, values) : ''); }
+  function updateVotes() {
+    if (!feedback) return;
+    all(feedback, '[data-v3-fb-vote]').forEach(button => {
+      const selected = button.dataset.v3FbVote === fbState.vote;
+      button.setAttribute('aria-pressed', String(selected));
+      if (button.dataset.v3FbVote === 'down') button.setAttribute('aria-expanded', String(selected));
+    });
+    q(feedback, '[data-v3-fb-reasons]').hidden = fbState.vote !== 'down';
+    all(feedback, '[data-v3-fb-reason]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.v3FbReason === fbState.reason)));
+  }
+  function closeEditor(restoreFocus) {
+    q(feedback, '[data-v3-fb-editor]').hidden = true;
+    q(feedback, '[data-v3-fb-edit]').setAttribute('aria-expanded', 'false');
+    if (restoreFocus) focus(q(feedback, '[data-v3-fb-edit]'));
+  }
+  function resetFeedback() {
+    if (!feedback) return;
+    fbState.copyToken += 1;
+    fbState.vote = null; fbState.reason = null; fbState.answer = text('v3-fb-answer');
+    write(feedback, '[data-v3-fb-answer]', fbState.answer);
+    q(feedback, '[data-v3-fb-copy-panel]').hidden = true;
+    q(feedback, '[data-v3-fb-copy-text]').value = '';
+    q(feedback, '[data-v3-fb-edit-text]').value = '';
+    closeEditor(false); updateVotes(); feedbackStatus(null);
+  }
+  function copyAnswer() {
+    const revision = generation;
+    const token = ++fbState.copyToken;
+    const root = feedback;
+    const answer = fbState.answer;
+    const focusAtRequest = document.activeElement;
+    q(root, '[data-v3-fb-copy-panel]').hidden = true;
+    const stillCurrent = () => revision === generation && token === fbState.copyToken && root === feedback && root.isConnected;
+    const fallback = () => {
+      if (!stillCurrent()) return;
+      q(root, '[data-v3-fb-copy-panel]').hidden = false;
+      const field = q(root, '[data-v3-fb-copy-text]');
+      field.value = answer;
+      feedbackStatus('v3-fb-copy-fallback');
+      // An asynchronous clipboard rejection must not pull focus back from later work.
+      if (document.activeElement === focusAtRequest) { focus(field); field.select(); }
+    };
+    if (!window.navigator.clipboard || typeof window.navigator.clipboard.writeText !== 'function') { fallback(); return; }
+    try {
+      Promise.resolve(window.navigator.clipboard.writeText(answer)).then(() => {
+        if (stillCurrent()) feedbackStatus('v3-fb-copy-success');
+      }).catch(fallback);
+    } catch (_) { fallback(); }
+  }
+  function feedbackClick(event) {
+    const button = event.target.closest('button');
+    if (!button || !feedback.contains(button)) return;
+    if (button.hasAttribute('data-v3-fb-vote')) {
+      const choice = button.dataset.v3FbVote;
+      fbState.vote = fbState.vote === choice ? null : choice;
+      fbState.reason = null; updateVotes();
+      feedbackStatus(fbState.vote ? 'v3-fb-' + fbState.vote + '-status' : 'v3-fb-clear-status');
+    } else if (button.hasAttribute('data-v3-fb-reason')) {
+      if (fbState.vote !== 'down') return;
+      const reason = button.dataset.v3FbReason;
+      fbState.reason = fbState.reason === reason ? null : reason; updateVotes();
+      if (fbState.reason) feedbackStatus('v3-fb-reason-status', {reason: text('v3-fb-reason-' + fbState.reason)});
+      else feedbackStatus('v3-fb-down-status');
+    } else if (button.hasAttribute('data-v3-fb-copy')) copyAnswer();
+    else if (button.hasAttribute('data-v3-fb-edit')) {
+      const editor = q(feedback, '[data-v3-fb-editor]');
+      if (!editor.hidden) { closeEditor(false); return; }
+      q(feedback, '[data-v3-fb-copy-panel]').hidden = true;
+      const field = q(feedback, '[data-v3-fb-edit-text]');
+      field.value = fbState.answer; editor.hidden = false;
+      button.setAttribute('aria-expanded', 'true'); focus(field);
+    } else if (button.hasAttribute('data-v3-fb-save')) {
+      const field = q(feedback, '[data-v3-fb-edit-text]');
+      const value = field.value.trim();
+      if (!value) { feedbackStatus('v3-fb-edit-empty'); focus(field); return; }
+      fbState.copyToken += 1; fbState.answer = value; fbState.vote = null; fbState.reason = null;
+      write(feedback, '[data-v3-fb-answer]', value);
+      q(feedback, '[data-v3-fb-copy-panel]').hidden = true;
+      closeEditor(true); updateVotes(); feedbackStatus('v3-fb-edit-saved');
+    } else if (button.hasAttribute('data-v3-fb-cancel')) closeEditor(true);
+    else if (button.hasAttribute('data-v3-fb-reset')) resetFeedback();
+  }
+
+  // W12: the same five layers update for Input, Processing, Output, and a fallback.
+  function updateBlueprintControls() {
+    if (!blueprint) return;
+    blueprint.classList.toggle('is-playing', bpState.playing);
+    const pause = q(blueprint, '[data-v3-bp-pause]');
+    const hadFocus = document.activeElement === pause;
+    pause.hidden = !bpState.playing;
+    write(blueprint, '[data-v3-bp-play-label]', text(bpState.paused ? 'v3-bp-resume' : bpState.hasPlayed ? 'v3-bp-replay' : 'v3-bp-play'));
+    if (hadFocus && pause.hidden) focus(q(blueprint, '[data-v3-bp-play]'));
+  }
+  function renderBlueprint(stage) {
+    if (!blueprint) return;
+    bpState.stage = stage;
+    blueprint.dataset.v3BpState = stage;
+    const active = {input: [1, 2], processing: [2, 3, 4], output: [1, 2, 4], error: [2, 3, 5]}[stage];
+    all(blueprint, '[data-v3-bp-lane]').forEach(row => {
+      const index = Number(row.dataset.v3BpLane);
+      row.classList.toggle('is-current', active.includes(index));
+      write(row, '[data-v3-bp-lane-copy]', text('v3-bp-' + stage + '-lane' + index));
+    });
+    all(blueprint, '[data-v3-bp-panel]').forEach(panel => { panel.hidden = panel.dataset.v3BpPanel !== stage; });
+    all(blueprint, '[data-v3-bp-step]').forEach(button => {
+      if (button.dataset.v3BpStep === stage) button.setAttribute('aria-current', 'step');
+      else button.removeAttribute('aria-current');
+    });
+    q(blueprint, '[data-v3-bp-source]').hidden = true;
+    q(blueprint, '[data-v3-bp-compare]').setAttribute('aria-expanded', 'false');
+    write(blueprint, '[data-v3-bp-compare-label]', text('v3-bp-compare'));
+    write(blueprint, '[data-v3-bp-status]', text('v3-bp-state-' + stage));
+    updateBlueprintControls();
+  }
+  function scheduleBlueprint() {
+    if (!blueprint || !bpState.playing) return;
+    if (reduced()) { cancel('bp'); bpState.playing = false; bpState.paused = false; renderBlueprint('output'); return; }
+    if (bpState.stage === 'input') {
+      later('bp', blueprint, () => { renderBlueprint('processing'); scheduleBlueprint(); }, 1300);
+    } else if (bpState.stage === 'processing') {
+      later('bp', blueprint, () => { bpState.playing = false; bpState.paused = false; renderBlueprint('output'); }, 1700);
+    }
+  }
+  function playBlueprint() {
+    if (!blueprint) return;
+    cancel('bp');
+    const resume = bpState.paused && ['input', 'processing'].includes(bpState.stage);
+    bpState.playing = true; bpState.paused = false; bpState.hasPlayed = true;
+    if (!resume) renderBlueprint('input');
+    else { updateBlueprintControls(); write(blueprint, '[data-v3-bp-status]', text('v3-bp-state-' + bpState.stage)); }
+    scheduleBlueprint();
+  }
+  function selectBlueprint(stage) {
+    cancel('bp'); bpState.playing = false; bpState.paused = false;
+    if (stage !== 'input') bpState.hasPlayed = true;
+    renderBlueprint(stage);
+  }
+  function resetBlueprint() {
+    if (!blueprint) return;
+    cancel('bp'); bpState.playing = false; bpState.paused = false; bpState.hasPlayed = false;
+    renderBlueprint('input');
+  }
+  function blueprintClick(event) {
+    const button = event.target.closest('button');
+    if (!button || !blueprint.contains(button)) return;
+    if (button.hasAttribute('data-v3-bp-play')) playBlueprint();
+    else if (button.hasAttribute('data-v3-bp-upload') || button.hasAttribute('data-v3-bp-retry')) {
+      bpState.paused = false; focus(q(blueprint, '[data-v3-bp-play]')); playBlueprint();
+    } else if (button.hasAttribute('data-v3-bp-pause')) {
+      cancel('bp'); bpState.playing = false; bpState.paused = true;
+      updateBlueprintControls(); write(blueprint, '[data-v3-bp-status]', text('v3-bp-state-paused'));
+    } else if (button.hasAttribute('data-v3-bp-reset')) resetBlueprint();
+    else if (button.hasAttribute('data-v3-bp-step')) selectBlueprint(button.dataset.v3BpStep);
+    else if (button.hasAttribute('data-v3-bp-error')) selectBlueprint('error');
+    else if (button.hasAttribute('data-v3-bp-new')) { selectBlueprint('input'); focus(q(blueprint, '[data-v3-bp-upload]')); }
+    else if (button.hasAttribute('data-v3-bp-compare')) {
+      const source = q(blueprint, '[data-v3-bp-source]');
+      source.hidden = !source.hidden;
+      button.setAttribute('aria-expanded', String(!source.hidden));
+      write(button, '[data-v3-bp-compare-label]', text(source.hidden ? 'v3-bp-compare' : 'v3-bp-close-source'));
+    }
+  }
+  function bindRoots() {
+    progressive = document.querySelector('[data-v3-progressive]');
+    feedback = document.querySelector('[data-v3-feedback]');
+    blueprint = document.querySelector('[data-v3-blueprint]');
+    if (progressive && !bound.has(progressive)) {
+      progressive.addEventListener('click', progressiveClick);
+      progressive.addEventListener('change', progressiveChange); bound.add(progressive);
+    }
+    if (feedback && !bound.has(feedback)) {
+      feedback.addEventListener('click', feedbackClick);
+      feedback.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !q(feedback, '[data-v3-fb-editor]').hidden) { event.preventDefault(); closeEditor(true); }
+      });
+      bound.add(feedback);
+    }
+    if (blueprint && !bound.has(blueprint)) { blueprint.addEventListener('click', blueprintClick); bound.add(blueprint); }
+  }
+  function refresh(nextLang) {
+    generation += 1; cancelAll();
+    lang = ['en', 'ko', 'ru'].includes(nextLang) ? nextLang : 'en';
+    bindRoots(); resetProgressive(); resetFeedback(); resetBlueprint();
+  }
+  window.uxProgressiveBlueprintRefresh = refresh;
+  if (motion) {
+    const changed = event => {
+      if (!event.matches) return;
+      ['1', '2', '3'].forEach(finishPhone);
+      if (blueprint && bpState.playing) { cancel('bp'); bpState.playing = false; bpState.paused = false; renderBlueprint('output'); }
+    };
+    if (typeof motion.addEventListener === 'function') motion.addEventListener('change', changed);
+    else if (typeof motion.addListener === 'function') motion.addListener(changed);
+  }
+  window.addEventListener('pagehide', () => { generation += 1; cancelAll(); fbState.copyToken += 1; });
+  refresh(window.currentLang || document.documentElement.lang || 'en');
+})();
+
+/* Localise and reset the added visual examples after the existing lesson renderer. */
+(function () {
+  'use strict';
+  const mount=document.getElementById('lesson-content');
+  const language=()=>window.currentLang || 'en';
+  function localise(lang) {
+    const dictionary=(window.UX_DATA.visualTranslations || {})[lang] || {};
+    mount.querySelectorAll('[data-v3-key]').forEach(element=>{
+      const value=dictionary[element.dataset.v3Key];
+      if (value!==undefined) element.textContent=value;
+    });
+    [['data-v3-label','aria-label'],['data-v3-title','title'],['data-v3-placeholder','placeholder']].forEach(([binding,attribute])=>{
+      mount.querySelectorAll('['+binding+']').forEach(element=>{
+        const value=dictionary[element.getAttribute(binding)];
+        if (value!==undefined) element.setAttribute(attribute,value);
+      });
+    });
+  }
+  const chips=Array.from(mount.querySelectorAll('[data-v3-city]'));
+  const next=document.getElementById('v3-turn-next');
+  chips.forEach(chip=>chip.addEventListener('click',()=>{
+    chips.forEach(item=>item.setAttribute('aria-pressed',String(item===chip)));
+    document.getElementById('v3-turn-selection').textContent=chip.textContent;
+    next.hidden=false;
+    next.classList.remove('v3-message-enter');
+    // Restart a small message entrance without moving the page.
+    void next.offsetWidth;
+    next.classList.add('v3-message-enter');
+  }));
+  function refresh(lang) {
+    localise(lang);
+    if (next) {
+      next.hidden=true;
+      next.classList.remove('v3-message-enter');
+      document.getElementById('v3-turn-selection').textContent='';
+      chips.forEach(chip=>chip.setAttribute('aria-pressed','false'));
+    }
+    if (window.uxEthicsRecoveryRefresh) window.uxEthicsRecoveryRefresh(lang);
+    if (window.uxProgressiveBlueprintRefresh) window.uxProgressiveBlueprintRefresh(lang);
+    mount.querySelectorAll('.v3-demo button:not([type])').forEach(button=>{button.type='button';});
+    const tableRegion=mount.querySelector('.v3-blueprint-table-scroll');
+    if(tableRegion) tableRegion.setAttribute('aria-label',({en:'Service blueprint table',ko:'서비스 블루프린트 표',ru:'Таблица схемы сервиса'})[lang]);
+  }
+  window.uxVisualRefresh=refresh;
+  const prior=window.setLang;
+  if(typeof prior==='function')window.setLang=function(lang){prior(lang);refresh(language());};
+  refresh(language());
+})();
+
+/* Match complete terms; prefer longer names when two concepts overlap. */
+(function (root) {
+  'use strict';
+  const word = /[\p{L}\p{N}_]/u;
+  const hangul = /[\uac00-\ud7a3]/u;
+  function boundary(text, start, end, language) {
+    const before = text[start - 1] || '';
+    const after = text[end] || '';
+    if (word.test(before)) return false;
+    // Korean particles attach to a term without a separating space.
+    return !word.test(after) || (language === 'ko' && hangul.test(after));
+  }
+  function matches(text, entries, used, language) {
+    const candidates = [];
+    entries.forEach(entry => {
+      if (used.has(entry.index)) return;
+      entry.aliases.forEach(alias => {
+        if (!alias) return;
+        const escaped = alias.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const pattern = new RegExp(escaped, 'giu');
+        let found;
+        while ((found = pattern.exec(text))) {
+          const start = found.index;
+          const end = start + found[0].length;
+          if (boundary(text, start, end, language)) candidates.push({index: entry.index, start, end, text: found[0]});
+        }
+      });
+    });
+    candidates.sort((a, b) => a.start - b.start || b.end - a.end || a.index - b.index);
+    const result = [];
+    const chosen = new Set(used);
+    let end = -1;
+    candidates.forEach(candidate => {
+      if (candidate.start < end || chosen.has(candidate.index)) return;
+      result.push(candidate);
+      end = candidate.end;
+      chosen.add(candidate.index);
+    });
+    return result;
+  }
+  root.UXTermMatch = {matches};
+})(typeof window === 'undefined' ? globalThis : window);
+
+/* Definitions appear at the first safe reading occurrence of a term. */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const popup = $('term-tooltip');
+  const terms = window.UX_DATA.glossary[window.uxCurrentPage] || [];
+  const configured = (window.UX_DATA.termAliases || {})[window.uxCurrentPage] || {};
+  const roots = ['lesson-summary', 'lesson-bridge', 'demo-instruction', 'lesson-content'].map($).filter(Boolean);
+  const excluded = [
+    'a', 'button', 'input', 'select', 'textarea', 'label', 'summary', 'script', 'style', 'code', 'pre',
+    '[onclick]', '[onkeydown]', '[contenteditable]', '[role="button"]', '[role="switch"]', '[role="status"]', '[aria-live]',
+    '[hidden]', '[aria-hidden="true"]', '.tooltip-container', '.demo-box', '.mockup-box', '.chat-interface', '.v3-demo',
+    '.interactive-mockup', '.mockup-window', '.prompt-box', '.formula-box', '.demo-area', '.cli-body',
+    '.equation', '.fake-ai-msg', '.chat-bubble-demo',
+    '#cli-text', '#ai-chat-reply', '#trad-result', '#ai-result', '#bad-ux-box', '#stream-text', '#ai-typing-text',
+    '#key-result', '#al-text', '#micro-feedback', '#term-tooltip'
+  ].join(',');
+  let active = null;
+  let frame = 0;
+  function copy(en, ko, ru) {return ({en, ko, ru})[window.currentLang] || en;}
+  function close() {
+    if (active) {
+      active.setAttribute('aria-expanded', 'false');
+      active.removeAttribute('aria-describedby');
+    }
+    active = null;
+    popup.hidden = true;
+    if (frame) {cancelAnimationFrame(frame); frame = 0;}
+  }
+  function position() {
+    frame = 0;
+    if (!active || !active.isConnected) {close(); return;}
+    const anchor = active.getBoundingClientRect();
+    const visual = window.visualViewport;
+    const viewportLeft = visual ? visual.offsetLeft : 0;
+    const viewportTop = visual ? visual.offsetTop : 0;
+    const viewportWidth = visual ? visual.width : document.documentElement.clientWidth;
+    const viewportHeight = visual ? visual.height : window.innerHeight;
+    const margin = 12;
+    if (anchor.bottom < viewportTop || anchor.top > viewportTop + viewportHeight) {close(); return;}
+    popup.style.maxWidth = Math.max(120, viewportWidth - margin * 2) + 'px';
+    popup.style.maxHeight = Math.max(80, viewportHeight - margin * 2) + 'px';
+    const rect = popup.getBoundingClientRect();
+    const left = Math.max(viewportLeft + margin, Math.min(anchor.left, viewportLeft + viewportWidth - rect.width - margin));
+    let top = anchor.bottom + 9;
+    if (top + rect.height > viewportTop + viewportHeight - margin) top = anchor.top - rect.height - 9;
+    top = Math.max(viewportTop + margin, Math.min(top, viewportTop + viewportHeight - rect.height - margin));
+    popup.style.left = Math.round(left) + 'px';
+    popup.style.top = Math.round(top) + 'px';
+  }
+  function schedulePosition() {if (active && !frame) frame = requestAnimationFrame(position);}
+  function open(trigger) {
+    if (active === trigger) {close(); return;}
+    close();
+    const term = terms[Number(trigger.dataset.uxTerm)];
+    if (!term) return;
+    const info = term[window.currentLang] || term.en;
+    $('term-tooltip-title').textContent = info.name;
+    $('term-tooltip-body').textContent = info.definition;
+    $('term-tooltip-example').textContent = copy('Example · ', '예시 · ', 'Пример · ') + info.example;
+    active = trigger;
+    active.setAttribute('aria-expanded', 'true');
+    active.setAttribute('aria-describedby', 'term-tooltip');
+    popup.hidden = false;
+    popup.scrollTop = 0;
+    position();
+  }
+  function clear() {
+    close();
+    roots.forEach(root => {
+      const parents = new Set();
+      root.querySelectorAll('button[data-ux-term]').forEach(button => {
+        const parent = button.parentNode;
+        button.replaceWith(document.createTextNode(button.textContent));
+        if (parent) parents.add(parent);
+      });
+      parents.forEach(parent => parent.normalize());
+    });
+  }
+  function annotate() {
+    clear();
+    const lang = window.currentLang || 'en';
+    const entries = terms.map((term, index) => {
+      const local = term[lang] || term.en;
+      const aliases = (configured[term.term] || {})[lang] || [];
+      return {index, aliases: Array.from(new Set([local.name, term.term, ...aliases]))};
+    });
+    const used = new Set();
+    roots.forEach(root => {
+      if (root.hidden) return;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      let node;
+      while ((node = walker.nextNode())) {
+        if (node.textContent.trim() && node.parentElement && !node.parentElement.closest(excluded)) nodes.push(node);
+      }
+      nodes.forEach(node => {
+        const text = node.textContent;
+        const matches = window.UXTermMatch.matches(text, entries, used, lang);
+        if (!matches.length) return;
+        const fragment = document.createDocumentFragment();
+        let offset = 0;
+        matches.forEach(match => {
+          fragment.appendChild(document.createTextNode(text.slice(offset, match.start)));
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'term-trigger';
+          button.dataset.uxTerm = String(match.index);
+          button.textContent = text.slice(match.start, match.end);
+          button.setAttribute('aria-expanded', 'false');
+          button.setAttribute('aria-controls', 'term-tooltip');
+          button.setAttribute('aria-label', copy('Show definition: ', '뜻 보기: ', 'Показать значение: ') + button.textContent);
+          fragment.appendChild(button);
+          used.add(match.index);
+          offset = match.end;
+        });
+        fragment.appendChild(document.createTextNode(text.slice(offset)));
+        node.replaceWith(fragment);
+      });
+    });
+  }
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest && event.target.closest('button[data-ux-term]');
+    if (trigger) {event.preventDefault(); open(trigger);}
+    else if (active && !popup.contains(event.target)) close();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && active) {event.preventDefault(); close();}
+  });
+  document.addEventListener('focusin', event => {
+    if (active && event.target !== active && !popup.contains(event.target)) close();
+  });
+  window.addEventListener('resize', schedulePosition, {passive: true});
+  window.addEventListener('scroll', schedulePosition, {passive: true, capture: true});
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', schedulePosition, {passive: true});
+    window.visualViewport.addEventListener('scroll', schedulePosition, {passive: true});
+  }
+  window.uxDismissTerm = close;
+  window.uxClearTerms = clear;
+  window.uxRefreshTerms = annotate;
+  const previousSetLang = window.setLang;
+  if (typeof previousSetLang === 'function') window.setLang = function (lang) {previousSetLang(lang); annotate();};
+  annotate();
+})();
