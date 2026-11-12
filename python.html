@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Study for International Students</title>
+<link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/python.css">
 </head>
@@ -23,14 +24,13 @@
                     </div>
                 </div>
                 <div class="top-controls">
-        <a class="portfolio-return" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
                     <div class="lang-container" id="desktop-langs">
                         <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
                         <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
                         <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
                     </div>
-                    <span id="py-status" class="status-badge" style="color: #fbbf24;">
-                        <span class="status-dot" style="background: #fbbf24;"></span><span id="status-text">엔진 로딩 중</span>
+                    <span id="py-status" class="status-badge loading" role="status">
+                        <span class="status-dot" aria-hidden="true"></span><span id="status-text">엔진 로딩 중</span>
                     </span>
                 </div>
             </div>
@@ -43,15 +43,17 @@
             </div>
         </div>
 
-        <div class="mobile-menu" id="mobile-menu">
-            <div class="mobile-menu-header" id="mobile-menu-title">Lesson Menu</div>
+        <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
+            <div class="mobile-menu-top">
+                <div class="mobile-menu-header" id="mobile-menu-title">Lesson Menu</div>
+                <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="메뉴 닫기" data-course-aria="closeMenu">×</button>
+            </div>
             <div class="mobile-lang-container" id="mobile-langs">
                 <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
                 <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
                 <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
             </div>
             <nav class="mobile-nav" id="mobile-nav" aria-label="모바일 레슨 메뉴"></nav>
-          <a class="mobile-portfolio-link" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
   </div>
         <div class="mobile-backdrop" id="mobile-backdrop"></div>
     </header>
@@ -62,20 +64,24 @@
         </section>
 
         <section id="editor-panel">
-            <textarea id="python-code" aria-label="Python code editor"></textarea>
+            <textarea id="python-code" spellcheck="false" autocomplete="off" autocapitalize="off" wrap="off" aria-label="Python code editor"></textarea>
             <div class="python-input-panel" id="python-input-panel" hidden>
                 <label for="python-stdin" id="stdin-label">실행 입력값 (한 줄에 하나씩)</label>
                 <p class="python-input-help" id="stdin-help">input()을 사용하는 코드라면 필요한 값을 순서대로 입력하세요. 반복문은 종료에 필요한 값까지 적어주세요.</p>
                 <textarea id="python-stdin" spellcheck="false" autocomplete="off" aria-describedby="stdin-help" rows="3" placeholder="홍길동"></textarea>
             </div>
-            <div class="console" id="console-output" role="status" aria-live="polite"></div>
+            <div id="result-panel">
+                <div class="console" id="console-output" role="status" aria-live="polite" tabindex="0" data-course-aria="resultLabel"></div>
+            </div>
+            <p id="python-file-guide" hidden><a href="./README.md" data-course-text="fileGuideLink">실행 안내 보기</a></p>
             <div class="action-btns">
-                <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
+                <button class="run-btn btn" id="run-btn" type="button" disabled>실행 ▶</button>
                 <button class="stop-btn btn" id="stop-btn" type="button" disabled>정지 ⏹</button>
-                <button class="ans-btn btn" id="answer-btn" type="button">정답 확인</button>
+                <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
+                <button class="ans-btn btn" id="answer-btn" type="button" aria-controls="ans-display" aria-expanded="false">정답 확인</button>
                 <button class="retry-btn btn" id="retry-btn" type="button" hidden>엔진 다시 연결</button>
             </div>
-            <div id="ans-display">
+            <div id="ans-display" role="region" aria-labelledby="answerTitle">
                 <strong id="answerTitle" style="color:#1e40af;">[모범 답안]</strong>
                 <pre id="ans-text" style="margin-top:10px; color:#1e3a8a;"></pre>
             </div>
@@ -91,6 +97,6 @@
     <script src="./js/data_python/lessons.js"></script>
     <script src="./js/data_python/translations.js"></script>
     <script src="./js/data_python/python.js"></script>
-    <div id="toast" class="toast"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

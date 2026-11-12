@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=index.html?week=week02"><title>UX Studio</title></head><body><a href="index.html?week=week02">Open Week 2</a></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 2 — UX Studio</title>
+<link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg">
+  <link rel="canonical" href="../index_ux.html?week=week02">
+</head>
+<body>
+  <p>최신 강의로 이동합니다. <a id="course-link" href="../index_ux.html?week=week02">강의 열기 · Open lesson · Открыть урок</a></p>
+  <script>
+  // Keep saved language, other query values, and in-page anchors on old URLs.
+  const target = new URL("../index_ux.html", window.location.href);
+  target.search = window.location.search;
+  target.searchParams.set("week", "week02");
+  target.hash = window.location.hash;
+  document.getElementById("course-link").href = target.href;
+  window.location.replace(target.href);
+  </script>
+  <noscript><p>위 링크를 눌러 최신 강의를 열어 주세요.</p></noscript>
+</body>
+</html>

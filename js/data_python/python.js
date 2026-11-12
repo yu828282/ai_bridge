@@ -1,355 +1,431 @@
 (function () {
+    'use strict';
     const translations = window.pythonTranslations;
     const lessons = window.pythonLessons;
-
+    const byId = id => document.getElementById(id);
     const elements = {
-        brandTitle: document.getElementById('brand-title'),
-        brandSubtitle: document.getElementById('brand-subtitle'),
-        mobileMenuTitle: document.getElementById('mobile-menu-title'),
-        statusBadge: document.getElementById('py-status'),
-        statusText: document.getElementById('status-text'),
-        navBar: document.getElementById('nav-bar'),
-        mobileNav: document.getElementById('mobile-nav'),
-        theoryView: document.getElementById('theory-view'),
-        codeInput: document.getElementById('python-code'),
-        consoleOutput: document.getElementById('console-output'),
-        runButton: document.getElementById('run-btn'),
-        stopButton: document.getElementById('stop-btn'),
-        retryButton: document.getElementById('retry-btn'),
-        stdinPanel: document.getElementById('python-input-panel'),
-        stdinLabel: document.getElementById('stdin-label'),
-        stdinHelp: document.getElementById('stdin-help'),
-        stdinInput: document.getElementById('python-stdin'),
-        answerButton: document.getElementById('answer-btn'),
-        answerDisplay: document.getElementById('ans-display'),
-        answerTitle: document.getElementById('answerTitle'),
-        answerText: document.getElementById('ans-text')
+        brandTitle: byId('brand-title'), brandSubtitle: byId('brand-subtitle'),
+        mobileMenuTitle: byId('mobile-menu-title'), statusBadge: byId('py-status'),
+        statusText: byId('status-text'), navBar: byId('nav-bar'), mobileNav: byId('mobile-nav'),
+        theoryView: byId('theory-view'), codeInput: byId('python-code'),
+        consoleOutput: byId('console-output'), runButton: byId('run-btn'),
+        stopButton: byId('stop-btn'), resetButton: byId('reset-btn'), retryButton: byId('retry-btn'),
+        stdinPanel: byId('python-input-panel'), stdinLabel: byId('stdin-label'),
+        stdinHelp: byId('stdin-help'), stdinInput: byId('python-stdin'),
+        answerButton: byId('answer-btn'), answerDisplay: byId('ans-display'),
+        answerTitle: byId('answerTitle'), answerText: byId('ans-text'),
+        menu: byId('mobile-menu'), menuButton: byId('hamburger-btn'),
+        menuClose: byId('mobile-menu-close'), backdrop: byId('mobile-backdrop')
     };
 
+    // Keep the existing draft keys so previously written student work is retained.
+    const draftPrefix = 'ai-bridge-python-draft-v1-';
+    const memoryDrafts = new Map();
+    // Input values stay in memory only, never in localStorage or a network request.
+    const inputDrafts = new Map();
+    const EXECUTION_LIMIT_MS = 10000;
+    const LOAD_LIMIT_MS = 90000;
     let currentLang = 'ko';
     let currentLessonIndex = null;
     let pythonWorker = null;
     let workerGeneration = 0;
     let nextRunId = 0;
     let pendingRun = null;
-    let ready = false;
+    let runtimeState = 'loading';
+    let runtimeIssue = '';
     let bootTimer = null;
-    const EXECUTION_LIMIT_MS = 10000;
-    const LOAD_LIMIT_MS = 90000;
+    let toastTimer = null;
+    let menuWasOpen = false;
+    let menuReturnFocus = null;
 
-    // 학습 코드 보관: 레슨별로 하나의 작업본을 유지하므로 언어 변경과
-    // 다른 레슨 방문, 새로고침에도 사용자가 작성한 코드가 사라지지 않습니다.
-    const draftPrefix = 'ai-bridge-python-draft-v1-';
-
-    function draftKey(index) {
-        return draftPrefix + index;
+    function getTextSet() { return translations[currentLang] || translations.ko; }
+    function lessonText(lesson, key) {
+        const values = lesson && lesson[key];
+        return values && (values[currentLang] ?? values.ko) || '';
     }
-
+    function safeRead(key) {
+        try { return localStorage.getItem(key); } catch (_) { return null; }
+    }
+    function safeWrite(key, value) {
+        try { localStorage.setItem(key, String(value)); } catch (_) { /* Memory remains usable. */ }
+    }
     function readDraft(index) {
-        try { return localStorage.getItem(draftKey(index)); }
-        catch (_) { return null; }
+        if (memoryDrafts.has(index)) return memoryDrafts.get(index);
+        const value = safeRead(draftPrefix + index);
+        if (value !== null) memoryDrafts.set(index, value);
+        return value;
     }
-
     function saveDraft() {
         if (currentLessonIndex === null) return;
-        try { localStorage.setItem(draftKey(currentLessonIndex), elements.codeInput.value); }
-        catch (_) { /* 저장 공간이 차단되어도 수업은 계속 진행 */ }
+        memoryDrafts.set(currentLessonIndex, elements.codeInput.value);
+        safeWrite(draftPrefix + currentLessonIndex, elements.codeInput.value);
+    }
+    function saveEditedCode() {
+        if (currentLessonIndex === null) return;
+        if (readDraft(currentLessonIndex) !== null ||
+            elements.codeInput.value !== lessonText(lessons[currentLessonIndex], 'initialCode')) saveDraft();
+    }
+    function clearDraft(index) {
+        // A tombstone also protects reset if persistent storage rejects removal.
+        memoryDrafts.set(index, null);
+        try { localStorage.removeItem(draftPrefix + index); } catch (_) { /* Memory is already reset. */ }
+    }
+    function rememberInput() {
+        if (currentLessonIndex === null) return;
+        const sample = lessonText(lessons[currentLessonIndex], 'sampleInput');
+        if (inputDrafts.has(currentLessonIndex) || elements.stdinInput.value !== sample) {
+            inputDrafts.set(currentLessonIndex, elements.stdinInput.value);
+        }
     }
 
     const mobileMenuController = window.initMobileMenu({
-        button: document.getElementById('hamburger-btn'),
-        menu: document.getElementById('mobile-menu'),
-        backdrop: document.getElementById('mobile-backdrop'),
-        breakpoint: 768
+        button: elements.menuButton, menu: elements.menu,
+        backdrop: elements.backdrop, breakpoint: 768
     });
-
-    function getTextSet() {
-        return translations[currentLang] || translations.ko;
+    function syncMenu() {
+        const open = elements.menu.classList.contains('open');
+        elements.menu.inert = !open;
+        elements.menu.setAttribute('aria-hidden', String(!open));
+        elements.menu.setAttribute('aria-modal', String(open));
+        elements.menuButton.setAttribute('aria-expanded', String(open));
+        if (open && !menuWasOpen) {
+            menuReturnFocus = document.activeElement;
+            elements.menuClose.focus();
+        } else if (!open && menuWasOpen) {
+            const target = menuReturnFocus && menuReturnFocus.isConnected ? menuReturnFocus : elements.menuButton;
+            if (window.innerWidth <= 768) target.focus();
+            else {
+                const current = elements.navBar.querySelector('[aria-current="step"]');
+                if (current) current.focus();
+            }
+        }
+        menuWasOpen = open;
+    }
+    function closeMenu() {
+        mobileMenuController.closeMenu();
+        syncMenu();
     }
 
+    // Keep expected output as a small, collapsed reference beside the original console.
+    const expectedPanel = document.createElement('details');
+    expectedPanel.className = 'python-expected';
+    expectedPanel.id = 'python-expected';
+    const expectedSummary = document.createElement('summary');
+    const expectedHelp = document.createElement('p');
+    const expectedOutput = document.createElement('pre');
+    expectedPanel.append(expectedSummary, expectedHelp, expectedOutput);
+    byId('result-panel').insertAdjacentElement('afterend', expectedPanel);
+
+    function updateRuntimeLabel() {
+        const text = getTextSet();
+        elements.statusText.textContent = runtimeIssue === 'file' ? text.fileMode :
+            runtimeState === 'ready' ? text.ready : runtimeState === 'running' ? text.running :
+            runtimeState === 'error' ? text.loadFailed : text.loading;
+    }
     function setRuntimeState(state) {
-        ready = state === 'ready';
-        elements.statusBadge.classList.remove('ready', 'loading', 'error');
-        elements.statusBadge.classList.add(state);
-        elements.statusText.textContent = state === 'ready' ? getTextSet().ready :
-            state === 'error' ? getTextSet().loadFailed : getTextSet().loading;
+        runtimeState = state;
+        elements.statusBadge.classList.remove('ready', 'loading', 'running', 'error');
+        elements.statusBadge.classList.add(state === 'running' ? 'loading' : state);
+        updateRuntimeLabel();
         elements.runButton.disabled = state !== 'ready' || pendingRun !== null;
         elements.stopButton.disabled = pendingRun === null;
-        elements.retryButton.hidden = state !== 'error';
+        elements.retryButton.hidden = state !== 'error' || runtimeIssue === 'file';
+        elements.consoleOutput.setAttribute('aria-busy', String(pendingRun !== null));
     }
-
+    function setConsole(text, kind) {
+        elements.consoleOutput.textContent = text;
+        elements.consoleOutput.dataset.hasRun = kind === 'default' ? 'false' : 'true';
+        elements.consoleOutput.dataset.state = kind;
+    }
     function terminateWorker() {
         clearTimeout(bootTimer);
         bootTimer = null;
         if (pythonWorker) pythonWorker.terminate();
         pythonWorker = null;
         workerGeneration += 1;
-        ready = false;
     }
-
     function createWorker() {
         terminateWorker();
-        const generation = workerGeneration;
-        setRuntimeState('loading');
-        elements.retryButton.hidden = true;
-        try {
-            pythonWorker = new Worker('./js/data_python/worker.js');
-        } catch (error) {
-            onWorkerFailure(error.message, generation);
+        if (window.location.protocol === 'file:') {
+            runtimeIssue = 'file';
+            setRuntimeState('error');
+            setConsole(getTextSet().fileHint, 'unavailable');
             return;
         }
+        runtimeIssue = '';
+        if (elements.consoleOutput.dataset.state === 'unavailable') setConsole(getTextSet().consoleDefault, 'default');
+        setRuntimeState('loading');
+        const generation = workerGeneration;
+        try { pythonWorker = new Worker('./js/data_python/worker.js'); }
+        catch (error) { onWorkerFailure(error.message, generation); return; }
         bootTimer = setTimeout(() => onWorkerFailure('Engine load timeout', generation), LOAD_LIMIT_MS);
-        pythonWorker.onmessage = (event) => {
-            if (generation !== workerGeneration) return; // Discard stale replies.
+        pythonWorker.onmessage = event => {
+            if (generation !== workerGeneration) return;
             const message = event.data || {};
             if (message.type === 'READY') {
                 clearTimeout(bootTimer);
                 setRuntimeState('ready');
-            } else if (message.type === 'LOAD_ERROR') {
-                onWorkerFailure(message.error, generation);
-            } else if (message.type === 'RESULT') {
-                onWorkerResult(message);
-            }
+            } else if (message.type === 'LOAD_ERROR') onWorkerFailure(message.error, generation);
+            else if (message.type === 'RESULT') onWorkerResult(message);
         };
-        pythonWorker.onerror = (event) => {
+        pythonWorker.onerror = event => {
             if (event.preventDefault) event.preventDefault();
             onWorkerFailure(event.message || 'Worker failed', generation);
         };
     }
-
     function onWorkerFailure(reason, generation) {
         if (generation !== workerGeneration) return;
         console.error('Python worker failure:', reason);
-        if (pendingRun) {
-            clearTimeout(pendingRun.timeout);
-            pendingRun = null;
-        }
+        if (pendingRun) clearTimeout(pendingRun.timeout);
+        pendingRun = null;
         terminateWorker();
+        runtimeIssue = 'load';
         setRuntimeState('error');
-        elements.consoleOutput.dataset.hasRun = 'true';
-        elements.consoleOutput.textContent = getTextSet().loadHint;
+        setConsole(getTextSet().loadHint, 'unavailable');
     }
-
     function onWorkerResult(message) {
-        if (!pendingRun || pendingRun.id !== message.id) return;
+        if (!pendingRun || pendingRun.id !== message.id || pendingRun.lesson !== currentLessonIndex) return;
         clearTimeout(pendingRun.timeout);
         pendingRun = null;
-        const textSet = getTextSet();
+        const text = getTextSet();
         const error = message.error || '';
         if (error.includes('INPUT_VALUES_EXHAUSTED')) {
-            elements.consoleOutput.textContent = (message.output ? message.output + '\n' : '') + textSet.stdinMissing;
-        } else if (error.includes('OUTPUT_LIMIT_EXCEEDED')) {
-            elements.consoleOutput.textContent = textSet.outputLimit;
-        } else if (error) {
-            elements.consoleOutput.textContent = (message.output ? message.output + '\n' : '') + textSet.errorLabel + ': ' + error;
-        } else {
-            elements.consoleOutput.textContent = message.output || textSet.finishedNoOutput;
-            showToast('✓');
+            setConsole((message.output ? message.output + '\n' : '') + text.stdinMissing, 'error');
+        } else if (error.includes('OUTPUT_LIMIT_EXCEEDED')) setConsole(text.outputLimit, 'error');
+        else if (error) setConsole((message.output ? message.output + '\n' : '') + text.errorLabel + ': ' + error, 'error');
+        else {
+            setConsole(message.output || text.finishedNoOutput, 'success');
+            showToast(text.runComplete);
         }
         setRuntimeState('ready');
     }
-
-    function updateProgress() {
-        const progressBar = document.getElementById('progress-bar');
-
-        const percent =
-            ((currentLessonIndex + 1) / lessons.length) * 100;
-
-        progressBar.style.width = percent + '%';
+    function cancelPendingRun(showMessage) {
+        if (!pendingRun) return;
+        clearTimeout(pendingRun.timeout);
+        pendingRun = null;
+        createWorker(); // New generation ignores all replies from the previous lesson/run.
+        if (showMessage) setConsole(getTextSet().stoppedMessage, 'stopped');
     }
     function refreshInputPanel() {
-        // The input text is intentionally kept while switching lessons/languages.
-        // It is never sent to a server or stored in localStorage.
         elements.stdinPanel.hidden = !/\binput\s*\(/.test(elements.codeInput.value);
     }
-
     function runPython() {
-        if (!ready || pendingRun || !pythonWorker) return;
-        const textSet = getTextSet();
+        if (runtimeState !== 'ready' || pendingRun || !pythonWorker || currentLessonIndex === null) return;
+        saveEditedCode();
+        rememberInput();
         const code = elements.codeInput.value;
-        const inputs = elements.stdinInput.value === '' ? [] : elements.stdinInput.value.replace(/\r\n/g, '\n').split('\n');
+        const inputs = elements.stdinInput.value === '' ? [] :
+            elements.stdinInput.value.replace(/\r\n/g, '\n').split('\n');
         const id = ++nextRunId;
-        elements.consoleOutput.dataset.hasRun = 'true';
-        elements.consoleOutput.textContent = textSet.running;
-        pendingRun = { id, timeout: null };
-        setRuntimeState('ready');
+        pendingRun = { id, lesson: currentLessonIndex, timeout: null };
+        setConsole(getTextSet().running, 'running');
+        setRuntimeState('running');
         pendingRun.timeout = setTimeout(() => {
             if (!pendingRun || pendingRun.id !== id) return;
             pendingRun = null;
-            elements.consoleOutput.textContent = getTextSet().runtimeTimeout;
-            terminateWorker(); // Hard interruption, even for infinite Python loops.
-            createWorker();
+            createWorker(); // Termination interrupts even an infinite Python loop.
+            setConsole(getTextSet().runtimeTimeout, 'timeout');
         }, EXECUTION_LIMIT_MS);
         try { pythonWorker.postMessage({ type: 'RUN', id, code, inputs }); }
         catch (error) { onWorkerFailure(error.message, workerGeneration); }
     }
 
-    function stopPython() {
-        if (!pendingRun) return;
-        clearTimeout(pendingRun.timeout);
-        pendingRun = null;
-        elements.consoleOutput.dataset.hasRun = 'true';
-        elements.consoleOutput.textContent = getTextSet().stoppedMessage;
-        terminateWorker();
-        createWorker();
-    }
-
-    function setLanguage(lang) {
-        if (!translations[lang]) return;
-        currentLang = lang;
-        document.documentElement.lang = translations[lang].htmlLang || lang;
-        updateLanguageButtons();
-        updateStaticTexts();
-        renderNavigation();
-        if (currentLessonIndex !== null) {
-            selectLesson(currentLessonIndex);
-        } else {
-            renderEmptyState();
-        }
-    }
-
-    function updateLanguageButtons() {
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === currentLang);
+    function updateProgress() {
+        const position = currentLessonIndex === null ? 0 : currentLessonIndex + 1;
+        byId('progress-bar').style.width = (position / lessons.length * 100) + '%';
+        document.querySelectorAll('[data-course-text="progressLabel"]').forEach(node => {
+            node.textContent = getTextSet().progressLabel + ' ' + position + ' / ' + lessons.length;
         });
     }
+    function updateLanguageButtons() {
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            const active = button.dataset.lang === currentLang;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-pressed', String(active));
+        });
+    }
+    function updateStaticTexts() {
+        const text = getTextSet();
+        const named = {
+            brandTitle: 'brandTitle', brandSubtitle: 'brandSubtitle', mobileMenuTitle: 'menuTitle',
+            runButton: 'runButton', stopButton: 'stopButton', resetButton: 'resetButton',
+            retryButton: 'retryButton', stdinLabel: 'stdinLabel', stdinHelp: 'stdinHelp',
+            answerButton: 'answerButton', answerTitle: 'answerTitle'
+        };
+        Object.entries(named).forEach(([element, key]) => { elements[element].textContent = text[key]; });
+        document.querySelectorAll('[data-course-text]').forEach(node => {
+            const value = text[node.dataset.courseText];
+            if (value !== undefined) node.textContent = value;
+        });
+        document.querySelectorAll('[data-course-aria]').forEach(node => {
+            const value = text[node.dataset.courseAria];
+            if (value !== undefined) node.setAttribute('aria-label', value);
+        });
+        elements.menuButton.setAttribute('aria-label', text.openMenu);
+        elements.menu.setAttribute('aria-label', text.menuTitle);
+        elements.navBar.setAttribute('aria-label', text.menuTitle);
+        elements.mobileNav.setAttribute('aria-label', text.menuTitle);
+        elements.codeInput.setAttribute('aria-label', text.codeEditorLabel);
+        document.querySelectorAll('.lang-container, .mobile-lang-container').forEach(node => node.setAttribute('aria-label', text.languageLabel));
+        document.querySelectorAll('.study-steps').forEach(node => node.setAttribute('aria-label', text.stepsLabel));
+        elements.stdinInput.placeholder = text.stdinPlaceholder.replace(/\\n/g, '\n');
+        elements.codeInput.placeholder = text.textareaPlaceholder;
+        const fileGuide = byId('python-file-guide');
+        if (fileGuide) fileGuide.hidden = window.location.protocol !== 'file:';
+        expectedSummary.textContent = text.expectedTitle;
+        expectedHelp.textContent = text.expectedHint;
+        updateRuntimeLabel();
+        if (runtimeState === 'error') setConsole(runtimeIssue === 'file' ? text.fileHint : text.loadHint, 'unavailable');
+        else if (elements.consoleOutput.dataset.hasRun !== 'true') setConsole(text.consoleDefault, 'default');
+        updateProgress();
+    }
     function showToast(message) {
-        const toast = document.getElementById('toast');
-
+        const toast = byId('toast');
+        clearTimeout(toastTimer);
         toast.textContent = message;
         toast.classList.add('show');
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2000);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
     }
-
-    function updateStaticTexts() {
-        const textSet = getTextSet();
-        elements.brandTitle.textContent = textSet.brandTitle;
-        elements.brandSubtitle.textContent = textSet.brandSubtitle;
-        elements.mobileMenuTitle.textContent = textSet.menuTitle;
-        elements.runButton.textContent = textSet.runButton;
-        elements.stopButton.textContent = textSet.stopButton;
-        elements.retryButton.textContent = textSet.retryButton;
-        elements.stdinLabel.textContent = textSet.stdinLabel;
-        elements.stdinHelp.textContent = textSet.stdinHelp;
-        elements.stdinInput.placeholder = textSet.stdinPlaceholder.replace(/\\n/g, '\n');
-        elements.answerButton.textContent = textSet.answerButton;
-        elements.answerTitle.textContent = textSet.answerTitle;
-        elements.codeInput.placeholder = textSet.textareaPlaceholder;
-
-        if (elements.statusBadge.classList.contains('error')) {
-            elements.statusText.textContent = textSet.loadFailed;
-            elements.consoleOutput.textContent = textSet.loadHint;
-        } else {
-            if (elements.consoleOutput.dataset.hasRun !== 'true') {
-                elements.consoleOutput.textContent = textSet.consoleDefault;
-            }
-            elements.statusText.textContent = elements.statusBadge.classList.contains('ready') ? textSet.ready : textSet.loading;
-        }
-    }
-
     function renderNavigation() {
         elements.navBar.innerHTML = '';
         elements.mobileNav.innerHTML = '';
-
         lessons.forEach((lesson, index) => {
-            const menuText = lesson.menu[currentLang] || lesson.menu.ko;
-            const btn = document.createElement('button');
-            btn.className = 'nav-btn';
-            if (currentLessonIndex === index) btn.classList.add('active');
-            btn.textContent = menuText;
-            btn.onclick = () => {
-                selectLesson(index);
-                mobileMenuController.closeMenu();
-            };
-
-            elements.navBar.appendChild(btn);
-            elements.mobileNav.appendChild(btn.cloneNode(true));
-        });
-
-        Array.from(elements.mobileNav.children).forEach((btn, index) => {
-            btn.onclick = () => {
-                selectLesson(index);
-                mobileMenuController.closeMenu();
-            };
-        });
-    }
-
-    function selectLesson(index) {
-        currentLessonIndex = index;
-        const lesson = lessons[index];
-        const textSet = getTextSet();
-
-        renderNavigation();
-        localStorage.setItem('python-progress', index);
-        const title = lesson.title[currentLang] || lesson.title.ko;
-        const theory = lesson.theory[currentLang] || lesson.theory.ko;
-        const initialCode = lesson.initialCode ? (lesson.initialCode[currentLang] || lesson.initialCode.ko) : "";
-
-        elements.theoryView.innerHTML = `<h2>${title}</h2>${theory}`;
-        // 같은 레슨의 저장된 작업본이 있으면 언어별 예제보다 우선합니다.
-        // 빈 문자열도 사용자가 직접 지운 결과일 수 있으므로 보존합니다.
-        const savedDraft = readDraft(index);
-        elements.codeInput.value = savedDraft !== null ? savedDraft : initialCode;
-        elements.consoleOutput.textContent = textSet.consoleDefault;
-        elements.consoleOutput.dataset.hasRun = 'false';
-        refreshInputPanel();
-
-        elements.answerDisplay.style.display = 'none';
-        elements.answerText.textContent = lesson.answer[currentLang] || lesson.answer.ko;
-        
-        updateProgress();
-    }
-
-    function renderEmptyState() {
-        const textSet = getTextSet();
-        elements.theoryView.innerHTML = `
-            <div style="text-align:center; padding-top:50px; color:#64748b;">
-                <h3>${textSet.emptyState}</h3>
-                <p>${textSet.emptyStateSub}</p>
-            </div>
-        `;
-    }
-
-    function toggleAnswer() {
-        if (currentLessonIndex === null) {
-            alert(getTextSet().selectLessonAlert);
-            return;
-        }
-        elements.answerDisplay.style.display =
-            elements.answerDisplay.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function bindEvents() {
-        document.querySelectorAll('.lang-btn').forEach(function (button) {
-            button.addEventListener('click', function () {
-                setLanguage(button.dataset.lang);
+            [elements.navBar, elements.mobileNav].forEach(nav => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'nav-btn';
+                button.textContent = lessonText(lesson, 'menu');
+                if (currentLessonIndex === index) {
+                    button.classList.add('active');
+                    button.setAttribute('aria-current', 'step');
+                }
+                button.addEventListener('click', () => {
+                    selectLesson(index);
+                    closeMenu();
+                });
+                nav.appendChild(button);
             });
         });
-
-        elements.runButton.addEventListener('click', runPython);
-        elements.stopButton.addEventListener('click', stopPython);
-        elements.retryButton.addEventListener('click', createWorker);
-        elements.answerButton.addEventListener('click', toggleAnswer);
-        elements.codeInput.addEventListener('input', () => { saveDraft(); refreshInputPanel(); });
+    }
+    function resetConsole() {
+        if (runtimeState === 'error') setConsole(runtimeIssue === 'file' ? getTextSet().fileHint : getTextSet().loadHint, 'unavailable');
+        else setConsole(getTextSet().consoleDefault, 'default');
+    }
+    function selectLesson(index, options = {}) {
+        if (!Number.isInteger(index) || index < 0 || index >= lessons.length) index = 0;
+        if (!options.skipRemember) { saveEditedCode(); rememberInput(); }
+        cancelPendingRun(false);
+        currentLessonIndex = index;
+        const lesson = lessons[index];
+        safeWrite('python-progress', index);
+        renderNavigation();
+        // Trusted course HTML is separate from student code, which remains plain text.
+        elements.theoryView.innerHTML = '';
+        const title = document.createElement('h2');
+        title.textContent = lessonText(lesson, 'title');
+        elements.theoryView.appendChild(title);
+        elements.theoryView.insertAdjacentHTML('beforeend', lessonText(lesson, 'theory'));
+        const draft = readDraft(index);
+        elements.codeInput.value = draft !== null ? draft : lessonText(lesson, 'initialCode');
+        elements.stdinInput.value = inputDrafts.has(index) ? inputDrafts.get(index) : lessonText(lesson, 'sampleInput');
+        expectedOutput.textContent = lessonText(lesson, 'expectedOutput') || getTextSet().expectedEmpty;
+        expectedPanel.open = false;
+        resetConsole();
+        refreshInputPanel();
+        elements.answerDisplay.style.display = 'none';
+        elements.answerButton.setAttribute('aria-expanded', 'false');
+        elements.answerText.textContent = lessonText(lesson, 'answer');
+        document.title = lessonText(lesson, 'title') + ' · Python';
+        updateProgress();
+    }
+    function setLanguage(lang) {
+        if (!translations[lang] || lang === currentLang) return;
+        saveEditedCode();
+        rememberInput();
+        cancelPendingRun(false);
+        currentLang = lang;
+        safeWrite('python-language', lang);
+        document.documentElement.lang = getTextSet().htmlLang || lang;
+        updateLanguageButtons();
+        updateStaticTexts();
+        selectLesson(currentLessonIndex ?? 0, { skipRemember: true });
+        syncMenu();
+    }
+    function resetExample() {
+        if (currentLessonIndex === null || !window.confirm(getTextSet().resetConfirm)) return;
+        cancelPendingRun(false);
+        clearDraft(currentLessonIndex);
+        inputDrafts.delete(currentLessonIndex);
+        selectLesson(currentLessonIndex, { skipRemember: true });
+        showToast(getTextSet().resetDone);
+    }
+    function toggleAnswer() {
+        const show = elements.answerDisplay.style.display !== 'block';
+        elements.answerDisplay.style.display = show ? 'block' : 'none';
+        elements.answerButton.setAttribute('aria-expanded', String(show));
+    }
+    function indentCode(event) {
+        if ((!event.ctrlKey && !event.metaKey) || event.altKey || (event.key !== ']' && event.key !== '[')) return;
+        event.preventDefault();
+        const value = elements.codeInput.value;
+        const start = elements.codeInput.selectionStart;
+        const end = elements.codeInput.selectionEnd;
+        const first = value.lastIndexOf('\n', start - 1) + 1;
+        const lastSelected = end > start && value[end - 1] === '\n' ? end - 1 : end;
+        const nextBreak = value.indexOf('\n', lastSelected);
+        const last = nextBreak < 0 ? value.length : nextBreak;
+        const lines = value.slice(first, last).split('\n');
+        const deltas = [];
+        const changed = lines.map(line => {
+            const updated = event.key === ']' ? '    ' + line : line.replace(/^( {1,4}|\t)/, '');
+            deltas.push(updated.length - line.length);
+            return updated;
+        }).join('\n');
+        const totalDelta = deltas.reduce((sum, value) => sum + value, 0);
+        elements.codeInput.value = value.slice(0, first) + changed + value.slice(last);
+        const newStart = Math.max(first, start + deltas[0]);
+        elements.codeInput.setSelectionRange(newStart, start === end ? newStart : Math.max(newStart, end + totalDelta));
+        saveDraft();
+        refreshInputPanel();
     }
 
-    bindEvents();
+    document.querySelectorAll('.lang-btn').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    elements.runButton.addEventListener('click', runPython);
+    elements.stopButton.addEventListener('click', () => cancelPendingRun(true));
+    elements.retryButton.addEventListener('click', () => { resetConsole(); createWorker(); });
+    elements.resetButton.addEventListener('click', resetExample);
+    elements.answerButton.addEventListener('click', toggleAnswer);
+    elements.codeInput.addEventListener('input', () => { saveDraft(); refreshInputPanel(); });
+    elements.codeInput.addEventListener('keydown', indentCode);
+    elements.stdinInput.addEventListener('input', () => {
+        if (currentLessonIndex !== null) inputDrafts.set(currentLessonIndex, elements.stdinInput.value);
+    });
+    elements.menu.setAttribute('role', 'dialog');
+    elements.menuButton.addEventListener('click', syncMenu);
+    elements.backdrop.addEventListener('click', syncMenu);
+    elements.menuClose.addEventListener('click', closeMenu);
+    window.addEventListener('resize', syncMenu);
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenu();
+        if (event.key !== 'Tab' || !elements.menu.classList.contains('open')) return;
+        const focusable = Array.from(elements.menu.querySelectorAll('button:not(:disabled), a[href], input, textarea, select, [tabindex="0"]'));
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !elements.menu.contains(document.activeElement))) {
+            event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault(); first.focus();
+        }
+    });
+
+    const savedLang = safeRead('python-language');
+    if (savedLang && translations[savedLang]) currentLang = savedLang;
+    document.documentElement.lang = getTextSet().htmlLang || currentLang;
     updateLanguageButtons();
     updateStaticTexts();
-    renderNavigation();
-
-    const savedIndex = localStorage.getItem('python-progress');
-
-    if (savedIndex !== null) {
-        selectLesson(Number(savedIndex));
-    } else {
-        renderEmptyState();
-    }
-    
-    // Download the engine inside an isolated worker, never on the main thread.
-    refreshInputPanel();
+    const savedIndex = safeRead('python-progress');
+    selectLesson(savedIndex !== null ? Number(savedIndex) : 0);
+    syncMenu();
     createWorker();
 })();

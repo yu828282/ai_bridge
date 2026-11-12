@@ -12,7 +12,7 @@ body.ux-course .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem
 body.ux-course .vs-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 1rem 0; }
 body.ux-course .box:hover { background: #e2e8f0; }
 body.ux-course .action-btn { background: var(--main-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-body.ux-course .action-btn:hover { background: #1d4ed8; transform: scale(1.05); }
+body.ux-course .action-btn:hover { background: #1d4ed8; }
 
 /* Unique interactive demo styles (scoped by data-page) */
 /* UX Studio: shared CSS + isolated page sections */
@@ -38,7 +38,7 @@ body.ux-course .action-btn:hover { background: #1d4ed8; transform: scale(1.05); 
 
 
 
-.card:hover { transform: translateY(-5px) !important; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+/* Chapter hover motion is defined once in the course motion section below. */
 
 .card.visible { opacity: 1; transform: translateY(0); }
 
@@ -75,31 +75,31 @@ body[data-page="week08"] .comp-card { background: #f8fafc; border: 1px solid #e2
 body[data-page="week08"] .comp-card:hover { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 8px 16px rgba(0,0,0,0.06); }
 body[data-page="week08"] .comp-card-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
 body[data-page="week08"] .comp-card-title { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
-body[data-page="week08"] .comp-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; background: #e0e7ff; color: #3730a3; font-weight: 600; }
+body[data-page="week08"] .comp-badge { font-size: 0.9375rem; padding: 2px 8px; border-radius: 10px; background: #e0e7ff; color: #3730a3; font-weight: 600; }
 body[data-page="week08"] .demo-box { background: #0f172a; border-radius: 8px; padding: 14px; color: #f1f5f9; min-height: 150px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.25); }
-body[data-page="week08"] .comp-desc { font-size: 0.88rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--main-blue); }
-body[data-page="week08"] .mini-ai-card { background: #1e293b; border-radius: 8px; padding: 12px; border-left: 3px solid #3b82f6; font-size: 0.82rem; }
+body[data-page="week08"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--main-blue); }
+body[data-page="week08"] .mini-ai-card { background: #1e293b; border-radius: 8px; padding: 12px; border-left: 3px solid #3b82f6; font-size: 1rem; }
 body[data-page="week08"] .mini-card-head { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #93c5fd; margin-bottom: 6px; }
-body[data-page="week08"] .inner-scroll-window { height: 140px; overflow-y: auto; background: #1e293b; border-radius: 6px; border: 1px solid #334155; position: relative; font-size: 0.8rem; }
-body[data-page="week08"] .inner-sticky-bar { position: sticky; top: 0; background: #2563eb; color: #ffffff; padding: 6px 12px; font-weight: bold; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; z-index: 5; box-shadow: 0 2px 5px rgba(0,0,0,0.25); }
+body[data-page="week08"] .inner-scroll-window { height: 140px; overflow-y: auto; background: #1e293b; border-radius: 6px; border: 1px solid #334155; position: relative; font-size: 1rem; }
+body[data-page="week08"] .inner-sticky-bar { position: sticky; top: 0; background: #2563eb; color: #ffffff; padding: 6px 12px; font-weight: bold; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 5; box-shadow: 0 2px 5px rgba(0,0,0,0.25); }
 body[data-page="week08"] .inner-scroll-content { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; color: #cbd5e1; }
 body[data-page="week08"] .inner-bubble { background: #334155; padding: 6px 10px; border-radius: 6px; }
 body[data-page="week08"] .skeleton-loader { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 body[data-page="week08"] .sk-line { height: 12px; background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
 body[data-page="week08"] .sk-line.short { width: 55%; }
-body[data-page="week08"] .tooltip-container { position: relative; display: inline-block; cursor: pointer; color: #60a5fa; font-weight: 600; font-size: 0.88rem; text-decoration: underline dotted; }
-body[data-page="week08"] .tooltip-box { visibility: hidden; width: 200px; background-color: #1e293b; color: #f8fafc; text-align: center; border-radius: 6px; padding: 8px 10px; position: absolute; z-index: 20; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.25s; font-size: 0.75rem; border: 1px solid #475569; box-shadow: 0 6px 12px rgba(0,0,0,0.3); font-weight: normal; }
+body[data-page="week08"] .tooltip-container { position: relative; display: inline-block; cursor: pointer; color: #60a5fa; font-weight: 600; font-size: 1rem; text-decoration: underline dotted; }
+body[data-page="week08"] .tooltip-box { visibility: hidden; width: 200px; background-color: #1e293b; color: #f8fafc; text-align: center; border-radius: 6px; padding: 8px 10px; position: absolute; z-index: 20; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.25s; font-size: 0.9375rem; border: 1px solid #475569; box-shadow: 0 6px 12px rgba(0,0,0,0.3); font-weight: normal; }
 body[data-page="week08"] .tooltip-container:hover .tooltip-box { visibility: visible; opacity: 1; }
-body[data-page="week08"] .micro-btn { background: #1e293b; border: 1px solid #475569; color: #94a3b8; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+body[data-page="week08"] .micro-btn { background: #1e293b; border: 1px solid #475569; color: #94a3b8; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; font-size: 1rem; }
 body[data-page="week08"] .micro-btn:hover { background: #334155; color: #fff; transform: translateY(-2px); }
 body[data-page="week08"] .micro-btn.liked { background: #dcfce7; color: #166534; border-color: #22c55e; animation: bounceClick 0.4s ease; font-weight: bold; }
-body[data-page="week08"] .demo-toast { background: #10b981; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.25); display: inline-block; transition: all 0.3s ease; opacity: 0; transform: translateY(10px); }
+body[data-page="week08"] .demo-toast { background: #10b981; color: white; padding: 8px 16px; border-radius: 20px; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.25); display: inline-block; transition: all 0.3s ease; opacity: 0; transform: translateY(10px); }
 body[data-page="week08"] .demo-toast.show { opacity: 1; transform: translateY(0); }
 body[data-page="week08"] .drawer-preview-area { height: 130px; background: #1e293b; border-radius: 6px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-body[data-page="week08"] .demo-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 170px; background: #0f172a; border-left: 1px solid #334155; padding: 10px; font-size: 0.75rem; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 10; display: flex; flex-direction: column; justify-content: space-between; }
+body[data-page="week08"] .demo-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 170px; background: #0f172a; border-left: 1px solid #334155; padding: 10px; font-size: 0.9375rem; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 10; display: flex; flex-direction: column; justify-content: space-between; }
 body[data-page="week08"] .demo-drawer.open { transform: translateX(0); }
-body[data-page="week08"] .action-btn { background: var(--main-blue); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
-body[data-page="week08"] .action-btn:hover { background: #1d4ed8; transform: scale(1.03); }
+body[data-page="week08"] .action-btn { background: var(--main-blue); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+body[data-page="week08"] .action-btn:hover { background: #1d4ed8; }
 body[data-page="week08"] .action-btn:active { transform: scale(0.97); }
 
 /* --- week01 --- */
@@ -129,16 +129,16 @@ body[data-page="week01"] .typing-cursor::after { content: "|"; animation: pulse 
 body[data-page="week01"] .mockup-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
 body[data-page="week01"] .mockup-box { flex: 1; min-width: 220px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; background: white; border: 2px solid #e2e8f0; display: flex; flex-direction: column; }
 body[data-page="week01"] .mockup-box:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 25px -5px rgba(0,0,0,0.15); border-color: var(--main-blue); }
-body[data-page="week01"] .cli-header { background: #334155; color: white; padding: 5px 10px; font-size: 0.8rem; font-family: monospace; }
-body[data-page="week01"] .cli-body { background: #0f172a; color: #4ade80; padding: 15px; font-family: monospace; height: 100px; text-align: left; font-size: 0.85rem;}
+body[data-page="week01"] .cli-header { background: #334155; color: white; padding: 5px 10px; font-size: 1rem; font-family: monospace; }
+body[data-page="week01"] .cli-body { background: #0f172a; color: #4ade80; padding: 15px; font-family: monospace; height: 100px; text-align: left; font-size: 1rem;}
 body[data-page="week01"] .blink { animation: blink 1s step-end infinite; }
 body[data-page="week01"] .gui-header { background: #cbd5e1; padding: 5px 10px; text-align: left; }
 body[data-page="week01"] .gui-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444; margin-right: 4px; box-shadow: 14px 0 0 #f59e0b, 28px 0 0 #10b981; }
 body[data-page="week01"] .gui-body { background: #f8fafc; padding: 15px; height: 100px; display: flex; justify-content: center; align-items: center; }
 body[data-page="week01"] .gui-btn-mock { background: #e2e8f0; border: 2px outset #cbd5e1; padding: 10px 20px; border-radius: 4px; font-size: 1.5rem; cursor: pointer; transition: 0.1s;}
 body[data-page="week01"] .gui-btn-mock:active { border-style: inset; background: #cbd5e1; transform: scale(0.95); }
-body[data-page="week01"] .ai-header { background: var(--main-blue); color: white; padding: 5px 10px; font-size: 0.8rem; font-weight: bold; }
-body[data-page="week01"] .ai-body { background: #f1f5f9; padding: 15px; height: 100px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; overflow:hidden;}
+body[data-page="week01"] .ai-header { background: var(--main-blue); color: white; padding: 5px 10px; font-size: 1rem; font-weight: bold; }
+body[data-page="week01"] .ai-body { background: #f1f5f9; padding: 15px; height: 100px; display: flex; flex-direction: column; gap: 8px; font-size: 1rem; overflow:hidden;}
 body[data-page="week01"] .chat-bubble { padding: 8px 12px; border-radius: 12px; max-width: 85%; word-break: keep-all; }
 body[data-page="week01"] .chat-user { background: var(--main-blue); color: white; align-self: flex-end; border-bottom-right-radius: 0; box-shadow: 0 2px 4px rgba(37,99,235,0.2);}
 body[data-page="week01"] .chat-ai { background: white; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: none; }
@@ -161,15 +161,15 @@ body[data-page="week02"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 body[data-page="week02"] .stage-container { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
 body[data-page="week02"] .stage-box { flex: 1; min-width: 100px; padding: 15px 10px; text-align: center; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; transition: 0.3s; cursor: default; }
 body[data-page="week02"] .stage-box:hover { border-color: var(--main-blue); background: #eff6ff; transform: translateY(-5px); }
-body[data-page="week02"] .stage-num { display: inline-block; width: 24px; height: 24px; background: var(--main-blue); color: white; border-radius: 50%; line-height: 24px; font-size: 0.8rem; margin-bottom: 5px; font-weight: bold; }
+body[data-page="week02"] .stage-num { display: inline-block; width: 24px; height: 24px; background: var(--main-blue); color: white; border-radius: 50%; line-height: 24px; font-size: 1rem; margin-bottom: 5px; font-weight: bold; }
 body[data-page="week02"] .persona-card { border: 2px solid #f87171; border-radius: 12px; padding: 1.5rem; background: #fef2f2; position: relative; margin-top: 15px; }
 body[data-page="week02"] .persona-header { display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #fca5a5; padding-bottom: 10px; margin-bottom: 10px; }
 body[data-page="week02"] .persona-icon { font-size: 3rem; background: white; border-radius: 50%; padding: 10px; border: 2px solid #f87171; }
-body[data-page="week02"] .badge-red { background: #fee2e2; color: #dc2626; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+body[data-page="week02"] .badge-red { background: #fee2e2; color: #dc2626; padding: 4px 8px; border-radius: 12px; font-size: 1rem; font-weight: bold; }
 body[data-page="week02"] .formula-box { background: #1e293b; color: white; padding: 1.5rem; border-radius: 12px; text-align: center; font-size: 1.2rem; font-weight: bold; font-family: monospace; letter-spacing: 0.5px; }
 body[data-page="week02"] .formula-hl { color: var(--success); }
 body[data-page="week02"] .formula-bad { color: #f87171; }
-body[data-page="week02"] .prompt-box { background: #0f172a; color: #a5b4fc; padding: 1.5rem; border-radius: 12px; font-family: monospace; font-size: 0.95rem; text-align: left; }
+body[data-page="week02"] .prompt-box { background: #0f172a; color: #a5b4fc; padding: 1.5rem; border-radius: 12px; font-family: monospace; font-size: 1.0625rem; text-align: left; }
 
 /* --- week03 --- */
 
@@ -191,16 +191,16 @@ body[data-page="week03"] .btn-green:hover { background: #22c55e; color: white;}
 body[data-page="week03"] .btn-red { background: var(--danger); color: white; }
 body[data-page="week03"] .btn-red:hover { background: #ef4444; }
 body[data-page="week03"] .state-map { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 20px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 2px dashed #cbd5e1;}
-body[data-page="week03"] .state-step { flex: 1; min-width: 110px; padding: 10px; text-align: center; background: white; border: 2px solid #e2e8f0; border-radius: 20px; font-weight: bold; color: #475569; font-size: 0.9rem; transition: 0.3s; cursor: pointer;}
+body[data-page="week03"] .state-step { flex: 1; min-width: 110px; padding: 10px; text-align: center; background: white; border: 2px solid #e2e8f0; border-radius: 20px; font-weight: bold; color: #475569; font-size: 1.0625rem; transition: 0.3s; cursor: pointer;}
 body[data-page="week03"] .state-step:hover, body[data-page="week03"] .state-step.active { border-color: var(--main-blue); background: var(--main-blue); color: white; transform: scale(1.05); }
 body[data-page="week03"] .interactive-mockup { background: #0f172a; border-radius: 16px; padding: 20px; color: white; margin-top: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; position: relative; min-height: 250px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
-body[data-page="week03"] .mockup-header { font-size: 0.9rem; color: #94a3b8; border-bottom: 1px solid #334155; padding-bottom: 10px; margin-bottom: 20px; text-align: center; }
+body[data-page="week03"] .mockup-header { font-size: 1.0625rem; color: #94a3b8; border-bottom: 1px solid #334155; padding-bottom: 10px; margin-bottom: 20px; text-align: center; }
 body[data-page="week03"] #mock-empty { text-align: center; display: block; }
 body[data-page="week03"] .starter-chips { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px;}
-body[data-page="week03"] .chip { background: #1e293b; border: 1px solid #334155; padding: 8px 16px; border-radius: 20px; color: #e2e8f0; cursor: pointer; transition: 0.2s; font-size: 0.85rem;}
+body[data-page="week03"] .chip { background: #1e293b; border: 1px solid #334155; padding: 8px 16px; border-radius: 20px; color: #e2e8f0; cursor: pointer; transition: 0.2s; font-size: 1rem;}
 body[data-page="week03"] .chip:hover { background: #334155; border-color: var(--main-blue); }
 body[data-page="week03"] .input-bar { display: flex; background: #1e293b; border-radius: 24px; padding: 10px 20px; align-items: center; border: 1px solid #334155; position: absolute; bottom: 20px; left: 20px; right: 20px;}
-body[data-page="week03"] .input-bar input { flex: 1; background: transparent; border: none; color: white; outline: none; font-size: 0.95rem; }
+body[data-page="week03"] .input-bar input { flex: 1; background: transparent; border: none; color: white; outline: none; font-size: 1.0625rem; }
 body[data-page="week03"] .input-bar input::placeholder { color: #64748b; }
 body[data-page="week03"] .send-btn { background: var(--main-blue); border: none; border-radius: 50%; width: 32px; height: 32px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 body[data-page="week03"] #mock-loading { display: none; padding-top: 20px;}
@@ -209,13 +209,13 @@ body[data-page="week03"] .dot { width: 8px; height: 8px; background: #64748b; bo
 body[data-page="week03"] .dot:nth-child(1) { animation-delay: -0.32s; }
 body[data-page="week03"] .dot:nth-child(2) { animation-delay: -0.16s; }
 body[data-page="week03"] #mock-output { display: none; padding-top: 10px; }
-body[data-page="week03"] .ai-message { background: #1e293b; padding: 15px; border-radius: 12px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0;}
+body[data-page="week03"] .ai-message { background: #1e293b; padding: 15px; border-radius: 12px; font-size: 1.0625rem; line-height: 1.5; color: #e2e8f0;}
 body[data-page="week03"] .typing-cursor::after { content: "▋"; animation: blink 1s step-start infinite; color: var(--success); }
 body[data-page="week03"] .action-bar { display: none; margin-top: 10px; gap: 10px; }
-body[data-page="week03"] .action-icon { background: transparent; border: 1px solid #475569; color: #94a3b8; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: 0.2s; }
+body[data-page="week03"] .action-icon { background: transparent; border: 1px solid #475569; color: #94a3b8; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: 0.2s; }
 body[data-page="week03"] .action-icon:hover { background: #334155; color: white; }
 body[data-page="week03"] #mock-error { display: none; padding-top: 20px; text-align: center; }
-body[data-page="week03"] .error-msg { background: #7f1d1d; color: #fca5a5; padding: 15px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem;}
+body[data-page="week03"] .error-msg { background: #7f1d1d; color: #fca5a5; padding: 15px; border-radius: 12px; margin-bottom: 15px; font-size: 1.0625rem;}
 
 /* --- week04 --- */
 
@@ -234,15 +234,15 @@ body[data-page="week04"] .box-center { text-align: center; }
 
 
 body[data-page="week04"] .chat-container { background: #f1f5f9; border-radius: 16px; padding: 20px; margin-top: 15px; display: flex; flex-direction: column; gap: 15px; border: 2px solid #cbd5e1;}
-body[data-page="week04"] .bubble { padding: 12px 18px; border-radius: 16px; max-width: 80%; line-height: 1.4; font-size: 0.95rem; position: relative;}
+body[data-page="week04"] .bubble { padding: 12px 18px; border-radius: 16px; max-width: 80%; line-height: 1.4; font-size: 1.0625rem; position: relative;}
 body[data-page="week04"] .bubble.user { background: var(--main-blue); color: white; align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 2px 5px rgba(37,99,235,0.2);}
 body[data-page="week04"] .bubble.ai { background: white; color: var(--text-color); align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;}
 body[data-page="week04"] .bubble.error { background: #fef2f2; color: #b91c1c; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #fca5a5;}
 body[data-page="week04"] .chip-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 5px; }
-body[data-page="week04"] .action-chip { background: white; border: 1px solid var(--main-blue); color: var(--main-blue); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.2s; font-weight: 500;}
+body[data-page="week04"] .action-chip { background: white; border: 1px solid var(--main-blue); color: var(--main-blue); padding: 6px 12px; border-radius: 20px; font-size: 1rem; cursor: pointer; transition: 0.2s; font-weight: 500;}
 body[data-page="week04"] .action-chip:hover { background: #eff6ff; }
 body[data-page="week04"] .tree-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 12px; border: 2px dashed #cbd5e1;}
-body[data-page="week04"] .node { padding: 10px 20px; border-radius: 8px; font-weight: bold; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 0.9rem; z-index: 2;}
+body[data-page="week04"] .node { padding: 10px 20px; border-radius: 8px; font-weight: bold; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 1.0625rem; z-index: 2;}
 body[data-page="week04"] .node.user { background: white; border: 2px solid #94a3b8; color: #334155; }
 body[data-page="week04"] .node.decision { background: #fef3c7; border: 2px solid #f59e0b; color: #b45309; transform: rotate(45deg); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
 body[data-page="week04"] .node.decision > span { transform: rotate(-45deg); }
@@ -268,14 +268,14 @@ body[data-page="week05"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 
 
-body[data-page="week05"] .trust-badge { background: #fee2e2; color: #b91c1c; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
+body[data-page="week05"] .trust-badge { background: #fee2e2; color: #b91c1c; padding: 6px 12px; border-radius: 20px; font-size: 1rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
 body[data-page="week05"] .mockup-window { background: #0f172a; padding: 20px; border-radius: 12px; color: white; margin-top: 15px; font-family: monospace; }
 body[data-page="week05"] .fake-ai-msg { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #ef4444; }
-body[data-page="week05"] .source-link { display: inline-flex; align-items: center; gap: 4px; background: #e2e8f0; color: #334155; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; text-decoration: none; cursor: pointer; border: 1px solid #cbd5e1; }
+body[data-page="week05"] .source-link { display: inline-flex; align-items: center; gap: 4px; background: #e2e8f0; color: #334155; padding: 2px 6px; border-radius: 4px; font-size: 1rem; text-decoration: none; cursor: pointer; border: 1px solid #cbd5e1; }
 body[data-page="week05"] .source-link:hover { background: #cbd5e1; }
 body[data-page="week05"] .warning-box { background: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 15px; border-radius: 8px; margin: 15px 0; display: flex; gap: 10px; align-items: flex-start;}
 body[data-page="week05"] .trust-meter { display: flex; justify-content: space-between; background: #f1f5f9; border-radius: 20px; padding: 5px; margin: 20px 0; position: relative; }
-body[data-page="week05"] .trust-section { flex: 1; text-align: center; padding: 10px; font-size: 0.9rem; font-weight: bold; border-radius: 15px; z-index: 2;}
+body[data-page="week05"] .trust-section { flex: 1; text-align: center; padding: 10px; font-size: 1.0625rem; font-weight: bold; border-radius: 15px; z-index: 2;}
 body[data-page="week05"] .trust-section.blind { color: #dc2626; }
 body[data-page="week05"] .trust-section.smart { color: #16a34a; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid #22c55e;}
 body[data-page="week05"] .trust-section.none { color: #475569; }
@@ -298,18 +298,18 @@ body[data-page="week06"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 body[data-page="week06"] .level-box { border: 2px solid #e2e8f0; border-radius: 12px; padding: 15px; text-align: center; margin-top: 10px; background: white; transition: 0.3s; cursor: pointer;}
 body[data-page="week06"] .level-box:hover { border-color: var(--main-blue); box-shadow: 0 4px 12px rgba(37,99,235,0.1); transform: translateY(-3px);}
-body[data-page="week06"] .level-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+body[data-page="week06"] .level-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 1rem; font-weight: bold; margin-bottom: 10px; }
 body[data-page="week06"] .level-1 { background: #dcfce7; color: #166534; }
 body[data-page="week06"] .level-2 { background: #fef9c3; color: #854d0e; }
 body[data-page="week06"] .level-3 { background: #fee2e2; color: #991b1b; }
-body[data-page="week06"] .level-demo { background: #f8fafc; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px dashed #cbd5e1; font-size: 0.9rem; color: #475569; min-height: 40px; display: flex; align-items: center; justify-content: center;}
+body[data-page="week06"] .level-demo { background: #f8fafc; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px dashed #cbd5e1; font-size: 1.0625rem; color: #475569; min-height: 40px; display: flex; align-items: center; justify-content: center;}
 body[data-page="week06"] .feedback-container { background: #f1f5f9; border-radius: 12px; padding: 15px; margin-top: 10px; border: 1px solid #cbd5e1; }
-body[data-page="week06"] .ai-msg-mock { background: white; padding: 15px; border-radius: 8px; border-left: 3px solid var(--main-blue); font-size: 0.95rem; margin-bottom: 10px; }
+body[data-page="week06"] .ai-msg-mock { background: white; padding: 15px; border-radius: 8px; border-left: 3px solid var(--main-blue); font-size: 1.0625rem; margin-bottom: 10px; }
 body[data-page="week06"] .feedback-actions { display: flex; justify-content: space-between; align-items: center; }
-body[data-page="week06"] .icon-btn { background: transparent; border: 1px solid #94a3b8; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: #475569; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px;}
+body[data-page="week06"] .icon-btn { background: transparent; border: 1px solid #94a3b8; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 1.0625rem; color: #475569; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px;}
 body[data-page="week06"] .icon-btn:hover { background: #e2e8f0; color: #0f172a; }
 body[data-page="week06"] .icon-btn.thumb:hover { background: #dcfce7; color: #166534; border-color: #22c55e;}
-body[data-page="week06"] .feedback-toast { display: none; background: #22c55e; color: white; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-weight: bold; font-size: 0.9rem; animation: slideInRight 0.3s ease-out; justify-content: space-between; align-items: center;}
+body[data-page="week06"] .feedback-toast { display: none; background: #22c55e; color: white; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-weight: bold; font-size: 1.0625rem; animation: slideInRight 0.3s ease-out; justify-content: space-between; align-items: center;}
 body[data-page="week06"] .exam-notice { background: #fef2f2; border: 2px dashed #ef4444; padding: 20px; border-radius: 12px; text-align: center; margin-top: 20px; }
 
 /* --- week07 --- */
@@ -338,18 +338,18 @@ body[data-page="week07"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 
 body[data-page="week07"] .figma-workspace { border: 2px solid #cbd5e1; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: var(--figma-bg); margin-top: 15px; height: 350px;}
-body[data-page="week07"] .figma-toolbar { background: #2c2c2c; color: white; padding: 8px 15px; display: flex; gap: 15px; font-size: 0.9rem; align-items: center; }
+body[data-page="week07"] .figma-toolbar { background: #2c2c2c; color: white; padding: 8px 15px; display: flex; gap: 15px; font-size: 1.0625rem; align-items: center; }
 body[data-page="week07"] .figma-tool { cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: 0.2s;}
 body[data-page="week07"] .figma-tool:hover { background: #444; }
 body[data-page="week07"] .figma-main { display: flex; flex: 1; overflow: hidden; }
-body[data-page="week07"] .figma-sidebar { width: 180px; background: var(--figma-sidebar); border-right: 1px solid #d1d5db; padding: 10px; font-size: 0.8rem; overflow-y: auto; }
+body[data-page="week07"] .figma-sidebar { width: 180px; background: var(--figma-sidebar); border-right: 1px solid #d1d5db; padding: 10px; font-size: 1rem; overflow-y: auto; }
 body[data-page="week07"] .figma-canvas { flex: 1; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-body[data-page="week07"] .figma-right { width: 220px; background: var(--figma-sidebar); border-left: 1px solid #d1d5db; padding: 10px; font-size: 0.8rem; overflow-y: auto;}
+body[data-page="week07"] .figma-right { width: 220px; background: var(--figma-sidebar); border-left: 1px solid #d1d5db; padding: 10px; font-size: 1rem; overflow-y: auto;}
 body[data-page="week07"] .mock-frame { width: 160px; height: 280px; background: white; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; overflow: hidden; padding: 10px; display: flex; flex-direction: column; transition: 0.3s;}
 body[data-page="week07"] .al-demo-container { background: #e2e8f0; padding: 20px; border-radius: 12px; display: flex; justify-content: center; margin-top: 15px; }
 body[data-page="week07"] .al-button { background: var(--main-blue); color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s ease; white-space: nowrap;}
 body[data-page="week07"] .flow-demo { display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 20px; padding: 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; overflow-x: auto;}
-body[data-page="week07"] .flow-screen { width: 120px; height: 200px; background: white; border: 2px solid #e2e8f0; border-radius: 12px; display: flex; flex-direction: column; padding: 8px; font-size: 0.6rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+body[data-page="week07"] .flow-screen { width: 120px; height: 200px; background: white; border: 2px solid #e2e8f0; border-radius: 12px; display: flex; flex-direction: column; padding: 8px; font-size: 0.875rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
 body[data-page="week07"] .flow-screen-title { text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--main-blue); border-bottom: 1px solid #e2e8f0; padding-bottom: 4px;}
 body[data-page="week07"] .flow-arrow { width: 30px; height: 2px; background: var(--main-blue); position: relative; }
 body[data-page="week07"] .flow-arrow::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 6px solid var(--main-blue); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
@@ -387,43 +387,43 @@ body[data-page="week09"] .comp-card { background: #f8fafc; border: 1px solid #e2
 body[data-page="week09"] .comp-card:hover { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 8px 16px rgba(0,0,0,0.06); }
 body[data-page="week09"] .comp-card-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
 body[data-page="week09"] .comp-card-title { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
-body[data-page="week09"] .comp-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 10px; background: #ede9fe; color: #5b21b6; font-weight: 600; }
+body[data-page="week09"] .comp-badge { font-size: 0.9375rem; padding: 2px 8px; border-radius: 10px; background: #ede9fe; color: #5b21b6; font-weight: 600; }
 body[data-page="week09"] .demo-box { background: #1e293b; border-radius: 8px; padding: 14px; color: #f1f5f9; min-height: 150px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.25); align-items: center;}
-body[data-page="week09"] .comp-desc { font-size: 0.88rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--figma-purple); }
-body[data-page="week09"] .action-btn { background: var(--figma-purple); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
-body[data-page="week09"] .action-btn:hover { background: #7c3aed; transform: scale(1.03); }
+body[data-page="week09"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--figma-purple); }
+body[data-page="week09"] .action-btn { background: var(--figma-purple); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+body[data-page="week09"] .action-btn:hover { background: #7c3aed; }
 body[data-page="week09"] .action-btn:active { transform: scale(0.97); }
 body[data-page="week09"] .key-row { display: flex; gap: 10px; }
 body[data-page="week09"] .key-box { background: #334155; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-weight: bold; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 60px; box-shadow: 0 4px 0 #0f172a; transition: 0.1s; cursor: pointer;}
 body[data-page="week09"] .key-box:active, body[data-page="week09"] .key-box.active { transform: translateY(4px); box-shadow: 0 0 0 #0f172a; background: var(--figma-purple); color: white;}
-body[data-page="week09"] .key-label { font-size: 0.65rem; color: #94a3b8; margin-top: 4px; font-weight: normal; font-family: sans-serif;}
+body[data-page="week09"] .key-label { font-size: 0.9375rem; color: #94a3b8; margin-top: 4px; font-weight: normal; font-family: sans-serif;}
 body[data-page="week09"] .key-box:active .key-label, body[data-page="week09"] .key-box.active .key-label { color: #ddd; }
 body[data-page="week09"] .al-container { background: #334155; padding: 15px; border: 2px dashed #64748b; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; transition: all 0.3s ease; }
 body[data-page="week09"] .al-container.applied { background: #0f172a; border-color: var(--figma-purple); padding: 15px; gap: 15px; flex-direction: row; }
-body[data-page="week09"] .al-item { background: var(--main-blue); padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; transition: all 0.3s; }
+body[data-page="week09"] .al-item { background: var(--main-blue); padding: 8px 16px; border-radius: 6px; font-size: 1rem; font-weight: bold; white-space: nowrap; transition: all 0.3s; }
 body[data-page="week09"] .comp-master-box { border: 2px solid var(--figma-purple); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 10px; position: relative; background: #0f172a; width: 100%; max-width: 250px;}
-body[data-page="week09"] .comp-badge-icon { position: absolute; top: -10px; left: -10px; background: var(--figma-purple); padding: 4px; border-radius: 4px; font-size: 0.7rem; }
-body[data-page="week09"] .chat-bubble-demo { background: var(--main-blue); color: white; padding: 10px 15px; border-radius: 16px 16px 16px 4px; font-size: 0.8rem; transition: background 0.3s; }
+body[data-page="week09"] .comp-badge-icon { position: absolute; top: -10px; left: -10px; background: var(--figma-purple); padding: 4px; border-radius: 4px; font-size: 0.9375rem; }
+body[data-page="week09"] .chat-bubble-demo { background: var(--main-blue); color: white; padding: 10px 15px; border-radius: 16px 16px 16px 4px; font-size: 1rem; transition: background 0.3s; }
 body[data-page="week09"] .instances-row { display: flex; gap: 15px; margin-top: 10px; }
 body[data-page="week09"] .chat-ui-frame { width: 100%; max-width: 280px; height: 180px; background: #0f172a; border: 1px solid #334155; border-radius: 12px; display: flex; flex-direction: column; padding: 10px; gap: 10px; overflow-y: auto;}
-body[data-page="week09"] .bub-user { background: var(--main-blue); align-self: flex-end; padding: 8px 12px; border-radius: 12px 12px 0 12px; font-size: 0.75rem; color: white; max-width: 80%; }
+body[data-page="week09"] .bub-user { background: var(--main-blue); align-self: flex-end; padding: 8px 12px; border-radius: 12px 12px 0 12px; font-size: 0.9375rem; color: white; max-width: 80%; }
 body[data-page="week09"] .bub-ai { align-self: flex-start; display: flex; gap: 8px; max-width: 85%; }
-body[data-page="week09"] .ai-avatar { width: 24px; height: 24px; background: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0;}
-body[data-page="week09"] .ai-text { background: #334155; padding: 8px 12px; border-radius: 12px 12px 12px 0; font-size: 0.75rem; color: #f1f5f9; line-height: 1.4; }
+body[data-page="week09"] .ai-avatar { width: 24px; height: 24px; background: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9375rem; flex-shrink: 0;}
+body[data-page="week09"] .ai-text { background: #334155; padding: 8px 12px; border-radius: 12px 12px 12px 0; font-size: 0.9375rem; color: #f1f5f9; line-height: 1.4; }
 body[data-page="week09"] .sk-dots { display: flex; gap: 4px; align-items: center; height: 14px;}
 body[data-page="week09"] .sk-dot { width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; animation: pulse 1s infinite alternate; }
 body[data-page="week09"] .sk-dot:nth-child(2) { animation-delay: 0.2s; }
 body[data-page="week09"] .sk-dot:nth-child(3) { animation-delay: 0.4s; }
 body[data-page="week09"] .proto-wrapper { display: flex; gap: 15px; width: 100%; justify-content: center; position: relative;}
-body[data-page="week09"] .proto-phone { width: 120px; height: 220px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; display: flex; flex-direction: column; padding: 8px; position: relative; opacity: 0.5; transform: scale(0.9); transition: all 0.4s ease; pointer-events: none;}
-body[data-page="week09"] .proto-phone.active { opacity: 1; transform: scale(1); pointer-events: auto; border-color: var(--figma-purple); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);}
-body[data-page="week09"] .p-title { font-size: 0.65rem; color: #94a3b8; text-align: center; margin-bottom: 8px; font-weight: bold;}
-body[data-page="week09"] .p-chip { background: #1e293b; border: 1px solid #475569; border-radius: 12px; padding: 6px; font-size: 0.65rem; text-align: center; cursor: pointer; transition: 0.2s; color:#cbd5e1; margin-top: auto; margin-bottom: 20px;}
+body[data-page="week09"] .proto-phone { width: 120px; height: 220px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; display: flex; flex-direction: column; padding: 8px; position: relative; opacity: 0.5; transform: scale(0.9); transition: opacity .4s ease, transform .4s ease, border-color .4s ease, box-shadow .4s ease; box-shadow: 0 16px 28px -10px rgba(30,51,75,.32), 0 5px 10px rgba(30,51,75,.12); pointer-events: none;}
+body[data-page="week09"] .proto-phone.active { opacity: 1; transform: scale(1); pointer-events: auto; border-color: var(--figma-purple); box-shadow: 0 20px 34px -12px rgba(30,51,75,.36), 0 6px 14px rgba(30,51,75,.14), 0 0 0 3px rgba(139,92,246,.12);}
+body[data-page="week09"] .p-title { font-size: 0.9375rem; color: #94a3b8; text-align: center; margin-bottom: 8px; font-weight: bold;}
+body[data-page="week09"] .p-chip { background: #1e293b; border: 1px solid #475569; border-radius: 12px; padding: 6px; font-size: 0.9375rem; text-align: center; cursor: pointer; transition: 0.2s; color:#cbd5e1; margin-top: auto; margin-bottom: 20px;}
 body[data-page="week09"] .p-chip:hover { background: #334155; color: white;}
 body[data-page="week09"] .p-input { height: 20px; background: #1e293b; border-radius: 10px; margin-top: auto; }
 body[data-page="week09"] .share-modal { background: #1e293b; border: 1px solid #334155; border-radius: 8px; width: 220px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; flex-direction: column; gap: 10px; position: absolute; z-index: 10;}
 body[data-page="week09"] .share-modal.show { display: flex; animation: slideInUp 0.3s ease-out;}
-body[data-page="week09"] .perm-select { background: #0f172a; color: white; border: 1px solid #475569; padding: 6px; border-radius: 4px; font-size: 0.75rem; width: 100%; outline: none; }
+body[data-page="week09"] .perm-select { background: #0f172a; color: white; border: 1px solid #475569; padding: 6px; border-radius: 4px; font-size: 0.9375rem; width: 100%; outline: none; }
 body[data-page="week09"] .perm-select.correct { border-color: var(--success); color: var(--success); }
 @keyframes  slideInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -448,12 +448,12 @@ body[data-page="week10"] .eq-step { padding: 8px 12px; background: #334155; bord
 body[data-page="week10"] .eq-human { background: var(--success); color: #064e3b; font-weight: bold; animation: pulse 2s infinite; }
 body[data-page="week10"] .mock-chat-wrapper { background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 12px; padding: 20px; margin-top: 15px;}
 body[data-page="week10"] .mock-bubble { background: var(--main-blue); color: white; padding: 10px 15px; border-radius: 12px; border-bottom-right-radius: 2px; max-width: 70%; margin-left: auto; position: relative;}
-body[data-page="week10"] .edit-icon { position: absolute; left: -30px; top: 10px; background: white; border: 1px solid #cbd5e1; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: 0.2s;}
+body[data-page="week10"] .edit-icon { position: absolute; left: -30px; top: 10px; background: white; border: 1px solid #cbd5e1; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: 0.2s;}
 body[data-page="week10"] .edit-icon:hover { transform: scale(1.1); background: #f1f5f9; }
 body[data-page="week10"] .mock-ai { background: white; color: #1e293b; padding: 15px; border-radius: 12px; border-bottom-left-radius: 2px; border: 1px solid #e2e8f0; max-width: 80%; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
-body[data-page="week10"] .stop-btn-mock { display: inline-flex; align-items: center; gap: 5px; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; color: #475569; cursor: pointer; margin-top: 10px; transition: 0.2s;}
+body[data-page="week10"] .stop-btn-mock { display: inline-flex; align-items: center; gap: 5px; background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 20px; font-size: 1rem; font-weight: bold; color: #475569; cursor: pointer; margin-top: 10px; transition: 0.2s;}
 body[data-page="week10"] .stop-btn-mock:hover { background: #e2e8f0; color: #ef4444; border-color: #fca5a5;}
-body[data-page="week10"] .report-link { font-size: 0.85rem; color: #64748b; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 10px; transition: 0.2s;}
+body[data-page="week10"] .report-link { font-size: 1rem; color: #64748b; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 10px; transition: 0.2s;}
 body[data-page="week10"] .report-link:hover { color: #dc2626; }
 
 /* --- week11 --- */
@@ -471,7 +471,7 @@ body[data-page="week11"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 
 
-body[data-page="week11"] .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #94a3b8; color: white; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-left: 8px; transition: 0.2s;}
+body[data-page="week11"] .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #94a3b8; color: white; font-size: 1rem; font-weight: bold; cursor: pointer; margin-left: 8px; transition: 0.2s;}
 body[data-page="week11"] .info-icon:hover { background: var(--main-blue); transform: scale(1.1); }
 body[data-page="week11"] .toggle-switch { width: 40px; height: 22px; background: #cbd5e1; border-radius: 20px; display: inline-flex; align-items: center; padding: 2px; cursor: pointer; transition: 0.3s;}
 body[data-page="week11"] .toggle-switch.on { background: var(--success); }
@@ -502,19 +502,19 @@ body[data-page="week12"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 
 
-body[data-page="week12"] .blueprint-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);}
+body[data-page="week12"] .blueprint-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 1.0625rem; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);}
 body[data-page="week12"] .blueprint-table th, body[data-page="week12"] .blueprint-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: left; }
 body[data-page="week12"] .blueprint-table th { background: #f8fafc; font-weight: bold; color: #334155; }
 body[data-page="week12"] .row-frontstage { background: #eff6ff; }
 body[data-page="week12"] .row-backstage { background: #f1f5f9; }
 body[data-page="week12"] .row-fallback { background: #fef2f2; }
 body[data-page="week12"] .lov-line { background: repeating-linear-gradient(90deg, #94a3b8, #94a3b8 10px, transparent 10px, transparent 20px); height: 4px; margin: 20px 0; position: relative; display: flex; align-items: center; justify-content: center;}
-body[data-page="week12"] .lov-text { background: white; padding: 0 15px; color: #64748b; font-weight: bold; font-size: 0.9rem; border: 2px solid #cbd5e1; border-radius: 20px; z-index: 1;}
+body[data-page="week12"] .lov-text { background: white; padding: 0 15px; color: #64748b; font-weight: bold; font-size: 1.0625rem; border: 2px solid #cbd5e1; border-radius: 20px; z-index: 1;}
 body[data-page="week12"] .bp-step { display: inline-block; background: white; padding: 5px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-weight: 500; margin-bottom: 5px; width: 100%; box-sizing: border-box; transition: 0.2s; cursor:pointer;}
 body[data-page="week12"] .bp-step:hover { border-color: var(--main-blue); transform: scale(1.02); }
 body[data-page="week12"] .bp-warn { border-color: #fca5a5; background: #fff5f5;}
-body[data-page="week12"] .front-tag { display: inline-block; padding: 2px 6px; background: var(--main-blue); color: white; border-radius: 4px; font-size: 0.75rem; margin-bottom: 5px; }
-body[data-page="week12"] .back-tag { display: inline-block; padding: 2px 6px; background: #475569; color: white; border-radius: 4px; font-size: 0.75rem; margin-bottom: 5px; }
+body[data-page="week12"] .front-tag { display: inline-block; padding: 2px 6px; background: var(--main-blue); color: white; border-radius: 4px; font-size: 0.9375rem; margin-bottom: 5px; }
+body[data-page="week12"] .back-tag { display: inline-block; padding: 2px 6px; background: #475569; color: white; border-radius: 4px; font-size: 0.9375rem; margin-bottom: 5px; }
 
 /* --- week14 --- */
 
@@ -534,18 +534,18 @@ body[data-page="week14"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 body[data-page="week14"] .figma-qa-board { background: #1e293b; padding: 20px; border-radius: 12px; margin-top: 15px; position: relative; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 body[data-page="week14"] .f-screen { width: 140px; height: 250px; background: white; border-radius: 12px; position: relative; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid transparent;}
 body[data-page="week14"] .f-screen.orphan { border-color: #ef4444; opacity: 0.7;}
-body[data-page="week14"] .f-screen-title { font-size: 0.7rem; font-weight: bold; text-align: center; color: #475569; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
-body[data-page="week14"] .f-start-point { position: absolute; top: -15px; left: -15px; background: #3b82f6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; z-index: 2; display: flex; align-items: center; gap: 4px; cursor: pointer; animation: pulse 2s infinite;}
+body[data-page="week14"] .f-screen-title { font-size: 0.9375rem; font-weight: bold; text-align: center; color: #475569; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;}
+body[data-page="week14"] .f-start-point { position: absolute; top: -15px; left: -15px; background: #3b82f6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.875rem; font-weight: bold; z-index: 2; display: flex; align-items: center; gap: 4px; cursor: pointer; animation: pulse 2s infinite;}
 body[data-page="week14"] .f-arrow { position: absolute; height: 2px; background: #3b82f6; top: 50%; right: -22px; width: 20px; z-index: 1;}
 body[data-page="week14"] .f-arrow::after { content: ""; position: absolute; right: 0; top: -4px; border-left: 6px solid #3b82f6; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-body[data-page="week14"] .qa-tag { display: inline-block; padding: 2px 8px; background: #e2e8f0; border-radius: 12px; font-size: 0.7rem; font-weight: bold; color: #334155; margin-bottom: 4px;}
+body[data-page="week14"] .qa-tag { display: inline-block; padding: 2px 8px; background: #e2e8f0; border-radius: 12px; font-size: 0.9375rem; font-weight: bold; color: #334155; margin-bottom: 4px;}
 body[data-page="week14"] .qa-tag.ok { background: #dcfce7; color: #166534; }
 body[data-page="week14"] .qa-tag.err { background: #fee2e2; color: #991b1b; }
 body[data-page="week14"] .pdf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
 body[data-page="week14"] .pdf-page { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);}
 body[data-page="week14"] .pdf-page:hover { border-color: var(--main-blue); transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1);}
-body[data-page="week14"] .page-num { background: #334155; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
-body[data-page="week14"] .page-desc { font-size: 0.85rem; color: #475569; margin-top: 5px;}
+body[data-page="week14"] .page-num { background: #334155; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: bold; margin-bottom: 10px; }
+body[data-page="week14"] .page-desc { font-size: 1rem; color: #475569; margin-top: 5px;}
 body[data-page="week14"] .warning-banner { background: #fef2f2; border: 2px dashed #ef4444; border-radius: 12px; padding: 20px; margin-top: 20px; display: flex; align-items: center; gap: 15px; }
 body[data-page="week14"] .warning-icon { font-size: 3rem; animation: float 3s infinite;}
 
@@ -564,17 +564,17 @@ body.ux-course .brand-row{display:flex;align-items:center;justify-content:space-
 body.ux-course .brand-left{display:flex;align-items:center;gap:14px;min-width:0;flex:1;}
 body.ux-course .brand-block{display:flex;flex-direction:column;gap:4px;min-width:0;}
 body.ux-course .brand-title{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:.01em;}
-body.ux-course .brand-subtitle{font-size:.82rem;font-weight:400;color:rgba(255,255,255,.72);margin:0;}
+body.ux-course .brand-subtitle{font-size:1rem;font-weight:400;color:rgba(255,255,255,.72);margin:0;}
 body.ux-course .top-controls{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end;}
-body.ux-course .portfolio-return{color:#cbd5e1;text-decoration:none;font-size:.84rem;font-weight:700;white-space:nowrap;}
+body.ux-course .portfolio-return{color:#cbd5e1;text-decoration:none;font-size:1rem;font-weight:700;white-space:nowrap;}
 body.ux-course .portfolio-return:hover{color:#fff;}
 body.ux-course .lang-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-body.ux-course .lang-btn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;padding:8px 12px;font-size:.8rem;font-weight:650;cursor:pointer;transition:background .2s ease,transform .2s ease;}
+body.ux-course .lang-btn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;padding:8px 12px;font-size:1rem;font-weight:650;cursor:pointer;transition:background .2s ease,transform .2s ease;}
 body.ux-course .lang-btn:hover{background:rgba(255,255,255,.16);}
 body.ux-course .lang-btn.active{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-color:rgba(255,255,255,.24);animation:none;}
 body.ux-course .nav-shell{margin-top:14px;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:10px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);}
 body.ux-course .nav-container{display:flex;align-items:center;flex-wrap:nowrap;gap:8px;overflow-x:auto;padding:0 0 4px;min-width:0;flex:none;scrollbar-width:thin;}
-body.ux-course .nav-btn{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.08);padding:11px 16px;border-radius:12px;cursor:pointer;white-space:nowrap;font-size:.89rem;font-weight:700;transition:background .2s ease;box-shadow:none;flex-shrink:0;}
+body.ux-course .nav-btn{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.08);padding:11px 16px;border-radius:12px;cursor:pointer;white-space:nowrap;font-size:1.0625rem;font-weight:700;transition:background .2s ease;box-shadow:none;flex-shrink:0;}
 body.ux-course .nav-btn:hover{background:rgba(255,255,255,.18);transform:none;}
 body.ux-course .nav-btn.active{background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:rgba(255,255,255,.18);color:#fff;box-shadow:0 10px 20px rgba(37,99,235,.24);animation:none;}
 body.ux-course .nav-btn[aria-current="page"]{pointer-events:none;}
@@ -585,32 +585,32 @@ body.ux-course main>.course-guide,body.ux-course main>.lesson-context,body.ux-co
 body.ux-course .course-guide{display:flex;align-items:center;justify-content:space-between;gap:26px;padding:26px 30px;border:1px solid #dbeafe;border-radius:18px;background:linear-gradient(120deg,#eff6ff,#fff 68%);box-shadow:0 8px 24px rgba(15,23,42,.05);margin-bottom:20px;}
 body.ux-course .guide-left{flex:1;min-width:0;}
 body.ux-course .guide-right{flex:0 0 245px;text-align:right;}
-body.ux-course .guide-eyebrow{color:#2563eb;font-size:.7rem;letter-spacing:.12em;font-weight:800;}
+body.ux-course .guide-eyebrow{color:#2563eb;font-size:0.9375rem;letter-spacing:.12em;font-weight:800;}
 body.ux-course .course-guide h2{color:#0f172a;border:0;padding:0;margin:4px 0 6px;font-size:1.4rem;line-height:1.45;}
-body.ux-course .course-guide p{color:#475569;font-size:.91rem;margin:0 0 12px;line-height:1.65;}
+body.ux-course .course-guide p{color:#475569;font-size:1.0625rem;margin:0 0 12px;line-height:1.65;}
 body.ux-course .guide-tags{display:flex;flex-wrap:wrap;gap:7px;}
-body.ux-course .guide-tags span{border:1px solid #dbeafe;border-radius:999px;padding:3px 10px;background:#fff;color:#1d4ed8;font-size:.75rem;font-weight:700;}
+body.ux-course .guide-tags span{border:1px solid #dbeafe;border-radius:999px;padding:3px 10px;background:#fff;color:#1d4ed8;font-size:0.9375rem;font-weight:700;}
 body.ux-course .lesson-progress{font-weight:800;font-size:1.05rem;color:#1d4ed8;margin-bottom:8px;}
-body.ux-course .guide-hint{font-size:.76rem;color:#64748b;line-height:1.55;}
+body.ux-course .guide-hint{font-size:0.9375rem;color:#64748b;line-height:1.55;}
 body.ux-course .lesson-context{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;margin-bottom:12px;}
-body.ux-course .lesson-caption{display:flex;align-items:center;gap:10px;min-width:0;font-size:.9rem;color:#475569;}
+body.ux-course .lesson-caption{display:flex;align-items:center;gap:10px;min-width:0;font-size:1.0625rem;color:#475569;}
 body.ux-course .chapter-label{background:#e0e7ff;border-radius:8px;padding:6px 10px;color:#1e40af;font-weight:800;white-space:nowrap;}
 body.ux-course #lesson-subject{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:540px;}
 body.ux-course .lesson-pager{display:flex;gap:8px;flex-shrink:0;}
-body.ux-course .pager-link{display:inline-block;padding:8px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#334155;text-decoration:none;font-size:.83rem;font-weight:700;}
+body.ux-course .pager-link{display:inline-block;padding:8px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#334155;text-decoration:none;font-size:1rem;font-weight:700;}
 body.ux-course .pager-link:hover{border-color:#2563eb;color:#1d4ed8;}
 body.ux-course .pager-link[aria-disabled="true"]{opacity:.38;pointer-events:none;}
 body.ux-course .pager-next{border-color:#2563eb;color:#1d4ed8;}
 body.ux-course #lesson-content>.container{width:100%;max-width:1140px;margin:0 auto;padding:0;}
 body.ux-course .card{background:#fff;border:1px solid #e2e8f0;border-top:4px solid #2563eb;border-radius:16px;padding:clamp(18px,2.8vw,30px);margin:0 0 20px;opacity:1;transform:none;transition:box-shadow .2s ease,border-color .2s ease;box-shadow:0 8px 24px rgba(15,23,42,.055);word-break:keep-all;}
 body.ux-course .card.visible{opacity:1;transform:none;}
-body.ux-course .card:hover{transform:none!important;box-shadow:0 10px 26px rgba(15,23,42,.08);}
+
 body.ux-course h1{color:#0f172a;font-size:clamp(1.45rem,2.6vw,1.9rem);margin:0 0 16px;padding:0 0 12px;border-bottom:1px solid #e2e8f0;}
 body.ux-course h2{color:#1e293b;}
 body.ux-course .title-emoji{font-size:1.55rem;animation:none;}
 body.ux-course .action-btn{border-radius:10px;min-height:40px;}
 body.ux-course .lesson-bottom-pager{text-align:right;padding:4px 0 8px;}
-body.ux-course .lesson-bottom-pager a{display:inline-flex;align-items:center;justify-content:center;color:#fff;background:#2563eb;padding:10px 20px;border-radius:11px;font-size:.92rem;font-weight:750;text-decoration:none;}
+body.ux-course .lesson-bottom-pager a{display:inline-flex;align-items:center;justify-content:center;color:#fff;background:#2563eb;padding:10px 20px;border-radius:11px;font-size:1.0625rem;font-weight:750;text-decoration:none;}
 body.ux-course .lesson-bottom-pager a:hover{background:#1d4ed8;}
 body.ux-course .lesson-bottom-pager a[aria-disabled="true"]{display:none;}
 body.ux-course .course-footer{background:#0f172a;color:rgba(248,250,252,.9);margin:0;padding:24px 14px;min-height:85px;}
@@ -622,12 +622,12 @@ body.ux-course button,body.ux-course a{touch-action:manipulation;}
  body.ux-course .desktop-nav,body.ux-course .desktop-lang,body.ux-course .portfolio-return{display:none;}
  body.ux-course .hamburger{display:inline-flex;}
  body.ux-course .brand-title{font-size:1rem;}
- body.ux-course .brand-subtitle{font-size:.75rem;}
+ body.ux-course .brand-subtitle{font-size:0.9375rem;}
  body.ux-course .mobile-menu{display:block;position:fixed;top:0;right:0;width:min(86vw,345px);height:100dvh;background:#0f172a;transform:translateX(100%);transition:transform .24s ease;z-index:1002;padding:18px 16px 24px;box-shadow:0 12px 30px rgba(15,23,42,.3);overflow-y:auto;}
  body.ux-course .mobile-menu.open{transform:translateX(0);}
- body.ux-course .mobile-menu-header{font-size:.9rem;font-weight:700;color:#cbd5e1;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #334155;}
+ body.ux-course .mobile-menu-header{font-size:1.0625rem;font-weight:700;color:#cbd5e1;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #334155;}
  body.ux-course .mobile-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
- body.ux-course .mobile-nav .nav-btn{padding:11px 0;border-radius:10px;font-size:.83rem;}
+ body.ux-course .mobile-nav .nav-btn{padding:11px 0;border-radius:10px;font-size:1rem;}
  body.ux-course .mobile-lang{display:flex;margin-top:18px;padding-top:16px;border-top:1px solid #334155;gap:6px;}
  body.ux-course .mobile-lang .lang-btn{padding:7px 9px;}
  body.ux-course .mobile-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:1001;opacity:0;pointer-events:none;transition:opacity .24s ease;display:none;}
@@ -646,7 +646,7 @@ body.ux-course button,body.ux-course a{touch-action:manipulation;}
  body.ux-course *,body.ux-course *::before,body.ux-course *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
 }
 
-body.ux-course .prereq-link{display:inline-flex;align-items:center;margin-top:11px;color:#1d4ed8;text-decoration:none;font-size:.84rem;font-weight:700;}
+body.ux-course .prereq-link{display:inline-flex;align-items:center;margin-top:11px;color:#1d4ed8;text-decoration:none;font-size:1rem;font-weight:700;}
 body.ux-course .prereq-link:hover{text-decoration:underline;}
 
 body[data-page="week08"] .tooltip-container:focus .tooltip-box,
@@ -654,14 +654,14 @@ body[data-page="week08"] .tooltip-container:focus-within .tooltip-box { visibili
 
 /* === Week 13: supplied usability-testing demo, scoped to its lesson === */
 body.ux-course[data-page="week13"] .metric-bar { background: #e2e8f0; border-radius: 10px; height: 24px; width: 100%; margin: 10px 0; position: relative; overflow: hidden;}
-body.ux-course[data-page="week13"] .metric-fill { height: 100%; display: flex; align-items: center; padding-left: 10px; color: white; font-weight: bold; font-size: 0.8rem; transition: width 1s ease-out;}
-body.ux-course[data-page="week13"] .latency-timeline { display: flex; margin-top: 20px; border-radius: 8px; overflow: hidden; font-size: 0.8rem; font-weight: bold; text-align: center; color: white;}
+body.ux-course[data-page="week13"] .metric-fill { height: 100%; display: flex; align-items: center; padding-left: 10px; color: white; font-weight: bold; font-size: 1rem; transition: width 1s ease-out;}
+body.ux-course[data-page="week13"] .latency-timeline { display: flex; margin-top: 20px; border-radius: 8px; overflow: hidden; font-size: 1rem; font-weight: bold; text-align: center; color: white;}
 body.ux-course[data-page="week13"] .time-zone { padding: 10px; flex: 1; }
 body.ux-course[data-page="week13"] .zone-safe { background: var(--success); color: #064e3b; }
 body.ux-course[data-page="week13"] .zone-warn { background: var(--warning); color: #78350f; }
 body.ux-course[data-page="week13"] .zone-danger { background: var(--danger); color: #450a0a; }
 body.ux-course[data-page="week13"] .matrix-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
-body.ux-course[data-page="week13"] .m-card { padding: 15px; border-radius: 8px; font-weight: bold; text-align: center; font-size: 0.9rem; cursor: pointer; transition: 0.2s;}
+body.ux-course[data-page="week13"] .m-card { padding: 15px; border-radius: 8px; font-weight: bold; text-align: center; font-size: 1.0625rem; cursor: pointer; transition: 0.2s;}
 body.ux-course[data-page="week13"] .m-card:hover { transform: translateY(-3px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 body.ux-course[data-page="week13"] .m-red { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
 body.ux-course[data-page="week13"] .m-yellow { background: #fef9c3; border: 2px solid #f59e0b; color: #b45309; }
@@ -738,7 +738,7 @@ body.ux-course .week08-exam-note p { margin:0; }
 }
 
 /* Week 07 — Wizard of Oz classwork. Existing UX card spacing and portfolio theme inherited. */
-body.ux-course[data-page="week07"] #lesson-content .phase-timeline { display:flex; margin-top:24px; border-radius:13px; overflow:hidden; font-size:.88rem; font-weight:700; text-align:center; color:#fff; }
+body.ux-course[data-page="week07"] #lesson-content .phase-timeline { display:flex; margin-top:24px; border-radius:13px; overflow:hidden; font-size:1rem; font-weight:700; text-align:center; color:#fff; }
 body.ux-course[data-page="week07"] #lesson-content .phase-zone { padding:20px 13px; flex:1; line-height:1.65; }
 body.ux-course[data-page="week07"] #lesson-content .zone-p1 { background:#2563eb; }
 body.ux-course[data-page="week07"] #lesson-content .zone-p2 { background:#7c3aed; }
@@ -819,7 +819,7 @@ body.ux-course {
   --ux-card-space: 28px;
   --ux-inner-space: 22px;
   font-family: Inter, "Segoe UI", Arial, "Noto Sans KR", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   background: var(--paper);
   color: var(--ink);
@@ -858,91 +858,91 @@ body.ux-course .studio-header {
 body.ux-course .studio-brand { display: flex; gap: 12px; align-items: center; color: var(--ink); text-decoration: none; min-width: 0; }
 body.ux-course .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; flex: 0 0 auto; background: var(--sage); border: 1px solid #c6d4be; border-radius: 13px 13px 13px 3px; font-size: 17px; font-weight: 800; letter-spacing: -1px; color: #2e4f3c; }
 body.ux-course .studio-brand strong { font-size: 21px; font-weight: 750; letter-spacing: -.6px; line-height: 1.2; display: block; }
-body.ux-course .studio-brand small { display: block; color: var(--muted); font-size: 12px; margin-top: 3px; line-height: 1.3; }
+body.ux-course .studio-brand small { display: block; color: var(--muted); font-size: 14px; margin-top: 3px; line-height: 1.3; }
 body.ux-course .header-actions { display: flex; align-items: center; gap: 18px; flex: 0 0 auto; }
-body.ux-course .header-note { color: var(--muted); font-size: 12px; }
+body.ux-course .header-note { color: var(--muted); font-size: 14px; }
 body.ux-course .language-switch { display: flex; gap: 3px; padding: 3px; background: #f0f0e9; border: 1px solid var(--line); border-radius: 10px; }
-body.ux-course .language-switch button { min-height: 38px; padding: 7px 11px; background: transparent; color: var(--muted); border: 1px solid transparent; border-radius: 7px; font-size: 13px; font-weight: 600; transition: background .15s ease; }
+body.ux-course .language-switch button { min-height: 38px; padding: 7px 11px; background: transparent; color: var(--muted); border: 1px solid transparent; border-radius: 7px; font-size: 15px; font-weight: 600; transition: background .15s ease; }
 body.ux-course .language-switch button:is(.active,[aria-pressed="true"]) { background: var(--surface); color: var(--ink); border-color: #d5dace; box-shadow: 0 1px 2px #243b2410; }
 body.ux-course .language-switch button:hover { color: var(--ink); background: #fffdf9; }
 body.ux-course .mobile-menu-toggle { display: none; background: transparent; border: 1px solid var(--line); border-radius: 9px; width: 44px; height: 44px; color: var(--ink); flex: 0 0 auto; }
 body.ux-course .studio-layout { display: grid; grid-template-columns: 244px minmax(0,1fr); max-width: 1392px; margin: 0 auto; }
 body.ux-course .course-sidebar { align-self: start; position: sticky; top: 78px; height: calc(100dvh - 78px); padding: 30px 19px 20px 24px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 13px; background: var(--paper); overflow-y: auto; scrollbar-width: thin; scrollbar-color: #cdd4c7 transparent; }
-body.ux-course .sidebar-head { font-size: 11px; text-transform: uppercase; font-weight: 750; letter-spacing: 1.8px; color: #687360; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 2px; }
-body.ux-course .sidebar-head span { letter-spacing: 0; font-size: 12px; font-weight: 500; }
+body.ux-course .sidebar-head { font-size: 14px; text-transform: uppercase; font-weight: 750; letter-spacing: 1.8px; color: #687360; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 2px; }
+body.ux-course .sidebar-head span { letter-spacing: 0; font-size: 14px; font-weight: 500; }
 body.ux-course #course-nav { display: flex; flex-direction: column; gap: 5px; }
 body.ux-course .course-link { position: relative; display: grid; grid-template-columns: 27px minmax(0,1fr); column-gap: 9px; align-items: start; padding: 9px 9px; min-height: 45px; border: 1px solid transparent; border-radius: 9px; color: #59655b; text-decoration: none; line-height: 1.4; transition: background .15s ease; }
 body.ux-course .course-link:hover { background: #f0f0e8; color: #263d2f; }
 body.ux-course .course-link:is(.active,[aria-current="page"]) { background: var(--sage); color: #2f4c39; border-color: #cfddc6; font-weight: 650; }
 body.ux-course .course-link:is(.active,[aria-current="page"])::before { content: ""; position: absolute; left: -9px; top: 12px; bottom: 12px; width: 3px; background: #45674f; border-radius: 2px; }
-body.ux-course .week-number { font-size: 12px; line-height: 20px; font-variant-numeric: tabular-nums; color: #5b6955; font-weight: 650; }
-body.ux-course .week-topic { font-size: 12px; line-height: 20px; overflow-wrap: anywhere; }
-body.ux-course .week-status { grid-column: 2; color: #687367; font-size: 10px; font-weight: 500; display: block; margin-top: 2px; }
+body.ux-course .week-number { font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; color: #5b6955; font-weight: 650; }
+body.ux-course .week-topic { font-size: 14px; line-height: 20px; overflow-wrap: anywhere; }
+body.ux-course .week-status { grid-column: 2; color: #687367; font-size: 14px; font-weight: 500; display: block; margin-top: 2px; }
 body.ux-course .course-link.exam { background: #f2eee3; margin: 5px 0; }
 body.ux-course .course-link.completed .week-number { color: #3d6a46; }
-body.ux-course .sidebar-progress { border-top: 1px solid var(--line); padding-top: 15px; margin-top: auto; font-size: 12px; color: var(--muted); }
-body.ux-course .sidebar-progress strong { color: #425746; font-size: 13px; }
+body.ux-course .sidebar-progress { border-top: 1px solid var(--line); padding-top: 15px; margin-top: auto; font-size: 14px; color: var(--muted); }
+body.ux-course .sidebar-progress strong { color: #425746; font-size: 15px; }
 body.ux-course .sidebar-progress progress { appearance: none; width: 100%; height: 5px; border: 0; display: block; margin: 8px 0; background: #e5e7dc; border-radius: 3px; overflow: hidden; }
 body.ux-course .sidebar-progress progress::-webkit-progress-bar { background: #e5e7dc; }
 body.ux-course .sidebar-progress progress::-webkit-progress-value { background: #6d9167; border-radius: 3px; }
 body.ux-course .sidebar-progress progress::-moz-progress-bar { background: #6d9167; }
-body.ux-course .sidebar-progress p { font-size: 11px; line-height: 1.5; margin: 8px 0 0; }
+body.ux-course .sidebar-progress p { font-size: 14px; line-height: 1.5; margin: 8px 0 0; }
 body.ux-course .sidebar-backdrop { display: none; }
 
 /* Lesson opening: a small publication, with a clear way to begin. */
 body.ux-course main.studio-main { width: 100%; min-width: 0; max-width: 1030px; padding: 33px clamp(28px,4.5vw,64px) 58px; margin: 0 auto; }
-body.ux-course .lesson-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 12px; margin-bottom: 24px; }
-body.ux-course .lesson-topline a { font-size: 12px; text-decoration: none; border-bottom: 1px solid #bdcaba; }
+body.ux-course .lesson-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+body.ux-course .lesson-topline a { font-size: 14px; text-decoration: none; border-bottom: 1px solid #bdcaba; }
 body.ux-course .lesson-heading { padding: 0 0 25px; position: relative; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
-body.ux-course .lesson-kicker { display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; background: var(--peach); color: #71503d; border-radius: 4px; font-size: 11px; letter-spacing: 1.4px; font-weight: 750; line-height: 1.5; text-transform: uppercase; margin-bottom: 13px; }
+body.ux-course .lesson-kicker { display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; background: var(--peach); color: #71503d; border-radius: 4px; font-size: 14px; letter-spacing: 1.4px; font-weight: 750; line-height: 1.5; text-transform: uppercase; margin-bottom: 13px; }
 body.ux-course .lesson-heading h1 { color: var(--ink); font-size: clamp(29px,3.5vw,41px); line-height: 1.14; letter-spacing: -1.4px; font-weight: 750; border: 0; padding: 0; margin: 0 0 15px; max-width: 760px; }
-body.ux-course .lesson-intro { color: #59665b; font-size: 16px; line-height: 1.75; max-width: 720px; margin: 0; }
-body.ux-course .lesson-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-size: 12px; color: #63715f; }
+body.ux-course .lesson-intro { color: #59665b; font-size: 18px; line-height: 1.75; max-width: 720px; margin: 0; }
+body.ux-course .lesson-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-size: 14px; color: #63715f; }
 body.ux-course .study-modes { display: flex; gap: 0; flex-wrap: wrap; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: #efefe7; width: fit-content; max-width: 100%; margin: 24px 0; }
-body.ux-course .study-modes button { min-height: 43px; border: 1px solid transparent; border-radius: 7px; background: none; padding: 9px 20px; color: #64705e; font-size: 13px; font-weight: 650; }
+body.ux-course .study-modes button { min-height: 43px; border: 1px solid transparent; border-radius: 7px; background: none; padding: 9px 20px; color: #64705e; font-size: 15px; font-weight: 650; }
 body.ux-course .study-modes button:is(.active,[aria-pressed="true"]) { background: var(--surface); color: #2c4b36; border-color: #d9dfd0; box-shadow: 0 1px 3px #2b3b1e09; }
 body.ux-course .study-modes button:hover { color: #233c2b; }
-body.ux-course .study-modes button small { display: inline; font-size: 11px; font-weight: 500; margin-left: 6px; }
-body.ux-course .course-note { padding: 16px 20px; background: var(--butter); border: 1px solid #e7ddbb; border-radius: 9px; color: #665a36; font-size: 14px; line-height: 1.7; margin: 20px 0; }
+body.ux-course .study-modes button small { display: inline; font-size: 14px; font-weight: 500; margin-left: 6px; }
+body.ux-course .course-note { padding: 16px 20px; background: var(--butter); border: 1px solid #e7ddbb; border-radius: 9px; color: #665a36; font-size: 16px; line-height: 1.7; margin: 20px 0; }
 body.ux-course .course-note strong { color: #594b27; }
 
 /* Short review has a distinct colour, while explanations stay easy to scan. */
 body.ux-course .quick-review { background: var(--sage); border: 1px solid #d6e1ce; border-radius: 15px; padding: 25px 28px; margin-bottom: 26px; }
 body.ux-course .quick-review h2 { font-size: 20px; color: #2e4937; letter-spacing: -.5px; margin: 0 0 9px; }
-body.ux-course .quick-review > p { color: #49634d; font-size: 15px; margin: 0 0 17px; }
+body.ux-course .quick-review > p { color: #49634d; font-size: 18px; margin: 0 0 17px; }
 body.ux-course .quick-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; margin-top: 16px; }
-body.ux-course .quick-step { padding: 15px 17px; border: 1px solid #d4deca; background: #f8faf3; border-radius: 9px; min-width: 0; font-size: 14px; line-height: 1.6; }
-body.ux-course .quick-step strong { display: block; color: #34503c; font-size: 14px; margin-bottom: 6px; }
+body.ux-course .quick-step { padding: 15px 17px; border: 1px solid #d4deca; background: #f8faf3; border-radius: 9px; min-width: 0; font-size: 16px; line-height: 1.6; }
+body.ux-course .quick-step strong { display: block; color: #34503c; font-size: 16px; margin-bottom: 6px; }
 body.ux-course .quick-step p { margin: 0; color: #52644f; }
-body.ux-course .quick-step a { display: inline-block; margin-top: 9px; font-weight: 650; font-size: 13px; }
+body.ux-course .quick-step a { display: inline-block; margin-top: 9px; font-weight: 650; font-size: 15px; }
 body.ux-course .key-terms { border: 1px solid #ded8e8; border-radius: 12px; background: #f5f1f9; margin: 25px 0; overflow: hidden; }
-body.ux-course .key-terms > summary, body.ux-course .key-terms summary { min-height: 54px; padding: 17px 22px; color: #584766; font-size: 15px; font-weight: 650; cursor: pointer; }
+body.ux-course .key-terms > summary, body.ux-course .key-terms summary { min-height: 54px; padding: 17px 22px; color: #584766; font-size: 18px; font-weight: 650; cursor: pointer; }
 body.ux-course .key-terms summary::marker { color: #9c88af; }
 body.ux-course .key-terms summary small { color: #70627d; font-weight: 500; margin-left: 8px; }
 body.ux-course .key-terms h2 { color: #584766; font-size: 18px; margin: 0; }
 body.ux-course .term-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 24px; padding: 0 22px 15px; }
-body.ux-course .term-item { padding: 15px 0; border-top: 1px solid #e0d8e8; min-width: 0; font-size: 14px; line-height: 1.65; }
-body.ux-course .term-item :is(strong,dt) { display: block; color: #574064; margin-bottom: 5px; font-size: 15px; font-weight: 650; }
+body.ux-course .term-item { padding: 15px 0; border-top: 1px solid #e0d8e8; min-width: 0; font-size: 16px; line-height: 1.65; }
+body.ux-course .term-item :is(strong,dt) { display: block; color: #574064; margin-bottom: 5px; font-size: 18px; font-weight: 650; }
 body.ux-course .term-item :is(p,dd) { margin: 0; color: #655c70; }
-body.ux-course .term-item em { display: block; margin-top: 6px; color: #73667f; font-size: 13px; }
+body.ux-course .term-item em { display: block; margin-top: 6px; color: #73667f; font-size: 15px; }
 body.ux-course .learning-guide { margin: 28px 0; }
 body.ux-course .learning-guide > h2 { margin-bottom: 20px; color: var(--ink); letter-spacing: -.5px; }
 body.ux-course .guide-step { position: relative; padding: 0 0 24px 32px; margin-left: 8px; border-left: 1px solid #d8dfd0; }
 body.ux-course .guide-step:last-child { padding-bottom: 0; border-left-color: transparent; }
 body.ux-course .guide-step::before { content: ""; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: #8aa277; outline: 4px solid var(--paper); }
-body.ux-course .guide-step h3 { margin: 0 0 7px; color: #344b36; font-size: 17px; line-height: 1.5; }
-body.ux-course .guide-step p { margin: 0; font-size: 15px; color: #59655c; max-width: 730px; }
+body.ux-course .guide-step h3 { margin: 0 0 7px; color: #344b36; font-size: 20px; line-height: 1.5; }
+body.ux-course .guide-step p { margin: 0; font-size: 18px; color: #59655c; max-width: 730px; }
 body.ux-course .worked-example { padding: 24px 27px; background: var(--peach); border: 1px solid #eddac9; border-radius: 12px; margin: 26px 0; }
 body.ux-course .worked-example h3 { font-size: 18px; color: #734e39; margin: 0 0 12px; }
-body.ux-course .worked-example :is(p,li) { font-size: 15px; color: #6f5748; line-height: 1.75; }
+body.ux-course .worked-example :is(p,li) { font-size: 18px; color: #6f5748; line-height: 1.75; }
 body.ux-course .worked-example p:last-child { margin-bottom: 0; }
-body.ux-course .explanation-note { margin: 20px 0; padding: 18px 21px; border-left: 3px solid #b8c8d4; border-radius: 0 8px 8px 0; background: var(--sky); font-size: 15px; color: #435d6c; }
+body.ux-course .explanation-note { margin: 20px 0; padding: 18px 21px; border-left: 3px solid #b8c8d4; border-radius: 0 8px 8px 0; background: var(--sky); font-size: 18px; color: #435d6c; }
 body.ux-course .explanation-note p { margin: 0; }
 body.ux-course .explanation-note strong { color: #314f61; }
 body.ux-course .lesson-toc { padding: 18px 0 21px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 28px 0; }
-body.ux-course .lesson-toc > :is(h2,h3,strong) { display: block; font-size: 11px; font-weight: 750; color: #6b7366; letter-spacing: 1.4px; text-transform: uppercase; margin: 0 0 12px; }
+body.ux-course .lesson-toc > :is(h2,h3,strong) { display: block; font-size: 14px; font-weight: 750; color: #6b7366; letter-spacing: 1.4px; text-transform: uppercase; margin: 0 0 12px; }
 body.ux-course .lesson-toc > div, body.ux-course .lesson-toc ol { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
-body.ux-course .lesson-toc a { display: inline-flex; align-items: center; min-height: 38px; padding: 6px 11px; font-size: 12px; line-height: 1.4; color: #556550; text-decoration: none; border: 1px solid #dde2d4; border-radius: 5px; background: #f7f8f1; }
+body.ux-course .lesson-toc a { display: inline-flex; align-items: center; min-height: 38px; padding: 6px 11px; font-size: 14px; line-height: 1.4; color: #556550; text-decoration: none; border: 1px solid #dde2d4; border-radius: 5px; background: #f7f8f1; }
 body.ux-course .lesson-toc a:hover { background: #e7eee1; border-color: #bdceb2; }
 
 /* The preserved examples form chapter sections, not a wall of floating cards. */
@@ -965,24 +965,24 @@ body.ux-course #lesson-content .card {
   line-height: 1.75;
   scroll-margin-top: 108px;
 }
-body.ux-course #lesson-content .card:hover { transform: none !important; box-shadow: none; }
+
 body.ux-course #lesson-content .card > :is(h1,h2) { color: var(--ink); margin: 0 0 16px; padding: 0; border: 0; line-height: 1.35; letter-spacing: -.5px; font-size: 24px; }
 body.ux-course #lesson-content .card > h1 { font-size: 26px; }
 body.ux-course #lesson-content .title-emoji { font-size: 22px; vertical-align: baseline; animation: none; margin-right: 4px; }
-body.ux-course #lesson-content .card > p { color: #5c675e; margin: 0 0 20px; font-size: 16px; }
-body.ux-course #lesson-content .emoji-list li { font-size: 15px; line-height: 1.75; margin-bottom: 10px; }
+body.ux-course #lesson-content .card > p { color: #5c675e; margin: 0 0 20px; font-size: 18px; }
+body.ux-course #lesson-content .emoji-list li { font-size: 18px; line-height: 1.75; margin-bottom: 10px; }
 body.ux-course #lesson-content .emoji-list { margin-top: 14px; }
 body.ux-course #lesson-content .vs-container { gap: 18px; margin: 20px 0; }
 body.ux-course #lesson-content .vs-container > .box { flex: 1 1 240px; min-width: min(100%,240px); max-width: 100%; background: #f1f3e9; border: 1px solid #dde2d3; padding: 23px; border-radius: 12px; transition: none; }
 body.ux-course #lesson-content .box:hover { transform: none; background: #f1f3e9; box-shadow: none; }
-body.ux-course #lesson-content .box > h3 { font-size: 17px; line-height: 1.5; }
-body.ux-course #lesson-content .box > p { font-size: 15px; margin: 12px 0 18px; }
+body.ux-course #lesson-content .box > h3 { font-size: 20px; line-height: 1.5; }
+body.ux-course #lesson-content .box > p { font-size: 18px; margin: 12px 0 18px; }
 body.ux-course #lesson-content :is(.comp-card,.persona-card,.chat-container,.state-map,.tree-container,.mock-comment) { box-shadow: none; border-radius: 12px; }
 body.ux-course #lesson-content .comp-card { border-color: #dde1d4; padding: 21px; background: #f4f4ed; }
 body.ux-course #lesson-content .comp-card:hover { background: #f4f4ed; box-shadow: none; transform: none; }
 body.ux-course #lesson-content .comp-card-header { gap: 10px; align-items: start; }
-body.ux-course #lesson-content .comp-card-title { line-height: 1.5; font-size: 16px; }
-body.ux-course #lesson-content .comp-desc { background: #fffef9; font-size: 14px; line-height: 1.7; border-left: 2px solid #c6d5bb; }
+body.ux-course #lesson-content .comp-card-title { line-height: 1.5; font-size: 18px; }
+body.ux-course #lesson-content .comp-desc { background: #fffef9; font-size: 16px; line-height: 1.7; border-left: 2px solid #c6d5bb; }
 body.ux-course #lesson-content .comp-badge { background: var(--lavender); color: #665075; flex: 0 0 auto; }
 body.ux-course #lesson-content .stage-box { background: #f3f3e9; border-width: 1px; border-color: #dbdfcf; min-width: min(120px,100%); padding: 17px 12px; box-shadow: none; }
 body.ux-course #lesson-content .stage-box:hover { transform: none; background: #e8efdf; border-color: #c1cfb5; }
@@ -994,8 +994,8 @@ body.ux-course #lesson-content :is(.mockup-box,.mock-chat) { border-width: 1px; 
 body.ux-course #lesson-content .mockup-box:hover { transform: translateY(-2px); box-shadow: 0 3px 9px #2033210a; }
 body.ux-course #lesson-content :is(.formula-box,.prompt-box) { border-radius: 12px; padding: 23px; line-height: 1.8; }
 body.ux-course #lesson-content .interactive-mockup { box-shadow: none; border-radius: 12px; }
-body.ux-course #lesson-content .action-btn { min-height: 44px; border-radius: 8px; padding: 10px 17px; font-size: 14px; font-weight: 650; box-shadow: none; line-height: 1.45; }
-body.ux-course #lesson-content .action-btn:hover { background: #2d503f; transform: none; }
+body.ux-course #lesson-content .action-btn { min-height: 44px; border-radius: 8px; padding: 10px 17px; font-size: 16px; font-weight: 650; box-shadow: none; line-height: 1.45; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease; }
+body.ux-course #lesson-content .action-btn:hover { background: #2d503f; }
 body.ux-course #lesson-content .action-btn.btn-red { background: #ac4c45; color: #fff; }
 body.ux-course #lesson-content .action-btn.btn-red:hover { background: #883c36; }
 body.ux-course #lesson-content .action-btn.btn-green { background: #567d57; color: #fff; }
@@ -1003,12 +1003,12 @@ body.ux-course #lesson-content .action-btn.btn-green:hover { background: #3d623f
 body.ux-course #lesson-content :is(.chip,.action-chip,.action-icon,.micro-btn,.key-box) { min-height: 44px; }
 body.ux-course #lesson-content .tooltip-container { padding: 8px 0; }
 body.ux-course #lesson-content .tooltip-container:focus-within .tooltip-box { visibility: visible; opacity: 1; }
-body.ux-course #lesson-content .tooltip-box { max-width: calc(100vw - 80px); font-size: 12px; }
+body.ux-course #lesson-content .tooltip-box { max-width: calc(100vw - 80px); font-size: 14px; }
 body.ux-course #lesson-content .week08-exam-note { background: var(--butter); border-color: #e5d9ad; border-left: 3px solid #c0a14e; border-radius: 8px; margin-top: 10px; color: #62532e; }
 body.ux-course #lesson-content .callout { background: var(--sky); border-color: #a7bfcc; color: #3f5d6b; }
 body.ux-course #lesson-content .blueprint-table { box-shadow: none; line-height: 1.55; }
-body.ux-course #lesson-content .blueprint-table th { font-size: 13px; }
-body.ux-course #lesson-content .blueprint-table td { font-size: 13px; }
+body.ux-course #lesson-content .blueprint-table th { font-size: 15px; }
+body.ux-course #lesson-content .blueprint-table td { font-size: 15px; }
 body.ux-course #lesson-content .comp-grid { gap: 18px; }
 body.ux-course #lesson-content .demo-box { padding: 18px; }
 body.ux-course[data-page="week09"] #lesson-content .perm-select.correct { color: #b5daa9; border-color: #91b787; }
@@ -1016,31 +1016,31 @@ body.ux-course[data-page="week09"] #lesson-content .perm-select.correct { color:
 /* Check understanding without turning the page into a dashboard. */
 body.ux-course .check-section { margin: 35px 0 25px; padding: 25px 28px; background: var(--sky); border: 1px solid #cfdfe5; border-radius: 13px; scroll-margin-top: 105px; }
 body.ux-course .check-section > h2 { color: #35586b; font-size: 22px; margin: 0 0 8px; letter-spacing: -.5px; }
-body.ux-course .check-section > p { color: #506d7d; font-size: 14px; margin: 0 0 20px; }
+body.ux-course .check-section > p { color: #506d7d; font-size: 16px; margin: 0 0 20px; }
 body.ux-course .check-question { padding-top: 19px; margin-top: 18px; border-top: 1px solid #c9d9e0; }
-body.ux-course .check-question h3, body.ux-course .check-question legend { color: #345568; font-size: 16px; font-weight: 650; margin: 0 0 12px; padding: 0; }
+body.ux-course .check-question h3, body.ux-course .check-question legend { color: #345568; font-size: 18px; font-weight: 650; margin: 0 0 12px; padding: 0; }
 body.ux-course .check-question fieldset { border: 0; padding: 0; margin: 0; }
 body.ux-course .check-options { display: flex; flex-wrap: wrap; gap: 8px; }
-body.ux-course .check-options button { flex: 1 1 210px; padding: 12px 15px; text-align: left; min-height: 47px; color: #3e5968; background: #f9fcfc; border: 1px solid #c8d8df; border-radius: 8px; font-size: 14px; line-height: 1.55; transition: background .15s ease; }
+body.ux-course .check-options button { flex: 1 1 210px; padding: 12px 15px; text-align: left; min-height: 47px; color: #3e5968; background: #f9fcfc; border: 1px solid #c8d8df; border-radius: 8px; font-size: 16px; line-height: 1.55; transition: background .15s ease; }
 body.ux-course .check-options button:hover { background: #edf4f7; border-color: #8eaebd; }
 body.ux-course .check-options button:is(.selected,[aria-pressed="true"]) { border-color: #527a8b; background: #dbeaf0; }
 body.ux-course .check-options button.correct { border-color: #7a9e72; background: #e4eedc; color: #305433; }
 body.ux-course .check-options button.incorrect { border-color: #bf8e7d; background: #f7e6df; color: #774534; }
-body.ux-course .check-feedback { margin-top: 12px; padding: 12px 15px; border-radius: 7px; background: #f8fbfc; color: #405e6d; font-size: 14px; line-height: 1.7; }
+body.ux-course .check-feedback { margin-top: 12px; padding: 12px 15px; border-radius: 7px; background: #f8fbfc; color: #405e6d; font-size: 16px; line-height: 1.7; }
 body.ux-course .check-feedback:empty { display: none; }
 body.ux-course .check-feedback.correct { background: #e7efdf; color: #36563c; }
 body.ux-course .check-feedback.incorrect { background: #f7e9e0; color: #79513d; }
-body.ux-course .completion-button { margin-top: 22px; padding: 12px 21px; min-height: 46px; border: 1px solid #365c46; border-radius: 8px; background: #3e634e; color: white; font-weight: 650; font-size: 14px; }
+body.ux-course .completion-button { margin-top: 22px; padding: 12px 21px; min-height: 46px; border: 1px solid #365c46; border-radius: 8px; background: #3e634e; color: white; font-weight: 650; font-size: 16px; }
 body.ux-course .completion-button:hover { background: #294b39; }
 body.ux-course .lesson-footer { padding: 26px 0; margin-top: 28px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-body.ux-course .nav-lesson { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 12px 16px; min-height: 55px; text-decoration: none; border: 1px solid #d4deca; background: #eff3e8; color: #38583f; border-radius: 9px; font-size: 14px; max-width: 49%; line-height: 1.5; }
-body.ux-course .nav-lesson small { color: #61745b; font-size: 11px; }
+body.ux-course .nav-lesson { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 12px 16px; min-height: 55px; text-decoration: none; border: 1px solid #d4deca; background: #eff3e8; color: #38583f; border-radius: 9px; font-size: 16px; max-width: 49%; line-height: 1.5; }
+body.ux-course .nav-lesson small { color: #61745b; font-size: 14px; }
 body.ux-course .nav-lesson:hover { background: #e7eddf; }
 body.ux-course .nav-lesson[aria-disabled="true"] { visibility: hidden; pointer-events: none; }
-body.ux-course .studio-footer { margin-top: 15px; color: #65725c; font-size: 11px; line-height: 1.6; }
+body.ux-course .studio-footer { margin-top: 15px; color: #65725c; font-size: 14px; line-height: 1.6; }
 body.ux-course .studio-footer p { margin: 4px 0; }
-body.ux-course .reset-progress { font-size: 11px; color: #64725d; border: 0; background: transparent; text-decoration: underline; padding: 8px 0; }
-body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10px 0 22px; }
+body.ux-course .reset-progress { font-size: 14px; color: #64725d; border: 0; background: transparent; text-decoration: underline; padding: 8px 0; }
+body.ux-course .reading-mode-note { font-size: 14px; color: #63745b; margin: -10px 0 22px; }
 
 @media (min-width: 1500px) {
   body.ux-course .studio-layout { grid-template-columns: 254px minmax(0,1fr); }
@@ -1058,13 +1058,13 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
   body.ux-course .studio-header { min-height: 72px; padding: 12px 18px; gap: 12px; }
   body.ux-course .studio-brand { gap: 9px; flex: 1 1 auto; }
   body.ux-course .studio-brand strong { font-size: 19px; }
-  body.ux-course .studio-brand small { font-size: 11px; }
-  body.ux-course .brand-mark { width: 37px; height: 37px; border-radius: 11px 11px 11px 3px; font-size: 15px; }
+  body.ux-course .studio-brand small { font-size: 14px; }
+  body.ux-course .brand-mark { width: 37px; height: 37px; border-radius: 11px 11px 11px 3px; font-size: 18px; }
   body.ux-course .header-note { display: none; }
   body.ux-course .header-actions { gap: 9px; }
   body.ux-course .mobile-menu-toggle { display: inline-grid; place-items: center; }
   body.ux-course .language-switch { gap: 1px; padding: 2px; }
-  body.ux-course .language-switch button { min-height: 44px; padding: 6px 8px; font-size: 11px; }
+  body.ux-course .language-switch button { min-height: 44px; padding: 6px 8px; font-size: 14px; }
   body.ux-course .studio-layout { display: block; }
   body.ux-course .course-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(84vw,300px); height: 100dvh; z-index: 102; padding: 26px 22px 25px; transform: translateX(-105%); transition: transform .22s ease; border-right: 1px solid #cdd5c6; box-shadow: 10px 0 30px #1c2e1c1a; }
   body.ux-course.sidebar-open, body.ux-course.menu-open { overflow: hidden; }
@@ -1072,10 +1072,10 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
   body.ux-course .sidebar-backdrop { position: fixed; inset: 0; z-index: 101; background: #1e2d2559; border: 0; padding: 0; }
   body.ux-course.sidebar-open .sidebar-backdrop, body.ux-course.menu-open .sidebar-backdrop, body.ux-course .sidebar-backdrop.is-open { display: block; }
   body.ux-course .course-link { min-height: 47px; padding: 10px 12px; }
-  body.ux-course .week-topic { font-size: 13px; }
+  body.ux-course .week-topic { font-size: 15px; }
   body.ux-course .sidebar-head { margin-bottom: 9px; }
   body.ux-course main.studio-main { max-width: 760px; padding: 25px 24px 36px; }
-  body.ux-course .lesson-topline { font-size: 11px; margin-bottom: 20px; }
+  body.ux-course .lesson-topline { font-size: 14px; margin-bottom: 20px; }
   body.ux-course .lesson-heading h1 { font-size: clamp(28px,5.5vw,37px); letter-spacing: -1px; }
   body.ux-course .quick-review { padding: 22px; }
   body.ux-course .term-grid { gap: 0 20px; }
@@ -1092,21 +1092,21 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
   body.ux-course .studio-brand { flex: 1; }
   body.ux-course .studio-brand small { display: none; }
   body.ux-course .studio-brand strong { font-size: 18px; }
-  body.ux-course .brand-mark { width: 32px; height: 32px; font-size: 13px; }
+  body.ux-course .brand-mark { width: 32px; height: 32px; font-size: 15px; }
   body.ux-course .mobile-menu-toggle { width: 44px; height: 44px; }
-  body.ux-course .language-switch button { min-height: 44px; padding: 6px 7px; font-size: 11px; }
+  body.ux-course .language-switch button { min-height: 44px; padding: 6px 7px; font-size: 14px; }
   body.ux-course main.studio-main { padding: 23px 18px 30px; }
   body.ux-course .lesson-topline { margin-bottom: 17px; }
   body.ux-course .lesson-heading { padding-bottom: 20px; }
   body.ux-course .lesson-heading h1 { font-size: 30px; line-height: 1.18; }
-  body.ux-course .lesson-intro { font-size: 15px; }
+  body.ux-course .lesson-intro { font-size: 18px; }
   body.ux-course .study-modes { width: 100%; }
-  body.ux-course .study-modes button { flex: 1; padding: 9px 11px; font-size: 12px; }
+  body.ux-course .study-modes button { flex: 1; padding: 9px 11px; font-size: 14px; }
   body.ux-course .study-modes button small { display: block; margin-left: 0; }
   body.ux-course .quick-review { padding: 20px; border-radius: 11px; }
   body.ux-course .quick-review h2 { font-size: 19px; }
   body.ux-course .term-grid { grid-template-columns: minmax(0,1fr); padding: 0 19px 10px; }
-  body.ux-course .key-terms summary { padding: 16px 19px; font-size: 14px; }
+  body.ux-course .key-terms summary { padding: 16px 19px; font-size: 16px; }
   body.ux-course .key-terms summary small { display: block; margin: 4px 0 0; }
   body.ux-course .guide-step { padding-left: 25px; margin-left: 5px; }
   body.ux-course .worked-example { padding: 21px; }
@@ -1121,7 +1121,7 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
   body.ux-course #lesson-content .persona-header { align-items: start; gap: 10px; }
   body.ux-course #lesson-content .persona-icon { font-size: 24px; padding: 6px; flex-shrink: 0; }
   body.ux-course #lesson-content .persona-header h2 { font-size: 21px; }
-  body.ux-course #lesson-content :is(.prompt-box,.formula-box) { padding: 19px; font-size: 14px; }
+  body.ux-course #lesson-content :is(.prompt-box,.formula-box) { padding: 19px; font-size: 16px; }
   body.ux-course #lesson-content .state-map { padding: 15px; gap: 8px; }
   body.ux-course #lesson-content .state-step { min-width: 0; flex-basis: calc(50% - 8px); }
   body.ux-course #lesson-content .input-bar { left: 14px; right: 14px; padding: 8px 11px; }
@@ -1133,7 +1133,7 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
   body.ux-course .check-section { padding: 22px 19px; }
   body.ux-course .check-options button { flex-basis: 100%; }
   body.ux-course .lesson-footer { align-items: stretch; gap: 9px; }
-  body.ux-course .nav-lesson { padding: 11px 12px; font-size: 12px; }
+  body.ux-course .nav-lesson { padding: 11px 12px; font-size: 14px; }
   body.ux-course .course-note { padding: 15px 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1150,12 +1150,12 @@ body.ux-course .reading-mode-note { font-size: 12px; color: #63745b; margin: -10
 
 /* Integration additions: comfortable explanatory copy and accessible controls. */
 body.ux-course .studio-layout { width: 100%; }
-body.ux-course .lesson-bridge { margin: 20px 0; color: #546657; font-size: 16px; line-height: 1.75; max-width: 76ch; }
-body.ux-course .demo-label { color: #65725e; font-size: 12px; line-height: 1.6; display: block; }
+body.ux-course .lesson-bridge { margin: 20px 0; color: #546657; font-size: 18px; line-height: 1.75; max-width: 76ch; }
+body.ux-course .demo-label { color: #65725e; font-size: 14px; line-height: 1.6; display: block; }
 body.ux-course .term-item,
 body.ux-course .term-item :is(p,dd,em),
 body.ux-course #lesson-content .comp-desc {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.75;
 }
 body.ux-course .term-item em { font-style: normal; margin-top: 9px; }
@@ -1170,7 +1170,7 @@ body.ux-course #lesson-content .comp-card > .explanation-note {
   border-radius: 0;
   margin: 0;
   color: #526357;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.75;
   max-width: 75ch;
 }
@@ -1179,7 +1179,7 @@ body.ux-course #lesson-content .comp-card > .explanation-note p:last-child { mar
 body.ux-course #lesson-content .comp-card .comp-desc { border-left-color: #b9ccb1; padding: 15px 18px; }
 body.ux-course #lesson-content .comp-card .demo-box { min-height: 180px; }
 body.ux-course #lesson-content .comp-card :is(button.action-btn,.micro-btn) { white-space: normal; max-width: 100%; overflow-wrap: break-word; min-height: 44px; height: auto; }
-body.ux-course #lesson-content .comp-card button.action-btn { font-size: 14px !important; }
+body.ux-course #lesson-content .comp-card button.action-btn { font-size: 16px !important; }
 body.ux-course #lesson-content .comp-card [role="button"] { min-height: 44px; }
 body.ux-course #lesson-content .comp-card .comp-badge { white-space: normal; }
 body.ux-course #lesson-content .key-row { flex-wrap: wrap; justify-content: center; max-width: 100%; }
@@ -1232,24 +1232,24 @@ body.ux-course .check-section fieldset.check-question legend {
   width: 100%;
   padding: 0;
   margin: 0 0 14px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.65;
   color: #345568;
 }
 body.ux-course .check-section fieldset.check-question legend + * { clear: both; }
 body.ux-course .question-number { color: #577d90; font-weight: 750; margin-right: 2px; }
-body.ux-course .check-options button { white-space: normal; overflow-wrap: break-word; font-size: 15px; }
-body.ux-course .check-feedback { font-size: 15px; }
+body.ux-course .check-options button { white-space: normal; overflow-wrap: break-word; font-size: 18px; }
+body.ux-course .check-feedback { font-size: 18px; }
 body.ux-course :is(.completion-button,#save-review):disabled { background: #dce4df; border-color: #c4d0c8; color: #53655b; cursor: not-allowed; box-shadow: none; }
-body.ux-course #completion-hint { font-size: 13px; color: #506b7c; line-height: 1.7; margin-top: 12px; }
+body.ux-course #completion-hint { font-size: 15px; color: #506b7c; line-height: 1.7; margin-top: 12px; }
 body.ux-course #practice-section { padding: 26px 28px; margin-top: 28px; border: 1px solid #eddac9; scroll-margin-top: 110px; }
 body.ux-course #practice-section > h2 { font-size: 23px; color: #734e39; line-height: 1.35; margin: 0 0 13px; }
-body.ux-course #practice-prompt { font-size: 16px; color: #6b5446; line-height: 1.75; }
-body.ux-course #practice-section label { display: block; font-size: 14px; font-weight: 650; color: #465d48; margin-bottom: 8px; }
+body.ux-course #practice-prompt { font-size: 18px; color: #6b5446; line-height: 1.75; }
+body.ux-course #practice-section label { display: block; font-size: 16px; font-weight: 650; color: #465d48; margin-bottom: 8px; }
 body.ux-course .worked-answer { padding: 0 0 16px; margin: 12px 0 18px; border-bottom: 1px solid #e4cfbc; }
-body.ux-course .worked-answer summary { min-height: 44px; padding: 10px 0; color: #73543e; font-size: 15px; font-weight: 650; cursor: pointer; }
-body.ux-course .worked-answer p { margin: 8px 0 0; font-size: 15px; line-height: 1.75; }
-body.ux-course #practice-section .practice-hint { font-size: 15px; line-height: 1.7; color: #735b4b; margin: 0 0 12px; }
+body.ux-course .worked-answer summary { min-height: 44px; padding: 10px 0; color: #73543e; font-size: 18px; font-weight: 650; cursor: pointer; }
+body.ux-course .worked-answer p { margin: 8px 0 0; font-size: 18px; line-height: 1.75; }
+body.ux-course #practice-section .practice-hint { font-size: 18px; line-height: 1.7; color: #735b4b; margin: 0 0 12px; }
 body.ux-course .note-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 body.ux-course #practice-note {
   display: block;
@@ -1261,28 +1261,28 @@ body.ux-course #practice-note {
   background: #fffefb;
   color: #2f4536;
   line-height: 1.75;
-  font-size: 16px;
+  font-size: 18px;
   resize: vertical;
 }
 body.ux-course #practice-note::placeholder { color: #687763; opacity: 1; }
 body.ux-course #practice-note:focus { border-color: #6b8d61; }
-body.ux-course #note-status { display: block; color: #5a7258; font-size: 12px; min-height: 21px; margin-top: 8px; }
-body.ux-course #clear-note { background: transparent; color: #5b6c58; border: 0; padding: 10px 0; min-height: 44px; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
-body.ux-course #expand-lessons { width: 100%; min-height: 48px; background: #f0f3e9; border: 1px solid #cdd9c3; color: #3c5b3f; padding: 13px 18px; border-radius: 9px; white-space: normal; font-size: 14px; line-height: 1.6; text-align: center; }
+body.ux-course #note-status { display: block; color: #5a7258; font-size: 14px; min-height: 21px; margin-top: 8px; }
+body.ux-course #clear-note { background: transparent; color: #5b6c58; border: 0; padding: 10px 0; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+body.ux-course #expand-lessons { width: 100%; min-height: 48px; background: #f0f3e9; border: 1px solid #cdd9c3; color: #3c5b3f; padding: 13px 18px; border-radius: 9px; white-space: normal; font-size: 16px; line-height: 1.6; text-align: center; }
 body.ux-course #expand-lessons:hover { background: #e7eddf; }
 body.ux-course #examples-header { margin: 30px 0 16px; }
 body.ux-course #examples-title { font-size: 25px; color: var(--ink); margin-bottom: 9px; letter-spacing: -.5px; }
-body.ux-course #demo-instruction { color: #53675a; font-size: 15px; line-height: 1.75; }
-body.ux-course #source-location { color: #61705c; font-size: 12px; }
+body.ux-course #demo-instruction { color: #53675a; font-size: 18px; line-height: 1.75; }
+body.ux-course #source-location { color: #61705c; font-size: 14px; }
 body.ux-course .review-save { margin-top: 24px; }
-body.ux-course #save-review { min-height: 46px; max-width: 100%; height: auto; font-size: 15px; line-height: 1.6; padding: 11px 18px; white-space: normal; overflow-wrap: break-word; }
-body.ux-course #save-review:hover { transform: none; }
+body.ux-course #save-review { min-height: 46px; max-width: 100%; height: auto; font-size: 18px; line-height: 1.6; padding: 11px 18px; white-space: normal; overflow-wrap: break-word; }
+
 body.ux-course #save-review:disabled:hover { background: #dce4df; }
 body.ux-course #final-panel { background: var(--butter); border: 1px solid #e2d5a9; border-radius: 12px; padding: 25px 27px; margin: 26px 0; color: #665732; }
 body.ux-course #final-panel h2 { color: #5f4e26; }
-body.ux-course #final-panel p { font-size: 16px; line-height: 1.75; }
+body.ux-course #final-panel p { font-size: 18px; line-height: 1.75; }
 body.ux-course .final-stamp { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #d4c692; background: #fff9e4; color: #85703c; border-radius: 11px; font-size: 21px; font-weight: 750; margin-bottom: 18px; }
-body.ux-course #final-review-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; padding: 10px 15px; border: 1px solid #d1c398; border-radius: 8px; background: #fffcf2; color: #5e512f; text-decoration: none; font-size: 14px; line-height: 1.5; }
+body.ux-course #final-review-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; padding: 10px 15px; border: 1px solid #d1c398; border-radius: 8px; background: #fffcf2; color: #5e512f; text-decoration: none; font-size: 16px; line-height: 1.5; }
 body.ux-course.quick-mode #lesson-content .container > .card:not(.quick-demo) { display: none; }
 body.ux-course.quick-mode #lesson-content .has-quick-component .comp-card:not(.quick-component) { display: none; }
 body.ux-course.quick-mode #lesson-content .has-quick-component .comp-grid { grid-template-columns: minmax(0,1fr); }
@@ -1302,41 +1302,41 @@ body.ux-course.quick-mode #lesson-content .quick-component { grid-column: 1 / -1
   body.ux-course #lesson-content .comp-card .demo-box[style*="flex-direction:row"] { flex-wrap: wrap; }
   body.ux-course #examples-title { font-size: 22px; }
   body.ux-course #final-panel { padding: 22px 20px; }
-  body.ux-course #completion-hint { font-size: 13px; }
+  body.ux-course #completion-hint { font-size: 15px; }
   body.ux-course #practice-section, body.ux-course #check-section, body.ux-course #lesson-content .card { scroll-margin-top: 150px; }
 }
 
 /* Integration states and progressive study routes. */
-body.ux-course .lesson-bridge{font-size:15px;color:var(--muted);margin:0 0 22px;}
+body.ux-course .lesson-bridge{font-size:18px;color:var(--muted);margin:0 0 22px;}
 body.ux-course .sidebar-close{display:none;}
 body.ux-course .examples-header h2{font-size:22px;margin:0 0 7px;letter-spacing:-.4px;}
-body.ux-course .examples-header p{font-size:15px;margin:0 0 9px;color:var(--muted);}
-body.ux-course .demo-label{font-size:12px;color:#59695b;display:inline-block;background:#eef0e8;border-radius:5px;padding:5px 10px;}
-body.ux-course .worked-answer summary{cursor:pointer;min-height:44px;display:list-item;font-size:14px;color:#6b4630;padding:10px 0;}
+body.ux-course .examples-header p{font-size:18px;margin:0 0 9px;color:var(--muted);}
+body.ux-course .demo-label{font-size:14px;color:#59695b;display:inline-block;background:#eef0e8;border-radius:5px;padding:5px 10px;}
+body.ux-course .worked-answer summary{cursor:pointer;min-height:44px;display:list-item;font-size:16px;color:#6b4630;padding:10px 0;}
 body.ux-course .worked-answer p{border-top:1px solid #e2cdbc;padding-top:12px;}
-body.ux-course .note-label{display:block;font-size:14px;font-weight:650;margin-top:20px;}
-body.ux-course .practice-hint{font-size:15px!important;margin:3px 0 12px!important;}
-body.ux-course #practice-note{display:block;width:100%;min-height:100px;padding:14px;border:1px solid #c7b6a7;border-radius:8px;background:#fffdf9;color:var(--ink);resize:vertical;font-size:16px;}
+body.ux-course .note-label{display:block;font-size:16px;font-weight:650;margin-top:20px;}
+body.ux-course .practice-hint{font-size:18px!important;margin:3px 0 12px!important;}
+body.ux-course #practice-note{display:block;width:100%;min-height:100px;padding:14px;border:1px solid #c7b6a7;border-radius:8px;background:#fffdf9;color:var(--ink);resize:vertical;font-size:18px;}
 body.ux-course .note-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:6px;}
-body.ux-course #note-status{font-size:12px;color:#635442;}
-body.ux-course .text-button{border:0;min-height:44px;background:none;color:#6b4630;font-size:12px;text-decoration:underline;}
+body.ux-course #note-status{font-size:14px;color:#635442;}
+body.ux-course .text-button{border:0;min-height:44px;background:none;color:#6b4630;font-size:14px;text-decoration:underline;}
 body.ux-course fieldset.check-question{padding:20px 0;border:0;border-top:1px solid #ccdde4;margin:22px 0 0;min-width:0;}
-body.ux-course .check-question legend{font-size:16px;font-weight:650;padding:0 10px 0 0;max-width:100%;}
+body.ux-course .check-question legend{font-size:18px;font-weight:650;padding:0 10px 0 0;max-width:100%;}
 body.ux-course .question-number{color:#4d6e7c;}
 body.ux-course .check-options button{white-space:normal;text-align:left;min-height:48px;}
 body.ux-course .check-options button.selected.correct{background:#e1ecdb;border-color:#64845b;color:#294b2c;}
 body.ux-course .check-options button.selected.incorrect{background:#f5e3da;border-color:#a7785c;color:#6b3e2c;}
 body.ux-course .check-feedback.incorrect{color:#703f2c;background:#f8e9df;}
 body.ux-course .review-save{margin-top:24px;padding-top:20px;border-top:1px solid #ccdde4;}
-body.ux-course #completion-hint{font-size:13px;line-height:1.6;}
+body.ux-course #completion-hint{font-size:15px;line-height:1.6;}
 body.ux-course button:disabled{cursor:default;opacity:.55;transform:none!important;}
 body.ux-course .expand-lessons{display:block;margin:20px 0;border:1px solid #bccbb6;background:#edf2e8;color:#34513c;min-height:48px;padding:12px 18px;border-radius:9px;text-align:left;}
 body.ux-course .final-panel{background:var(--lavender);border:1px solid #d9d0e4;border-radius:18px;padding:34px;margin:24px 0 40px;}
 body.ux-course .final-stamp{font:700 21px Georgia,serif;color:#78613c;}
-body.ux-course .studio-footer{border-top:1px solid var(--line);padding-top:22px;color:#5c6b60;font-size:12px;line-height:1.7;}
+body.ux-course .studio-footer{border-top:1px solid var(--line);padding-top:22px;color:#5c6b60;font-size:14px;line-height:1.7;}
 body.ux-course .studio-footer summary{cursor:pointer;padding:8px 0;}
 body.ux-course .studio-footer p{margin:0 0 10px;}
-body.ux-course .studio-footer small{display:block;font-size:11px;color:#64715f;margin-top:20px;}
+body.ux-course .studio-footer small{display:block;font-size:14px;color:#64715f;margin-top:20px;}
 body.ux-course .studio-footer>a{display:inline-block;margin-top:14px;min-height:32px;}
 body.ux-course [id]{scroll-margin-top:100px;}
 body.ux-course.quick-mode #lesson-content .container>.card:not(.quick-demo){display:none;}
@@ -1417,7 +1417,7 @@ body.ux-course .course-link:is(.active,[aria-current="page"])::before { backgrou
 body.ux-course .course-link.exam { background: #f2f5f7; }
 body.ux-course .course-link.exam:is(.active,[aria-current="page"]) { background: #eef4fb; }
 body.ux-course .week-number { color: #657587; }
-body.ux-course .week-topic { font-size: 13px; }
+body.ux-course .week-topic { font-size: 15px; }
 body.ux-course .week-status { color: #627184; }
 body.ux-course .sidebar-close, body.ux-course #sidebar-close {
   background: #fcfdff;
@@ -1438,13 +1438,10 @@ body.ux-course #lesson-content .container > .card {
   background: #fcfdff;
   border: 1px solid #e7ecf2 !important;
   border-radius: 15px;
-  box-shadow: 0 2px 9px rgba(33,53,78,.035);
+  box-shadow: 0 6px 18px rgba(33,53,78,.065);
   opacity: 1;
   transform: none;
-}
-body.ux-course #lesson-content .container > .card:hover {
-  transform: none !important;
-  box-shadow: 0 2px 9px rgba(33,53,78,.035);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 body.ux-course #lesson-content .card > :is(h1,h2) { color: #2c3b50; }
 body.ux-course #lesson-content .card > p { color: #56677b; }
@@ -1471,7 +1468,7 @@ body.ux-course #lesson-content .comp-card .comp-desc {
   background: #eef4fb;
   border-left-color: #c6d7e7;
   color: #4a6076;
-  font-size: 15px;
+  font-size: 18px;
 }
 body.ux-course #lesson-content .comp-card:nth-child(even) .comp-desc {
   background: #edf7f3;
@@ -1582,7 +1579,7 @@ body.ux-course #term-tooltip {
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: #d6e1ec transparent;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
 }
 body.ux-course #term-tooltip[hidden] { display: none !important; }
@@ -1590,13 +1587,13 @@ body.ux-course #term-tooltip :is(h2,h3,.term-tooltip-title,#term-tooltip-title) 
   display: block;
   margin: 0 0 10px;
   padding: 0;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.5;
   font-weight: 700;
   letter-spacing: -.2px;
   color: #2e526f;
 }
-body.ux-course #term-tooltip p { margin: 0 0 11px; font-size: 15px; line-height: 1.7; }
+body.ux-course #term-tooltip p { margin: 0 0 11px; font-size: 18px; line-height: 1.7; }
 body.ux-course #term-tooltip p:last-child { margin-bottom: 0; }
 body.ux-course #term-tooltip :is(.term-example,.term-tooltip-example,#term-tooltip-example,#term-example) {
   margin-top: 13px;
@@ -1605,7 +1602,7 @@ body.ux-course #term-tooltip :is(.term-example,.term-tooltip-example,#term-toolt
   border: 1px solid #e1eee7;
   border-radius: 8px;
   color: #496b5d;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
 }
 /* Only the arrow moves; the circular hit area stays in the same place. */
@@ -1689,7 +1686,7 @@ body.ux-course[data-page="week01"] #lesson-content :is(.cli-body,.gui-body,.ai-b
   max-height: none;
   padding: 20px;
   flex: 1 0 auto;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
   overflow: visible;
   overflow-wrap: anywhere;
@@ -1697,7 +1694,7 @@ body.ux-course[data-page="week01"] #lesson-content :is(.cli-body,.gui-body,.ai-b
 body.ux-course[data-page="week01"] #lesson-content :is(.cli-header,.gui-header,.ai-header) {
   padding: 11px 16px;
   min-height: 42px;
-  font-size: 14px;
+  font-size: 16px;
 }
 body.ux-course[data-page="week01"] #lesson-content .chat-bubble {
   max-width: 100%;
@@ -1737,7 +1734,7 @@ body.ux-course[data-page="week03"] #lesson-content .starter-chips .chip {
   max-width: 100%;
   padding: 12px 16px;
   font: inherit;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.5;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -1752,13 +1749,13 @@ body.ux-course[data-page="week03"] #lesson-content .input-bar {
   gap: 12px;
   flex: 0 0 auto;
 }
-body.ux-course[data-page="week03"] #lesson-content .input-bar input { min-width: 0; width: 100%; font-size: 16px; }
+body.ux-course[data-page="week03"] #lesson-content .input-bar input { min-width: 0; width: 100%; font-size: 18px; }
 body.ux-course[data-page="week03"] #lesson-content #ai-typing-text {
   min-height: 135px;
   height: auto;
   max-height: none;
   padding: 20px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -1785,7 +1782,7 @@ body.ux-course[data-page="week04"] #lesson-content button.action-chip {
   background: #eef4fb;
   color: #365f80;
   font: inherit;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.5;
   white-space: normal;
   word-break: normal;
@@ -1800,7 +1797,7 @@ body.ux-course #v3-turn-next.v3-message-enter { animation: v3-message-enter .3s 
 @keyframes v3-message-enter { from { opacity: .35; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
 
 body.ux-course[data-page="week04"] #lesson-content .tree-container { gap: 18px; padding: 28px 22px; overflow: visible; border: 1px solid var(--line); background: #f7faff; }
-body.ux-course[data-page="week04"] #lesson-content .node { max-width: 100%; font-size: 15px; line-height: 1.6; box-shadow: none; }
+body.ux-course[data-page="week04"] #lesson-content .node { max-width: 100%; font-size: 18px; line-height: 1.6; box-shadow: none; }
 body.ux-course[data-page="week04"] #lesson-content .node.decision {
   position: relative;
   isolation: isolate;
@@ -1857,7 +1854,7 @@ body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) {
   padding: 6px 11px;
   min-height: 34px;
   border-radius: 7px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
   color: #fff;
@@ -1905,7 +1902,7 @@ body.ux-course #lesson-content .v3-er {
   max-width: 100%;
   color: #334b62;
   text-align: left;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
 }
 body.ux-course #lesson-content .v3-er [hidden] { display: none !important; }
@@ -1913,15 +1910,15 @@ body.ux-course #lesson-content .v3-er .v3-er-title {
   margin: 0 0 9px;
   padding: 0;
   color: #35556f;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.5;
   font-weight: 700;
 }
-body.ux-course #lesson-content .v3-er p { font-size: 14px; line-height: 1.7; }
+body.ux-course #lesson-content .v3-er p { font-size: 16px; line-height: 1.7; }
 body.ux-course #lesson-content .v3-er .v3-er-intro { color: #5a7084; margin: 0 0 19px; }
 body.ux-course #lesson-content .v3-er-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: stretch; }
 body.ux-course #lesson-content .v3-er-lane { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-body.ux-course #lesson-content .v3-er-lane-title { display: flex; align-items: center; gap: 8px; color: #76554e; font-size: 15px; }
+body.ux-course #lesson-content .v3-er-lane-title { display: flex; align-items: center; gap: 8px; color: #76554e; font-size: 18px; }
 body.ux-course #lesson-content .v3-er-lane-good .v3-er-lane-title { color: #426c5b; }
 body.ux-course #lesson-content .v3-er-dot { width: 8px; height: 8px; border-radius: 50%; background: #cb9384; flex: 0 0 auto; }
 body.ux-course #lesson-content .v3-er-lane-good .v3-er-dot { background: #7cae94; }
@@ -1934,7 +1931,7 @@ body.ux-course #lesson-content .v3-er-phone {
   border: 1px solid #e7ecf2;
   border-radius: 27px;
   background: #fcfdff;
-  box-shadow: 0 5px 18px rgba(45,68,92,.045);
+  box-shadow: 0 22px 40px -16px rgba(30,51,75,.32), 0 6px 14px rgba(30,51,75,.12), inset 0 0 0 1px rgba(255,255,255,.8);
   display: flex;
   flex-direction: column;
 }
@@ -1946,7 +1943,7 @@ body.ux-course #lesson-content .v3-er-phone-top {
   gap: 10px;
   padding: 2px 10px 11px;
   color: #738498;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 650;
   line-height: 1.4;
 }
@@ -1958,10 +1955,10 @@ body.ux-course #lesson-content .v3-er-appbar {
   padding: 11px 10px 14px;
   border-bottom: 1px solid #e7ecf2;
   color: #415f79;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 650;
 }
-body.ux-course #lesson-content .v3-er-app-icon { display: grid; place-items: center; width: 28px; height: 28px; flex: 0 0 auto; border-radius: 8px; background: #eef4fb; color: #5d7f9b; font-size: 13px; font-weight: 700; }
+body.ux-course #lesson-content .v3-er-app-icon { display: grid; place-items: center; width: 28px; height: 28px; flex: 0 0 auto; border-radius: 8px; background: #eef4fb; color: #5d7f9b; font-size: 15px; font-weight: 700; }
 body.ux-course #lesson-content .v3-er-screen {
   display: flex;
   flex-direction: column;
@@ -1974,14 +1971,14 @@ body.ux-course #lesson-content .v3-er-screen {
   max-width: 100%;
   height: auto;
   color: #445f76;
-  font-size: 14px;
+  font-size: 16px;
   overflow-wrap: break-word;
 }
-body.ux-course #lesson-content .v3-er-user-bubble { align-self: flex-end; max-width: 93%; background: #eef4fb; border: 1px solid #e1eaf4; border-radius: 13px 13px 4px 13px; padding: 11px 13px; color: #476982; font-size: 14px; line-height: 1.6; }
-body.ux-course #lesson-content .v3-er-lost { padding: 12px 13px; background: #f5f7fa; border: 1px dashed #d7e0e9; border-radius: 10px; color: #687a8b; font-size: 14px; }
-body.ux-course #lesson-content .v3-er-error { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 16px; background: #fdf2f0; border: 1px solid #f0e1dc; border-radius: 12px; color: #82584c; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-user-bubble { align-self: flex-end; max-width: 93%; background: #eef4fb; border: 1px solid #e1eaf4; border-radius: 13px 13px 4px 13px; padding: 11px 13px; color: #476982; font-size: 16px; line-height: 1.6; }
+body.ux-course #lesson-content .v3-er-lost { padding: 12px 13px; background: #f5f7fa; border: 1px dashed #d7e0e9; border-radius: 10px; color: #687a8b; font-size: 16px; }
+body.ux-course #lesson-content .v3-er-error { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding: 16px; background: #fdf2f0; border: 1px solid #f0e1dc; border-radius: 12px; color: #82584c; font-size: 16px; }
 body.ux-course #lesson-content .v3-er-error p { color: #875d51; margin: 0; }
-body.ux-course #lesson-content .v3-er-state-icon { display: grid; place-items: center; width: 26px; height: 26px; flex: 0 0 auto; border: 1px solid #e5c8bd; border-radius: 50%; color: #9a6653; font-size: 15px; font-weight: 750; background: #fffaf8; }
+body.ux-course #lesson-content .v3-er-state-icon { display: grid; place-items: center; width: 26px; height: 26px; flex: 0 0 auto; border: 1px solid #e5c8bd; border-radius: 50%; color: #9a6653; font-size: 18px; font-weight: 750; background: #fffaf8; }
 body.ux-course #lesson-content .v3-er-recoverable { margin-bottom: 12px; }
 body.ux-course #lesson-content .v3-er-button {
   display: inline-flex;
@@ -2000,42 +1997,42 @@ body.ux-course #lesson-content .v3-er-button {
   background: #416b8c;
   color: #ffffff;
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 650;
   line-height: 1.5;
   white-space: normal;
   text-align: center;
   cursor: pointer;
   box-shadow: none;
-  transition: background-color .15s ease;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
 }
-body.ux-course #lesson-content .v3-er-button:hover { background: #355c7a; border-color: #355c7a; transform: none; }
+body.ux-course #lesson-content .v3-er-button:hover { background: #355c7a; border-color: #355c7a; }
 body.ux-course #lesson-content .v3-er-button.v3-er-secondary { border-color: #dbe5ee; background: #f7faff; color: #536f87; }
 body.ux-course #lesson-content .v3-er-button.v3-er-secondary:hover { background: #eef4fb; border-color: #c7d8e6; }
 body.ux-course #lesson-content .v3-er-button.v3-er-pressure { border-color: #ead3ca; background: #f5e3dd; color: #875849; }
 body.ux-course #lesson-content .v3-er-button.v3-er-pressure:hover { background: #eed7cf; }
-body.ux-course #lesson-content .v3-er-input-blank { margin-top: auto; padding: 11px 13px; border: 1px solid #e3e9ef; border-radius: 10px; background: #fcfdff; color: #677d90; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-input-blank { margin-top: auto; padding: 11px 13px; border: 1px solid #e3e9ef; border-radius: 10px; background: #fcfdff; color: #677d90; font-size: 16px; }
 body.ux-course #lesson-content .v3-er .v3-er-caption { margin: 0; color: #617587; }
 body.ux-course #lesson-content .v3-er-loading { min-height: 150px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 24px 12px; color: #5a768f; background: #f5f9fd; border-radius: 12px; }
 body.ux-course #lesson-content .v3-er-spinner { width: 20px; height: 20px; flex: 0 0 auto; border: 2px solid #cdddeb; border-top-color: #507b9c; border-radius: 50%; animation: v3-er-spin .8s linear infinite; }
-body.ux-course #lesson-content .v3-er-success { padding: 17px 15px; border: 1px solid #d8eadd; border-radius: 12px; background: #edf7f3; color: #476b57; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-success { padding: 17px 15px; border: 1px solid #d8eadd; border-radius: 12px; background: #edf7f3; color: #476b57; font-size: 16px; }
 body.ux-course #lesson-content .v3-er-success > strong { display: block; margin-top: 9px; line-height: 1.5; }
 body.ux-course #lesson-content .v3-er-success .v3-er-state-icon { background: #f8fcf9; color: #5b8a6b; border-color: #c4ddcd; }
-body.ux-course #lesson-content .v3-er-success ul { padding-left: 19px; margin: 13px 0; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-success ul { padding-left: 19px; margin: 13px 0; font-size: 16px; }
 body.ux-course #lesson-content .v3-er-success li { margin: 6px 0; }
-body.ux-course #lesson-content .v3-er-saved-tag { display: block; padding-top: 11px; border-top: 1px solid #d6e6dd; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-saved-tag { display: block; padding-top: 11px; border-top: 1px solid #d6e6dd; font-size: 16px; }
 body.ux-course #lesson-content .v3-er-live { margin: 0; min-height: 0; color: #527261; }
 body.ux-course #lesson-content .v3-er-live:empty { display: none; }
-body.ux-course #lesson-content .v3-er-result { padding: 12px 13px; background: #eef4fb; color: #4f6a81; border: 1px solid #dce8f2; border-radius: 9px; margin: 0; font-size: 14px; }
+body.ux-course #lesson-content .v3-er-result { padding: 12px 13px; background: #eef4fb; color: #4f6a81; border: 1px solid #dce8f2; border-radius: 9px; margin: 0; font-size: 16px; }
 body.ux-course #lesson-content .v3-er-result.v3-er-result-bad { background: #fdf2f0; color: #865b4e; border-color: #f0dfd8; }
 body.ux-course #lesson-content .v3-er-result.v3-er-result-good { background: #edf7f3; color: #476d5b; border-color: #d7e9de; }
 body.ux-course #lesson-content .v3-er-appeared { animation: v3-er-reveal .25s ease-out 1; }
 body.ux-course #lesson-content .v3-er-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-top: 18px; }
 body.ux-course #lesson-content .v3-er .v3-er-takeaway { margin: 0; color: #4d6d60; font-weight: 600; flex: 1 1 210px; }
-body.ux-course #lesson-content .v3-er-text-button { appearance: none; border: 0; background: transparent; padding: 10px 3px; min-height: 44px; max-width: 100%; color: #537695; font: inherit; font-size: 14px; line-height: 1.5; text-align: left; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; white-space: normal; }
+body.ux-course #lesson-content .v3-er-text-button { appearance: none; border: 0; background: transparent; padding: 10px 3px; min-height: 44px; max-width: 100%; color: #537695; font: inherit; font-size: 16px; line-height: 1.5; text-align: left; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; white-space: normal; }
 body.ux-course #lesson-content .v3-er-text-button:hover { color: #365f80; }
 body.ux-course #lesson-content .v3-er-mode { display: flex; gap: 4px; padding: 4px; background: #f0f5fa; border: 1px solid #e1eaf3; border-radius: 11px; margin: 15px 0 18px; }
-body.ux-course #lesson-content .v3-er-mode > button { appearance: none; flex: 1 1 0; min-width: 0; min-height: 44px; padding: 8px 9px; border: 1px solid transparent; border-radius: 8px; color: #64798d; background: transparent; font: inherit; font-size: 14px; line-height: 1.4; font-weight: 650; white-space: normal; cursor: pointer; }
+body.ux-course #lesson-content .v3-er-mode > button { appearance: none; flex: 1 1 0; min-width: 0; min-height: 44px; padding: 8px 9px; border: 1px solid transparent; border-radius: 8px; color: #64798d; background: transparent; font: inherit; font-size: 16px; line-height: 1.4; font-weight: 650; white-space: normal; cursor: pointer; }
 body.ux-course #lesson-content .v3-er-mode > button[aria-pressed="true"] { border-color: #dce6ef; background: #fcfdff; color: #3d6483; box-shadow: 0 1px 4px rgba(32,58,83,.045); }
 body.ux-course #lesson-content .v3-er-mode > button:hover { background: #fcfdff; }
 body.ux-course #lesson-content .v3-er-ethics { margin-top: 18px; padding-top: 17px; }
@@ -2044,23 +2041,23 @@ body.ux-course #lesson-content .v3-er-bot-bubble { display: flex; align-items: f
 body.ux-course #lesson-content .v3-er-bot-bubble p { margin: 0; color: #7b584e; }
 body.ux-course #lesson-content .v3-er-bubble-good { background: #edf7f3; border-color: #e0ede5; }
 body.ux-course #lesson-content .v3-er-bubble-good p { color: #506e60; }
-body.ux-course #lesson-content .v3-er-avatar { display: grid; place-items: center; flex: 0 0 auto; width: 24px; height: 24px; border-radius: 8px; background: #f8e6df; color: #9b7161; font-size: 16px; }
+body.ux-course #lesson-content .v3-er-avatar { display: grid; place-items: center; flex: 0 0 auto; width: 24px; height: 24px; border-radius: 8px; background: #f8e6df; color: #9b7161; font-size: 18px; }
 body.ux-course #lesson-content .v3-er-bubble-good .v3-er-avatar { background: #e0eee5; color: #5b8069; }
-body.ux-course #lesson-content .v3-er-ai-label { display: block; font-size: 14px; color: #4b705a; margin-bottom: 6px; }
+body.ux-course #lesson-content .v3-er-ai-label { display: block; font-size: 16px; color: #4b705a; margin-bottom: 6px; }
 body.ux-course #lesson-content .v3-er-choice-row { display: flex; gap: 8px; align-items: stretch; }
 body.ux-course #lesson-content .v3-er-choice-row > button { flex: 1 1 0; min-width: 0; }
 body.ux-course #lesson-content .v3-er .v3-er-insight { margin: 18px 0 0; padding: 13px 14px; border-radius: 10px; background: #eef4fb; border: 1px solid #e2eaf3; color: #526d85; line-height: 1.7; }
 body.ux-course #lesson-content .v3-er[data-er-current-mode="good"] .v3-er-insight { background: #edf7f3; color: #466c59; border-color: #ddece3; }
 body.ux-course #lesson-content .v3-er-feature-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 13px; background: #eef4fb; color: #6d91af; font-size: 25px; }
 body.ux-course #lesson-content .v3-er-feature-mint { background: #edf7f3; color: #70927d; }
-body.ux-course #lesson-content .v3-er-screen-title { display: block; font-size: 16px; line-height: 1.5; color: #3f5e78; }
+body.ux-course #lesson-content .v3-er-screen-title { display: block; font-size: 18px; line-height: 1.5; color: #3f5e78; }
 body.ux-course #lesson-content .v3-er .v3-er-screen-copy { margin: 0; color: #60788e; }
-body.ux-course #lesson-content .v3-er-consent { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 10px 0; font-size: 14px; line-height: 1.6; cursor: pointer; }
+body.ux-course #lesson-content .v3-er-consent { display: flex; align-items: flex-start; gap: 10px; min-height: 44px; padding: 10px 0; font-size: 16px; line-height: 1.6; cursor: pointer; }
 body.ux-course #lesson-content .v3-er-consent > input { appearance: auto; flex: 0 0 auto; width: 18px; height: 18px; margin: 3px 0 0; accent-color: #6285a1; }
 body.ux-course #lesson-content .v3-er-consent-bad { margin-top: 4px; color: #607489; border-top: 1px solid #e7ecf2; }
 body.ux-course #lesson-content .v3-er-consent-good { padding: 13px 12px; background: #edf7f3; border: 1px solid #dcece2; border-radius: 10px; color: #4b6f5a; }
-body.ux-course #lesson-content .v3-er-consent-good strong { display: block; font-size: 14px; }
-body.ux-course #lesson-content .v3-er-consent-good small { display: block; font-size: 14px; color: #537b63; margin-top: 4px; }
+body.ux-course #lesson-content .v3-er-consent-good strong { display: block; font-size: 16px; }
+body.ux-course #lesson-content .v3-er-consent-good small { display: block; font-size: 16px; color: #537b63; margin-top: 4px; }
 body.ux-course #lesson-content .v3-er :is(button,input):focus-visible { outline: 3px solid #7198b8; outline-offset: 3px; }
 body.ux-course #lesson-content .v3-er-success:focus-visible { outline: 2px solid #7ca58b; outline-offset: 3px; }
 body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) { align-items: stretch; }
@@ -2094,7 +2091,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   --v3-pb-mint: #e5f2ed;
   --v3-pb-peach: #fff0e5;
   color: var(--v3-pb-ink);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
   text-align: left;
   max-width: 100%;
@@ -2107,7 +2104,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb h3 { margin: 4px 0 9px; color: var(--v3-pb-ink); font-size: 19px; line-height: 1.4; }
 .v3-pb button, .v3-pb select, .v3-pb textarea {
   font-family: inherit;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.45;
   color: inherit;
   max-width: 100%;
@@ -2140,7 +2137,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-pb-primary:hover { background: #d3e3f7; border-color: #9db8dc; }
 .v3-pb .v3-pb-quiet { background: transparent; border-color: transparent; font-weight: 500; }
 .v3-pb .v3-pb-quiet:hover { border-color: var(--v3-pb-line); }
-.v3-pb .v3-pb-eyebrow, .v3-pb .v3-pb-label { display: block; font-size: 14px; font-weight: 600; color: var(--v3-pb-muted); }
+.v3-pb .v3-pb-eyebrow, .v3-pb .v3-pb-label { display: block; font-size: 16px; font-weight: 600; color: var(--v3-pb-muted); }
 .v3-pb .v3-pb-controls, .v3-pb .v3-pb-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .v3-pb .v3-pb-footer { margin-top: 16px; justify-content: space-between; }
 .v3-pb .v3-pb-multiline { white-space: pre-line; overflow-wrap: anywhere; }
@@ -2156,7 +2153,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   border: 1px solid #d9e1eb;
   border-radius: 29px;
   background: #f1f5f9;
-  box-shadow: 0 5px 14px rgba(49, 72, 94, .045);
+  box-shadow: 0 22px 40px -16px rgba(30,51,75,.32), 0 6px 14px rgba(30,51,75,.12), inset 0 0 0 1px rgba(255,255,255,.8);
 }
 .v3-pb .v3-pb-device-bar {
   display: flex;
@@ -2166,7 +2163,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   border-radius: 23px 23px 0 0;
   color: #506174;
   background: #fcfdff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 .v3-pb .v3-pb-device-bar svg { width: 44px; height: 16px; stroke-width: 1; }
@@ -2178,7 +2175,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   padding: 10px 13px 15px;
   border-bottom: 1px solid var(--v3-pb-line);
   background: #fcfdff;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.4;
 }
 .v3-pb .v3-pb-phone-header strong { min-width: 0; overflow-wrap: anywhere; }
@@ -2200,7 +2197,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   padding: 16px 13px 20px;
   border-radius: 0 0 23px 23px;
   background: #fcfdff;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
 }
 .v3-pb .v3-pb-phone-body > * + * { margin-top: 14px; }
@@ -2211,9 +2208,9 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-pb-request { background: #f0f5fc; border-color: #e0e8f4; }
 .v3-pb .v3-pb-result { background: #edf7f2; border-color: #d7e8df; color: #304f44; }
 .v3-pb .v3-pb-document p, .v3-pb .v3-pb-request p, .v3-pb .v3-pb-result p { margin-top: 7px; }
-.v3-pb .v3-pb-file { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #586b81; overflow-wrap: anywhere; }
+.v3-pb .v3-pb-file { display: flex; align-items: center; gap: 8px; font-size: 16px; color: #586b81; overflow-wrap: anywhere; }
 .v3-pb .v3-pb-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
-.v3-pb .v3-pb-fieldset legend { padding: 0 0 8px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.v3-pb .v3-pb-fieldset legend { padding: 0 0 8px; font-size: 16px; font-weight: 600; line-height: 1.5; }
 .v3-pb .v3-pb-choices { display: flex; flex-wrap: wrap; gap: 7px; }
 .v3-pb .v3-pb-choice {
   min-height: 44px;
@@ -2232,14 +2229,14 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
   border-color: #8faed1;
   box-shadow: inset 0 0 0 1px #8faed1;
 }
-.v3-pb .v3-pb-field { display: grid; gap: 5px; font-size: 14px; font-weight: 600; }
+.v3-pb .v3-pb-field { display: grid; gap: 5px; font-size: 16px; font-weight: 600; }
 .v3-pb .v3-pb-field + .v3-pb-field { margin-top: 11px; }
 .v3-pb select { width: 100%; min-width: 0; min-height: 44px; padding: 9px 8px; border: 1px solid #d2dce8; border-radius: 10px; background: #fff; }
 .v3-pb .v3-pb-options { padding: 13px; border: 1px solid var(--v3-pb-line); border-radius: 12px; background: #f7f9fc; }
 .v3-pb .v3-pb-options-toggle { justify-content: flex-start; text-align: left; }
 .v3-pb .v3-pb-chevron { margin-left: auto; font-size: 20px; transform-origin: center; }
 .v3-pb .v3-pb-options-toggle[aria-expanded="true"] .v3-pb-chevron { transform: rotate(180deg); }
-.v3-pb .v3-pb-loading { display: flex; align-items: center; gap: 9px; color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-pb-loading { display: flex; align-items: center; gap: 9px; color: var(--v3-pb-muted); font-size: 16px; }
 .v3-pb .v3-pb-dots { display: inline-flex; flex: 0 0 auto; gap: 4px; }
 .v3-pb .v3-pb-dots i { display: block; width: 5px; height: 5px; border-radius: 50%; background: #6d8cab; animation: v3-pb-dot .7s ease-in-out infinite alternate; }
 .v3-pb .v3-pb-dots i:nth-child(2) { animation-delay: .14s; }
@@ -2247,20 +2244,20 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-pb-result.is-entering { animation: v3-pb-appear .25s ease-out; }
 .v3-pb .v3-pd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 22px; align-items: start; }
 .v3-pb .v3-pd-level { min-width: 0; padding: 0; }
-.v3-pb .v3-pd-caption { margin-bottom: 16px; color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-pd-caption { margin-bottom: 16px; color: var(--v3-pb-muted); font-size: 16px; }
 .v3-pb .v3-pd-phone { min-height: 430px; background: #f1f5f9; }
 .v3-pb .v3-pd-level:nth-child(2) .v3-pb-app-icon { background: var(--v3-pb-mint); border-color: #d4e8dd; color: #486f5d; }
 .v3-pb .v3-pd-level:nth-child(3) .v3-pb-app-icon { background: var(--v3-pb-peach); border-color: #f0ddcd; color: #865e43; }
 .v3-demo.v3-fb { max-width: 720px; margin-inline: auto; border: 1px solid #e1e8f0; border-radius: 24px; background: #fbfdff; }
 .v3-pb .v3-fb-header { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--v3-pb-line); }
-.v3-pb .v3-fb-header p { font-size: 14px; color: var(--v3-pb-muted); }
+.v3-pb .v3-fb-header p { font-size: 16px; color: var(--v3-pb-muted); }
 .v3-pb .v3-fb-thread { padding: 22px; }
 .v3-pb .v3-fb-message { min-width: 0; max-width: 92%; padding: 16px 18px; border: 1px solid #e6edf4; border-radius: 17px; }
 .v3-pb .v3-fb-message > p { margin-top: 7px; }
 .v3-pb .v3-fb-user { margin-left: auto; background: #eaf1fc; border-color: #dce6f5; border-bottom-right-radius: 5px; }
 .v3-pb .v3-fb-assistant { margin: 22px 0 0; max-width: 100%; background: #fff; border-bottom-left-radius: 5px; }
-.v3-pb .v3-fb-attachment { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 9px; background: rgba(255,255,255,.72); border: 1px solid #d6e1ef; border-radius: 9px; font-size: 14px; }
-.v3-pb .v3-fb-check { padding-top: 10px; border-top: 1px solid var(--v3-pb-line); color: var(--v3-pb-muted); font-size: 14px; }
+.v3-pb .v3-fb-attachment { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 9px; background: rgba(255,255,255,.72); border: 1px solid #d6e1ef; border-radius: 9px; font-size: 16px; }
+.v3-pb .v3-fb-check { padding-top: 10px; border-top: 1px solid var(--v3-pb-line); color: var(--v3-pb-muted); font-size: 16px; }
 .v3-pb .v3-fb-actions, .v3-pb .v3-fb-votes, .v3-pb .v3-fb-tools { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
 .v3-pb .v3-fb-actions { justify-content: space-between; margin-top: 12px; }
 .v3-pb .v3-pb-tool { padding: 8px 10px; background: transparent; border-color: transparent; font-weight: 500; }
@@ -2269,10 +2266,10 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-fb-reasons { margin-top: 16px; padding: 15px; border-radius: 13px; border: 1px solid #efdfd2; background: #fff7f0; }
 .v3-pb .v3-fb-reasons legend { padding: 0; margin-bottom: 8px; float: left; width: 100%; }
 .v3-pb .v3-fb-editor, .v3-pb .v3-fb-copy-panel { margin-top: 15px; }
-.v3-pb .v3-fb-editor label, .v3-pb .v3-fb-copy-panel label { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 600; }
+.v3-pb .v3-fb-editor label, .v3-pb .v3-fb-copy-panel label { display: block; margin-bottom: 7px; font-size: 16px; font-weight: 600; }
 .v3-pb textarea { display: block; width: 100%; min-width: 0; min-height: 150px; padding: 12px; border: 1px solid #c9d7e7; border-radius: 12px; background: #fff; resize: vertical; }
 .v3-pb .v3-fb-editor .v3-pb-controls { margin-top: 10px; }
-.v3-pb .v3-fb-status { margin-top: 12px; color: #3d6455; font-size: 14px; overflow-wrap: anywhere; }
+.v3-pb .v3-fb-status { margin-top: 12px; color: #3d6455; font-size: 16px; overflow-wrap: anywhere; }
 .v3-pb .v3-fb-status:empty { display: none; }
 .v3-pb.v3-fb > .v3-pb-footer { margin: 0; padding: 4px 16px 12px; justify-content: flex-end; }
 .v3-pb.v3-bp { padding-top: 24px; border-top: 1px solid var(--v3-pb-line); }
@@ -2283,13 +2280,13 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-bp-lanes { display: grid; gap: 10px; min-width: 0; margin: 0; padding: 0; list-style: none; }
 .v3-pb .v3-bp-lanes li { display: flex; align-items: flex-start; gap: 12px; position: relative; min-width: 0; padding: 14px; border: 1px solid var(--v3-pb-line); border-radius: 13px; background: #f8fafc; transition: background-color .25s, border-color .25s; }
 .v3-pb .v3-bp-lanes li > div { min-width: 0; }
-.v3-pb .v3-bp-lanes strong { display: block; font-size: 14px; }
-.v3-pb .v3-bp-lanes p { margin-top: 4px; font-size: 14px; line-height: 1.55; color: var(--v3-pb-muted); }
-.v3-pb .v3-bp-lane-number { display: grid; place-items: center; flex: 0 0 30px; width: 30px; height: 30px; border: 1px solid #d9e2ed; border-radius: 50%; background: #fff; color: #4b627c; font-size: 14px; font-weight: 700; }
+.v3-pb .v3-bp-lanes strong { display: block; font-size: 16px; }
+.v3-pb .v3-bp-lanes p { margin-top: 4px; font-size: 16px; line-height: 1.55; color: var(--v3-pb-muted); }
+.v3-pb .v3-bp-lane-number { display: grid; place-items: center; flex: 0 0 30px; width: 30px; height: 30px; border: 1px solid #d9e2ed; border-radius: 50%; background: #fff; color: #4b627c; font-size: 16px; font-weight: 700; }
 .v3-pb .v3-bp-lanes li.is-current { background: #eaf2fc; border-color: #afc8e5; }
 .v3-pb .v3-bp-lanes li.is-current .v3-bp-lane-number { background: #d2e3f8; border-color: #9ab7da; color: #2e537e; }
 .v3-pb .v3-bp-lanes .v3-bp-backstage { margin-top: 28px; }
-.v3-pb .v3-bp-visibility { position: absolute; top: -29px; left: 0; right: 0; text-align: center; border-top: 1px dashed #b9c7d6; font-size: 14px; color: #617183; line-height: 1.55; }
+.v3-pb .v3-bp-visibility { position: absolute; top: -29px; left: 0; right: 0; text-align: center; border-top: 1px dashed #b9c7d6; font-size: 16px; color: #617183; line-height: 1.55; }
 .v3-pb .v3-bp-lanes .v3-bp-fallback { background: #fff8f2; border-color: #efdfd0; }
 .v3-pb .v3-bp-lanes .v3-bp-fallback.is-current { background: #ffebdc; border-color: #d8ad8d; }
 .v3-pb .v3-bp-phone { max-width: 340px; }
@@ -2297,7 +2294,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb [data-v3-bp-panel] > * + * { margin-top: 14px; }
 .v3-pb .v3-bp-photo { padding: 13px; border: 1px solid #e1e7ed; border-radius: 13px; background: #edf2f6; }
 .v3-pb .v3-bp-paper { padding: 20px 15px; margin-top: 12px; border: 1px solid #dce3e8; border-radius: 5px; background: #fff; transform: rotate(-2deg); box-shadow: 0 3px 5px rgba(51,65,85,.04); }
-.v3-pb .v3-bp-paper p { margin: 0 0 8px; font-size: 16px; }
+.v3-pb .v3-bp-paper p { margin: 0 0 8px; font-size: 18px; }
 .v3-pb .v3-bp-paper-rule { display: block; width: 78%; height: 3px; background: #e6e9ed; margin-top: 15px; }
 .v3-pb .v3-bp-paper-rule:last-child { width: 52%; }
 .v3-pb .v3-bp-scan { display: grid; place-items: center; padding: 15px; border-radius: 14px; background: #edf6f3; }
@@ -2313,7 +2310,7 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 .v3-pb .v3-bp-blurred span { filter: blur(2px); font-size: 17px; color: #77736d; }
 .v3-pb .v3-bp-error-copy { padding: 14px; border: 1px solid #efd8c4; border-radius: 13px; background: #fff4e9; color: #72513a; }
 .v3-pb .v3-bp-error-copy p { margin-top: 7px; }
-.v3-pb .v3-bp-status { flex: 1 1 260px; font-size: 14px; color: var(--v3-pb-muted); }
+.v3-pb .v3-bp-status { flex: 1 1 260px; font-size: 16px; color: var(--v3-pb-muted); }
 .v3-pb.v3-bp.is-playing .v3-bp-scan-line { animation: v3-pb-scan 1.2s ease-in-out infinite alternate; }
 .v3-pb.v3-bp.is-playing .v3-bp-lanes li.is-current .v3-bp-lane-number { animation: v3-pb-mark 1.1s ease-in-out infinite alternate; }
 @keyframes v3-pb-appear { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -2331,4 +2328,114 @@ body.ux-course #lesson-content .vs-container:has(.v3-er-ethics) > .box { min-wid
 @media (prefers-reduced-motion: reduce) {
   .v3-pb *, .v3-pb *::before, .v3-pb *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .v3-pb .v3-bp-paper { transform: none; }
+}
+
+
+/* Reading-size follow-up: preserve the layout while allowing larger copy.
+   Only the old inline sub-1rem text needs !important; icons are excluded. */
+body.ux-course #lesson-content :is([style*="font-size:0."],[style*="font-size: 0."]):not(.ai-avatar) {
+  font-size: 16px !important;
+  line-height: 1.6;
+}
+body.ux-course #lesson-content :is(p,ul,ol,li):is([style*="font-size:0."],[style*="font-size: 0."]) {
+  font-size: 18px !important;
+}
+body.ux-course #lesson-content .card small { font-size: 16px; line-height: 1.6; }
+body.ux-course #lesson-content :is(.bubble,.ai-message,.error-msg,.prompt-box) { font-size: 18px; }
+body.ux-course #lesson-content :is(.comp-card-header,.mini-card-head,.inner-sticky-bar,.setting-row) { flex-wrap: wrap; gap: 10px; }
+body.ux-course #lesson-content :is(.demo-box,.demo-area,.chat-ui-frame,.proto-phone,.f-screen,.permission-mock) { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+body.ux-course #lesson-content .chat-ui-frame { height: 260px; }
+body.ux-course #lesson-content .chat-ui-frame > * { flex-shrink: 0; }
+body.ux-course #lesson-content .inner-scroll-window { height: 210px; }
+body.ux-course #lesson-content .drawer-preview-area { min-height: 280px; }
+body.ux-course #lesson-content .demo-drawer { gap: 12px; overflow-y: auto; }
+body.ux-course #lesson-content .proto-phone { flex: 0 1 160px; width: 160px; min-height: 270px; height: auto; }
+body.ux-course #lesson-content .proto-phone > * { flex-shrink: 0; }
+body.ux-course #lesson-content .proto-phone .p-chip { margin-top: 24px; }
+body.ux-course #lesson-content .f-screen { width: 165px; min-height: 250px; height: auto; }
+body.ux-course #lesson-content .permission-mock { width: min(340px,100%); }
+body.ux-course #lesson-content .perm-actions { flex-wrap: wrap; }
+body.ux-course #lesson-content .perm-btn { min-width: 0; overflow-wrap: anywhere; }
+body.ux-course[data-page="week13"] #lesson-content .metric-bar { height: auto; min-height: 40px; }
+body.ux-course[data-page="week13"] #lesson-content .metric-fill { min-height: 40px; padding: 7px 10px; line-height: 1.5; overflow-wrap: anywhere; }
+body.ux-course[data-page="week07"] #lesson-content .phase-timeline,
+body.ux-course[data-page="week13"] #lesson-content .latency-timeline { flex-wrap: wrap; }
+body.ux-course[data-page="week07"] #lesson-content .phase-zone,
+body.ux-course[data-page="week13"] #lesson-content .time-zone { flex: 1 1 160px; min-width: 0; overflow-wrap: anywhere; }
+body.ux-course #lesson-content .v3-blueprint-table-scroll .blueprint-table { min-width: 600px; }
+body.ux-course #lesson-content .tooltip-box { width: min(280px,calc(100vw - 80px)); overflow-wrap: anywhere; }
+.v3-pb .v3-bp-lanes .v3-bp-backstage { margin-top: 48px; }
+.v3-pb .v3-bp-visibility { top: auto; bottom: calc(100% + 8px); }
+@media (max-width: 800px) {
+  body.ux-course .studio-header { flex-wrap: wrap; }
+  body.ux-course .header-actions { flex: 1 1 auto; min-width: 0; justify-content: flex-end; }
+  body.ux-course .language-switch { flex: 1 1 auto; min-width: 0; }
+  body.ux-course .language-switch button { flex: 1 1 0; min-width: 0; line-height: 1.4; white-space: normal; }
+  body.ux-course #lesson-content .card > :is(h1,h2) { font-size: 24px; }
+}
+@media (max-width: 520px) {
+  body.ux-course[data-page="week04"] #lesson-content .tree-container .row-flex { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  body.ux-course[data-page="week07"] #lesson-content .phase-zone,
+  body.ux-course[data-page="week13"] #lesson-content .time-zone { flex-basis: auto; width: 100%; }
+  body.ux-course #lesson-content .v3-er-choice-row { flex-wrap: wrap; }
+  body.ux-course #lesson-content .v3-er-choice-row > button { flex-basis: 130px; }
+}
+
+/* Course motion: chapter emphasis, pointer feedback and no-motion alternatives.
+   Only the first concept card floats, once for less than five seconds. */
+body.ux-course #lesson-content .container > .card:first-child {
+  border-color: #d9e5f0 !important;
+  box-shadow: 0 10px 26px -9px rgba(33,53,78,.18), 0 3px 8px rgba(33,53,78,.04);
+}
+body.ux-course :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button) {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+}
+body.ux-course :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button):focus-visible {
+  outline: 3px solid #527d9d;
+  outline-offset: 3px;
+}
+@keyframes ux-concept-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  body.ux-course #lesson-content .container > .card:first-child {
+    animation: ux-concept-float 4.6s ease-in-out 1;
+  }
+  body.ux-course #lesson-content .container > .card:focus-within {
+    animation: none;
+    transform: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  body.ux-course #lesson-content .container > .card:hover {
+    border-color: #ceddea !important;
+    box-shadow: 0 14px 30px -8px rgba(33,53,78,.17), 0 3px 8px rgba(33,53,78,.04);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.ux-course #lesson-content .container > .card:hover:not(:focus-within) {
+    animation: none;
+    transform: translateY(-3px);
+  }
+  body.ux-course :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button):not(:disabled):not([aria-disabled="true"]):hover:not(:focus-visible) {
+    transform: translateY(-2px);
+  }
+  body.ux-course :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button):not(:disabled):not([aria-disabled="true"]):active {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ux-course #lesson-content .container > .card,
+  body.ux-course :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media print {
+  body.ux-course #lesson-content .container > .card,
+  body.ux-course #lesson-content :is(.v3-er-phone,.v3-pb-phone,.proto-phone) {
+    animation: none !important;
+    box-shadow: none !important;
+  }
 }

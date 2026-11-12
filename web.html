@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML/CSS/JavaScript Learning Center - Lesson 1</title>
+<link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/web.css">
 </head>
 <body>
+<a class="web-a11y-only" href="#main-content" data-course-text="skipLink">본문으로 이동</a>
 <header class="site-header">
   <div class="header-inner">
     <div class="brand-row">
@@ -18,19 +20,18 @@
           <span></span>
         </button>
         <div class="brand-block">
-          <span class="brand-title">HTML / CSS / JavaScript </span>
-          <span class="brand-subtitle">Learning Center</span>
+          <span class="brand-title" id="brand-title">HTML / CSS / JavaScript </span>
+          <span class="brand-subtitle" id="brand-subtitle">Learning Center</span>
         </div>
       </div>
       <div class="top-controls">
-        <a class="portfolio-return" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
         <div class="lang-container" id="desktop-langs">
             <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
             <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
             <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
         </div>
-        <span class="status-badge status-ready">
-          <span class="status-dot"></span>
+        <span class="status-badge status-ready" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
           <span>준비 완료</span>
         </span>
       </div>
@@ -41,8 +42,9 @@
     </div>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu">
-      <div class="mobile-menu-header">Select Language</div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
+      <button class="web-a11y-only" id="mobile-menu-close" type="button" aria-label="메뉴 닫기" data-course-aria="closeMenu">×</button>
+      <div class="mobile-menu-header" data-course-text="languageLabel">언어 선택</div>
       <div class="mobile-lang-container" id="mobile-langs">
           <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
           <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
@@ -51,79 +53,43 @@
       
       <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
       
-      <div class="mobile-menu-header">Lesson Menu</div>
+      <div class="mobile-menu-header" data-course-text="courseNavTitle">학습 목록</div>
       <nav class="mobile-nav" id="mobile-nav"></nav>
-    <a class="mobile-portfolio-link" href="./index.html#projects" aria-label="포트폴리오 프로젝트 목록으로 돌아가기">← Portfolio</a>
   </div>
   <div class="mobile-backdrop" id="mobile-backdrop"></div>
 </header>
 
-<main>
-  <section id="theory-panel">
+<main id="main-content" tabindex="-1">
+  <section id="theory-panel" aria-label="핵심 이해" data-course-aria="theoryLabel">
     <div class="lesson-chip">Lesson 1</div>
     <div class="theory-content" id="theory-view">
-      <section class="content-section" id="theory">
-        <h2>핵심 이론</h2>
-        <p><strong>HTML</strong>은 웹페이지의 구조를 만드는 언어입니다.</p>
-        <p><strong>CSS</strong>는 웹페이지를 꾸미는 언어입니다.</p>
-        <p><strong>JavaScript</strong>는 웹페이지에 동작을 넣는 언어입니다.</p>
-
-        <div class="problem-area">
-          <span class="problem-title">쉽게 이해하기</span>
-          <p>웹페이지를 사람에 비유하면:</p>
-          <ul>
-            <li>HTML = 뼈대</li>
-            <li>CSS = 옷, 색상, 꾸미기</li>
-            <li>JavaScript = 움직임, 기능</li>
-          </ul>
-        </div>
-        <p>우리가 오늘 직접 다룰 것은 <strong>HTML</strong>입니다.</p>
-        <h2>실습 1. 첫 HTML 파일 만들기</h2>
-        <p>오른쪽 코드 창에 기본 HTML 코드가 들어 있습니다.</p>
-        <ol>
-          <li><code>&lt;h1&gt;</code> 안의 제목을 바꿔보세요.</li>
-          <li><code>&lt;p&gt;</code> 안의 문장을 자기소개 문장으로 바꿔보세요.</li>
-          <li><strong>실행</strong> 버튼을 눌러 결과를 확인하세요.</li>
-        </ol>
-        <span class="theory-callout">브라우저 화면이 바뀌면 성공입니다.</span>
-        <h2>실습 2. 자기소개 문장 추가하기</h2>
-        <p><code>&lt;p&gt;</code> 태그를 추가해서 자기소개를 3줄 이상 작성해보세요.</p>
-        <ul>
-          <li>이름</li>
-          <li>나이</li>
-          <li>관심 분야</li>
-          <li>목표</li>
-        </ul>
-
-        <div class="problem-area">
-          <span class="problem-title">실습 미션</span>
-          <p>문장 3개 이상을 직접 추가한 뒤 실행해보세요.</p>
-        </div>
-      </section>
+      <p role="status">학습 자료를 준비하고 있어요.</p>
+      <noscript><p>학습 자료와 실습 기능을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
     </div>
   </section>
 
-  <section id="editor-panel">
+  <section id="editor-panel" aria-labelledby="editor-heading">
     <div class="editor-topbar">
-      <span class="editor-title">Practice</span>
+      <span class="editor-title" id="editor-heading" data-course-text="editorLabel">코드 실습</span>
     </div>
 
-    <textarea id="html-code" spellcheck="false" aria-label="HTML, CSS, JavaScript code editor"></textarea>
+    <span class="web-a11y-only" id="editor-hint" data-course-text="editorHint">들여쓰기: Ctrl+] / 내어쓰기: Ctrl+[. Tab은 다음 버튼으로 이동합니다.</span>
+    <textarea id="html-code" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="HTML, CSS, JavaScript code editor" aria-describedby="editor-hint"></textarea>
 
     <div class="action-btns">
       <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
       <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
-      <button class="ans-btn btn" id="answer-btn" type="button">정답 확인</button>
+      <button class="ans-btn btn" id="answer-btn" type="button" aria-controls="ans-display" aria-expanded="false">정답 확인</button>
     </div>
 
     <div class="preview-wrap">
       <div class="preview-header">
-        <span>실행 결과 미리보기</span>
+        <span data-course-text="resultLabel">실행 결과 미리보기</span>
       </div>
       <iframe id="preview-frame" title="HTML preview" sandbox="allow-scripts"></iframe>
     </div>
 
-    <div id="ans-display">
+    <div id="ans-display" role="region" aria-labelledby="answerTitle" hidden>
       <strong id="answerTitle">[모범 답안]</strong>
       <pre id="ans-text"></pre>
     </div>
@@ -135,6 +101,17 @@
             <p>© 2026 AI Education Designer & System Builder</p>
         </div>
     </footer>     
+<script>
+// A file URL cannot load this course's JavaScript modules. Explain the next step
+// instead of leaving the initial loading message and inactive controls onscreen.
+(function () {
+  if (location.protocol !== 'file:') return;
+  document.getElementById('theory-view').innerHTML = '<div class="info-box"><h2>📖 실행 안내 · How to open</h2><p>실습을 시작하려면 이 폴더를 웹서버로 열어 주세요. <a href="./README.md">README의 실행 방법</a>을 확인해 주세요.</p><p lang="en">Open this folder through a web server to use the lessons. See the README for the steps.</p><p lang="ru">Откройте эту папку через веб-сервер. Инструкция находится в README.</p></div>';
+  document.querySelectorAll('button').forEach(function (button) { button.disabled = true; });
+  document.getElementById('html-code').disabled = true;
+  document.querySelector('.status-badge span:last-child').textContent = '실행 안내 · Setup';
+})();
+</script>
 <script type="module" src="./js/data_web/web.js"></script>
 </body>
 </html>
