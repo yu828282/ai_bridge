@@ -1,9 +1,11 @@
 // Python curriculum: keep lesson order/IDs stable for saved student work.
-// initialCode/sampleInput/expectedOutput describe the starter, not the mission solution.
+// initialCode/expectedOutput describe the starter, not the mission solution.
+// sampleInput may also prepare a task when its starter does not read input yet.
 // expectedOutput includes input echo, matching this project's Python Worker.
 const lessons = [
     {
         id: "lesson-1",
+        needsInput: true,
         menu: {
             ko: "01 · 입력/출력",
             en: "01 · Input/Output",
@@ -15,21 +17,21 @@ const lessons = [
             ru: "1. Вывод и ввод данных",
         },
         theory: {
-            ko: `<div class="info-box"><strong>💡 핵심 개념</strong><p><b>Python</b>은 컴퓨터에 할 일을 순서대로 적는 프로그래밍 언어입니다. 이 실습 코드는 위에서 아래로 실행됩니다.</p><ul><li><code>print("Hello!")</code>: 괄호 안의 내용을 화면에 보여줍니다. 따옴표 안의 글자를 <b>문자열</b>이라고 합니다.</li><li><code>input()</code>: 입력값을 하나 읽어 문자열로 돌려줍니다.</li></ul><p>코드에 <code>input()</code>을 추가하면 <b>입력값</b> 칸이 나타납니다. 이 페이지에서는 실행 전에 <b>입력값</b> 칸에 값을 한 줄에 하나씩 적으세요. <code>input()</code>이 위에서부터 한 줄씩 읽습니다.</p></div><div class="problem-area">
+            ko: `<div class="info-box"><strong>💡 핵심 개념</strong><p><b>Python</b>은 컴퓨터에 할 일을 순서대로 적는 프로그래밍 언어입니다. 이 실습 코드는 위에서 아래로 실행됩니다.</p><ul><li><code>print("Hello!")</code>: 괄호 안의 내용을 화면에 보여줍니다. 따옴표 안의 글자를 <b>문자열</b>이라고 합니다.</li><li><code>input()</code>: 입력값을 하나 읽어 문자열로 돌려줍니다.</li></ul><ol><li>먼저 <b>실행 ▶</b>을 눌러 Hello!가 나오는지 확인하세요.</li><li>따옴표 안의 Hello!만 내 이름으로 바꾸고 다시 실행하세요. 따옴표와 괄호는 남겨 두세요.</li><li>아래 문제에서 <code>input()</code>으로 입력받는 연습을 하세요.</li></ol><p>이 레슨은 <b>입력값</b> 칸을 미리 보여줍니다. Mina가 적혀 있는지 확인하세요. <code>input()</code>은 실행 전에 이 칸에 적은 값을 위에서부터 한 줄씩 읽습니다. <code>print()</code>만 있는 시작 예제는 입력값을 사용하지 않습니다.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 문제</span>
                     사용자에게 "이름이 무엇인가요?"라고 묻고, 입력값 한 줄을 읽는 코드를 작성하세요. 입력값 칸에 Mina를 적고 실행하세요.
                 </div>
-<details class="info-box"><summary>🧩 오류가 나면 어디부터 볼까요?</summary><ol><li>오류의 마지막 줄에서 SyntaxError, NameError 같은 이름을 확인하세요.</li><li><code>line</code> 뒤의 줄 번호 주변을 보세요.</li><li>따옴표·괄호·철자·들여쓰기를 확인하고 다시 실행하세요.</li></ol><p><code>#</code> 뒤에 적는 주석은 사람이 읽는 설명이며 실행하지 않습니다.</p></details>`,
-            en: `<div class="info-box"><strong>💡 Key idea</strong><p><b>Python</b> is a programming language for giving a computer instructions. The code in this exercise runs from top to bottom.</p><ul><li><code>print("Hello!")</code> shows the value inside the parentheses. Text inside quotes is a <b>string</b>.</li><li><code>input()</code> reads one input value and returns it as text.</li></ul><p>The <b>input values</b> box appears when your code includes <code>input()</code>. On this page, enter one value per line in the <b>input values</b> box before running. Each <code>input()</code> reads the next line.</p></div><div class="problem-area">
+<details class="info-box"><summary>🧩 오류가 나면 어디부터 볼까요?</summary><ol><li>실행 결과에 표시된 오류 이름(SyntaxError, NameError 등)과 안내를 먼저 읽으세요.</li><li>줄 번호와 전체 오류 내용은 <b>오류 자세히 보기</b>를 펼쳐 확인하세요.</li><li>따옴표·괄호·철자·들여쓰기를 확인하고 다시 실행하세요.</li></ol><p><code>#</code> 뒤에 적는 주석은 사람이 읽는 설명이며 실행하지 않습니다.</p></details>`,
+            en: `<div class="info-box"><strong>💡 Key idea</strong><p><b>Python</b> is a programming language for giving a computer instructions. The code in this exercise runs from top to bottom.</p><ul><li><code>print("Hello!")</code> shows the value inside the parentheses. Text inside quotes is a <b>string</b>.</li><li><code>input()</code> reads one input value and returns it as text.</li></ul><ol><li>First, select <b>Run ▶</b> and check that Hello! appears.</li><li>Replace only Hello! inside the quotes with your name, then run again. Keep the quotes and parentheses.</li><li>Use <code>input()</code> to practise reading input in the task below.</li></ol><p>The <b>input values</b> box is already visible for this lesson. Check that it contains Mina. Each <code>input()</code> reads the next line entered in this box before running. The starter code uses only <code>print()</code>, so it does not use these input values.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 Task</span>
                     Ask the user "What is your name?" and write code to read one input line. Put Mina in the input values box before running.
                 </div>
-<details class="info-box"><summary>🧩 Where do I look when an error appears?</summary><ol><li>Read the error name on the last line, such as SyntaxError or NameError.</li><li>Check the code near the number after <code>line</code>.</li><li>Check quotes, parentheses, spelling, and indentation. Run again.</li></ol><p>A comment after <code>#</code> explains code for people; it is not executed.</p></details>`,
-            ru: `<div class="info-box"><strong>💡 Главное</strong><p><b>Python</b> — язык программирования для записи команд компьютеру. Код в этом упражнении выполняется сверху вниз.</p><ul><li><code>print("Hello!")</code> показывает значение в скобках. Текст в кавычках называется <b>строкой</b>.</li><li><code>input()</code> читает одно введённое значение и возвращает строку.</li></ul><p>Поле <b>входных данных</b> появится, когда вы добавите <code>input()</code> в код. На этой странице перед запуском запишите каждое значение с новой строки в поле <b>входных данных</b>. Каждый вызов <code>input()</code> читает следующую строку.</p></div><div class="problem-area">
+<details class="info-box"><summary>🧩 Where do I look when an error appears?</summary><ol><li>First read the error name, such as SyntaxError or NameError, and the guidance in the output area.</li><li>Open <b>Show error details</b> to check line numbers and the full error message.</li><li>Check quotes, parentheses, spelling, and indentation. Run again.</li></ol><p>A comment after <code>#</code> explains code for people; it is not executed.</p></details>`,
+            ru: `<div class="info-box"><strong>💡 Главное</strong><p><b>Python</b> — язык программирования для записи команд компьютеру. Код в этом упражнении выполняется сверху вниз.</p><ul><li><code>print("Hello!")</code> показывает значение в скобках. Текст в кавычках называется <b>строкой</b>.</li><li><code>input()</code> читает одно введённое значение и возвращает строку.</li></ul><ol><li>Сначала нажмите <b>Запустить ▶</b> и проверьте, что на экране появилось Hello!</li><li>Замените только Hello! внутри кавычек на своё имя и запустите ещё раз. Оставьте кавычки и скобки.</li><li>В задании ниже потренируйтесь читать данные с помощью <code>input()</code>.</li></ol><p>Поле <b>входных данных</b> уже показано в этом уроке. Проверьте, что там записано Mina. Каждый вызов <code>input()</code> читает следующую строку, записанную в поле до запуска. Начальный пример использует только <code>print()</code>, поэтому входные данные ему не нужны.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 Задача</span>
                     Спросите пользователя "Как тебя зовут?" и напишите код для чтения одной строки. До запуска введите Mina в поле входных данных.
                 </div>
-<details class="info-box"><summary>🧩 Что проверить при ошибке?</summary><ol><li>Посмотрите имя ошибки в последней строке: например, SyntaxError или NameError.</li><li>Проверьте код рядом с номером после <code>line</code>.</li><li>Проверьте кавычки, скобки, имена и отступы. Запустите ещё раз.</li></ol><p>Комментарий после <code>#</code> служит пояснением для человека и не выполняется.</p></details>`,
+<details class="info-box"><summary>🧩 Что проверить при ошибке?</summary><ol><li>Сначала прочитайте имя ошибки, например SyntaxError или NameError, и подсказку в области вывода.</li><li>Откройте <b>Показать подробности ошибки</b>, чтобы увидеть номера строк и полное сообщение об ошибке.</li><li>Проверьте кавычки, скобки, имена и отступы. Запустите ещё раз.</li></ol><p>Комментарий после <code>#</code> служит пояснением для человека и не выполняется.</p></details>`,
         },
         answer: {
             ko: "print(\"이름이 무엇인가요?\")\ninput()",
@@ -42,9 +44,9 @@ const lessons = [
             ru: "print(\"Hello!\")",
         },
         sampleInput: {
-            ko: "",
-            en: "",
-            ru: "",
+            ko: "Mina",
+            en: "Mina",
+            ru: "Mina",
         },
         expectedOutput: {
             ko: "Hello!",
@@ -54,6 +56,7 @@ const lessons = [
     },
     {
         id: "lesson-2",
+        needsInput: true,
         menu: {
             ko: "02 · 변수",
             en: "02 · Variables",
@@ -65,23 +68,23 @@ const lessons = [
             ru: "2. Имя для значения: переменные",
         },
         theory: {
-            ko: `<div class="info-box"><strong>💡 핵심 개념</strong><p><b>변수</b>는 값에 붙이는 이름입니다. <code>name = "Mina"</code>는 문자열을 <code>name</code>에 저장합니다.</p><p><code>=</code>는 오른쪽 값을 왼쪽 이름에 저장하는 <b>할당</b>입니다. <code>print(name)</code>은 저장된 값, <code>print("name")</code>은 글자 name을 출력합니다.</p><p>이름의 대소문자를 구분합니다. <code>name</code>과 <code>Name</code>은 다릅니다.</p></div><div class="problem-area">
+            ko: `<div class="info-box"><strong>💡 핵심 개념</strong><p><b>변수</b>는 값에 붙이는 이름입니다. <code>name = "Mina"</code>는 문자열을 <code>name</code>에 저장합니다.</p><p><code>=</code>는 오른쪽 값을 왼쪽 이름에 저장하는 <b>할당</b>입니다. <code>print(name)</code>은 저장된 값, <code>print("name")</code>은 글자 name을 출력합니다.</p><p><code>name = input()</code>은 입력받은 이름을 저장합니다. <code>print()</code>를 두 번 쓰면 서로 다른 줄에 출력됩니다.</p><p>이름의 대소문자를 구분합니다. <code>name</code>과 <code>Name</code>은 다릅니다.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 문제</span>
-                    사용자의 입력을 <b>name</b> 변수에 저장하고, "반가워요, [이름]"이 출력되도록 만드세요.
+                    입력값 칸에 Mina를 적으세요. 이름을 묻고 입력받은 값을 <b>name</b> 변수에 저장한 뒤, <code>print()</code>를 두 번 사용해 "반가워요!"와 저장한 이름을 각각 다른 줄에 출력하세요.
                 </div>`,
-            en: `<div class="info-box"><strong>💡 Key idea</strong><p>A <b>variable</b> is a name for a value. <code>name = "Mina"</code> stores a string under the name <code>name</code>.</p><p><code>=</code> assigns the value on the right to the name on the left. <code>print(name)</code> shows its value; <code>print("name")</code> shows the word name.</p><p>Names are case-sensitive: <code>name</code> and <code>Name</code> are different.</p></div><div class="problem-area">
+            en: `<div class="info-box"><strong>💡 Key idea</strong><p>A <b>variable</b> is a name for a value. <code>name = "Mina"</code> stores a string under the name <code>name</code>.</p><p><code>=</code> assigns the value on the right to the name on the left. <code>print(name)</code> shows its value; <code>print("name")</code> shows the word name.</p><p><code>name = input()</code> stores the name read from input. Two <code>print()</code> calls show their values on separate lines.</p><p>Names are case-sensitive: <code>name</code> and <code>Name</code> are different.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 Task</span>
-                    Save the user's input in a variable called <b>name</b> and print "Nice to meet you, [name]".
+                    Put Mina in the input values box. Ask for a name and save the input in <b>name</b>. Then use two <code>print()</code> calls to show "Nice to meet you!" and the saved name on separate lines.
                 </div>`,
-            ru: `<div class="info-box"><strong>💡 Главное</strong><p><b>Переменная</b> — имя для значения. Команда <code>name = "Mina"</code> сохраняет строку под именем <code>name</code>.</p><p><code>=</code> присваивает значение справа имени слева. <code>print(name)</code> выводит значение, а <code>print("name")</code> — слово name.</p><p>Регистр букв важен: <code>name</code> и <code>Name</code> — разные имена.</p></div><div class="problem-area">
+            ru: `<div class="info-box"><strong>💡 Главное</strong><p><b>Переменная</b> — имя для значения. Команда <code>name = "Mina"</code> сохраняет строку под именем <code>name</code>.</p><p><code>=</code> присваивает значение справа имени слева. <code>print(name)</code> выводит значение, а <code>print("name")</code> — слово name.</p><p><code>name = input()</code> сохраняет введённое имя. Два вызова <code>print()</code> выводят значения на отдельных строках.</p><p>Регистр букв важен: <code>name</code> и <code>Name</code> — разные имена.</p></div><div class="problem-area">
                     <span class="problem-title">🎯 Задача</span>
-                    Сохраните ввод пользователя в переменную <b>name</b> и выведите "Привет, [имя]".
+                    Запишите Mina в поле входных данных. Спросите имя и сохраните ввод в переменной <b>name</b>. Затем двумя вызовами <code>print()</code> выведите "Привет!" и сохранённое имя на отдельных строках.
                 </div>`,
         },
         answer: {
-            ko: "print(\"이름이 무엇인가요?\")\nname = input()\nprint(\"반가워요, \" + name)",
-            en: "print(\"What is your name?\")\nname = input()\nprint(\"Nice to meet you, \" + name)",
-            ru: "print(\"Как тебя зовут?\")\nname = input()\nprint(\"Привет, \" + name)",
+            ko: "print(\"이름이 무엇인가요?\")\nname = input()\nprint(\"반가워요!\")\nprint(name)",
+            en: "print(\"What is your name?\")\nname = input()\nprint(\"Nice to meet you!\")\nprint(name)",
+            ru: "print(\"Как тебя зовут?\")\nname = input()\nprint(\"Привет!\")\nprint(name)",
         },
         initialCode: {
             ko: "name = \"Mina\"\nprint(name)",
@@ -89,9 +92,9 @@ const lessons = [
             ru: "name = \"Mina\"\nprint(name)",
         },
         sampleInput: {
-            ko: "",
-            en: "",
-            ru: "",
+            ko: "Mina",
+            en: "Mina",
+            ru: "Mina",
         },
         expectedOutput: {
             ko: "Mina",
@@ -129,9 +132,9 @@ const lessons = [
                 </div>`,
         },
         answer: {
-            ko: "food = input(\"좋아하는 음식: \")\nprint(\"저도 \" + food + \" 좋아해요.\")",
-            en: "food = input(\"Favorite food: \")\nprint(\"I like \" + food + \" too.\")",
-            ru: "food = input(\"Любимая еда: \")\nprint(\"Я тоже люблю \" + food + \".\")",
+            ko: "print(\"좋아하는 음식은?\")\nfood = input()\nprint(\"저도 \" + food + \" 좋아해요.\")",
+            en: "print(\"What is your favorite food?\")\nfood = input()\nprint(\"I like \" + food + \" too.\")",
+            ru: "print(\"Какая у вас любимая еда?\")\nfood = input()\nprint(\"Я тоже люблю \" + food + \".\")",
         },
         initialCode: {
             ko: "food = \"pizza\"\nprint(\"I like \" + food)",
@@ -179,9 +182,9 @@ const lessons = [
                 </div>`,
         },
         answer: {
-            ko: "movie = input(\"좋아하는 영화는? \")\nprint(\"아하!\", movie, \"를 보셨군요.\")",
-            en: "movie = input(\"What is your favorite movie? \")\nprint(\"Aha!\", movie, \"is your movie.\")",
-            ru: "movie = input(\"Ваш любимый фильм? \")\nprint(\"Ага! Вы посмотрели\", movie)",
+            ko: "print(\"좋아하는 영화는?\")\nmovie = input()\nprint(\"아하!\", movie, \"를 보셨군요.\")",
+            en: "print(\"What is your favorite movie?\")\nmovie = input()\nprint(\"Aha!\", movie, \"is your movie.\")",
+            ru: "print(\"Ваш любимый фильм?\")\nmovie = input()\nprint(\"Ага! Вы посмотрели\", movie)",
         },
         initialCode: {
             ko: "print(\"Age:\", 20)",

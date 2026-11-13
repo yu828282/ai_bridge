@@ -6,7 +6,7 @@
     <title>Python Study for International Students</title>
 <link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/python.css">
+    <link rel="stylesheet" href="./css/python.css?v=20261113-fix1">
 </head>
 <body>
     <header class="site-header">
@@ -72,6 +72,10 @@
             </div>
             <div id="result-panel">
                 <div class="console" id="console-output" role="status" aria-live="polite" tabindex="0" data-course-aria="resultLabel"></div>
+                <details id="python-error-details" class="python-error-details" hidden>
+                    <summary data-course-text="errorDetails">오류 자세히 보기</summary>
+                    <pre id="python-error-text"></pre>
+                </details>
             </div>
             <p id="python-file-guide" hidden><a href="./README.md" data-course-text="fileGuideLink">실행 안내 보기</a></p>
             <div class="action-btns">
@@ -94,9 +98,9 @@
         </div>
     </footer>     
     <script src="./js/common/menu.js"></script>
-    <script src="./js/data_python/lessons.js"></script>
-    <script src="./js/data_python/translations.js"></script>
-    <script src="./js/data_python/python.js"></script>
+    <script src="./js/data_python/lessons.js?v=20261113-fix1"></script>
+    <script src="./js/data_python/translations.js?v=20261113-fix1"></script>
+    <script src="./js/data_python/python.js?v=20261113-fix1"></script>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

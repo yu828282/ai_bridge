@@ -9,6 +9,7 @@
         statusText: byId('status-text'), navBar: byId('nav-bar'), mobileNav: byId('mobile-nav'),
         theoryView: byId('theory-view'), codeInput: byId('python-code'),
         consoleOutput: byId('console-output'), runButton: byId('run-btn'),
+        errorDetails: byId('python-error-details'), errorText: byId('python-error-text'),
         stopButton: byId('stop-btn'), resetButton: byId('reset-btn'), retryButton: byId('retry-btn'),
         stdinPanel: byId('python-input-panel'), stdinLabel: byId('stdin-label'),
         stdinHelp: byId('stdin-help'), stdinInput: byId('python-stdin'),
@@ -136,6 +137,9 @@
         elements.consoleOutput.textContent = text;
         elements.consoleOutput.dataset.hasRun = kind === 'default' ? 'false' : 'true';
         elements.consoleOutput.dataset.state = kind;
+        elements.errorDetails.hidden = true;
+        elements.errorDetails.open = false;
+        elements.errorText.textContent = '';
     }
     function terminateWorker() {
         clearTimeout(bootTimer);
@@ -156,7 +160,7 @@
         if (elements.consoleOutput.dataset.state === 'unavailable') setConsole(getTextSet().consoleDefault, 'default');
         setRuntimeState('loading');
         const generation = workerGeneration;
-        try { pythonWorker = new Worker('./js/data_python/worker.js'); }
+        try { pythonWorker = new Worker('./js/data_python/worker.js?v=20261113-fix1'); }
         catch (error) { onWorkerFailure(error.message, generation); return; }
         bootTimer = setTimeout(() => onWorkerFailure('Engine load timeout', generation), LOAD_LIMIT_MS);
         pythonWorker.onmessage = event => {
@@ -183,6 +187,15 @@
         setRuntimeState('error');
         setConsole(getTextSet().loadHint, 'unavailable');
     }
+    function describePythonError(error) {
+        const text = getTextSet();
+        const lines = String(error).split('\n').map(line => line.trimEnd()).filter(Boolean);
+        const summary = lines.slice().reverse().find(line => /^[A-Za-z_][\w.]*(?:Error|Interrupt|Exit)(?::|$)/.test(line)) ||
+            lines[lines.length - 1] || text.errorLabel;
+        const type = summary.split(':', 1)[0];
+        const hint = text.errorHints[type] || text.errorHints.default;
+        return text.errorLabel + ': ' + summary + '\n' + hint;
+    }
     function onWorkerResult(message) {
         if (!pendingRun || pendingRun.id !== message.id || pendingRun.lesson !== currentLessonIndex) return;
         clearTimeout(pendingRun.timeout);
@@ -192,10 +205,14 @@
         if (error.includes('INPUT_VALUES_EXHAUSTED')) {
             setConsole((message.output ? message.output + '\n' : '') + text.stdinMissing, 'error');
         } else if (error.includes('OUTPUT_LIMIT_EXCEEDED')) setConsole(text.outputLimit, 'error');
-        else if (error) setConsole((message.output ? message.output + '\n' : '') + text.errorLabel + ': ' + error, 'error');
+        else if (error) setConsole((message.output ? message.output + '\n' : '') + describePythonError(error), 'error');
         else {
             setConsole(message.output || text.finishedNoOutput, 'success');
             showToast(text.runComplete);
+        }
+        if (error) {
+            elements.errorText.textContent = String(error);
+            elements.errorDetails.hidden = false;
         }
         setRuntimeState('ready');
     }
@@ -207,7 +224,10 @@
         if (showMessage) setConsole(getTextSet().stoppedMessage, 'stopped');
     }
     function refreshInputPanel() {
-        elements.stdinPanel.hidden = !/\binput\s*\(/.test(elements.codeInput.value);
+        const lesson = lessons[currentLessonIndex];
+        const hasInput = /\binput\s*\(/.test(elements.codeInput.value);
+        const taskNeedsInput = lesson && (lesson.needsInput || /\binput\s*\(/.test(lessonText(lesson, 'answer')));
+        elements.stdinPanel.hidden = !(hasInput || taskNeedsInput);
     }
     function runPython() {
         if (runtimeState !== 'ready' || pendingRun || !pythonWorker || currentLessonIndex === null) return;
@@ -353,10 +373,14 @@
     }
     function resetExample() {
         if (currentLessonIndex === null || !window.confirm(getTextSet().resetConfirm)) return;
-        cancelPendingRun(false);
+        // An explicit reset restores both the example and the Python interpreter.
+        // Invalidate an in-flight run before creating exactly one replacement worker.
+        if (pendingRun) clearTimeout(pendingRun.timeout);
+        pendingRun = null;
         clearDraft(currentLessonIndex);
         inputDrafts.delete(currentLessonIndex);
         selectLesson(currentLessonIndex, { skipRemember: true });
+        createWorker();
         showToast(getTextSet().resetDone);
     }
     function toggleAnswer() {

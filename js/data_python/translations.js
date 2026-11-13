@@ -24,7 +24,7 @@ const translations = {
         "languageLabel": "언어 선택",
         "stepsLabel": "학습 순서",
         "stdinLabel": "입력값 — 실행 전에 한 줄씩 작성",
-        "stdinHelp": "input()이 읽을 값을 위에서 아래 순서로 넣습니다. 입력 예시가 있으면 미리 채워집니다. 칸이 비어 있으면 문제의 값을 적고, 반복문은 종료값까지 넣으세요.",
+        "stdinHelp": "input()이 읽을 값을 한 줄씩 적으세요. 입력을 사용하는 문제는 이 칸을 미리 보여줍니다. 현재 코드에 input()이 없으면 이 값은 사용하지 않습니다. 반복문은 종료값까지 넣으세요.",
         "stdinPlaceholder": "예: 홍길동\n20",
         "stdinMissing": "입력값이 부족합니다. 입력칸에 필요한 값을 한 줄씩 추가한 후 다시 실행하세요.",
         "expectedTitle": "🔎 시작 예제의 예상 결과",
@@ -34,7 +34,7 @@ const translations = {
         "stopButton": "정지 ⏹",
         "resetButton": "↺ 예제 초기화",
         "resetConfirm": "현재 레슨의 코드와 입력값을 지우고 시작 예제로 되돌릴까요?",
-        "resetDone": "시작 예제로 되돌렸습니다.",
+        "resetDone": "시작 예제로 되돌렸습니다. 준비 완료 후 실행하세요.",
         "answerButton": "💡 답안 예시",
         "answerTitle": "답안 예시 — 내 코드는 유지됩니다.",
         "retryButton": "엔진 다시 연결",
@@ -53,7 +53,18 @@ const translations = {
         "loadHint": "Python을 불러오지 못했습니다. 인터넷 연결을 확인하고 [엔진 다시 연결]을 누르세요. 이론과 예제는 계속 볼 수 있습니다.",
         "fileMode": "이론 보기 모드",
         "fileGuideLink": "실행 안내 보기",
-        "fileHint": "Python 실행은 웹 주소(http:// 또는 https://)로 연 페이지에서 사용할 수 있습니다. 수업 자료의 실행 안내를 확인하세요. 이론과 예제는 계속 볼 수 있습니다."
+        "fileHint": "Python 실행은 웹 주소(http:// 또는 https://)로 연 페이지에서 사용할 수 있습니다. 수업 자료의 실행 안내를 확인하세요. 이론과 예제는 계속 볼 수 있습니다.",
+        "errorDetails": "오류 자세히 보기",
+        "errorHints": {
+            "SyntaxError": "괄호, 따옴표, 콜론(:)이 빠지거나 짝이 맞지 않는지 확인하세요.",
+            "IndentationError": "줄 앞의 공백을 확인하세요. 같은 단계의 코드는 같은 깊이로 들여씁니다.",
+            "TabError": "들여쓰기에 탭과 공백이 섞여 있습니다. 공백 4칸으로 맞춰 보세요.",
+            "NameError": "변수 이름의 철자와 대소문자, 사용하기 전에 값을 저장했는지 확인하세요.",
+            "TypeError": "사용한 값의 종류를 확인하세요. 예: 문자와 숫자를 더하거나, print 같은 함수 이름을 변수로 바꾸면 문제가 생길 수 있습니다.",
+            "ValueError": "값이 필요한 형식인지 확인하세요. int()나 float()에는 숫자로 바꿀 수 있는 값을 넣어야 합니다.",
+            "ZeroDivisionError": "나누는 값은 0이 될 수 없습니다. /, //, % 뒤의 값을 확인하세요.",
+            "default": "마지막으로 바꾼 코드를 답안 예시와 비교하고 다시 실행하세요. 아래에서 오류 내용을 자세히 볼 수 있습니다."
+        }
     },
     "en": {
         "htmlLang": "en",
@@ -79,7 +90,7 @@ const translations = {
         "languageLabel": "Choose a language",
         "stepsLabel": "Learning steps",
         "stdinLabel": "Program input — enter one value per line before running",
-        "stdinHelp": "input() reads these values from top to bottom. Sample input is filled in when available. If the box is empty, enter the values from the task. For a loop, include its ending value.",
+        "stdinHelp": "Enter one value per line for input() to read. Tasks that need input show this box in advance. If your code has no input(), these values are not used. For a loop, include its ending value.",
         "stdinPlaceholder": "e.g. Alex\n20",
         "stdinMissing": "Not enough input values. Add one value per line in the input box, then run again.",
         "expectedTitle": "🔎 Expected output of the starter code",
@@ -89,7 +100,7 @@ const translations = {
         "stopButton": "Stop ⏹",
         "resetButton": "↺ Reset example",
         "resetConfirm": "Clear your code and input for this lesson and restore the starter example?",
-        "resetDone": "Starter example restored.",
+        "resetDone": "Starter example restored. Run it when Python is ready.",
         "answerButton": "💡 Sample answer",
         "answerTitle": "Sample answer — your code stays unchanged.",
         "retryButton": "Retry connection",
@@ -108,7 +119,18 @@ const translations = {
         "loadHint": "Could not load Python. Check your internet connection and select Retry connection. You can still read the lessons and examples.",
         "fileMode": "Reading mode",
         "fileGuideLink": "Open launch instructions",
-        "fileHint": "To run Python, open this page at a web address beginning with http:// or https://. See the course launch instructions. You can still read the lessons and examples."
+        "fileHint": "To run Python, open this page at a web address beginning with http:// or https://. See the course launch instructions. You can still read the lessons and examples.",
+        "errorDetails": "Show error details",
+        "errorHints": {
+            "SyntaxError": "Check for missing or mismatched parentheses, quotes, or colons (:).",
+            "IndentationError": "Check the spaces at the start of each line. Lines at the same level need the same indentation.",
+            "TabError": "Tabs and spaces are mixed. Try using four spaces for each indentation level.",
+            "NameError": "Check the variable spelling and capital letters. Give the variable a value before using it.",
+            "TypeError": "Check the types of values you use. For example, adding text to a number or using a function name such as print for a variable can cause this error.",
+            "ValueError": "Check the value format. int() and float() need a value that can be converted to a number.",
+            "ZeroDivisionError": "You cannot divide by zero. Check the value after /, //, or %.",
+            "default": "Compare the code you changed with the sample answer and run it again. Open the details below for more information."
+        }
     },
     "ru": {
         "htmlLang": "ru",
@@ -134,7 +156,7 @@ const translations = {
         "languageLabel": "Выбор языка",
         "stepsLabel": "Шаги обучения",
         "stdinLabel": "Ввод — по одному значению в строке до запуска",
-        "stdinHelp": "input() читает значения сверху вниз. Пример ввода заполнен, если он есть. Если поле пустое, введите значения из задания. Для цикла добавьте завершающее значение.",
+        "stdinHelp": "Введите по одному значению в строке для input(). В заданиях с вводом это поле показано заранее. Если в коде нет input(), эти значения не используются. Для цикла добавьте завершающее значение.",
         "stdinPlaceholder": "Например: Анна\n20",
         "stdinMissing": "Недостаточно входных данных. Добавьте значения в поле ввода, по одному в строке, и запустите код снова.",
         "expectedTitle": "🔎 Ожидаемый вывод начального кода",
@@ -144,7 +166,7 @@ const translations = {
         "stopButton": "Стоп ⏹",
         "resetButton": "↺ Сбросить пример",
         "resetConfirm": "Удалить ваш код и ввод для этого урока и восстановить начальный пример?",
-        "resetDone": "Начальный пример восстановлен.",
+        "resetDone": "Начальный пример восстановлен. Дождитесь готовности Python и запустите код.",
         "answerButton": "💡 Пример ответа",
         "answerTitle": "Пример ответа — ваш код сохранён.",
         "retryButton": "Повторить подключение",
@@ -163,7 +185,18 @@ const translations = {
         "loadHint": "Не удалось загрузить Python. Проверьте Интернет и нажмите «Повторить подключение». Уроки и примеры доступны для чтения.",
         "fileMode": "Режим чтения",
         "fileGuideLink": "Открыть инструкцию по запуску",
-        "fileHint": "Для запуска Python откройте страницу по веб-адресу, начинающемуся с http:// или https://. См. инструкцию по запуску курса. Уроки и примеры доступны для чтения."
+        "fileHint": "Для запуска Python откройте страницу по веб-адресу, начинающемуся с http:// или https://. См. инструкцию по запуску курса. Уроки и примеры доступны для чтения.",
+        "errorDetails": "Показать подробности ошибки",
+        "errorHints": {
+            "SyntaxError": "Проверьте скобки, кавычки и двоеточия (:): возможно, символ пропущен или пара не совпадает.",
+            "IndentationError": "Проверьте пробелы в начале строк. У строк одного уровня должны быть одинаковые отступы.",
+            "TabError": "В отступах смешаны табуляции и пробелы. Используйте четыре пробела для каждого уровня.",
+            "NameError": "Проверьте написание имени переменной и регистр букв. Присвойте переменной значение до её использования.",
+            "TypeError": "Проверьте типы значений. Например, сложение текста с числом или использование имени функции print как имени переменной может вызвать эту ошибку.",
+            "ValueError": "Проверьте формат значения. int() и float() требуют значение, которое можно преобразовать в число.",
+            "ZeroDivisionError": "Делить на ноль нельзя. Проверьте значение после /, // или %.",
+            "default": "Сравните изменённый код с примером ответа и запустите его снова. Подробности ошибки можно открыть ниже."
+        }
     }
 };
 window.pythonTranslations = translations;
