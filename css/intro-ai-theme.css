@@ -1,0 +1,461 @@
+/* AI Bridge · Learning app refresh · 2026-11
+   Load LAST, after the legacy inline stylesheet. Scope: this AI course only.
+   Both reading and example surfaces follow the selected theme. Data colours remain semantic. */
+
+html:root body.pastel-course.aib-theme-refresh {
+  --aib-blue: #4164f4;
+  --aib-blue-hover: #2e4cce;
+  --aib-page: #f5f6fc;
+  --aib-card: #ffffff;
+  --aib-soft: #edf1ff;
+  --aib-line: #e0e5f2;
+  --aib-ink: #202637;
+  --aib-text: #46516a;
+  --aib-muted: #606b80;
+  --aib-mint: #e8f7f4;
+  --aib-lavender: #efedff;
+  --aib-code-bg: #f6f8fc;
+  --aib-code-ink: #193752;
+  --aib-plot-bg: #ffffff;
+  --aib-plot-inner: #f7f9fd;
+  --aib-plot-grid: #dbe3ef;
+  --aib-plot-axis: #7d8ba4;
+  --aib-plot-blue: #4164d8;
+  --aib-plot-purple: #8561b6;
+  --aib-plot-green: #13734c;
+  --aib-plot-red: #b13f4b;
+  --aib-plot-node-text: #ffffff;
+  --aib-positive-bg: #e8f7ef;
+  --aib-positive-ink: #186740;
+  --aib-negative-bg: #fff0f2;
+  --aib-negative-ink: #a7354c;
+  --aib-warning-bg: #fff5df;
+  --aib-warning-ink: #78521d;
+  --aib-shadow: 0 8px 28px rgba(47, 62, 110, .045);
+  --aib-hero: linear-gradient(112deg, #e9edff 0%, #eff0ff 42%, #e6f7f5 100%);
+  --pastel-white: var(--aib-card);
+  --pastel-page: var(--aib-page);
+  --pastel-ink: var(--aib-ink);
+  --pastel-text: var(--aib-text);
+  --pastel-muted: var(--aib-muted);
+  --pastel-blue: var(--aib-soft);
+  --pastel-lavender: var(--aib-lavender);
+  --pastel-mint: var(--aib-mint);
+  --pastel-line: var(--aib-line);
+  --pastel-accent: var(--aib-blue);
+  --pastel-accent-dark: var(--aib-blue-hover);
+  --pastel-shadow: var(--aib-shadow);
+  --theme-link: #304fc8;
+  --theme-focus: #4164f4;
+  --theme-hover: #e9edff;
+  --learn-surface: var(--aib-card);
+  --learn-soft: var(--aib-soft);
+  --learn-border: var(--aib-line);
+  --learn-ink: var(--aib-ink);
+  --learn-muted: var(--aib-muted);
+  --learn-accent: var(--theme-link);
+  background: var(--aib-page);
+  color: var(--aib-ink);
+  line-height: 1.75;
+}
+
+html[data-theme="dark"] body.pastel-course.aib-theme-refresh {
+  --aib-page: #0e1422;
+  --aib-card: #182132;
+  --aib-soft: #232e45;
+  --aib-line: #35415b;
+  --aib-ink: #eef2fc;
+  --aib-text: #d0d9eb;
+  --aib-muted: #aebbd1;
+  --aib-mint: #183d39;
+  --aib-lavender: #302e49;
+  --aib-code-bg: #101a2b;
+  --aib-code-ink: #bfe0ff;
+  --aib-plot-bg: #111b2c;
+  --aib-plot-inner: #1a263c;
+  --aib-plot-grid: #364764;
+  --aib-plot-axis: #8a9cb5;
+  --aib-plot-blue: #88b8ff;
+  --aib-plot-purple: #b8a5ef;
+  --aib-plot-green: #83e3b0;
+  --aib-plot-red: #f3a0a8;
+  --aib-plot-node-text: #112135;
+  --aib-positive-bg: #153c30;
+  --aib-positive-ink: #9fe6bd;
+  --aib-negative-bg: #412333;
+  --aib-negative-ink: #ffbac8;
+  --aib-warning-bg: #3b3020;
+  --aib-warning-ink: #f4d295;
+  --aib-shadow: 0 8px 28px rgba(0, 0, 0, .14);
+  --aib-hero: linear-gradient(112deg, #252d50 0%, #282c47 46%, #1c3d40 100%);
+  --theme-link: #b1c3ff;
+  --theme-focus: #b1c3ff;
+  --theme-hover: #2c3854;
+  --learn-accent: var(--theme-link);
+}
+
+/* App shell. Navigation remains in normal flow inside the existing sticky header. */
+html:root body.pastel-course.aib-theme-refresh main {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-bottom: 52px;
+}
+html:root body.pastel-course.aib-theme-refresh .site-header {
+  background: var(--aib-card);
+  border-bottom: 1px solid var(--aib-line);
+  box-shadow: 0 2px 16px rgba(43, 56, 106, .035);
+}
+html:root body.pastel-course.aib-theme-refresh .site-header .header-inner { gap: 14px; padding-top: 17px; padding-bottom: 17px; }
+html:root body.pastel-course.aib-theme-refresh .site-header .brand-title,
+html:root body.pastel-course.aib-theme-refresh .site-header #brand-title {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--aib-ink); font-weight: 800; letter-spacing: -.03em;
+}
+html:root body.pastel-course.aib-theme-refresh .site-header .brand-title::before {
+  content: ""; display: inline-block; flex: 0 0 27px; width: 27px; height: 29px;
+  border: 5px solid var(--aib-blue); border-radius: 8px;
+  background: linear-gradient(135deg, #c9d5ff 50%, #fff 50%);
+  box-shadow: inset 0 0 0 2px #fff; transform: rotate(-8deg);
+}
+html:root body.pastel-course.aib-theme-refresh .site-header .brand-subtitle { color: var(--aib-muted); font-size: .82rem; }
+html:root body.pastel-course.aib-theme-refresh .site-header .nav-shell { border-top-color: var(--aib-line); padding-top: 12px; }
+html:root body.pastel-course.aib-theme-refresh .site-header :is(.nav-btn,.lang-btn) {
+  min-height: 44px; border: 1px solid transparent; background: var(--aib-soft);
+  color: var(--aib-text); border-radius: 12px; box-shadow: none; font-weight: 700;
+}
+html:root body.pastel-course.aib-theme-refresh .site-header .nav-btn { padding: 9px 14px; }
+html:root body.pastel-course.aib-theme-refresh .site-header :is(.nav-btn.active,.nav-btn[aria-current="page"],.lang-btn.active) {
+  background: var(--aib-blue); border-color: var(--aib-blue); color: #fff;
+  box-shadow: 0 4px 11px rgba(65,100,244,.2);
+}
+html:root body.pastel-course.aib-theme-refresh .theme-toggle { background: var(--aib-soft); border-color: var(--aib-line); color: var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh #mobileMenu { background: var(--aib-card); color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh #mobileMenu #mobile-menu-title { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .site-header #hamburgerBtn,
+html:root body.pastel-course.aib-theme-refresh #mobileMenuClose { background: var(--aib-soft); border-color: var(--aib-line); color: var(--theme-link); border-radius: 12px; }
+html:root body.pastel-course.aib-theme-refresh .footer { background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-muted); }
+
+/* Gentle gradient headers mirror the supplied app's welcome card. */
+html:root body.pastel-course.aib-theme-refresh #page-main .home-start,
+html:root body.pastel-course.aib-theme-refresh .study-header,
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s-header {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(26px, 3.8vw, 44px); margin-bottom: 24px;
+  border: 1px solid var(--aib-line); border-radius: 25px;
+  background: var(--aib-hero); box-shadow: var(--aib-shadow);
+}
+html:root body.pastel-course.aib-theme-refresh :is(.home-start,.study-header,.w11s-header)::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  top: -62px; right: -44px; width: 230px; height: 230px; border-radius: 50%;
+  border: 32px solid rgba(255,255,255,.3); box-shadow: 0 0 0 24px rgba(255,255,255,.14);
+}
+html:root body.pastel-course.aib-theme-refresh #page-main .home-start h1,
+html:root body.pastel-course.aib-theme-refresh .study-header h1,
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s-header h1 {
+  color: var(--aib-ink); font-size: clamp(1.75rem, 3.05vw, 2.45rem);
+  font-weight: 800; line-height: 1.4; letter-spacing: -.04em;
+}
+html:root body.pastel-course.aib-theme-refresh #page-main .home-kicker,
+html:root body.pastel-course.aib-theme-refresh .study-meta { color: var(--theme-link); font-size: .86rem; letter-spacing: .01em; }
+html:root body.pastel-course.aib-theme-refresh #page-main .home-lead,
+html:root body.pastel-course.aib-theme-refresh .study-header .study-lead { color: var(--aib-text); font-size: 1.02rem; }
+html:root body.pastel-course.aib-theme-refresh .study-meta > span:last-child,
+html:root body.pastel-course.aib-theme-refresh #page-main .home-kicker {
+  width: fit-content; max-width: 100%; padding: 4px 10px;
+  background: var(--aib-card); border: 1px solid var(--aib-line); border-radius: 7px;
+}
+html:root body.pastel-course.aib-theme-refresh :is(.study-language button,.home-language-button) { border-radius: 12px; }
+html:root body.pastel-course.aib-theme-refresh #page-main .home-language-button,
+html:root body.pastel-course.aib-theme-refresh .study-language button {
+  background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text);
+}
+html:root body.pastel-course.aib-theme-refresh #page-main .home-language-button[aria-pressed="true"],
+html:root body.pastel-course.aib-theme-refresh .study-language button[aria-pressed="true"] {
+  background: var(--aib-blue); border-color: var(--aib-blue); color: #fff;
+  box-shadow: 0 4px 12px rgba(65,100,244,.18);
+}
+html:root body.pastel-course.aib-theme-refresh #page-main .home-skip a { color: var(--theme-link); }
+
+/* White course cards and distinct selected states; reading cards do not move. */
+html:root body.pastel-course.aib-theme-refresh :is(.study-panel,.study-card),
+html:root body.pastel-course.aib-theme-refresh #page-ch9 :is(.w11s-panel,.w11s-concept),
+html:root body.pastel-course.aib-theme-refresh #page-main :is(.home-help-panel,.itpractice-step,.itpractice-done) {
+  background: var(--aib-card); border-color: var(--aib-line); border-radius: 20px; box-shadow: var(--aib-shadow);
+}
+html:root body.pastel-course.aib-theme-refresh .study-panel { padding: clamp(22px,3.2vw,34px); }
+html:root body.pastel-course.aib-theme-refresh .study-card { border-radius: 17px; padding: 24px 22px 20px; box-shadow: none; }
+html:root body.pastel-course.aib-theme-refresh .study-card h3 { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-card:nth-child(3n+1) .study-icon { background: var(--aib-soft); }
+html:root body.pastel-course.aib-theme-refresh .study-card:nth-child(3n+2) .study-icon { background: var(--aib-mint); }
+html:root body.pastel-course.aib-theme-refresh .study-card:nth-child(3n) .study-icon { background: var(--aib-lavender); }
+html:root body.pastel-course.aib-theme-refresh .study-help { color: var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh .study-nav { gap: 12px; }
+html:root body.pastel-course.aib-theme-refresh .study-nav button,
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s-step-nav button {
+  background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text); border-radius: 15px;
+}
+html:root body.pastel-course.aib-theme-refresh .study-nav button[data-study-nav][aria-current="step"],
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s-step-nav button[aria-current="step"] {
+  background: var(--aib-soft); border-color: #9cadfa; color: var(--theme-link);
+  box-shadow: inset 0 -3px 0 var(--aib-blue);
+}
+html:root body.pastel-course.aib-theme-refresh .study-nav button[data-study-nav][aria-current="step"] .study-step-number {
+  background: var(--aib-blue); color: #fff;
+}
+html:root body.pastel-course.aib-theme-refresh .study-nav .study-step-number { background: var(--aib-soft); color: var(--theme-link); border-radius: 50%; }
+html:root body.pastel-course.aib-theme-refresh .study-today { background: var(--aib-lavender); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh .study-today > span { color: var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh .study-today p { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-flow-step { background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-text); border-radius: 15px; }
+html:root body.pastel-course.aib-theme-refresh .study-flow-step .study-icon { background: transparent; }
+html:root body.pastel-course.aib-theme-refresh .study-progress strong { color: var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-option,.study-scenario-controls button) {
+  border-color: var(--aib-line); background: var(--aib-card); color: var(--aib-text); border-radius: 12px;
+}
+html:root body.pastel-course.aib-theme-refresh .study-scenario-controls button[aria-pressed="true"] {
+  background: var(--aib-blue); border-color: var(--aib-blue); color: #fff; box-shadow: none;
+}
+html:root body.pastel-course.aib-theme-refresh .study-option[aria-pressed="true"] { background: var(--aib-soft); border-color: #92a6f8; }
+html:root body.pastel-course.aib-theme-refresh .study-option .study-choice-letter { background: var(--aib-soft); color: var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh .learn-glossary,
+html:root body.pastel-course.aib-theme-refresh .study-more,
+html:root body.pastel-course.aib-theme-refresh #page-main .home-help-panel {
+  background: var(--aib-card); border-color: var(--aib-line); border-radius: 17px;
+}
+html:root body.pastel-course.aib-theme-refresh .learn-glossary > summary,
+html:root body.pastel-course.aib-theme-refresh .study-more > summary,
+html:root body.pastel-course.aib-theme-refresh #page-main .home-help-panel > summary {
+  background: var(--aib-card); color: var(--aib-ink); border-radius: 16px;
+}
+html:root body.pastel-course.aib-theme-refresh .study-more > summary strong,
+html:root body.pastel-course.aib-theme-refresh #page-main .home-help-panel > summary > span { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-more > summary > span[aria-hidden="true"] { background: var(--aib-soft); }
+html:root body.pastel-course.aib-theme-refresh .study-more[open] > summary,
+html:root body.pastel-course.aib-theme-refresh #page-main .home-help-panel[open] > summary { border-radius: 16px 16px 0 0; }
+html:root body.pastel-course.aib-theme-refresh #page-main .roadmap-week { background: var(--aib-card); border-color: var(--aib-line); border-radius: 14px; }
+html:root body.pastel-course.aib-theme-refresh #page-main .roadmap-week .week-index {
+  display: inline-grid; place-items: center; width: 34px; min-height: 34px;
+  border-radius: 11px; background: var(--aib-soft); color: var(--theme-link);
+}
+html:root body.pastel-course.aib-theme-refresh #page-main .roadmap-week .week-name { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh #page-main .roadmap-week.roadmap-break { background: var(--aib-soft); }
+/* These legacy rules were already !important; restrict overrides to reading cards. */
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.card,.theory-card,.learning-section) {
+  background: var(--aib-card) !important; border-color: var(--aib-line) !important;
+  border-radius: 20px !important; box-shadow: var(--aib-shadow) !important;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .course-hero { background: var(--aib-hero) !important; border-color: var(--aib-line) !important; border-radius: 22px !important; }
+/* Legacy article anchors had no margin; html already supplies 100px padding.
+   Together these clear the taller desktop header without changing scroll JS. */
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.card[id],.theory-card[id]) { scroll-margin-top: 120px; }
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-compare-panel,.w2-factor-card,.w2-milestone-card,.w2-ext-card) {
+  background: var(--aib-soft); border-color: var(--aib-line); border-radius: 16px;
+}
+
+/* Raised, quiet action shelves make the bottom of a lesson visibly actionable. */
+html:root body.pastel-course.aib-theme-refresh :is(.study-primary,.w2-ext-btn),
+html:root body.pastel-course.aib-theme-refresh .chapter-pager button:last-child,
+html:root body.pastel-course.aib-theme-refresh #page-main .itpractice .itpractice-button:not(.itpractice-button-secondary):not(:disabled) {
+  background: var(--aib-blue); border-color: var(--aib-blue); color: #fff; border-radius: 12px;
+  box-shadow: 0 5px 14px rgba(65,100,244,.18);
+}
+html:root body.pastel-course.aib-theme-refresh .study-secondary,
+html:root body.pastel-course.aib-theme-refresh .chapter-pager button:first-child {
+  background: var(--aib-card); border-color: #a3b2e8; color: var(--theme-link); border-radius: 12px;
+}
+html:root body.pastel-course.aib-theme-refresh .study-panel > .study-actions {
+  margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--aib-line);
+}
+html:root body.pastel-course.aib-theme-refresh .chapter-pager {
+  padding: 20px; margin-top: 28px; border: 1px solid var(--aib-line);
+  border-radius: 19px; background: var(--aib-card); box-shadow: var(--aib-shadow);
+}
+html:root body.pastel-course.aib-theme-refresh .chapter-pager button { min-height: 50px; }
+
+/* Examples use the same theme as the page. These overrides follow the original
+   inline stylesheet, including its higher-specificity practice-output rules. */
+html:root body.pastel-course.aib-theme-refresh :is(.study-output,.study-slider,.study-number-panel,.study-prediction,.study-flow-step,.study-caution),
+html:root body.pastel-course.aib-theme-refresh .study-core :is(.study-takeaway,.study-formula),
+html:root body.pastel-course.aib-theme-refresh .study-core [data-study-panel="try"] .study-output {
+  background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-text);
+  border-radius: 16px; box-shadow: none;
+}
+html:root body.pastel-course.aib-theme-refresh :is(.study-output h3,.study-prediction h3,.study-slider label,.study-number,.study-number-panel p,.study-number-caption) {
+  color: var(--aib-ink);
+}
+html:root body.pastel-course.aib-theme-refresh .study-core [data-study-panel="try"] .study-output :is(h3,p,li,strong),
+html:root body.pastel-course.aib-theme-refresh .study-output :is(p,li,strong) { color: var(--aib-text); }
+html:root body.pastel-course.aib-theme-refresh .study-core [data-study-panel="try"] .study-output h3 { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-deep,.study-prediction-feedback,.study-slider output) {
+  background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text);
+}
+html:root body.pastel-course.aib-theme-refresh section.study-deep,
+html:root body.pastel-course.aib-theme-refresh .study-deep > summary { background: var(--aib-card); color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-core .study-prediction > p.study-prediction-feedback {
+  background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text);
+}
+html:root body.pastel-course.aib-theme-refresh :is(.study-matrix > span,.study-terms > span,.study-step-list > *),
+html:root body.pastel-course.aib-theme-refresh :is(.study-grid-demo,.study-logic-grid) > *,
+html:root body.pastel-course.aib-theme-refresh .study-logic-grid > [data-value] {
+  background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-text);
+}
+html:root body.pastel-course.aib-theme-refresh .study-matrix > span.is-missing { background: var(--aib-card); color: var(--aib-muted); }
+html:root body.pastel-course.aib-theme-refresh .study-terms > span:nth-child(2n) { background: var(--aib-mint); color: var(--aib-positive-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-grid-demo > div > strong { color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .study-grid-demo > div > span:last-child { color: var(--aib-text); }
+html:root body.pastel-course.aib-theme-refresh .study-core .study-matrix-caption { color: var(--aib-muted); }
+
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-rule-box,.w2-rule-output,.w2-callout,.colab-first-run,.w5-bp-step,.w9-reshape-grid) {
+  background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-text); border-radius: 14px;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-rule-output { box-shadow: none; }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-nest {
+  background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-text); border-radius: 16px;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-nest .w2-nest {
+  background: var(--aib-lavender); border-color: var(--aib-line); color: var(--aib-text);
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-nest .w2-nest .w2-nest {
+  background: var(--aib-mint); border-color: var(--aib-line); color: var(--aib-positive-ink);
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-compare-panel.highlight,.w2-badge,.w2-milestone-year) {
+  background: var(--aib-soft); border-color: var(--aib-line); color: var(--theme-link);
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-compare-panel.is-bad {
+  background: var(--aib-negative-bg); border-color: var(--aib-line); color: var(--aib-negative-ink);
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-rule-btn,.w2-option,.w2-reset-btn,.w3-copy-btn,.w7-check-item) {
+  min-height: 44px; background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text); border-radius: 11px;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-rule-btn,.w2-option)[aria-pressed="true"] {
+  background: var(--aib-blue); border-color: var(--aib-blue); color: #fff;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w3-copy-status { color: var(--aib-positive-ink); }
+
+/* Answer feedback remains semantic after the common button surface rules. */
+html:root body.pastel-course.aib-theme-refresh .study-question .study-option[data-result="correct"],
+html:root body.pastel-course.aib-theme-refresh .study-question .study-option[data-state="correct"],
+html:root body.pastel-course.aib-theme-refresh .study-feedback[data-kind="correct"],
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-question .w2-option[aria-pressed="true"]:not(.is-wrong) {
+  background: var(--aib-positive-bg); border-color: var(--aib-positive-ink); color: var(--aib-positive-ink);
+}
+html:root body.pastel-course.aib-theme-refresh .study-question .study-option[data-result="wrong"],
+html:root body.pastel-course.aib-theme-refresh .study-question .study-option[data-state="wrong"],
+html:root body.pastel-course.aib-theme-refresh .study-question .study-feedback[data-kind="wrong"],
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-question .w2-option[aria-pressed="true"].is-wrong {
+  background: var(--aib-negative-bg); border-color: var(--aib-negative-ink); color: var(--aib-negative-ink);
+}
+
+/* Code has its own quiet inset surface, light in light mode and dark in dark mode. */
+html:root body.pastel-course.aib-theme-refresh :is(pre,.ch2-code-shell),
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w3-code-shell {
+  background: var(--aib-code-bg); color: var(--aib-code-ink); border: 1px solid var(--aib-line);
+  border-radius: 15px; box-shadow: none;
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w3-code-shell { padding: 0; }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w3-code-shell pre {
+  margin: 0; padding: 20px; border: 0; background: var(--aib-code-bg); color: var(--aib-code-ink);
+  font-size: .9rem; line-height: 1.85; overflow-x: auto; white-space: pre; tab-size: 4;
+}
+html:root body.pastel-course.aib-theme-refresh :is(pre code,.ch2-code-shell pre) { color: var(--aib-code-ink); background: transparent; }
+html:root body.pastel-course.aib-theme-refresh .course-refresh code { background: var(--aib-soft); color: var(--aib-code-ink); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh pre code { background: transparent; color: inherit; }
+
+/* Numeric tables and blocks keep visible text as well as semantic status colours. */
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-table,.w4-cm-table,.w5-logic-table) {
+  background: var(--aib-card); color: var(--aib-text); border-color: var(--aib-line);
+}
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-table,.w4-cm-table,.w5-logic-table) :is(th,td) { border-color: var(--aib-line); color: var(--aib-text); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-table,.w4-cm-table,.w5-logic-table) th { background: var(--aib-soft); color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w4-cm-table td.is-good { background: var(--aib-positive-bg); color: var(--aib-positive-ink); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w4-cm-table td.is-bad { background: var(--aib-negative-bg); color: var(--aib-negative-ink); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w6-num-cell,.w9-reshape-cell) { background: var(--aib-soft); border-color: var(--aib-line); color: var(--aib-ink); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w6-num-cell.is-pos { background: var(--aib-positive-bg); color: var(--aib-positive-ink); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w6-num-cell.is-neg { background: var(--aib-negative-bg); color: var(--aib-negative-ink); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w6-num-cell.is-zero { background: var(--aib-card); color: var(--aib-muted); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w6-num-cell.is-max { background: var(--aib-soft); color: var(--theme-link); border-color: var(--theme-link); box-shadow: inset 0 0 0 1px var(--theme-link); }
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w9-reshape-error { background: var(--aib-negative-bg); border-color: var(--aib-line); color: var(--aib-negative-ink); }
+
+/* The graph canvas, axes and labels follow the theme. Deliberately target only
+   charts: RGB teaching pixels and the illustrative device/food SVGs retain data. */
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve),
+html:root body.pastel-course.aib-theme-refresh .course-refresh .w2-curve {
+  display: block; max-width: 100%; height: auto; border: 1px solid var(--aib-line);
+  border-radius: 15px; background: var(--aib-plot-bg); color: var(--aib-ink); color-scheme: light;
+}
+html[data-theme="dark"] body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve),
+html[data-theme="dark"] body.pastel-course.aib-theme-refresh .course-refresh .w2-curve { color-scheme: dark; }
+html:root body.pastel-course.aib-theme-refresh figure.study-chart { width: 100%; max-width: 660px; margin: 20px auto; }
+html:root body.pastel-course.aib-theme-refresh svg.study-chart { width: 100%; max-width: 560px; margin-inline: auto; }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) text { fill: var(--aib-text); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is(rect[fill="#F7FAFF" i],rect[fill="#F3F5FC" i]) { fill: var(--aib-plot-inner); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is([stroke="#E1E8F3" i],[stroke="#DCE3EE" i]) { stroke: var(--aib-plot-grid); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is([stroke="#8699B8" i],[stroke="#8B9BB5" i],[stroke="#94A3B8" i]) { stroke: var(--aib-plot-axis); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) [stroke="#245BCE" i] { stroke: var(--aib-plot-blue); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is(circle[fill="#245BCE" i],circle[fill="#4677C9" i],circle[fill="#456DAC" i]) { fill: var(--aib-plot-blue); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) [stroke="#B5A5E7" i] { stroke: var(--aib-plot-purple); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) [stroke="#799BD4" i] { stroke: var(--aib-plot-blue); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is(circle[fill="#27603D" i],circle[fill="#2C6957" i],circle[fill="#467B65" i]) { fill: var(--aib-plot-green); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) [stroke="#27603D" i] { stroke: var(--aib-plot-green); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) [stroke="#A62626" i] { stroke: var(--aib-plot-red); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) :is(circle[fill="#142039" i],circle[fill="#526078" i]) { fill: var(--aib-plot-axis); }
+html:root body.pastel-course.aib-theme-refresh :is(.study-chart,.w2-curve) circle[stroke="white" i] { stroke: var(--aib-plot-bg); }
+/* XOR labels sit inside solid blue/green nodes, not on the chart background. */
+html:root body.pastel-course.aib-theme-refresh .study-chart :is(text[fill="white" i],text[fill="#FFFFFF" i],text[fill="#FFF" i]) { fill: var(--aib-plot-node-text); }
+
+/* Week 11 keeps its custom instructional layout while sharing the app palette. */
+html:root body.pastel-course.aib-theme-refresh #page-ch9 :is(.w11s,.w11s-legacy) {
+  --w11s-ink: var(--aib-ink); --w11s-muted: var(--aib-text); --w11s-blue: var(--aib-blue);
+  --w11s-line: var(--aib-line); --w11s-green: var(--aib-positive-ink);
+}
+html:root body.pastel-course.aib-theme-refresh #page-ch9 :is(.w11s-duration,.w11s-review-scene,.w11s-token-stage,.w11s-chip,.w11s-number-chip,.w11s-legacy-flow,.w11s-legacy-example) {
+  background: var(--aib-soft); color: var(--aib-text); border-color: var(--aib-line);
+}
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s-speech { background: var(--aib-card); border-color: var(--aib-line); }
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s .w11s-language-button { background: var(--aib-card); border-color: var(--aib-line); color: var(--aib-text); border-radius: 12px; }
+html:root body.pastel-course.aib-theme-refresh #page-ch9 .w11s .w11s-language-button[aria-pressed="true"] { background: var(--aib-blue); border-color: var(--aib-blue); color: #fff; }
+html:root body.pastel-course.aib-theme-refresh #page-ch9 :is(.w11s-concept,.w11s-panel,.w11s-legacy) { border-radius: 19px; }
+
+html:root body.pastel-course.aib-theme-refresh :is(.study-primary,.study-secondary):disabled { background: var(--theme-disabled-bg); border-color: var(--aib-line); color: var(--theme-disabled-text); box-shadow: none; }
+html:root body.pastel-course.aib-theme-refresh :is(button,a,summary,input):focus-visible { outline-color: var(--theme-focus); outline-offset: 4px; }
+
+@media (hover: hover) and (pointer: fine) {
+  html:root body.pastel-course.aib-theme-refresh .site-header :is(.nav-btn,.lang-btn):not(.active):not([aria-current="page"]):hover { background: var(--theme-hover); border-color: #aab9f2; color: var(--theme-link); }
+  html:root body.pastel-course.aib-theme-refresh :is(.study-primary,.w2-ext-btn):not(:disabled):hover,
+  html:root body.pastel-course.aib-theme-refresh .chapter-pager button:last-child:hover { background: var(--aib-blue-hover); border-color: var(--aib-blue-hover); color: #fff; }
+  html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.w2-rule-btn,.w2-option,.w2-reset-btn,.w3-copy-btn,.w7-check-item):not([aria-pressed="true"]):hover { background: var(--aib-soft); color: var(--theme-link); }
+  html:root body.pastel-course.aib-theme-refresh .study-more > summary:hover,
+  html:root body.pastel-course.aib-theme-refresh #page-main .home-help-panel > summary:hover { background: var(--aib-soft); }
+}
+
+@media (max-width: 768px) {
+  html:root body.pastel-course.aib-theme-refresh .course-refresh :is(.card[id],.theory-card[id]) { scroll-margin-top: 20px; }
+  html:root body.pastel-course.aib-theme-refresh main { padding: 20px 14px 38px; }
+  html:root body.pastel-course.aib-theme-refresh .site-header .header-inner { padding: 13px 17px; }
+  html:root body.pastel-course.aib-theme-refresh .site-header .brand-title { font-size: .97rem; gap: 8px; }
+  html:root body.pastel-course.aib-theme-refresh .site-header .brand-title::before { flex-basis: 23px; width: 23px; height: 25px; border-width: 4px; border-radius: 7px; }
+  html:root body.pastel-course.aib-theme-refresh .site-header .brand-subtitle { font-size: .76rem; }
+  html:root body.pastel-course.aib-theme-refresh :is(.study-header,.w11s-header),
+  html:root body.pastel-course.aib-theme-refresh #page-main .home-start { padding: 25px 22px; border-radius: 22px; }
+  html:root body.pastel-course.aib-theme-refresh .study-panel { padding: 23px 20px; border-radius: 18px; }
+  html:root body.pastel-course.aib-theme-refresh .study-card { padding: 22px; }
+  html:root body.pastel-course.aib-theme-refresh .chapter-pager { padding: 16px; }
+  html:root body.pastel-course.aib-theme-refresh .chapter-pager button { flex: 1 1 200px; }
+  html:root body.pastel-course.aib-theme-refresh .course-refresh .w3-code-shell pre { padding: 17px; font-size: .86rem; }
+}
+@media (max-width: 420px) {
+  html:root body.pastel-course.aib-theme-refresh main { padding-inline: 11px; }
+  html:root body.pastel-course.aib-theme-refresh .study-panel { padding-inline: 16px; }
+  html:root body.pastel-course.aib-theme-refresh :is(.study-header,.w11s-header),
+  html:root body.pastel-course.aib-theme-refresh #page-main .home-start { padding-inline: 20px; }
+  html:root body.pastel-course.aib-theme-refresh .study-nav { gap: 7px; }
+  html:root body.pastel-course.aib-theme-refresh .study-nav button { padding: 11px 9px; }
+  html:root body.pastel-course.aib-theme-refresh .study-panel > .study-actions .study-primary { width: 100%; }
+}
+html[lang="ko"] body.pastel-course.aib-theme-refresh :is(.home-lead,.study-lead) {
+  word-break: keep-all; overflow-wrap: break-word;
+}

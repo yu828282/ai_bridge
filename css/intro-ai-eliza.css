@@ -1,0 +1,171 @@
+/* Existing ELIZA conversation example: presentation only, with theme-aware colors.
+   The original two messages and their translation keys remain unchanged. */
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat {
+  --eliza-pane: #f7f9fc;
+  --eliza-header: #ffffff;
+  --eliza-line: #dce5eb;
+  --eliza-user: #edf1ff;
+  --eliza-user-line: #d4ddfb;
+  --eliza-user-name: #3d56aa;
+  --eliza-user-text: #2f3c57;
+  --eliza-bot: #edf9f3;
+  --eliza-bot-line: #c2e4d1;
+  --eliza-green: #13734c;
+  --eliza-muted: #647185;
+  --eliza-shadow: 0 8px 24px rgba(38, 66, 88, .06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 25px 0 22px;
+  padding: 94px 26px 28px;
+  overflow: hidden;
+  border: 1px solid var(--eliza-line);
+  border-radius: 22px;
+  background: var(--eliza-pane);
+  color: var(--eliza-user-text);
+  box-shadow: var(--eliza-shadow);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+html[data-theme="dark"] body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat {
+  --eliza-pane: #131d2a;
+  --eliza-header: #192635;
+  --eliza-line: #344759;
+  --eliza-user: #263750;
+  --eliza-user-line: #405775;
+  --eliza-user-name: #bed0ff;
+  --eliza-user-text: #edf2ff;
+  --eliza-bot: #163327;
+  --eliza-bot-line: #3b6952;
+  --eliza-green: #8ae8b3;
+  --eliza-muted: #b6c4d6;
+  --eliza-shadow: 0 8px 24px rgba(0, 0, 0, .14);
+}
+
+/* A conversation header, without a fake online indicator or unusable input. */
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::before {
+  content: "ELIZA";
+  position: absolute;
+  inset: 0 0 auto;
+  box-sizing: border-box;
+  padding: 18px 26px;
+  border-bottom: 1px solid var(--eliza-line);
+  background: var(--eliza-header);
+  color: var(--eliza-green);
+  font: 800 1.13rem/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .075em;
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::after {
+  content: "대화 예시 · 1966";
+  position: absolute;
+  top: 23px;
+  right: 26px;
+  color: var(--eliza-muted);
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: .015em;
+}
+html[lang="en"] body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::after {
+  content: "Example chat · 1966";
+}
+html[lang="ru"] body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::after {
+  content: "Пример диалога · 1966";
+}
+
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div {
+  position: relative;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 88%;
+  min-width: 0;
+  margin: 0;
+  padding: 16px 20px;
+  border: 1px solid var(--eliza-user-line);
+  border-radius: 18px;
+  background: var(--eliza-user);
+  color: var(--eliza-user-text);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div:first-child {
+  align-self: flex-end;
+  border-top-right-radius: 5px;
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div + div {
+  align-self: flex-start;
+  margin-top: 0;
+  padding-top: 16px;
+  border-color: var(--eliza-bot-line);
+  border-top-left-radius: 5px;
+  background: var(--eliza-bot);
+  color: var(--eliza-green);
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat b {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--eliza-user-name);
+  font-size: .8rem;
+  font-weight: 750;
+  line-height: 1.75;
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div > span {
+  display: block;
+  color: var(--eliza-user-text);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div + div > :is(b,span) {
+  color: var(--eliza-green);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", "Malgun Gothic", monospace;
+}
+html[lang="ko"] body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 600px) {
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat {
+    padding: 85px 15px 20px;
+    border-radius: 18px;
+    gap: 17px;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::before {
+    padding: 17px 18px;
+    font-size: 1rem;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::after {
+    top: 22px;
+    right: 18px;
+    font-size: .72rem;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div {
+    max-width: 94%;
+    padding: 13px 15px;
+    border-radius: 15px;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div:first-child { border-top-right-radius: 4px; }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div + div { border-top-left-radius: 4px; }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat b { font-size: .76rem; }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat > div > span { font-size: .95rem; }
+}
+
+@media (max-width: 370px) {
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::before {
+    padding-bottom: 34px;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat::after {
+    top: 44px;
+    left: 18px;
+    right: auto;
+  }
+  html:root body.pastel-course.aib-theme-refresh #w2-sec-history .w2-chat {
+    padding-top: 98px;
+  }
+}
