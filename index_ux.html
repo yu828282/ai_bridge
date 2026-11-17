@@ -4,16 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Explore AI service UX with clear explanations and interactive examples, in English, Korean and Russian.">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <title>UX Studio · AI Service UX</title>
 <link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
+<script>
+window.UX_WEEK08_REFRESH = true;
+(function () {
+  var theme = 'light';
+  try { if (localStorage.getItem('ux-studio-theme') === 'dark') theme = 'dark'; } catch (_) {}
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+})();
+</script>
 <link rel="stylesheet" href="./css/ux.css">
+<link rel="stylesheet" href="./css/ux-app-theme.css">
+<link rel="stylesheet" href="./css/ux-week08.css">
+<link rel="stylesheet" href="./css/ux-mint-theme.css">
 </head>
-<body class="ux-course" data-page="week01">
+<body class="ux-course ux-app-refresh" data-page="week01">
 <a href="#main-content" class="skip-link" data-ui="skip">Skip to content</a>
 <header class="studio-header" id="top">
  <a class="studio-brand" id="studio-home" href="?week=week01"><span class="brand-mark" aria-hidden="true">ux</span><strong>UX Studio</strong></a>
- <div class="header-actions"><div class="language-switch" role="group" aria-label="Choose a language"><button class="lang-btn active" type="button" data-lang="en" aria-pressed="true" onclick="setLang('en')">English EN</button><button class="lang-btn" type="button" data-lang="ko" aria-pressed="false" onclick="setLang('ko')">한국어 KO</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false" onclick="setLang('ru')">Русский RU</button></div><button class="mobile-menu-toggle" id="menu-toggle" type="button" aria-label="Open week menu" aria-expanded="false" aria-controls="course-sidebar"><span aria-hidden="true">☰</span></button></div>
+ <div class="header-actions"><button id="ux-theme-toggle" class="ux-theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">Dark mode</button><div class="language-switch" role="group" aria-label="Choose a language"><button class="lang-btn active" type="button" data-lang="en" aria-pressed="true" onclick="setLang('en')">English EN</button><button class="lang-btn" type="button" data-lang="ko" aria-pressed="false" onclick="setLang('ko')">한국어 KO</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false" onclick="setLang('ru')">Русский RU</button></div><button class="mobile-menu-toggle" id="menu-toggle" type="button" aria-label="Open week menu" aria-expanded="false" aria-controls="course-sidebar"><span aria-hidden="true">☰</span></button></div>
 </header>
 <div class="studio-layout">
  <aside class="course-sidebar" id="course-sidebar">
@@ -47,18 +59,18 @@
 </ul>
 </div>
 <!-- UX vs UI -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🧴</span> <span data-key="uiux-title">UI vs UX</span></h2>
 <div class="vs-container">
-<div class="box" style="background: #fff7ed;">
-<h3 style="font-size: 3rem; margin:0; color: #fb923c;">👁️</h3>
-<h3 style="color: #ea580c;">UI (Look)</h3>
-<p data-key="uiux-ui-desc">눈에 보이는 디자인<br/>(예쁜 유리 케첩병)</p>
+<div class="box" style="background: #effbfd;">
+<h3 style="font-size: 3rem; margin:0; color: #4ad7ed;">👁️</h3>
+<h3 style="color: #1660e0;">UI (Look)</h3>
+<p data-key="uiux-ui-desc">사용자가 보고 조작하는 요소입니다.<br>액체비누 병에서는 모양·라벨·펌프에 해당합니다.</p>
 </div>
 <div class="box" style="background: #eff6ff;">
 <h3 style="font-size: 3rem; margin:0; color: var(--main-blue);">🧠</h3>
 <h3 style="color: var(--main-blue);">UX (Feel)</h3>
-<p data-key="uiux-ux-desc">사용하기 편리한 경험<br/>(거꾸로 된 플라스틱 병)</p>
+<p data-key="uiux-ux-desc">목적을 이루는 전체 경험입니다.<br>한 손으로 펌프를 눌러 원하는 양의 비누를 쉽게 쓸 수 있나요?</p>
 </div>
 </div>
 </div>
@@ -98,7 +110,7 @@
 </div>
 </div>
 <!-- Deterministic vs Probabilistic -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">🎲</span> <span data-key="diff-title">전통 UX vs 확률적 AI UX</span></h2>
 <p data-key="diff-sub">버튼을 여러 번 눌러 예측 가능성(차이점)을 확인해 보세요!</p>
 <div class="vs-container">
@@ -120,13 +132,13 @@
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">⚖️</span> <span data-key="gb-title">좋은 AI UX vs 나쁜 AI UX</span></h2>
 <div class="vs-container">
-<div class="box" style="background: #fef2f2;">
-<h3 data-key="gb-bad-t" style="color:#dc2626;">❌ 나쁜 UX (Silent Freeze)</h3>
+<div class="box" style="background: #f2f6fe;">
+<h3 data-key="gb-bad-t" style="color:#2669dc;">❌ 나쁜 UX (Silent Freeze)</h3>
 <p data-key="gb-bad-p">화면 멈춤 (아무 피드백 없음)</p>
 <button class="action-btn btn-red" data-key="gb-btn-ask" onclick="simulateBadUX()">질문하기</button>
-<div class="demo-area" id="bad-ux-box" style="color:#ef4444;"></div>
+<div class="demo-area" id="bad-ux-box" style="color:#4683ed;"></div>
 </div>
-<div class="box" style="background: #f0fdf4;">
+<div class="box" style="background: #f0fbfd;">
 <h3 data-key="gb-good-t" style="color:#16a34a;">✅ 좋은 UX (Streaming)</h3>
 <p data-key="gb-good-p">한 글자씩 보여주며 로딩 표시</p>
 <button class="action-btn btn-green" data-key="gb-btn-ask" onclick="simulateGoodUX()">질문하기</button>
@@ -165,7 +177,7 @@
 </ul>
 </div>
 <!-- Design Thinking Stages -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🔄</span> <span data-key="dt-title">디자인 씽킹 5단계</span></h2>
 
 <div class="stage-container">
@@ -174,10 +186,10 @@
 <h3 data-key="dt-1-t" style="margin: 5px 0;">공감</h3>
 <span data-key="dt-1-p" style="font-size: 0.85rem; color: #64748b;">불편함 찾기</span>
 </div>
-<div class="stage-box" style="border-color: #f87171; background: #fef2f2;">
-<span class="stage-num" style="background:#ef4444;">2</span>
-<h3 data-key="dt-2-t" style="margin: 5px 0; color:#b91c1c;">정의</h3>
-<span data-key="dt-2-p" style="font-size: 0.85rem; color: #b91c1c; font-weight:bold;">핵심 문제 요약</span>
+<div class="stage-box" style="border-color: #77a4f2; background: #f2f6fe;">
+<span class="stage-num" style="background:#4683ed;">2</span>
+<h3 data-key="dt-2-t" style="margin: 5px 0; color:#1c56b9;">정의</h3>
+<span data-key="dt-2-p" style="font-size: 0.85rem; color: #1c56b9; font-weight:bold;">핵심 문제 요약</span>
 </div>
 <div class="stage-box">
 <span class="stage-num">3</span>
@@ -197,14 +209,14 @@
 </div>
 </div>
 <!-- Empathy First -->
-<div class="card" style="border-top-color: #ef4444;">
+<div class="card" style="border-top-color: #4683ed;">
 <h2><span class="title-emoji">⚠️</span> <span data-key="emp-title">기술(Tech) 중심의 함정</span></h2>
 <div class="vs-container">
-<div class="box" style="background: #fef2f2;">
-<h3 data-key="emp-bad-t" style="color: #dc2626;">❌ 기술 먼저 (잘못된 접근)</h3>
+<div class="box" style="background: #f2f6fe;">
+<h3 data-key="emp-bad-t" style="color: #2669dc;">❌ 기술 먼저 (잘못된 접근)</h3>
 <p data-key="emp-bad-p">"우리 쩌는 AI 기술 있는데, 앱 어디에다 끼워 넣지?"<br>👉 쓸모없는 챗봇 남발 (AI for the sake of AI)</p>
 </div>
-<div class="box" style="background: #f0fdf4;">
+<div class="box" style="background: #f0fbfd;">
 <h3 data-key="emp-good-t" style="color: #16a34a;">✅ 인간 먼저 (올바른 접근)</h3>
 <p data-key="emp-good-p">"사용자가 매일 어떤 작업을 귀찮아하고 스트레스 받을까?"<br>👉 공감에서 진짜 필요한 서비스 탄생</p>
 </div>
@@ -218,14 +230,14 @@
 <div class="persona-header">
 <div class="persona-icon">👨‍🎓</div>
 <div>
-<h2 data-key="per-name" style="margin:0; color:#b91c1c;">라지 (Raj, 24)</h2>
+<h2 data-key="per-name" style="margin:0; color:#1c56b9;">라지 (Raj, 24)</h2>
 <span class="badge-red" data-key="per-job">한국 거주 외국인 유학생</span>
 </div>
 </div>
 <ul class="emoji-list" style="margin-bottom:0;">
 <li>📱 <strong data-key="per-tech-b">Tech 스킬:</strong> <span data-key="per-tech-t">높음 (스마트폰 하루종일 사용)</span></li>
 <li>🎯 <strong data-key="per-goal-b">목표:</strong> <span data-key="per-goal-t">한국 은행 계좌를 쉽게 개설하고 싶음</span></li>
-<li>⚡ <strong data-key="per-pain-b">Pain Point (어려움):</strong> <span data-key="per-pain-t" style="color:#dc2626; font-weight:bold;">복잡한 한국어 은행 서류를 읽지 못해 엄청난 스트레스를 받음</span></li>
+<li>⚡ <strong data-key="per-pain-b">Pain Point (어려움):</strong> <span data-key="per-pain-t" style="color:#2669dc; font-weight:bold;">복잡한 한국어 은행 서류를 읽지 못해 엄청난 스트레스를 받음</span></li>
 </ul>
 </div>
 </div>
@@ -238,14 +250,14 @@
                     (<span class="formula-hl" data-key="val-f1">시간 절약</span> + <span class="formula-hl" data-key="val-f2">스트레스 감소</span>) <br>
                     - <span class="formula-bad" data-key="val-f3">사용하기 위한 노력</span>
 </div>
-<p data-key="val-warn" style="text-align:center; color:#dc2626; font-weight:bold; margin-top:15px;">🚨 주의: AI에 명령하는 과정(프롬프트, 챗봇 실랑이)이 직접 손으로 하는 것보다 오래 걸린다면 그 UX는 실패한 것입니다!</p>
+<p data-key="val-warn" style="text-align:center; color:#2669dc; font-weight:bold; margin-top:15px;">🚨 주의: AI에 명령하는 과정(프롬프트, 챗봇 실랑이)이 직접 손으로 하는 것보다 오래 걸린다면 그 UX는 실패한 것입니다!</p>
 </div>
 <!-- Problem Statement -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">📝</span> <span data-key="state-title">핵심 문제 정의하기 (1줄 공식)</span></h2>
 
-<div class="box" style="background: #fdf4ff; border: 2px dashed #d946ef;">
-<strong data-key="state-f1" style="color:#a21caf;">[사용자/페르소나]</strong> <span data-key="state-f2">는</span> <strong data-key="state-f3" style="color:#0369a1;">[목표/원하는 것]</strong> <span data-key="state-f4">을(를) 할 방법이 필요하다. 왜냐하면</span> <strong data-key="state-f5" style="color:#b91c1c;">[근본적인 어려움/Pain Point]</strong> <span data-key="state-f6">때문이다.</span>
+<div class="box" style="background: #f5fdfe; border: 2px dashed #48d7ed;">
+<strong data-key="state-f1" style="color:#1c9baf;">[사용자/페르소나]</strong> <span data-key="state-f2">는</span> <strong data-key="state-f3" style="color:#0369a1;">[목표/원하는 것]</strong> <span data-key="state-f4">을(를) 할 방법이 필요하다. 왜냐하면</span> <strong data-key="state-f5" style="color:#1c56b9;">[근본적인 어려움/Pain Point]</strong> <span data-key="state-f6">때문이다.</span>
 </div>
 <div data-key="state-ex" style="margin-top: 15px; font-style: italic; color: #475569;">
                     예시: "사라(1학년 유학생)는 편의점에서 알러지 성분을 빠르게 확인하고 싶다. 왜냐하면 쇼핑할 때마다 한국어 라벨 번역기를 돌리는 것이 너무 귀찮고 시간이 오래 걸리기 때문이다."
@@ -291,7 +303,7 @@
 </ul>
 </div>
 <!-- The 6 States Map -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🗺️</span> <span data-key="map-title">The Full 6-State Lifecycle</span></h2>
 <p data-key="map-sub">사용자가 AI 앱을 열고 답변을 얻기까지 거치는 6가지 흐름입니다. (클릭하여 아래 인터랙티브 화면을 직접 테스트해 보세요!)</p>
 <div class="state-map">
@@ -345,11 +357,11 @@
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">👀</span> <span data-key="det-title">왜 이런 상태들이 중요할까요?</span></h2>
 <div class="vs-container">
-<div class="box" style="background: #fff7ed;">
-<h3 data-key="det-b1-t" style="color:#ea580c;">🕒 체감 대기 시간 (Perceived Wait Time)</h3>
+<div class="box" style="background: #effbfd;">
+<h3 data-key="det-b1-t" style="color:#1660e0;">🕒 체감 대기 시간 (Perceived Wait Time)</h3>
 <p data-key="det-b1-p">일반 앱은 1초 만에 화면이 바뀝니다. 하지만 AI는 3~15초가 걸립니다. 빈 화면을 8초간 띄워두면(Batch 방식) 사용자는 고장 났다고 생각하고 앱을 끕니다.</p>
 </div>
-<div class="box" style="background: #f0fdf4;">
+<div class="box" style="background: #f0fbfd;">
 <h3 data-key="det-b2-t" style="color:#16a34a;">✍️ 스트리밍 UX (Streaming)</h3>
 <p data-key="det-b2-p">AI가 단어를 완성하는 즉시 화면에 타자기처럼 실시간으로 밀어냅니다. 사용자가 바로 읽기 시작하므로 대기 시간이 80% 이상 줄어든 것처럼 느껴집니다.</p>
 </div>
@@ -441,7 +453,7 @@
 </ul>
 </div>
 <!-- CUI, VUI, Multi-modal -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">📱</span> <span data-key="type-title">AI 인터페이스의 3가지 유형</span></h2>
 <div class="vs-container">
 <div class="box">
@@ -489,11 +501,11 @@
 <div id="v3-turn-next" class="v3-demo" hidden><div class="bubble user" id="v3-turn-selection"></div><div class="bubble ai" role="status" aria-live="polite"><span data-v3-key="v3-turn-next">When would you like to travel?</span></div></div></div>
 </div>
 <!-- Fallback UX -->
-<div class="card" style="border-top-color: #f87171;">
+<div class="card" style="border-top-color: #77a4f2;">
 <h2><span class="title-emoji">🛡️</span> <span data-key="fall-title">우아한 실패 (Fallback UX)</span></h2>
 
-<div class="box" style="background:#fef2f2; border-left: 4px solid #ef4444; text-align:left;">
-<h3 data-key="fall-h3" style="color:#b91c1c; margin-top:0;">3단계 폴백 패턴 (3-Step Pattern)</h3>
+<div class="box" style="background:#f2f6fe; border-left: 4px solid #4683ed; text-align:left;">
+<h3 data-key="fall-h3" style="color:#1c56b9; margin-top:0;">3단계 폴백 패턴 (3-Step Pattern)</h3>
 <ol>
 <li><strong data-key="fall-s1-b">한계 인정:</strong> <span data-key="fall-s1-t">"죄송합니다. 개인 계좌 기록은 열람할 수 없어요."</span></li>
 <li><strong data-key="fall-s2-b">가능 범위 설명:</strong> <span data-key="fall-s2-t">"대신 가까운 영업점 위치나 환율은 알려드릴 수 있습니다."</span></li>
@@ -502,7 +514,7 @@
 </div>
 </div>
 <!-- Dialogue Tree Mini-Map -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">🗺️</span> <span data-key="tree-title">대화 흐름도 (Dialogue Tree) 설계</span></h2>
 
 <div class="tree-container">
@@ -555,15 +567,15 @@
 </ul>
 </div>
 <!-- Hallucination & The Dark Box -->
-<div class="card" style="border-top-color: #f87171;">
+<div class="card" style="border-top-color: #77a4f2;">
 <h2><span class="title-emoji">🤥</span> <span data-key="hal-title">AI는 왜 거짓말(Hallucination)을 할까?</span></h2>
 <div class="vs-container">
-<div class="box" style="background: #fef2f2; border: 1px solid #fca5a5;">
-<h3 data-key="hal-b1-t" style="color:#b91c1c; margin-top:0;">📦 The "Dark Box" Problem</h3>
+<div class="box" style="background: #f2f6fe; border: 1px solid #aac6f7;">
+<h3 data-key="hal-b1-t" style="color:#1c56b9; margin-top:0;">📦 The "Dark Box" Problem</h3>
 <p data-key="hal-b1-p">AI가 '어떻게, 왜' 이런 대답을 했는지 근거를 볼 수 없을 때 사용자는 불안함을 느낍니다. 단 1번의 당당한 거짓말만으로도 앱을 삭제합니다.</p>
 </div>
-<div class="box" style="background: #fffbeb; border: 1px solid #fde047;">
-<h3 data-key="hal-b2-t" style="color:#b45309; margin-top:0;">🎲 Word Guessing Game</h3>
+<div class="box" style="background: #edfbfd; border: 1px solid #56daee;">
+<h3 data-key="hal-b2-t" style="color:#1197ac; margin-top:0;">🎲 Word Guessing Game</h3>
 <p data-key="hal-b2-p">AI는 진실을 아는 뇌가 아니라, 다음 단어를 예측하는 확률 기계입니다. 그래서 <strong>세상에 없는 해마 이모지</strong>도 당당하게 지어냅니다.</p>
 </div>
 </div>
@@ -584,14 +596,14 @@
 </div>
 </div>
 <!-- Live UX Examples (Number vs Badges) -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">📊</span> <span data-key="ui-title">어떻게 보여줄 것인가? (숫자 vs 출처)</span></h2>
 <div class="vs-container">
 <div class="box">
-<h3 data-key="ui-bad-t" style="color:#dc2626;">❌ 복잡한 % 확률 (Bad UX)</h3>
+<h3 data-key="ui-bad-t" style="color:#2669dc;">❌ 복잡한 % 확률 (Bad UX)</h3>
 <p data-key="ui-bad-p">"이 답변은 87.34% 확실합니다" 👉 사용자는 복잡한 숫자를 원하지 않으며 오히려 혼란만 더해집니다.</p>
 </div>
-<div class="box" style="background: #f0fdf4;">
+<div class="box" style="background: #f0fbfd;">
 <h3 data-key="ui-good-t" style="color:#16a34a;">✅ 번호 출처 배지 (Good UX)</h3>
 <p data-key="ui-good-p">문장 끝에 공식 출처 링크를 뱃지로 달아줍니다. 1-Click 팩트체크가 가능해 신뢰가 상승합니다.</p>
 <div style="background:white; padding:10px; border-radius:6px; border:1px solid #cbd5e1; margin-top:10px; font-size:0.9rem;">
@@ -605,7 +617,7 @@
 <div style="font-size: 2rem;">⚠️</div>
 <div>
 <strong data-key="warn-t">의료/건강 검색 경고 (Google AI Overview)</strong><br>
-<span data-key="warn-p" style="font-size:0.9rem; color:#451a03;">타이레놀 복용량처럼 위험한 질문에는 <strong>[WebMD]</strong> 같은 전문 출처를 달고, <strong>"이것은 의학적 진단이 아닙니다. 의사와 상담하세요."</strong>라는 노란색 경고문을 반드시 배치해야 합니다.</span>
+<span data-key="warn-p" style="font-size:0.9rem; color:#061c42;">타이레놀 복용량처럼 위험한 질문에는 <strong>[WebMD]</strong> 같은 전문 출처를 달고, <strong>"이것은 의학적 진단이 아닙니다. 의사와 상담하세요."</strong>라는 눈에 잘 띄는 경고문을 반드시 배치해야 합니다.</span>
 </div>
 </div>
 </div>
@@ -634,7 +646,7 @@
 <h3 data-key="act-h3">나쁜 AI 화면 고치기 (Fix Bad AI!)</h3>
 <p data-key="act-p">다음의 엉터리 AI 답변 화면에 오늘 배운 <strong>신뢰성 UI 요소 3가지</strong>를 추가해 다시 스케치하세요.</p>
 <div class="mockup-window" style="text-align:left; max-width: 500px; margin: 15px auto;">
-<div style="color:#ef4444; margin-bottom:5px; font-weight:bold;">❌ Bad AI Screen</div>
+<div style="color:#4683ed; margin-bottom:5px; font-weight:bold;">❌ Bad AI Screen</div>
 <div class="fake-ai-msg" data-key="act-bad-msg">"당신은 독감입니다. 즉시 X 약을 드세요. 100% 보장합니다!"<br><small style="color:#94a3b8;">(출처 없음, 경고 없음)</small></div>
 </div>
 <ul class="emoji-list" style="text-align:left; display:inline-block; margin-bottom: 20px;">
@@ -661,7 +673,7 @@
 </ul>
 </div>
 <!-- Blank Canvas Paradox -->
-<div class="card" style="border-top-color: #f87171;">
+<div class="card" style="border-top-color: #77a4f2;">
 <h2><span class="title-emoji">🖼️</span> <span data-key="blank-title">빈 도화지의 역설 (Blank Canvas Paradox)</span></h2>
 
 <div class="vs-container">
@@ -669,8 +681,8 @@
 <h3 data-key="blank-b1-t" style="color:#334155; margin-top:0;">📱 일반 앱 (Normal App)</h3>
 <p data-key="blank-b1-p">고정된 메뉴와 버튼이 있어서, 처음 앱을 켜도 <strong>3단계 팝업 튜토리얼</strong>만 보여주면 쉽게 적응합니다.</p>
 </div>
-<div class="box" style="background: #fef2f2; border: 1px solid #fca5a5;">
-<h3 data-key="blank-b2-t" style="color:#b91c1c; margin-top:0;">🤖 AI 앱 (AI App)</h3>
+<div class="box" style="background: #f2f6fe; border: 1px solid #aac6f7;">
+<h3 data-key="blank-b2-t" style="color:#1c56b9; margin-top:0;">🤖 AI 앱 (AI App)</h3>
 <p data-key="blank-b2-p">가이드 없이 '무엇이든 자유롭게 치세요'라고 텅 빈 창만 주면, 사용자는 <strong>얼어붙어서 아무것도 입력하지 못하고</strong> 앱을 이탈합니다.</p>
 </div>
 </div>
@@ -739,7 +751,7 @@
   </div>
 </div>
 <!-- Starter Prompts Rules -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">✨</span> <span data-key="start-title">효과적인 시작 버튼 설계법</span></h2>
 <ul class="emoji-list">
 <li>🎯 <strong data-key="start-l1-b">명확한 행동 동사 (Direct Action Verbs):</strong> <span data-key="start-l1-t">요약하기, 번역하기, 초안 쓰기 등 명확한 동사로 시작.</span></li>
@@ -762,10 +774,10 @@
 2. Offer a reminder.
 3. Ask a student to change the plan and explain any difficulty.</p><p class="v3-fb-check" data-v3-key="v3-fb-warning">Check the answer against your original note.</p></div>
       <div class="v3-fb-actions">
-        <div class="v3-fb-votes"><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="up" aria-pressed="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 10H3v11h4Zm0 10h11a2 2 0 0 0 2-1.7l1-7A2 2 0 0 0 19 9h-5l1-5a2 2 0 0 0-2-2l-6 8Z"></path></svg><span data-v3-key="v3-fb-helpful">Helpful</span></button><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="down" aria-pressed="false" aria-controls="v3-fb-reasons" aria-expanded="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 14H3V3h4Zm0-10h11a2 2 0 0 1 2 1.7l1 7a2 2 0 0 1-2 2.3h-5l1 5a2 2 0 0 1-2 2l-6-8Z"></path></svg><span data-v3-key="v3-fb-unhelpful">Not helpful</span></button></div>
-        <div class="v3-fb-tools"><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-copy><svg aria-hidden="true" viewbox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H4v13h4"></path></svg><span data-v3-key="v3-fb-copy">Copy</span></button><button type="button" class="v3-pb-button v3-pb-tool" data-v3-fb-edit aria-expanded="false" aria-controls="v3-fb-editor"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m14 5 5 5M4 20l5-1L21 7l-5-5L4 14Z"></path></svg><span data-v3-key="v3-fb-edit">Edit</span></button></div>
+        <section class="v3-fb-action-group" data-feedback-kind="explicit" aria-labelledby="v3-fb-explicit-title"><p id="v3-fb-explicit-title" class="v3-fb-kind-label" data-v3-key="v3-fb-explicit-title">Direct rating · Explicit</p><p id="v3-fb-explicit-help" class="v3-fb-kind-help" data-v3-key="v3-fb-explicit-help">Tell us directly what helped or what did not.</p><div class="v3-fb-votes"><button type="button" aria-describedby="v3-fb-explicit-help" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="up" aria-pressed="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 10H3v11h4Zm0 10h11a2 2 0 0 0 2-1.7l1-7A2 2 0 0 0 19 9h-5l1-5a2 2 0 0 0-2-2l-6 8Z"></path></svg><span class="v3-fb-button-label"><span data-v3-key="v3-fb-helpful">Helpful</span><small class="v3-fb-kind-tag">Explicit</small></span></button><button type="button" aria-describedby="v3-fb-explicit-help" class="v3-pb-button v3-pb-tool" data-v3-fb-vote="down" aria-pressed="false" aria-controls="v3-fb-reasons" aria-expanded="false"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 14H3V3h4Zm0-10h11a2 2 0 0 1 2 1.7l1 7a2 2 0 0 1-2 2.3h-5l1 5a2 2 0 0 1-2 2l-6-8Z"></path></svg><span class="v3-fb-button-label"><span data-v3-key="v3-fb-unhelpful">Not helpful</span><small class="v3-fb-kind-tag">Explicit</small></span></button></div></section>
+        <section class="v3-fb-action-group" data-feedback-kind="implicit" aria-labelledby="v3-fb-implicit-title"><p id="v3-fb-implicit-title" class="v3-fb-kind-label" data-v3-key="v3-fb-implicit-title">Usage clues · Implicit</p><p id="v3-fb-implicit-help" class="v3-fb-kind-help" data-v3-key="v3-fb-implicit-help">Actions such as copying or editing can give clues.</p><div class="v3-fb-tools"><button type="button" aria-describedby="v3-fb-implicit-help" class="v3-pb-button v3-pb-tool" data-v3-fb-copy><svg aria-hidden="true" viewbox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"></rect><path d="M16 8V3H4v13h4"></path></svg><span class="v3-fb-button-label"><span data-v3-key="v3-fb-copy">Copy</span><small class="v3-fb-kind-tag">Implicit</small></span></button><button type="button" aria-describedby="v3-fb-implicit-help" class="v3-pb-button v3-pb-tool" data-v3-fb-edit aria-expanded="false" aria-controls="v3-fb-editor"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m14 5 5 5M4 20l5-1L21 7l-5-5L4 14Z"></path></svg><span class="v3-fb-button-label"><span data-v3-key="v3-fb-edit">Edit</span><small class="v3-fb-kind-tag">Implicit</small></span></button></div></section>
       </div>
-      <fieldset id="v3-fb-reasons" class="v3-fb-reasons v3-pb-fieldset" data-v3-fb-reasons hidden><legend data-v3-key="v3-fb-reason-title">What could be better? (optional)</legend><div class="v3-pb-choices"><button type="button" class="v3-pb-choice" data-v3-fb-reason="long" aria-pressed="false" data-v3-key="v3-fb-reason-long">Too long</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="unclear" aria-pressed="false" data-v3-key="v3-fb-reason-unclear">Hard to understand</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="offtopic" aria-pressed="false" data-v3-key="v3-fb-reason-offtopic">Misses my question</button></div></fieldset>
+      <fieldset id="v3-fb-reasons" class="v3-fb-reasons v3-pb-fieldset" data-v3-fb-reasons data-feedback-kind="explicit" hidden><legend><span class="v3-fb-kind-tag">Explicit</span> <span data-v3-key="v3-fb-reason-title">What could be better? (optional)</span></legend><div class="v3-pb-choices"><button type="button" class="v3-pb-choice" data-v3-fb-reason="long" aria-pressed="false" data-v3-key="v3-fb-reason-long">Too long</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="unclear" aria-pressed="false" data-v3-key="v3-fb-reason-unclear">Hard to understand</button><button type="button" class="v3-pb-choice" data-v3-fb-reason="offtopic" aria-pressed="false" data-v3-key="v3-fb-reason-offtopic">Misses my question</button></div></fieldset>
       <div id="v3-fb-editor" class="v3-fb-editor" data-v3-fb-editor hidden><label for="v3-fb-edit-text" data-v3-key="v3-fb-edit-label">Edit this sample answer</label><textarea id="v3-fb-edit-text" rows="6" data-v3-fb-edit-text></textarea><div class="v3-pb-controls"><button type="button" class="v3-pb-button v3-pb-primary" data-v3-fb-save data-v3-key="v3-fb-save">Save changes</button><button type="button" class="v3-pb-button" data-v3-fb-cancel data-v3-key="v3-fb-cancel">Cancel</button></div></div>
       <div class="v3-fb-copy-panel" data-v3-fb-copy-panel hidden><label for="v3-fb-copy-text" data-v3-key="v3-fb-copy-label">Answer to copy</label><textarea id="v3-fb-copy-text" rows="6" readonly data-v3-fb-copy-text></textarea></div>
       <p class="v3-fb-status" data-v3-fb-status role="status" aria-live="polite" aria-atomic="true"></p>
@@ -773,8 +785,8 @@
     <div class="v3-pb-footer"><button type="button" class="v3-pb-button v3-pb-quiet" data-v3-fb-reset data-v3-key="v3-fb-reset">Reset conversation</button></div>
   </div>
 <div style="margin-top: 20px; font-size: 0.95rem;">
-<strong data-key="feed-h1">명시적 피드백 (Explicit)</strong>: 좋아요/싫어요(1-Tap) 버튼을 안전 경고문 옆에 배치하세요.<br>
-<strong data-key="feed-h2">묵시적 피드백 (Implicit)</strong>: [복사]를 누르면 긍정, 글을 다 읽기도 전에 [다시 생성]을 누르면 강력한 부정 신호로 자동 기록됩니다.
+<strong data-key="feed-h1">직접 피드백 (Explicit)</strong>: ‘도움이 돼요·아쉬워요’와 이유 선택처럼 사용자가 평가를 직접 알려줘요.<br>
+<strong data-key="feed-h2">간접 피드백 (Implicit)</strong>: 복사·수정 같은 행동으로 반응을 짐작해요. 복사했다고 꼭 만족한 것은 아니에요.
                 </div>
 </div>
 <!-- Midterm Notice -->
@@ -787,7 +799,7 @@
 <li data-key="exam-l3">🛡️ 3. <strong>신뢰(Trust) 및 피드백(Feedback) UI</strong> 설계 아이디어</li>
 </ul>
 <br>
-<button class="action-btn" data-key="exam-btn" onclick="alert(translations[currentLang]['js_exam_alert'])" style="background:#dc2626;">🔔 이번 주 출석 퀴즈 제출하기</button>
+<button class="action-btn" data-key="exam-btn" onclick="alert(translations[currentLang]['js_exam_alert'])" style="background:#2669dc;">🔔 이번 주 출석 퀴즈 제출하기</button>
 </div>
 </div>
 
@@ -806,7 +818,7 @@
                 </div>
 </div>
 
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🎭</span> <span data-key="role-title">WoZ 실험실의 3가지 핵심 역할</span></h2>
 <p data-key="role-sub">실험을 성공시키려면 3명이 각자의 역할을 완벽히 소화해야 해요. 역할을 눌러 규칙을 확인해 보세요!</p>
 <div class="matrix-board">
@@ -816,8 +828,8 @@
 </div>
 </div>
 
-<div class="card" style="border-top-color: #8b5cf6;">
-<h2><span class="title-emoji">📜</span> <span data-key="rule-title">완벽한 AI가 되기 위한 '마법사의 3대 비밀 규칙'</span></h2>
+<div class="card" style="border-top-color: #62ddf0;">
+<h2><span class="title-emoji">📜</span> <span data-key="rule-title">응답 담당자가 지킬 세 가지 규칙</span></h2>
 
 <div class="vs-container">
 <div class="box">
@@ -855,8 +867,8 @@
 <p data-key="flow-sub">실험은 복잡하지 않아요! 4단계 총 20분이면 충분합니다.</p>
 <div class="phase-timeline">
 <div class="phase-zone zone-p1" data-key="pz1">1단계: 브리핑<br>(3분)<br>미션 부여</div>
-<div class="phase-zone zone-p2" data-key="pz2">2단계: 대화 테스트<br>(10분)<br>실제 챗봇 대화</div>
-<div class="phase-zone zone-p3" data-key="pz3">3단계: 정체 공개<br>(5분)<br>인터뷰 &amp; 진실 고백</div>
+<div class="phase-zone zone-p2" data-key="pz2">2단계: 모의 대화<br>(10분)<br>과제 수행 관찰</div>
+<div class="phase-zone zone-p3" data-key="pz3">3단계: 사후 설명<br>(5분)<br>모의 기능 설명·인터뷰</div>
 <div class="phase-zone zone-p4" data-key="pz4">4단계: 정리<br>(2분)<br>감사 인사 &amp; 메모</div>
 </div>
 </div>
@@ -1017,7 +1029,7 @@
 <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:bold;">
                                     Share this file <span onclick="closeShareModal()" style="cursor:pointer;">✕</span>
 </div>
-<div data-key="c6-perm-txt" style="font-size:0.7rem; color:#94a3b8;">접근 권한 설정:</div>
+<div data-key="c6-perm-txt" style="font-size:0.7rem; color:#94a3b8;">공유 대상과 보기 권한:</div>
 <select class="perm-select" id="perm-select" onchange="checkPermission()">
 <option data-key="c6-opt1" value="restricted">Only invited people (제한됨)</option>
 <option data-key="c6-opt2" value="anyone">Anyone with the link (링크가 있는 누구나)</option>
@@ -1062,11 +1074,11 @@
 </ul>
 </div>
 <!-- Bias & Case Study -->
-<div class="card" style="border-top-color: #f87171;">
+<div class="card" style="border-top-color: #77a4f2;">
 <h2><span class="title-emoji">🚫</span> <span data-key="bias-title">알고리즘의 편견 (Algorithmic Bias)</span></h2>
 
 <div class="alert-box">
-<h3 data-key="bias-ex-t" style="margin-top:0; color:#b91c1c;">🚨 Case Study: 아마존 AI 채용 실패 사례</h3>
+<h3 data-key="bias-ex-t" style="margin-top:0; color:#1c56b9;">🚨 Case Study: 아마존 AI 채용 실패 사례</h3>
 <p data-key="bias-ex-p">과거 남성 중심의 이력서 데이터를 학습한 AI가 <strong>'여성(Women's)'</strong>이란 단어가 들어간 서류에 무조건 낮은 점수를 주는 치명적 성차별 오류를 일으켜 프로젝트가 폐기되었습니다. AI에게 통제권을 100% 넘기면 끔찍한 차별이 발생합니다.</p>
 </div>
 </div>
@@ -1083,7 +1095,7 @@
 </div>
 </div>
 <!-- User Controls Mockup -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">🎛️</span> <span data-key="ctrl-title">사용자 통제 버튼 (User Override Controls)</span></h2>
 
 <div class="mock-chat-wrapper">
@@ -1096,7 +1108,7 @@
 <div class="mock-ai">
 <span data-key="ctrl-mock-a">네, 내일 제주도행 비행기를 알아보고 결제를 진행합니...</span><br>
 <div class="stop-btn-mock" onclick="triggerAlert('js_stop')">
-<span style="color:black;">⬛</span> <span data-key="ctrl-btn-stop">생성 중단 (Stop Generating)</span>
+<span aria-hidden="true">⬛</span> <span data-key="ctrl-btn-stop">생성 중단 (Stop Generating)</span>
 </div>
 <br>
 <div class="report-link" data-key="ctrl-link-report" onclick="triggerAlert('js_report')">
@@ -1106,12 +1118,12 @@
 </div>
 <ul class="emoji-list" style="margin-top:20px; font-size:0.95rem;">
 <li>🛑 <strong data-key="ctrl-l1-b">생성 중단 (Cancel):</strong> <span data-key="ctrl-l1-t">AI가 엉뚱한 답변을 할 때 즉시 멈추는 버튼</span></li>
-<li>✏️ <strong data-key="ctrl-l2-b">직접 수정 (Edit):</strong> <span data-key="ctrl-l2-t">내가 썼던 질문을 연필 아이콘을 눌러 다시 고치는 기능</span></li>
-<li>🚩 <strong data-key="ctrl-l3-b">이의 제기권 (Contestability):</strong> <span data-key="ctrl-l3-t">AI의 자동 판단(비자 심사, 대출 등)에 반박하고 <strong>인간 상담원에게 재검토를 요청</strong>할 권리</span></li>
+<li>✏️ <strong data-key="ctrl-l2-b">직접 수정 (Edit):</strong> <span data-key="ctrl-l2-t">연필 모양입니다. 내가 쓴 요청을 고친 뒤 다시 보낼 때 사용합니다.</span></li>
+<li>🚩 <strong data-key="ctrl-l3-b">이의 제기권 (Contestability):</strong> <span data-key="ctrl-l3-t">잘못된 답이나 판단을 알리고 재검토를 요청합니다. 이미 끝난 행동을 자동으로 되돌리지는 않습니다.</span></li>
 </ul>
 </div>
 <!-- Dark Patterns -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">😈</span> <span data-key="dark-title">다크 패턴 (Dark Patterns) 피하기</span></h2>
 
 <div class="vs-container">
@@ -1206,16 +1218,16 @@
 </ul>
 </div>
 <!-- Helpful vs Creepy -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">⚖️</span> <span data-key="creepy-title">친절한 비서인가, 무서운 감시자인가?</span></h2>
 <p data-key="creepy-sub">AI가 똑똑하게 나를 챙겨준다고 느끼게 하려면 '투명성(Transparency)'이 필수입니다.</p>
 <div class="vs-container">
-<div class="box" style="background: #f0fdf4; border: 1px solid #86efac;">
+<div class="box" style="background: #f0fbfd; border: 1px solid #86efac;">
 <h3 data-key="creepy-good-t" style="color:#16a34a; margin-top:0;">✅ 친절한 개인화 (Helpful)</h3>
 <p data-key="creepy-good-p">"어제 [한국어 단어 A]를 검색하셔서 관련된 [퀴즈 B]를 추천해 드려요."<br>👉 내가 과거에 했던 행동과 연결하여 이유를 분명히 설명함.</p>
 </div>
-<div class="box" style="background: #fef2f2; border: 1px solid #fca5a5;">
-<h3 data-key="creepy-bad-t" style="color:#dc2626; margin-top:0;">❌ 소름 돋는 감시 (Creepy)</h3>
+<div class="box" style="background: #f2f6fe; border: 1px solid #aac6f7;">
+<h3 data-key="creepy-bad-t" style="color:#2669dc; margin-top:0;">❌ 소름 돋는 감시 (Creepy)</h3>
 <p data-key="creepy-bad-p">카페에서 친구와 '신발' 이야기를 한 직후, 스마트폰에 갑자기 신발 광고가 뜸.<br>👉 데이터 수집 출처를 몰라 스마트폰이 도청한다고 느낌.</p>
 </div>
 </div>
@@ -1241,7 +1253,7 @@
 <div class="perm-content">
 <div style="font-size:2rem; margin-bottom:10px;">📷</div>
 <div data-key="perm-h" style="font-weight:bold; margin-bottom:5px;">카메라 접근 허용</div>
-<div data-key="perm-p" style="font-size:0.8rem; color:#64748b;">"AI가 비자 서류를 번역하기 위해 카메라 렌즈 접근 권한이 필요합니다."</div>
+<div data-key="perm-p" style="font-size:0.8rem; color:#64748b;">번역할 서류를 사진으로 찍으려면 카메라 사용을 허용해 주세요.</div>
 </div>
 <div class="perm-actions">
 <div class="perm-btn deny" data-key="perm-no" onclick="triggerAlert('js_deny')">허용 안함</div>
@@ -1252,7 +1264,7 @@
 </div>
 </div>
 <!-- User Control Panel -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">🎛️</span> <span data-key="ctrl-title">프라이버시 및 데이터 제어판 (Control Center)</span></h2>
 <p data-key="ctrl-sub">사용자가 자신의 데이터를 쉽게 통제하고 삭제할 수 있는 스위치를 직접 눌러보세요.</p>
 <div class="mock-settings">
@@ -1277,12 +1289,12 @@
 <strong data-key="ctrl-t3">🗑️ 전체 대화 기록 삭제 (Clear History)</strong>
 <div data-key="ctrl-p3" style="font-size:0.85rem; color:#64748b;">서버에 저장된 모든 채팅 기록을 영구적으로 삭제합니다.</div>
 </div>
-<button class="action-btn" data-key="ctrl-btn-del" onclick="triggerAlert('js_delete')" style="background:#ef4444;">삭제하기</button>
+<button class="action-btn" data-key="ctrl-btn-del" onclick="triggerAlert('js_delete')" style="background:#4683ed;">삭제하기</button>
 </div>
 </div>
 </div>
 <!-- Privacy 3 Pillars -->
-<div class="card" style="border-top-color: #ef4444;">
+<div class="card" style="border-top-color: #4683ed;">
 <h2><span class="title-emoji">🏛️</span> <span data-key="rule-title">프라이버시 UX 3대 원칙 (3 Privacy Pillars)</span></h2>
 <ul class="emoji-list">
 <li>1️⃣ <strong data-key="rule-l1-b">최소 수집 (Minimize Data):</strong> <span data-key="rule-l1-t">작업에 꼭 필요한 최소한의 데이터만 받으세요.</span></li>
@@ -1319,7 +1331,7 @@
 </ul>
 </div>
 <!-- Frontstage vs Backstage -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🎭</span> <span data-key="lov-title">가시성의 선 (Line of Visibility)</span></h2>
 <p data-key="lov-sub">사용자가 보는 무대 앞(UI)과 보이지 않는 무대 뒤(AI)는 1:1로 짝을 맞춰 움직여야 합니다.</p>
 <div class="vs-container">
@@ -1390,10 +1402,10 @@
 </tr>
 <!-- Row 5 -->
 <tr class="row-fallback">
-<td style="color:#b91c1c;"><strong>5. Fallback ⚠️</strong><br><small data-key="bp-r5-sub">에러 대처망</small></td>
+<td style="color:#1c56b9;"><strong>5. Fallback ⚠️</strong><br><small data-key="bp-r5-sub">에러 대처망</small></td>
 <td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_1')"><span data-key="bp-r5-c1">⚠️ 업로드 지연 (Wi-Fi 약함)</span><br>👉 <small data-key="bp-r5-c1-sol">"다시 업로드" 팝업 제공</small></div></td>
 <td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_2')"><span data-key="bp-r5-c2">⚠️ 흐린 사진 (인식률 60% 이하)</span><br>👉 <small data-key="bp-r5-c2-sol">"조명 켜고 다시 찍기" 유도</small></div></td>
-<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_3')"><span data-key="bp-r5-c3">⚠️ 할루시네이션(거짓말) 방지</span><br>👉 <small data-key="bp-r5-c3-sol">"사람 전문가에게 질문하기" 버튼</small></div></td>
+<td><div class="bp-step bp-warn" onclick="triggerAlert('js_r5_3')"><span data-key="bp-r5-c3">⚠️ 그럴듯하지만 틀린 답 (할루시네이션)</span><br>👉 <small data-key="bp-r5-c3-sol">"사람 전문가에게 질문하기" 버튼</small></div></td>
 </tr>
 </tbody>
 </table>
@@ -1466,7 +1478,7 @@
 </ul>
 </div>
 <!-- Traditional vs AI Metrics -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">📈</span> <span data-key="metric-title">AI 맞춤형 사용성 평가 지표</span></h2>
 
 <div class="vs-container">
@@ -1483,7 +1495,7 @@
 <div class="box">
 <strong data-key="m3-t">🛡️ 신뢰 및 검증률 (Trust &amp; Verification)</strong>
 <p data-key="m3-p" style="font-size:0.85rem; color:#475569;">맹신하지 않고 출처 링크(Citation)를 직접 눌러서 사실을 확인한 비율</p>
-<div class="metric-bar"><div class="metric-fill" style="width: 60%; background: var(--warning); color:#78350f;">60% Verified</div></div>
+<div class="metric-bar"><div class="metric-fill" style="width: 60%; background: var(--warning); color:#0f3678;">60% Verified</div></div>
 </div>
 </div>
 </div>
@@ -1513,7 +1525,7 @@
 </div>
 </div>
 <!-- Priority Matrix -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">🗂️</span> <span data-key="mat-title">UI 버그 수정 우선순위 매트릭스</span></h2>
 <p data-key="mat-sub">피드백을 받았다고 해서 전부 당장 고칠 수는 없습니다. 색상을 눌러 우선순위를 확인하세요.</p>
 <div class="matrix-board">
@@ -1550,7 +1562,7 @@
 </ul>
 </div>
 <!-- Figma QA Check (Interactive) -->
-<div class="card" style="border-top-color: #fb923c;">
+<div class="card" style="border-top-color: #4ad7ed;">
 <h2><span class="title-emoji">🔍</span> <span data-key="qa-title">Figma 화면 흐름도 점검 (Clean Canvas Test)</span></h2>
 <p data-key="qa-sub">제출 전 우측 상단의 [Prototype] 탭을 눌러 파란 화살표가 제대로 연결되었는지 점검하세요. (아래 뱃지를 클릭해 보세요!)</p>
 <div class="figma-qa-board">
@@ -1578,7 +1590,7 @@
 <!-- Orphan Edge Case Screen -->
 <div class="f-screen orphan" onclick="triggerAlert('js_orphan')" style="cursor:pointer; position:relative;">
 <div style="position:absolute; top:5px; right:5px; font-size:1.5rem;">⚠️</div>
-<div class="f-screen-title" data-key="qa-edge-t" style="color:#ef4444;">4. Network Timeout</div>
+<div class="f-screen-title" data-key="qa-edge-t" style="color:#4683ed;">4. Network Timeout</div>
 <div data-key="qa-edge-p" style="font-size:0.75rem; text-align:center; padding:10px; color:#64748b;">화살표가 연결되지 않은 고립된 화면 (Orphan Screen)</div>
 </div>
 </div>
@@ -1587,8 +1599,8 @@
 <div class="card" style="border-top-color: var(--success);">
 <h2><span class="title-emoji">🛡️</span> <span data-key="ui-title">안전장치 UI 최종 점검 (Checklist)</span></h2>
 <div class="vs-container">
-<div class="box" style="border-left: 4px solid #ef4444;">
-<h4 data-key="ui-h1" style="margin-top:0; color:#b91c1c;">🚨 엣지 케이스 (Edge Cases)</h4>
+<div class="box" style="border-left: 4px solid #4683ed;">
+<h4 data-key="ui-h1" style="margin-top:0; color:#1c56b9;">🚨 엣지 케이스 (Edge Cases)</h4>
 <ul class="emoji-list">
 <li data-key="ui-l1"><strong>빈 화면 (Empty):</strong> 기록을 모두 지웠을 때 나오는 안내 화면</li>
 <li data-key="ui-l2"><strong>네트워크 에러:</strong> '연결 끊김' 배너 + [다시 시도] 버튼</li>
@@ -1599,14 +1611,14 @@
 <h4 data-key="ui-h2" style="margin-top:0; color:#15803d;">✅ 인간 통제권 (Human Control)</h4>
 <ul class="emoji-list">
 <li data-key="ui-l4"><strong>Stop Generating 🛑:</strong> 로딩 중 멈춤 버튼</li>
-<li data-key="ui-l5"><strong>Edit &amp; Undo ✏️:</strong> 질문 수정 / 이전 답변 되돌리기</li>
+<li data-key="ui-l5"><strong>Edit ✏️:</strong> 질문 고치기 · <strong>Undo ↶:</strong> 되돌릴 수 있는 최근 변경 취소</li>
 <li data-key="ui-l6"><strong>Clear History 🗑️:</strong> 설정창 안의 대화 기록 삭제 아이콘</li>
 </ul>
 </div>
 </div>
 </div>
 <!-- PDF Portfolio Structure -->
-<div class="card" style="border-top-color: #8b5cf6;">
+<div class="card" style="border-top-color: #62ddf0;">
 <h2><span class="title-emoji">📄</span> <span data-key="pdf-title">기말 포트폴리오(PDF) 작성 가이드 (Week 15 제출)</span></h2>
 
 <div class="pdf-grid">
@@ -1641,13 +1653,13 @@
 <div class="warning-banner">
 <div class="warning-icon">😱</div>
 <div>
-<strong data-key="warn-title" style="color:#b91c1c; font-size:1.2rem;">가장 많이 하는 치명적 실수 3가지 (0점 주의!)</strong>
-<ol style="margin-bottom:0; color:#7f1d1d; font-weight:500;">
+<strong data-key="warn-title" style="color:#1c56b9; font-size:1.2rem;">가장 많이 하는 치명적 실수 3가지 (0점 주의!)</strong>
+<ol style="margin-bottom:0; color:#1d417f; font-weight:500;">
 <li data-key="warn-l1"><strong>비공개 Figma 링크:</strong> 권한을 "Anyone with the link can view"로 풀지 않음 👉 평가 불가!</li>
 <li data-key="warn-l2"><strong>개미만 한 스크린샷:</strong> PDF 안에 화면 이미지를 너무 작게 넣어 글씨가 전혀 안 보임.</li>
 <li data-key="warn-l3"><strong>"Why"의 부재:</strong> 예쁜 그림만 캡처해두고, 이 기능이 왜 사용자에게 필요한지(이유)를 적지 않음.</li>
 </ol>
-<div data-key="warn-tip" style="margin-top:10px; font-size:0.9rem; color:#450a0a;">💡 <strong>꿀팁:</strong> 제출하기 전에 [크롬 시크릿 창(Incognito Window)]을 열어서 내 피그마 링크가 잘 작동하는지 꼭 직접 테스트해 보세요!</div>
+<div data-key="warn-tip" style="margin-top:10px; font-size:0.9rem; color:#0a2045;">💡 <strong>꿀팁:</strong> 제출하기 전에 [크롬 시크릿 창(Incognito Window)]을 열어서 내 피그마 링크가 잘 작동하는지 꼭 직접 테스트해 보세요!</div>
 </div>
 </div>
 <!-- Activity -->
@@ -1667,168 +1679,13 @@
 
 </template>
 
-<template id="lesson-week08">
-
-<section class="week08-exam-note" aria-label="Week 8 course guidance"><strong data-key="exam-note-title">8주차 · 중간고사 기간</strong><p data-key="exam-note-desc">정규 수업자료 대신 선택형 보너스 UI 실습을 제공합니다. 중간고사 및 과제 안내는 학교 공식 공지를 확인하세요.</p></section>
-
-<div class="container">
-<!-- Intro -->
-<div class="card" style="border-top-color: var(--main-blue);">
-<h1><span class="title-emoji">✨</span> <span data-key="intro-title">Bonus Week: AI UI/UX 컴포넌트 랩 &amp; 마이크로 인터랙션</span></h1>
-<ul class="emoji-list">
-<li>🎯 <strong data-key="intro-l1-b">목표:</strong> <span data-key="intro-l1-t">실제 생성형 AI 서비스(ChatGPT, Claude 등)에 쓰이는 최신 UI 컴포넌트와 애니메이션 마스터하기</span></li>
-<li>💡 <strong data-key="intro-l2-b">핵심:</strong> <span data-key="intro-l2-t">컴포넌트별 직관적인 동작 예시와 UX 원리를 개별 카드로 한눈에 확인하고 직접 조작해보세요!</span></li>
-</ul>
-</div>
-<!-- Deep Dive into Components with Live Interactive Demos (Cards Layout) -->
-<div class="card" style="border-top-color: var(--success);">
-<h2><span class="title-emoji">📚</span> <span data-key="deep-title">핵심 UI 컴포넌트 심층 해부</span></h2>
-
-<div class="comp-grid">
-<!-- 1. Card Layout -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c1-title">📦 1. 카드 레이아웃 (Card Layout)</span>
-<span class="comp-badge">Layout</span>
-</div>
-<div class="demo-box">
-<div class="mini-ai-card">
-<div class="mini-card-head">
-<span>✨ AI 요약 결과</span>
-<span style="font-size:0.75rem; color:#94a3b8;">방금 전</span>
-</div>
-<div style="color:#e2e8f0; line-height:1.4;">"비자 서류 번역 및 주요 제출 항목 정리가 완료되었습니다. 독립된 카드 컨테이너로 제공됩니다."</div>
-</div>
-</div>
-<p class="comp-desc" data-key="c1-desc">AI가 내놓는 복잡한 텍스트, 이미지, 액션 버튼을 독립된 사각형 카드 안에 시각적으로 묶어 <strong>정보의 경계를 명확히 하고 인지 부하를 줄입니다.</strong></p>
-</div>
-<!-- 2. Sticky Header with Inner Scroll -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c2-title">📌 2. 스티키 헤더 (Sticky Header)</span>
-<span class="comp-badge">Navigation</span>
-</div>
-<div class="demo-box" style="padding:10px;">
-<div class="inner-scroll-window">
-<div class="inner-sticky-bar">
-<span data-key="c2-inner-sticky">📌 고정 헤더 (아래로 스크롤해보세요 ⬇️)</span>
-</div>
-<div class="inner-scroll-content">
-<div class="inner-bubble">👤 사용자: 긴 보고서 작성 요청</div>
-<div class="inner-bubble">🤖 AI: 1단계 개요 작성 중...</div>
-<div class="inner-bubble">🤖 AI: 2단계 본문 데이터 분석 요약...</div>
-<div class="inner-bubble">🤖 AI: 3단계 최종 결론 및 권고사항 도출 완료!</div>
-<div class="inner-bubble" style="color:#93c5fd;">스크롤을 계속 내려도 위 파란색 헤더는 상단에 고정되어 유지됩니다!</div>
-</div>
-</div>
-</div>
-<p class="comp-desc" data-key="c2-desc">긴 대화와 긴 출력물을 스크롤할 때도 상단 액션 바나 타이틀이 화면 상단에 달라붙어 <strong>현재 맥락 파악과 빠른 조작을 돕습니다.</strong></p>
-</div>
-<!-- 3. Skeleton Loading -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c3-title">💀 3. 스켈레톤 로딩 (Skeleton Loading)</span>
-<span class="comp-badge">Feedback</span>
-</div>
-<div class="demo-box" style="align-items:center;">
-<div class="skeleton-loader" id="sk-demo-loading" style="width:90%;">
-<div class="sk-line"></div>
-<div class="sk-line"></div>
-<div class="sk-line short"></div>
-</div>
-<div id="sk-demo-content" style="display:none; color:#a7f3d0; font-size:0.85rem; text-align:center;">
-                                ✅ 답변 생성이 완료되어 콘텐츠가 노출되었습니다!
-                            </div>
-<button class="action-btn" data-key="c3-btn" onclick="replaySkeleton()" style="margin-top:12px; font-size:0.75rem; padding:5px 10px;">🔄 로딩 다시 재생</button>
-</div>
-
-</div>
-<!-- 4. Tooltip -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c4-title">💬 4. 툴팁 (Tooltip)</span>
-<span class="comp-badge">Affordance</span>
-</div>
-<div class="demo-box" style="text-align:center;">
-<span class="tooltip-container">
-<span data-key="c4-badge">🛡️ [검증된 공공 출처] 마우스를 올려보세요</span>
-<span class="tooltip-box" data-key="c4-tooltip">법무부 및 출입국관리소 공식 포털(HiKorea) 데이터베이스 검증 완료!</span>
-</span>
-</div>
-
-</div>
-<!-- 5. Micro-interaction -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c5-title">🪄 5. 마이크로 인터랙션 (Micro-interaction)</span>
-<span class="comp-badge">Motion</span>
-</div>
-<div class="demo-box" style="align-items:center; flex-direction:row; justify-content:center; gap:12px;">
-<button class="micro-btn" id="card-like-btn" onclick="toggleMicroLike()">
-<span id="card-like-icon">👍</span> <span data-key="c5-btn-like" id="card-like-text">좋아요 클릭</span>
-</button>
-<span data-key="c5-click-hint" id="micro-feedback" style="font-size:0.8rem; color:#94a3b8;">클릭 시 바운스 효과</span>
-</div>
-<p class="comp-desc" data-key="c5-desc">버튼을 눌렀을 때의 통통 튀는 애니메이션(Bounce), 상태 색상 변화 등 <strong>사용자의 행동에 생생한 시각 피드백을 전달</strong>합니다.</p>
-</div>
-<!-- 6. Toast Notification -->
-<div class="comp-card">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c6-title">🍞 6. 토스트 알림 (Toast Notification)</span>
-<span class="comp-badge">Status</span>
-</div>
-<div class="demo-box" style="align-items:center; gap:10px;">
-<button class="action-btn" data-key="c6-btn-trigger" onclick="triggerToastDemo()">📋 "답변 복사" 버튼 누르기</button>
-<div class="demo-toast" data-key="c6-toast-msg" id="card-toast-demo">클립보드에 복사 완료!</div>
-</div>
-<p class="comp-desc" data-key="c6-desc">화면 흐름을 방해하는 강제 모달(팝업) 없이, 하단에 잠시 나타났다 사라지며 <strong>작업의 성공/완료 상태를 비침해적으로 알립니다.</strong></p>
-</div>
-<!-- 7. Drawer (Slide Panel) -->
-<div class="comp-card" style="grid-column: 1 / -1;">
-<div class="comp-card-header">
-<span class="comp-card-title" data-key="c7-title">📁 7. 사이드 드로어 (Side Drawer / Slide-over)</span>
-<span class="comp-badge">Overlay</span>
-</div>
-<div class="demo-box" style="padding:10px;">
-<div class="drawer-preview-area">
-<button class="action-btn" data-key="c7-btn" onclick="toggleCardDrawer()">📁 원본 출처 서랍 열기/닫기</button>
-<div class="demo-drawer" id="card-drawer-demo">
-<div>
-<div style="font-weight:bold; color:#60a5fa; margin-bottom:6px; display:flex; justify-content:space-between;">
-<span data-key="c7-drawer-title">참고 문서</span>
-<span onclick="toggleCardDrawer()" style="cursor:pointer;">✕</span>
-</div>
-<ul style="padding-left:14px; margin:0; color:#cbd5e1; font-size:0.75rem; line-height:1.4;">
-<li>비자 가이드.pdf</li>
-<li>HiKorea 문서</li>
-</ul>
-</div>
-<div data-key="c7-drawer-sub" style="color:#94a3b8; font-size:0.7rem;">오른쪽에서 부드럽게 슬라이드인</div>
-</div>
-</div>
-</div>
-<p class="comp-desc" data-key="c7-desc">주 화면을 벗어나지 않고도 AI의 근거 논문, 대화 히스토리, 설정 패널 등 <strong>상세 정보를 오른쪽에서 부드럽게 꺼내볼 수 있는 오버레이 패널</strong>입니다.</p>
-</div>
-</div>
-</div>
-<!-- Activity -->
-<div class="card" style="border-top-color: var(--main-blue); text-align: center;">
-<h2><span class="title-emoji">⏰</span> <span data-key="act-title">보너스 랩 실습 (Figma 컴포넌트 적용)</span></h2>
-<h3 data-key="act-h3">내 프로토타입에 최신 AI 컴포넌트 이식하기</h3>
-<ol style="text-align:left; display:inline-block; margin-bottom: 20px;">
-<li data-key="act-l1">Figma에서 AI 답변 영역을 <strong>카드 레이아웃</strong> 형태로 감싸기</li>
-<li data-key="act-l2">로딩 화면에 오늘 배운 <strong>스켈레톤 로딩(Shimmer)</strong> 프레임 추가하기</li>
-<li data-key="act-l3">출처 뱃지(Citation)에 마우스를 올리면 뜨는 <strong>툴팁(Tooltip)</strong> 설명 팝업 만들기</li>
-<li data-key="act-l4">복사 버튼을 눌렀을 때 나타나는 <strong>토스트(Toast) 알림</strong> 컴포넌트 배치하기</li>
-</ol>
-<br>
-<button class="action-btn" data-key="act-btn" onclick="alert(translations[currentLang]['js_checklist'])" style="padding:10px 20px; font-size:1rem;">🔔 보너스 랩 수강 완료 확인</button>
-</div>
-</div>
-
-</template>
+<template id="lesson-week08"><div id="ux-week08-root"></div></template>
 <noscript><p class="course-note">Please enable JavaScript to use the interactive lessons. / 인터랙티브 강의를 보려면 JavaScript를 활성화해 주세요. / Для интерактивных уроков включите JavaScript.</p></noscript>
 
+<script src="./js/ux-icons.js"></script>
 <script src="./js/ux.js"></script>
+<script src="./js/ux-week08.js"></script>
+<script src="./js/ux-theme.js"></script>
+<script src="./js/ux-visual.js"></script>
 </body>
 </html>

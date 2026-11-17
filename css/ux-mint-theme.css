@@ -1,0 +1,438 @@
+/* UX Studio · Mint app edition
+   Reference: the supplied mint mobile app and learning app screenshots.
+   App chrome uses cool colors; example emoji retain recognizable natural colors.
+   Week 08 owns its own playground and device animations. */
+
+body.ux-course.ux-app-refresh {
+  background:var(--uxr-page); color:var(--uxr-ink);
+  --main-blue:var(--uxr-blue); --success:var(--uxr-positive-solid);
+  --danger:var(--uxr-negative-solid); --warning:var(--uxr-warm-ink);
+  --figma-purple:var(--uxr-link);
+  --ux-exam-idle:#fafcfc; --ux-exam-hover:#f1f5f5;
+}
+html[data-theme="dark"] body.ux-course.ux-app-refresh {
+  --ux-exam-idle:#17282e; --ux-exam-hover:#203238;
+}
+body.ux-course.ux-app-refresh .studio-header {
+  background:var(--uxr-card); border-bottom:1px solid var(--uxr-line);
+  box-shadow:0 4px 24px rgba(21,66,77,.045);
+}
+body.ux-course.ux-app-refresh .studio-brand { gap:12px; }
+body.ux-course.ux-app-refresh .studio-brand strong { font-weight:800; letter-spacing:-.8px; }
+body.ux-course.ux-app-refresh .brand-mark {
+  width:46px; height:46px; border-radius:16px; background:var(--uxr-blue);
+  color:#fff; transform:none; box-shadow:0 7px 17px rgba(8,126,139,.17);
+}
+body.ux-course.ux-app-refresh .language-switch {
+  background:var(--uxr-soft); border:0; padding:5px; border-radius:999px; gap:3px;
+}
+body.ux-course.ux-app-refresh .language-switch button {
+  border-radius:999px; font-weight:650; color:var(--uxr-muted); border-color:transparent;
+}
+body.ux-course.ux-app-refresh .language-switch button:is(.active,[aria-pressed="true"]) {
+  background:var(--uxr-card); border-color:transparent; color:var(--uxr-link);
+  box-shadow:0 3px 12px rgba(25,73,81,.10);
+}
+body.ux-course.ux-app-refresh .ux-theme-toggle {
+  border-radius:999px; box-shadow:none; border-color:var(--uxr-line);
+  background:var(--uxr-card); color:var(--uxr-text); min-height:46px;
+}
+body.ux-course.ux-app-refresh .ux-theme-toggle:hover { background:var(--uxr-mint); }
+body.ux-course.ux-app-refresh :is(.mobile-menu-toggle,.sidebar-close,#sidebar-close) {
+  border-radius:50%; background:var(--uxr-soft); border:0; color:var(--uxr-link);
+}
+body.ux-course.ux-app-refresh .course-sidebar {
+  background:var(--uxr-card); border-right:1px solid var(--uxr-line); padding-top:25px;
+}
+body.ux-course.ux-app-refresh .sidebar-head {
+  color:var(--uxr-muted); font-size:12px; letter-spacing:.08em; padding-bottom:14px;
+}
+body.ux-course.ux-app-refresh #course-nav { gap:6px; }
+body.ux-course.ux-app-refresh .course-link {
+  padding:12px 13px; gap:9px; border-radius:16px; border-color:transparent;
+  grid-template-columns:31px minmax(0,1fr); min-height:51px;
+}
+body.ux-course.ux-app-refresh .week-number {
+  display:inline-flex; justify-content:center; align-items:center;
+  min-width:29px; min-height:29px; border-radius:10px;
+  color:var(--uxr-muted); background:var(--uxr-soft); font-size:12px; font-weight:750;
+}
+body.ux-course.ux-app-refresh .week-topic { word-break:keep-all; overflow-wrap:anywhere; }
+body.ux-course.ux-app-refresh .week-status { word-break:keep-all; overflow-wrap:anywhere; }
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]),
+body.ux-course.ux-app-refresh .course-link.exam:is(.active,[aria-current="page"]) {
+  background:var(--uxr-mint); border-color:transparent; color:var(--uxr-link);
+  box-shadow:inset 0 0 0 1px var(--uxr-line);
+}
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"])::before { display:none; }
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]) .week-number {
+  background:var(--uxr-blue); color:#fff;
+}
+/* Exam labels are quiet until selected; keep the filled week number for the active page. */
+body.ux-course.ux-app-refresh .course-link.exam:not(.active):not([aria-current="page"]) {
+  background:var(--ux-exam-idle); border-color:transparent; box-shadow:none;
+}
+@media (hover:hover) and (pointer:fine) {
+  body.ux-course.ux-app-refresh .course-link.exam:not(.active):not([aria-current="page"]):hover {
+    background:var(--ux-exam-hover); color:var(--uxr-text);
+  }
+}
+body.ux-course.ux-app-refresh main.studio-main { padding-top:28px; }
+body.ux-course.ux-app-refresh .lesson-heading {
+  position:relative; padding:34px 36px; border-radius:30px; border:0;
+  background:var(--uxr-hero); box-shadow:none; margin-bottom:22px;
+}
+body.ux-course.ux-app-refresh .lesson-kicker {
+  padding:7px 13px; border-radius:999px; letter-spacing:.06em;
+  color:var(--uxr-link); background:var(--uxr-card); box-shadow:none; font-size:12px;
+}
+body.ux-course.ux-app-refresh .lesson-heading h1 {
+  color:var(--uxr-ink); border:0; font-size:clamp(30px,3vw,42px); line-height:1.32;
+  font-weight:850; letter-spacing:-1.15px; margin-bottom:13px;
+}
+body.ux-course.ux-app-refresh .lesson-intro { color:var(--uxr-text); line-height:1.75; }
+body.ux-course.ux-app-refresh .lesson-bridge { font-size:16px; color:var(--uxr-muted); margin-bottom:20px; }
+body.ux-course.ux-app-refresh .examples-header { padding:0 4px; font-size:16px; }
+body.ux-course.ux-app-refresh #lesson-content .container > .card,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:hover,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:hover:not(:focus-within) {
+  padding:30px; border:0 !important; border-radius:28px; margin-bottom:24px;
+  background:var(--uxr-card); box-shadow:0 6px 26px rgba(21,63,76,.045);
+}
+body.ux-course.ux-app-refresh #lesson-content .card > :is(h1,h2) {
+  font-size:25px; line-height:1.45; font-weight:800; letter-spacing:-.6px;
+}
+body.ux-course.ux-app-refresh .explanation-note {
+  border:0; border-radius:20px; background:var(--uxr-soft); padding:20px 23px; color:var(--uxr-text);
+}
+body.ux-course.ux-app-refresh #lesson-content :is(.comp-card,.persona-card,.vs-container>.box,.mock-comment) {
+  border-radius:21px; border-color:var(--uxr-line); box-shadow:none;
+}
+body.ux-course.ux-app-refresh #lesson-content :is(.action-btn,.v3-pb-button,.v3-er-button),
+body.ux-course.ux-app-refresh :is(.completion-button,.nav-lesson,#final-review-link) {
+  border-radius:999px; min-height:46px; box-shadow:none; font-weight:700;
+}
+body.ux-course.ux-app-refresh #lesson-content .action-btn { padding:12px 22px; }
+body.ux-course.ux-app-refresh .nav-lesson { padding:13px 23px; min-height:52px; }
+body.ux-course.ux-app-refresh .nav-lesson.nav-next { box-shadow:0 8px 19px rgba(8,126,139,.20); }
+body.ux-course.ux-app-refresh #lesson-content :is(.action-chip,.chip) { border-radius:999px; }
+body.ux-course.ux-app-refresh #back-to-top.round-top {
+  background:var(--uxr-blue); color:#fff; border:0;
+  box-shadow:0 8px 22px rgba(8,126,139,.25);
+}
+
+/* Interface controls use clear SVG symbols; illustrative emoji keep their own colors. */
+body.ux-course.ux-app-refresh .ux-icon {
+  display:inline-block; width:1.15em; height:1.15em; fill:currentColor;
+  vertical-align:-.18em; flex-shrink:0;
+}
+body.ux-course.ux-app-refresh .ux-native-emoji {
+  display:inline-block; flex:0 0 auto;
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  font-style:normal; font-weight:400; line-height:1;
+  vertical-align:-.12em; white-space:nowrap; text-indent:0;
+  filter:none;
+}
+body.ux-course.ux-app-refresh .ux-control-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  flex:0 0 auto; width:1.2em; height:1.2em; line-height:1;
+  color:inherit; vertical-align:-.15em;
+}
+body.ux-course.ux-app-refresh .ux-control-icon > svg.ux-icon {
+  width:100%; height:100%; vertical-align:0;
+}
+body.ux-course.ux-app-refresh[data-page="week10"] .edit-icon {
+  width:40px; height:40px; left:-48px; top:4px; padding:0;
+  color:var(--uxr-text); background:var(--uxr-card); border:1px solid var(--uxr-line-strong);
+}
+body.ux-course.ux-app-refresh[data-page="week10"] .edit-icon .ux-control-icon {
+  width:20px; height:20px;
+}
+body.ux-course.ux-app-refresh[data-page="week10"] .stop-btn-mock {
+  max-width:100%; min-width:0; min-height:44px; gap:8px;
+  justify-content:flex-start; text-align:left; line-height:1.4;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week10"] .stop-btn-mock .ux-control-icon {
+  width:18px; height:18px; color:var(--uxr-ink);
+}
+body.ux-course.ux-app-refresh[data-page="week10"] :is(.edit-icon,.stop-btn-mock,.report-link):focus-visible {
+  outline:2px solid var(--uxr-focus); outline-offset:3px;
+}
+body.ux-course.ux-app-refresh .ux-emoji-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  color:var(--uxr-link); vertical-align:-.18em; line-height:1; margin-inline:.1em;
+}
+body.ux-course.ux-app-refresh .ux-title-icon,
+body.ux-course.ux-app-refresh .title-emoji .ux-emoji-icon {
+  width:1.75em; height:1.75em; border-radius:.55em;
+  background:var(--uxr-mint); color:var(--uxr-link); margin-right:.18em;
+}
+body.ux-course.ux-app-refresh .ux-nav-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  color:var(--uxr-link); width:23px; height:29px; font-size:18px;
+}
+body.ux-course.ux-app-refresh .course-link:has(.ux-nav-icon) { grid-template-columns:29px 23px minmax(0,1fr); gap:8px; }
+body.ux-course.ux-app-refresh .course-link:has(.ux-nav-icon) .week-number { grid-column:1; grid-row:1; }
+body.ux-course.ux-app-refresh .course-link:has(.ux-nav-icon) .ux-nav-icon { grid-column:2; grid-row:1; }
+body.ux-course.ux-app-refresh .course-link:has(.ux-nav-icon) .week-topic { grid-column:3; grid-row:1; min-width:0; }
+body.ux-course.ux-app-refresh .course-link:has(.ux-nav-icon) .week-status { grid-column:3; grid-row:2; }
+@media (min-width:1051px) {
+  body.ux-course.ux-app-refresh .studio-layout { grid-template-columns:272px minmax(0,1fr); }
+}
+
+/* Black hardware frame; the app screen itself follows light/dark mode. */
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) {
+  position:relative; isolation:isolate; box-sizing:border-box;
+  width:100%; max-width:360px; min-width:0; min-height:620px; height:auto;
+  margin:25px auto 28px; padding:53px 12px 31px;
+  border:10px solid #11171d !important; border-radius:43px !important;
+  background:var(--uxr-card) !important; color:var(--uxr-ink);
+  overflow:visible; box-shadow:0 0 0 2px #40505a,0 23px 37px -18px rgba(0,0,0,.44),inset 0 0 0 1px rgba(255,255,255,.12) !important;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone)::before {
+  content:""; position:absolute; top:98px; left:-14px; width:4px; height:30px;
+  background:#29343c; border-radius:3px 0 0 3px; box-shadow:0 41px 0 #29343c;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone)::after {
+  content:""; position:absolute; top:115px; right:-14px; width:4px; height:59px;
+  background:#29343c; border-radius:0 3px 3px 0;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) > .ux-phone-status {
+  position:absolute; top:9px; left:18px; right:18px; height:28px; z-index:5;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  color:var(--uxr-ink); background:transparent; border:0; padding:0;
+  font-size:12px; line-height:1; font-weight:800; pointer-events:none;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) .ux-phone-time { font-variant-numeric:tabular-nums; letter-spacing:.01em; }
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) .ux-phone-indicators {
+  display:inline-flex; align-items:center; gap:5px; color:inherit;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) .ux-phone-indicators svg { width:14px; height:14px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) .ux-phone-island {
+  position:absolute; z-index:6; top:9px; left:50%; transform:translateX(-50%);
+  display:block; width:78px; height:23px; border-radius:99px; background:#090e12;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05); pointer-events:none;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) .ux-phone-island::after {
+  content:""; position:absolute; top:8px; right:12px; width:7px; height:7px; border-radius:50%;
+  background:#16394c; box-shadow:inset 0 0 0 2px #12222c;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) > .ux-phone-home {
+  position:absolute; bottom:9px; left:50%; transform:translateX(-50%);
+  width:104px; height:5px; border-radius:999px; background:var(--uxr-ink);
+  pointer-events:none;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) > :is(.v3-er-phone-top,.v3-pb-device-bar) { display:none !important; }
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) :is(.v3-er-appbar,.v3-pb-phone-header,.mockup-header) {
+  background:var(--uxr-card); border-bottom:1px solid var(--uxr-line); color:var(--uxr-ink);
+  padding:12px 10px; font-size:15px; line-height:1.5;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) :is(.v3-er-screen,.v3-pb-phone-body) {
+  background:var(--uxr-soft); color:var(--uxr-text); border-radius:0 0 22px 22px;
+  min-height:365px; padding:20px 15px; font-size:14px;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) :is(.v3-er-button,.v3-pb-button) { font-size:13px; line-height:1.5; }
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame {
+  max-width:360px; min-height:640px; padding:53px 18px 95px;
+}
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame .mockup-header { margin-bottom:24px; }
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame #mock-empty h2 {
+  font-size:24px; line-height:1.4; letter-spacing:-.5px;
+}
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame .input-bar {
+  left:14px; right:14px; bottom:31px; width:auto; background:var(--uxr-soft); border-radius:24px;
+}
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame .input-bar input { min-width:0; font-size:14px; }
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame .starter-chips { display:grid; gap:10px; }
+body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame .starter-chips .chip { width:100%; text-align:left; }
+body.ux-course.ux-app-refresh #lesson-content .proto-wrapper { flex-wrap:wrap; align-items:stretch; gap:24px; }
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame {
+  width:250px; max-width:270px; flex:1 1 230px; min-height:430px; padding:46px 12px 30px; border-width:8px !important;
+}
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame :is(.p-title,.p-chip,.ai-text,.bub-user) { font-size:13px !important; line-height:1.5 !important; }
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame .ux-phone-status { left:12px; right:12px; font-size:10px; }
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame .ux-phone-island { width:62px; height:20px; }
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame .ux-phone-indicators svg { width:11px; height:11px; }
+body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame.active { box-shadow:0 0 0 2px #40505a,0 24px 34px -15px rgba(0,0,0,.37),0 0 0 6px var(--uxr-mint) !important; }
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame.ux-phone-compact:not(.ux8-phone) {
+  max-width:290px; min-height:405px; height:auto; border-width:8px !important;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame.ux-phone-compact:not(.ux8-phone) > .ux-phone-status { left:12px; right:12px; font-size:11px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame.ux-phone-compact:not(.ux8-phone) .ux-phone-island { width:66px; height:20px; }
+body.ux-course.ux-app-refresh #lesson-content .permission-mock.ux-phone-frame { display:flex; flex-direction:column; justify-content:center; }
+body.ux-course.ux-app-refresh #lesson-content .demo-box:has(.ux-phone-frame) { overflow:visible; }
+
+@media (hover:hover) and (pointer:fine) {
+  body.ux-course.ux-app-refresh .course-link:hover { background:var(--uxr-mint); transform:translateX(2px); }
+  body.ux-course.ux-app-refresh .nav-lesson:hover { transform:translateY(-3px); }
+}
+@media (max-width:800px) {
+  body.ux-course.ux-app-refresh .studio-header { padding:11px 18px; }
+  body.ux-course.ux-app-refresh .course-sidebar { top:0; height:100dvh; }
+  body.ux-course.ux-app-refresh .lesson-heading { padding:28px; border-radius:25px; }
+  body.ux-course.ux-app-refresh #lesson-content .container > .card,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:hover,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:hover:not(:focus-within) { padding:24px; border-radius:23px; }
+}
+@media (max-width:520px) {
+  body.ux-course.ux-app-refresh .studio-header { padding:10px 14px; }
+  body.ux-course.ux-app-refresh .brand-mark { width:38px; height:38px; border-radius:13px; }
+  body.ux-course.ux-app-refresh .language-switch { border-radius:18px; padding:4px; }
+  body.ux-course.ux-app-refresh .language-switch button { border-radius:14px; }
+  body.ux-course.ux-app-refresh .lesson-heading { padding:25px 23px; border-radius:24px; }
+  body.ux-course.ux-app-refresh .lesson-heading h1 { font-size:29px; letter-spacing:-.8px; }
+  body.ux-course.ux-app-refresh main.studio-main { padding-inline:14px; }
+  body.ux-course.ux-app-refresh #lesson-content .container > .card,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:hover,
+  body.ux-course.ux-app-refresh #lesson-content .container > .card:hover:not(:focus-within) { padding:21px 17px; }
+  body.ux-course.ux-app-refresh #lesson-content .card > :is(h1,h2) { font-size:22px; }
+  body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) {
+    border-width:8px !important; border-radius:36px !important; padding-inline:9px; max-width:360px; min-height:620px;
+  }
+  body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone)::before { left:-12px; }
+  body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone)::after { right:-12px; }
+  body.ux-course.ux-app-refresh #lesson-content .ux-phone-frame:not(.ux8-phone) > .ux-phone-status { left:13px; right:13px; }
+  body.ux-course.ux-app-refresh #lesson-content .interactive-mockup.ux-phone-frame { padding-inline:13px; min-height:640px; }
+  body.ux-course.ux-app-refresh #lesson-content .proto-phone.ux-phone-frame { max-width:300px; min-height:430px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.ux-course.ux-app-refresh .course-link:hover,
+  body.ux-course.ux-app-refresh .nav-lesson:hover { transform:none; }
+}
+
+/* Week 08 has its own prominent playground hero. Keep its course chrome compact. */
+body.ux-course.ux-app-refresh[data-page="week08"] .lesson-heading {
+  display:flex; align-items:center; flex-wrap:wrap; gap:6px 12px;
+  background:none; border:0; box-shadow:none; border-radius:0;
+  padding:0 3px; margin:0 0 12px;
+}
+body.ux-course.ux-app-refresh[data-page="week08"] .lesson-kicker {
+  margin:0; padding:5px 10px; font-size:11px; letter-spacing:.04em;
+  background:var(--uxr-mint); color:var(--uxr-link);
+}
+body.ux-course.ux-app-refresh[data-page="week08"] .lesson-heading h1 {
+  margin:0; font-size:24px; line-height:1.35; letter-spacing:-.65px;
+}
+body.ux-course.ux-app-refresh[data-page="week08"] .lesson-intro {
+  flex-basis:100%; max-width:none; margin:2px 0 0; font-size:14px; line-height:1.55;
+}
+body.ux-course.ux-app-refresh[data-page="week08"] .lesson-bridge {
+  margin:0 0 15px; padding:9px 12px; border-radius:12px;
+  background:var(--uxr-soft); color:var(--uxr-muted); font-size:13px; line-height:1.55;
+}
+body.ux-course.ux-app-refresh[data-page="week08"] .examples-header { display:none; }
+@media (max-width:520px) {
+  body.ux-course.ux-app-refresh[data-page="week08"] main.studio-main { padding-top:17px; }
+  body.ux-course.ux-app-refresh[data-page="week08"] .lesson-heading { gap:7px 9px; margin-bottom:10px; }
+  body.ux-course.ux-app-refresh[data-page="week08"] .lesson-heading h1 { font-size:22px; line-height:1.4; }
+  body.ux-course.ux-app-refresh[data-page="week08"] .lesson-intro { font-size:13px; }
+  body.ux-course.ux-app-refresh[data-page="week08"] .lesson-bridge { font-size:12px; padding:8px 10px; margin-bottom:12px; }
+}
+/* A narrow device should wrap Korean headings by words, not split the ending. */
+body.ux-course.ux-app-refresh .interactive-mockup.ux-phone-frame #mock-empty h2 {
+  font-size:22px;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+}
+html[lang="ru"] body.ux-course.ux-app-refresh .course-link .week-topic {
+  font-size:14px;
+}
+
+/* Feedback repair: a floated full-width legend must not squeeze its following controls. */
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-reasons {
+  width:100%; min-width:0; min-inline-size:0;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-reasons legend {
+  float:none; width:auto; max-width:100%; margin:0;
+  padding:0 0 10px; word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-reasons .v3-pb-choices {
+  clear:both; display:grid; width:100%; min-width:0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));
+  align-items:stretch; gap:8px;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-reasons .v3-pb-choice {
+  width:100%; min-width:0; min-height:44px; padding:10px 12px;
+  text-align:left; white-space:normal; word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-reasons .v3-pb-choice[aria-pressed="true"] {
+  background:var(--uxr-mint); color:var(--uxr-link);
+  border-color:var(--uxr-link); box-shadow:inset 0 0 0 1px var(--uxr-link);
+}
+
+/* Show the feedback kind directly beside the controls that demonstrate it. */
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-actions {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch; gap:12px; width:100%;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-action-group {
+  min-width:0; padding:14px; border:1px solid var(--uxr-line);
+  border-radius:16px; background:var(--uxr-soft);
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-kind-label {
+  display:block; margin:0 0 5px; color:var(--uxr-link);
+  font-size:15px; font-weight:750; line-height:1.5;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-kind-help {
+  margin:0 0 12px; color:var(--uxr-muted);
+  font-size:14px; line-height:1.55; word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] :is(.v3-fb-votes,.v3-fb-tools) {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,125px),1fr));
+  align-items:stretch; gap:8px; width:100%; min-width:0;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] :is(.v3-fb-votes,.v3-fb-tools) .v3-pb-tool {
+  width:100%; min-width:0; justify-content:flex-start;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-button-label {
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:2px; min-width:0; text-align:left;
+}
+body.ux-course.ux-app-refresh[data-page="week06"] #lesson-content .v3-fb-kind-tag {
+  font-size:13px; font-weight:650; letter-spacing:.02em;
+  line-height:1.35; color:var(--uxr-muted); white-space:nowrap;
+}
+@media (max-width:700px) {
+  body.ux-course.ux-app-refresh[data-page="week06"] .v3-fb-actions { grid-template-columns:1fr; }
+}
+
+/* Vocabulary buttons use a visible background instead of the previous dotted underline. */
+body.ux-course.ux-app-refresh {
+  --ux-term-bg:#dff3ef; --ux-term-ink:#075d68; --ux-term-active:#c3e7e3;
+}
+html[data-theme="dark"] body.ux-course.ux-app-refresh {
+  --ux-term-bg:#20444c; --ux-term-ink:#b1f4ef; --ux-term-active:#2b5961;
+}
+body.ux-course.ux-app-refresh button.term-trigger {
+  padding:.03em .28em .07em; border:0; border-radius:5px;
+  background:var(--ux-term-bg); color:var(--ux-term-ink);
+  font-weight:700; box-shadow:none;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
+body.ux-course.ux-app-refresh button.term-trigger:is(:hover,[aria-expanded="true"]) {
+  background:var(--ux-term-active); color:var(--ux-term-ink);
+  border:0; box-shadow:none; transform:none;
+}
+body.ux-course.ux-app-refresh button.term-trigger:focus-visible {
+  outline:2px solid var(--uxr-focus); outline-offset:3px;
+}
+body.ux-course.ux-app-refresh[data-page] #lesson-content :is(.front-tag,.back-tag,.state-step,.formula-box,.prompt-box) button.term-trigger {
+  background:var(--ux-term-bg); color:var(--ux-term-ink);
+  border:0; font-weight:700;
+}
+body.ux-course.ux-app-refresh[data-page] #lesson-content :is(.front-tag,.back-tag,.state-step,.formula-box,.prompt-box) button.term-trigger:is(:hover,[aria-expanded="true"]) {
+  background:var(--ux-term-active); color:var(--ux-term-ink); border:0;
+}
+
+/* User-approved warm-color exception: the recognizable folder inside the GUI example only. */
+body.ux-course.ux-app-refresh[data-page="week01"] .gui-btn-mock .ux-folder-example svg.ux-icon {
+  width:32px; height:32px; fill:#facc15; stroke:#f59e0b;
+  stroke-width:.45; paint-order:stroke;
+}

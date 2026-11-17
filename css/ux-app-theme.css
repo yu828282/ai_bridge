@@ -1,0 +1,1152 @@
+/* UX Studio · Learning app theme, 2026-11
+   Load after ux.css. Colors are semantic tokens shared by the lesson lab.
+   The legacy bridge preserves each original selector, media query and state.
+   It changes color declarations only; lesson interaction/layout remains intact. */
+/* Mint app revision: cool colors only. Legacy semantic token names remain for compatibility. */
+:root {
+ --uxr-page:#f2f5f8; --uxr-card:#ffffff; --uxr-soft:#edf5f6;
+ --uxr-soft-raised:#e0eff1; --uxr-line:#dbe7e9; --uxr-line-strong:#b3ced3;
+ --uxr-ink:#172f38; --uxr-text:#36515c; --uxr-muted:#536e79;
+ --uxr-blue:#087e8b; --uxr-blue-hover:#066673; --uxr-link:#086b77;
+ --uxr-mint:#e6f8f6; --uxr-lavender:#edf4fb;
+ --uxr-positive-bg:#e4f6f2; --uxr-positive-ink:#146659; --uxr-positive-solid:#176e62;
+ --uxr-negative-bg:#eaf0f8; --uxr-negative-ink:#354d70; --uxr-negative-solid:#385b8a;
+ --uxr-warm-bg:#eaf5f7; --uxr-warm-ink:#236779; --uxr-purple-ink:#346a9b;
+ --uxr-code-bg:#f5f9fa; --uxr-code-ink:#284957;
+ --uxr-header:rgba(255,255,255,.97); --uxr-overlay:rgba(12,28,36,.54);
+ --uxr-shadow:0 8px 28px rgba(30,73,86,.06);
+ --uxr-shadow-float:0 12px 26px rgba(8,126,139,.19);
+ --uxr-hero:linear-gradient(112deg,#bceee8 0%,#d5f2f3 56%,#dbeef9 100%);
+ --uxr-selection:#c2e9ec; --uxr-focus:#086b77;
+ color-scheme:light;
+}
+html[data-theme="dark"] {
+ --uxr-page:#0d171c; --uxr-card:#16262d; --uxr-soft:#1c333d;
+ --uxr-soft-raised:#24424d; --uxr-line:#32505b; --uxr-line-strong:#557983;
+ --uxr-ink:#effafa; --uxr-text:#d5e9ec; --uxr-muted:#a7c4cc;
+ --uxr-link:#8ce7e8; --uxr-mint:#173e3c; --uxr-lavender:#20384e;
+ --uxr-positive-bg:#143d35; --uxr-positive-ink:#9de6d5; --uxr-positive-solid:#176e62;
+ --uxr-negative-bg:#23354c; --uxr-negative-ink:#b5d3fb; --uxr-negative-solid:#385b8a;
+ --uxr-warm-bg:#183b47; --uxr-warm-ink:#a5dbe9; --uxr-purple-ink:#acd6f3;
+ --uxr-code-bg:#102129; --uxr-code-ink:#d4ebf3;
+ --uxr-header:rgba(22,38,45,.97); --uxr-overlay:rgba(0,9,14,.71);
+ --uxr-shadow:0 10px 30px rgba(0,0,0,.2);
+ --uxr-shadow-float:0 12px 28px rgba(0,0,0,.3);
+ --uxr-hero:linear-gradient(112deg,#18433e 0%,#1d454b 56%,#203c54 100%);
+ --uxr-selection:#275d69; --uxr-focus:#88ebec;
+ color-scheme:dark;
+}
+
+/* Legacy lesson dark palette: retains original state specificity. */
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-btn.active{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lang-btn.active{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .card{box-shadow:0 4px 6px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh h1{border-bottom:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .box:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .action-btn{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .action-btn:hover{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh h2{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-container .nav-link:focus-visible{outline:3px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .comp-card{background:var(--uxr-card);border:1px solid var(--uxr-line);box-shadow:0 2px 4px rgba(0,0,0,0.020);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .comp-card:hover{background:var(--uxr-card);border-color:var(--uxr-line);box-shadow:0 8px 16px rgba(0,0,0,0.060);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .comp-card-header{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .comp-badge{background:var(--uxr-lavender);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .demo-box{background:var(--uxr-code-bg);color:var(--uxr-ink);box-shadow:inset 0 2px 4px rgba(0,0,0,0.250);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .comp-desc{color:var(--uxr-muted);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .mini-ai-card{background:var(--uxr-code-bg);border-left:3px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .mini-card-head{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .inner-scroll-window{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .inner-sticky-bar{background:var(--uxr-blue);color:var(--uxr-ink);box-shadow:0 2px 5px rgba(0,0,0,0.250);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .inner-scroll-content{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .inner-bubble{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .sk-line{background:linear-gradient(90deg, var(--uxr-soft) 25%, var(--uxr-soft) 50%, var(--uxr-soft) 75%);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .tooltip-container{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .tooltip-box{background-color:var(--uxr-code-bg);color:var(--uxr-ink);border:1px solid var(--uxr-line);box-shadow:0 6px 12px rgba(0,0,0,0.300);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .micro-btn{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .micro-btn:hover{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .micro-btn.liked{background:var(--uxr-positive-bg);color:var(--uxr-positive-ink);border-color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .demo-toast{background:var(--uxr-positive-solid);color:var(--uxr-ink);box-shadow:0 4px 12px rgba(0,0,0,0.250);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .drawer-preview-area{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .demo-drawer{background:var(--uxr-code-bg);border-left:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .action-btn{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week08"] .action-btn:hover{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .btn-green{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .btn-green:hover{background:var(--uxr-positive-solid);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .btn-red{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .btn-red:hover{background:var(--uxr-negative-solid);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .demo-area{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .spinner{border:4px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .mockup-box{box-shadow:0 4px 6px rgba(0,0,0,0.100);background:var(--uxr-card);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .mockup-box:hover{box-shadow:0 15px 25px -5px rgba(0,0,0,0.150);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .cli-header{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .cli-body{background:var(--uxr-code-bg);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .gui-header{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .gui-dot{background:var(--uxr-negative-solid);box-shadow:14px 0 0 var(--uxr-line), 28px 0 0 var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .gui-body{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .gui-btn-mock{background:var(--uxr-soft);border:2px outset var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .gui-btn-mock:active{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .ai-header{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .ai-body{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .chat-user{color:var(--uxr-ink);box-shadow:0 2px 4px rgba(0,0,0,0.200);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week01"] .chat-ai{background:var(--uxr-card);color:var(--uxr-text);box-shadow:0 2px 4px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .stage-box{background:var(--uxr-card);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .stage-box:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .stage-num{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .persona-card{border:2px solid var(--uxr-negative-ink);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .persona-header{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .persona-icon{background:var(--uxr-card);border:2px solid var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .badge-red{background:var(--uxr-negative-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .formula-box{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .formula-bad{color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week02"] .prompt-box{background:var(--uxr-code-bg);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .btn-green{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .btn-green:hover{background:var(--uxr-positive-solid);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .btn-red{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .btn-red:hover{background:var(--uxr-negative-solid);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .state-map{background:var(--uxr-card);border:2px dashed var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .state-step{background:var(--uxr-card);border:2px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .state-step:hover,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .state-step.active{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .interactive-mockup{background:var(--uxr-code-bg);color:var(--uxr-ink);box-shadow:0 10px 25px rgba(0,0,0,0.200);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .mockup-header{color:var(--uxr-muted);border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .chip{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .chip:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .input-bar{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .input-bar input{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .input-bar input::placeholder{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .send-btn{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .dot{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .ai-message{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .action-icon{border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .action-icon:hover{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] .error-msg{background:var(--uxr-negative-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .chat-container{background:var(--uxr-soft);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .bubble.user{color:var(--uxr-ink);box-shadow:0 2px 5px rgba(0,0,0,0.200);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .bubble.ai{background:var(--uxr-card);box-shadow:0 2px 5px rgba(0,0,0,0.050);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .bubble.error{background:var(--uxr-card);color:var(--uxr-negative-ink);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .action-chip{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .action-chip:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .tree-container{background:var(--uxr-card);border:2px dashed var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .node{box-shadow:0 2px 4px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .node.user{background:var(--uxr-card);border:2px solid var(--uxr-line);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .node.decision{background:var(--uxr-warm-bg);border:2px solid var(--uxr-warm-ink);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .node.response{background:var(--uxr-code-bg);color:var(--uxr-ink);border:2px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .node.fallback{background:var(--uxr-negative-bg);color:var(--uxr-ink);border:2px solid var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .arrow-down{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .branch-line{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] .branch-arrow{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .trust-badge{background:var(--uxr-negative-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .mockup-window{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .fake-ai-msg{background:var(--uxr-code-bg);border-left:4px solid var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .source-link{background:var(--uxr-soft);color:var(--uxr-text);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .source-link:hover{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .warning-box{background:var(--uxr-soft);border:1px solid var(--uxr-line);border-left:4px solid var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .trust-meter{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .trust-section.blind{color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .trust-section.smart{color:var(--uxr-positive-ink);background:var(--uxr-card);box-shadow:0 2px 5px rgba(0,0,0,0.100);border:2px solid var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week05"] .trust-section.none{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-box{border:2px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-box:hover{box-shadow:0 4px 12px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-1{background:var(--uxr-positive-bg);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-2{background:var(--uxr-warm-bg);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-3{background:var(--uxr-negative-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .level-demo{background:var(--uxr-card);border:1px dashed var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .feedback-container{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .ai-msg-mock{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .icon-btn{border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .icon-btn:hover{background:var(--uxr-soft);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .icon-btn.thumb:hover{background:var(--uxr-positive-bg);color:var(--uxr-positive-ink);border-color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .feedback-toast{background:var(--uxr-positive-solid);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week06"] .exam-notice{background:var(--uxr-card);border:2px dashed var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"]{--figma-bg:var(--uxr-soft);--figma-sidebar:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .figma-workspace{border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .figma-toolbar{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .figma-tool:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .figma-sidebar{border-right:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .figma-right{border-left:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .mock-frame{background:var(--uxr-card);box-shadow:0 4px 10px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .al-demo-container{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .al-button{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .flow-demo{background:var(--uxr-card);border:1px dashed var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .flow-screen{background:var(--uxr-card);border:2px solid var(--uxr-line);box-shadow:0 2px 5px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .flow-screen-title{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .m-chip{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .m-input{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .m-user{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .m-ai{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] .m-dot{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"]{--figma-purple:var(--uxr-blue);--figma-pink:var(--uxr-negative-ink);--figma-green:var(--uxr-positive-solid);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .nav-btn.active{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .lang-btn.active{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] h1{border-bottom:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-card{background:var(--uxr-card);border:1px solid var(--uxr-line);box-shadow:0 2px 4px rgba(0,0,0,0.020);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-card:hover{background:var(--uxr-card);border-color:var(--uxr-line);box-shadow:0 8px 16px rgba(0,0,0,0.060);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-card-header{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-badge{background:var(--uxr-soft);color:var(--uxr-purple-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .demo-box{background:var(--uxr-code-bg);color:var(--uxr-ink);box-shadow:inset 0 2px 4px rgba(0,0,0,0.250);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-desc{color:var(--uxr-muted);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .action-btn{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .action-btn:hover{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-box{background:var(--uxr-soft);border:1px solid var(--uxr-line);box-shadow:0 4px 0 var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-box:active,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-box.active{box-shadow:0 0 0 var(--uxr-line);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-label{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-box:active .key-label,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .key-box.active .key-label{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .al-container{background:var(--uxr-soft);border:2px dashed var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .al-container.applied{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .comp-master-box{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .chat-bubble-demo{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .chat-ui-frame{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .bub-user{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .ai-avatar{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .ai-text{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .sk-dot{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .proto-phone{background:var(--uxr-code-bg);border:2px solid var(--uxr-line);box-shadow:0 16px 28px -10px rgba(0,0,0,0.320), 0 5px 10px rgba(0,0,0,0.120);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .proto-phone.active{box-shadow:0 20px 34px -12px rgba(0,0,0,0.360), 0 6px 14px rgba(0,0,0,0.140), 0 0 0 3px rgba(0,0,0,0.120);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .p-title{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .p-chip{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .p-chip:hover{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .p-input{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .share-modal{background:var(--uxr-code-bg);border:1px solid var(--uxr-line);box-shadow:0 10px 25px rgba(0,0,0,0.500);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] .perm-select{background:var(--uxr-code-bg);color:var(--uxr-ink);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .alert-box{background:var(--uxr-card);border-left:4px solid var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .equation{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .eq-step{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .eq-human{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .mock-chat-wrapper{background:var(--uxr-card);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .mock-bubble{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .edit-icon{background:var(--uxr-card);border:1px solid var(--uxr-line);box-shadow:0 2px 4px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .edit-icon:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .mock-ai{background:var(--uxr-card);color:var(--uxr-text);border:1px solid var(--uxr-line);box-shadow:0 2px 5px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .stop-btn-mock{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .stop-btn-mock:hover{background:var(--uxr-soft);color:var(--uxr-negative-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .report-link{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week10"] .report-link:hover{color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .info-icon{background:var(--uxr-soft-raised);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .toggle-switch{background:var(--uxr-soft-raised);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .toggle-knob{background:var(--uxr-card);box-shadow:0 1px 3px rgba(0,0,0,0.200);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .mock-settings{background:var(--uxr-card);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .setting-row{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .permission-mock{background:var(--uxr-card);box-shadow:0 4px 15px rgba(0,0,0,0.100);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .perm-actions{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .perm-btn:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week11"] .perm-btn.deny{color:var(--uxr-negative-ink);border-right:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .blueprint-table{box-shadow:0 4px 6px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .blueprint-table th,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .blueprint-table td{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .blueprint-table th{background:var(--uxr-card);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .row-frontstage{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .row-backstage{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .row-fallback{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .lov-line{background:repeating-linear-gradient(90deg, var(--uxr-soft-raised), var(--uxr-soft-raised) 10px, transparent 10px, transparent 20px);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .lov-text{background:var(--uxr-card);color:var(--uxr-muted);border:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .bp-step{background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .bp-warn{border-color:var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .front-tag{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] .back-tag{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .box{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .figma-qa-board{background:var(--uxr-code-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-screen{background:var(--uxr-card);box-shadow:0 4px 10px rgba(0,0,0,0.300);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-screen.orphan{border-color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-screen-title{color:var(--uxr-muted);border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-start-point{background:var(--uxr-blue);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-arrow{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .f-arrow::after{border-left:6px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .qa-tag{background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .qa-tag.ok{background:var(--uxr-positive-bg);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .qa-tag.err{background:var(--uxr-negative-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .pdf-page{background:var(--uxr-card);border:1px solid var(--uxr-line);box-shadow:0 2px 4px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .pdf-page:hover{box-shadow:0 10px 15px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .page-num{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .page-desc{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week14"] .warning-banner{background:var(--uxr-card);border:2px dashed var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh{background:var(--uxr-card);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .site-header{background:linear-gradient(135deg,var(--uxr-code-bg) 0%,var(--uxr-code-bg) 100%);color:var(--uxr-ink);box-shadow:0 2px 20px rgba(0,0,0,0.220);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .brand-title{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .brand-subtitle{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .portfolio-return{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .portfolio-return:hover{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lang-btn{border:1px solid var(--uxr-line);background:rgba(125,154,210,0.08);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lang-btn:hover{background:rgba(125,154,210,0.16);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lang-btn.active{background:linear-gradient(135deg,var(--uxr-blue),var(--uxr-blue));color:var(--uxr-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-shell{border:1px solid var(--uxr-line);background:rgba(125,154,210,0.06);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-btn{background:rgba(125,154,210,0.08);color:var(--uxr-ink);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-btn:hover{background:rgba(125,154,210,0.18);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-btn.active{background:linear-gradient(135deg,var(--uxr-blue),var(--uxr-blue));border-color:var(--uxr-line);color:var(--uxr-ink);box-shadow:0 10px 20px rgba(0,0,0,0.240);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-guide{border:1px solid var(--uxr-line);background:linear-gradient(120deg,var(--uxr-soft),var(--uxr-card) 68%);box-shadow:0 8px 24px rgba(0,0,0,0.050);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-eyebrow{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-guide h2{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-guide p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-tags span{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-progress{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-hint{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-caption{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .chapter-label{background:var(--uxr-lavender);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .pager-link{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .pager-link:hover{border-color:var(--uxr-line-strong);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .pager-next{border-color:var(--uxr-line-strong);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .card{background:var(--uxr-card);border:1px solid var(--uxr-line);border-top:4px solid var(--uxr-line-strong);box-shadow:0 8px 24px rgba(0,0,0,0.055);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh h1{color:var(--uxr-link);border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh h2{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-bottom-pager a{color:var(--uxr-ink);background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-bottom-pager a:hover{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-footer{background:var(--uxr-code-bg);color:var(--uxr-ink);}
+@media (max-width:768px){
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-menu{background:var(--uxr-code-bg);box-shadow:0 12px 30px rgba(0,0,0,0.300);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-menu-header{color:var(--uxr-ink);border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-lang{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-backdrop{background:rgba(2,8,20,0.55);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-portfolio-link{color:var(--uxr-link);}
+}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .prereq-link{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .metric-bar{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .metric-fill{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .latency-timeline{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .zone-safe{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .zone-warn{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .zone-danger{color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .m-card:hover{box-shadow:0 4px 6px rgba(0,0,0,0.100);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .m-red{background:var(--uxr-negative-bg);border:2px solid var(--uxr-negative-ink);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .m-yellow{background:var(--uxr-warm-bg);border:2px solid var(--uxr-warm-ink);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .m-green{background:var(--uxr-positive-bg);border:2px solid var(--uxr-positive-ink);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] .mock-comment{background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] #lesson-content .vs-container > .box{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week13"] #lesson-content .vs-container > .box:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .week08-exam-note{border:1px solid var(--uxr-line);border-left:5px solid var(--uxr-line-strong);background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .phase-timeline{color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .zone-p1{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .zone-p2{background:var(--uxr-blue);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .zone-p3{background:var(--uxr-warm-bg);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .zone-p4{background:var(--uxr-positive-solid);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .m-blue{background:var(--uxr-lavender);border:2px solid var(--uxr-line-strong);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .m-purple{background:var(--uxr-soft);border:2px solid var(--uxr-purple-ink);color:var(--uxr-purple-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .m-green{background:var(--uxr-positive-bg);border:2px solid var(--uxr-positive-ink);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .mock-chat{background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .chat-bubble-user{background:var(--uxr-soft);border-left:4px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .chat-bubble-bot{background:var(--uxr-card);border-left:4px solid var(--uxr-purple-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week07"] #lesson-content .callout{background:var(--uxr-soft);border-left:4px solid var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh ::selection{background:var(--uxr-positive-bg);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .skip-link{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-header{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .brand-mark{border:1px solid var(--uxr-line);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch button:is(.active,[aria-pressed="true"]){border-color:var(--uxr-line);box-shadow:0 1px 2px rgba(0,0,0,0.063);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch button:hover{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-head{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:hover{background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]){color:var(--uxr-text);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"])::before{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .week-number{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .week-status{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link.exam{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link.completed .week-number{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-progress strong{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-progress progress{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-progress progress::-webkit-progress-bar{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-progress progress::-webkit-progress-value{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-progress progress::-moz-progress-bar{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-topline a{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-kicker{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-intro{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-meta{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .study-modes{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .study-modes button{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .study-modes button:is(.active,[aria-pressed="true"]){color:var(--uxr-positive-ink);border-color:var(--uxr-line);box-shadow:0 1px 3px rgba(0,0,0,0.035);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .study-modes button:hover{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-note{border:1px solid var(--uxr-line);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-note strong{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-review{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-review h2{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-review > p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-step{border:1px solid var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-step strong{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .quick-step p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms{border:1px solid var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms > summary,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms summary{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms summary::marker{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms summary small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .key-terms h2{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .term-item{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .term-item :is(strong,dt){color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .term-item :is(p,dd){color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .term-item em{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-step{border-left:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-step::before{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-step h3{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .guide-step p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-example{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-example h3{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-example :is(p,li){color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .explanation-note{border-left:3px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .explanation-note strong{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-toc > :is(h2,h3,strong){color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-toc a{color:var(--uxr-muted);border:1px solid var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-toc a:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .card > p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .vs-container > .box{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card{border-color:var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-desc{background:var(--uxr-card);border-left:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-badge{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .stage-box{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .stage-box:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-card{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-header{border-bottom-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-icon{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .badge-red{background:var(--uxr-warm-bg);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .mockup-box:hover{box-shadow:0 3px 9px rgba(0,0,0,0.039);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .action-btn:hover{background:var(--uxr-positive-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-red{background:var(--uxr-negative-solid);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-red:hover{background:var(--uxr-negative-solid);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-green{background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-green:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .week08-exam-note{border-color:var(--uxr-line);border-left:3px solid var(--uxr-warm-ink);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .callout{border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week09"] #lesson-content .perm-select.correct{color:var(--uxr-positive-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-section{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-section > h2{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-section > p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-question{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-question h3,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-question legend{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button{color:var(--uxr-text);background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button:is(.selected,[aria-pressed="true"]){border-color:var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button.correct{border-color:var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button.incorrect{border-color:var(--uxr-negative-ink);background:var(--uxr-soft);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-feedback{background:var(--uxr-card);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-feedback.correct{background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-feedback.incorrect{background:var(--uxr-soft);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .completion-button{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .completion-button:hover{background:var(--uxr-positive-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-footer{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .reset-progress{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .reading-mode-note{color:var(--uxr-muted);}
+@media (max-width: 800px){
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-sidebar{border-right:1px solid var(--uxr-line);box-shadow:10px 0 30px rgba(0,0,0,0.102);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-backdrop{background:rgba(2,8,20,0.34901960784313724);}
+}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-bridge{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .demo-label{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card > .explanation-note{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card .comp-desc{border-left-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .share-modal{box-shadow:0 4px 14px rgba(0,0,0,0.125);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .info-icon{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-close,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #sidebar-close{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-section fieldset.check-question{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-section fieldset.check-question legend{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .question-number{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh :is(.completion-button,#save-review):disabled{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #completion-hint{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-section{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-section > h2{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-prompt{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-section label{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-answer{border-bottom:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-answer summary{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-section .practice-hint{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-note{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-note::placeholder{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-note:focus{border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #note-status{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #clear-note{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #expand-lessons{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #expand-lessons:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #demo-instruction{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #source-location{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #save-review:disabled:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-panel{border:1px solid var(--uxr-line);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-panel h2{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .final-stamp{border:1px solid var(--uxr-warm-ink);background:var(--uxr-warm-bg);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-review-link{border:1px solid var(--uxr-warm-ink);background:var(--uxr-card);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .demo-label{color:var(--uxr-muted);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-answer summary{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .worked-answer p{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #practice-note{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #note-status{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .text-button{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh fieldset.check-question{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .question-number{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button.selected.correct{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-options button.selected.incorrect{background:var(--uxr-warm-bg);border-color:var(--uxr-line);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .check-feedback.incorrect{color:var(--uxr-negative-ink);background:var(--uxr-warm-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .review-save{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .expand-lessons{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .final-panel{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .final-stamp{color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-footer{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-footer small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh ::selection{background:var(--uxr-lavender);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-header{background:var(--uxr-card);border-bottom-color:var(--uxr-line);box-shadow:0 1px 7px rgba(0,0,0,0.025);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .brand-mark{border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-brand strong{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch button:is(.active,[aria-pressed="true"]){background:var(--uxr-card);border-color:var(--uxr-line);color:var(--uxr-text);box-shadow:0 1px 4px rgba(0,0,0,0.060);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .language-switch button:hover{background:var(--uxr-card);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .mobile-menu-toggle{border-color:var(--uxr-line);color:var(--uxr-muted);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-sidebar{background:var(--uxr-card);border-right-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-head{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:hover{background:var(--uxr-soft);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]){background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"])::before{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link.exam{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-link.exam:is(.active,[aria-current="page"]){background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .week-number{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .week-status{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-close,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #sidebar-close{background:var(--uxr-card);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .sidebar-backdrop{background:rgba(2,8,20,0.3);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-heading{border-bottom-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-heading h1{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-kicker{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-intro,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-bridge{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .container > .card{background:var(--uxr-card);border:1px solid var(--uxr-line) !important;box-shadow:0 6px 18px rgba(0,0,0,0.065);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .card > :is(h1,h2){color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .card > p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .vs-container > .box{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .vs-container > .box:nth-child(even){background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .vs-container > .box:nth-child(even):hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box[style*="#effbfd"]{background:var(--uxr-soft) !important;border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box[style*="#effbfd"] > h3{color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box[style*="#edfbfd"]{background:var(--uxr-soft) !important;border-color:var(--uxr-line) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .box[style*="#edfbfd"] > h3{color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card:hover{background:var(--uxr-card);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card .comp-desc{background:var(--uxr-soft);border-left-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card:nth-child(even) .comp-desc{background:var(--uxr-soft);border-left-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-card > .explanation-note{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .comp-badge{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .stage-box{background:var(--uxr-card);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .stage-box:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-card{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-header{border-bottom-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .persona-icon{background:var(--uxr-card);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .badge-red{background:var(--uxr-soft);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .explanation-note,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .callout{background:var(--uxr-soft);border-left-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .explanation-note strong{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-note,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #exam-note,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .week08-exam-note{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-note strong{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-panel{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-muted);box-shadow:0 2px 9px rgba(0,0,0,0.035);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-panel h2{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .final-stamp{background:var(--uxr-card);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #final-review-link{background:var(--uxr-card);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .nav-lesson small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .lesson-footer{border-top-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-footer{border-top-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .studio-footer small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh button.term-trigger{border-bottom:1px dotted var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh button.term-trigger:hover,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh button.term-trigger[aria-expanded="true"]{color:var(--uxr-link);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh button.term-trigger:focus-visible{outline:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #term-tooltip{background:var(--uxr-card);border:1px solid var(--uxr-line);color:var(--uxr-text);box-shadow:0 10px 35px rgba(0,0,0,0.120), 0 2px 6px rgba(0,0,0,0.040);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #term-tooltip :is(h2,h3,.term-tooltip-title,#term-tooltip-title){color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #term-tooltip :is(.term-example,.term-tooltip-example,#term-tooltip-example,#term-example){background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #back-to-top.round-top{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-muted);box-shadow:0 3px 15px rgba(0,0,0,0.090);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #back-to-top.round-top:hover{background:var(--uxr-soft);border-color:var(--uxr-line);box-shadow:0 5px 18px rgba(0,0,0,0.120);}
+@media (max-width: 800px){
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .course-sidebar{background:var(--uxr-card);box-shadow:10px 0 32px rgba(0,0,0,0.090);}
+}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week03"] #lesson-content .action-icon{color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .chat-container{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content button.action-chip{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content button.action-chip:hover{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content button.action-chip[aria-pressed="true"]{background:var(--uxr-soft);color:var(--uxr-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .tree-container{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .node.decision{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .node.decision::before{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .node.response{background:var(--uxr-soft);color:var(--uxr-positive-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week04"] #lesson-content .node.fallback{background:var(--uxr-soft);color:var(--uxr-negative-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content :is(.front-tag,.back-tag){color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content .front-tag{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content .back-tag{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger:hover,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger[aria-expanded="true"]{color:var(--uxr-ink);border-bottom-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger:focus-visible{outline-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er{border-top:1px solid var(--uxr-line);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-title{color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-intro{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-lane-title{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-lane-good .v3-er-lane-title{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-dot{background:var(--uxr-negative-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-lane-good .v3-er-dot{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-phone{border:1px solid var(--uxr-line);background:var(--uxr-card);box-shadow:0 22px 40px -16px rgba(0,0,0,0.320), 0 6px 14px rgba(0,0,0,0.120), inset 0 0 0 1px rgba(0,0,0,0.500);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-phone-top{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-phone-top i{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-appbar{border-bottom:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-app-icon{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-screen{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-user-bubble{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-lost{background:var(--uxr-card);border:1px dashed var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-error{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-error p{color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-state-icon{border:1px solid var(--uxr-line);color:var(--uxr-negative-ink);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button.v3-er-secondary{border-color:var(--uxr-line);background:var(--uxr-card);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button.v3-er-secondary:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button.v3-er-pressure{border-color:var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-negative-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-button.v3-er-pressure:hover{background:var(--uxr-negative-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-input-blank{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-caption{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-loading{color:var(--uxr-muted);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-spinner{border:2px solid var(--uxr-line);border-top-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-success{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-success .v3-er-state-icon{background:var(--uxr-card);color:var(--uxr-muted);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-saved-tag{border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-live{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-result{background:var(--uxr-soft);color:var(--uxr-muted);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-result.v3-er-result-bad{background:var(--uxr-soft);color:var(--uxr-negative-ink);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-result.v3-er-result-good{background:var(--uxr-soft);color:var(--uxr-muted);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-takeaway{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-text-button{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-text-button:hover{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-mode{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-mode > button{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-mode > button[aria-pressed="true"]{border-color:var(--uxr-line);background:var(--uxr-card);color:var(--uxr-muted);box-shadow:0 1px 4px rgba(0,0,0,0.045);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-mode > button:hover{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-bot-bubble{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-bot-bubble p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-bubble-good{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-bubble-good p{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-avatar{background:var(--uxr-negative-bg);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-bubble-good .v3-er-avatar{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-ai-label{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-insight{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er[data-er-current-mode="good"] .v3-er-insight{background:var(--uxr-soft);color:var(--uxr-muted);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-feature-icon{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-feature-mint{background:var(--uxr-soft);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-screen-title{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-screen-copy{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-consent > input{accent-color:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-consent-bad{color:var(--uxr-muted);border-top:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-consent-good{background:var(--uxr-soft);border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-consent-good small{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er :is(button,input):focus-visible{outline:3px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .v3-er-success:focus-visible{outline:2px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-demo.v3-pb{--v3-pb-ink:var(--uxr-text);--v3-pb-muted:var(--uxr-muted);--v3-pb-line:var(--uxr-line);--v3-pb-blue:var(--uxr-soft);--v3-pb-mint:var(--uxr-soft);--v3-pb-peach:var(--uxr-warm-bg);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb button:focus-visible,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb select:focus-visible,
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb textarea:focus-visible{outline:3px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-button{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-button:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-primary{background:var(--uxr-lavender);border-color:var(--uxr-line);color:var(--uxr-text);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-primary:hover{background:var(--uxr-lavender);border-color:var(--uxr-line-strong);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-phone{border:1px solid var(--uxr-line);background:var(--uxr-soft);box-shadow:0 22px 40px -16px rgba(0,0,0,0.320), 0 6px 14px rgba(0,0,0,0.120), inset 0 0 0 1px rgba(0,0,0,0.500);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-device-bar{color:var(--uxr-muted);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-phone-header{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-app-icon{border:1px solid var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-phone-body{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-document{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-request{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-result{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-file{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-choice{background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-choice:hover{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-choice[aria-pressed="true"],
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-choice[aria-current="step"]{color:var(--uxr-text);background:var(--uxr-soft);border-color:var(--uxr-line);box-shadow:inset 0 0 0 1px var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb select{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-options{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-dots i{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pd-phone{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pd-level:nth-child(2) .v3-pb-app-icon{border-color:var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pd-level:nth-child(3) .v3-pb-app-icon{border-color:var(--uxr-line);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-demo.v3-fb{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-message{border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-user{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-assistant{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-attachment{background:var(--uxr-card);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-tool[aria-pressed="true"]{background:var(--uxr-soft);border-color:var(--uxr-line);color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-pb-tool[data-v3-fb-vote="down"][aria-pressed="true"]{background:var(--uxr-warm-bg);border-color:var(--uxr-warm-ink);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-reasons{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb textarea{border:1px solid var(--uxr-line);background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-fb-status{color:var(--uxr-positive-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lanes li{background:var(--uxr-card);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lane-number{border:1px solid var(--uxr-line);background:var(--uxr-card);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lanes li.is-current{background:var(--uxr-soft);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lanes li.is-current .v3-bp-lane-number{background:var(--uxr-lavender);border-color:var(--uxr-line-strong);color:var(--uxr-link);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-visibility{border-top:1px dashed var(--uxr-line);color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lanes .v3-bp-fallback{background:var(--uxr-card);border-color:var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-lanes .v3-bp-fallback.is-current{background:var(--uxr-warm-bg);border-color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-photo{border:1px solid var(--uxr-line);background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-paper{border:1px solid var(--uxr-line);background:var(--uxr-card);box-shadow:0 3px 5px rgba(0,0,0,0.040);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-paper-rule{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-scan{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-skeleton i{background:var(--uxr-soft);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-source{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-blurred{background:var(--uxr-soft);border:1px solid var(--uxr-line);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-blurred span{color:var(--uxr-muted);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh .v3-pb .v3-bp-error-copy{border:1px solid var(--uxr-line);background:var(--uxr-soft);color:var(--uxr-warm-ink);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child{border-color:var(--uxr-line) !important;box-shadow:0 10px 26px -9px rgba(0,0,0,0.180), 0 3px 8px rgba(0,0,0,0.040);}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh :is(.action-btn,.pager-link,.nav-lesson,.completion-button,.v3-er-button,.v3-pb-button,.check-options button):focus-visible{outline:3px solid var(--uxr-line);}
+@media (hover: hover) and (pointer: fine){
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content .container > .card:hover{border-color:var(--uxr-line) !important;box-shadow:0 14px 30px -8px rgba(0,0,0,0.170), 0 3px 8px rgba(0,0,0,0.040);}
+}
+
+/* Inline source colors, including browser-normalized RGB spellings. */
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-top-color: #4ad7ed"],[style*="; border-top-color: #4ad7ed"],[style*=";border-top-color: #4ad7ed"],[style^="border-top-color:#4ad7ed"],[style*="; border-top-color:#4ad7ed"],[style*=";border-top-color:#4ad7ed"],[style^="border-top-color: rgb(74,215,237)"],[style*="; border-top-color: rgb(74,215,237)"],[style*=";border-top-color: rgb(74,215,237)"],[style^="border-top-color:rgb(74,215,237)"],[style*="; border-top-color:rgb(74,215,237)"],[style*=";border-top-color:rgb(74,215,237)"],[style^="border-top-color: rgb(74,215,237)"],[style*="; border-top-color: rgb(74,215,237)"],[style*=";border-top-color: rgb(74,215,237)"],[style^="border-top-color:rgb(74,215,237)"],[style*="; border-top-color:rgb(74,215,237)"],[style*=";border-top-color:rgb(74,215,237)"]){border-top-color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #effbfd"],[style*="; background: #effbfd"],[style*=";background: #effbfd"],[style^="background:#effbfd"],[style*="; background:#effbfd"],[style*=";background:#effbfd"],[style^="background: rgb(239,251,253)"],[style*="; background: rgb(239,251,253)"],[style*=";background: rgb(239,251,253)"],[style^="background:rgb(239,251,253)"],[style*="; background:rgb(239,251,253)"],[style*=";background:rgb(239,251,253)"],[style^="background: rgb(239,251,253)"],[style*="; background: rgb(239,251,253)"],[style*=";background: rgb(239,251,253)"],[style^="background:rgb(239,251,253)"],[style*="; background:rgb(239,251,253)"],[style*=";background:rgb(239,251,253)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4ad7ed"],[style*="; color: #4ad7ed"],[style*=";color: #4ad7ed"],[style^="color:#4ad7ed"],[style*="; color:#4ad7ed"],[style*=";color:#4ad7ed"],[style^="color: rgb(74,215,237)"],[style*="; color: rgb(74,215,237)"],[style*=";color: rgb(74,215,237)"],[style^="color:rgb(74,215,237)"],[style*="; color:rgb(74,215,237)"],[style*=";color:rgb(74,215,237)"],[style^="color: rgb(74,215,237)"],[style*="; color: rgb(74,215,237)"],[style*=";color: rgb(74,215,237)"],[style^="color:rgb(74,215,237)"],[style*="; color:rgb(74,215,237)"],[style*=";color:rgb(74,215,237)"]){color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1660e0"],[style*="; color: #1660e0"],[style*=";color: #1660e0"],[style^="color:#1660e0"],[style*="; color:#1660e0"],[style*=";color:#1660e0"],[style^="color: rgb(22,96,224)"],[style*="; color: rgb(22,96,224)"],[style*=";color: rgb(22,96,224)"],[style^="color:rgb(22,96,224)"],[style*="; color:rgb(22,96,224)"],[style*=";color:rgb(22,96,224)"],[style^="color: rgb(22,96,224)"],[style*="; color: rgb(22,96,224)"],[style*=";color: rgb(22,96,224)"],[style^="color:rgb(22,96,224)"],[style*="; color:rgb(22,96,224)"],[style*=";color:rgb(22,96,224)"]){color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #eff6ff"],[style*="; background: #eff6ff"],[style*=";background: #eff6ff"],[style^="background:#eff6ff"],[style*="; background:#eff6ff"],[style*=";background:#eff6ff"],[style^="background: rgb(239, 246, 255)"],[style*="; background: rgb(239, 246, 255)"],[style*=";background: rgb(239, 246, 255)"],[style^="background:rgb(239, 246, 255)"],[style*="; background:rgb(239, 246, 255)"],[style*=";background:rgb(239, 246, 255)"],[style^="background: rgb(239,246,255)"],[style*="; background: rgb(239,246,255)"],[style*=";background: rgb(239,246,255)"],[style^="background:rgb(239,246,255)"],[style*="; background:rgb(239,246,255)"],[style*=";background:rgb(239,246,255)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #64748b"],[style*="; color: #64748b"],[style*=";color: #64748b"],[style^="color:#64748b"],[style*="; color:#64748b"],[style*=";color:#64748b"],[style^="color: rgb(100, 116, 139)"],[style*="; color: rgb(100, 116, 139)"],[style*=";color: rgb(100, 116, 139)"],[style^="color:rgb(100, 116, 139)"],[style*="; color:rgb(100, 116, 139)"],[style*=";color:rgb(100, 116, 139)"],[style^="color: rgb(100,116,139)"],[style*="; color: rgb(100,116,139)"],[style*=";color: rgb(100,116,139)"],[style^="color:rgb(100,116,139)"],[style*="; color:rgb(100,116,139)"],[style*=";color:rgb(100,116,139)"]){color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f8fafc"],[style*="; background: #f8fafc"],[style*=";background: #f8fafc"],[style^="background:#f8fafc"],[style*="; background:#f8fafc"],[style*=";background:#f8fafc"],[style^="background: rgb(248, 250, 252)"],[style*="; background: rgb(248, 250, 252)"],[style*=";background: rgb(248, 250, 252)"],[style^="background:rgb(248, 250, 252)"],[style*="; background:rgb(248, 250, 252)"],[style*=";background:rgb(248, 250, 252)"],[style^="background: rgb(248,250,252)"],[style*="; background: rgb(248,250,252)"],[style*=";background: rgb(248,250,252)"],[style^="background:rgb(248,250,252)"],[style*="; background:rgb(248,250,252)"],[style*=";background:rgb(248,250,252)"]){background:var(--uxr-card) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-top-color: #62ddf0"],[style*="; border-top-color: #62ddf0"],[style*=";border-top-color: #62ddf0"],[style^="border-top-color:#62ddf0"],[style*="; border-top-color:#62ddf0"],[style*=";border-top-color:#62ddf0"],[style^="border-top-color: rgb(98,221,240)"],[style*="; border-top-color: rgb(98,221,240)"],[style*=";border-top-color: rgb(98,221,240)"],[style^="border-top-color:rgb(98,221,240)"],[style*="; border-top-color:rgb(98,221,240)"],[style*=";border-top-color:rgb(98,221,240)"],[style^="border-top-color: rgb(98,221,240)"],[style*="; border-top-color: rgb(98,221,240)"],[style*=";border-top-color: rgb(98,221,240)"],[style^="border-top-color:rgb(98,221,240)"],[style*="; border-top-color:rgb(98,221,240)"],[style*=";border-top-color:rgb(98,221,240)"]){border-top-color:var(--uxr-purple-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f2f6fe"],[style*="; background: #f2f6fe"],[style*=";background: #f2f6fe"],[style^="background:#f2f6fe"],[style*="; background:#f2f6fe"],[style*=";background:#f2f6fe"],[style^="background: rgb(242,246,254)"],[style*="; background: rgb(242,246,254)"],[style*=";background: rgb(242,246,254)"],[style^="background:rgb(242,246,254)"],[style*="; background:rgb(242,246,254)"],[style*=";background:rgb(242,246,254)"],[style^="background: rgb(242,246,254)"],[style*="; background: rgb(242,246,254)"],[style*=";background: rgb(242,246,254)"],[style^="background:rgb(242,246,254)"],[style*="; background:rgb(242,246,254)"],[style*=";background:rgb(242,246,254)"]){background:var(--uxr-card) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #2669dc"],[style*="; color: #2669dc"],[style*=";color: #2669dc"],[style^="color:#2669dc"],[style*="; color:#2669dc"],[style*=";color:#2669dc"],[style^="color: rgb(38,105,220)"],[style*="; color: rgb(38,105,220)"],[style*=";color: rgb(38,105,220)"],[style^="color:rgb(38,105,220)"],[style*="; color:rgb(38,105,220)"],[style*=";color:rgb(38,105,220)"],[style^="color: rgb(38,105,220)"],[style*="; color: rgb(38,105,220)"],[style*=";color: rgb(38,105,220)"],[style^="color:rgb(38,105,220)"],[style*="; color:rgb(38,105,220)"],[style*=";color:rgb(38,105,220)"]){color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4683ed"],[style*="; color: #4683ed"],[style*=";color: #4683ed"],[style^="color:#4683ed"],[style*="; color:#4683ed"],[style*=";color:#4683ed"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"]){color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f0fbfd"],[style*="; background: #f0fbfd"],[style*=";background: #f0fbfd"],[style^="background:#f0fbfd"],[style*="; background:#f0fbfd"],[style*=";background:#f0fbfd"],[style^="background: rgb(240,251,253)"],[style*="; background: rgb(240,251,253)"],[style*=";background: rgb(240,251,253)"],[style^="background:rgb(240,251,253)"],[style*="; background:rgb(240,251,253)"],[style*=";background:rgb(240,251,253)"],[style^="background: rgb(240,251,253)"],[style*="; background: rgb(240,251,253)"],[style*=";background: rgb(240,251,253)"],[style^="background:rgb(240,251,253)"],[style*="; background:rgb(240,251,253)"],[style*=";background:rgb(240,251,253)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #16a34a"],[style*="; color: #16a34a"],[style*=";color: #16a34a"],[style^="color:#16a34a"],[style*="; color:#16a34a"],[style*=";color:#16a34a"],[style^="color: rgb(22, 163, 74)"],[style*="; color: rgb(22, 163, 74)"],[style*=";color: rgb(22, 163, 74)"],[style^="color:rgb(22, 163, 74)"],[style*="; color:rgb(22, 163, 74)"],[style*=";color:rgb(22, 163, 74)"],[style^="color: rgb(22,163,74)"],[style*="; color: rgb(22,163,74)"],[style*=";color: rgb(22,163,74)"],[style^="color:rgb(22,163,74)"],[style*="; color:rgb(22,163,74)"],[style*=";color:rgb(22,163,74)"]){color:var(--uxr-positive-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-color: #77a4f2"],[style*="; border-color: #77a4f2"],[style*=";border-color: #77a4f2"],[style^="border-color:#77a4f2"],[style*="; border-color:#77a4f2"],[style*=";border-color:#77a4f2"],[style^="border-color: rgb(119,164,242)"],[style*="; border-color: rgb(119,164,242)"],[style*=";border-color: rgb(119,164,242)"],[style^="border-color:rgb(119,164,242)"],[style*="; border-color:rgb(119,164,242)"],[style*=";border-color:rgb(119,164,242)"],[style^="border-color: rgb(119,164,242)"],[style*="; border-color: rgb(119,164,242)"],[style*=";border-color: rgb(119,164,242)"],[style^="border-color:rgb(119,164,242)"],[style*="; border-color:rgb(119,164,242)"],[style*=";border-color:rgb(119,164,242)"]){border-color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #4683ed"],[style*="; background: #4683ed"],[style*=";background: #4683ed"],[style^="background:#4683ed"],[style*="; background:#4683ed"],[style*=";background:#4683ed"],[style^="background: rgb(70,131,237)"],[style*="; background: rgb(70,131,237)"],[style*=";background: rgb(70,131,237)"],[style^="background:rgb(70,131,237)"],[style*="; background:rgb(70,131,237)"],[style*=";background:rgb(70,131,237)"],[style^="background: rgb(70,131,237)"],[style*="; background: rgb(70,131,237)"],[style*=";background: rgb(70,131,237)"],[style^="background:rgb(70,131,237)"],[style*="; background:rgb(70,131,237)"],[style*=";background:rgb(70,131,237)"]){background:var(--uxr-negative-solid) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1c56b9"],[style*="; color: #1c56b9"],[style*=";color: #1c56b9"],[style^="color:#1c56b9"],[style*="; color:#1c56b9"],[style*=";color:#1c56b9"],[style^="color: rgb(28,86,185)"],[style*="; color: rgb(28,86,185)"],[style*=";color: rgb(28,86,185)"],[style^="color:rgb(28,86,185)"],[style*="; color:rgb(28,86,185)"],[style*=";color:rgb(28,86,185)"],[style^="color: rgb(28,86,185)"],[style*="; color: rgb(28,86,185)"],[style*=";color: rgb(28,86,185)"],[style^="color:rgb(28,86,185)"],[style*="; color:rgb(28,86,185)"],[style*=";color:rgb(28,86,185)"]){color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-top-color: #4683ed"],[style*="; border-top-color: #4683ed"],[style*=";border-top-color: #4683ed"],[style^="border-top-color:#4683ed"],[style*="; border-top-color:#4683ed"],[style*=";border-top-color:#4683ed"],[style^="border-top-color: rgb(70,131,237)"],[style*="; border-top-color: rgb(70,131,237)"],[style*=";border-top-color: rgb(70,131,237)"],[style^="border-top-color:rgb(70,131,237)"],[style*="; border-top-color:rgb(70,131,237)"],[style*=";border-top-color:rgb(70,131,237)"],[style^="border-top-color: rgb(70,131,237)"],[style*="; border-top-color: rgb(70,131,237)"],[style*=";border-top-color: rgb(70,131,237)"],[style^="border-top-color:rgb(70,131,237)"],[style*="; border-top-color:rgb(70,131,237)"],[style*=";border-top-color:rgb(70,131,237)"]){border-top-color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f5fdfe"],[style*="; background: #f5fdfe"],[style*=";background: #f5fdfe"],[style^="background:#f5fdfe"],[style*="; background:#f5fdfe"],[style*=";background:#f5fdfe"],[style^="background: rgb(245,253,254)"],[style*="; background: rgb(245,253,254)"],[style*=";background: rgb(245,253,254)"],[style^="background:rgb(245,253,254)"],[style*="; background:rgb(245,253,254)"],[style*=";background:rgb(245,253,254)"],[style^="background: rgb(245,253,254)"],[style*="; background: rgb(245,253,254)"],[style*=";background: rgb(245,253,254)"],[style^="background:rgb(245,253,254)"],[style*="; background:rgb(245,253,254)"],[style*=";background:rgb(245,253,254)"]){background:var(--uxr-card) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1c9baf"],[style*="; color: #1c9baf"],[style*=";color: #1c9baf"],[style^="color:#1c9baf"],[style*="; color:#1c9baf"],[style*=";color:#1c9baf"],[style^="color: rgb(28,155,175)"],[style*="; color: rgb(28,155,175)"],[style*=";color: rgb(28,155,175)"],[style^="color:rgb(28,155,175)"],[style*="; color:rgb(28,155,175)"],[style*=";color:rgb(28,155,175)"],[style^="color: rgb(28,155,175)"],[style*="; color: rgb(28,155,175)"],[style*=";color: rgb(28,155,175)"],[style^="color:rgb(28,155,175)"],[style*="; color:rgb(28,155,175)"],[style*=";color:rgb(28,155,175)"]){color:var(--uxr-purple-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0369a1"],[style*="; color: #0369a1"],[style*=";color: #0369a1"],[style^="color:#0369a1"],[style*="; color:#0369a1"],[style*=";color:#0369a1"],[style^="color: rgb(3, 105, 161)"],[style*="; color: rgb(3, 105, 161)"],[style*=";color: rgb(3, 105, 161)"],[style^="color:rgb(3, 105, 161)"],[style*="; color:rgb(3, 105, 161)"],[style*=";color:rgb(3, 105, 161)"],[style^="color: rgb(3,105,161)"],[style*="; color: rgb(3,105,161)"],[style*=";color: rgb(3,105,161)"],[style^="color:rgb(3,105,161)"],[style*="; color:rgb(3,105,161)"],[style*=";color:rgb(3,105,161)"]){color:var(--uxr-link) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #475569"],[style*="; color: #475569"],[style*=";color: #475569"],[style^="color:#475569"],[style*="; color:#475569"],[style*=";color:#475569"],[style^="color: rgb(71, 85, 105)"],[style*="; color: rgb(71, 85, 105)"],[style*=";color: rgb(71, 85, 105)"],[style^="color:rgb(71, 85, 105)"],[style*="; color:rgb(71, 85, 105)"],[style*=";color:rgb(71, 85, 105)"],[style^="color: rgb(71,85,105)"],[style*="; color: rgb(71,85,105)"],[style*=";color: rgb(71,85,105)"],[style^="color:rgb(71,85,105)"],[style*="; color:rgb(71,85,105)"],[style*=";color:rgb(71,85,105)"]){color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #fff"],[style*="; color: #fff"],[style*=";color: #fff"],[style^="color:#fff"],[style*="; color:#fff"],[style*=";color:#fff"],[style^="color: rgb(255, 255, 255)"],[style*="; color: rgb(255, 255, 255)"],[style*=";color: rgb(255, 255, 255)"],[style^="color:rgb(255, 255, 255)"],[style*="; color:rgb(255, 255, 255)"],[style*=";color:rgb(255, 255, 255)"],[style^="color: rgb(255,255,255)"],[style*="; color: rgb(255,255,255)"],[style*=";color: rgb(255,255,255)"],[style^="color:rgb(255,255,255)"],[style*="; color:rgb(255,255,255)"],[style*=";color:rgb(255,255,255)"]){color:var(--uxr-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1e293b"],[style*="; color: #1e293b"],[style*=";color: #1e293b"],[style^="color:#1e293b"],[style*="; color:#1e293b"],[style*=";color:#1e293b"],[style^="color: rgb(30, 41, 59)"],[style*="; color: rgb(30, 41, 59)"],[style*=";color: rgb(30, 41, 59)"],[style^="color:rgb(30, 41, 59)"],[style*="; color:rgb(30, 41, 59)"],[style*=";color:rgb(30, 41, 59)"],[style^="color: rgb(30,41,59)"],[style*="; color: rgb(30,41,59)"],[style*=";color: rgb(30,41,59)"],[style^="color:rgb(30,41,59)"],[style*="; color:rgb(30,41,59)"],[style*=";color:rgb(30,41,59)"]){color:var(--uxr-text) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: white"],[style*="; color: white"],[style*=";color: white"],[style^="color:white"],[style*="; color:white"],[style*=";color:white"],[style^="color: rgb(255, 255, 255)"],[style*="; color: rgb(255, 255, 255)"],[style*=";color: rgb(255, 255, 255)"],[style^="color:rgb(255, 255, 255)"],[style*="; color:rgb(255, 255, 255)"],[style*=";color:rgb(255, 255, 255)"],[style^="color: rgb(255,255,255)"],[style*="; color: rgb(255,255,255)"],[style*=";color: rgb(255,255,255)"],[style^="color:rgb(255,255,255)"],[style*="; color:rgb(255,255,255)"],[style*=";color:rgb(255,255,255)"]){color:var(--uxr-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #94a3b8"],[style*="; color: #94a3b8"],[style*=";color: #94a3b8"],[style^="color:#94a3b8"],[style*="; color:#94a3b8"],[style*=";color:#94a3b8"],[style^="color: rgb(148, 163, 184)"],[style*="; color: rgb(148, 163, 184)"],[style*=";color: rgb(148, 163, 184)"],[style^="color:rgb(148, 163, 184)"],[style*="; color:rgb(148, 163, 184)"],[style*=";color:rgb(148, 163, 184)"],[style^="color: rgb(148,163,184)"],[style*="; color: rgb(148,163,184)"],[style*=";color: rgb(148,163,184)"],[style^="color:rgb(148,163,184)"],[style*="; color:rgb(148,163,184)"],[style*=";color:rgb(148,163,184)"]){color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: white"],[style*="; background: white"],[style*=";background: white"],[style^="background:white"],[style*="; background:white"],[style*=";background:white"],[style^="background: rgb(255, 255, 255)"],[style*="; background: rgb(255, 255, 255)"],[style*=";background: rgb(255, 255, 255)"],[style^="background:rgb(255, 255, 255)"],[style*="; background:rgb(255, 255, 255)"],[style*=";background:rgb(255, 255, 255)"],[style^="background: rgb(255,255,255)"],[style*="; background: rgb(255,255,255)"],[style*=";background: rgb(255,255,255)"],[style^="background:rgb(255,255,255)"],[style*="; background:rgb(255,255,255)"],[style*=";background:rgb(255,255,255)"]){background:var(--uxr-card) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: black"],[style*="; color: black"],[style*=";color: black"],[style^="color:black"],[style*="; color:black"],[style*=";color:black"],[style^="color: rgb(0, 0, 0)"],[style*="; color: rgb(0, 0, 0)"],[style*=";color: rgb(0, 0, 0)"],[style^="color:rgb(0, 0, 0)"],[style*="; color:rgb(0, 0, 0)"],[style*=";color:rgb(0, 0, 0)"],[style^="color: rgb(0,0,0)"],[style*="; color: rgb(0,0,0)"],[style*=";color: rgb(0,0,0)"],[style^="color:rgb(0,0,0)"],[style*="; color:rgb(0,0,0)"],[style*=";color:rgb(0,0,0)"]){color:var(--uxr-text) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-top-color: #77a4f2"],[style*="; border-top-color: #77a4f2"],[style*=";border-top-color: #77a4f2"],[style^="border-top-color:#77a4f2"],[style*="; border-top-color:#77a4f2"],[style*=";border-top-color:#77a4f2"],[style^="border-top-color: rgb(119,164,242)"],[style*="; border-top-color: rgb(119,164,242)"],[style*=";border-top-color: rgb(119,164,242)"],[style^="border-top-color:rgb(119,164,242)"],[style*="; border-top-color:rgb(119,164,242)"],[style*=";border-top-color:rgb(119,164,242)"],[style^="border-top-color: rgb(119,164,242)"],[style*="; border-top-color: rgb(119,164,242)"],[style*=";border-top-color: rgb(119,164,242)"],[style^="border-top-color:rgb(119,164,242)"],[style*="; border-top-color:rgb(119,164,242)"],[style*=";border-top-color:rgb(119,164,242)"]){border-top-color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f7faff"],[style*="; background: #f7faff"],[style*=";background: #f7faff"],[style^="background:#f7faff"],[style*="; background:#f7faff"],[style*=";background:#f7faff"],[style^="background: rgb(247, 250, 255)"],[style*="; background: rgb(247, 250, 255)"],[style*=";background: rgb(247, 250, 255)"],[style^="background:rgb(247, 250, 255)"],[style*="; background:rgb(247, 250, 255)"],[style*=";background:rgb(247, 250, 255)"],[style^="background: rgb(247,250,255)"],[style*="; background: rgb(247,250,255)"],[style*=";background: rgb(247,250,255)"],[style^="background:rgb(247,250,255)"],[style*="; background:rgb(247,250,255)"],[style*=";background:rgb(247,250,255)"]){background:var(--uxr-card) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4b6074"],[style*="; color: #4b6074"],[style*=";color: #4b6074"],[style^="color:#4b6074"],[style*="; color:#4b6074"],[style*=";color:#4b6074"],[style^="color: rgb(75, 96, 116)"],[style*="; color: rgb(75, 96, 116)"],[style*=";color: rgb(75, 96, 116)"],[style^="color:rgb(75, 96, 116)"],[style*="; color:rgb(75, 96, 116)"],[style*=";color:rgb(75, 96, 116)"],[style^="color: rgb(75,96,116)"],[style*="; color: rgb(75,96,116)"],[style*=";color: rgb(75,96,116)"],[style^="color:rgb(75,96,116)"],[style*="; color:rgb(75,96,116)"],[style*=";color:rgb(75,96,116)"]){color:var(--uxr-muted) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #edfbfd"],[style*="; background: #edfbfd"],[style*=";background: #edfbfd"],[style^="background:#edfbfd"],[style*="; background:#edfbfd"],[style*=";background:#edfbfd"],[style^="background: rgb(237,251,253)"],[style*="; background: rgb(237,251,253)"],[style*=";background: rgb(237,251,253)"],[style^="background:rgb(237,251,253)"],[style*="; background:rgb(237,251,253)"],[style*=";background:rgb(237,251,253)"],[style^="background: rgb(237,251,253)"],[style*="; background: rgb(237,251,253)"],[style*=";background: rgb(237,251,253)"],[style^="background:rgb(237,251,253)"],[style*="; background:rgb(237,251,253)"],[style*=";background:rgb(237,251,253)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1197ac"],[style*="; color: #1197ac"],[style*=";color: #1197ac"],[style^="color:#1197ac"],[style*="; color:#1197ac"],[style*=";color:#1197ac"],[style^="color: rgb(17,151,172)"],[style*="; color: rgb(17,151,172)"],[style*=";color: rgb(17,151,172)"],[style^="color:rgb(17,151,172)"],[style*="; color:rgb(17,151,172)"],[style*=";color:rgb(17,151,172)"],[style^="color: rgb(17,151,172)"],[style*="; color: rgb(17,151,172)"],[style*=";color: rgb(17,151,172)"],[style^="color:rgb(17,151,172)"],[style*="; color:rgb(17,151,172)"],[style*=";color:rgb(17,151,172)"]){color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #061c42"],[style*="; color: #061c42"],[style*=";color: #061c42"],[style^="color:#061c42"],[style*="; color:#061c42"],[style*=";color:#061c42"],[style^="color: rgb(6,28,66)"],[style*="; color: rgb(6,28,66)"],[style*=";color: rgb(6,28,66)"],[style^="color:rgb(6,28,66)"],[style*="; color:rgb(6,28,66)"],[style*=";color:rgb(6,28,66)"],[style^="color: rgb(6,28,66)"],[style*="; color: rgb(6,28,66)"],[style*=";color: rgb(6,28,66)"],[style^="color:rgb(6,28,66)"],[style*="; color:rgb(6,28,66)"],[style*=";color:rgb(6,28,66)"]){color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #334155"],[style*="; color: #334155"],[style*=";color: #334155"],[style^="color:#334155"],[style*="; color:#334155"],[style*=";color:#334155"],[style^="color: rgb(51, 65, 85)"],[style*="; color: rgb(51, 65, 85)"],[style*=";color: rgb(51, 65, 85)"],[style^="color:rgb(51, 65, 85)"],[style*="; color:rgb(51, 65, 85)"],[style*=";color:rgb(51, 65, 85)"],[style^="color: rgb(51,65,85)"],[style*="; color: rgb(51,65,85)"],[style*=";color: rgb(51,65,85)"],[style^="color:rgb(51,65,85)"],[style*="; color:rgb(51,65,85)"],[style*=";color:rgb(51,65,85)"]){color:var(--uxr-text) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #2669dc"],[style*="; background: #2669dc"],[style*=";background: #2669dc"],[style^="background:#2669dc"],[style*="; background:#2669dc"],[style*=";background:#2669dc"],[style^="background: rgb(38,105,220)"],[style*="; background: rgb(38,105,220)"],[style*=";background: rgb(38,105,220)"],[style^="background:rgb(38,105,220)"],[style*="; background:rgb(38,105,220)"],[style*=";background:rgb(38,105,220)"],[style^="background: rgb(38,105,220)"],[style*="; background: rgb(38,105,220)"],[style*=";background: rgb(38,105,220)"],[style^="background:rgb(38,105,220)"],[style*="; background:rgb(38,105,220)"],[style*=";background:rgb(38,105,220)"]){background:var(--uxr-negative-solid) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="border-top-color: #10b981"],[style*="; border-top-color: #10b981"],[style*=";border-top-color: #10b981"],[style^="border-top-color:#10b981"],[style*="; border-top-color:#10b981"],[style*=";border-top-color:#10b981"],[style^="border-top-color: rgb(16, 185, 129)"],[style*="; border-top-color: rgb(16, 185, 129)"],[style*=";border-top-color: rgb(16, 185, 129)"],[style^="border-top-color:rgb(16, 185, 129)"],[style*="; border-top-color:rgb(16, 185, 129)"],[style*=";border-top-color:rgb(16, 185, 129)"],[style^="border-top-color: rgb(16,185,129)"],[style*="; border-top-color: rgb(16,185,129)"],[style*=";border-top-color: rgb(16,185,129)"],[style^="border-top-color:rgb(16,185,129)"],[style*="; border-top-color:rgb(16,185,129)"],[style*=";border-top-color:rgb(16,185,129)"]){border-top-color:var(--uxr-positive-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #a7f3d0"],[style*="; color: #a7f3d0"],[style*=";color: #a7f3d0"],[style^="color:#a7f3d0"],[style*="; color:#a7f3d0"],[style*=";color:#a7f3d0"],[style^="color: rgb(167, 243, 208)"],[style*="; color: rgb(167, 243, 208)"],[style*=";color: rgb(167, 243, 208)"],[style^="color:rgb(167, 243, 208)"],[style*="; color:rgb(167, 243, 208)"],[style*=";color:rgb(167, 243, 208)"],[style^="color: rgb(167,243,208)"],[style*="; color: rgb(167,243,208)"],[style*=";color: rgb(167,243,208)"],[style^="color:rgb(167,243,208)"],[style*="; color:rgb(167,243,208)"],[style*=";color:rgb(167,243,208)"]){color:var(--uxr-positive-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #cbd5e1"],[style*="; background: #cbd5e1"],[style*=";background: #cbd5e1"],[style^="background:#cbd5e1"],[style*="; background:#cbd5e1"],[style*=";background:#cbd5e1"],[style^="background: rgb(203, 213, 225)"],[style*="; background: rgb(203, 213, 225)"],[style*=";background: rgb(203, 213, 225)"],[style^="background:rgb(203, 213, 225)"],[style*="; background:rgb(203, 213, 225)"],[style*=";background:rgb(203, 213, 225)"],[style^="background: rgb(203,213,225)"],[style*="; background: rgb(203,213,225)"],[style*=";background: rgb(203,213,225)"],[style^="background:rgb(203,213,225)"],[style*="; background:rgb(203,213,225)"],[style*=";background:rgb(203,213,225)"]){background:var(--uxr-soft-raised) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #475569"],[style*="; background: #475569"],[style*=";background: #475569"],[style^="background:#475569"],[style*="; background:#475569"],[style*=";background:#475569"],[style^="background: rgb(71, 85, 105)"],[style*="; background: rgb(71, 85, 105)"],[style*=";background: rgb(71, 85, 105)"],[style^="background:rgb(71, 85, 105)"],[style*="; background:rgb(71, 85, 105)"],[style*=";background:rgb(71, 85, 105)"],[style^="background: rgb(71,85,105)"],[style*="; background: rgb(71,85,105)"],[style*=";background: rgb(71,85,105)"],[style^="background:rgb(71,85,105)"],[style*="; background:rgb(71,85,105)"],[style*=";background:rgb(71,85,105)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #2563eb"],[style*="; background: #2563eb"],[style*=";background: #2563eb"],[style^="background:#2563eb"],[style*="; background:#2563eb"],[style*=";background:#2563eb"],[style^="background: rgb(37, 99, 235)"],[style*="; background: rgb(37, 99, 235)"],[style*=";background: rgb(37, 99, 235)"],[style^="background:rgb(37, 99, 235)"],[style*="; background:rgb(37, 99, 235)"],[style*=";background:rgb(37, 99, 235)"],[style^="background: rgb(37,99,235)"],[style*="; background: rgb(37,99,235)"],[style*=";background: rgb(37,99,235)"],[style^="background:rgb(37,99,235)"],[style*="; background:rgb(37,99,235)"],[style*=";background:rgb(37,99,235)"]){background:var(--uxr-blue) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #e2e8f0"],[style*="; background: #e2e8f0"],[style*=";background: #e2e8f0"],[style^="background:#e2e8f0"],[style*="; background:#e2e8f0"],[style*=";background:#e2e8f0"],[style^="background: rgb(226, 232, 240)"],[style*="; background: rgb(226, 232, 240)"],[style*=";background: rgb(226, 232, 240)"],[style^="background:rgb(226, 232, 240)"],[style*="; background:rgb(226, 232, 240)"],[style*=";background:rgb(226, 232, 240)"],[style^="background: rgb(226,232,240)"],[style*="; background: rgb(226,232,240)"],[style*=";background: rgb(226,232,240)"],[style^="background:rgb(226,232,240)"],[style*="; background:rgb(226,232,240)"],[style*=";background:rgb(226,232,240)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1d4ed8"],[style*="; color: #1d4ed8"],[style*=";color: #1d4ed8"],[style^="color:#1d4ed8"],[style*="; color:#1d4ed8"],[style*=";color:#1d4ed8"],[style^="color: rgb(29, 78, 216)"],[style*="; color: rgb(29, 78, 216)"],[style*=";color: rgb(29, 78, 216)"],[style^="color:rgb(29, 78, 216)"],[style*="; color:rgb(29, 78, 216)"],[style*=";color:rgb(29, 78, 216)"],[style^="color: rgb(29,78,216)"],[style*="; color: rgb(29,78,216)"],[style*=";color: rgb(29,78,216)"],[style^="color:rgb(29,78,216)"],[style*="; color:rgb(29,78,216)"],[style*=";color:rgb(29,78,216)"]){color:var(--uxr-link) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #f1f5f9"],[style*="; background: #f1f5f9"],[style*=";background: #f1f5f9"],[style^="background:#f1f5f9"],[style*="; background:#f1f5f9"],[style*=";background:#f1f5f9"],[style^="background: rgb(241, 245, 249)"],[style*="; background: rgb(241, 245, 249)"],[style*=";background: rgb(241, 245, 249)"],[style^="background:rgb(241, 245, 249)"],[style*="; background:rgb(241, 245, 249)"],[style*=";background:rgb(241, 245, 249)"],[style^="background: rgb(241,245,249)"],[style*="; background: rgb(241,245,249)"],[style*=";background: rgb(241,245,249)"],[style^="background:rgb(241,245,249)"],[style*="; background:rgb(241,245,249)"],[style*=";background:rgb(241,245,249)"]){background:var(--uxr-soft) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #064e3b"],[style*="; color: #064e3b"],[style*=";color: #064e3b"],[style^="color:#064e3b"],[style*="; color:#064e3b"],[style*=";color:#064e3b"],[style^="color: rgb(6, 78, 59)"],[style*="; color: rgb(6, 78, 59)"],[style*=";color: rgb(6, 78, 59)"],[style^="color:rgb(6, 78, 59)"],[style*="; color:rgb(6, 78, 59)"],[style*=";color:rgb(6, 78, 59)"],[style^="color: rgb(6,78,59)"],[style*="; color: rgb(6,78,59)"],[style*=";color: rgb(6,78,59)"],[style^="color:rgb(6,78,59)"],[style*="; color:rgb(6,78,59)"],[style*=";color:rgb(6,78,59)"]){color:var(--uxr-positive-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0f3678"],[style*="; color: #0f3678"],[style*=";color: #0f3678"],[style^="color:#0f3678"],[style*="; color:#0f3678"],[style*=";color:#0f3678"],[style^="color: rgb(15,54,120)"],[style*="; color: rgb(15,54,120)"],[style*=";color: rgb(15,54,120)"],[style^="color:rgb(15,54,120)"],[style*="; color:rgb(15,54,120)"],[style*=";color:rgb(15,54,120)"],[style^="color: rgb(15,54,120)"],[style*="; color: rgb(15,54,120)"],[style*=";color: rgb(15,54,120)"],[style^="color:rgb(15,54,120)"],[style*="; color:rgb(15,54,120)"],[style*=";color:rgb(15,54,120)"]){color:var(--uxr-warm-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="background: #3b82f6"],[style*="; background: #3b82f6"],[style*=";background: #3b82f6"],[style^="background:#3b82f6"],[style*="; background:#3b82f6"],[style*=";background:#3b82f6"],[style^="background: rgb(59, 130, 246)"],[style*="; background: rgb(59, 130, 246)"],[style*=";background: rgb(59, 130, 246)"],[style^="background:rgb(59, 130, 246)"],[style*="; background:rgb(59, 130, 246)"],[style*=";background:rgb(59, 130, 246)"],[style^="background: rgb(59,130,246)"],[style*="; background: rgb(59,130,246)"],[style*=";background: rgb(59,130,246)"],[style^="background:rgb(59,130,246)"],[style*="; background:rgb(59,130,246)"],[style*=";background:rgb(59,130,246)"]){background:var(--uxr-blue) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #15803d"],[style*="; color: #15803d"],[style*=";color: #15803d"],[style^="color:#15803d"],[style*="; color:#15803d"],[style*=";color:#15803d"],[style^="color: rgb(21, 128, 61)"],[style*="; color: rgb(21, 128, 61)"],[style*=";color: rgb(21, 128, 61)"],[style^="color:rgb(21, 128, 61)"],[style*="; color:rgb(21, 128, 61)"],[style*=";color:rgb(21, 128, 61)"],[style^="color: rgb(21,128,61)"],[style*="; color: rgb(21,128,61)"],[style*=";color: rgb(21,128,61)"],[style^="color:rgb(21,128,61)"],[style*="; color:rgb(21,128,61)"],[style*=";color:rgb(21,128,61)"]){color:var(--uxr-positive-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1d417f"],[style*="; color: #1d417f"],[style*=";color: #1d417f"],[style^="color:#1d417f"],[style*="; color:#1d417f"],[style*=";color:#1d417f"],[style^="color: rgb(29,65,127)"],[style*="; color: rgb(29,65,127)"],[style*=";color: rgb(29,65,127)"],[style^="color:rgb(29,65,127)"],[style*="; color:rgb(29,65,127)"],[style*=";color:rgb(29,65,127)"],[style^="color: rgb(29,65,127)"],[style*="; color: rgb(29,65,127)"],[style*=";color: rgb(29,65,127)"],[style^="color:rgb(29,65,127)"],[style*="; color:rgb(29,65,127)"],[style*=";color:rgb(29,65,127)"]){color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0a2045"],[style*="; color: #0a2045"],[style*=";color: #0a2045"],[style^="color:#0a2045"],[style*="; color:#0a2045"],[style*=";color:#0a2045"],[style^="color: rgb(10,32,69)"],[style*="; color: rgb(10,32,69)"],[style*=";color: rgb(10,32,69)"],[style^="color:rgb(10,32,69)"],[style*="; color:rgb(10,32,69)"],[style*=";color:rgb(10,32,69)"],[style^="color: rgb(10,32,69)"],[style*="; color: rgb(10,32,69)"],[style*=";color: rgb(10,32,69)"],[style^="color:rgb(10,32,69)"],[style*="; color:rgb(10,32,69)"],[style*=";color:rgb(10,32,69)"]){color:var(--uxr-negative-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #e2e8f0"],[style*="; color: #e2e8f0"],[style*=";color: #e2e8f0"],[style^="color:#e2e8f0"],[style*="; color:#e2e8f0"],[style*=";color:#e2e8f0"],[style^="color: rgb(226, 232, 240)"],[style*="; color: rgb(226, 232, 240)"],[style*=";color: rgb(226, 232, 240)"],[style^="color:rgb(226, 232, 240)"],[style*="; color:rgb(226, 232, 240)"],[style*=";color:rgb(226, 232, 240)"],[style^="color: rgb(226,232,240)"],[style*="; color: rgb(226,232,240)"],[style*=";color: rgb(226,232,240)"],[style^="color:rgb(226,232,240)"],[style*="; color:rgb(226,232,240)"],[style*=";color:rgb(226,232,240)"]){color:var(--uxr-ink) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #93c5fd"],[style*="; color: #93c5fd"],[style*=";color: #93c5fd"],[style^="color:#93c5fd"],[style*="; color:#93c5fd"],[style*=";color:#93c5fd"],[style^="color: rgb(147, 197, 253)"],[style*="; color: rgb(147, 197, 253)"],[style*=";color: rgb(147, 197, 253)"],[style^="color:rgb(147, 197, 253)"],[style*="; color:rgb(147, 197, 253)"],[style*=";color:rgb(147, 197, 253)"],[style^="color: rgb(147,197,253)"],[style*="; color: rgb(147,197,253)"],[style*=";color: rgb(147,197,253)"],[style^="color:rgb(147,197,253)"],[style*="; color:rgb(147,197,253)"],[style*=";color:rgb(147,197,253)"]){color:var(--uxr-link) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #60a5fa"],[style*="; color: #60a5fa"],[style*=";color: #60a5fa"],[style^="color:#60a5fa"],[style*="; color:#60a5fa"],[style*=";color:#60a5fa"],[style^="color: rgb(96, 165, 250)"],[style*="; color: rgb(96, 165, 250)"],[style*=";color: rgb(96, 165, 250)"],[style^="color:rgb(96, 165, 250)"],[style*="; color:rgb(96, 165, 250)"],[style*=";color:rgb(96, 165, 250)"],[style^="color: rgb(96,165,250)"],[style*="; color: rgb(96,165,250)"],[style*=";color: rgb(96,165,250)"],[style^="color:rgb(96,165,250)"],[style*="; color:rgb(96,165,250)"],[style*=";color:rgb(96,165,250)"]){color:var(--uxr-link) !important;}
+:where(html[data-theme="dark"]) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #cbd5e1"],[style*="; color: #cbd5e1"],[style*=";color: #cbd5e1"],[style^="color:#cbd5e1"],[style*="; color:#cbd5e1"],[style*=";color:#cbd5e1"],[style^="color: rgb(203, 213, 225)"],[style*="; color: rgb(203, 213, 225)"],[style*=";color: rgb(203, 213, 225)"],[style^="color:rgb(203, 213, 225)"],[style*="; color:rgb(203, 213, 225)"],[style*=";color:rgb(203, 213, 225)"],[style^="color: rgb(203,213,225)"],[style*="; color: rgb(203,213,225)"],[style*=";color: rgb(203,213,225)"],[style^="color:rgb(203,213,225)"],[style*="; color:rgb(203,213,225)"],[style*=";color:rgb(203,213,225)"]){color:var(--uxr-ink) !important;}
+
+/* App shell: a quiet learning surface with the reference's blue/mint character. */
+body.ux-course.ux-app-refresh {
+ --paper:var(--uxr-page); --surface:var(--uxr-card); --ink:var(--uxr-ink);
+ --muted:var(--uxr-muted); --line:var(--uxr-line); --sage:var(--uxr-mint);
+ --sage-deep:var(--uxr-link); --peach:var(--uxr-negative-bg); --lavender:var(--uxr-lavender);
+ --sky:var(--uxr-lavender); --butter:var(--uxr-warm-bg); --mint:var(--uxr-mint);
+ --main-blue:var(--uxr-blue); --bg-color:var(--uxr-page); --card-bg:var(--uxr-card);
+ --text-color:var(--uxr-text); --success:var(--uxr-positive-ink);
+ --danger:var(--uxr-negative-ink); --warning:var(--uxr-warm-ink);
+ --figma-bg:var(--uxr-soft); --figma-sidebar:var(--uxr-card);
+ background:var(--uxr-page); color:var(--uxr-text);
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+ font-size:18px; line-height:1.7;
+}
+body.ux-course.ux-app-refresh ::selection { background:var(--uxr-selection); color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--uxr-focus); outline-offset:4px; }
+body.ux-course.ux-app-refresh a { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh .studio-header {
+ min-height:82px; padding:16px max(28px,calc((100vw - 1392px)/2)); gap:24px;
+ background:var(--uxr-header); border-bottom:1px solid var(--uxr-line);
+ box-shadow:0 3px 16px rgba(42,56,99,.04); backdrop-filter:blur(16px);
+}
+body.ux-course.ux-app-refresh .studio-brand { gap:11px; color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh .brand-mark {
+ width:43px; height:43px; border:0; border-radius:14px;
+ background:var(--uxr-blue); color:#fff; font-weight:850; font-size:18px;
+ box-shadow:0 5px 11px rgba(65,100,244,.2); transform:rotate(-5deg);
+}
+body.ux-course.ux-app-refresh .studio-brand strong { color:var(--uxr-ink); font-size:21px; font-weight:750; letter-spacing:-.6px; }
+body.ux-course.ux-app-refresh .header-actions { gap:12px; }
+body.ux-course.ux-app-refresh .language-switch { border:1px solid var(--uxr-line); background:var(--uxr-soft); border-radius:14px; padding:4px; gap:3px; }
+body.ux-course.ux-app-refresh .language-switch button { color:var(--uxr-muted); min-height:42px; border-radius:10px; padding:8px 13px; line-height:1.4; }
+body.ux-course.ux-app-refresh .language-switch button:is(.active,[aria-pressed="true"]) {
+ background:var(--uxr-card); color:var(--uxr-link); border-color:var(--uxr-line);
+ box-shadow:0 2px 7px rgba(35,51,93,.06);
+}
+body.ux-course.ux-app-refresh .language-switch button:hover { background:var(--uxr-card); color:var(--uxr-link); }
+body.ux-course.ux-app-refresh .ux-theme-toggle {
+ display:inline-flex; align-items:center; justify-content:center; gap:7px;
+ min-height:46px; min-width:112px; max-width:210px; padding:10px 14px;
+ border:1px solid var(--uxr-line); border-radius:13px; background:var(--uxr-card);
+ color:var(--uxr-text); box-shadow:0 2px 5px rgba(35,51,93,.03);
+ font-size:14px; font-weight:650; line-height:1.4; text-align:center;
+}
+body.ux-course.ux-app-refresh .ux-theme-toggle:hover { background:var(--uxr-lavender); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh :is(.mobile-menu-toggle,.sidebar-close,#sidebar-close) {
+ background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); border-radius:12px;
+}
+body.ux-course.ux-app-refresh .studio-layout { grid-template-columns:252px minmax(0,1fr); }
+body.ux-course.ux-app-refresh .course-sidebar {
+ top:82px; height:calc(100dvh - 82px); padding:28px 18px 24px 21px;
+ background:var(--uxr-card); border-right-color:var(--uxr-line);
+ scrollbar-color:var(--uxr-line-strong) transparent;
+}
+body.ux-course.ux-app-refresh .sidebar-head { padding:0 10px 8px; color:var(--uxr-muted); font-size:13px; letter-spacing:1.2px; }
+body.ux-course.ux-app-refresh #course-nav { gap:5px; }
+body.ux-course.ux-app-refresh .course-link { padding:11px 12px; min-height:46px; grid-template-columns:28px minmax(0,1fr); color:var(--uxr-text); border-radius:13px; }
+body.ux-course.ux-app-refresh .course-link:hover { background:var(--uxr-soft); color:var(--uxr-link); }
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]) {
+ background:var(--uxr-lavender); border-color:var(--uxr-line); color:var(--uxr-link); font-weight:700;
+}
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"])::before { left:-6px; top:14px; bottom:14px; width:3px; background:var(--uxr-blue); border-radius:4px; }
+body.ux-course.ux-app-refresh .week-number { color:var(--uxr-muted); font-size:14px; }
+body.ux-course.ux-app-refresh .week-topic { font-size:15px; line-height:1.45; }
+body.ux-course.ux-app-refresh .week-status { color:var(--uxr-muted); font-size:13px; }
+body.ux-course.ux-app-refresh .course-link:is(.active,[aria-current="page"]) .week-number { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh .course-link.exam { background:var(--uxr-mint); border-color:transparent; }
+body.ux-course.ux-app-refresh .course-link.exam:is(.active,[aria-current="page"]) { background:var(--uxr-lavender); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh .sidebar-backdrop { background:var(--uxr-overlay); }
+body.ux-course.ux-app-refresh main.studio-main { padding:32px clamp(24px,3.5vw,48px) 52px; max-width:1110px; }
+body.ux-course.ux-app-refresh .lesson-heading {
+ padding:30px 32px 31px; margin-bottom:22px; border:1px solid var(--uxr-line);
+ border-radius:24px; background:var(--uxr-hero); box-shadow:0 4px 16px rgba(63,79,124,.035);
+}
+body.ux-course.ux-app-refresh .lesson-kicker {
+ background:var(--uxr-card); color:var(--uxr-link); padding:6px 11px; border-radius:20px;
+ font-size:13px; letter-spacing:1.2px; margin-bottom:15px; box-shadow:0 2px 4px rgba(28,47,91,.025);
+}
+body.ux-course.ux-app-refresh .lesson-heading h1 { color:var(--uxr-ink); font-size:clamp(29px,3.1vw,39px); line-height:1.28; letter-spacing:-1px; max-width:100%; margin-bottom:13px; }
+body.ux-course.ux-app-refresh .lesson-intro { color:var(--uxr-text); font-size:18px; max-width:760px; line-height:1.75; }
+body.ux-course.ux-app-refresh .lesson-bridge { color:var(--uxr-muted); padding:0 4px; line-height:1.75; }
+body.ux-course.ux-app-refresh .examples-header { color:var(--uxr-muted); padding-inline:4px; }
+body.ux-course.ux-app-refresh .examples-header p { color:var(--uxr-muted); }
+body.ux-course.ux-app-refresh .course-note,
+body.ux-course.ux-app-refresh #exam-note {
+ color:var(--uxr-text); background:var(--uxr-mint); border:1px solid var(--uxr-line);
+ border-radius:16px; padding:19px 22px; font-size:17px; line-height:1.7;
+}
+body.ux-course.ux-app-refresh .course-note strong { color:var(--uxr-positive-ink); }
+
+/* Reading cards never move; interactive controls give a small response. */
+body.ux-course.ux-app-refresh #lesson-content .container > .card,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:hover,
+body.ux-course.ux-app-refresh #lesson-content .container > .card:hover:not(:focus-within) {
+ padding:28px; margin:0 0 24px; background:var(--uxr-card);
+ color:var(--uxr-text); border:1px solid var(--uxr-line) !important; border-radius:21px;
+ box-shadow:var(--uxr-shadow); animation:none; transform:none; transition:none;
+}
+body.ux-course.ux-app-refresh #lesson-content .card > :is(h1,h2) { color:var(--uxr-ink); font-size:24px; font-weight:750; letter-spacing:-.5px; }
+body.ux-course.ux-app-refresh #lesson-content .card > p { color:var(--uxr-text); }
+body.ux-course.ux-app-refresh #lesson-content .title-emoji { animation:none; }
+body.ux-course.ux-app-refresh #lesson-content .vs-container { gap:18px; }
+body.ux-course.ux-app-refresh #lesson-content .vs-container > .box,
+body.ux-course.ux-app-refresh #lesson-content .vs-container > .box:hover {
+ background:var(--uxr-soft); border:1px solid var(--uxr-line); color:var(--uxr-text); border-radius:16px;
+}
+body.ux-course.ux-app-refresh #lesson-content .vs-container > .box:nth-child(even),
+body.ux-course.ux-app-refresh #lesson-content .vs-container > .box:nth-child(even):hover { background:var(--uxr-mint); }
+body.ux-course.ux-app-refresh #lesson-content .box[style*="#effbfd"] { background:var(--uxr-warm-bg) !important; border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .box[style*="#effbfd"] > h3 { color:var(--uxr-warm-ink) !important; }
+body.ux-course.ux-app-refresh #lesson-content .box[style*="#edfbfd"] { background:var(--uxr-lavender) !important; border-color:var(--uxr-line) !important; }
+body.ux-course.ux-app-refresh #lesson-content .box[style*="#edfbfd"] > h3 { color:var(--uxr-link) !important; }
+body.ux-course.ux-app-refresh #lesson-content .comp-card,
+body.ux-course.ux-app-refresh #lesson-content .comp-card:hover { background:var(--uxr-soft); border-color:var(--uxr-line); border-radius:17px; color:var(--uxr-text); transform:none; box-shadow:none; }
+body.ux-course.ux-app-refresh #lesson-content .comp-card-header { border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .comp-card .comp-desc { background:var(--uxr-lavender); color:var(--uxr-text); border-left-color:var(--uxr-line-strong); border-radius:10px; }
+body.ux-course.ux-app-refresh #lesson-content .comp-card:nth-child(even) .comp-desc { background:var(--uxr-mint); color:var(--uxr-text); border-left-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content .comp-badge { background:var(--uxr-card); color:var(--uxr-link); border:1px solid var(--uxr-line); border-radius:20px; }
+body.ux-course.ux-app-refresh #lesson-content .persona-card { background:var(--uxr-warm-bg); border-color:var(--uxr-line); border-radius:17px; }
+body.ux-course.ux-app-refresh #lesson-content .persona-header { border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .persona-icon { background:var(--uxr-card); border-color:var(--uxr-line); border-radius:15px; }
+body.ux-course.ux-app-refresh #lesson-content .badge-red { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh :is(.explanation-note,#lesson-content .callout) { background:var(--uxr-lavender); color:var(--uxr-text); border-color:var(--uxr-line-strong); border-radius:12px; }
+body.ux-course.ux-app-refresh .explanation-note strong { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content :is(.stage-box,.state-map,.tree-container,.chat-container,.level-demo,.feedback-container,.flow-demo,.al-demo-container) { background:var(--uxr-soft); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.stage-box:hover,.level-box:hover) { background:var(--uxr-lavender); border-color:var(--uxr-line-strong); }
+
+/* Examples follow the selected mode. Only the actual CLI example is a terminal. */
+body.ux-course.ux-app-refresh #lesson-content :is(.demo-area,.formula-box,.prompt-box,.interactive-mockup,.mockup-window,.demo-box,.drawer-preview-area,.inner-scroll-window,.equation,.figma-qa-board) {
+ background:var(--uxr-code-bg); color:var(--uxr-code-ink); border:1px solid var(--uxr-line);
+ border-radius:15px; box-shadow:none;
+}
+body.ux-course.ux-app-refresh #lesson-content :is(.mini-ai-card,.inner-bubble,.chip,.input-bar,.ai-message,.fake-ai-msg,.key-box,.al-container,.al-container.applied,.comp-master-box,.chat-ui-frame,.ai-text,.p-chip,.p-input,.eq-step,.demo-drawer) {
+ background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line);
+}
+body.ux-course.ux-app-refresh #lesson-content :is(.mockup-header,.key-label,.mini-card-head,.inner-scroll-content,.action-icon,.ai-label,.mockup-subtitle) { color:var(--uxr-muted); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .mini-card-head { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content .input-bar input { color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .input-bar input::placeholder { color:var(--uxr-muted); opacity:1; }
+body.ux-course.ux-app-refresh #lesson-content :is(.chip:hover,.action-icon:hover) { background:var(--uxr-lavender); color:var(--uxr-link); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content .node.response { background:var(--uxr-lavender); color:var(--uxr-link); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content .node.fallback { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); border-color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .key-box { box-shadow:0 4px 0 var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.key-box:active,.key-box.active) { background:var(--uxr-blue); color:#fff; box-shadow:none; }
+body.ux-course.ux-app-refresh #lesson-content :is(.key-box:active,.key-box.active) .key-label { color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .al-item { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .formula-hl { color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh #lesson-content .formula-bad { color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .formula-box .term-trigger,
+body.ux-course.ux-app-refresh #lesson-content .prompt-box .term-trigger { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content .mockup-box { background:var(--uxr-card); border-color:var(--uxr-line); border-radius:16px; box-shadow:0 3px 10px rgba(32,48,88,.04); }
+body.ux-course.ux-app-refresh #lesson-content .cli-header { background:#223047; color:#e8efff; border-color:#3a4965; }
+body.ux-course.ux-app-refresh #lesson-content .cli-body { background:#101b29; color:#85efb2; border-color:#3a4965; }
+body.ux-course.ux-app-refresh #lesson-content .gui-header { background:var(--uxr-soft-raised); }
+body.ux-course.ux-app-refresh #lesson-content :is(.gui-body,.ai-body) { background:var(--uxr-soft); color:var(--uxr-text); }
+body.ux-course.ux-app-refresh #lesson-content .gui-btn-mock { background:var(--uxr-card); color:var(--uxr-ink); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content .ai-header { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .figma-toolbar { background:var(--uxr-soft-raised); color:var(--uxr-text); }
+body.ux-course.ux-app-refresh #lesson-content .figma-tool:hover { background:var(--uxr-lavender); color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content :is(.figma-sidebar,.figma-right,.mock-frame,.flow-screen,.proto-phone,.level-box,.ai-msg-mock) { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.m-chip,.m-input,.m-ai) { background:var(--uxr-soft); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .share-modal { background:var(--uxr-card); color:var(--uxr-ink); border:1px solid var(--uxr-line); border-radius:15px; box-shadow:var(--uxr-shadow); }
+body.ux-course.ux-app-refresh #lesson-content .perm-select { background:var(--uxr-soft); color:var(--uxr-ink); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh[data-page="week09"] #lesson-content .perm-select.correct { color:var(--uxr-positive-ink); border-color:var(--uxr-positive-ink); background:var(--uxr-positive-bg); }
+body.ux-course.ux-app-refresh #lesson-content :is(.bubble.ai,.chat-ai) { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.bubble.error,.error-msg) { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); border-color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .page-num { background:var(--uxr-lavender); color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content .tooltip-box { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line-strong); box-shadow:var(--uxr-shadow); }
+body.ux-course.ux-app-refresh #lesson-content .sk-line { background:linear-gradient(90deg,var(--uxr-soft-raised) 25%,var(--uxr-line-strong) 50%,var(--uxr-soft-raised) 75%); background-size:200% 100%; }
+body.ux-course.ux-app-refresh #lesson-content :is(.level-1,.micro-btn.liked) { background:var(--uxr-positive-bg); color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh #lesson-content .level-2 { background:var(--uxr-warm-bg); color:var(--uxr-warm-ink); }
+body.ux-course.ux-app-refresh #lesson-content .level-3 { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .back-tag { background:var(--uxr-soft-raised); color:var(--uxr-text); }
+body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content .back-tag .term-trigger { color:var(--uxr-text); }
+
+/* Primary, success and error buttons keep deliberate contrast in both modes. */
+body.ux-course.ux-app-refresh #lesson-content .action-btn,
+body.ux-course.ux-app-refresh :is(.completion-button,.check-options button.selected) {
+ min-height:44px; border-radius:12px; background:var(--uxr-blue); color:#fff;
+ border:1px solid transparent; padding:11px 18px; font-weight:650;
+ box-shadow:0 4px 10px rgba(65,100,244,.13);
+}
+body.ux-course.ux-app-refresh #lesson-content .action-btn:hover { background:var(--uxr-blue-hover); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-green,
+body.ux-course.ux-app-refresh #lesson-content .btn-green { background:var(--uxr-positive-solid); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-red,
+body.ux-course.ux-app-refresh #lesson-content .btn-red { background:var(--uxr-negative-solid); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-green:hover,
+body.ux-course.ux-app-refresh #lesson-content .action-btn.btn-red:hover { filter:brightness(.94); }
+body.ux-course.ux-app-refresh #lesson-content :is(.action-chip,.icon-btn,.micro-btn) { background:var(--uxr-card); color:var(--uxr-link); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content :is(.feedback-toast,.demo-toast) { background:var(--uxr-positive-solid); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content :is(.bubble.user,.chat-user,.m-user,.bub-user,.chat-bubble-demo,.send-btn,.al-button,.inner-sticky-bar) { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .state-step { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .state-step:is(.active,:hover) { background:var(--uxr-blue); color:#fff; border-color:var(--uxr-blue); }
+body.ux-course.ux-app-refresh #lesson-content .state-step:is(.active,:hover) .term-trigger { color:#fff; }
+
+/* Existing realistic phones and blueprint panels use the same semantic colors. */
+body.ux-course.ux-app-refresh #lesson-content .v3-demo.v3-pb {
+ --v3-pb-ink:var(--uxr-ink); --v3-pb-muted:var(--uxr-muted); --v3-pb-line:var(--uxr-line);
+ --v3-pb-blue:var(--uxr-lavender); --v3-pb-mint:var(--uxr-mint); --v3-pb-peach:var(--uxr-warm-bg);
+}
+body.ux-course.ux-app-refresh #lesson-content .v3-er { color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-title { color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .v3-er .v3-er-intro { color:var(--uxr-muted); }
+body.ux-course.ux-app-refresh #lesson-content :is(.v3-er-phone,.v3-pb-phone) { background:var(--uxr-soft); border-color:var(--uxr-line-strong); box-shadow:0 18px 32px -18px rgba(10,24,50,.35),inset 0 0 0 1px var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.v3-er-appbar,.v3-er-screen,.v3-pb-phone-header,.v3-pb-phone-body,.v3-pb-device-bar,.v3-pb-document,.v3-pb-result) { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content :is(.v3-pb-button,.v3-er-button) { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line-strong); border-radius:12px; }
+body.ux-course.ux-app-refresh #lesson-content :is(.v3-pb-primary,.v3-er-primary) { background:var(--uxr-blue); color:#fff; border-color:var(--uxr-blue); }
+body.ux-course.ux-app-refresh #lesson-content .v3-pb .v3-pb-primary { background:var(--uxr-blue); color:#fff; border-color:var(--uxr-blue); }
+body.ux-course.ux-app-refresh #lesson-content :is(.v3-pb-choice,.v3-pb-tool,.v3-pb-options,.v3-pb-loading) { border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .v3-er-user-bubble { background:var(--uxr-lavender); color:var(--uxr-ink); }
+
+/* Terms and navigation remain obvious, without permanent floating animation. */
+body.ux-course.ux-app-refresh button.term-trigger { color:var(--uxr-link); border-bottom-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh button.term-trigger:is(:hover,[aria-expanded="true"]) { color:var(--uxr-link); background:var(--uxr-lavender); }
+body.ux-course.ux-app-refresh #term-tooltip { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line); border-radius:18px; box-shadow:0 12px 36px rgba(12,24,49,.18); }
+body.ux-course.ux-app-refresh #term-tooltip :is(h2,h3,.term-tooltip-title,#term-tooltip-title) { color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh #term-tooltip :is(.term-example,.term-tooltip-example,#term-tooltip-example,#term-example) { background:var(--uxr-mint); color:var(--uxr-positive-ink); border-color:var(--uxr-line); border-radius:11px; }
+body.ux-course.ux-app-refresh .lesson-footer { border-color:var(--uxr-line); gap:12px; padding-top:27px; margin-top:28px; }
+body.ux-course.ux-app-refresh .nav-lesson { min-height:52px; background:var(--uxr-card); color:var(--uxr-link); border:1px solid var(--uxr-line); border-radius:14px; box-shadow:var(--uxr-shadow); padding:12px 18px; line-height:1.5; }
+body.ux-course.ux-app-refresh .nav-lesson:hover { background:var(--uxr-lavender); box-shadow:var(--uxr-shadow-float); }
+body.ux-course.ux-app-refresh .nav-lesson.nav-next { background:var(--uxr-blue); color:#fff; border-color:var(--uxr-blue); box-shadow:var(--uxr-shadow-float); }
+body.ux-course.ux-app-refresh .nav-lesson.nav-next:hover { background:var(--uxr-blue-hover); }
+body.ux-course.ux-app-refresh .nav-lesson small { color:inherit; }
+body.ux-course.ux-app-refresh .studio-footer,
+body.ux-course.ux-app-refresh .studio-footer small { color:var(--uxr-muted); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #back-to-top.round-top { background:var(--uxr-card); color:var(--uxr-link); border-color:var(--uxr-line); box-shadow:var(--uxr-shadow-float); }
+body.ux-course.ux-app-refresh #back-to-top.round-top:hover { background:var(--uxr-lavender); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #back-to-top.round-top > :is(span,svg) { animation:none; }
+body.ux-course.ux-app-refresh #final-panel { background:var(--uxr-mint); color:var(--uxr-text); border-color:var(--uxr-line); border-radius:21px; }
+body.ux-course.ux-app-refresh #final-panel h2 { color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh .final-stamp { background:var(--uxr-card); color:var(--uxr-positive-ink); border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #final-review-link { background:var(--uxr-blue); color:#fff; border-color:var(--uxr-blue); border-radius:12px; }
+
+/* Compact laptop and phone headers. No language or theme control is hidden. */
+@media (min-width:801px) and (max-width:1050px) {
+ body.ux-course.ux-app-refresh .studio-header { gap:16px; padding-inline:22px; }
+ body.ux-course.ux-app-refresh .header-actions { gap:8px; }
+ body.ux-course.ux-app-refresh .language-switch button { padding-inline:9px; font-size:14px; }
+ body.ux-course.ux-app-refresh .ux-theme-toggle { min-width:104px; padding-inline:11px; }
+ body.ux-course.ux-app-refresh .studio-layout { grid-template-columns:226px minmax(0,1fr); }
+ body.ux-course.ux-app-refresh .course-sidebar { padding-inline:15px; }
+ body.ux-course.ux-app-refresh main.studio-main { padding-inline:23px; }
+ body.ux-course.ux-app-refresh .lesson-heading { padding:27px; }
+}
+@media (max-width:800px) {
+ body.ux-course.ux-app-refresh .studio-header { display:grid; grid-template-columns:minmax(0,1fr) 46px; gap:10px 12px; padding:12px 20px; min-height:126px; }
+ body.ux-course.ux-app-refresh .studio-brand { grid-column:1; grid-row:1; }
+ body.ux-course.ux-app-refresh .header-actions { display:contents; }
+ body.ux-course.ux-app-refresh .mobile-menu-toggle { grid-column:2; grid-row:1; width:46px; height:46px; display:inline-grid; place-items:center; }
+ body.ux-course.ux-app-refresh .language-switch { grid-column:1; grid-row:2; width:100%; min-width:0; }
+ body.ux-course.ux-app-refresh .language-switch button { flex:1 1 0; min-width:0; padding:8px 7px; font-size:14px; min-height:44px; }
+ body.ux-course.ux-app-refresh .ux-theme-toggle { grid-column:2; grid-row:2; min-width:0; width:100%; max-width:none; padding:9px 11px; font-size:13px; }
+ body.ux-course.ux-app-refresh .studio-header { grid-template-columns:minmax(0,1fr) minmax(106px,145px); }
+ body.ux-course.ux-app-refresh .mobile-menu-toggle { justify-self:end; }
+ body.ux-course.ux-app-refresh .course-sidebar { position:fixed; top:0; height:100dvh; padding:24px 20px; background:var(--uxr-card); border-color:var(--uxr-line); }
+ body.ux-course.ux-app-refresh main.studio-main { padding:26px 23px 90px; }
+ body.ux-course.ux-app-refresh .lesson-heading { border-radius:22px; padding:25px; }
+ body.ux-course.ux-app-refresh #lesson-content .container > .card,
+ body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+ body.ux-course.ux-app-refresh #lesson-content .container > .card:hover { padding:24px; border-radius:19px; }
+ body.ux-course.ux-app-refresh #lesson-content .card { scroll-margin-top:165px; }
+}
+@media (max-width:520px) {
+ body.ux-course.ux-app-refresh .studio-header { padding:10px 16px; gap:9px 8px; grid-template-columns:minmax(0,1fr) 108px; }
+ body.ux-course.ux-app-refresh .studio-brand strong { font-size:19px; }
+ body.ux-course.ux-app-refresh .brand-mark { width:35px; height:35px; font-size:16px; border-radius:11px; }
+ body.ux-course.ux-app-refresh .language-switch { gap:1px; padding:3px; }
+ body.ux-course.ux-app-refresh .language-switch button { font-size:12px; line-height:1.35; padding:7px 3px; overflow-wrap:normal; }
+ body.ux-course.ux-app-refresh .ux-theme-toggle { font-size:12px; padding:7px; }
+ body.ux-course.ux-app-refresh main.studio-main { padding:21px 16px 88px; }
+ body.ux-course.ux-app-refresh .lesson-heading { padding:23px 21px; border-radius:21px; }
+ body.ux-course.ux-app-refresh .lesson-heading h1 { font-size:28px; line-height:1.3; }
+ body.ux-course.ux-app-refresh .lesson-intro { font-size:17px; }
+ body.ux-course.ux-app-refresh #lesson-content .container > .card,
+ body.ux-course.ux-app-refresh #lesson-content .container > .card:first-child,
+ body.ux-course.ux-app-refresh #lesson-content .container > .card:hover { padding:22px 18px; border-radius:18px; margin-bottom:20px; }
+ body.ux-course.ux-app-refresh #lesson-content .card > :is(h1,h2) { font-size:22px; }
+ body.ux-course.ux-app-refresh #lesson-content .vs-container > .box { padding:19px; border-radius:14px; }
+ body.ux-course.ux-app-refresh .course-note, body.ux-course.ux-app-refresh #exam-note { padding:17px 19px; font-size:16px; }
+ body.ux-course.ux-app-refresh .nav-lesson { padding:12px; font-size:14px; border-radius:12px; flex:1 1 130px; text-align:center; }
+}
+@media (max-width:380px) {
+ body.ux-course.ux-app-refresh .studio-header { grid-template-columns:minmax(0,1fr) 46px; }
+ body.ux-course.ux-app-refresh .language-switch { grid-column:1 / -1; grid-row:2; }
+ body.ux-course.ux-app-refresh .language-switch button { font-size:14px; }
+ body.ux-course.ux-app-refresh .ux-theme-toggle { grid-column:1 / -1; grid-row:3; min-height:40px; padding:7px 12px; font-size:13px; }
+ body.ux-course.ux-app-refresh #lesson-content .card { scroll-margin-top:215px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ body.ux-course.ux-app-refresh *,body.ux-course.ux-app-refresh *::before,body.ux-course.ux-app-refresh *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+ body.ux-course.ux-app-refresh :is(.nav-lesson,.action-btn,.ux-theme-toggle):hover { transform:none !important; }
+}
+@media (forced-colors:active) {
+ body.ux-course.ux-app-refresh :is(button,.nav-lesson,.course-link.active,.card,.lesson-heading) { border:1px solid CanvasText; }
+ body.ux-course.ux-app-refresh :is(button,a):focus-visible { outline:3px solid Highlight; }
+}
+@media print {
+ html[data-theme] { --uxr-page:#fff; --uxr-card:#fff; --uxr-soft:#f7f7f7; --uxr-ink:#111; --uxr-text:#222; --uxr-muted:#444; --uxr-line:#ccc; --uxr-code-bg:#f7f7f7; --uxr-code-ink:#222; }
+ body.ux-course.ux-app-refresh { background:#fff; color:#111; }
+ body.ux-course.ux-app-refresh .ux-theme-toggle { display:none !important; }
+ body.ux-course.ux-app-refresh .lesson-heading,body.ux-course.ux-app-refresh #lesson-content .container > .card { box-shadow:none; }
+}
+
+/* Light examples: original pale inline labels also need a readable ink. */
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4ad7ed"],[style*="; color: #4ad7ed"],[style*=";color: #4ad7ed"],[style^="color:#4ad7ed"],[style*="; color:#4ad7ed"],[style*=";color:#4ad7ed"],[style^="color: rgb(74,215,237)"],[style*="; color: rgb(74,215,237)"],[style*=";color: rgb(74,215,237)"],[style^="color:rgb(74,215,237)"],[style*="; color:rgb(74,215,237)"],[style*=";color:rgb(74,215,237)"],[style^="color: rgb(74,215,237)"],[style*="; color: rgb(74,215,237)"],[style*=";color: rgb(74,215,237)"],[style^="color:rgb(74,215,237)"],[style*="; color:rgb(74,215,237)"],[style*=";color:rgb(74,215,237)"]){color:var(--uxr-warm-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1660e0"],[style*="; color: #1660e0"],[style*=";color: #1660e0"],[style^="color:#1660e0"],[style*="; color:#1660e0"],[style*=";color:#1660e0"],[style^="color: rgb(22,96,224)"],[style*="; color: rgb(22,96,224)"],[style*=";color: rgb(22,96,224)"],[style^="color:rgb(22,96,224)"],[style*="; color:rgb(22,96,224)"],[style*=";color:rgb(22,96,224)"],[style^="color: rgb(22,96,224)"],[style*="; color: rgb(22,96,224)"],[style*=";color: rgb(22,96,224)"],[style^="color:rgb(22,96,224)"],[style*="; color:rgb(22,96,224)"],[style*=";color:rgb(22,96,224)"]){color:var(--uxr-warm-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #64748b"],[style*="; color: #64748b"],[style*=";color: #64748b"],[style^="color:#64748b"],[style*="; color:#64748b"],[style*=";color:#64748b"],[style^="color: rgb(100, 116, 139)"],[style*="; color: rgb(100, 116, 139)"],[style*=";color: rgb(100, 116, 139)"],[style^="color:rgb(100, 116, 139)"],[style*="; color:rgb(100, 116, 139)"],[style*=";color:rgb(100, 116, 139)"],[style^="color: rgb(100,116,139)"],[style*="; color: rgb(100,116,139)"],[style*=";color: rgb(100,116,139)"],[style^="color:rgb(100,116,139)"],[style*="; color:rgb(100,116,139)"],[style*=";color:rgb(100,116,139)"]){color:var(--uxr-muted) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #2669dc"],[style*="; color: #2669dc"],[style*=";color: #2669dc"],[style^="color:#2669dc"],[style*="; color:#2669dc"],[style*=";color:#2669dc"],[style^="color: rgb(38,105,220)"],[style*="; color: rgb(38,105,220)"],[style*=";color: rgb(38,105,220)"],[style^="color:rgb(38,105,220)"],[style*="; color:rgb(38,105,220)"],[style*=";color:rgb(38,105,220)"],[style^="color: rgb(38,105,220)"],[style*="; color: rgb(38,105,220)"],[style*=";color: rgb(38,105,220)"],[style^="color:rgb(38,105,220)"],[style*="; color:rgb(38,105,220)"],[style*=";color:rgb(38,105,220)"]){color:var(--uxr-negative-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4683ed"],[style*="; color: #4683ed"],[style*=";color: #4683ed"],[style^="color:#4683ed"],[style*="; color:#4683ed"],[style*=";color:#4683ed"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"]){color:var(--uxr-negative-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #16a34a"],[style*="; color: #16a34a"],[style*=";color: #16a34a"],[style^="color:#16a34a"],[style*="; color:#16a34a"],[style*=";color:#16a34a"],[style^="color: rgb(22, 163, 74)"],[style*="; color: rgb(22, 163, 74)"],[style*=";color: rgb(22, 163, 74)"],[style^="color:rgb(22, 163, 74)"],[style*="; color:rgb(22, 163, 74)"],[style*=";color:rgb(22, 163, 74)"],[style^="color: rgb(22,163,74)"],[style*="; color: rgb(22,163,74)"],[style*=";color: rgb(22,163,74)"],[style^="color:rgb(22,163,74)"],[style*="; color:rgb(22,163,74)"],[style*=";color:rgb(22,163,74)"]){color:var(--uxr-positive-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1c56b9"],[style*="; color: #1c56b9"],[style*=";color: #1c56b9"],[style^="color:#1c56b9"],[style*="; color:#1c56b9"],[style*=";color:#1c56b9"],[style^="color: rgb(28,86,185)"],[style*="; color: rgb(28,86,185)"],[style*=";color: rgb(28,86,185)"],[style^="color:rgb(28,86,185)"],[style*="; color:rgb(28,86,185)"],[style*=";color:rgb(28,86,185)"],[style^="color: rgb(28,86,185)"],[style*="; color: rgb(28,86,185)"],[style*=";color: rgb(28,86,185)"],[style^="color:rgb(28,86,185)"],[style*="; color:rgb(28,86,185)"],[style*=";color:rgb(28,86,185)"]){color:var(--uxr-negative-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1c9baf"],[style*="; color: #1c9baf"],[style*=";color: #1c9baf"],[style^="color:#1c9baf"],[style*="; color:#1c9baf"],[style*=";color:#1c9baf"],[style^="color: rgb(28,155,175)"],[style*="; color: rgb(28,155,175)"],[style*=";color: rgb(28,155,175)"],[style^="color:rgb(28,155,175)"],[style*="; color:rgb(28,155,175)"],[style*=";color:rgb(28,155,175)"],[style^="color: rgb(28,155,175)"],[style*="; color: rgb(28,155,175)"],[style*=";color: rgb(28,155,175)"],[style^="color:rgb(28,155,175)"],[style*="; color:rgb(28,155,175)"],[style*=";color:rgb(28,155,175)"]){color:var(--uxr-purple-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0369a1"],[style*="; color: #0369a1"],[style*=";color: #0369a1"],[style^="color:#0369a1"],[style*="; color:#0369a1"],[style*=";color:#0369a1"],[style^="color: rgb(3, 105, 161)"],[style*="; color: rgb(3, 105, 161)"],[style*=";color: rgb(3, 105, 161)"],[style^="color:rgb(3, 105, 161)"],[style*="; color:rgb(3, 105, 161)"],[style*=";color:rgb(3, 105, 161)"],[style^="color: rgb(3,105,161)"],[style*="; color: rgb(3,105,161)"],[style*=";color: rgb(3,105,161)"],[style^="color:rgb(3,105,161)"],[style*="; color:rgb(3,105,161)"],[style*=";color:rgb(3,105,161)"]){color:var(--uxr-link) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #475569"],[style*="; color: #475569"],[style*=";color: #475569"],[style^="color:#475569"],[style*="; color:#475569"],[style*=";color:#475569"],[style^="color: rgb(71, 85, 105)"],[style*="; color: rgb(71, 85, 105)"],[style*=";color: rgb(71, 85, 105)"],[style^="color:rgb(71, 85, 105)"],[style*="; color:rgb(71, 85, 105)"],[style*=";color:rgb(71, 85, 105)"],[style^="color: rgb(71,85,105)"],[style*="; color: rgb(71,85,105)"],[style*=";color: rgb(71,85,105)"],[style^="color:rgb(71,85,105)"],[style*="; color:rgb(71,85,105)"],[style*=";color:rgb(71,85,105)"]){color:var(--uxr-text) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1e293b"],[style*="; color: #1e293b"],[style*=";color: #1e293b"],[style^="color:#1e293b"],[style*="; color:#1e293b"],[style*=";color:#1e293b"],[style^="color: rgb(30, 41, 59)"],[style*="; color: rgb(30, 41, 59)"],[style*=";color: rgb(30, 41, 59)"],[style^="color:rgb(30, 41, 59)"],[style*="; color:rgb(30, 41, 59)"],[style*=";color:rgb(30, 41, 59)"],[style^="color: rgb(30,41,59)"],[style*="; color: rgb(30,41,59)"],[style*=";color: rgb(30,41,59)"],[style^="color:rgb(30,41,59)"],[style*="; color:rgb(30,41,59)"],[style*=";color:rgb(30,41,59)"]){color:var(--uxr-text) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #94a3b8"],[style*="; color: #94a3b8"],[style*=";color: #94a3b8"],[style^="color:#94a3b8"],[style*="; color:#94a3b8"],[style*=";color:#94a3b8"],[style^="color: rgb(148, 163, 184)"],[style*="; color: rgb(148, 163, 184)"],[style*=";color: rgb(148, 163, 184)"],[style^="color:rgb(148, 163, 184)"],[style*="; color:rgb(148, 163, 184)"],[style*=";color:rgb(148, 163, 184)"],[style^="color: rgb(148,163,184)"],[style*="; color: rgb(148,163,184)"],[style*=";color: rgb(148,163,184)"],[style^="color:rgb(148,163,184)"],[style*="; color:rgb(148,163,184)"],[style*=";color:rgb(148,163,184)"]){color:var(--uxr-muted) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4b6074"],[style*="; color: #4b6074"],[style*=";color: #4b6074"],[style^="color:#4b6074"],[style*="; color:#4b6074"],[style*=";color:#4b6074"],[style^="color: rgb(75, 96, 116)"],[style*="; color: rgb(75, 96, 116)"],[style*=";color: rgb(75, 96, 116)"],[style^="color:rgb(75, 96, 116)"],[style*="; color:rgb(75, 96, 116)"],[style*=";color:rgb(75, 96, 116)"],[style^="color: rgb(75,96,116)"],[style*="; color: rgb(75,96,116)"],[style*=";color: rgb(75,96,116)"],[style^="color:rgb(75,96,116)"],[style*="; color:rgb(75,96,116)"],[style*=";color:rgb(75,96,116)"]){color:var(--uxr-muted) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1197ac"],[style*="; color: #1197ac"],[style*=";color: #1197ac"],[style^="color:#1197ac"],[style*="; color:#1197ac"],[style*=";color:#1197ac"],[style^="color: rgb(17,151,172)"],[style*="; color: rgb(17,151,172)"],[style*=";color: rgb(17,151,172)"],[style^="color:rgb(17,151,172)"],[style*="; color:rgb(17,151,172)"],[style*=";color:rgb(17,151,172)"],[style^="color: rgb(17,151,172)"],[style*="; color: rgb(17,151,172)"],[style*=";color: rgb(17,151,172)"],[style^="color:rgb(17,151,172)"],[style*="; color:rgb(17,151,172)"],[style*=";color:rgb(17,151,172)"]){color:var(--uxr-warm-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #061c42"],[style*="; color: #061c42"],[style*=";color: #061c42"],[style^="color:#061c42"],[style*="; color:#061c42"],[style*=";color:#061c42"],[style^="color: rgb(6,28,66)"],[style*="; color: rgb(6,28,66)"],[style*=";color: rgb(6,28,66)"],[style^="color:rgb(6,28,66)"],[style*="; color:rgb(6,28,66)"],[style*=";color:rgb(6,28,66)"],[style^="color: rgb(6,28,66)"],[style*="; color: rgb(6,28,66)"],[style*=";color: rgb(6,28,66)"],[style^="color:rgb(6,28,66)"],[style*="; color:rgb(6,28,66)"],[style*=";color:rgb(6,28,66)"]){color:var(--uxr-warm-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #334155"],[style*="; color: #334155"],[style*=";color: #334155"],[style^="color:#334155"],[style*="; color:#334155"],[style*=";color:#334155"],[style^="color: rgb(51, 65, 85)"],[style*="; color: rgb(51, 65, 85)"],[style*=";color: rgb(51, 65, 85)"],[style^="color:rgb(51, 65, 85)"],[style*="; color:rgb(51, 65, 85)"],[style*=";color:rgb(51, 65, 85)"],[style^="color: rgb(51,65,85)"],[style*="; color: rgb(51,65,85)"],[style*=";color: rgb(51,65,85)"],[style^="color:rgb(51,65,85)"],[style*="; color:rgb(51,65,85)"],[style*=";color:rgb(51,65,85)"]){color:var(--uxr-text) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #a7f3d0"],[style*="; color: #a7f3d0"],[style*=";color: #a7f3d0"],[style^="color:#a7f3d0"],[style*="; color:#a7f3d0"],[style*=";color:#a7f3d0"],[style^="color: rgb(167, 243, 208)"],[style*="; color: rgb(167, 243, 208)"],[style*=";color: rgb(167, 243, 208)"],[style^="color:rgb(167, 243, 208)"],[style*="; color:rgb(167, 243, 208)"],[style*=";color:rgb(167, 243, 208)"],[style^="color: rgb(167,243,208)"],[style*="; color: rgb(167,243,208)"],[style*=";color: rgb(167,243,208)"],[style^="color:rgb(167,243,208)"],[style*="; color:rgb(167,243,208)"],[style*=";color:rgb(167,243,208)"]){color:var(--uxr-positive-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1d4ed8"],[style*="; color: #1d4ed8"],[style*=";color: #1d4ed8"],[style^="color:#1d4ed8"],[style*="; color:#1d4ed8"],[style*=";color:#1d4ed8"],[style^="color: rgb(29, 78, 216)"],[style*="; color: rgb(29, 78, 216)"],[style*=";color: rgb(29, 78, 216)"],[style^="color:rgb(29, 78, 216)"],[style*="; color:rgb(29, 78, 216)"],[style*=";color:rgb(29, 78, 216)"],[style^="color: rgb(29,78,216)"],[style*="; color: rgb(29,78,216)"],[style*=";color: rgb(29,78,216)"],[style^="color:rgb(29,78,216)"],[style*="; color:rgb(29,78,216)"],[style*=";color:rgb(29,78,216)"]){color:var(--uxr-link) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #064e3b"],[style*="; color: #064e3b"],[style*=";color: #064e3b"],[style^="color:#064e3b"],[style*="; color:#064e3b"],[style*=";color:#064e3b"],[style^="color: rgb(6, 78, 59)"],[style*="; color: rgb(6, 78, 59)"],[style*=";color: rgb(6, 78, 59)"],[style^="color:rgb(6, 78, 59)"],[style*="; color:rgb(6, 78, 59)"],[style*=";color:rgb(6, 78, 59)"],[style^="color: rgb(6,78,59)"],[style*="; color: rgb(6,78,59)"],[style*=";color: rgb(6,78,59)"],[style^="color:rgb(6,78,59)"],[style*="; color:rgb(6,78,59)"],[style*=";color:rgb(6,78,59)"]){color:var(--uxr-positive-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0f3678"],[style*="; color: #0f3678"],[style*=";color: #0f3678"],[style^="color:#0f3678"],[style*="; color:#0f3678"],[style*=";color:#0f3678"],[style^="color: rgb(15,54,120)"],[style*="; color: rgb(15,54,120)"],[style*=";color: rgb(15,54,120)"],[style^="color:rgb(15,54,120)"],[style*="; color:rgb(15,54,120)"],[style*=";color:rgb(15,54,120)"],[style^="color: rgb(15,54,120)"],[style*="; color: rgb(15,54,120)"],[style*=";color: rgb(15,54,120)"],[style^="color:rgb(15,54,120)"],[style*="; color:rgb(15,54,120)"],[style*=";color:rgb(15,54,120)"]){color:var(--uxr-warm-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #15803d"],[style*="; color: #15803d"],[style*=";color: #15803d"],[style^="color:#15803d"],[style*="; color:#15803d"],[style*=";color:#15803d"],[style^="color: rgb(21, 128, 61)"],[style*="; color: rgb(21, 128, 61)"],[style*=";color: rgb(21, 128, 61)"],[style^="color:rgb(21, 128, 61)"],[style*="; color:rgb(21, 128, 61)"],[style*=";color:rgb(21, 128, 61)"],[style^="color: rgb(21,128,61)"],[style*="; color: rgb(21,128,61)"],[style*=";color: rgb(21,128,61)"],[style^="color:rgb(21,128,61)"],[style*="; color:rgb(21,128,61)"],[style*=";color:rgb(21,128,61)"]){color:var(--uxr-positive-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #1d417f"],[style*="; color: #1d417f"],[style*=";color: #1d417f"],[style^="color:#1d417f"],[style*="; color:#1d417f"],[style*=";color:#1d417f"],[style^="color: rgb(29,65,127)"],[style*="; color: rgb(29,65,127)"],[style*=";color: rgb(29,65,127)"],[style^="color:rgb(29,65,127)"],[style*="; color:rgb(29,65,127)"],[style*=";color:rgb(29,65,127)"],[style^="color: rgb(29,65,127)"],[style*="; color: rgb(29,65,127)"],[style*=";color: rgb(29,65,127)"],[style^="color:rgb(29,65,127)"],[style*="; color:rgb(29,65,127)"],[style*=";color:rgb(29,65,127)"]){color:var(--uxr-negative-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #0a2045"],[style*="; color: #0a2045"],[style*=";color: #0a2045"],[style^="color:#0a2045"],[style*="; color:#0a2045"],[style*=";color:#0a2045"],[style^="color: rgb(10,32,69)"],[style*="; color: rgb(10,32,69)"],[style*=";color: rgb(10,32,69)"],[style^="color:rgb(10,32,69)"],[style*="; color:rgb(10,32,69)"],[style*=";color:rgb(10,32,69)"],[style^="color: rgb(10,32,69)"],[style*="; color: rgb(10,32,69)"],[style*=";color: rgb(10,32,69)"],[style^="color:rgb(10,32,69)"],[style*="; color:rgb(10,32,69)"],[style*=";color:rgb(10,32,69)"]){color:var(--uxr-negative-ink) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #e2e8f0"],[style*="; color: #e2e8f0"],[style*=";color: #e2e8f0"],[style^="color:#e2e8f0"],[style*="; color:#e2e8f0"],[style*=";color:#e2e8f0"],[style^="color: rgb(226, 232, 240)"],[style*="; color: rgb(226, 232, 240)"],[style*=";color: rgb(226, 232, 240)"],[style^="color:rgb(226, 232, 240)"],[style*="; color:rgb(226, 232, 240)"],[style*=";color:rgb(226, 232, 240)"],[style^="color: rgb(226,232,240)"],[style*="; color: rgb(226,232,240)"],[style*=";color: rgb(226,232,240)"],[style^="color:rgb(226,232,240)"],[style*="; color:rgb(226,232,240)"],[style*=";color:rgb(226,232,240)"]){color:var(--uxr-muted) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #93c5fd"],[style*="; color: #93c5fd"],[style*=";color: #93c5fd"],[style^="color:#93c5fd"],[style*="; color:#93c5fd"],[style*=";color:#93c5fd"],[style^="color: rgb(147, 197, 253)"],[style*="; color: rgb(147, 197, 253)"],[style*=";color: rgb(147, 197, 253)"],[style^="color:rgb(147, 197, 253)"],[style*="; color:rgb(147, 197, 253)"],[style*=";color:rgb(147, 197, 253)"],[style^="color: rgb(147,197,253)"],[style*="; color: rgb(147,197,253)"],[style*=";color: rgb(147,197,253)"],[style^="color:rgb(147,197,253)"],[style*="; color:rgb(147,197,253)"],[style*=";color:rgb(147,197,253)"]){color:var(--uxr-link) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #60a5fa"],[style*="; color: #60a5fa"],[style*=";color: #60a5fa"],[style^="color:#60a5fa"],[style*="; color:#60a5fa"],[style*=";color:#60a5fa"],[style^="color: rgb(96, 165, 250)"],[style*="; color: rgb(96, 165, 250)"],[style*=";color: rgb(96, 165, 250)"],[style^="color:rgb(96, 165, 250)"],[style*="; color:rgb(96, 165, 250)"],[style*=";color:rgb(96, 165, 250)"],[style^="color: rgb(96,165,250)"],[style*="; color: rgb(96,165,250)"],[style*=";color: rgb(96,165,250)"],[style^="color:rgb(96,165,250)"],[style*="; color:rgb(96,165,250)"],[style*=";color:rgb(96,165,250)"]){color:var(--uxr-link) !important;}
+:where(html:not([data-theme="dark"])) body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #cbd5e1"],[style*="; color: #cbd5e1"],[style*=";color: #cbd5e1"],[style^="color:#cbd5e1"],[style*="; color:#cbd5e1"],[style*=";color:#cbd5e1"],[style^="color: rgb(203, 213, 225)"],[style*="; color: rgb(203, 213, 225)"],[style*=";color: rgb(203, 213, 225)"],[style^="color:rgb(203, 213, 225)"],[style*="; color:rgb(203, 213, 225)"],[style*=";color:rgb(203, 213, 225)"],[style^="color: rgb(203,213,225)"],[style*="; color: rgb(203,213,225)"],[style*=";color: rgb(203,213,225)"],[style^="color:rgb(203,213,225)"],[style*="; color:rgb(203,213,225)"],[style*=";color:rgb(203,213,225)"]){color:var(--uxr-muted) !important;}
+body.ux-course.ux-app-refresh #lesson-content .prompt-box [data-key="ai-p1"],
+body.ux-course.ux-app-refresh #lesson-content [data-key="mock-greeting"] { color:var(--uxr-ink) !important; }
+body.ux-course.ux-app-refresh #lesson-content .p-title { color:var(--uxr-muted); }
+body.ux-course.ux-app-refresh #lesson-content .p-chip:hover { background:var(--uxr-lavender); color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content .comp-badge-icon { color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .eq-human { background:var(--uxr-positive-bg); color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh #lesson-content .info-icon { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .toggle-knob { background:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .toggle-switch.on { background:var(--uxr-positive-solid); }
+body.ux-course.ux-app-refresh #lesson-content .perm-btn { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh #lesson-content .perm-btn.deny { color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .blueprint-table { color:var(--uxr-text); }
+body.ux-course.ux-app-refresh #lesson-content .blueprint-table :is(th,td) { border-color:var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .blueprint-table th { background:var(--uxr-soft); color:var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .row-frontstage { background:var(--uxr-lavender); }
+body.ux-course.ux-app-refresh #lesson-content .row-backstage { background:var(--uxr-soft); }
+body.ux-course.ux-app-refresh #lesson-content .row-fallback { background:var(--uxr-negative-bg); }
+body.ux-course.ux-app-refresh #lesson-content .bp-step { background:var(--uxr-card); color:var(--uxr-text); border-color:var(--uxr-line-strong); }
+body.ux-course.ux-app-refresh #lesson-content .bp-warn { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); border-color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .front-tag { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh[data-page="week12"] #lesson-content .front-tag .term-trigger { color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .f-start-point { background:var(--uxr-blue); color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content :is(.warning-banner,.exam-notice,.trust-badge) { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); border-color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .warning-box { background:var(--uxr-warm-bg); color:var(--uxr-warm-ink); border-color:var(--uxr-warm-ink); }
+body.ux-course.ux-app-refresh #lesson-content .trust-section.blind { color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .trust-section.smart { background:var(--uxr-card); color:var(--uxr-positive-ink); border-color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh #lesson-content :is(.qa-tag.ok,.v3-er-lane-good .v3-er-lane-title) { color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh #lesson-content .qa-tag.ok { background:var(--uxr-positive-bg); }
+body.ux-course.ux-app-refresh #lesson-content .qa-tag.err { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); }
+/* Meaningful state colors in the usability timeline and metric bars. */
+body.ux-course.ux-app-refresh[data-page="week13"] #lesson-content .zone-safe { background:var(--uxr-positive-bg); color:var(--uxr-positive-ink); }
+body.ux-course.ux-app-refresh[data-page="week13"] #lesson-content .zone-warn { background:var(--uxr-warm-bg); color:var(--uxr-warm-ink); }
+body.ux-course.ux-app-refresh[data-page="week13"] #lesson-content .zone-danger { background:var(--uxr-negative-bg); color:var(--uxr-negative-ink); }
+body.ux-course.ux-app-refresh #lesson-content .flow-screen-title { color:var(--uxr-link); }
+body.ux-course.ux-app-refresh :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--uxr-focus) !important; outline-offset:4px; }
+/* Inline brand blue is an ink when used in text, not the primary button fill. */
+body.ux-course.ux-app-refresh #lesson-content :is([style^="color: var(--main-blue)"],[style^="color:var(--main-blue)"],[style*="; color: var(--main-blue)"],[style*=";color:var(--main-blue)"],[style*="; color:var(--main-blue)"],[style*=";color: var(--main-blue)"]) { color:var(--uxr-link) !important; }
+
+/* Feedback messages written by the existing lesson JavaScript. */
+body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4ade80"],[style*="; color: #4ade80"],[style*=";color: #4ade80"],[style^="color:#4ade80"],[style*="; color:#4ade80"],[style*=";color:#4ade80"],[style^="color: rgb(74, 222, 128)"],[style*="; color: rgb(74, 222, 128)"],[style*=";color: rgb(74, 222, 128)"],[style^="color:rgb(74, 222, 128)"],[style*="; color:rgb(74, 222, 128)"],[style*=";color:rgb(74, 222, 128)"],[style^="color: rgb(74,222,128)"],[style*="; color: rgb(74,222,128)"],[style*=";color: rgb(74,222,128)"],[style^="color:rgb(74,222,128)"],[style*="; color:rgb(74,222,128)"],[style*=";color:rgb(74,222,128)"]){color:var(--uxr-positive-ink) !important;}
+body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #34d3eb"],[style*="; color: #34d3eb"],[style*=";color: #34d3eb"],[style^="color:#34d3eb"],[style*="; color:#34d3eb"],[style*=";color:#34d3eb"],[style^="color: rgb(52,211,235)"],[style*="; color: rgb(52,211,235)"],[style*=";color: rgb(52,211,235)"],[style^="color:rgb(52,211,235)"],[style*="; color:rgb(52,211,235)"],[style*=";color:rgb(52,211,235)"],[style^="color: rgb(52,211,235)"],[style*="; color: rgb(52,211,235)"],[style*=";color: rgb(52,211,235)"],[style^="color:rgb(52,211,235)"],[style*="; color:rgb(52,211,235)"],[style*=";color:rgb(52,211,235)"]){color:var(--uxr-warm-ink) !important;}
+body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #10b981"],[style*="; color: #10b981"],[style*=";color: #10b981"],[style^="color:#10b981"],[style*="; color:#10b981"],[style*=";color:#10b981"],[style^="color: rgb(16, 185, 129)"],[style*="; color: rgb(16, 185, 129)"],[style*=";color: rgb(16, 185, 129)"],[style^="color:rgb(16, 185, 129)"],[style*="; color:rgb(16, 185, 129)"],[style*=";color:rgb(16, 185, 129)"],[style^="color: rgb(16,185,129)"],[style*="; color: rgb(16,185,129)"],[style*=";color: rgb(16,185,129)"],[style^="color:rgb(16,185,129)"],[style*="; color:rgb(16,185,129)"],[style*=";color:rgb(16,185,129)"]){color:var(--uxr-positive-ink) !important;}
+body.ux-course.ux-app-refresh #lesson-content :is([style^="color: #4683ed"],[style*="; color: #4683ed"],[style*=";color: #4683ed"],[style^="color:#4683ed"],[style*="; color:#4683ed"],[style*=";color:#4683ed"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"],[style^="color: rgb(70,131,237)"],[style*="; color: rgb(70,131,237)"],[style*=";color: rgb(70,131,237)"],[style^="color:rgb(70,131,237)"],[style*="; color:rgb(70,131,237)"],[style*=";color:rgb(70,131,237)"]){color:var(--uxr-negative-ink) !important;}
+/* Keep Korean words intact while allowing long Russian/English words to fit. */
+body.ux-course.ux-app-refresh :is(.week-topic,.week-status) { word-break:keep-all; overflow-wrap:anywhere; }
+/* A foreground token must never also become the fill behind that same text. */
+body.ux-course.ux-app-refresh #lesson-content .metric-fill { color:#fff; }
+body.ux-course.ux-app-refresh #lesson-content .metric-fill[style*="var(--success)"] { background:var(--uxr-positive-solid) !important; color:#fff !important; }
+body.ux-course.ux-app-refresh #lesson-content .metric-fill[style*="var(--warning)"] { background:#187c8b !important; color:#fff !important; }
+body.ux-course.ux-app-refresh #lesson-content .action-btn[style*="var(--warning)"] { background:var(--uxr-blue) !important; color:#fff !important; }
