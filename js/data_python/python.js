@@ -26,6 +26,9 @@
     const inputDrafts = new Map();
     const EXECUTION_LIMIT_MS = 10000;
     const LOAD_LIMIT_MS = 90000;
+    // Keep stored lesson indices stable, while following the attached teaching order.
+    const studyOrder = [0, 1, 2, 3, 15, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+    const weekStarts = [[1, 0], [2, 1], [3, 2], [4, 5], [5, 8], [6, 12], [7, 16], [9, 19], [10, 20], [11, 21], [12, 22]];
     let currentLang = 'ko';
     let currentLessonIndex = null;
     let pythonWorker = null;
@@ -132,6 +135,8 @@
         elements.stopButton.disabled = pendingRun === null;
         elements.retryButton.hidden = state !== 'error' || runtimeIssue === 'file';
         elements.consoleOutput.setAttribute('aria-busy', String(pendingRun !== null));
+        document.querySelectorAll('.use-test-input').forEach(button => { button.disabled = pendingRun !== null; });
+        byId('starter-input-btn').disabled = pendingRun !== null;
     }
     function setConsole(text, kind) {
         elements.consoleOutput.textContent = text;
@@ -160,7 +165,7 @@
         if (elements.consoleOutput.dataset.state === 'unavailable') setConsole(getTextSet().consoleDefault, 'default');
         setRuntimeState('loading');
         const generation = workerGeneration;
-        try { pythonWorker = new Worker('./js/data_python/worker.js?v=20261113-fix1'); }
+        try { pythonWorker = new Worker('./js/data_python/worker.js?v=20261117-slides3'); }
         catch (error) { onWorkerFailure(error.message, generation); return; }
         bootTimer = setTimeout(() => onWorkerFailure('Engine load timeout', generation), LOAD_LIMIT_MS);
         pythonWorker.onmessage = event => {
@@ -225,9 +230,16 @@
     }
     function refreshInputPanel() {
         const lesson = lessons[currentLessonIndex];
+        const text = getTextSet();
         const hasInput = /\binput\s*\(/.test(elements.codeInput.value);
         const taskNeedsInput = lesson && (lesson.needsInput || /\binput\s*\(/.test(lessonText(lesson, 'answer')));
         elements.stdinPanel.hidden = !(hasInput || taskNeedsInput);
+        elements.stdinPanel.classList.toggle('input-needed', hasInput);
+        elements.stdinPanel.dataset.inputMode = hasInput ? 'current-code' : 'mission-only';
+        byId('input-step-guide').textContent = hasInput ? text.inputSteps : text.inputLater;
+        elements.stdinHelp.textContent = hasInput ? text.stdinHelp : text.stdinLaterHelp;
+        elements.runButton.textContent = hasInput ? text.runWithInput : text.runButton;
+        byId('starter-input-btn').hidden = !hasInput || !lessonText(lesson, 'sampleInput');
     }
     function runPython() {
         if (runtimeState !== 'ready' || pendingRun || !pythonWorker || currentLessonIndex === null) return;
@@ -251,7 +263,7 @@
     }
 
     function updateProgress() {
-        const position = currentLessonIndex === null ? 0 : currentLessonIndex + 1;
+        const position = currentLessonIndex === null ? 0 : studyOrder.indexOf(currentLessonIndex) + 1;
         byId('progress-bar').style.width = (position / lessons.length * 100) + '%';
         document.querySelectorAll('[data-course-text="progressLabel"]').forEach(node => {
             node.textContent = getTextSet().progressLabel + ' ' + position + ' / ' + lessons.length;
@@ -309,11 +321,13 @@
     function renderNavigation() {
         elements.navBar.innerHTML = '';
         elements.mobileNav.innerHTML = '';
-        lessons.forEach((lesson, index) => {
+        studyOrder.forEach(index => {
+            const lesson = lessons[index];
             [elements.navBar, elements.mobileNav].forEach(nav => {
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'nav-btn';
+                button.dataset.lessonId = lesson.id;
                 button.textContent = lessonText(lesson, 'menu');
                 if (currentLessonIndex === index) {
                     button.classList.add('active');
@@ -322,6 +336,7 @@
                 button.addEventListener('click', () => {
                     selectLesson(index);
                     closeMenu();
+                    focusSection(byId('lesson-title'));
                 });
                 nav.appendChild(button);
             });
@@ -330,6 +345,152 @@
     function resetConsole() {
         if (runtimeState === 'error') setConsole(runtimeIssue === 'file' ? getTextSet().fileHint : getTextSet().loadHint, 'unavailable');
         else setConsole(getTextSet().consoleDefault, 'default');
+    }
+    function focusSection(target) {
+        if (!target) return;
+        if (!target.matches('button, a[href], input, textarea, select')) target.setAttribute('tabindex', '-1');
+        if (typeof target.scrollIntoView === 'function') target.scrollIntoView({ block: 'start', behavior: 'auto' });
+        target.focus({ preventScroll: true });
+    }
+    function lessonButton(label, index) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'lesson-link';
+        button.textContent = label;
+        button.addEventListener('click', () => {
+            selectLesson(index);
+            focusSection(byId('lesson-title'));
+        });
+        return button;
+    }
+    function renderWeekNavigation(lesson) {
+        const text = getTextSet();
+        const nav = document.createElement('nav');
+        nav.className = 'course-weeks';
+        nav.setAttribute('aria-label', text.weekNavigation);
+        const label = document.createElement('p');
+        label.textContent = text.weekNavigation;
+        nav.appendChild(label);
+        weekStarts.forEach(([week, index]) => {
+            const button = lessonButton(text['week' + week], index);
+            button.dataset.week = String(week);
+            if (lesson.sourceWeek === week) button.setAttribute('aria-current', 'true');
+            nav.appendChild(button);
+        });
+        elements.theoryView.appendChild(nav);
+        const note = document.createElement('p');
+        note.className = 'week-note';
+        note.textContent = lesson.sourceWeek ? text['week' + lesson.sourceWeek] + ' · ' + text.lessonNumberNote :
+            (currentLessonIndex >= 23 ? text.furtherStudy : text.foundationStudy);
+        elements.theoryView.appendChild(note);
+    }
+    function renderTheoryTools() {
+        const text = getTextSet();
+        const tools = document.createElement('nav');
+        tools.className = 'lesson-tools';
+        tools.setAttribute('aria-label', text.lessonNavigation);
+        const mission = elements.theoryView.querySelector('.problem-area');
+        if (mission) {
+            mission.id = 'lesson-mission';
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'lesson-link';
+            button.textContent = text.jumpMission;
+            button.addEventListener('click', () => focusSection(mission));
+            tools.appendChild(button);
+        }
+        const practiceButton = document.createElement('button');
+        practiceButton.type = 'button';
+        practiceButton.className = 'lesson-link';
+        practiceButton.textContent = text.jumpEditor;
+        practiceButton.addEventListener('click', () => focusSection(elements.codeInput));
+        tools.appendChild(practiceButton);
+        byId('lesson-title').insertAdjacentElement('afterend', tools);
+
+        const headings = [...elements.theoryView.querySelectorAll('.lesson-section h3')];
+        if (headings.length < 2) return;
+        const toc = document.createElement('details');
+        toc.className = 'lesson-toc';
+        const summary = document.createElement('summary');
+        summary.textContent = text.theoryContents;
+        const list = document.createElement('ol');
+        headings.forEach((heading, index) => {
+            heading.id = lessons[currentLessonIndex].id + '-section-' + (index + 1);
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#' + heading.id;
+            link.textContent = heading.textContent;
+            link.addEventListener('click', event => { event.preventDefault(); focusSection(heading); });
+            item.appendChild(link);
+            list.appendChild(item);
+        });
+        toc.append(summary, list);
+        tools.insertAdjacentElement('afterend', toc);
+    }
+    function renderPracticeTests(lesson) {
+        const tests = lesson.practiceTests || [];
+        if (!tests.length) return;
+        const text = getTextSet();
+        const section = document.createElement('section');
+        section.className = 'practice-checks';
+        section.id = 'practice-checks';
+        const heading = document.createElement('h3');
+        heading.textContent = text.practiceTestsTitle;
+        const help = document.createElement('p');
+        help.textContent = text.practiceTestsHint;
+        section.append(heading, help);
+        tests.forEach((test, index) => {
+            const details = document.createElement('details');
+            details.className = 'practice-case';
+            details.open = index === 0;
+            const summary = document.createElement('summary');
+            summary.textContent = (index + 1) + '. ' + lessonText(test, 'name');
+            details.appendChild(summary);
+            const inputValue = lessonText(test, 'input');
+            const inputLabel = document.createElement('p');
+            inputLabel.className = 'practice-case-label';
+            inputLabel.textContent = inputValue === '' ? text.noPracticeInput : text.practiceInputLabel;
+            details.appendChild(inputLabel);
+            if (inputValue !== '') {
+                const inputPre = document.createElement('pre');
+                inputPre.textContent = inputValue;
+                const use = document.createElement('button');
+                use.type = 'button';
+                use.className = 'lesson-link use-test-input';
+                use.dataset.testIndex = String(index);
+                use.textContent = text.usePracticeInput;
+                use.addEventListener('click', () => {
+                    if (pendingRun) return;
+                    elements.stdinInput.value = inputValue;
+                    inputDrafts.set(currentLessonIndex, inputValue);
+                    refreshInputPanel();
+                    showToast(getTextSet().practiceInputLoaded);
+                    focusSection(elements.stdinInput);
+                });
+                details.append(inputPre, use);
+            }
+            const outputLabel = document.createElement('p');
+            outputLabel.className = 'practice-case-label';
+            outputLabel.textContent = text.practiceOutputLabel;
+            const output = document.createElement('pre');
+            output.className = 'practice-expected-output';
+            output.textContent = lessonText(test, 'output') || text.expectedEmpty;
+            details.append(outputLabel, output);
+            section.appendChild(details);
+        });
+        elements.theoryView.appendChild(section);
+    }
+    function renderStudyNavigation() {
+        const text = getTextSet();
+        const nav = document.createElement('nav');
+        nav.className = 'study-navigation';
+        nav.setAttribute('aria-label', text.studyNavigation);
+        const position = studyOrder.indexOf(currentLessonIndex);
+        const previous = studyOrder[position - 1];
+        const next = studyOrder[position + 1];
+        if (previous !== undefined) nav.appendChild(lessonButton(text.previousLesson + ' · ' + lessonText(lessons[previous], 'menu'), previous));
+        if (next !== undefined) nav.appendChild(lessonButton(text.nextLesson + ' · ' + lessonText(lessons[next], 'menu'), next));
+        elements.theoryView.appendChild(nav);
     }
     function selectLesson(index, options = {}) {
         if (!Number.isInteger(index) || index < 0 || index >= lessons.length) index = 0;
@@ -341,12 +502,18 @@
         renderNavigation();
         // Trusted course HTML is separate from student code, which remains plain text.
         elements.theoryView.innerHTML = '';
+        renderWeekNavigation(lesson);
         const title = document.createElement('h2');
+        title.id = 'lesson-title';
         title.textContent = lessonText(lesson, 'title');
         elements.theoryView.appendChild(title);
         elements.theoryView.insertAdjacentHTML('beforeend', lessonText(lesson, 'theory'));
+        renderTheoryTools();
+        renderPracticeTests(lesson);
+        renderStudyNavigation();
         const draft = readDraft(index);
         elements.codeInput.value = draft !== null ? draft : lessonText(lesson, 'initialCode');
+        byId('python-draft-note').hidden = draft === null || draft === lessonText(lesson, 'initialCode');
         elements.stdinInput.value = inputDrafts.has(index) ? inputDrafts.get(index) : lessonText(lesson, 'sampleInput');
         expectedOutput.textContent = lessonText(lesson, 'expectedOutput') || getTextSet().expectedEmpty;
         expectedPanel.open = false;
@@ -355,6 +522,8 @@
         elements.answerDisplay.style.display = 'none';
         elements.answerButton.setAttribute('aria-expanded', 'false');
         elements.answerText.textContent = lessonText(lesson, 'answer');
+        const answerHelp = byId('answer-help');
+        if (answerHelp) answerHelp.textContent = getTextSet().answerHelp;
         document.title = lessonText(lesson, 'title') + ' · Python';
         updateProgress();
     }
@@ -419,6 +588,14 @@
     elements.retryButton.addEventListener('click', () => { resetConsole(); createWorker(); });
     elements.resetButton.addEventListener('click', resetExample);
     elements.answerButton.addEventListener('click', toggleAnswer);
+    byId('starter-input-btn').addEventListener('click', () => {
+        if (pendingRun || currentLessonIndex === null) return;
+        const sample = lessonText(lessons[currentLessonIndex], 'sampleInput');
+        elements.stdinInput.value = sample;
+        inputDrafts.set(currentLessonIndex, sample);
+        showToast(getTextSet().starterInputLoaded);
+        focusSection(elements.stdinInput);
+    });
     elements.codeInput.addEventListener('input', () => { saveDraft(); refreshInputPanel(); });
     elements.codeInput.addEventListener('keydown', indentCode);
     elements.stdinInput.addEventListener('input', () => {

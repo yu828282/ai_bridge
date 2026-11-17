@@ -6,7 +6,7 @@
     <title>Python Study for International Students</title>
 <link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/python.css?v=20261113-fix1">
+    <link rel="stylesheet" href="./css/python.css?v=20261117-slides3">
 </head>
 <body>
     <header class="site-header">
@@ -25,9 +25,9 @@
                 </div>
                 <div class="top-controls">
                     <div class="lang-container" id="desktop-langs">
-                        <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
-                        <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
-                        <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+                        <button class="lang-btn active" type="button" data-lang="ko">한국어</button>
+                        <button class="lang-btn" type="button" data-lang="en">English</button>
+                        <button class="lang-btn" type="button" data-lang="ru">Русский</button>
                     </div>
                     <span id="py-status" class="status-badge loading" role="status">
                         <span class="status-dot" aria-hidden="true"></span><span id="status-text">엔진 로딩 중</span>
@@ -49,9 +49,9 @@
                 <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="메뉴 닫기" data-course-aria="closeMenu">×</button>
             </div>
             <div class="mobile-lang-container" id="mobile-langs">
-                <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
-                <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
-                <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
+                <button class="lang-btn active" type="button" data-lang="ko">한국어</button>
+                <button class="lang-btn" type="button" data-lang="en">English</button>
+                <button class="lang-btn" type="button" data-lang="ru">Русский</button>
             </div>
             <nav class="mobile-nav" id="mobile-nav" aria-label="모바일 레슨 메뉴"></nav>
   </div>
@@ -59,34 +59,43 @@
     </header>
 
     <main>
-        <section id="theory-panel">
+        <section id="theory-panel" aria-labelledby="lesson-title">
             <div class="theory-content" id="theory-view"></div>
         </section>
 
         <section id="editor-panel">
-            <textarea id="python-code" spellcheck="false" autocomplete="off" autocapitalize="off" wrap="off" aria-label="Python code editor"></textarea>
+            <label class="workspace-label" for="python-code" data-course-text="editorLabel">⌨️ 코드 쓰는 곳</label>
+            <p class="workspace-help" id="editor-help" data-course-text="editorHint"></p>
+            <p id="python-draft-note" class="python-draft-note" hidden data-course-text="savedDraftNotice"></p>
+            <textarea id="python-code" spellcheck="false" autocomplete="off" autocapitalize="off" wrap="off" aria-label="Python code editor" aria-describedby="editor-help"></textarea>
             <div class="python-input-panel" id="python-input-panel" hidden>
+                <p class="input-step-guide" id="input-step-guide"></p>
                 <label for="python-stdin" id="stdin-label">실행 입력값 (한 줄에 하나씩)</label>
                 <p class="python-input-help" id="stdin-help">input()을 사용하는 코드라면 필요한 값을 순서대로 입력하세요. 반복문은 종료에 필요한 값까지 적어주세요.</p>
-                <textarea id="python-stdin" spellcheck="false" autocomplete="off" aria-describedby="stdin-help" rows="3" placeholder="홍길동"></textarea>
+                <textarea id="python-stdin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="input-step-guide stdin-help stdin-line-help" rows="3" placeholder="Mina"></textarea>
+                <p class="python-input-help" id="stdin-line-help" data-course-text="stdinLineHelp"></p>
+                <button type="button" class="lesson-link" id="starter-input-btn" data-course-text="useStarterInput">시작 예제의 입력값 넣기</button>
+            </div>
+            <div class="action-btns">
+                <button class="run-btn btn" id="run-btn" type="button" disabled>실행 ▶</button>
+                <button class="stop-btn btn" id="stop-btn" type="button" disabled>정지 ⏹</button>
+                <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
+                <button class="ans-btn btn" id="answer-btn" type="button" aria-controls="ans-display" aria-expanded="false">답안 예시</button>
+                <button class="retry-btn btn" id="retry-btn" type="button" hidden>엔진 다시 연결</button>
             </div>
             <div id="result-panel">
+                <h3 class="workspace-label" data-course-text="resultLabel">실행 결과</h3>
                 <div class="console" id="console-output" role="status" aria-live="polite" tabindex="0" data-course-aria="resultLabel"></div>
+                <p class="workspace-help" data-course-text="resultHint"></p>
                 <details id="python-error-details" class="python-error-details" hidden>
                     <summary data-course-text="errorDetails">오류 자세히 보기</summary>
                     <pre id="python-error-text"></pre>
                 </details>
             </div>
             <p id="python-file-guide" hidden><a href="./README.md" data-course-text="fileGuideLink">실행 안내 보기</a></p>
-            <div class="action-btns">
-                <button class="run-btn btn" id="run-btn" type="button" disabled>실행 ▶</button>
-                <button class="stop-btn btn" id="stop-btn" type="button" disabled>정지 ⏹</button>
-                <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
-                <button class="ans-btn btn" id="answer-btn" type="button" aria-controls="ans-display" aria-expanded="false">정답 확인</button>
-                <button class="retry-btn btn" id="retry-btn" type="button" hidden>엔진 다시 연결</button>
-            </div>
             <div id="ans-display" role="region" aria-labelledby="answerTitle">
                 <strong id="answerTitle" style="color:#1e40af;">[모범 답안]</strong>
+                <p id="answer-help" data-course-text="answerHelp"></p>
                 <pre id="ans-text" style="margin-top:10px; color:#1e3a8a;"></pre>
             </div>
         </section>    
@@ -98,9 +107,9 @@
         </div>
     </footer>     
     <script src="./js/common/menu.js"></script>
-    <script src="./js/data_python/lessons.js?v=20261113-fix1"></script>
-    <script src="./js/data_python/translations.js?v=20261113-fix1"></script>
-    <script src="./js/data_python/python.js?v=20261113-fix1"></script>
+    <script src="./js/data_python/lessons.js?v=20261117-slides3"></script>
+    <script src="./js/data_python/translations.js?v=20261117-slides3"></script>
+    <script src="./js/data_python/python.js?v=20261117-slides3"></script>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
