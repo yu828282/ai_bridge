@@ -1,0 +1,45 @@
+/* Small teaching affordances use the course's existing light/dark tokens. */
+body.ux-course.ux-app-refresh .ux-course-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 16px; }
+body.ux-course.ux-app-refresh .ux-guide-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 11px 19px; border: 0; border-radius: 14px; background: var(--uxr-blue); color: #fff; font-weight: 750; line-height: 1.45; text-decoration: none; box-shadow: 0 7px 18px #237b9630; }
+body.ux-course.ux-app-refresh .ux-guide-button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px #237b9640; }
+body.ux-course.ux-app-refresh .ux-guide-icon { display: inline-flex; width: 1.25em; height: 1.25em; flex-shrink: 0; vertical-align: -.2em; }
+body.ux-course.ux-app-refresh .ux-guide-icon svg { width: 100%; height: 100%; }
+body.ux-course.ux-app-refresh .ux-guide-term-hint { flex: 1 1 300px; margin: 0; color: var(--uxr-muted); font-size: .9rem; line-height: 1.65; }
+body.ux-course.ux-app-refresh .ux-guide-target { scroll-margin-top: 110px; }
+body.ux-course.ux-app-refresh .ux-guide-target:focus { outline: 2px solid var(--uxr-blue); outline-offset: 7px; border-radius: 8px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-example-label { margin: 0 0 12px; color: var(--uxr-muted); font-size: .82rem; line-height: 1.65; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-summary-label { display: block; margin-bottom: 7px; color: var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-demo { padding: 18px !important; border: 0 !important; border-radius: 16px !important; background: var(--uxr-card) !important; color: var(--uxr-text); box-shadow: var(--uxr-shadow); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-demo .source-link { display: inline-flex; margin-top: 10px; min-height: 44px; padding: 8px 12px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-original { margin-top: 16px; padding: 18px; border-radius: 14px; background: var(--uxr-soft); color: var(--uxr-text); box-shadow: inset 0 0 0 1px var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-original h4 { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; color: var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-original-text { padding: 14px; border-radius: 12px; background: var(--uxr-card); color: var(--uxr-ink); line-height: 1.8; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-original details { margin-top: 12px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-source-original summary { min-height: 44px; padding: 10px 0; color: var(--uxr-blue-ink, var(--uxr-ink)); font-weight: 750; cursor: pointer; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-corrected { padding: 12px; background: var(--uxr-card); border-radius: 12px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-share-scope, body.ux-course.ux-app-refresh #lesson-content .ux-guide-share-result { margin: 0; font-size: .9rem; line-height: 1.65; color: var(--uxr-text); overflow-wrap: anywhere; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-share-result { padding: 12px; background: var(--uxr-soft); border-radius: 12px; }
+body.ux-course.ux-app-refresh #lesson-content #copy-link-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; white-space: normal; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-switch-control { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-switch-state { min-width: 3ch; color: var(--uxr-ink); font-size: .9rem; font-weight: 750; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-privacy-effect { margin: 2px 0 14px; padding: 12px 14px; border-radius: 12px; background: var(--uxr-card); color: var(--uxr-text); font-size: .9rem; line-height: 1.7; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-privacy-preview { margin-top: 18px; padding: 18px; border-radius: 16px; background: var(--uxr-card); color: var(--uxr-text); box-shadow: var(--uxr-shadow); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-privacy-preview h4 { margin-top: 0; color: var(--uxr-ink); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-data-grid > div { padding: 14px; background: var(--uxr-soft); border-radius: 13px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-data-grid p { margin-bottom: 0; line-height: 1.6; font-size: .93rem; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-confirm { margin-top: 14px; padding: 14px; border-radius: 12px; background: var(--uxr-soft); box-shadow: 0 5px 18px #111c2b16; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-actions button { min-height: 44px; padding: 9px 13px; border: 0; border-radius: 12px; background: var(--uxr-blue); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-actions button[data-privacy-action="cancel"] { background: var(--uxr-card); color: var(--uxr-ink); box-shadow: inset 0 0 0 1px var(--uxr-line); }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-live-result { min-height: 1.5em; font-size: .93rem; line-height: 1.7; }
+body.ux-course.ux-app-refresh #lesson-content .ux-guide-text-button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--uxr-line); border-radius: 11px; background: var(--uxr-soft); color: var(--uxr-ink); font: inherit; font-weight: 700; cursor: pointer; }
+body.ux-course.ux-app-refresh #lesson-content :is(.ux-guide-source-original,.ux-guide-confirm,.ux-guide-share-result)[hidden] { display: none !important; }
+@media (max-width: 560px) {
+  body.ux-course.ux-app-refresh .ux-guide-button { width: 100%; }
+  body.ux-course.ux-app-refresh #lesson-content .ux-guide-data-grid { grid-template-columns: 1fr; }
+  body.ux-course.ux-app-refresh #lesson-content .ux-guide-privacy-preview { padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ux-course.ux-app-refresh .ux-guide-button:hover { transform: none; }
+}

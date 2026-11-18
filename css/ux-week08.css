@@ -32,8 +32,6 @@
 #ux8-root .ux8-overview p { display: flex; flex-direction: column; gap: 3px; }
 #ux8-root .ux8-overview p strong { font-size: 1.08rem; color: var(--u8-ink); }
 #ux8-root .ux8-overview p span { color: var(--u8-muted); font-size: .92rem; }
-#ux8-root .ux8-motion-choice { display: inline-flex; gap: 9px; align-items: center; color: var(--u8-text); padding: 9px 0; font-size: .9rem; line-height: 1.5; }
-#ux8-root .ux8-motion-choice input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--u8-blue); }
 #ux8-root .ux8-section-tabs { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-bottom: 28px; scroll-margin-top: 120px; }
 #ux8-root .ux8-section-tabs button { display: flex; gap: 10px; align-items: center; justify-content: flex-start; padding: 14px 16px; min-height: 68px; color: var(--u8-text); background: var(--u8-card); border: 1px solid var(--u8-line); border-radius: 14px; text-align: left; font-weight: 700; line-height: 1.5; font-size: .94rem; transition: background .2s, box-shadow .2s; }
 #ux8-root .ux8-section-tabs button > span { display: grid; place-items: center; width: 31px; height: 31px; flex: 0 0 31px; background: var(--u8-soft); border-radius: 10px; color: var(--u8-link); font-size: .8rem; }
@@ -249,9 +247,9 @@ body.ux-course.ux-app-refresh[data-page="week08"] .examples-header { display: no
 #ux8-root .ux8-play-copy > p { font-size: 1.04rem; line-height: 1.85; color: #385d65; max-width: 34ch; }
 #ux8-root .ux8-play-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
 #ux8-root .ux8-play-pills > span { display: inline-flex; align-items: center; gap: 7px; color: #245e69; font-size: .79rem; font-weight: 650; background: rgba(255,255,255,.68); border: 1px solid rgba(69,148,158,.14); border-radius: 30px; padding: 7px 11px; }
-#ux8-root .ux8-start-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 23px; border: 0; border-radius: 40px; background: #087e8b; color: white; font-size: 1.03rem; font-weight: 800; box-shadow: 0 8px 0 #08616b, 0 16px 26px rgba(8,126,139,.22); transition: transform .25s,box-shadow .25s; animation: ux8-start-bounce 4.8s ease-in-out infinite; }
-#ux8-root .ux8-start-button:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 13px 0 #08616b,0 23px 26px rgba(8,126,139,.19); }
-#ux8-root .ux8-start-button:active { transform: translateY(5px); box-shadow: 0 3px 0 #08616b; }
+#ux8-root .ux8-start-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 23px; border: 0; border-radius: 40px; background: #087e8b; color: white; font-size: 1.03rem; font-weight: 800; box-shadow: 0 12px 28px rgba(8,126,139,.30); transition: transform .25s,box-shadow .25s; animation: ux8-start-bounce 4.8s ease-in-out infinite; }
+#ux8-root .ux8-start-button:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 18px 36px rgba(8,126,139,.35); }
+#ux8-root .ux8-start-button:active { transform: translateY(5px); box-shadow: 0 5px 14px rgba(8,126,139,.25); }
 #ux8-root .ux8-mini-stat { display: flex; gap: 24px; margin-top: 30px; }
 #ux8-root .ux8-mini-stat > span { display: flex; align-items: baseline; gap: 8px; font-size: .82rem; color: #486a71; }
 #ux8-root .ux8-mini-stat strong { color: #126d77; font-size: 1.7rem; letter-spacing: -.04em; }
@@ -302,11 +300,11 @@ body.ux-course.ux-app-refresh[data-page="week08"] .examples-header { display: no
 #ux8-root .ux8-float-three { left: 1px; bottom: 72px; transform: rotate(-9deg); animation: ux8-float-a 5.1s ease-in-out infinite reverse; }
 #ux8-root .ux8-overview { border-radius: 23px; padding: 19px 24px; }
 #ux8-root .ux8-section-tabs { gap: 14px; }
-#ux8-root .ux8-section-tabs button { border-radius: 24px; min-height: 128px; display: grid; grid-template-columns: 1fr auto; align-content: space-between; padding: 19px 20px; transition: transform .35s cubic-bezier(.2,1.8,.5,1), background .25s,box-shadow .25s; box-shadow: 0 5px 0 var(--u8-line); }
+#ux8-root .ux8-section-tabs button { border-radius: 24px; min-height: 128px; display: grid; grid-template-columns: 1fr auto; align-content: space-between; padding: 19px 20px; transition: transform .35s cubic-bezier(.2,1.8,.5,1), background .25s,box-shadow .25s; box-shadow: 0 6px 20px rgba(25,66,95,.08); }
 #ux8-root .ux8-section-tabs button .ux8-tab-count { width: auto; height: auto; background: transparent; font-size: .75rem; padding: 0; justify-content: flex-start; opacity: .9; }
 #ux8-root .ux8-section-tabs button > .ux8-icon { width: 29px; height: 29px; font-size: 27px; background: transparent; justify-self: end; }
 #ux8-root .ux8-section-tabs button > b { grid-column: 1/-1; font-size: .96rem; font-weight: 800; }
-#ux8-root .ux8-section-tabs button[aria-selected="true"] { box-shadow: 0 7px 0 #075d68,0 14px 28px rgba(8,126,139,.18); transform: translateY(-4px); }
+#ux8-root .ux8-section-tabs button[aria-selected="true"] { box-shadow: 0 12px 28px rgba(8,126,139,.25); transform: translateY(-4px); }
 #ux8-root .ux8-section-tabs button[aria-selected="true"] > span { background: transparent; }
 #ux8-root .ux8-section-tabs button[aria-selected="true"] > .ux8-icon { animation: ux8-tab-wiggle 3s ease-in-out infinite; }
 #ux8-root .ux8-section-tabs button:hover { transform: translateY(-8px) rotate(-1deg); }

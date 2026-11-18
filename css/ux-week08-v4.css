@@ -1,0 +1,103 @@
+/* Week 08: selectable screen anatomy + a lively motion playground. */
+#ux8-root { --u8-highlight: #3155d9; --u8-highlight-soft: #e6ecff; }
+#ux8-root .ux8-motion-badge { display: inline-flex; align-items: center; gap: 9px; color: var(--u8-link); background: var(--u8-soft); border-radius: 30px; padding: 10px 15px; font-size: .87rem; font-weight: 700; }
+#ux8-root .ux8-layout-selection { display: flex; align-items: center; gap: 12px; min-height: 70px; padding: 13px 17px; border-radius: 17px; color: var(--u8-link); background: var(--u8-soft); scroll-margin-top: 110px; }
+#ux8-root .ux8-layout-selection > .ux8-icon { width: 30px; height: 30px; }
+#ux8-root .ux8-layout-selection > span:last-child { display: grid; gap: 2px; }
+#ux8-root .ux8-layout-selection small { font-size: .76rem; color: var(--u8-muted); }
+#ux8-root .ux8-layout-selection strong { font-size: .95rem; color: var(--u8-ink); line-height: 1.6; }
+#ux8-root .ux8-layout-card { gap: 14px; }
+#ux8-root .ux8-device-stage { padding: 22px 20px; }
+#ux8-root .ux8-portal-scroll { height: 330px; }
+#ux8-root .ux8-device.is-narrow .ux8-portal-scroll { height: 350px; }
+#ux8-root .ux8-term-grid { gap: 15px; }
+#ux8-root button.ux8-term { display: block; text-align: left; width: 100%; border: 1px solid var(--u8-line); color: var(--u8-ink); box-shadow: 0 6px 20px rgba(25,66,95,.07); transition: transform .35s cubic-bezier(.2,1.5,.4,1),background .25s,box-shadow .25s; }
+#ux8-root .ux8-term-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; font-weight: 800; font-size: .99rem; line-height: 1.6; }
+#ux8-root .ux8-term-name small { color: var(--u8-link); font-size: .77rem; font-weight: 650; }
+#ux8-root .ux8-term-description { display: block; color: var(--u8-text); margin-top: 7px; font-size: .9rem; line-height: 1.75; }
+#ux8-root .ux8-term-action { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; color: var(--u8-link); font-size: .78rem; font-weight: 700; }
+#ux8-root button.ux8-term:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(38,80,145,.14); }
+#ux8-root button.ux8-term[aria-pressed="true"] { background: var(--u8-highlight-soft); border-color: transparent; box-shadow: 0 7px 25px rgba(49,85,217,.2),0 0 0 2px rgba(49,85,217,.34); }
+#ux8-root button.ux8-term[aria-pressed="true"] .ux8-term-icon { color: var(--u8-highlight); animation: ux8-concept-wiggle 2.8s ease-in-out infinite; }
+#ux8-root :is(.ux8-portal-hero,.ux8-portal-cards article,.ux8-portal-sidebar,.ux8-portal-sticky,.ux8-portal-body) { transition: background .4s,color .4s,box-shadow .4s; }
+#ux8-root .ux8-device[data-highlight="hero"] .ux8-portal-hero,
+#ux8-root .ux8-device[data-highlight="cards"] .ux8-portal-cards article,
+#ux8-root .ux8-device[data-highlight="sidebar"] .ux8-portal-sidebar,
+#ux8-root .ux8-device[data-highlight="sticky"] .ux8-portal-sticky { background: var(--u8-highlight); color: #fff; border-color: transparent; box-shadow: 0 9px 23px rgba(49,85,217,.3); }
+#ux8-root .ux8-device[data-highlight="hero"] .ux8-portal-hero :is(span,h4,p),
+#ux8-root .ux8-device[data-highlight="cards"] .ux8-portal-cards article :is(strong,p,small),
+#ux8-root .ux8-device[data-highlight="sidebar"] .ux8-portal-sidebar :is(strong,span) { color: #fff; }
+#ux8-root .ux8-device[data-highlight="cards"] .ux8-course-number,
+#ux8-root .ux8-device[data-highlight="sidebar"] .is-selected { background: rgba(255,255,255,.18); color: #fff; }
+#ux8-root .ux8-device[data-highlight="responsive"] { box-shadow: 0 0 0 5px var(--u8-highlight),0 18px 38px rgba(49,85,217,.32); }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-body { background: var(--u8-highlight-soft); }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-sidebar { background: #d2ddff; color: #173272; }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-sidebar :is(strong,span) { color: #173272; }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-hero { background: var(--u8-highlight); color: white; }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-hero :is(span,h4,p) { color: #fff; }
+#ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-cards article { box-shadow: 0 0 0 2px rgba(49,85,217,.2); }
+#ux8-root .ux8-layout-card .ux8-result { padding: 12px 15px; background: var(--u8-soft); border-radius: 14px; line-height: 1.75; }
+/* Rich, repeating decorative motion, independent from the local demo controls. */
+#ux8-root .ux8-phone { animation: ux8-phone-party 4.6s ease-in-out infinite; }
+#ux8-root .ux8-play-pills > span .ux8-icon { animation: ux8-icon-pop 2.6s ease-in-out infinite; }
+#ux8-root .ux8-play-pills > span:nth-child(2) .ux8-icon { animation-delay: -.85s; }
+#ux8-root .ux8-play-pills > span:nth-child(3) .ux8-icon { animation-delay: -1.7s; }
+#ux8-root .ux8-motion-badge > .ux8-icon { animation: ux8-icon-pop 2s ease-in-out infinite; }
+#ux8-root .ux8-float-one { animation-duration: 3.1s; }
+#ux8-root .ux8-float-two { animation-duration: 3.7s; }
+#ux8-root .ux8-float-three { animation-duration: 4.1s; }
+#ux8-root .ux8-motion-stage { min-height: 220px; background: radial-gradient(circle at 20% 25%,var(--u8-soft),transparent 45%),var(--u8-page); }
+#ux8-root .ux8-motion-object { box-shadow: 0 15px 40px rgba(26,102,121,.15); }
+#ux8-root .ux8-play-fade { animation: ux8-loop-fade var(--ux8-duration,1200ms) ease-in-out var(--ux8-delay,0ms) infinite alternate both; }
+#ux8-root .ux8-play-slide { animation: ux8-loop-slide var(--ux8-duration,1200ms) ease-in-out var(--ux8-delay,0ms) infinite alternate both; }
+#ux8-root .ux8-play-scale { animation: ux8-loop-scale var(--ux8-duration,1200ms) ease-in-out var(--ux8-delay,0ms) infinite alternate both; }
+#ux8-root .ux8-start-button { box-shadow: 0 12px 28px rgba(8,126,139,.3); }
+#ux8-root .ux8-start-button:hover { box-shadow: 0 18px 36px rgba(8,126,139,.35); }
+#ux8-root .ux8-start-button:active { box-shadow: 0 5px 14px rgba(8,126,139,.25); }
+#ux8-root .ux8-section-tabs button { box-shadow: 0 6px 20px rgba(25,66,95,.08); }
+#ux8-root .ux8-section-tabs button[aria-selected="true"] { box-shadow: 0 12px 28px rgba(8,126,139,.25); }
+html[data-theme="dark"] #ux8-root { --u8-highlight:#355ad5; --u8-highlight-soft:#202e5a; }
+html[data-theme="dark"] #ux8-root button.ux8-term[aria-pressed="true"] { box-shadow: 0 8px 28px rgba(0,0,0,.3),0 0 0 2px #738df0; }
+html[data-theme="dark"] #ux8-root button.ux8-term[aria-pressed="true"] .ux8-term-icon { color: #a5b8ff; }
+html[data-theme="dark"] #ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-sidebar { background: #293e73; }
+html[data-theme="dark"] #ux8-root .ux8-device[data-highlight="responsive"] .ux8-portal-sidebar :is(strong,span) { color: #eef3ff; }
+@keyframes ux8-phone-party { 0%,100% {transform:translateY(5px) rotate(3deg);} 50% {transform:translateY(-21px) rotate(-3deg);} }
+@keyframes ux8-icon-pop { 0%,65%,100% {transform:scale(1) rotate(0);} 76% {transform:scale(1.3) rotate(-16deg);} 87% {transform:scale(1.18) rotate(14deg);} }
+@keyframes ux8-concept-wiggle { 0%,70%,100% {transform:translateY(0) rotate(0);} 78% {transform:translateY(-5px) rotate(-12deg);} 88% {transform:translateY(-2px) rotate(12deg);} }
+@keyframes ux8-loop-fade { from {opacity:.12;} to {opacity:1;} }
+@keyframes ux8-loop-slide { from {opacity:.35;transform:translateX(-65px) rotate(-8deg);} to {opacity:1;transform:translateX(65px) rotate(8deg);} }
+@keyframes ux8-loop-scale { from {opacity:.45;transform:scale(.62);} to {opacity:1;transform:scale(1.2);} }
+@media (max-width:680px) {
+  #ux8-root .ux8-overview { align-items:flex-start; flex-direction:column; gap:10px; }
+  #ux8-root .ux8-layout-card { padding:17px 13px; }
+  #ux8-root .ux8-device-stage { padding:18px 8px; }
+  #ux8-root .ux8-layout-selection { scroll-margin-top:120px; padding:11px; }
+  #ux8-root .ux8-layout-selection strong {font-size:.86rem;}
+  #ux8-root .ux8-portal-scroll { height:290px; }
+  #ux8-root .ux8-device.is-narrow .ux8-portal-scroll { height:320px; }
+  #ux8-root .ux8-term-grid { grid-template-columns:1fr; }
+  #ux8-root button.ux8-term {padding:17px 16px 17px 55px;}
+  #ux8-root .ux8-term-icon {left:17px;top:20px;}
+  #ux8-root .ux8-motion-object {padding:16px 20px;}
+}
+#ux8-root[data-reduced="true"] *,#ux8-root[data-reduced="true"] *::before,#ux8-root[data-reduced="true"] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+@media (prefers-reduced-motion:reduce) {
+  #ux8-root *,#ux8-root *::before,#ux8-root *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+}
+
+/* Keep the two teaching layouts distinct even inside a narrow real viewport. */
+@media (max-width:680px) {
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-body {grid-template-columns:68px minmax(0,1fr);}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-sidebar {flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:5px;padding:12px 5px;border-right:1px solid var(--u8-line);border-bottom:0;font-size:.68rem;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-sidebar strong {font-size:.63rem;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-sidebar span {padding:5px 3px;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-main {padding:10px;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-hero {padding:13px 10px;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-hero h4 {font-size:.94rem;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-hero p {font-size:.74rem;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-cards {grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-cards article {padding:9px 6px;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-cards strong {font-size:.7rem;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-portal-cards :is(p,small) {display:none;}
+  #ux8-root .ux8-device:not(.is-narrow) .ux8-course-number {width:23px;height:23px;font-size:.63rem;}
+}

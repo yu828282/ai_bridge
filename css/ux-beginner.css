@@ -1,0 +1,61 @@
+/* Emphasis uses soft outer shadows. Structural dividers, focus rings and device frames keep their meaning. */
+body.ux-course.ux-app-refresh { --ux-beginner-shadow:0 14px 36px rgba(21,63,76,.14),0 3px 10px rgba(21,63,76,.07); --ux-card-shadow:0 16px 42px rgba(21,63,76,.10),0 3px 10px rgba(21,63,76,.04); --ux-control-shadow:0 7px 18px rgba(21,63,76,.17); }
+html[data-theme="dark"] body.ux-course.ux-app-refresh { --ux-beginner-shadow:0 16px 40px rgba(0,0,0,.42),0 4px 12px rgba(0,0,0,.24); --ux-card-shadow:0 18px 44px rgba(0,0,0,.38),0 4px 12px rgba(0,0,0,.22); --ux-control-shadow:0 8px 20px rgba(0,0,0,.40); }
+body.ux-course.ux-app-refresh #lesson-content :is(.mini-ai-card,.comp-desc,.fake-ai-msg,.warning-box,.ai-msg-mock,.alert-box,.chat-bubble-user,.chat-bubble-bot,.callout,.week08-exam-note,.ux-soft-callout),
+body.ux-course.ux-app-refresh .explanation-note {
+  border:0!important; border-radius:15px; box-shadow:var(--ux-beginner-shadow)!important;
+}
+body.ux-course.ux-app-refresh #lesson-content .ux-soft-callout { border-radius:16px!important; }
+body.ux-course.ux-app-refresh #lesson-content :is(h1,h2,h3,h4,.comp-card-title,.action-btn,.emoji-list,.qa-tag) .ux-emoji-icon {
+  flex:0 0 auto; width:1.2em; height:1.2em; color:currentColor;
+}
+body.ux-course.ux-app-refresh #lesson-content .title-emoji .ux-emoji-icon {
+  width:1.75em; height:1.75em; color:var(--uxr-link);
+}
+/* Keep the learning controls readable when translated into longer words. */
+body.ux-course.ux-app-refresh[data-page="week09"] .comp-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+body.ux-course.ux-app-refresh[data-page="week09"] .comp-card { min-width:0; }
+body.ux-course.ux-app-refresh[data-page="week09"] .comp-card-header { flex-wrap:wrap; gap:8px; }
+body.ux-course.ux-app-refresh[data-page="week09"] .comp-card-title { min-width:0; flex:1 1 220px; line-height:1.65; }
+body.ux-course.ux-app-refresh[data-page="week09"] .key-row { flex-wrap:wrap; justify-content:center; }
+body.ux-course.ux-app-refresh[data-page="week09"] #key-result { height:auto!important; min-height:1.6em; text-align:center; line-height:1.6; }
+body.ux-course.ux-app-refresh[data-page="week09"] .instances-row { flex-wrap:wrap; justify-content:center; }
+body.ux-course.ux-app-refresh[data-page="week09"] .al-container.applied { flex-wrap:wrap; justify-content:center; }
+body.ux-course.ux-app-refresh[data-page="week09"] .al-item { white-space:normal; overflow-wrap:anywhere; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice { margin-top:22px; padding:0; background:var(--uxr-soft); border:0; border-radius:22px; box-shadow:var(--ux-beginner-shadow); }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice > summary { display:flex; align-items:center; gap:13px; min-height:82px; padding:20px 23px; cursor:pointer; color:var(--uxr-ink); list-style:none; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice > summary::-webkit-details-marker { display:none; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice > summary > span:nth-child(2) { flex:1; min-width:0; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice strong { display:block; font-size:1rem; line-height:1.6; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice summary small { display:block; margin-top:3px; color:var(--uxr-text); font-size:.87rem; line-height:1.7; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-icon { display:inline-flex; color:var(--uxr-link); font-size:25px; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-chevron { display:inline-flex; color:var(--uxr-link); transition:transform .2s; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice[open] .ux-optional-chevron { transform:rotate(180deg); }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice > summary:focus-visible { outline:3px solid var(--uxr-focus); outline-offset:4px; border-radius:22px; }
+body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-grid { margin:0; padding:0 18px 18px; }
+/* A duration is not a percentage: preserve the observation's value without a progress bar. */
+body.ux-course.ux-app-refresh[data-page="week13"] .ux-duration-metric .metric-bar { height:auto; background:none; overflow:visible; border:0; padding:3px 0; box-shadow:none; }
+body.ux-course.ux-app-refresh[data-page="week13"] .ux-duration-metric .metric-fill { display:inline-flex; align-items:center; justify-content:flex-start; gap:9px; width:auto!important; max-width:100%; padding:10px 13px; background:var(--uxr-soft)!important; color:var(--uxr-link)!important; border-radius:12px; font-size:1.12rem; line-height:1.7; }
+body.ux-course.ux-app-refresh .ux-duration-icon { display:inline-flex; color:inherit; }
+@media (max-width:760px) {
+  body.ux-course.ux-app-refresh[data-page="week09"] .comp-grid {grid-template-columns:minmax(0,1fr);}
+  body.ux-course.ux-app-refresh[data-page="week09"] .comp-card-title {flex-basis:100%;}
+  body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-practice > summary {padding:17px;}
+  body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-grid {padding:0 12px 12px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.ux-course.ux-app-refresh[data-page="week09"] .ux-optional-chevron {transition:none;}
+}
+/* Source comparison becomes a reading task when expanded; give both examples full line width. */
+body.ux-course.ux-app-refresh[data-page="week05"] #lesson-content .vs-container:has(.ux-guide-source-demo) {
+  display:grid; grid-template-columns:minmax(0,1fr); align-items:start;
+}
+body.ux-course.ux-app-refresh[data-page="week05"] #lesson-content .vs-container:has(.ux-guide-source-demo) > .box {
+  min-width:0; width:100%; height:auto;
+}
+/* The mobile header uses two rows; anchor targets stay fully below it. */
+@media (max-width:680px) {
+  body.ux-course.ux-app-refresh .ux-guide-target,
+  #ux8-root .ux8-layout-selection,
+  #ux8-root .ux8-section-tabs {scroll-margin-top:var(--ux-header-offset,156px);}
+}

@@ -5,7 +5,7 @@ body.ux-course { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; b
 body.ux-course .brand-title { font-size: 1.5rem; font-weight: bold; color: var(--main-blue); }
 body.ux-course .nav-btn.active { background: var(--main-blue); color: white; animation: pulse 2s infinite; }
 body.ux-course .lang-btn.active { background: var(--main-blue); color: white; border-color: var(--main-blue); }
-body.ux-course .card { background: var(--card-bg); padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); transition: all 0.5s ease-out; border-top: 4px solid transparent; word-break: keep-all; }
+body.ux-course .card { background: var(--card-bg); padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); transition: all 0.5s ease-out;  word-break: keep-all; }
 body.ux-course h1 { color: var(--main-blue); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8rem; margin-top: 0; }
 body.ux-course ul.emoji-list li { margin-bottom: 10px; font-size: 1.1rem; line-height: 1.5; }
 body.ux-course .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
@@ -77,8 +77,8 @@ body[data-page="week08"] .comp-card-header { display: flex; align-items: center;
 body[data-page="week08"] .comp-card-title { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
 body[data-page="week08"] .comp-badge { font-size: 0.9375rem; padding: 2px 8px; border-radius: 10px; background: #e0e7ff; color: #3730a3; font-weight: 600; }
 body[data-page="week08"] .demo-box { background: #0f172a; border-radius: 8px; padding: 14px; color: #f1f5f9; min-height: 150px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.25); }
-body[data-page="week08"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--main-blue); }
-body[data-page="week08"] .mini-ai-card { background: #1e293b; border-radius: 8px; padding: 12px; border-left: 3px solid #3b82f6; font-size: 1rem; }
+body[data-page="week08"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px;   box-shadow:var(--ux-beginner-shadow); }
+body[data-page="week08"] .mini-ai-card { background: #1e293b; border-radius: 8px; padding: 12px;  font-size: 1rem;  box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week08"] .mini-card-head { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #93c5fd; margin-bottom: 6px; }
 body[data-page="week08"] .inner-scroll-window { height: 140px; overflow-y: auto; background: #1e293b; border-radius: 6px; border: 1px solid #334155; position: relative; font-size: 1rem; }
 body[data-page="week08"] .inner-sticky-bar { position: sticky; top: 0; background: #2563eb; color: #ffffff; padding: 6px 12px; font-weight: bold; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 5; box-shadow: 0 2px 5px rgba(0,0,0,0.25); }
@@ -270,10 +270,10 @@ body[data-page="week05"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 body[data-page="week05"] .trust-badge { background: #e4edfc; color: #1c56b9; padding: 6px 12px; border-radius: 20px; font-size: 1rem; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; }
 body[data-page="week05"] .mockup-window { background: #0f172a; padding: 20px; border-radius: 12px; color: white; margin-top: 15px; font-family: monospace; }
-body[data-page="week05"] .fake-ai-msg { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #4683ed; }
+body[data-page="week05"] .fake-ai-msg { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 10px;   box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week05"] .source-link { display: inline-flex; align-items: center; gap: 4px; background: #e2e8f0; color: #334155; padding: 2px 6px; border-radius: 4px; font-size: 1rem; text-decoration: none; cursor: pointer; border: 1px solid #cbd5e1; }
 body[data-page="week05"] .source-link:hover { background: #cbd5e1; }
-body[data-page="week05"] .warning-box { background: #e9fafd; border: 1px solid #94e7f4; border-left: 4px solid #16c2dc; padding: 15px; border-radius: 8px; margin: 15px 0; display: flex; gap: 10px; align-items: flex-start;}
+body[data-page="week05"] .warning-box { background: #e9fafd; border: 1px solid #94e7f4;  padding: 15px; border-radius: 8px; margin: 15px 0; display: flex; gap: 10px; align-items: flex-start; box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week05"] .trust-meter { display: flex; justify-content: space-between; background: #f1f5f9; border-radius: 20px; padding: 5px; margin: 20px 0; position: relative; }
 body[data-page="week05"] .trust-section { flex: 1; text-align: center; padding: 10px; font-size: 1.0625rem; font-weight: bold; border-radius: 15px; z-index: 2;}
 body[data-page="week05"] .trust-section.blind { color: #2669dc; }
@@ -304,7 +304,7 @@ body[data-page="week06"] .level-2 { background: #c7f3fa; color: #0e7585; }
 body[data-page="week06"] .level-3 { background: #e4edfc; color: #1b4999; }
 body[data-page="week06"] .level-demo { background: #f8fafc; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px dashed #cbd5e1; font-size: 1.0625rem; color: #475569; min-height: 40px; display: flex; align-items: center; justify-content: center;}
 body[data-page="week06"] .feedback-container { background: #f1f5f9; border-radius: 12px; padding: 15px; margin-top: 10px; border: 1px solid #cbd5e1; }
-body[data-page="week06"] .ai-msg-mock { background: white; padding: 15px; border-radius: 8px; border-left: 3px solid var(--main-blue); font-size: 1.0625rem; margin-bottom: 10px; }
+body[data-page="week06"] .ai-msg-mock { background: white; padding: 15px; border-radius: 8px;  font-size: 1.0625rem; margin-bottom: 10px;  box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week06"] .feedback-actions { display: flex; justify-content: space-between; align-items: center; }
 body[data-page="week06"] .icon-btn { background: transparent; border: 1px solid #94a3b8; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 1.0625rem; color: #475569; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px;}
 body[data-page="week06"] .icon-btn:hover { background: #e2e8f0; color: #0f172a; }
@@ -389,12 +389,12 @@ body[data-page="week09"] .comp-card-header { display: flex; align-items: center;
 body[data-page="week09"] .comp-card-title { font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
 body[data-page="week09"] .comp-badge { font-size: 0.9375rem; padding: 2px 8px; border-radius: 10px; background: #eafafd; color: #21a2b6; font-weight: 600; }
 body[data-page="week09"] .demo-box { background: #1e293b; border-radius: 8px; padding: 14px; color: #f1f5f9; min-height: 150px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.25); align-items: center;}
-body[data-page="week09"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--figma-purple); }
+body[data-page="week09"] .comp-desc { font-size: 1rem; color: #475569; line-height: 1.55; margin: 0; background: #ffffff; padding: 10px 12px; border-radius: 8px;   box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week09"] .action-btn { background: var(--figma-purple); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
 body[data-page="week09"] .action-btn:hover { background: #3bd4ec; }
 body[data-page="week09"] .action-btn:active { transform: scale(0.97); }
 body[data-page="week09"] .key-row { display: flex; gap: 10px; }
-body[data-page="week09"] .key-box { background: #334155; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-weight: bold; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 60px; box-shadow: 0 4px 0 #0f172a; transition: 0.1s; cursor: pointer;}
+body[data-page="week09"] .key-box { background: #334155; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-weight: bold; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 60px; box-shadow:var(--ux-control-shadow); transition: 0.1s; cursor: pointer;}
 body[data-page="week09"] .key-box:active, body[data-page="week09"] .key-box.active { transform: translateY(4px); box-shadow: 0 0 0 #0f172a; background: var(--figma-purple); color: white;}
 body[data-page="week09"] .key-label { font-size: 0.9375rem; color: #94a3b8; margin-top: 4px; font-weight: normal; font-family: sans-serif;}
 body[data-page="week09"] .key-box:active .key-label, body[data-page="week09"] .key-box.active .key-label { color: #ddd; }
@@ -442,7 +442,7 @@ body[data-page="week10"] .box { flex: 1; min-width: 250px; background: #f1f5f9; 
 
 
 
-body[data-page="week10"] .alert-box { background: #f2f6fe; border-left: 4px solid #4683ed; padding: 15px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+body[data-page="week10"] .alert-box { background: #f2f6fe;  padding: 15px; border-radius: 0 8px 8px 0; margin: 15px 0;  box-shadow:var(--ux-beginner-shadow); }
 body[data-page="week10"] .equation { background: #1e293b; color: white; padding: 15px; border-radius: 12px; text-align: center; font-size: 1.1rem; font-family: monospace; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;}
 body[data-page="week10"] .eq-step { padding: 8px 12px; background: #334155; border-radius: 8px; }
 body[data-page="week10"] .eq-human { background: var(--success); color: #064e3b; font-weight: bold; animation: pulse 2s infinite; }
@@ -602,7 +602,7 @@ body.ux-course .pager-link:hover{border-color:#2563eb;color:#1d4ed8;}
 body.ux-course .pager-link[aria-disabled="true"]{opacity:.38;pointer-events:none;}
 body.ux-course .pager-next{border-color:#2563eb;color:#1d4ed8;}
 body.ux-course #lesson-content>.container{width:100%;max-width:1140px;margin:0 auto;padding:0;}
-body.ux-course .card{background:#fff;border:1px solid #e2e8f0;border-top:4px solid #2563eb;border-radius:16px;padding:clamp(18px,2.8vw,30px);margin:0 0 20px;opacity:1;transform:none;transition:box-shadow .2s ease,border-color .2s ease;box-shadow:0 8px 24px rgba(15,23,42,.055);word-break:keep-all;}
+body.ux-course .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:clamp(18px,2.8vw,30px);margin:0 0 20px;opacity:1;transform:none;transition:box-shadow .2s ease,border-color .2s ease;box-shadow:0 8px 24px rgba(15,23,42,.055);word-break:keep-all;}
 body.ux-course .card.visible{opacity:1;transform:none;}
 
 body.ux-course h1{color:#0f172a;font-size:clamp(1.45rem,2.6vw,1.9rem);margin:0 0 16px;padding:0 0 12px;border-bottom:1px solid #e2e8f0;}
@@ -716,13 +716,13 @@ body.ux-course #lesson-content :is(.action-btn,.chip,.action-chip) { min-height:
 body.ux-course .week08-exam-note {
   padding: clamp(22px, 2.8vw, 34px);
   border: 1px solid #c7d2fe;
-  border-left: 5px solid #2563eb;
+  
   border-radius: 16px;
   background: #eff6ff;
   margin-bottom: 28px;
   color: #1e293b;
   line-height: 1.65;
-}
+ box-shadow:var(--ux-beginner-shadow); }
 body.ux-course .week08-exam-note strong { display: block; margin-bottom: 7px; font-size: 1.1rem; }
 body.ux-course .week08-exam-note p { margin:0; }
 @media (max-width: 768px) {
@@ -751,9 +751,9 @@ body.ux-course[data-page="week07"] #lesson-content .m-blue { background:#dbeafe;
 body.ux-course[data-page="week07"] #lesson-content .m-purple { background:#eafafd; border:2px solid #5ddcef; color:#2196a8; }
 body.ux-course[data-page="week07"] #lesson-content .m-green { background:#dcfce7; border:2px solid #22c55e; color:#15803d; }
 body.ux-course[data-page="week07"] #lesson-content .mock-chat { background:#fff; border:1px solid #cbd5e1; border-radius:15px; padding:28px; margin:24px 0; }
-body.ux-course[data-page="week07"] #lesson-content .chat-bubble-user { background:#eff6ff; border-left:4px solid #2563eb; padding:20px 24px; border-radius:10px; margin-bottom:16px; }
-body.ux-course[data-page="week07"] #lesson-content .chat-bubble-bot { background:#f8fafc; border-left:4px solid #62ddf0; padding:20px 24px; border-radius:10px; }
-body.ux-course[data-page="week07"] #lesson-content .callout { background:#eff6ff; border-left:4px solid #2563eb; padding:22px 27px; border-radius:0 12px 12px 0; margin:24px 0; line-height:1.7; }
+body.ux-course[data-page="week07"] #lesson-content .chat-bubble-user { background:#eff6ff;  padding:20px 24px; border-radius:10px; margin-bottom:16px;  box-shadow:var(--ux-beginner-shadow); }
+body.ux-course[data-page="week07"] #lesson-content .chat-bubble-bot { background:#f8fafc;  padding:20px 24px; border-radius:10px;  box-shadow:var(--ux-beginner-shadow); }
+body.ux-course[data-page="week07"] #lesson-content .callout { background:#eff6ff;  padding:22px 27px; border-radius:0 12px 12px 0; margin:24px 0; line-height:1.7;  box-shadow:var(--ux-beginner-shadow); }
 @media (max-width:768px){
  body.ux-course[data-page="week07"] #lesson-content .matrix-board { grid-template-columns:1fr; gap:15px; }
  body.ux-course[data-page="week07"] #lesson-content .phase-timeline { flex-direction:column; }
@@ -874,7 +874,6 @@ body.ux-course #course-nav { display: flex; flex-direction: column; gap: 5px; }
 body.ux-course .course-link { position: relative; display: grid; grid-template-columns: 27px minmax(0,1fr); column-gap: 9px; align-items: start; padding: 9px 9px; min-height: 45px; border: 1px solid transparent; border-radius: 9px; color: #5e5e5e; text-decoration: none; line-height: 1.4; transition: background .15s ease; }
 body.ux-course .course-link:hover { background: #e8eff0; color: #263d2f; }
 body.ux-course .course-link:is(.active,[aria-current="page"]) { background: var(--sage); color: #2f4c39; border-color: #c6dadd; font-weight: 650; }
-body.ux-course .course-link:is(.active,[aria-current="page"])::before { content: ""; position: absolute; left: -9px; top: 12px; bottom: 12px; width: 3px; background: #456267; border-radius: 2px; }
 body.ux-course .week-number { font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; color: #556669; font-weight: 650; }
 body.ux-course .week-topic { font-size: 14px; line-height: 20px; overflow-wrap: anywhere; }
 body.ux-course .week-status { grid-column: 2; color: #6b6b6b; font-size: 14px; font-weight: 500; display: block; margin-top: 2px; }
@@ -936,7 +935,7 @@ body.ux-course .worked-example { padding: 24px 27px; background: var(--peach); b
 body.ux-course .worked-example h3 { font-size: 18px; color: #394e73; margin: 0 0 12px; }
 body.ux-course .worked-example :is(p,li) { font-size: 18px; color: #48566f; line-height: 1.75; }
 body.ux-course .worked-example p:last-child { margin-bottom: 0; }
-body.ux-course .explanation-note { margin: 20px 0; padding: 18px 21px; border-left: 3px solid #b8c8d4; border-radius: 0 8px 8px 0; background: var(--sky); font-size: 18px; color: #435d6c; }
+body.ux-course .explanation-note { margin: 20px 0; padding: 18px 21px;  border-radius: 0 8px 8px 0; background: var(--sky); font-size: 18px; color: #435d6c;  box-shadow:var(--ux-beginner-shadow); }
 body.ux-course .explanation-note p { margin: 0; }
 body.ux-course .explanation-note strong { color: #314f61; }
 body.ux-course .lesson-toc { padding: 18px 0 21px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 28px 0; }
@@ -952,7 +951,7 @@ body.ux-course #lesson-content .card {
   position: relative;
   padding: 28px 0 32px;
   border: 0;
-  border-top: 1px solid var(--line) !important;
+  
   border-radius: 0;
   background: transparent;
   margin-bottom: 0;
@@ -982,7 +981,7 @@ body.ux-course #lesson-content .comp-card { border-color: #d4dfe1; padding: 21px
 body.ux-course #lesson-content .comp-card:hover { background: #edf3f4; box-shadow: none; transform: none; }
 body.ux-course #lesson-content .comp-card-header { gap: 10px; align-items: start; }
 body.ux-course #lesson-content .comp-card-title { line-height: 1.5; font-size: 18px; }
-body.ux-course #lesson-content .comp-desc { background: #fdfdfd; font-size: 16px; line-height: 1.7; border-left: 2px solid #bbd2d5; }
+body.ux-course #lesson-content .comp-desc { background: #fdfdfd; font-size: 16px; line-height: 1.7;   box-shadow:var(--ux-beginner-shadow); }
 body.ux-course #lesson-content .comp-badge { background: var(--lavender); color: #507075; flex: 0 0 auto; }
 body.ux-course #lesson-content .stage-box { background: #e9f2f3; border-width: 1px; border-color: #cfdddf; min-width: min(120px,100%); padding: 17px 12px; box-shadow: none; }
 body.ux-course #lesson-content .stage-box:hover { transform: none; background: #dfedef; border-color: #b5cccf; }
@@ -1004,7 +1003,7 @@ body.ux-course #lesson-content :is(.chip,.action-chip,.action-icon,.micro-btn,.k
 body.ux-course #lesson-content .tooltip-container { padding: 8px 0; }
 body.ux-course #lesson-content .tooltip-container:focus-within .tooltip-box { visibility: visible; opacity: 1; }
 body.ux-course #lesson-content .tooltip-box { max-width: calc(100vw - 80px); font-size: 14px; }
-body.ux-course #lesson-content .week08-exam-note { background: var(--butter); border-color: #addee5; border-left: 3px solid #4eb1c0; border-radius: 8px; margin-top: 10px; color: #2e5b62; }
+body.ux-course #lesson-content .week08-exam-note { background: var(--butter); border-color: #addee5;  border-radius: 8px; margin-top: 10px; color: #2e5b62;  box-shadow:var(--ux-beginner-shadow); }
 body.ux-course #lesson-content .callout { background: var(--sky); border-color: #a7bfcc; color: #3f5d6b; }
 body.ux-course #lesson-content .blueprint-table { box-shadow: none; line-height: 1.55; }
 body.ux-course #lesson-content .blueprint-table th { font-size: 15px; }
@@ -1176,7 +1175,7 @@ body.ux-course #lesson-content .comp-card > .explanation-note {
 }
 body.ux-course #lesson-content .comp-card > .explanation-note p { margin: 0 0 10px; }
 body.ux-course #lesson-content .comp-card > .explanation-note p:last-child { margin-bottom: 0; }
-body.ux-course #lesson-content .comp-card .comp-desc { border-left-color: #b1c8cc; padding: 15px 18px; }
+body.ux-course #lesson-content .comp-card .comp-desc {  padding: 15px 18px;  box-shadow:var(--ux-beginner-shadow); }
 body.ux-course #lesson-content .comp-card .demo-box { min-height: 180px; }
 body.ux-course #lesson-content .comp-card :is(button.action-btn,.micro-btn) { white-space: normal; max-width: 100%; overflow-wrap: break-word; min-height: 44px; height: auto; }
 body.ux-course #lesson-content .comp-card button.action-btn { font-size: 16px !important; }
@@ -1413,7 +1412,6 @@ body.ux-course .course-link:is(.active,[aria-current="page"]) {
   border-color: #dbe6f0;
   color: #355c7b;
 }
-body.ux-course .course-link:is(.active,[aria-current="page"])::before { background: #6589a4; }
 body.ux-course .course-link.exam { background: #f2f5f7; }
 body.ux-course .course-link.exam:is(.active,[aria-current="page"]) { background: #eef4fb; }
 body.ux-course .week-number { color: #657587; }
@@ -1466,15 +1464,15 @@ body.ux-course #lesson-content .comp-card:hover {
 }
 body.ux-course #lesson-content .comp-card .comp-desc {
   background: #eef4fb;
-  border-left-color: #c6d7e7;
+  
   color: #4a6076;
   font-size: 18px;
-}
+ box-shadow:var(--ux-beginner-shadow); }
 body.ux-course #lesson-content .comp-card:nth-child(even) .comp-desc {
   background: #edf7f3;
-  border-left-color: #c1d9cc;
+  
   color: #45685a;
-}
+ box-shadow:var(--ux-beginner-shadow); }
 body.ux-course #lesson-content .comp-card > .explanation-note { background: transparent; color: #546477; }
 body.ux-course #lesson-content .comp-badge { background: #eef4fb; color: #526c86; }
 body.ux-course #lesson-content .stage-box { background: #f5f8fb; border-color: #e0e7ef; }
@@ -1486,9 +1484,9 @@ body.ux-course #lesson-content .badge-red { background: #e1e8f5; color: #455f8b;
 body.ux-course .explanation-note,
 body.ux-course #lesson-content .callout {
   background: #eef4fb;
-  border-left-color: #c6d7e7;
+  
   color: #4a6076;
-}
+ box-shadow:var(--ux-beginner-shadow); }
 body.ux-course .explanation-note strong { color: #365b79; }
 body.ux-course .course-note, body.ux-course #exam-note,
 body.ux-course #lesson-content .week08-exam-note {
@@ -1537,7 +1535,7 @@ body.ux-course button.term-trigger {
   max-width: 100%;
   height: auto;
   border: 0;
-  border-bottom: 1px dotted #86a5bd;
+  
   border-radius: 2px;
   background: transparent;
   box-shadow: none;
@@ -1556,7 +1554,7 @@ body.ux-course button.term-trigger:hover,
 body.ux-course button.term-trigger[aria-expanded="true"] {
   color: #254e71;
   background: #eef4fb;
-  border-bottom-style: solid;
+  
   transform: none;
 }
 body.ux-course button.term-trigger:focus-visible { outline: 2px solid #6a91b0; outline-offset: 3px; }
@@ -1662,7 +1660,7 @@ body.ux-course.sidebar-open #back-to-top.round-top { visibility: hidden; }
 }
 @media print {
   body.ux-course #back-to-top.round-top, body.ux-course #term-tooltip { display: none !important; }
-  body.ux-course button.term-trigger { color: inherit; border-bottom: 0; padding: 0; }
+  body.ux-course button.term-trigger { color: inherit;  padding: 0; }
   body.ux-course #lesson-content .container > .card { box-shadow: none; }
 }
 
@@ -1866,7 +1864,7 @@ body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .te
 body.ux-course[data-page="week12"] #lesson-content :is(.front-tag,.back-tag) .term-trigger[aria-expanded="true"] {
   color: #fff;
   background: transparent;
-  border-bottom-color: #dfefff;
+  
   font-size: inherit;
   font-weight: inherit;
 }
