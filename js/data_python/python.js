@@ -1,632 +1,107 @@
+/* Python Learning Center: example playback + real practice in classroom tools. */
 (function () {
-    'use strict';
-    const translations = window.pythonTranslations;
-    const lessons = window.pythonLessons;
-    const byId = id => document.getElementById(id);
-    const elements = {
-        brandTitle: byId('brand-title'), brandSubtitle: byId('brand-subtitle'),
-        mobileMenuTitle: byId('mobile-menu-title'), statusBadge: byId('py-status'),
-        statusText: byId('status-text'), navBar: byId('nav-bar'), mobileNav: byId('mobile-nav'),
-        theoryView: byId('theory-view'), codeInput: byId('python-code'),
-        consoleOutput: byId('console-output'), runButton: byId('run-btn'),
-        errorDetails: byId('python-error-details'), errorText: byId('python-error-text'),
-        stopButton: byId('stop-btn'), resetButton: byId('reset-btn'), retryButton: byId('retry-btn'),
-        stdinPanel: byId('python-input-panel'), stdinLabel: byId('stdin-label'),
-        stdinHelp: byId('stdin-help'), stdinInput: byId('python-stdin'),
-        answerButton: byId('answer-btn'), answerDisplay: byId('ans-display'),
-        answerTitle: byId('answerTitle'), answerText: byId('ans-text'),
-        menu: byId('mobile-menu'), menuButton: byId('hamburger-btn'),
-        menuClose: byId('mobile-menu-close'), backdrop: byId('mobile-backdrop')
-    };
-
-    // Keep the existing draft keys so previously written student work is retained.
-    const draftPrefix = 'ai-bridge-python-draft-v1-';
-    const memoryDrafts = new Map();
-    // Input values stay in memory only, never in localStorage or a network request.
-    const inputDrafts = new Map();
-    const EXECUTION_LIMIT_MS = 10000;
-    const LOAD_LIMIT_MS = 90000;
-    // Keep stored lesson indices stable, while following the attached teaching order.
-    const studyOrder = [0, 1, 2, 3, 15, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-    const weekStarts = [[1, 0], [2, 1], [3, 2], [4, 5], [5, 8], [6, 12], [7, 16], [9, 19], [10, 20], [11, 21], [12, 22]];
-    let currentLang = 'ko';
-    let currentLessonIndex = null;
-    let pythonWorker = null;
-    let workerGeneration = 0;
-    let nextRunId = 0;
-    let pendingRun = null;
-    let runtimeState = 'loading';
-    let runtimeIssue = '';
-    let bootTimer = null;
-    let toastTimer = null;
-    let menuWasOpen = false;
-    let menuReturnFocus = null;
-
-    function getTextSet() { return translations[currentLang] || translations.ko; }
-    function lessonText(lesson, key) {
-        const values = lesson && lesson[key];
-        return values && (values[currentLang] ?? values.ko) || '';
-    }
-    function safeRead(key) {
-        try { return localStorage.getItem(key); } catch (_) { return null; }
-    }
-    function safeWrite(key, value) {
-        try { localStorage.setItem(key, String(value)); } catch (_) { /* Memory remains usable. */ }
-    }
-    function readDraft(index) {
-        if (memoryDrafts.has(index)) return memoryDrafts.get(index);
-        const value = safeRead(draftPrefix + index);
-        if (value !== null) memoryDrafts.set(index, value);
-        return value;
-    }
-    function saveDraft() {
-        if (currentLessonIndex === null) return;
-        memoryDrafts.set(currentLessonIndex, elements.codeInput.value);
-        safeWrite(draftPrefix + currentLessonIndex, elements.codeInput.value);
-    }
-    function saveEditedCode() {
-        if (currentLessonIndex === null) return;
-        if (readDraft(currentLessonIndex) !== null ||
-            elements.codeInput.value !== lessonText(lessons[currentLessonIndex], 'initialCode')) saveDraft();
-    }
-    function clearDraft(index) {
-        // A tombstone also protects reset if persistent storage rejects removal.
-        memoryDrafts.set(index, null);
-        try { localStorage.removeItem(draftPrefix + index); } catch (_) { /* Memory is already reset. */ }
-    }
-    function rememberInput() {
-        if (currentLessonIndex === null) return;
-        const sample = lessonText(lessons[currentLessonIndex], 'sampleInput');
-        if (inputDrafts.has(currentLessonIndex) || elements.stdinInput.value !== sample) {
-            inputDrafts.set(currentLessonIndex, elements.stdinInput.value);
-        }
-    }
-
-    const mobileMenuController = window.initMobileMenu({
-        button: elements.menuButton, menu: elements.menu,
-        backdrop: elements.backdrop, breakpoint: 768
-    });
-    function syncMenu() {
-        const open = elements.menu.classList.contains('open');
-        elements.menu.inert = !open;
-        elements.menu.setAttribute('aria-hidden', String(!open));
-        elements.menu.setAttribute('aria-modal', String(open));
-        elements.menuButton.setAttribute('aria-expanded', String(open));
-        if (open && !menuWasOpen) {
-            menuReturnFocus = document.activeElement;
-            elements.menuClose.focus();
-        } else if (!open && menuWasOpen) {
-            const target = menuReturnFocus && menuReturnFocus.isConnected ? menuReturnFocus : elements.menuButton;
-            if (window.innerWidth <= 768) target.focus();
-            else {
-                const current = elements.navBar.querySelector('[aria-current="step"]');
-                if (current) current.focus();
-            }
-        }
-        menuWasOpen = open;
-    }
-    function closeMenu() {
-        mobileMenuController.closeMenu();
-        syncMenu();
-    }
-
-    // Keep expected output as a small, collapsed reference beside the original console.
-    const expectedPanel = document.createElement('details');
-    expectedPanel.className = 'python-expected';
-    expectedPanel.id = 'python-expected';
-    const expectedSummary = document.createElement('summary');
-    const expectedHelp = document.createElement('p');
-    const expectedOutput = document.createElement('pre');
-    expectedPanel.append(expectedSummary, expectedHelp, expectedOutput);
-    byId('result-panel').insertAdjacentElement('afterend', expectedPanel);
-
-    function updateRuntimeLabel() {
-        const text = getTextSet();
-        elements.statusText.textContent = runtimeIssue === 'file' ? text.fileMode :
-            runtimeState === 'ready' ? text.ready : runtimeState === 'running' ? text.running :
-            runtimeState === 'error' ? text.loadFailed : text.loading;
-    }
-    function setRuntimeState(state) {
-        runtimeState = state;
-        elements.statusBadge.classList.remove('ready', 'loading', 'running', 'error');
-        elements.statusBadge.classList.add(state === 'running' ? 'loading' : state);
-        updateRuntimeLabel();
-        elements.runButton.disabled = state !== 'ready' || pendingRun !== null;
-        elements.stopButton.disabled = pendingRun === null;
-        elements.retryButton.hidden = state !== 'error' || runtimeIssue === 'file';
-        elements.consoleOutput.setAttribute('aria-busy', String(pendingRun !== null));
-        document.querySelectorAll('.use-test-input').forEach(button => { button.disabled = pendingRun !== null; });
-        byId('starter-input-btn').disabled = pendingRun !== null;
-    }
-    function setConsole(text, kind) {
-        elements.consoleOutput.textContent = text;
-        elements.consoleOutput.dataset.hasRun = kind === 'default' ? 'false' : 'true';
-        elements.consoleOutput.dataset.state = kind;
-        elements.errorDetails.hidden = true;
-        elements.errorDetails.open = false;
-        elements.errorText.textContent = '';
-    }
-    function terminateWorker() {
-        clearTimeout(bootTimer);
-        bootTimer = null;
-        if (pythonWorker) pythonWorker.terminate();
-        pythonWorker = null;
-        workerGeneration += 1;
-    }
-    function createWorker() {
-        terminateWorker();
-        if (window.location.protocol === 'file:') {
-            runtimeIssue = 'file';
-            setRuntimeState('error');
-            setConsole(getTextSet().fileHint, 'unavailable');
-            return;
-        }
-        runtimeIssue = '';
-        if (elements.consoleOutput.dataset.state === 'unavailable') setConsole(getTextSet().consoleDefault, 'default');
-        setRuntimeState('loading');
-        const generation = workerGeneration;
-        try { pythonWorker = new Worker('./js/data_python/worker.js?v=20261117-slides3'); }
-        catch (error) { onWorkerFailure(error.message, generation); return; }
-        bootTimer = setTimeout(() => onWorkerFailure('Engine load timeout', generation), LOAD_LIMIT_MS);
-        pythonWorker.onmessage = event => {
-            if (generation !== workerGeneration) return;
-            const message = event.data || {};
-            if (message.type === 'READY') {
-                clearTimeout(bootTimer);
-                setRuntimeState('ready');
-            } else if (message.type === 'LOAD_ERROR') onWorkerFailure(message.error, generation);
-            else if (message.type === 'RESULT') onWorkerResult(message);
-        };
-        pythonWorker.onerror = event => {
-            if (event.preventDefault) event.preventDefault();
-            onWorkerFailure(event.message || 'Worker failed', generation);
-        };
-    }
-    function onWorkerFailure(reason, generation) {
-        if (generation !== workerGeneration) return;
-        console.error('Python worker failure:', reason);
-        if (pendingRun) clearTimeout(pendingRun.timeout);
-        pendingRun = null;
-        terminateWorker();
-        runtimeIssue = 'load';
-        setRuntimeState('error');
-        setConsole(getTextSet().loadHint, 'unavailable');
-    }
-    function describePythonError(error) {
-        const text = getTextSet();
-        const lines = String(error).split('\n').map(line => line.trimEnd()).filter(Boolean);
-        const summary = lines.slice().reverse().find(line => /^[A-Za-z_][\w.]*(?:Error|Interrupt|Exit)(?::|$)/.test(line)) ||
-            lines[lines.length - 1] || text.errorLabel;
-        const type = summary.split(':', 1)[0];
-        const hint = text.errorHints[type] || text.errorHints.default;
-        return text.errorLabel + ': ' + summary + '\n' + hint;
-    }
-    function onWorkerResult(message) {
-        if (!pendingRun || pendingRun.id !== message.id || pendingRun.lesson !== currentLessonIndex) return;
-        clearTimeout(pendingRun.timeout);
-        pendingRun = null;
-        const text = getTextSet();
-        const error = message.error || '';
-        if (error.includes('INPUT_VALUES_EXHAUSTED')) {
-            setConsole((message.output ? message.output + '\n' : '') + text.stdinMissing, 'error');
-        } else if (error.includes('OUTPUT_LIMIT_EXCEEDED')) setConsole(text.outputLimit, 'error');
-        else if (error) setConsole((message.output ? message.output + '\n' : '') + describePythonError(error), 'error');
-        else {
-            setConsole(message.output || text.finishedNoOutput, 'success');
-            showToast(text.runComplete);
-        }
-        if (error) {
-            elements.errorText.textContent = String(error);
-            elements.errorDetails.hidden = false;
-        }
-        setRuntimeState('ready');
-    }
-    function cancelPendingRun(showMessage) {
-        if (!pendingRun) return;
-        clearTimeout(pendingRun.timeout);
-        pendingRun = null;
-        createWorker(); // New generation ignores all replies from the previous lesson/run.
-        if (showMessage) setConsole(getTextSet().stoppedMessage, 'stopped');
-    }
-    function refreshInputPanel() {
-        const lesson = lessons[currentLessonIndex];
-        const text = getTextSet();
-        const hasInput = /\binput\s*\(/.test(elements.codeInput.value);
-        const taskNeedsInput = lesson && (lesson.needsInput || /\binput\s*\(/.test(lessonText(lesson, 'answer')));
-        elements.stdinPanel.hidden = !(hasInput || taskNeedsInput);
-        elements.stdinPanel.classList.toggle('input-needed', hasInput);
-        elements.stdinPanel.dataset.inputMode = hasInput ? 'current-code' : 'mission-only';
-        byId('input-step-guide').textContent = hasInput ? text.inputSteps : text.inputLater;
-        elements.stdinHelp.textContent = hasInput ? text.stdinHelp : text.stdinLaterHelp;
-        elements.runButton.textContent = hasInput ? text.runWithInput : text.runButton;
-        byId('starter-input-btn').hidden = !hasInput || !lessonText(lesson, 'sampleInput');
-    }
-    function runPython() {
-        if (runtimeState !== 'ready' || pendingRun || !pythonWorker || currentLessonIndex === null) return;
-        saveEditedCode();
-        rememberInput();
-        const code = elements.codeInput.value;
-        const inputs = elements.stdinInput.value === '' ? [] :
-            elements.stdinInput.value.replace(/\r\n/g, '\n').split('\n');
-        const id = ++nextRunId;
-        pendingRun = { id, lesson: currentLessonIndex, timeout: null };
-        setConsole(getTextSet().running, 'running');
-        setRuntimeState('running');
-        pendingRun.timeout = setTimeout(() => {
-            if (!pendingRun || pendingRun.id !== id) return;
-            pendingRun = null;
-            createWorker(); // Termination interrupts even an infinite Python loop.
-            setConsole(getTextSet().runtimeTimeout, 'timeout');
-        }, EXECUTION_LIMIT_MS);
-        try { pythonWorker.postMessage({ type: 'RUN', id, code, inputs }); }
-        catch (error) { onWorkerFailure(error.message, workerGeneration); }
-    }
-
-    function updateProgress() {
-        const position = currentLessonIndex === null ? 0 : studyOrder.indexOf(currentLessonIndex) + 1;
-        byId('progress-bar').style.width = (position / lessons.length * 100) + '%';
-        document.querySelectorAll('[data-course-text="progressLabel"]').forEach(node => {
-            node.textContent = getTextSet().progressLabel + ' ' + position + ' / ' + lessons.length;
-        });
-    }
-    function updateLanguageButtons() {
-        document.querySelectorAll('.lang-btn').forEach(button => {
-            const active = button.dataset.lang === currentLang;
-            button.classList.toggle('active', active);
-            button.setAttribute('aria-pressed', String(active));
-        });
-    }
-    function updateStaticTexts() {
-        const text = getTextSet();
-        const named = {
-            brandTitle: 'brandTitle', brandSubtitle: 'brandSubtitle', mobileMenuTitle: 'menuTitle',
-            runButton: 'runButton', stopButton: 'stopButton', resetButton: 'resetButton',
-            retryButton: 'retryButton', stdinLabel: 'stdinLabel', stdinHelp: 'stdinHelp',
-            answerButton: 'answerButton', answerTitle: 'answerTitle'
-        };
-        Object.entries(named).forEach(([element, key]) => { elements[element].textContent = text[key]; });
-        document.querySelectorAll('[data-course-text]').forEach(node => {
-            const value = text[node.dataset.courseText];
-            if (value !== undefined) node.textContent = value;
-        });
-        document.querySelectorAll('[data-course-aria]').forEach(node => {
-            const value = text[node.dataset.courseAria];
-            if (value !== undefined) node.setAttribute('aria-label', value);
-        });
-        elements.menuButton.setAttribute('aria-label', text.openMenu);
-        elements.menu.setAttribute('aria-label', text.menuTitle);
-        elements.navBar.setAttribute('aria-label', text.menuTitle);
-        elements.mobileNav.setAttribute('aria-label', text.menuTitle);
-        elements.codeInput.setAttribute('aria-label', text.codeEditorLabel);
-        document.querySelectorAll('.lang-container, .mobile-lang-container').forEach(node => node.setAttribute('aria-label', text.languageLabel));
-        document.querySelectorAll('.study-steps').forEach(node => node.setAttribute('aria-label', text.stepsLabel));
-        elements.stdinInput.placeholder = text.stdinPlaceholder.replace(/\\n/g, '\n');
-        elements.codeInput.placeholder = text.textareaPlaceholder;
-        const fileGuide = byId('python-file-guide');
-        if (fileGuide) fileGuide.hidden = window.location.protocol !== 'file:';
-        expectedSummary.textContent = text.expectedTitle;
-        expectedHelp.textContent = text.expectedHint;
-        updateRuntimeLabel();
-        if (runtimeState === 'error') setConsole(runtimeIssue === 'file' ? text.fileHint : text.loadHint, 'unavailable');
-        else if (elements.consoleOutput.dataset.hasRun !== 'true') setConsole(text.consoleDefault, 'default');
-        updateProgress();
-    }
-    function showToast(message) {
-        const toast = byId('toast');
-        clearTimeout(toastTimer);
-        toast.textContent = message;
-        toast.classList.add('show');
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-    function renderNavigation() {
-        elements.navBar.innerHTML = '';
-        elements.mobileNav.innerHTML = '';
-        studyOrder.forEach(index => {
-            const lesson = lessons[index];
-            [elements.navBar, elements.mobileNav].forEach(nav => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'nav-btn';
-                button.dataset.lessonId = lesson.id;
-                button.textContent = lessonText(lesson, 'menu');
-                if (currentLessonIndex === index) {
-                    button.classList.add('active');
-                    button.setAttribute('aria-current', 'step');
-                }
-                button.addEventListener('click', () => {
-                    selectLesson(index);
-                    closeMenu();
-                    focusSection(byId('lesson-title'));
-                });
-                nav.appendChild(button);
-            });
-        });
-    }
-    function resetConsole() {
-        if (runtimeState === 'error') setConsole(runtimeIssue === 'file' ? getTextSet().fileHint : getTextSet().loadHint, 'unavailable');
-        else setConsole(getTextSet().consoleDefault, 'default');
-    }
-    function focusSection(target) {
-        if (!target) return;
-        if (!target.matches('button, a[href], input, textarea, select')) target.setAttribute('tabindex', '-1');
-        if (typeof target.scrollIntoView === 'function') target.scrollIntoView({ block: 'start', behavior: 'auto' });
-        target.focus({ preventScroll: true });
-    }
-    function lessonButton(label, index) {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'lesson-link';
-        button.textContent = label;
-        button.addEventListener('click', () => {
-            selectLesson(index);
-            focusSection(byId('lesson-title'));
-        });
-        return button;
-    }
-    function renderWeekNavigation(lesson) {
-        const text = getTextSet();
-        const nav = document.createElement('nav');
-        nav.className = 'course-weeks';
-        nav.setAttribute('aria-label', text.weekNavigation);
-        const label = document.createElement('p');
-        label.textContent = text.weekNavigation;
-        nav.appendChild(label);
-        weekStarts.forEach(([week, index]) => {
-            const button = lessonButton(text['week' + week], index);
-            button.dataset.week = String(week);
-            if (lesson.sourceWeek === week) button.setAttribute('aria-current', 'true');
-            nav.appendChild(button);
-        });
-        elements.theoryView.appendChild(nav);
-        const note = document.createElement('p');
-        note.className = 'week-note';
-        note.textContent = lesson.sourceWeek ? text['week' + lesson.sourceWeek] + ' · ' + text.lessonNumberNote :
-            (currentLessonIndex >= 23 ? text.furtherStudy : text.foundationStudy);
-        elements.theoryView.appendChild(note);
-    }
-    function renderTheoryTools() {
-        const text = getTextSet();
-        const tools = document.createElement('nav');
-        tools.className = 'lesson-tools';
-        tools.setAttribute('aria-label', text.lessonNavigation);
-        const mission = elements.theoryView.querySelector('.problem-area');
-        if (mission) {
-            mission.id = 'lesson-mission';
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'lesson-link';
-            button.textContent = text.jumpMission;
-            button.addEventListener('click', () => focusSection(mission));
-            tools.appendChild(button);
-        }
-        const practiceButton = document.createElement('button');
-        practiceButton.type = 'button';
-        practiceButton.className = 'lesson-link';
-        practiceButton.textContent = text.jumpEditor;
-        practiceButton.addEventListener('click', () => focusSection(elements.codeInput));
-        tools.appendChild(practiceButton);
-        byId('lesson-title').insertAdjacentElement('afterend', tools);
-
-        const headings = [...elements.theoryView.querySelectorAll('.lesson-section h3')];
-        if (headings.length < 2) return;
-        const toc = document.createElement('details');
-        toc.className = 'lesson-toc';
-        const summary = document.createElement('summary');
-        summary.textContent = text.theoryContents;
-        const list = document.createElement('ol');
-        headings.forEach((heading, index) => {
-            heading.id = lessons[currentLessonIndex].id + '-section-' + (index + 1);
-            const item = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = '#' + heading.id;
-            link.textContent = heading.textContent;
-            link.addEventListener('click', event => { event.preventDefault(); focusSection(heading); });
-            item.appendChild(link);
-            list.appendChild(item);
-        });
-        toc.append(summary, list);
-        tools.insertAdjacentElement('afterend', toc);
-    }
-    function renderPracticeTests(lesson) {
-        const tests = lesson.practiceTests || [];
-        if (!tests.length) return;
-        const text = getTextSet();
-        const section = document.createElement('section');
-        section.className = 'practice-checks';
-        section.id = 'practice-checks';
-        const heading = document.createElement('h3');
-        heading.textContent = text.practiceTestsTitle;
-        const help = document.createElement('p');
-        help.textContent = text.practiceTestsHint;
-        section.append(heading, help);
-        tests.forEach((test, index) => {
-            const details = document.createElement('details');
-            details.className = 'practice-case';
-            details.open = index === 0;
-            const summary = document.createElement('summary');
-            summary.textContent = (index + 1) + '. ' + lessonText(test, 'name');
-            details.appendChild(summary);
-            const inputValue = lessonText(test, 'input');
-            const inputLabel = document.createElement('p');
-            inputLabel.className = 'practice-case-label';
-            inputLabel.textContent = inputValue === '' ? text.noPracticeInput : text.practiceInputLabel;
-            details.appendChild(inputLabel);
-            if (inputValue !== '') {
-                const inputPre = document.createElement('pre');
-                inputPre.textContent = inputValue;
-                const use = document.createElement('button');
-                use.type = 'button';
-                use.className = 'lesson-link use-test-input';
-                use.dataset.testIndex = String(index);
-                use.textContent = text.usePracticeInput;
-                use.addEventListener('click', () => {
-                    if (pendingRun) return;
-                    elements.stdinInput.value = inputValue;
-                    inputDrafts.set(currentLessonIndex, inputValue);
-                    refreshInputPanel();
-                    showToast(getTextSet().practiceInputLoaded);
-                    focusSection(elements.stdinInput);
-                });
-                details.append(inputPre, use);
-            }
-            const outputLabel = document.createElement('p');
-            outputLabel.className = 'practice-case-label';
-            outputLabel.textContent = text.practiceOutputLabel;
-            const output = document.createElement('pre');
-            output.className = 'practice-expected-output';
-            output.textContent = lessonText(test, 'output') || text.expectedEmpty;
-            details.append(outputLabel, output);
-            section.appendChild(details);
-        });
-        elements.theoryView.appendChild(section);
-    }
-    function renderStudyNavigation() {
-        const text = getTextSet();
-        const nav = document.createElement('nav');
-        nav.className = 'study-navigation';
-        nav.setAttribute('aria-label', text.studyNavigation);
-        const position = studyOrder.indexOf(currentLessonIndex);
-        const previous = studyOrder[position - 1];
-        const next = studyOrder[position + 1];
-        if (previous !== undefined) nav.appendChild(lessonButton(text.previousLesson + ' · ' + lessonText(lessons[previous], 'menu'), previous));
-        if (next !== undefined) nav.appendChild(lessonButton(text.nextLesson + ' · ' + lessonText(lessons[next], 'menu'), next));
-        elements.theoryView.appendChild(nav);
-    }
-    function selectLesson(index, options = {}) {
-        if (!Number.isInteger(index) || index < 0 || index >= lessons.length) index = 0;
-        if (!options.skipRemember) { saveEditedCode(); rememberInput(); }
-        cancelPendingRun(false);
-        currentLessonIndex = index;
-        const lesson = lessons[index];
-        safeWrite('python-progress', index);
-        renderNavigation();
-        // Trusted course HTML is separate from student code, which remains plain text.
-        elements.theoryView.innerHTML = '';
-        renderWeekNavigation(lesson);
-        const title = document.createElement('h2');
-        title.id = 'lesson-title';
-        title.textContent = lessonText(lesson, 'title');
-        elements.theoryView.appendChild(title);
-        elements.theoryView.insertAdjacentHTML('beforeend', lessonText(lesson, 'theory'));
-        renderTheoryTools();
-        renderPracticeTests(lesson);
-        renderStudyNavigation();
-        const draft = readDraft(index);
-        elements.codeInput.value = draft !== null ? draft : lessonText(lesson, 'initialCode');
-        byId('python-draft-note').hidden = draft === null || draft === lessonText(lesson, 'initialCode');
-        elements.stdinInput.value = inputDrafts.has(index) ? inputDrafts.get(index) : lessonText(lesson, 'sampleInput');
-        expectedOutput.textContent = lessonText(lesson, 'expectedOutput') || getTextSet().expectedEmpty;
-        expectedPanel.open = false;
-        resetConsole();
-        refreshInputPanel();
-        elements.answerDisplay.style.display = 'none';
-        elements.answerButton.setAttribute('aria-expanded', 'false');
-        elements.answerText.textContent = lessonText(lesson, 'answer');
-        const answerHelp = byId('answer-help');
-        if (answerHelp) answerHelp.textContent = getTextSet().answerHelp;
-        document.title = lessonText(lesson, 'title') + ' · Python';
-        updateProgress();
-    }
-    function setLanguage(lang) {
-        if (!translations[lang] || lang === currentLang) return;
-        saveEditedCode();
-        rememberInput();
-        cancelPendingRun(false);
-        currentLang = lang;
-        safeWrite('python-language', lang);
-        document.documentElement.lang = getTextSet().htmlLang || lang;
-        updateLanguageButtons();
-        updateStaticTexts();
-        selectLesson(currentLessonIndex ?? 0, { skipRemember: true });
-        syncMenu();
-    }
-    function resetExample() {
-        if (currentLessonIndex === null || !window.confirm(getTextSet().resetConfirm)) return;
-        // An explicit reset restores both the example and the Python interpreter.
-        // Invalidate an in-flight run before creating exactly one replacement worker.
-        if (pendingRun) clearTimeout(pendingRun.timeout);
-        pendingRun = null;
-        clearDraft(currentLessonIndex);
-        inputDrafts.delete(currentLessonIndex);
-        selectLesson(currentLessonIndex, { skipRemember: true });
-        createWorker();
-        showToast(getTextSet().resetDone);
-    }
-    function toggleAnswer() {
-        const show = elements.answerDisplay.style.display !== 'block';
-        elements.answerDisplay.style.display = show ? 'block' : 'none';
-        elements.answerButton.setAttribute('aria-expanded', String(show));
-    }
-    function indentCode(event) {
-        if ((!event.ctrlKey && !event.metaKey) || event.altKey || (event.key !== ']' && event.key !== '[')) return;
-        event.preventDefault();
-        const value = elements.codeInput.value;
-        const start = elements.codeInput.selectionStart;
-        const end = elements.codeInput.selectionEnd;
-        const first = value.lastIndexOf('\n', start - 1) + 1;
-        const lastSelected = end > start && value[end - 1] === '\n' ? end - 1 : end;
-        const nextBreak = value.indexOf('\n', lastSelected);
-        const last = nextBreak < 0 ? value.length : nextBreak;
-        const lines = value.slice(first, last).split('\n');
-        const deltas = [];
-        const changed = lines.map(line => {
-            const updated = event.key === ']' ? '    ' + line : line.replace(/^( {1,4}|\t)/, '');
-            deltas.push(updated.length - line.length);
-            return updated;
-        }).join('\n');
-        const totalDelta = deltas.reduce((sum, value) => sum + value, 0);
-        elements.codeInput.value = value.slice(0, first) + changed + value.slice(last);
-        const newStart = Math.max(first, start + deltas[0]);
-        elements.codeInput.setSelectionRange(newStart, start === end ? newStart : Math.max(newStart, end + totalDelta));
-        saveDraft();
-        refreshInputPanel();
-    }
-
-    document.querySelectorAll('.lang-btn').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
-    elements.runButton.addEventListener('click', runPython);
-    elements.stopButton.addEventListener('click', () => cancelPendingRun(true));
-    elements.retryButton.addEventListener('click', () => { resetConsole(); createWorker(); });
-    elements.resetButton.addEventListener('click', resetExample);
-    elements.answerButton.addEventListener('click', toggleAnswer);
-    byId('starter-input-btn').addEventListener('click', () => {
-        if (pendingRun || currentLessonIndex === null) return;
-        const sample = lessonText(lessons[currentLessonIndex], 'sampleInput');
-        elements.stdinInput.value = sample;
-        inputDrafts.set(currentLessonIndex, sample);
-        showToast(getTextSet().starterInputLoaded);
-        focusSection(elements.stdinInput);
-    });
-    elements.codeInput.addEventListener('input', () => { saveDraft(); refreshInputPanel(); });
-    elements.codeInput.addEventListener('keydown', indentCode);
-    elements.stdinInput.addEventListener('input', () => {
-        if (currentLessonIndex !== null) inputDrafts.set(currentLessonIndex, elements.stdinInput.value);
-    });
-    elements.menu.setAttribute('role', 'dialog');
-    elements.menuButton.addEventListener('click', syncMenu);
-    elements.backdrop.addEventListener('click', syncMenu);
-    elements.menuClose.addEventListener('click', closeMenu);
-    window.addEventListener('resize', syncMenu);
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeMenu();
-        if (event.key !== 'Tab' || !elements.menu.classList.contains('open')) return;
-        const focusable = Array.from(elements.menu.querySelectorAll('button:not(:disabled), a[href], input, textarea, select, [tabindex="0"]'));
-        if (!focusable.length) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && (document.activeElement === first || !elements.menu.contains(document.activeElement))) {
-            event.preventDefault(); last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-            event.preventDefault(); first.focus();
-        }
-    });
-
-    const savedLang = safeRead('python-language');
-    if (savedLang && translations[savedLang]) currentLang = savedLang;
-    document.documentElement.lang = getTextSet().htmlLang || currentLang;
-    updateLanguageButtons();
-    updateStaticTexts();
-    const savedIndex = safeRead('python-progress');
-    selectLesson(savedIndex !== null ? Number(savedIndex) : 0);
-    syncMenu();
-    createWorker();
+'use strict';
+const lessons = window.pythonLessons || [];
+const examples = window.pythonExampleMap || {};
+const practiceTranscripts = window.pythonPracticeTranscripts || {};
+const dictionary = window.pythonUI;
+const order = [0,1,2,3,15,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25];
+const $ = id => document.getElementById(id);
+const safeStore = {get(key){try{return localStorage.getItem(key);}catch{return null;}},set(key,value){try{localStorage.setItem(key,value);}catch{}}};
+const params = new URLSearchParams(location.search);
+let lang = ['ko','en','ru'].includes(params.get('lang')) ? params.get('lang') : (['ko','en','ru'].includes(safeStore.get('python-language')) ? safeStore.get('python-language') : 'ko');
+let currentIndex = Math.max(0,lessons.findIndex(l => l.id === params.get('lesson')));
+let tool = ['colab','idle','vscode'].includes(safeStore.get('python-practice-tool')) ? safeStore.get('python-practice-tool') : 'colab';
+let activePlayback = null, observer = null, toastTimer = null, renderGeneration = 0;
+const controllers = new Map();
+const reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+const paths = {
+stop:'<rect x="5" y="5" width="14" height="14" rx="2"/>',code:'<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/>',moon:'<path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',book:'<path d="M12 6c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v15"/>',play:'<path d="m8 4 12 8-12 8Z"/>',laptop:'<rect x="4" y="3" width="16" height="13" rx="2"/><path d="m4 16-2 5h20l-2-5M9 18h6"/>','arrow-right':'<path d="M4 12h16m-6-6 6 6-6 6"/>','arrow-left':'<path d="M20 12H4m6-6-6 6 6 6"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.2"/>',list:'<path d="M8 5h13M8 12h13M8 19h13M3 5h.1M3 12h.1M3 19h.1"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',copy:'<rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',bulb:'<path d="M8 17c0-2-3-3-3-7a7 7 0 0 1 14 0c0 4-3 5-3 7Zm0 0h8m-7 4h6"/>','check-circle':'<circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/>',x:'<path d="m6 6 12 12M6 18 18 6"/>',search:'<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',file:'<path d="M14 2H5v20h14V7Zm0 0v5h5"/><path d="m9 11-2 3 2 3m5-6 2 3-2 3"/>',terminal:'<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m6 8 4 4-4 4m7 0h5"/>',keyboard:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.1M10 9h.1M14 9h.1M18 9h.1M6 12h.1M10 12h.1M14 12h.1M18 12h.1M7 16h10"/>',external:'<path d="M14 3h7v7m0-7L10 14M10 3H3v18h18v-7"/>',eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',refresh:'<path d="M20 7V2l-4 4A8 8 0 1 0 20 16M20 7h-5"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>'};
+function icon(name){return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+(paths[name]||paths.info)+'</svg>';}
+function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(el=>{el.innerHTML=icon(el.dataset.icon);el.setAttribute('aria-hidden','true');});}
+function t(key){return dictionary[lang][key] || dictionary.ko[key] || key;}
+function local(value){return typeof value==='string'?value:(value?.[lang]??value?.ko??'');}
+function esc(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function button(label,iconName,handler,className=''){const b=document.createElement('button');b.type='button';b.className=className;b.innerHTML=icon(iconName)+'<span>'+esc(label)+'</span>';b.addEventListener('click',handler);return b;}
+function toast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').classList.add('visible');toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),4500);}
+async function copyText(text){let timeout;try{if(!navigator.clipboard?.writeText)throw new Error('clipboard unavailable');await Promise.race([navigator.clipboard.writeText(text),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error('clipboard timeout')),1800);})]);toast(t('copied'));}catch{$('copy-fallback').value=text;if(!$('copy-dialog').open)$('copy-dialog').showModal();$('copy-fallback').focus();$('copy-fallback').select();}finally{clearTimeout(timeout);}}
+function download(name,text,type='text/plain;charset=utf-8'){const a=document.createElement('a');const url=URL.createObjectURL(new Blob([text],{type}));a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);toast(t('downloaded'));}
+function starter(){return local(lessons[currentIndex].missionStarter)||local(lessons[currentIndex].initialCode);}
+function filename(kind='practice'){return lessons[currentIndex].id+'-'+lang+'-'+kind+'.py';}
+function syntax(code){const re=/(#[^\n]*|(?:[fFrRbBuU]{0,2})(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|\b(?:def|return|if|elif|else|for|while|in|and|or|not|try|except|import|from|as|break|continue|True|False|None)\b|\b(?:print|input|int|float|str|bool|len|range|sum|list|dict|ValueError)\b|\b\d+(?:\.\d+)?\b)/g;let out='',last=0;for(const match of code.matchAll(re)){out+=esc(code.slice(last,match.index));const s=match[0];const cls=s.startsWith('#')?'comment':/^(?:[fFrRbBuU]{0,2})["']/.test(s)?'string':/^\d/.test(s)?'number':/^(print|input|int|float|str|bool|len|range|sum|list|dict|ValueError)$/.test(s)?'builtin':'keyword';out+='<span class="token-'+cls+'">'+esc(s)+'</span>';last=match.index+s.length;}return out+esc(code.slice(last));}
+function showCode(view,text,fullText,typing=false){const visible=text.split('\n'),rows=fullText.split('\n');view.innerHTML=rows.map((_,i)=>'<span class="code-line"><span class="line-number">'+(i+1)+'</span><code class="source-content">'+syntax(visible[i]||'')+(typing&&i===visible.length-1?'<span class="typing-cursor"></span>':'')+'</code></span>').join('');}
+function showTranscript(view,segments,count=Infinity,typing=false){let left=count;view.replaceChildren();for(const segment of segments){if(left<=0)break;const part=segment.text.slice(0,left);left-=part.length;const span=document.createElement('span');span.className='transcript-'+segment.kind;span.textContent=part;view.append(span);}if(typing){const c=document.createElement('span');c.className='typing-cursor';view.append(c);}}
+function stopPlayback(){if(!activePlayback)return;activePlayback.cancelled=true;activePlayback.finish.forEach(fn=>fn());activePlayback=null;}
+function animateText(text,render,ms,token){return new Promise(resolve=>{if(reducedMotion.matches||!text){render(text.length,false);resolve();return;}let start=null;const duration=Math.max(160,Math.min(9000,text.length*ms));function frame(now){if(token.cancelled){resolve();return;}if(start===null)start=now;const n=Math.min(text.length,Math.floor((now-start)/duration*text.length));render(n,n<text.length);if(n<text.length)requestAnimationFrame(frame);else resolve();}requestAnimationFrame(frame);});}
+function startToken(){stopPlayback();const token={cancelled:false,finish:[]};activePlayback=token;return token;}
+function codeWindow(text,name,opts={}){const box=document.createElement('div');box.className='code-window';box.dataset.exampleKind='code';const sr=document.createElement('pre');sr.className='sr-only';sr.textContent=text;const top=document.createElement('div');top.className='editor-top';top.innerHTML='<div class="file-tab">'+icon('file')+'<span>'+esc(name)+'<small class="window-label">'+esc(opts.title||t('codeTitle'))+'</small></span></div>';
+const actions=document.createElement('div');actions.className='window-actions';const replay=button(t('playCode'),'play',()=>play());replay.title=t('typewriterNote');actions.append(replay,button(t('showAll'),'eye',()=>{stopPlayback();finish();}),button(t('copy'),'copy',()=>copyText(text)));top.append(actions);box.append(top);
+const scroll=document.createElement('div');scroll.className='code-scroll';scroll.tabIndex=0;scroll.setAttribute('role','region');scroll.setAttribute('aria-label',opts.title||t('codeTitle'));const view=document.createElement('pre');view.className='code-lines';view.setAttribute('aria-hidden','true');scroll.append(sr,view);box.append(scroll);const foot=document.createElement('div');foot.className='window-foot';foot.innerHTML='<span>'+esc(t('reading'))+'</span><span class="playing-label">'+esc(t('ready'))+'</span>';box.append(foot);const status=foot.lastElementChild;
+function finish(){showCode(view,text,text);status.textContent=t('ready');box.classList.remove('is-playing');}
+async function play(sharedToken){const token=sharedToken||startToken();token.finish.push(finish);status.textContent=t('playing');box.classList.add('is-playing');if(opts.outputs)opts.outputs.forEach(key=>controllers.get(key)?.prepare?.(token));await animateText(text,(n,typing)=>showCode(view,text.slice(0,n),text,typing),32,token);if(token.cancelled)return;finish();status.textContent=t('ended');if(opts.outputs){for(const key of opts.outputs){const next=controllers.get(key);if(next&&!token.cancelled)await next.play(token);}}if(!sharedToken&&activePlayback===token)activePlayback=null;}
+finish();return {element:box,play,finish,text};}
+function terminalWindow(segments,opts={}){const full=segments.map(s=>s.text).join('');const hasInput=segments.some(s=>s.kind==='input');const box=document.createElement('div');box.className='terminal-window';box.dataset.exampleKind=opts.inputOnly?'input':'output';const top=document.createElement('div');top.className='terminal-top';top.innerHTML='<div class="terminal-title">'+icon(opts.inputOnly?'keyboard':'terminal')+'<span>'+esc(opts.title||t('terminalTitle'))+'</span></div>';const actions=document.createElement('div');actions.className='window-actions';actions.append(button(t(opts.inputOnly?'playInput':'playOutput'),'play',()=>play()),button(t('showAll'),'eye',()=>{stopPlayback();finish();}));top.append(actions);box.append(top);
+const legend=document.createElement('div');legend.className='terminal-legend';legend.innerHTML=(opts.inputOnly?'':'<span>'+icon('terminal')+esc(t('outputLegend'))+'</span>')+(hasInput?'<span class="input-key">'+icon('keyboard')+esc(t('inputLegend'))+'</span>':'');box.append(legend);
+const sr=document.createElement('pre');sr.className='sr-only';sr.textContent=full;box.append(sr);const view=document.createElement('pre');view.className='terminal-body';view.setAttribute('aria-hidden','true');view.style.minHeight=(Math.max(2,full.split('\n').length)*1.9+2.5)+'em';box.append(view);
+const help=document.createElement('div');help.className='terminal-foot';help.textContent=opts.help||(hasInput?t('inputHelp'):t('plainHelp'));box.append(help);if(opts.following){const relation=document.createElement('div');relation.className='demo-relation';relation.innerHTML=icon('info')+'<span>'+esc(t('followingAnswer'))+'</span>';box.append(relation);}
+const foot=document.createElement('div');foot.className='window-foot';foot.innerHTML='<span>'+esc(t('exampleOnly'))+'</span><span class="playing-label">'+esc(t('ready'))+'</span>';box.append(foot);const status=foot.lastElementChild;
+function finish(){showTranscript(view,segments);status.textContent=t('ready');box.classList.remove('is-playing');}
+async function play(sharedToken){const token=sharedToken||startToken();token.finish.push(finish);status.textContent=t('playing');box.classList.add('is-playing');let previous=0;showTranscript(view,segments,0);for(const seg of segments){if(token.cancelled)break;const done=previous;await animateText(seg.text,(n,typing)=>showTranscript(view,segments,done+n,typing),seg.kind==='input'?65:3,token);previous+=seg.text.length;}if(token.cancelled)return;finish();status.textContent=t('ended');if(!sharedToken&&activePlayback===token)activePlayback=null;}
+function prepare(token){token.finish.push(finish);showTranscript(view,segments,0);status.textContent=t('awaitCode');}finish();return {element:box,play,finish,prepare,text:full};}
+function stripDecorativeEmoji(root){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);for(const node of nodes){if(node.parentElement?.closest('pre,code'))continue;node.textContent=node.textContent.replace(/[\p{Extended_Pictographic}\uFE0F\u200D\u2705]/gu,'');}}
+function renderExamples(lesson){const map=examples[lesson.id]?.[lang]||[];const blocks=Array.from($('theory-view').querySelectorAll('pre'));blocks.forEach((pre,index)=>{const data=map[index];if(!data)return;const text=pre.textContent;let ctrl;
+if(data.kind==='code'){ctrl=codeWindow(text,'example-'+String(index+1).padStart(2,'0')+'.py',{outputs:data.pairedOutputIndices});controllers.set(index,ctrl);pre.replaceWith(ctrl.element);if(data.demonstrationCases){let previous=ctrl.element;data.demonstrationCases.forEach((c,i)=>{const wrapper=document.createElement('div');wrapper.className='terminal-case';const label=document.createElement('p');label.textContent=c.label;const terminal=terminalWindow(c.transcriptSegments);const key='case-'+index+'-'+i;controllers.set(key,terminal);wrapper.append(label,terminal.element);previous.parentNode.insertBefore(wrapper,previous.nextSibling);previous=wrapper;});}}
+else if(data.kind==='output'){ctrl=terminalWindow(data.transcriptSegments||[{kind:'output',text}],{following:data.pairedDirection==='following'});controllers.set(index,ctrl);pre.replaceWith(ctrl.element);}
+else{ctrl=terminalWindow([{kind:'input',text}],{inputOnly:true,title:t('inputExample'),help:t('inputExampleHelp')});ctrl.element.classList.add('input-values-preview');controllers.set(index,ctrl);pre.replaceWith(ctrl.element);}
+});
+// Mark the original code source for paired-result controls, including answers inside details.
+controllers.forEach((ctrl,key)=>{ctrl.element.dataset.exampleIndex=String(key);});
+if('IntersectionObserver' in window&&!reducedMotion.matches){let autoPlayed=false;observer=new IntersectionObserver(entries=>{if(autoPlayed||activePlayback)return;const first=entries.find(e=>e.isIntersecting&&e.intersectionRatio>=.6&&!e.target.closest('details:not([open])'));if(first){autoPlayed=true;observer.disconnect();const key=first.target.dataset.exampleIndex;const ctrl=controllers.get(/^\d+$/.test(key)?Number(key):key);if(ctrl)ctrl.play();}},{threshold:.6});controllers.forEach((ctrl,key)=>{if(typeof key==='number'&&map[key]?.kind==='code')observer.observe(ctrl.element);});}}
+function styleInlineCode(){document.querySelectorAll('#theory-view code:not(pre code),#mission-content code:not(pre code)').forEach(code=>{code.classList.add('inline-python');code.innerHTML=syntax(code.textContent);});}
+function renderTools(){$('practice-file-help').textContent=t(tool+'FileHelp');document.querySelectorAll('[data-tool]').forEach(b=>{const selected=b.dataset.tool===tool;b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1;});$('tool-guide').setAttribute('aria-labelledby','tool-'+tool);const host=$('tool-guide');host.replaceChildren();const title=document.createElement('p');title.className='tool-guide-heading';title.innerHTML=icon(tool==='colab'?'code':'laptop')+esc(t(tool+'Title'));host.append(title);const steps=document.createElement('ol');steps.className='tool-steps';t(tool+'Steps').forEach(step=>{const li=document.createElement('li');li.innerHTML='<span>'+step+'</span>';steps.append(li);});host.append(steps);
+if(tool==='colab'){const a=document.createElement('a');a.href='https://colab.research.google.com/';a.target='_blank';a.rel='noopener noreferrer';a.className='button primary full';a.innerHTML=icon('external')+esc(t('colabOpen'))+' <span class="extension">'+esc(t('newTab'))+'</span>';host.append(a);const nb=button(t('notebook'),'download',downloadNotebook,'button secondary full');nb.style.marginTop='10px';host.append(nb);const help=document.createElement('p');help.className='small-copy';help.style.marginTop='10px';help.textContent=t('notebookHelp');host.append(help);}
+const note=document.createElement('p');note.className='tool-caution';note.textContent=t(tool+'Note');host.append(note);if(lessons[currentIndex].needsInput){const blank=document.createElement('p');blank.className='small-copy';blank.textContent=t('blankInput');host.append(blank);}const stopHelp=document.createElement('details');stopHelp.className='tool-stop';stopHelp.innerHTML='<summary>'+icon('stop')+' '+esc(t('stopTitle'))+'</summary><p class="small-copy">'+esc(t(tool+'Stop'))+'</p>';host.append(stopHelp);if(tool!=='colab'){const a=document.createElement('a');a.href=tool==='idle'?'https://docs.python.org/3/library/idle.html':'https://code.visualstudio.com/docs/python/run';a.target='_blank';a.rel='noopener noreferrer';a.className='tool-secondary';a.innerHTML=esc(t(tool+'Docs'))+icon('external');host.append(a);}}
+function missionText(){return $('mission-content').innerText||$('mission-content').textContent;}
+function notebookData(){const lesson=lessons[currentIndex];const cells=[{cell_type:'markdown',metadata:{},source:['# '+local(lesson.title)+'\n','\n'+t('notebookIntro')+'\n','\n## '+t('missionNotebook')+'\n',missionText()+'\n']},{cell_type:'code',execution_count:null,metadata:{},outputs:[],source:starter().split(/(?<=\n)/)}];let tests='## '+t('checksTitle')+'\n\n'+t('checksHelp')+'\n';(lesson.practiceTests||[]).forEach(test=>{tests+='\n### '+local(test.name)+'\n\n'+t('inputs')+'\n\n```text\n'+(local(test.input)||t('noInputs'))+'\n```\n\n'+t('expected')+'\n\n```text\n'+local(test.output)+'\n```\n';});cells.push({cell_type:'markdown',metadata:{},source:[tests]});cells.forEach((cell,i)=>cell.id=lesson.id+'-'+lang+'-cell-'+i);return {cells,metadata:{kernelspec:{display_name:'Python 3',language:'python',name:'python3'},language_info:{name:'python'},colab:{name:lesson.id+'-'+lang+'.ipynb'}},nbformat:4,nbformat_minor:5};}
+function downloadNotebook(){download(lessons[currentIndex].id+'-'+lang+'.ipynb',JSON.stringify(notebookData(),null,2),'application/x-ipynb+json');}
+function renderMission(lesson){const problem=$('theory-view').querySelector('.problem-area');$('mission-content').replaceChildren();if(problem)$('mission-content').append(problem);else{const title=document.createElement('h3');title.textContent=t('missionNotebook');$('mission-content').append(title);}const heading=$('mission-content').querySelector('h3,h2');if(heading){heading.id='mission-heading';heading.tabIndex=-1;}$('starter-note').textContent=t('starterCommon')+' '+(local(lesson.starterHint)||t('defaultStarter'));$('starter-preview').replaceChildren(codeWindow(starter(),filename(),{title:t('viewStarter')}).element);$('answer-preview').replaceChildren(codeWindow(local(lesson.answer),filename('answer'),{title:t('answerTitle')}).element);$('starter-details').open=false;$('answer-details').open=false;$('practice-checks').open=false;
+const tests=$('checks-list');tests.replaceChildren();(lesson.practiceTests||[]).forEach((test,testIndex)=>{const item=document.createElement('section');item.className='check-case';const name=document.createElement('h4');name.textContent=local(test.name);item.append(name);const values=local(test.input);const inputLabel=document.createElement('div');inputLabel.className='check-label';inputLabel.innerHTML=icon('keyboard')+esc(values?t('inputs'):t('noInputs'));item.append(inputLabel);if(values){const list=document.createElement('ol');list.className='check-values';values.split('\n').forEach(value=>{const li=document.createElement('li');li.textContent=value;list.append(li);});item.append(list);}const outputLabel=document.createElement('div');outputLabel.className='check-label';outputLabel.innerHTML=icon('terminal')+esc(t('expected'));item.append(outputLabel);const segments=practiceTranscripts[lesson.id]?.[lang]?.[testIndex]||[{kind:'output',text:local(test.output)}];const terminal=terminalWindow(segments);terminal.element.classList.add('practice-output');terminal.element.querySelector('.terminal-body').classList.add('practice-expected-output');item.append(terminal.element);const note=document.createElement('p');note.className='check-footnote';note.textContent=values?t('checkNote'):t('checkNoInputNote');item.append(note);tests.append(item);});const draft=safeStore.get('ai-bridge-python-draft-v1-'+currentIndex);$('old-draft-panel').hidden=!draft;$('old-draft-panel').open=false;}
+function weekKey(index){return index>=23?'optional':String(lessons[index].sourceWeek);}
+function weekLabel(key){return key==='optional'?t('optionalShort'):(lang==='ko'?String(key).padStart(2,'0')+t('week'):t('week')+' '+key);}
+function topicLabel(lesson){const title=local(lesson.menu);const split=title.indexOf(' · ');return split<0?title:title.slice(split+3);}
+function renderNav(){
+const nav=$('nav-bar');
+if(!$('week-select')){
+ const label=document.createElement('label');label.className='week-control';label.htmlFor='week-select';
+ const sr=document.createElement('span');sr.className='sr-only';sr.dataset.ui='chooseWeek';sr.textContent=t('chooseWeek');
+ const select=document.createElement('select');select.id='week-select';
+ select.addEventListener('change',()=>{const first=order.find(index=>weekKey(index)===select.value);if(first!==undefined){currentIndex=first;renderLesson(false);select.focus({preventScroll:true});window.scrollTo({top:0,behavior:reducedMotion.matches?'auto':'smooth'});}});
+ label.append(sr,select);const topics=document.createElement('div');topics.id='week-topics';topics.className='week-topics';nav.append(label,topics);
+}
+const select=$('week-select');select.setAttribute('aria-label',t('chooseWeek'));
+if(nav.dataset.lang!==lang){select.replaceChildren();[...new Set(order.map(weekKey))].forEach(key=>{const option=document.createElement('option');option.value=key;option.textContent=weekLabel(key);select.append(option);});nav.dataset.lang=lang;}
+select.value=weekKey(currentIndex);
+const topics=$('week-topics');topics.setAttribute('aria-label',t('weekTopics'));topics.replaceChildren();
+order.filter(index=>weekKey(index)===weekKey(currentIndex)).forEach(index=>{const b=document.createElement('button');b.type='button';b.textContent=topicLabel(lessons[index]);b.title=local(lessons[index].menu);b.dataset.lessonId=lessons[index].id;if(index===currentIndex)b.setAttribute('aria-current','page');b.addEventListener('click',()=>selectLesson(index));topics.append(b);});
+const active=topics.querySelector('[aria-current=page]');if(active){const left=active.offsetLeft-topics.offsetLeft;if(left<topics.scrollLeft)topics.scrollLeft=left-8;else if(left+active.offsetWidth>topics.scrollLeft+topics.clientWidth)topics.scrollLeft=left+active.offsetWidth-topics.clientWidth+8;}
+renderLessonGrid();const position=order.indexOf(currentIndex);const holder=$('study-navigation');holder.replaceChildren();if(position>0){const previous=order[position-1];const b=button('', 'arrow-left',()=>selectLesson(previous),'button secondary');b.innerHTML=icon('arrow-left')+'<span><small>'+esc(t('previous'))+'</small>'+esc(local(lessons[previous].menu))+'</span>';holder.append(b);}if(position<order.length-1){const next=order[position+1];const b=button('', 'arrow-right',()=>selectLesson(next),'button secondary next');b.innerHTML='<span><small>'+esc(t('next'))+'</small>'+esc(local(lessons[next].menu))+'</span>'+icon('arrow-right');holder.append(b);}}
+function renderLessonGrid(){const grid=$('lesson-grid');const query=$('lesson-search').value.trim().toLocaleLowerCase();grid.replaceChildren();order.forEach((index,pos)=>{const lesson=lessons[index];const label=local(lesson.menu);if(query&&!((label+' '+local(lesson.title)+' '+lesson.id).toLocaleLowerCase().includes(query)))return;const b=document.createElement('button');b.type='button';b.className='lesson-select';b.dataset.lessonId=lesson.id;if(index===currentIndex)b.setAttribute('aria-current','page');b.innerHTML='<span class="lesson-index">'+String(pos+1).padStart(2,'0')+'</span><span>'+esc(label)+'<small>'+esc(index>=23?t('optional'):t('core'))+'</small></span>';b.addEventListener('click',()=>{$('lessons-dialog').close();selectLesson(index);});grid.append(b);});$('search-empty').hidden=grid.children.length>0;}
+function updateUI(){document.documentElement.lang=lang;document.querySelector('.brand').href='?lesson=lesson-1&lang='+lang;document.querySelectorAll('[data-ui]').forEach(el=>el.textContent=t(el.dataset.ui));document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));document.querySelectorAll('[data-close]').forEach(b=>b.setAttribute('aria-label',t('close')));$('lesson-search').placeholder=t('searchPlaceholder');$('lesson-search').setAttribute('aria-label',t('searchPlaceholder'));$('copy-fallback').setAttribute('aria-label',t('copyLabel'));$('nav-bar').setAttribute('aria-label',t('lessonList'));document.querySelector('.language-switch').setAttribute('aria-label',t('languageLabel'));document.querySelector('.tool-tabs').setAttribute('aria-label',t('toolLabel'));document.querySelector('.learning-route').setAttribute('aria-label',t('sequence'));$('study-navigation').setAttribute('aria-label',t('previous')+' / '+t('next'));$('all-lessons').setAttribute('aria-label',t('allLessons'));updateThemeLabel();}
+function updateThemeLabel(){const dark=document.documentElement.dataset.theme==='dark';$('theme-toggle').innerHTML=icon(dark?'sun':'moon');$('theme-toggle').setAttribute('aria-label',t(dark?'light':'dark'));$('theme-toggle').title=t(dark?'light':'dark');}
+function updateURL(){try{const url=new URL(location.href);url.searchParams.set('lesson',lessons[currentIndex].id);url.searchParams.set('lang',lang);history.replaceState(null,'',url);}catch{}}
+function renderLesson(focus=false){renderGeneration++;stopPlayback();observer?.disconnect();observer=null;controllers.clear();const lesson=lessons[currentIndex];updateUI();$('lesson-title').textContent=local(lesson.title);document.title=local(lesson.title)+' · Python Learning Center';$('lesson-kicker').textContent=currentIndex>=23?t('optional'):(lang==='ko'?lesson.sourceWeek+t('week'):t('week')+' '+lesson.sourceWeek)+' · PYTHON';$('lesson-position').textContent=String(order.indexOf(currentIndex)+1).padStart(2,'0')+' '+t('of')+' 26';$('theory-view').innerHTML=local(lesson.theory);stripDecorativeEmoji($('theory-view'));renderExamples(lesson);renderMission(lesson);styleInlineCode();const toc=$('contents-list');toc.replaceChildren();$('theory-view').querySelectorAll('h3').forEach((h,i)=>{h.id='topic-'+i;const li=document.createElement('li');const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;a.addEventListener('click',()=>{let parent=h.parentElement;while(parent&&parent!==$('theory-view')){if(parent.tagName==='DETAILS')parent.open=true;parent=parent.parentElement;}});li.append(a);toc.append(li);});$('theory-view').querySelectorAll('table').forEach(table=>{const wrapper=document.createElement('div');wrapper.className='table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label',table.closest('section')?.querySelector('h3')?.textContent||t('contents'));table.replaceWith(wrapper);wrapper.append(table);});$('theory-view').querySelectorAll('h3').forEach(h=>{if(!h.querySelector('[data-icon]')){const span=document.createElement('span');span.dataset.icon='book';h.prepend(span);}});renderTools();renderNav();hydrateIcons();updateURL();safeStore.set('python-language',lang);if(focus){$('lesson-title').focus({preventScroll:true});window.scrollTo({top:0,behavior:reducedMotion.matches?'auto':'smooth'});}}
+function selectLesson(index){currentIndex=index;renderLesson(true);}
+$('theme-toggle').addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;safeStore.set('python-theme',theme);updateThemeLabel();});
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;renderLesson(false);}));
+document.querySelectorAll('[data-tool]').forEach((b,index,buttons)=>{b.addEventListener('click',()=>{tool=b.dataset.tool;safeStore.set('python-practice-tool',tool);renderTools();});b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const target=e.key==='Home'?0:e.key==='End'?buttons.length-1:(index+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[target].click();buttons[target].focus();});});
+$('jump-tools').addEventListener('click',()=>{$('practice-title').scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});$('practice-title').focus({preventScroll:true});});
+$('copy-starter').addEventListener('click',()=>copyText(starter()));$('download-py').addEventListener('click',()=>download(filename(),starter(),'text/x-python;charset=utf-8'));
+$('download-draft').addEventListener('click',()=>{const draft=safeStore.get('ai-bridge-python-draft-v1-'+currentIndex);if(draft)download(filename('previous'),draft,'text/x-python;charset=utf-8');});
+$('all-lessons').addEventListener('click',()=>{$('lesson-search').value='';renderLessonGrid();$('lessons-dialog').showModal();$('lesson-search').focus();});$('lesson-search').addEventListener('input',renderLessonGrid);
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+$('jump-example').addEventListener('click',()=>{const first=Array.from(controllers.values()).find(c=>c.element.dataset.exampleKind==='code'&&!c.element.closest('details:not([open])'));if(first){first.element.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'center'});first.element.querySelector('button')?.focus({preventScroll:true});first.play();}});
+$('jump-practice').addEventListener('click',()=>{$('lesson-mission').scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});$('mission-heading')?.focus({preventScroll:true});});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopPlayback();});window.addEventListener('popstate',()=>{const q=new URLSearchParams(location.search);const i=lessons.findIndex(l=>l.id===q.get('lesson'));if(i>=0)currentIndex=i;if(['ko','en','ru'].includes(q.get('lang')))lang=q.get('lang');renderLesson(true);});
+if(reducedMotion.addEventListener)reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)stopPlayback();});
+renderLesson();
 })();
