@@ -1,117 +1,69 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML/CSS/JavaScript Learning Center - Lesson 1</title>
-<link rel="icon" type="image/svg+xml" sizes="any" href="./favicon.svg">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/web.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark">
+<meta name="description" content="처음 배우는 유학생을 위한 HTML, CSS, JavaScript 수업. 작은 코드 수정부터 나만의 웹페이지까지 연습합니다.">
+<title>웹 만들기 연습실 · AI Bridge</title><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./css/web.css"><link rel="stylesheet" href="./css/learning-app.css">
 </head>
-<body>
-<a class="web-a11y-only" href="#main-content" data-course-text="skipLink">본문으로 이동</a>
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand-row">
-      <div class="brand-left">
-        <button class="hamburger" id="hamburger-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="brand-block">
-          <span class="brand-title" id="brand-title">HTML / CSS / JavaScript </span>
-          <span class="brand-subtitle" id="brand-subtitle">Learning Center</span>
-        </div>
-      </div>
-      <div class="top-controls">
-        <div class="lang-container" id="desktop-langs">
-            <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
-            <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
-            <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
-        </div>
-        <span class="status-badge status-ready" role="status">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>준비 완료</span>
-        </span>
-      </div>
-    </div>
+<body class="web-course" data-subject="html">
+<a class="web-a11y-only skip-link" href="#main-content" data-course-text="skipLink">본문으로 이동</a>
+<header class="site-header"><div class="header-inner brand-row">
+<div class="brand-left"><button class="menu-toggle" id="lessons-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span class="ui-icon icon-list" aria-hidden="true"></span><span data-course-text="courseNavTitle">전체 강의</span></button><img class="brand-mark" src="./favicon.svg" width="32" height="32" alt=""><div class="brand-block"><span class="brand-title" id="brand-title">웹 만들기 연습실</span><span class="brand-subtitle">AI BRIDGE · WEB CLASS</span></div></div>
+<div class="top-controls"><div class="lang-container" id="desktop-langs" role="group" aria-label="언어 선택" data-course-aria="languageLabel"><button class="lang-btn active" type="button" data-lang="ko" aria-pressed="true" aria-label="한국어">KO</button><button class="lang-btn" type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false" aria-label="Русский">RU</button></div><button class="theme-toggle" id="theme-toggle" type="button"><span class="ui-icon icon-moon" id="theme-icon" aria-hidden="true"></span><span id="theme-label">다크 모드</span></button></div>
+</div></header>
+<aside class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="menu-heading" hidden inert>
+<div class="menu-heading-row"><div><p class="eyebrow">AI BRIDGE</p><h2 id="menu-heading" data-course-text="courseNavTitle">전체 강의</h2></div><button id="mobile-menu-close" class="icon-btn" type="button" aria-label="메뉴 닫기" data-course-aria="closeMenu"><span class="ui-icon icon-x" aria-hidden="true"></span></button></div>
+<p class="menu-description" data-course-text="menuDescription">작은 수정부터 나만의 웹페이지까지, 14개의 연습</p>
+<div class="mobile-lang-container" role="group" aria-label="언어 선택" data-course-aria="languageLabel"><button class="lang-btn active" type="button" data-lang="ko" aria-pressed="true">한국어</button><button class="lang-btn" type="button" data-lang="en" aria-pressed="false">English</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false">Русский</button></div>
+<nav class="mobile-nav" id="nav-bar" aria-label="학습 목록" data-course-aria="courseNavTitle"></nav>
+<a class="course-home-link" href="https://yu828282.github.io/ai_bridge/index.html" target="_blank" rel="noopener noreferrer"><span class="ui-icon icon-arrow-up-right" aria-hidden="true"></span> <span data-course-text="allCourses">AI Bridge 강의 목록</span></a>
+</aside><div class="mobile-backdrop" id="mobile-backdrop" hidden></div>
+<main id="main-content" class="course-shell" tabindex="-1">
+<div class="resume-banner" id="resume-banner" hidden><span id="resume-text"></span><button class="icon-btn" id="dismiss-resume" type="button" aria-label="안내 닫기" data-course-aria="dismissNotice"><span class="ui-icon icon-x" aria-hidden="true"></span></button></div>
+<div class="course-language-switch" role="group" aria-label="언어 선택" data-course-aria="languageLabel"><button class="lang-btn active" type="button" data-lang="ko" aria-pressed="true">한국어</button><button class="lang-btn" type="button" data-lang="en" aria-pressed="false">English</button><button class="lang-btn" type="button" data-lang="ru" aria-pressed="false">Русский</button></div>
+<nav class="subject-nav" id="subject-nav" aria-label="학습 과목" data-course-aria="subjectNav">
+<button class="subject-card active" type="button" data-subject-target="html" aria-pressed="true"><img class="subject-card-icon" src="./assets/icons/code.svg" width="36" height="36" alt=""><span class="subject-card-copy"><strong>HTML</strong><span class="subject-role">내용·구조</span><small class="subject-number">01–03강</small></span><small class="subject-card-progress">0 / 3</small></button>
+<button class="subject-card" type="button" data-subject-target="css" aria-pressed="false"><img class="subject-card-icon" src="./assets/icons/paint-brush.svg" width="36" height="36" alt=""><span class="subject-card-copy"><strong>CSS</strong><span class="subject-role">색·배치</span><small class="subject-number">04–08강</small></span><small class="subject-card-progress">0 / 5</small></button>
+<button class="subject-card" type="button" data-subject-target="js" aria-pressed="false"><img class="subject-card-icon" src="./assets/icons/lightning.svg" width="36" height="36" alt=""><span class="subject-card-copy"><strong>JavaScript</strong><span class="subject-role">입력·동작</span><small class="subject-number">09–12강</small></span><small class="subject-card-progress">0 / 4</small></button>
+<button class="subject-card" type="button" data-subject-target="project" aria-pressed="false"><img class="subject-card-icon" src="./assets/icons/rocket-launch.svg" width="36" height="36" alt=""><span class="subject-card-copy"><strong>프로젝트</strong><span class="subject-role">내 웹페이지</span><small class="subject-number">13–14강</small></span><small class="subject-card-progress">0 / 2</small></button>
+</nav>
+<section class="lesson-intro" aria-labelledby="lesson-heading"><div><div class="lesson-meta"><span class="lesson-chip" id="lesson-chip">1강</span><span class="eyebrow" id="lesson-group">HTML</span></div><h1 id="lesson-heading" tabindex="-1">첫 웹페이지 만들기</h1><p class="subject-description" id="subject-description"></p></div><div class="course-progress"><span id="progress-label">직접 확인 완료 0 / 14</span><progress id="course-progress" value="0" max="14" aria-label="학습 진행" data-course-aria="progressAria"></progress></div></section>
+<div class="lesson-toolbar"><div class="study-steps" aria-label="학습 단계" data-course-aria="stepsLabel"><a href="#theory-panel" data-jump="theory-panel"><b>1</b> <span data-course-text="stepRead">설명 읽기</span></a><a href="#editor-panel" data-jump="editor-panel"><b>2</b> <span data-course-text="stepEdit">코드 바꾸기</span></a><a href="#preview-section" data-jump="preview-section"><b>3</b> <span data-course-text="stepRun">결과 확인</span></a></div><div class="lesson-navigation"><button class="quiet-btn" id="prev-lesson" type="button" data-course-text="previous" data-ui-icon="arrow-left" data-icon-position="before"><span class="ui-icon icon-arrow-left" aria-hidden="true"></span><span class="button-label">이전</span></button><span class="lesson-position" id="lesson-position">1 / 14</span><button class="quiet-btn" id="next-lesson" type="button" data-course-text="next" data-ui-icon="arrow-right" data-icon-position="after"><span class="button-label">다음</span><span class="ui-icon icon-arrow-right" aria-hidden="true"></span></button></div></div>
+<div class="workspace-grid">
+<section id="theory-panel" tabindex="-1" aria-label="핵심 이해" data-course-aria="theoryLabel"><div class="theory-content" id="theory-view"><p role="status">학습 자료를 준비하고 있어요.</p><noscript><p>이 수업의 실습 기능을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript></div></section>
+<section id="editor-panel" tabindex="-1" aria-labelledby="editor-heading">
+<div class="editor-topbar"><h2 id="editor-heading" data-course-text="editorLabel">코드 실습</h2><details class="editor-help"><summary data-course-text="editorHelpTitle">처음이라면 · 코드 쓰는 법</summary><p id="editor-hint" data-course-text="editorHint">글자를 선택하고 입력하면 바뀝니다. Enter는 줄바꿈, Ctrl+Z(맥은 ⌘+Z)는 되돌리기입니다. Ctrl+] / Ctrl+[는 들여쓰기 / 내어쓰기입니다. Tab은 다음 버튼으로 이동합니다.</p></details><span class="save-status" id="save-status" role="status"></span></div>
+<div class="project-import" id="project-import" hidden><div><strong data-course-text="importTitle">13강에서 만든 작품으로 발표해요</strong><p id="import-help"></p></div><button class="quiet-btn" id="import-project-btn" type="button" data-course-text="importProject">13강 내 작품 가져오기</button></div>
+<p class="draft-language-note" id="draft-language-note" role="status" hidden></p>
+<div class="legacy-draft-banner" id="legacy-draft-banner" hidden><p data-course-text="legacyDraft">이전 수업에서 저장한 코드가 남아 있어요. 새 설명과 다를 수 있습니다. 새 시작 코드는 초기화 버튼으로 열 수 있어요.</p><button id="legacy-reset-btn" type="button" class="quiet-btn" data-course-text="openNewExample">새 시작 예제 열기</button></div>
+<div class="edit-guide"><span class="guide-icon" aria-hidden="true"><span class="ui-icon icon-keyboard" aria-hidden="true"></span></span><div class="guide-copy"><strong data-course-text="editGuideTitle">이번에 바꿀 부분</strong><p id="focus-label"></p></div><button id="find-edit-btn" class="quiet-btn" type="button" data-course-text="findEdit" data-ui-icon="arrow-down" data-icon-position="after"><span class="button-label">코드에서 찾기</span><span class="ui-icon icon-arrow-down" aria-hidden="true"></span></button></div>
+<p class="edit-feedback" id="edit-feedback" role="status"></p>
 
-    <div class="nav-shell desktop-nav" aria-label="Lesson menu">
-      <nav class="nav-container" id="nav-bar"></nav>
-    </div>
-  </div>
-
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
-      <button class="web-a11y-only" id="mobile-menu-close" type="button" aria-label="메뉴 닫기" data-course-aria="closeMenu">×</button>
-      <div class="mobile-menu-header" data-course-text="languageLabel">언어 선택</div>
-      <div class="mobile-lang-container" id="mobile-langs">
-          <button class="lang-btn active" type="button" data-lang="ko">🇰🇷 KO</button>
-          <button class="lang-btn" type="button" data-lang="en">🇺🇸 EN</button>
-          <button class="lang-btn" type="button" data-lang="ru">🇷🇺 RU</button>
-      </div>
-      
-      <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 10px 0;">
-      
-      <div class="mobile-menu-header" data-course-text="courseNavTitle">학습 목록</div>
-      <nav class="mobile-nav" id="mobile-nav"></nav>
-  </div>
-  <div class="mobile-backdrop" id="mobile-backdrop"></div>
-</header>
-
-<main id="main-content" tabindex="-1">
-  <section id="theory-panel" aria-label="핵심 이해" data-course-aria="theoryLabel">
-    <div class="lesson-chip">Lesson 1</div>
-    <div class="theory-content" id="theory-view">
-      <p role="status">학습 자료를 준비하고 있어요.</p>
-      <noscript><p>학습 자료와 실습 기능을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
-    </div>
-  </section>
-
-  <section id="editor-panel" aria-labelledby="editor-heading">
-    <div class="editor-topbar">
-      <span class="editor-title" id="editor-heading" data-course-text="editorLabel">코드 실습</span>
-    </div>
-
-    <span class="web-a11y-only" id="editor-hint" data-course-text="editorHint">들여쓰기: Ctrl+] / 내어쓰기: Ctrl+[. Tab은 다음 버튼으로 이동합니다.</span>
-    <textarea id="html-code" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="HTML, CSS, JavaScript code editor" aria-describedby="editor-hint"></textarea>
-
-    <div class="action-btns">
-      <button class="run-btn btn" id="run-btn" type="button">실행 ▶</button>
-      <button class="reset-btn btn" id="reset-btn" type="button">초기화</button>
-      <button class="ans-btn btn" id="answer-btn" type="button" aria-controls="ans-display" aria-expanded="false">정답 확인</button>
-    </div>
-
-    <div class="preview-wrap">
-      <div class="preview-header">
-        <span data-course-text="resultLabel">실행 결과 미리보기</span>
-      </div>
-      <iframe id="preview-frame" title="HTML preview" sandbox="allow-scripts"></iframe>
-    </div>
-
-    <div id="ans-display" role="region" aria-labelledby="answerTitle" hidden>
-      <strong id="answerTitle">[모범 답안]</strong>
-      <pre id="ans-text"></pre>
-    </div>
-  </section>
+<div class="code-editor"><div class="line-numbers" id="line-numbers" aria-hidden="true"></div><div class="code-input-wrap"><pre id="code-highlight" aria-hidden="true"></pre><textarea id="html-code" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" wrap="off" aria-label="HTML, CSS, JavaScript 코드 편집기" aria-describedby="editor-hint focus-label"></textarea></div></div>
+<div class="action-btns"><button class="run-btn btn" id="run-btn" type="button" data-ui-icon="play" data-icon-position="after"><span class="button-label">실행</span><span class="ui-icon icon-play" aria-hidden="true"></span></button><button class="reset-btn btn" id="reset-btn" type="button">초기화</button><button class="ans-btn btn" id="answer-btn" type="button" aria-expanded="false" aria-controls="ans-display">답안 예시</button></div>
+<div class="preview-wrap" id="preview-section" tabindex="-1">
+<div class="preview-header"><h2 data-course-text="resultLabel">결과 미리보기</h2><span class="status-badge" id="preview-status" role="status">실행 대기</span></div>
+<div class="preview-tools"><div class="device-controls" role="group" aria-label="미리보기 화면 폭" data-course-aria="previewSize"><button class="device-btn active" type="button" data-device="fit" aria-pressed="true" data-course-text="deviceFit">맞춤</button><button class="device-btn" type="button" data-device="phone" aria-pressed="false" data-course-text="devicePhone">휴대폰</button><button class="device-btn" type="button" data-device="tablet" aria-pressed="false" data-course-text="deviceTablet">태블릿</button><button class="device-btn" type="button" data-device="wide" aria-pressed="false" data-course-text="deviceWide">넓게</button></div><output id="preview-width" aria-live="polite"></output></div>
+<p class="preview-scale-note" id="preview-scale-note" hidden></p>
+<div class="runtime-feedback" id="runtime-feedback" hidden><div><strong id="runtime-title"></strong><p id="runtime-message"></p><p class="runtime-detail" id="runtime-detail"></p></div><button class="quiet-btn" id="error-focus-btn" type="button" hidden data-course-text="findError" data-ui-icon="arrow-up" data-icon-position="after"><span class="button-label">문제가 난 줄 보기</span><span class="ui-icon icon-arrow-up" aria-hidden="true"></span></button></div>
+<p class="preview-task-hint" id="preview-task-hint" hidden></p>
+<div class="preview-stage" id="preview-stage"><div class="preview-device" id="preview-device"><iframe id="preview-frame" title="내 코드의 웹페이지 미리보기" sandbox="allow-scripts"></iframe></div></div>
+<p class="preview-caption" data-course-text="previewCaption">실행한 뒤 ‘예상 결과’와 비교하세요. 버튼이 있는 예제는 미리보기 안의 버튼도 눌러보세요.</p>
+</div>
+<section id="ans-display" aria-labelledby="answerTitle" hidden><div class="answer-heading"><h3 id="answerTitle">답안 예시 · 내가 작성한 코드는 유지됩니다</h3><button id="answer-close-btn" class="icon-btn" type="button" aria-label="답안 닫기" data-course-aria="closeAnswer"><span class="ui-icon icon-x" aria-hidden="true"></span></button></div><p data-course-text="answerHelp">내 코드와 다른 부분을 찾아보세요. 똑같이 쓰지 않아도 목표를 만족하면 됩니다.</p><div class="answer-code"><pre id="ans-text"></pre></div></section>
+<section class="lesson-checks" aria-labelledby="checks-title"><div class="checks-heading"><h2 id="checks-title" data-course-text="checksTitle">내 눈으로 확인해요</h2><span id="checks-count"></span></div><p data-course-text="checksHelp">실행 결과를 보고 체크하세요. 자동 채점이 아닌 나의 확인 기록입니다.</p><div id="checks-list"></div><button class="complete-btn btn" id="complete-btn" type="button" data-course-text="markComplete">이 강의 확인 완료</button><p id="complete-status" role="status"></p></section>
+</section></div>
+<div class="lesson-bottom-nav"><button class="quiet-btn" id="bottom-prev" type="button" data-course-text="previous" data-ui-icon="arrow-left" data-icon-position="before"><span class="ui-icon icon-arrow-left" aria-hidden="true"></span><span class="button-label">이전</span></button><button class="next-primary btn" id="bottom-next" type="button" data-course-text="nextLesson" data-ui-icon="arrow-right" data-icon-position="after"><span class="button-label">다음 강의로</span><span class="ui-icon icon-arrow-right" aria-hidden="true"></span></button></div>
 </main>
-    <footer class="footer">
-        <div class="container">
-            <p>Yuri Choi Portfolio</p>
-            <p>© 2026 AI Education Designer & System Builder</p>
-        </div>
-    </footer>     
-<script>
-// A file URL cannot load this course's JavaScript modules. Explain the next step
-// instead of leaving the initial loading message and inactive controls onscreen.
-(function () {
-  if (location.protocol !== 'file:') return;
-  document.getElementById('theory-view').innerHTML = '<div class="info-box"><h2>📖 실행 안내 · How to open</h2><p>실습을 시작하려면 이 폴더를 웹서버로 열어 주세요. <a href="./README.md">README의 실행 방법</a>을 확인해 주세요.</p><p lang="en">Open this folder through a web server to use the lessons. See the README for the steps.</p><p lang="ru">Откройте эту папку через веб-сервер. Инструкция находится в README.</p></div>';
-  document.querySelectorAll('button').forEach(function (button) { button.disabled = true; });
-  document.getElementById('html-code').disabled = true;
-  document.querySelector('.status-badge span:last-child').textContent = '실행 안내 · Setup';
-})();
+<footer class="footer"><details class="about-course"><summary data-course-text="aboutTitle">이 수업은 누구를 위한 것인가요?</summary><p data-course-text="aboutDescription">IT 기초가 없는 유학생을 위한 웹 제작 입문 과정입니다. 한국어·영어·러시아어 설명과 브라우저 실습을 제공하며, 자기소개 웹페이지 완성을 목표로 합니다.</p></details><p>Yuri Choi · AI Education Designer &amp; System Builder</p><p>© 2026 AI Bridge</p></footer>
+<script data-local-open-help>
+if (location.protocol === 'file:') {
+  const notice = document.createElement('main');
+  notice.className = 'course-shell';
+  notice.style.cssText = 'max-width:760px;margin:10vh auto;padding:28px';
+  notice.innerHTML = '<section class="theory-content"><p class="eyebrow">AI BRIDGE · WEB STUDIO</p><h1>바로 열어보는 파일을 선택해 주세요</h1><p>현재 <strong>web.html</strong>은 사이트 업로드용 파일입니다. 설치 없이 연습하려면 같은 폴더의 <strong>web-studio-preview.html</strong>을 열어 주세요.</p><p><a class="btn run-btn" href="./web-studio-preview.html">웹 만들기 연습실 열기 <span class="ui-icon icon-arrow-right" aria-hidden="true"></span></a></p><p>For a local preview, open <strong>web-studio-preview.html</strong>. Upload <strong>web.html</strong> with the CSS and JavaScript folders to your website.</p></section>';
+  document.body.replaceChildren(notice);
+}
 </script>
 <script type="module" src="./js/data_web/web.js"></script>
-</body>
-</html>
+</body></html>
