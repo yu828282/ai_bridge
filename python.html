@@ -8,7 +8,7 @@
 <title>Python Learning Center</title>
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('python-theme')==='dark'?'dark':'light';}catch(e){}</script>
-<link rel="stylesheet" href="./css/python.css?v=20261118-final16">
+<link rel="stylesheet" href="./css/python.css?v=20261120-weeks13-14">
 </head>
 <body>
 <a class="skip-link" href="#lesson-title" data-ui="skip">본문으로 건너뛰기</a>
@@ -28,11 +28,12 @@
   <header class="lesson-hero">
    <div class="lesson-meta"><span id="lesson-kicker"></span><span id="lesson-position"></span></div>
    <h1 id="lesson-title" tabindex="-1"></h1>
+   <p id="lesson-plan-note" class="course-note" hidden><span data-icon="clock" aria-hidden="true"></span><span data-ui="plannedNotice">아직 수업하지 않은 예정 자료입니다. 수업 전까지 내용이 바뀔 수 있어요.</span></p>
    <p class="hero-copy" data-ui="heroCopy">설명을 읽고, 코드와 결과를 눈으로 확인한 뒤, 수업 도구에서 직접 연습해요.</p>
    <ol class="learning-route" aria-label="학습 순서"><li><span data-icon="book" aria-hidden="true"></span><span data-ui="routeRead">1. 설명 읽기</span></li><li><span data-icon="play" aria-hidden="true"></span><span data-ui="routeWatch">2. 예시 보기</span></li><li><span data-icon="laptop" aria-hidden="true"></span><span data-ui="routePractice">3. 직접 연습</span></li></ol>
    <div class="hero-actions"><button type="button" id="jump-example" class="button secondary"><span data-icon="play" aria-hidden="true"></span><span data-ui="firstExample">첫 예시로</span></button><button type="button" id="jump-practice" class="button primary"><span data-icon="arrow-right" aria-hidden="true"></span><span data-ui="toPractice">실습 미션으로</span></button></div>
   </header>
-  <p class="mode-note"><span data-icon="info" aria-hidden="true"></span><span data-ui="modeNote">이 페이지의 코드는 실행 흐름을 보여주는 예시입니다. 직접 작성한 코드는 Colab·IDLE·VS Code에서 실행해요.</span></p>
+  <p class="mode-note"><span data-icon="info" aria-hidden="true"></span><span data-ui="modeNote">이 페이지는 코드 입력과 결과를 보여 주는 예시 재생입니다. 여기서는 Python 코드를 실행하지 않아요. 직접 작성한 코드는 Colab·IDLE·VS Code에서 실행해요.</span></p>
   <details class="lesson-toc"><summary><span data-icon="list" aria-hidden="true"></span><span data-ui="contents">이번 설명 목차</span></summary><ol id="contents-list"></ol></details>
   <article id="theory-view"></article>
   <nav class="study-navigation" id="study-navigation" aria-label="이전·다음 내용"></nav>
@@ -46,20 +47,20 @@
     <div class="tool-tabs" role="tablist" aria-label="실습 도구"><button type="button" role="tab" id="tool-colab" data-tool="colab" aria-controls="tool-guide" aria-selected="true" tabindex="0">Colab</button><button type="button" role="tab" id="tool-idle" data-tool="idle" aria-controls="tool-guide" aria-selected="false" tabindex="-1">IDLE</button><button type="button" role="tab" id="tool-vscode" data-tool="vscode" aria-controls="tool-guide" aria-selected="false" tabindex="-1">VS Code</button></div>
     <div id="tool-guide" role="tabpanel" aria-labelledby="tool-colab"></div>
    </section>
-   <section class="practice-card mission-card" id="lesson-mission" aria-labelledby="mission-heading"><div class="section-eyebrow"><span data-icon="target" aria-hidden="true"></span><span data-ui="missionEyebrow">이번에 해볼 일</span></div><div id="mission-content"></div><p class="practice-note" id="starter-note"></p><div class="mission-actions"><button type="button" class="button primary full" id="copy-starter"><span data-icon="copy" aria-hidden="true"></span><span data-ui="copyStarter">시작 코드 복사</span></button><button type="button" class="button secondary full" id="jump-tools"><span data-icon="laptop" aria-hidden="true"></span><span data-ui="viewToolGuide">실행 방법 보기</span></button><button type="button" class="button secondary full" id="download-py" aria-describedby="practice-file-help"><span data-icon="download" aria-hidden="true"></span><span data-ui="downloadPy">시작 코드 파일 저장</span><span class="extension">.py</span></button></div><p class="small-copy" id="practice-file-help"></p><details id="starter-details"><summary data-ui="viewStarter">복사할 시작 코드 보기</summary><div id="starter-preview"></div></details><details id="answer-details"><summary><span data-icon="bulb" aria-hidden="true"></span><span data-ui="answerTitle">답안 예시 · 먼저 해본 뒤 보기</span></summary><p class="small-copy" data-ui="answerHelp">정답은 한 가지가 아닐 수 있어요. 내가 쓴 코드와 비교하세요.</p><div id="answer-preview"></div></details></section>
+   <section class="practice-card mission-card" id="lesson-mission" aria-labelledby="mission-heading"><div class="section-eyebrow"><span data-icon="target" aria-hidden="true"></span><span data-ui="missionEyebrow">이번에 해볼 일</span></div><div id="mission-content"></div><p class="practice-note" id="starter-note"></p><div class="mission-actions"><button type="button" class="button primary full" id="copy-starter"><span data-icon="copy" aria-hidden="true"></span><span data-ui="copyStarter">시작 코드 복사</span></button><button type="button" class="button secondary full" id="jump-tools"><span data-icon="laptop" aria-hidden="true"></span><span data-ui="viewToolGuide">실행 방법 보기</span></button><button type="button" class="button secondary full" id="download-py" aria-describedby="practice-file-help" aria-label="Colab 노트북 저장 (.ipynb)"><span data-icon="download" aria-hidden="true"></span><span data-ui="notebook">Colab 노트북 저장</span><span class="extension">.ipynb</span></button></div><p class="small-copy" id="practice-file-help"></p><details id="starter-details"><summary data-ui="viewStarter">복사할 시작 코드 보기</summary><div id="starter-preview"></div></details><details id="answer-details"><summary><span data-icon="bulb" aria-hidden="true"></span><span data-ui="answerTitle">답안 예시 · 먼저 해본 뒤 보기</span></summary><p class="small-copy" data-ui="answerHelp">정답은 한 가지가 아닐 수 있어요. 내가 쓴 코드와 비교하세요.</p><div id="answer-preview"></div></details></section>
    <details class="practice-card practice-tests" id="practice-checks"><summary><span data-icon="check-circle" aria-hidden="true"></span><span data-ui="checksTitle">미션 결과 비교하기</span></summary><p class="small-copy" data-ui="checksHelp">미션을 완성한 뒤 같은 값을 넣고 결과를 비교해요.</p><div id="checks-list"></div></details>
    <details class="practice-card" id="old-draft-panel" hidden><summary data-ui="oldDraftTitle">이전에 작성한 코드 꺼내기</summary><p class="small-copy" data-ui="oldDraftHelp">이 브라우저에 남아 있던 코드를 파일로 보관할 수 있어요.</p><button type="button" class="button secondary full" id="download-draft"><span data-icon="download" aria-hidden="true"></span><span data-ui="oldDraftDownload">이전 코드 저장</span></button></details>
   </div>
  </aside>
 </main>
 <footer class="site-footer"><strong>Yuri Choi · Python Learning Center</strong><span data-ui="footer">배운 내용을 내 도구에서 한 번 더 실행해 보세요.</span></footer>
-<dialog id="lessons-dialog" class="course-dialog" aria-labelledby="lessons-dialog-title"><div class="dialog-heading"><h2 id="lessons-dialog-title" data-ui="allLessons">전체 수업</h2><button type="button" class="icon-button" data-close="lessons-dialog" aria-label="닫기"><span data-icon="x" aria-hidden="true"></span></button></div><label class="search-label" for="lesson-search"><span data-icon="search" aria-hidden="true"></span><input id="lesson-search" type="search" autocomplete="off" placeholder="주차나 주제로 찾기"></label><div id="lesson-grid"></div><p id="search-empty" hidden data-ui="searchEmpty">다른 단어로 찾아보세요.</p></dialog>
+<dialog id="lessons-dialog" class="course-dialog" aria-labelledby="lessons-dialog-title"><div class="dialog-heading"><h2 id="lessons-dialog-title" data-ui="allLessons">전체 수업</h2><button type="button" class="icon-button" data-close="lessons-dialog" aria-label="닫기"><span data-icon="x" aria-hidden="true"></span></button></div><label class="search-label" for="lesson-search"><span data-icon="search" aria-hidden="true"></span><input id="lesson-search" type="search" autocomplete="off" placeholder="주차나 주제로 찾기"></label><p class="course-note exam-note"><span data-icon="clock" aria-hidden="true"></span><span data-ui="examSchedule">8주차는 중간고사, 15주차는 기말고사입니다. 두 주차에는 수업이 없습니다.</span></p><div id="lesson-grid"></div><p id="search-empty" hidden data-ui="searchEmpty">다른 단어로 찾아보세요.</p></dialog>
 <dialog id="copy-dialog" class="course-dialog" aria-labelledby="copy-dialog-title"><div class="dialog-heading"><h2 id="copy-dialog-title" data-ui="copyFallbackTitle">코드를 선택했어요</h2><button type="button" class="icon-button" data-close="copy-dialog" aria-label="닫기"><span data-icon="x" aria-hidden="true"></span></button></div><p data-ui="copyFallbackHelp">Ctrl+C(Windows) 또는 Command+C(Mac)로 복사한 뒤 수업 도구에 붙여 넣으세요.</p><textarea id="copy-fallback" readonly spellcheck="false" aria-label="복사할 코드"></textarea></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <noscript><p class="noscript-note">JavaScript를 켜면 수업 자료를 볼 수 있습니다. / Enable JavaScript to view the lessons.</p></noscript>
-<script src="./js/data_python/lessons.js?v=20261118-final16"></script>
-<script src="./js/data_python/examples.js?v=20261118-final16"></script>
-<script src="./js/data_python/translations.js?v=20261118-final16"></script>
-<script src="./js/data_python/python.js?v=20261118-final16"></script>
+<script src="./js/data_python/lessons.js?v=20261120-weeks13-14"></script>
+<script src="./js/data_python/examples.js?v=20261120-weeks13-14"></script>
+<script src="./js/data_python/translations.js?v=20261120-weeks13-14"></script>
+<script src="./js/data_python/python.js?v=20261120-weeks13-14"></script>
 </body>
 </html>

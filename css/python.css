@@ -38,3 +38,18 @@ html[lang=ru] #week-select{width:137px}
 /* Consistent keyboard focus for the week picker and scrollable examples. */
 select:focus-visible,.code-scroll:focus-visible,.table-scroll:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
 .code-scroll:focus-visible{outline-offset:-3px}
+
+/* Planned lessons and exam weeks stay distinct from the selected lesson. */
+.course-note{display:flex;align-items:flex-start;gap:9px;padding:13px 15px;margin:0 0 20px;border-radius:12px;background:var(--surface);color:var(--muted);font-size:13px;line-height:1.65;box-shadow:var(--shadow)}
+.course-note .icon{width:17px;height:17px;margin-top:2px}
+.exam-note{background:var(--surface-2);box-shadow:none}
+#week-select option:disabled{color:var(--muted);background:var(--surface-2)}
+
+/* Nested optional study cards use the same full-card shadow in both themes. */
+#theory-view .lesson-section > details.lesson-extra {
+  background: var(--surface-2);
+  border-radius: 14px;
+  padding: 15px 18px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
